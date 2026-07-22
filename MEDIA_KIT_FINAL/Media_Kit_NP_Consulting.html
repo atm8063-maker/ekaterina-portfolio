@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Kit - NP Consulting</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;500;700&family=Space+Grotesk:wght@700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Manrope', sans-serif;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .split {
+            flex: 1;
+            padding: 4rem;
+            position: relative;
+        }
+
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+        
+        .title {
+            font-size: 2.5rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        p { line-height: 1.6; }
+
+        pre {
+            font-family: "JetBrains Mono", monospace;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 1.1rem;
+        }
+
+        .color-block {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            margin-right: 1rem;
+        }
+        .color-info { display: flex; flex-direction: column; }
+        .color-name { font-weight: bold; font-family: 'Space Grotesk', sans-serif; }
+        .color-hex { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; opacity: 0.8; }
+
+        /* --- СВЕТЛАЯ ТЕМА --- */
+        .light {
+            background-color: #f8f9fa;
+            color: #111827;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .light .section-title { border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .light pre { background-color: #ffffff; border: 1px solid rgba(0,0,0,0.1); color: #00A669; }
+        .light .color-block { background-color: #ffffff; border: 1px solid rgba(0,0,0,0.05); }
+
+        /* --- ТЁМНАЯ ТЕМА --- */
+        .dark {
+            background-color: #050505;
+            color: #ffffff;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .dark .section-title { border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .dark pre { background-color: #111111; border: 1px solid rgba(255,255,255,0.1); color: #00FFA3; }
+        .dark .color-block { background-color: #111111; border: 1px solid rgba(255,255,255,0.05); }
+
+        /* Анимации */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .cursor { animation: blink 1s step-end infinite; }
+
+        @keyframes typeText {
+            0%, 15% { content: " "; }
+            25%, 40% { content: "N"; }
+            50%, 65% { content: "NP"; }
+            75%, 100% { content: "NPC"; }
+        }
+        .typing::after {
+            content: "NPC";
+            animation: typeText 4s steps(1, end) infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- СВЕТЛАЯ ТЕМА -->
+    <div class="split light">
+        <h1 class="title">Media Kit (Light)</h1>
+        <p>Строгий корпоративный стиль с акцентом на читабельность.</p>
+
+        <h2 class="section-title">Цветовая палитра</h2>
+        
+        <div class="color-block">
+            <div class="color-swatch" style="background-color: #f8f9fa; border: 1px solid #ccc;"></div>
+            <div class="color-info">
+                <span class="color-name">Background</span>
+                <span class="color-hex">#f8f9fa</span>
+            </div>
+        </div>
+        <div class="color-block">
+            <div class="color-swatch" style="background-color: #111827;"></div>
+            <div class="color-info">
+                <span class="color-name">Text Primary</span>
+                <span class="color-hex">#111827</span>
+            </div>
+        </div>
+        <div class="color-block">
+            <div class="color-swatch" style="background-color: #00A669;"></div>
+            <div class="color-info">
+                <span class="color-name">Accent Mint</span>
+                <span class="color-hex">#00A669</span>
+            </div>
+        </div>
+
+        <h2 class="section-title">Сигнатуры (JetBrains Mono)</h2>
+        <pre>[ Открыта к проектам ] <span class="cursor">▮</span></pre>
+        <pre>[ <span class="typing"></span> ] <span class="cursor">▮</span></pre>
+
+        <h2 class="section-title">Сетка (Grid)</h2>
+        <p>rgba(0, 0, 0, 0.06)<br>Размер: 40x40px</p>
+    </div>
+
+    <!-- ТЁМНАЯ ТЕМА -->
+    <div class="split dark">
+        <h1 class="title">Media Kit (Dark)</h1>
+        <p>Глубокий технический стиль без излишнего неона.</p>
+
+        <h2 class="section-title">Цветовая палитра</h2>
+        
+        <div class="color-block">
+            <div class="color-swatch" style="background-color: #050505; border: 1px solid #333;"></div>
+            <div class="color-info">
+                <span class="color-name">Background</span>
+                <span class="color-hex">#050505</span>
+            </div>
+        </div>
+        <div class="color-block">
+            <div class="color-swatch" style="background-color: #ffffff;"></div>
+            <div class="color-info">
+                <span class="color-name">Text Primary</span>
+                <span class="color-hex">#ffffff</span>
+            </div>
+        </div>
+        <div class="color-block">
+            <div class="color-swatch" style="background-color: #00FFA3;"></div>
+            <div class="color-info">
+                <span class="color-name">Electric Mint</span>
+                <span class="color-hex">#00FFA3</span>
+            </div>
+        </div>
+
+        <h2 class="section-title">Сигнатуры (JetBrains Mono)</h2>
+        <pre>[ Открыта к проектам ] <span class="cursor">▮</span></pre>
+        <pre>[ <span class="typing"></span> ] <span class="cursor">▮</span></pre>
+
+        <h2 class="section-title">Сетка (Grid)</h2>
+        <p>rgba(255, 255, 255, 0.16)<br>Размер: 40x40px</p>
+    </div>
+
+</body>
+</html>
