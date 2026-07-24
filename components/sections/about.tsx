@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <section id="about" className="pt-16 lg:pt-32 pb-[20px] lg:pb-[250px] relative overflow-hidden bg-[#111111] text-white">
+    <section id="about" className="pt-16 lg:pt-32 pb-[20px] lg:pb-24 relative overflow-hidden bg-[#111111] text-white">
       {/* Clean Dark Paper Background - Newly generated texture with slight cyan sheen */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -18,10 +18,10 @@ export default function About() {
       </div>
 
       {/* Seamless ultra-smooth blend gradient at the top (covers paper and photo, but NOT text) */}
-      <div className="absolute top-0 left-0 w-full h-[440px] lg:h-[840px] bg-gradient-to-b from-[#111111] from-[10%] via-[#111111]/50 via-[40%] to-transparent z-[15] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-[440px] lg:h-[670px] bg-gradient-to-b from-[#111111] from-[7%] via-[#111111]/40 via-[35%] to-transparent z-[15] pointer-events-none" />
       
-      {/* Bottom gradient fade for smooth transition to next section and hiding the brush cut */}
-      <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[400px] bg-gradient-to-t from-[#111111] via-[#111111]/90 to-transparent z-[15] pointer-events-none" />
+      {/* Bottom gradient fade for smooth transition to next section */}
+      <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[500px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
 
       <div className="w-full">
         <div className="flex flex-col lg:flex-row items-center lg:items-start w-full">
@@ -39,10 +39,10 @@ export default function About() {
             </h2>
             <div className="space-y-6 text-[#A3A3A3] text-base md:text-lg lg:text-xl font-medium leading-[1.8] font-inter">
               <p className="max-w-[440px]">
-                Я — специалист полного цикла. Мой подход заключается в том, чтобы взять идею на стадии зарождения и довести её до финальной реализации. 
+                Я — специалист полного цикла. Мой подход заключается в том, чтобы взять <span className="text-[#14F1D9]">идею</span> на стадии зарождения и довести её до финальной <span className="text-[#14F1D9]">реализации</span>. 
               </p>
               <p className="max-w-[440px]">
-                В мире, где узкая специализация часто приводит к разрыву между смыслами и формой, я объединяю весь контент в единое целое, органично сплетая между собой тексты, дизайн, pr, маркетинг и технологии. Профильное образование, 20 лет работы с креативом и применение ИИ позволяют мне видеть картину целиком и создавать продукты, которые не просто выглядят стильно и дорого, но и решают конкретные бизнес-задачи.
+                В мире, где узкая специализация часто приводит к разрыву между смыслами и формой, я <span className="text-[#14F1D9]">объединяю весь контент</span> в единое целое, органично сплетая между собой <span className="text-[#14F1D9]">тексты, дизайн, pr, маркетинг и технологии</span>. <span className="text-[#14F1D9]">Профильное образование, 20 лет работы с креативом и применение ИИ</span> позволяют мне видеть картину целиком и создавать продукты, которые не просто выглядят стильно и дорого, но и <span className="text-[#14F1D9]">решают конкретные бизнес-задачи</span>.
               </p>
               
               {/* Quote and button row */}
@@ -53,8 +53,8 @@ export default function About() {
                   <p>От поста в инстаграме до пресс-тура.</p>
                 </div>
                 
-                {/* Button - Under ring photo on desktop */}
-                <div className="mt-8 lg:mt-0 lg:absolute lg:bottom-[70px] lg:left-[550px] xl:left-[590px] z-30">
+                {/* Button - Desktop only */}
+                <div className="hidden lg:block lg:absolute lg:bottom-[70px] lg:left-[550px] xl:left-[590px] z-30">
                   <Link href="#contact" className="inline-block bg-[#14F1D9] hover:bg-white text-[#111111] font-bold text-sm md:text-base px-6 py-4 tracking-widest uppercase transition-all rounded-none shadow-lg hover:shadow-xl hover:-translate-y-1 font-montserrat whitespace-nowrap">
                     ПОДРОБНЕЕ ОБО МНЕ
                   </Link>
@@ -69,7 +69,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full lg:w-1/2 order-2 relative z-10 -mt-[calc(40%+100px)] sm:-mt-[calc(30%+100px)] md:-mt-[400px] lg:-mt-[500px] -mb-[250px] md:-mb-[300px] lg:-mb-[800px]"
+            className="w-full lg:w-1/2 order-2 relative z-10 -mt-[calc(40%+100px)] sm:-mt-[calc(30%+100px)] md:-mt-[400px] lg:-mt-[500px] -mb-[410px] md:-mb-[300px] lg:-mb-[800px]"
           >
             <img 
               src="/about-composition.png" 
@@ -77,6 +77,13 @@ export default function About() {
               className="w-full h-auto block"
             />
           </motion.div>
+
+          {/* Button - Mobile only (Under photo) */}
+          <div className="w-full order-3 flex justify-center z-30 lg:hidden relative pb-16">
+            <Link href="#contact" className="inline-block bg-[#14F1D9] hover:bg-white text-[#111111] font-bold text-sm px-8 py-4 tracking-widest uppercase transition-all rounded-none shadow-lg hover:-translate-y-1 font-montserrat whitespace-nowrap">
+              ПОДРОБНЕЕ ОБО МНЕ
+            </Link>
+          </div>
 
         </div>
       </div>

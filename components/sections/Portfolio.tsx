@@ -14,8 +14,23 @@ const cases = [
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-24 bg-background relative border-t border-white/5">
-      <div className="container mx-auto px-6">
+    <section id="portfolio" className="py-24 relative overflow-hidden bg-[#111111]">
+      {/* Clean Dark Paper Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image 
+          src="/paper-clean-dark.png" 
+          alt="Paper texture" 
+          fill 
+          className="object-cover opacity-70 mix-blend-screen"
+        />
+      </div>
+
+      {/* Top gradient fade */}
+      <div className="absolute top-0 left-0 w-full h-[440px] lg:h-[670px] bg-gradient-to-b from-[#111111] from-[7%] via-[#111111]/40 via-[35%] to-transparent z-[15] pointer-events-none" />
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[500px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-20">
         <div className="mb-12">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}

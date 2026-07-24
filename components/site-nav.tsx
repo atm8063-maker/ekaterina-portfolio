@@ -52,7 +52,7 @@ export function SiteNav({ anchorsActive = true }: { anchorsActive?: boolean }) {
       <header
         className="fixed inset-x-0 top-0 z-50 border-b backdrop-blur-[16px] transition-colors duration-300"
         style={{
-          borderColor: 'var(--border)',
+          borderColor: scrolled ? 'var(--border)' : 'transparent',
           backgroundColor: scrolled
             ? 'color-mix(in srgb, var(--bg-primary) 88%, transparent)'
             : 'color-mix(in srgb, var(--bg-primary) 65%, transparent)',
