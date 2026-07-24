@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <section id="about" className="pt-16 lg:pt-32 pb-[100px] lg:pb-[250px] relative overflow-hidden bg-[#111111] text-white">
+    <section id="about" className="pt-16 lg:pt-32 pb-[20px] lg:pb-[250px] relative overflow-hidden bg-[#111111] text-white">
       {/* Clean Dark Paper Background - Newly generated texture with slight cyan sheen */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -21,7 +21,7 @@ export default function About() {
       <div className="absolute top-0 left-0 w-full h-[440px] lg:h-[840px] bg-gradient-to-b from-[#111111] from-[10%] via-[#111111]/50 via-[40%] to-transparent z-[15] pointer-events-none" />
       
       {/* Bottom gradient fade for smooth transition to next section and hiding the brush cut */}
-      <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[400px] bg-gradient-to-t from-[#111111] via-[#111111]/90 to-transparent z-20 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[400px] bg-gradient-to-t from-[#111111] via-[#111111]/90 to-transparent z-[15] pointer-events-none" />
 
       <div className="w-full">
         <div className="flex flex-col lg:flex-row items-center lg:items-start w-full">
@@ -69,7 +69,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full lg:w-1/2 order-2 relative z-10 -mt-[calc(40%+100px)] sm:-mt-[calc(30%+100px)] md:-mt-[400px] lg:-mt-[500px] -mb-[150px] md:-mb-[300px] lg:-mb-[800px]"
+            className="w-full lg:w-1/2 order-2 relative z-10 -mt-[calc(40%+100px)] sm:-mt-[calc(30%+100px)] md:-mt-[400px] lg:-mt-[500px] -mb-[250px] md:-mb-[300px] lg:-mb-[800px]"
           >
             <img 
               src="/about-composition.png" 

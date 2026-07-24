@@ -81,6 +81,9 @@ export default function Hero() {
           />
         </div>
 
+        {/* Seamless ultra-smooth blend gradient at the top (covers paper, but NOT photo) */}
+        <div className="absolute top-0 left-0 right-0 w-full h-[85vh] bg-gradient-to-b from-[#111111] from-[10%] via-[#111111]/40 via-[60%] to-transparent z-[5] pointer-events-none" />
+
         {/* Full screen photo cutout bounded strictly below the header */}
         <div className="absolute top-[5rem] bottom-0 left-0 right-0 z-10 pointer-events-none">
           <Image 
@@ -118,9 +121,6 @@ export default function Hero() {
         className="hidden md:flex relative w-full h-[100svh] overflow-hidden bg-[#111111]"
       >
         
-        {/* Seamless blend gradient at the top */}
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#111111] to-transparent z-10 pointer-events-none" />
-
         {/* Dark Paper Background */}
         <div className="absolute inset-0 z-0">
           <Image 
@@ -131,6 +131,9 @@ export default function Hero() {
             priority
           />
         </div>
+
+        {/* Seamless ultra-smooth blend gradient at the top (covers paper, but NOT photo) */}
+        <div className="absolute top-0 left-0 right-0 w-full h-[85vh] bg-gradient-to-b from-[#111111] from-[10%] via-[#111111]/40 via-[60%] to-transparent z-[5] pointer-events-none" />
 
         {/* Splatter Animations Layer (on top of paper, behind photo) */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -191,6 +194,9 @@ export default function Hero() {
             </p>
           </div>
         </div>
+        
+        {/* Bottom gradient fade for smooth transition to next section */}
+        <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[500px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
       </div>
     </section>
   );
