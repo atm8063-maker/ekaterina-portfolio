@@ -34,7 +34,7 @@ const competencies = [
 import Image from "next/image";
 
 export default function Competencies() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
