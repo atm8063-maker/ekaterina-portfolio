@@ -46,18 +46,161 @@ export default function ArtPage() {
         />
       </div>
 
-      {/* 2. HERO SECTION - Exactly matching user's custom Figma gradient and layout */}
-      <div className="relative z-10 pt-24">
-        
-        <section 
-          className="relative w-full min-h-[85vh] flex flex-col justify-between overflow-hidden border-b border-white/10"
-          style={{
-            background: 'linear-gradient(90deg, #AFABCC 7%, #14F1D9 100%)'
-          }}
-        >
-          
-          {/* Left: Portrait Cutout from Figma (Mask group.png) full height of entire Hero section touching bottom edge of screen and top header without cropping */}
-          <div className="absolute top-0 bottom-0 left-0 w-[55%] sm:w-[48%] lg:w-[42%] xl:w-[38%] h-full z-20 pointer-events-none">
+      {/* Top Shadow Darkening from Top Menu Bar onto Paper Background ONLY (z-[1]) - Exactly like Career section */}
+      <div className="fixed top-0 left-0 w-full h-[380px] lg:h-[600px] bg-gradient-to-b from-[#111111] from-[5%] via-[#111111]/70 via-[35%] to-transparent z-[1] pointer-events-none" />
+
+      {/* Main content wrapper: Lifted by half navbar height (pt-10 = 40px instead of 80px) so everything fits on screen */}
+      <div className="relative z-10 pt-10">
+
+        {/* 2. NEW HERO SECTION (#1) - 1:1 'Мой подход' block from Career section, but with points & numbers instead of text */}
+        <section className="pt-0 pb-12 lg:pb-0 relative overflow-hidden text-white border-b border-white/10">
+          <div className="w-full max-w-[1200px] mx-auto px-6 sm:px-12 lg:px-0 min-h-[580px] lg:min-h-[740px] relative">
+            <div className="flex flex-row items-start justify-between w-full relative">
+              
+              {/* Left Column: On mobile takes left 58% of screen so all points fit on first screen; Desktop 100% LOCKED (375px at pt-[138px]) */}
+              <motion.div 
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="w-[58%] sm:w-[50%] lg:w-[375px] flex flex-col justify-start order-1 relative z-20 pt-4 sm:pt-6 lg:pt-[138px] pb-8 lg:pb-24"
+              >
+                <div className="flex flex-col space-y-4 sm:space-y-5 lg:space-y-7 text-[#A3A3A3] text-sm sm:text-base md:text-lg font-medium leading-[1.4] lg:leading-[1.6] font-inter">
+                  {/* 1. 20+ ЛЕТ */}
+                  <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
+                    <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-[#14F1D9] font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">20+ ЛЕТ</p>
+                    <p className="text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">Работы с креативом</p>
+                  </div>
+                  {/* 2. 7+ ЛЕТ */}
+                  <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
+                    <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">7+ ЛЕТ</p>
+                    <p className="text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">В сфере Resin Art</p>
+                  </div>
+                  {/* 3. АМБАССАДОР */}
+                  <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
+                    <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-[#14F1D9] font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">АМБАССАДОР</p>
+                    <p className="text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">ведущего бренда в России</p>
+                  </div>
+                  {/* 4. БОЛЕЕ 10 РАЗ */}
+                  <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
+                    <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">БОЛЕЕ 10 РАЗ</p>
+                    <p className="text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">в финале арт-гонки</p>
+                  </div>
+                  {/* 5. БОЛЕЕ 10000 */}
+                  <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
+                    <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-[#14F1D9] font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">БОЛЕЕ 10000</p>
+                    <p className="text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">
+                      Зрителей на прямых эфирах <br className="hidden sm:inline" />и мастер-классах
+                    </p>
+                  </div>
+                  {/* 6. БОЛЕЕ 1000+ */}
+                  <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
+                    <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">БОЛЕЕ 1000+</p>
+                    <p className="text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">учеников</p>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Right Composition: On mobile positioned in upper-right corner (absolute right-0 top-0); Desktop 100% LOCKED (-top-[493px]) */}
+              <motion.div 
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="w-[45%] lg:w-auto order-2 absolute right-0 top-0 lg:static z-10 flex justify-end lg:justify-center -mr-6 sm:-mr-12 lg:mr-0 -mt-4 lg:mt-0 overflow-hidden lg:overflow-visible pointer-events-none"
+              >
+                <img 
+                  src="/art-composition.png" 
+                  alt="Искусство"
+                  className="relative lg:absolute lg:left-[343px] lg:-top-[493px] w-[210%] sm:w-[180%] lg:w-[1273px] max-w-none lg:max-w-none translate-x-[15%] lg:translate-x-0 h-auto lg:h-[1970px] pointer-events-none block"
+                />
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
+
+      {/* 2. NEW EDITORIAL VIDEO SECTION (#2) - Asymmetric Magazine Spread (Text Left, 9:16 Video Right) */}
+      <section className="py-16 lg:py-28 relative overflow-hidden text-white border-b border-white/10">
+        <div className="w-full px-6 sm:px-12 lg:px-[8%] xl:px-[12%]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {/* Left Column: Editorial Title, Philosophy & Detail */}
+            <motion.div 
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-7 flex flex-col justify-center order-1"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs font-mono font-bold uppercase tracking-widest w-fit mb-6">
+                <span className="w-2 h-2 rounded-full bg-[#14F1D9] animate-pulse"></span>
+                [ 02 / ЖИВАЯ ИНСТАЛЛЯЦИЯ ]
+              </div>
+              
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white font-montserrat mb-6 leading-[1.1]">
+                ЖИВАЯ <br className="hidden sm:inline" />
+                <span className="text-[#14F1D9]">ГЛУБИНА СМОЛЫ</span>
+              </h2>
+              
+              <p className="text-[#A3A3A3] text-lg sm:text-xl font-medium leading-[1.7] font-inter mb-8 max-w-[560px]">
+                Настоящая магия Resin Art раскрывается именно в движении: многослойная заливка играет на свету, создавая оптическую глубину, зеркальный глянец и неповторимые цветовые переливы, которые невозможно передать статичной фотографией.
+              </p>
+
+              {/* Aesthetic quote / detail card */}
+              <div className="p-6 bg-white/[0.03] border border-white/10 relative overflow-hidden backdrop-blur-sm max-w-[520px]">
+                <div className="absolute top-0 left-0 w-1 h-full bg-[#14F1D9]"></div>
+                <p className="italic text-white/90 text-sm sm:text-base leading-relaxed font-inter">
+                  «Каждая заливка — это живая экосистема, где пигменты, смола и время создают рисунок, который невозможно повторить дважды».
+                </p>
+                <p className="text-xs uppercase tracking-widest text-[#14F1D9] font-bold font-montserrat mt-3">
+                  — Екатерина Разумова
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Right Column: 9:16 Vertical Video in Museum Halo Frame */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:col-span-5 order-2 flex justify-center lg:justify-end"
+            >
+              <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[400px]">
+                {/* Ambient Colored Halo around the vertical video */}
+                <div className="absolute -inset-4 bg-gradient-to-tr from-[#14F1D9]/25 via-[#074F98]/20 to-transparent rounded-[32px] blur-2xl z-0 pointer-events-none"></div>
+
+                {/* Video container */}
+                <div className="relative z-10 rounded-2xl overflow-hidden border border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.8)] bg-[#111111]">
+                  <video 
+                    src="/art-video-1.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-auto aspect-[9/16] object-cover block"
+                  />
+
+                  {/* Subtle live indicator badge inside video top-right */}
+                  <div className="absolute top-4 right-4 z-20 px-3 py-1.5 bg-black/60 backdrop-blur-md border border-white/15 rounded-full flex items-center gap-2 text-[11px] font-mono font-bold tracking-widest text-white uppercase shadow-lg">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                    RESIN IN MOTION
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 3. SECOND SECTION (#2) - Portrait + ART title moved BELOW Hero, with colored gradient removed (clean dark paper background) */}
+      <section className="relative w-full min-h-[calc(100vh-5rem)] lg:h-[calc(100vh-5rem)] flex flex-col justify-between overflow-hidden border-b border-white/10">
+        {/* Top/Main Hero Area: Holds Photo + ART title */}
+        <div className="relative w-full h-[calc(100vh-5rem)] sm:h-[calc(100vh-5rem)] lg:h-full lg:flex-1">
+          {/* Left: Portrait Cutout from Figma (Mask group.png) */}
+          <div className="absolute top-0 bottom-0 left-0 w-[58%] sm:w-[50%] lg:w-[42%] xl:w-[38%] h-full z-20 pointer-events-none">
             <Image 
               src="/mask-group.png" 
               alt="Екатерина Разумова" 
@@ -67,65 +210,26 @@ export default function ArtPage() {
             />
           </div>
 
-          {/* Main Hero Content Area - Centered ART title */}
-          <div className="relative z-10 flex-1 w-full flex items-center justify-center min-h-[65vh] lg:min-h-[72vh] px-6 select-none">
-            <div className="relative flex items-center justify-center">
-              
-              {/* Bottom Layer: Extruded Shadow in #074F98 offset literally 3px right and 3px down */}
-              <h1 
-                className="absolute text-[31vw] lg:text-[25vw] font-black uppercase tracking-tighter leading-none font-montserrat text-[#074F98] select-none pointer-events-none"
-                style={{ transform: 'translate(3px, 3px)' }}
-              >
-                ART
-              </h1>
-
-              {/* Top Layer: Textured with crumpled paper from My Approach block */}
-              <h1 
-                className="relative text-[31vw] lg:text-[25vw] font-black uppercase tracking-tighter leading-none font-montserrat select-none"
-                style={{
-                  backgroundImage: "url('/paper-clean-dark.png')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent"
-                }}
-              >
-                ART
-              </h1>
-
-            </div>
+          {/* Right/Center: ART title. Vertically stacked (A-R-T) and huge on mobile; horizontal and locked on desktop */}
+          <div className="absolute inset-0 left-0 lg:left-[21%] z-10 flex items-center justify-center select-none px-4 pointer-events-none">
+            <h1 
+              className="flex flex-col lg:flex-row items-center justify-center text-[38vw] sm:text-[34vw] lg:text-[37vw] xl:text-[34vw] font-black uppercase tracking-tight leading-[0.84] lg:leading-none font-montserrat select-none text-center lg:[transform:translate(-50px,calc(-8%-71px))]"
+              style={{
+                backgroundImage: "url('/paper-clean-dark.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                filter: "drop-shadow(6px 6px 0px #074F98)"
+              }}
+            >
+              <span>A</span>
+              <span>R</span>
+              <span>T</span>
+            </h1>
           </div>
-
-          {/* Points Bar: From right edge of the photo to the right screen edge */}
-          <div className="relative z-30 w-full flex justify-end">
-            <div className="w-full lg:w-[63%] xl:w-[66%] ml-auto bg-[#111111]/90 backdrop-blur-md border-t border-l border-white/15 py-6 lg:py-8 px-6 lg:px-10">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 divide-y md:divide-y-0 md:divide-x divide-white/10">
-                
-                <div className="pt-3 md:pt-0 md:px-4 lg:px-6 first:pt-0 first:px-0">
-                  <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#14F1D9] font-montserrat mb-1">7+ ЛЕТ</p>
-                  <p className="text-[10px] sm:text-xs uppercase tracking-widest text-white/80 font-bold font-montserrat">В сфере Resin Art</p>
-                </div>
-
-                <div className="pt-3 md:pt-0 md:px-4 lg:px-6">
-                  <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white font-montserrat mb-1">10+ РАЗ</p>
-                  <p className="text-[10px] sm:text-xs uppercase tracking-widest text-white/80 font-bold font-montserrat">В финале мировой Арт-гонки</p>
-                </div>
-
-                <div className="pt-3 md:pt-0 md:px-4 lg:px-6">
-                  <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#14F1D9] font-montserrat mb-1">#1 БРЕНД</p>
-                  <p className="text-[10px] sm:text-xs uppercase tracking-widest text-white/80 font-bold font-montserrat">Амбассадор в России</p>
-                </div>
-
-                <div className="pt-3 md:pt-0 md:px-4 lg:px-6">
-                  <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white font-montserrat mb-1">1000+</p>
-                  <p className="text-[10px] sm:text-xs uppercase tracking-widest text-white/80 font-bold font-montserrat">Зрителей на прямых эфирах</p>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-        </section>
+        </div>
+      </section>
 
         {/* 4. SUBSECTION 1: КОНКУРСЫ & ЖЮРИ + ASYMMETRIC GALLERY */}
         <section className="container mx-auto px-6 mb-28">
