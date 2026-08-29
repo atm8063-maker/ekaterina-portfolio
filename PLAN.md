@@ -40,9 +40,9 @@ STAGE 1 и 2 идут параллельно (не пересекаются фа
 
 1. **SYS-001** — удалить неиспользуемые черновики.
    Реальная картина (проверено `grep`, не совпадает с первоначальным тикетом в `docs/BACKLOG.md`):
-   - `art-gallery.tsx`, `art-gallery-v2.tsx` — не импортируются нигде. Удаляются без вопросов.
-   - `art-gallery-concrete.tsx`, `art-gallery-perspective.tsx`, `art-gallery-hero.tsx` — импортируются, но только orphan-страницами `app/art-concrete/page.tsx`, `app/art-perspective/page.tsx`, `app/art-hero/page.tsx`. Эти роуты нигде не залинкованы (нет ссылок в `Header.tsx` или где-либо ещё) — то есть при деплое они физически откроются на живом домене как черновые тестовые страницы. Похожая история — `app/collage-test/page.tsx` и `app/reference-collage/page.tsx`.
-   **DoD:** `art-gallery.tsx`/`art-gallery-v2.tsx` удалены; по остальным — *(ГЕЙТ)* решение принято (см. «Уточнения после ревью»); `grep` по `app/` и `components/` подтверждает отсутствие висящих импортов; `npm run build` проходит без новых ошибок.
+   - `art-gallery.tsx`, `art-gallery-v2.tsx` — не импортируются нигде. Удаляются.
+   - `art-gallery-concrete.tsx`, `art-gallery-perspective.tsx`, `art-gallery-hero.tsx` — импортируются orphan-страницами `app/art-concrete`, `app/art-perspective`, `app/art-hero` (плюс `app/collage-test`, `app/reference-collage` той же природы). Эти роуты нигде не залинкованы, но физически открываются на живом домене по прямой ссылке. *(ГЕЙТ, решено 29.08.2026)* — **оставить как есть**: могут пригодиться для сравнения вариантов дизайна, не в скоупе этой итерации.
+   **DoD:** `art-gallery.tsx`/`art-gallery-v2.tsx` удалены; остальные файлы и orphan-страницы не тронуты; `grep` по `app/` и `components/` подтверждает отсутствие висящих импортов на удалённые файлы; `npm run build` проходит без новых ошибок.
 
 2. **Фикс утечки sitemap/robots** — вынести домен в TypeScript-константу (`lib/site-config.ts` или аналог; в проекте нет `.env`-инфраструктуры и заводить её ради одной константы избыточно) вместо хардкода `nickpotapov.com`; убрать из `app/sitemap.ts` перечисление кейсов Ника (`astro-directus`, `tg-uploader`, `autoposter`, `tg-admin`, `translator`, `mafia`, `serverless-menu`, `accountant`) — эти URL не относятся к сайту Екатерины.
    **DoD:** `app/sitemap.ts` и `app/robots.ts` не содержат строки `nickpotapov.com` и не перечисляют кейсы Ника; домен читается из одной константы.
