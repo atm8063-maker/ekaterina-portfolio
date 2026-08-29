@@ -57,6 +57,46 @@
 
 ---
 
+## Прямые ссылки на блоки (якоря, добавлено 29.08.2026)
+
+Каждый блок на обеих страницах имеет свой `id` — можно давать прямую ссылку на конкретный блок (например, «где у вас были публикации в СМИ»), и сайт сам откроется проскроленным точно к нему, ниже фиксированного хедера. Домен ниже — плейсхолдер `ekaterinarazumova.com`, заменится на реальный после покупки (см. `lib/site-config.ts`).
+
+**Professional (`/`):**
+
+| Блок | Ссылка |
+|---|---|
+| Обо мне | `https://ekaterinarazumova.com/#about` |
+| Компетенции | `https://ekaterinarazumova.com/#competencies` |
+| Кейсы / Portfolio | `https://ekaterinarazumova.com/#portfolio` |
+| Контакты | `https://ekaterinarazumova.com/#contact` |
+
+**Creative (`/fir_tree_art`):**
+
+| Блок | Ссылка |
+|---|---|
+| Hero | `.../fir_tree_art#hero` |
+| Искусство в пространстве | `.../fir_tree_art#art-space` |
+| Коллаж (смола) | `.../fir_tree_art#collage` |
+| Из галереи (видео-панели) | `.../fir_tree_art#gallery` |
+| Contemporary Art | `.../fir_tree_art#contemporary-art` |
+| Артивизм & Честность | `.../fir_tree_art#protest` |
+| Диапазон смолы | `.../fir_tree_art#no-borders` |
+| Техники и инструменты | `.../fir_tree_art#techniques` |
+| Скетчи и портреты | `.../fir_tree_art#sketches-portraits` |
+| Блок с цифрами | `.../fir_tree_art#numbers` |
+| Победы и судейство | `.../fir_tree_art#awards` |
+| Амбассадор бренда | `.../fir_tree_art#brand` |
+| Арт-муза, МК, обучение | `.../fir_tree_art#teaching` |
+| Публикации в СМИ | `.../fir_tree_art#media-publications` |
+| Отзывы | `.../fir_tree_art#testimonials` |
+| Контакты / Instagram | `.../fir_tree_art#contacts` (последний блок — при переходе не всегда встаёт ровно к верху, физический предел скролла страницы, не баг) |
+
+Реализация: у каждой секции `id` + `scroll-mt-20` (компенсация 80px хедера) + `scroll-behavior: smooth` в `app/globals.css`. Дропдаун «Искусство» в хедере теперь ведёт на 4 самых частых блока вместо заглушки «Скоро...».
+
+**Попутно исправлен баг:** ссылка «Компетенции» в хедере вела на `#competencies`, а секция называлась `id="approach"` — не работала. `id` секции переименован в `competencies`.
+
+---
+
 ## Легаси от Ника (архивировано 29.08.2026)
 
 При аудите обнаружено: в репозитории существовала ВТОРАЯ, полностью отключённая от реального сайта система страниц — `app/cases/[slug]`, `lib/data.ts`, `lib/translations.ts`, `site-nav.tsx`, `site-footer.tsx`, `language-provider.tsx`, `case-page-client.tsx`, `case-reader.tsx`, `sections/cases.tsx`, `sections/projects.tsx`, `content/cases/*.md` (8 кейсов), `MEDIA_KIT_FINAL/`, `public/nick.jpg`/`nick.png`. Это был исходный сайт Ника (NPC — Nick Potapov Consulting) целиком: его имя, биография, LinkedIn, Telegram-бот, реальные проекты — ни один компонент реальной страницы (`Header`, `hero`, `about`, `Competencies`, `Portfolio`, `contact`) её не импортировал, но роут `/cases/<slug>` физически существовал и открывался по прямой ссылке, плюс валил `npm run build` на `/cases/reddit-agent` (`useLanguage must be used within a LanguageProvider`).

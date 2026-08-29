@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-[#111111] text-center">
+    <section id="contact" className="py-24 scroll-mt-20 relative overflow-hidden bg-[#111111] text-center">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 

@@ -68,7 +68,10 @@ export default function Header() {
             
             <div className="absolute top-full left-1/2 -translate-x-1/2 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <div className="bg-[#1A1A1A] border border-white/10 rounded-sm shadow-2xl py-2 flex flex-col">
-                <span className="px-4 py-2 text-sm text-white/40 italic font-inter cursor-not-allowed">Скоро...</span>
+                <Link href="/fir_tree_art#gallery" className="px-4 py-2 text-sm text-white/70 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter">Галерея работ</Link>
+                <Link href="/fir_tree_art#protest" className="px-4 py-2 text-sm text-white/70 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter">Артивизм</Link>
+                <Link href="/fir_tree_art#media-publications" className="px-4 py-2 text-sm text-white/70 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter">Публикации в СМИ</Link>
+                <Link href="/fir_tree_art#contacts" className="px-4 py-2 text-sm text-white/70 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter">Instagram</Link>
               </div>
             </div>
           </div>

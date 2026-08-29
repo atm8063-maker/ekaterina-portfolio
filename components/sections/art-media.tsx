@@ -90,7 +90,7 @@ export function ArtMedia() {
   };
 
   return (
-    <section id="media-publications" className="relative py-24 border-b border-white/10 bg-[#111111] overflow-hidden">
+    <section id="media-publications" className="relative py-24 border-b border-white/10 bg-[#111111] overflow-hidden scroll-mt-20">
       <div className="container mx-auto px-6">
         <h2 className="mb-12 text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
           Публикации в СМИ
