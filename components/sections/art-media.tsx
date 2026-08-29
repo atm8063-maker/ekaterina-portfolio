@@ -1,8 +1,6 @@
 'use client';
 
 import Image from "next/image";
-import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type MediaItem = {
   outlet: string;
@@ -10,6 +8,7 @@ type MediaItem = {
   meta?: string;
   quote?: string;
   image: string;
+  imagePosition?: "center" | "top";
   secondaryImage?: string;
   featured?: boolean;
 };
@@ -47,6 +46,7 @@ const items: MediaItem[] = [
     headline: "«Жительница Тамбова во время пандемии открыла бизнес по созданию изделий из эпоксидной смолы»",
     meta: "6 ноября 2020",
     image: "/media-press/noviy-vek-tambov.jpg",
+    imagePosition: "top",
   },
   {
     outlet: "ТВ Тамбов",
@@ -63,46 +63,15 @@ const items: MediaItem[] = [
 ];
 
 export function ArtMedia() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const amount = scrollRef.current.clientWidth * 0.8;
-    scrollRef.current.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" });
-  };
-
   return (
     <section id="media-publications" className="relative py-24 border-b border-white/10 bg-[#111111] overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="mb-12 flex items-end justify-between">
-          <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
-            Публикации в СМИ
-          </h2>
-
-          <div className="hidden md:flex gap-4">
-            <button
-              onClick={() => scroll("left")}
-              aria-label="Предыдущие публикации"
-              className="p-3 rounded-full border border-white/20 text-white/50 hover:text-[#14F1D9] hover:border-[#14F1D9] transition-all"
-            >
-              <ChevronLeft size={22} />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              aria-label="Следующие публикации"
-              className="p-3 rounded-full border border-white/20 text-white/50 hover:text-[#14F1D9] hover:border-[#14F1D9] transition-all"
-            >
-              <ChevronRight size={22} />
-            </button>
-          </div>
-        </div>
+        <h2 className="mb-12 text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
+          Публикации в СМИ
+        </h2>
       </div>
 
-      <div
-        ref={scrollRef}
-        className="hide-scrollbar flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-4"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-      >
+      <div className="hide-scrollbar flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-4">
         {items.map((item) => (
           <article
             key={item.outlet + item.headline}
@@ -115,7 +84,9 @@ export function ArtMedia() {
                 src={item.image}
                 alt={`${item.outlet}: ${item.headline}`}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className={`object-cover transition-transform duration-500 group-hover:scale-105 ${
+                  item.imagePosition === "top" ? "object-top" : "object-center"
+                }`}
               />
               {item.secondaryImage && (
                 <div className="absolute bottom-3 right-3 h-16 w-16 overflow-hidden rounded-lg border-2 border-[#111111] shadow-lg sm:h-20 sm:w-20">
