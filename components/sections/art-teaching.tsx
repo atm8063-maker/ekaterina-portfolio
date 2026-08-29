@@ -2,7 +2,7 @@ import { ArtCard } from "@/components/ui/art-card";
 
 export function ArtTeaching() {
   return (
-    <section className="container mx-auto px-6 py-28 border-b border-white/10">
+    <section id="teaching" className="container mx-auto px-6 py-28 border-b border-white/10 scroll-mt-20">
       <div className="grid lg:grid-cols-12 gap-12 items-center">
         
         <div className="lg:col-span-5 space-y-6">

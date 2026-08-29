@@ -2,7 +2,7 @@ import { ArtCard } from "@/components/ui/art-card";
 
 export function ArtBrand() {
   return (
-    <section className="container mx-auto px-6 py-28 border-b border-white/10">
+    <section id="brand" className="container mx-auto px-6 py-28 border-b border-white/10 scroll-mt-20">
       <div className="grid lg:grid-cols-12 gap-12 items-center">
         
         <div className="lg:col-span-7 order-2 lg:order-1 grid grid-cols-1 sm:grid-cols-2 gap-4 h-[380px] sm:h-[460px]">

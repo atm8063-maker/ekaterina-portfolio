@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export function ArtCollage() {
   return (
-    <section className="relative w-full h-[calc(100vh-80px)] min-h-[500px] max-h-[850px] overflow-hidden bg-white flex border-b border-[#111111]/10">
+    <section id="collage" className="relative w-full h-[calc(100vh-80px)] min-h-[500px] max-h-[850px] overflow-hidden bg-white flex border-b border-[#111111]/10 scroll-mt-20">
       <div className="flex-1 relative overflow-hidden h-full bg-white">
         <motion.div
           animate={{ y: ["0%", "-50%"] }}

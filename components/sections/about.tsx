@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <section id="about" className="pt-8 lg:pt-12 pb-[20px] lg:pb-24 relative overflow-hidden bg-[#111111] text-white">
+    <section id="about" className="pt-8 lg:pt-12 pb-[20px] lg:pb-24 scroll-mt-20 relative overflow-hidden bg-[#111111] text-white">
       {/* Clean Dark Paper Background - Newly generated texture with slight cyan sheen */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 

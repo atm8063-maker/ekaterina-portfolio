@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function ArtNumbers() {
   return (
-    <section id="numbers" className="pt-0 pb-0 lg:pb-0 relative overflow-hidden text-white border-b border-white/10">
+    <section id="numbers" className="pt-0 pb-0 lg:pb-0 relative overflow-hidden text-white border-b border-white/10 scroll-mt-20">
       <div className="w-full max-w-[1200px] mx-auto px-6 sm:px-12 lg:px-0 min-h-[auto] lg:min-h-[740px] relative">
         <div className="flex flex-col lg:flex-row items-start justify-between w-full relative">
           

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function ArtNoBorders() {
   return (
-    <section className="py-16 lg:py-28 relative overflow-hidden text-white border-b border-white/10">
+    <section id="no-borders" className="py-16 lg:py-28 relative overflow-hidden text-white border-b border-white/10 scroll-mt-20">
       <div className="w-full px-6 sm:px-12 lg:px-[8%] xl:px-[12%]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           

@@ -24,7 +24,7 @@ const MuseumImage = ({ src, type = 'image', aspectRatio = 'aspect-[3/4]' }: { sr
 
 export function ArtContemporary() {
   return (
-    <section id="contemporary-art" className="relative w-full overflow-hidden font-inter border-b border-white/10">
+    <section id="contemporary-art" className="relative w-full overflow-hidden font-inter border-b border-white/10 scroll-mt-20">
       
       {/* ЧАСТЬ 1: СТАТИЧНАЯ (Светлая стена, узкая) */}
       <div className="relative w-full bg-[#f4f4f4] md:min-h-[calc(100vh-80px)] flex flex-col md:flex-row overflow-hidden">

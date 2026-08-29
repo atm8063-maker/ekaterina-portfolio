@@ -2,7 +2,7 @@ export function ArtTechniques() {
   const techniques = ["Эпоксидная смола", "Акрил", "Алкогольные чернила", "Текстурная паста", "Смешанные техники"];
   
   return (
-    <section className="border-b border-white/10 bg-[#111111] py-20 relative overflow-hidden">
+    <section id="techniques" className="border-b border-white/10 bg-[#111111] py-20 relative overflow-hidden scroll-mt-20">
       <div className="container mx-auto px-6 relative z-10">
         
         <div className="max-w-3xl mb-12">

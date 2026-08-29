@@ -49,7 +49,7 @@ export default function ArtPage() {
         <ArtCollage />
 
         {/* 4. ВСТАВКА «ИЗ ГАЛЕРЕИ» (5-VIDEO PANELS) */}
-        <div className="relative w-full overflow-hidden border-b border-white/10">
+        <div id="gallery" className="relative w-full overflow-hidden border-b border-white/10 scroll-mt-20">
           <ArtGalleryTest />
         </div>
 
