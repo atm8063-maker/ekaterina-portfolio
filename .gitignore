@@ -24,3 +24,4 @@ restore_hero*.js
 swap_hero_bg.js
 repair.py
 video_block.tsx
+.gstack/

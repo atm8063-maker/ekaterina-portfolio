@@ -83,13 +83,25 @@
 - **Статус:** ✅ DONE (выполнено в рамках этого аудита)
 - **Описание:** Привести в соответствие с реальными 16 блоками
 
+### SYS-003: Архивировать легаси-систему Ника (app/cases + связанные файлы)
+- **Статус:** ✅ DONE (29.08.2026)
+- **Приоритет:** P1 (утечка личных данных + краш прод-билда)
+- **Описание:** Найдена вторая, не подключённая к реальному сайту система: `app/cases/[slug]`, `lib/data.ts`, `lib/translations.ts`, `site-nav.tsx`, `site-footer.tsx`, `language-provider.tsx`, `case-page-client.tsx`, `case-reader.tsx`, `sections/cases.tsx`, `sections/projects.tsx`, `content/cases/*.md`, `MEDIA_KIT_FINAL/`, `public/nick.jpg`/`nick.png` — исходный сайт Ника (NPC) целиком. Реальная страница (`Header`/`hero`/`about`/`Competencies`/`Portfolio`/`contact`) её не использует, но роут `/cases/<slug>` был публично доступен и валил `npm run build` на `/cases/reddit-agent`.
+- **Критерии готовности:**
+  - [x] Grep подтвердил: ни один компонент реальной страницы не импортирует эти файлы
+  - [x] Всё перенесено в `_backups/legacy-nick-site/` (git mv, история сохранена), кроме `MEDIA_KIT_FINAL/` — удалён (медиакит чужого бренда)
+  - [x] `npm run build` проходит чисто, `/cases` больше не в списке роутов
+  - [x] Визуально проверено (скриншоты) — `/` и `/fir_tree_art` не изменились
+  - [x] `docs/STATE.md` обновлён
+- **Зависимости:** нет
+
 ---
 
 ## Счётчик
 
 | Статус | Количество |
 |--------|-----------|
-| ✅ DONE | 2 |
+| ✅ DONE | 3 |
 | 🔵 IN PROGRESS | 0 |
 | 🟡 TODO | 2 |
 | ⬜ BACKLOG | 4 |
