@@ -14,6 +14,7 @@ import { ArtNumbers } from "@/components/sections/art-numbers";
 import { ArtAwards } from "@/components/sections/art-awards";
 import { ArtBrand } from "@/components/sections/art-brand";
 import { ArtTeaching } from "@/components/sections/art-teaching";
+import { ArtMedia } from "@/components/sections/art-media";
 import { ArtContacts } from "@/components/sections/art-contacts";
 import { StubSection } from "@/components/ui/stub-section";
 
@@ -84,11 +85,7 @@ export default function ArtPage() {
         <ArtTeaching />
 
         {/* 13. ПУБЛИКАЦИИ В СМИ */}
-        <StubSection 
-          id="media-publications"
-          title="Публикации в СМИ" 
-          desc="Здесь покажем статьи, интервью и публикации о твоих работах и карьере в медиа."
-        />
+        <ArtMedia />
 
         {/* 14. ОТЗЫВЫ */}
         <StubSection 
