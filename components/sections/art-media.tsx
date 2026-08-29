@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import { useRef } from "react";
 
 type MediaItem = {
   outlet: string;
@@ -63,6 +64,31 @@ const items: MediaItem[] = [
 ];
 
 export function ArtMedia() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const drag = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    drag.current = { isDown: true, startX: e.clientX, scrollLeft: el.scrollLeft };
+    el.setPointerCapture(e.pointerId);
+    el.classList.add("cursor-grabbing");
+    el.classList.remove("cursor-grab");
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = scrollRef.current;
+    if (!el || !drag.current.isDown) return;
+    el.scrollLeft = drag.current.scrollLeft - (e.clientX - drag.current.startX);
+  };
+
+  const endDrag = () => {
+    drag.current.isDown = false;
+    const el = scrollRef.current;
+    el?.classList.remove("cursor-grabbing");
+    el?.classList.add("cursor-grab");
+  };
+
   return (
     <section id="media-publications" className="relative py-24 border-b border-white/10 bg-[#111111] overflow-hidden">
       <div className="container mx-auto px-6">
@@ -71,7 +97,15 @@ export function ArtMedia() {
         </h2>
       </div>
 
-      <div className="hide-scrollbar flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-4">
+      <div
+        ref={scrollRef}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+        onDragStart={(e) => e.preventDefault()}
+        className="hide-scrollbar flex cursor-grab select-none overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-4"
+      >
         {items.map((item) => (
           <article
             key={item.outlet + item.headline}
