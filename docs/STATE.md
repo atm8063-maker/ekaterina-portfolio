@@ -56,6 +56,14 @@
 
 ---
 
+## Легаси от Ника (архивировано 29.08.2026)
+
+При аудите обнаружено: в репозитории существовала ВТОРАЯ, полностью отключённая от реального сайта система страниц — `app/cases/[slug]`, `lib/data.ts`, `lib/translations.ts`, `site-nav.tsx`, `site-footer.tsx`, `language-provider.tsx`, `case-page-client.tsx`, `case-reader.tsx`, `sections/cases.tsx`, `sections/projects.tsx`, `content/cases/*.md` (8 кейсов), `MEDIA_KIT_FINAL/`, `public/nick.jpg`/`nick.png`. Это был исходный сайт Ника (NPC — Nick Potapov Consulting) целиком: его имя, биография, LinkedIn, Telegram-бот, реальные проекты — ни один компонент реальной страницы (`Header`, `hero`, `about`, `Competencies`, `Portfolio`, `contact`) её не импортировал, но роут `/cases/<slug>` физически существовал и открывался по прямой ссылке, плюс валил `npm run build` на `/cases/reddit-agent` (`useLanguage must be used within a LanguageProvider`).
+
+**Решение:** вся эта система перенесена (не удалена) в `_backups/legacy-nick-site/` с сохранением структуры папок, `MEDIA_KIT_FINAL/` удалён (это медиакит бренда Ника, к проекту отношения не имеет). После переноса `npm run build` проходит чисто, роут `/cases` больше не существует.
+
+---
+
 ## ⚠️ Критические ограничения (НЕ ТРОГАТЬ)
 
 - **ArtContemporary**: Part 2 (серая галерея) удалена НАМЕРЕННО. НЕ восстанавливать.

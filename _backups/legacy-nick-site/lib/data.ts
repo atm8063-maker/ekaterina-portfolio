@@ -1,13 +1,13 @@
 export const siteData = {
-  name: 'Ник Потапов',
-  role: 'AI Solutions Architect',
-  subtitle: 'AI Solutions Architect',
+  name: 'Екатерина Разумова',
+  role: 'Creative Generalist',
+  subtitle: 'Creative Generalist',
   description:
-    'Аналитика, разработка, автоматизация бизнес-процессов, лендинги, боты, growth-стратегии, внедрение AI.',
+    'Специалист полного цикла. Texts & Design • PR & Media • Mixed Art • UX/UI + AI. От идеи до реализации.',
   telegram: {
-    dm: '@npc_welcome_bot',
+    dm: '',
   },
-  linkedin: 'https://www.linkedin.com/in/nickpotapov/',
+  linkedin: '',
 }
 
 export type Metric = {
