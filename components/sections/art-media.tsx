@@ -36,7 +36,6 @@ const items: MediaItem[] = [
     meta: "27 октября 2020 · стр. 15, Общество",
     quote: "Екатерина Разумова делает удивительной красоты изделия из эпоксидной смолы.",
     image: "/media-press/zhizn-tambov-article.jpg",
-    secondaryImage: "/media-press/zhizn-tambov-backstage.jpg",
   },
   {
     outlet: "КП.RU",
@@ -54,6 +53,7 @@ const items: MediaItem[] = [
     headline: "Репортаж «Область новостей»",
     meta: "художник-смолянист",
     image: "/media-press/tv-tambov.jpg",
+    secondaryImage: "/media-press/tv-tambov-backstage.jpg",
   },
   {
     outlet: "Название уточняется",
@@ -75,14 +75,9 @@ export function ArtMedia() {
     <section id="media-publications" className="relative py-24 border-b border-white/10 bg-[#111111] overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="mb-12 flex items-end justify-between">
-          <div>
-            <p className="text-xs sm:text-sm font-mono font-bold tracking-widest text-[#14F1D9] uppercase mb-3">
-              Публикации в СМИ
-            </p>
-            <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
-              Обо мне пишут
-            </h2>
-          </div>
+          <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
+            Публикации в СМИ
+          </h2>
 
           <div className="hidden md:flex gap-4">
             <button
