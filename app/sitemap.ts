@@ -1,25 +1,14 @@
 import type { MetadataRoute } from 'next'
-
-const cases = [
-  '01-astro-directus',
-  '02-tg-uploader',
-  '03-autoposter',
-  '04-tg-admin',
-  '05-translator',
-  '06-mafia',
-  '07-serverless-menu',
-  '08-accountant',
-]
+import { SITE_URL } from '@/lib/site-config'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://nickpotapov.com'
   return [
-    { url: base, lastModified: new Date(), changeFrequency: 'monthly', priority: 1 },
-    ...cases.map((slug) => ({
-      url: `${base}/cases/${slug}`,
+    { url: SITE_URL, lastModified: new Date(), changeFrequency: 'monthly', priority: 1 },
+    {
+      url: `${SITE_URL}/fir_tree_art`,
       lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.8,
-    })),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
   ]
 }

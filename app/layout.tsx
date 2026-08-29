@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Montserrat, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SITE_URL } from '@/lib/site-config'
 import './globals.css'
 
 const montserrat = Montserrat({
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     'Специалист полного цикла. Texts & Design • PR & Media • Mixed Art • UX/UI + AI. От идеи до реализации.',
   generator: 'v0.app',
   alternates: {
-    canonical: 'https://ekaterinarazumova.com',
+    canonical: SITE_URL,
   },
 }
 
