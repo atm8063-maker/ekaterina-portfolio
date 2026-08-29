@@ -59,8 +59,8 @@ export default function Header() {
           {/* Art Dropdown */}
           <div className="relative group">
             <Link 
-              href="/art" 
-              className={`flex items-center gap-0.5 md:gap-1 text-[9px] sm:text-xs md:text-sm font-bold tracking-widest uppercase transition-colors font-montserrat py-2 whitespace-nowrap ${pathname === '/art' ? 'text-[#14F1D9]' : 'text-white/70 hover:text-white'}`}
+              href="/fir_tree_art" 
+              className={`flex items-center gap-0.5 md:gap-1 text-[9px] sm:text-xs md:text-sm font-bold tracking-widest uppercase transition-colors font-montserrat py-2 whitespace-nowrap ${pathname === '/fir_tree_art' ? 'text-[#14F1D9]' : 'text-white/70 hover:text-white'}`}
             >
               Искусство
               <ChevronDown className="w-2.5 h-2.5 md:w-4 md:h-4 opacity-70 group-hover:rotate-180 transition-transform duration-300" />

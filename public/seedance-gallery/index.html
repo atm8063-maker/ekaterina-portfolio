@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seedance Art Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { margin: 0; padding: 0; background-color: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .gallery-container {
+            position: relative;
+            width: 942px;
+            height: 850px;
+            background-color: #fff;
+            overflow: hidden;
+            clip-path: inset(2px 6px 2px 2px);
+        }
+        .gallery-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 942px;
+            height: 850px;
+            object-fit: cover;
+            z-index: 10;
+            pointer-events: none;
+            mix-blend-mode: multiply;
+        }
+        .video-layer {
+            position: absolute;
+            z-index: 0;
+            object-fit: cover;
+            transform: scale(1.02);
+         background-color: #111; }
+        /* Offset central video slightly up */
+        #central-video {
+            object-position: 50% 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Center the container on the page for viewing -->
+    <div class="gallery-wrapper" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #000; overflow: hidden;">
+        
+        <div class="gallery-container">
+            <!-- Videos Container -->
+            <div id="video-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                <video class="video-layer" src="videos/video_155@04-08-2026_22-26-50_mid.mp4" 
+                    style="top: 80px; left: 0px; width: 178px; height: 534px;" autoplay muted loop playsinline></video>
+                
+                <video class="video-layer" src="videos/video_129@04-08-2026_22-24-22_mid.mp4" 
+                    style="top: 120px; left: 209px; width: 125px; height: 460px;" autoplay muted loop playsinline></video>
+
+                <video id="central-video" class="video-layer" src="videos/video_141@04-08-2026_22-24-35_3sec.mp4" 
+                    style="top: 161px; left: 356px; width: 238px; height: 396px;" autoplay muted loop playsinline></video>
+
+                <video class="video-layer" src="videos/video_154@04-08-2026_22-26-50_mid.mp4" 
+                    style="top: 120px; left: 620px; width: 125px; height: 460px;" autoplay muted loop playsinline></video>
+
+                <video class="video-layer" src="videos/video_150@04-08-2026_22-26-50_mid.mp4" 
+                    style="top: 81px; left: 782px; width: 160px; height: 534px;" autoplay muted loop playsinline></video>
+                
+                <!-- Dark overlay for gallery feel -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.1); z-index: 5; pointer-events: none;"></div>
+            </div>
+
+            <!-- Foreground Image -->
+            <img class="gallery-bg" src="bg.png?v=5" alt="Gallery Overlay">
+
+            <!-- Smooth transition to black at the edges to blend with the screen -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-shadow: inset 0 0 40px 20px #000; z-index: 20; pointer-events: none;"></div>
+        </div>
+
+    </div>
+
+    
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Don't wait for videos to load. We styled them with dark backgrounds so they look fine while loading.
+        window.parent.postMessage('gallery-loaded', '*');
+    });
+</script>
+</body>
+</html>

@@ -14,3 +14,13 @@ node_modules
 .next/
 .DS_Store
 .vercel
+*.tsbuildinfo
+scratch/
+scripts/
+temp.txt
+step*.txt
+step*.json
+restore_hero*.js
+swap_hero_bg.js
+repair.py
+video_block.tsx

@@ -22,7 +22,7 @@
     color: var(--foreground);
     font-family: var(--font-sans);
     /* Adding a subtle paper texture overlay */
-    background-image: url('/paper-texture.png'); /* To be added */
+    background-image: url('/paper-bg-dark.png'); /* Fixed filename */
     background-blend-mode: overlay;
     background-size: cover;
     background-attachment: fixed;

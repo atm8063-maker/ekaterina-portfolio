@@ -1,0 +1,619 @@
+NAME: "Ekaterina Razumova"
+
+GLOBAL_VARS:
+fill_34dc0314:
+  - '#000000'
+style_03a6b6ea:
+  fontFamily: Montserrat
+  fontStyle: Bold
+  fontWeight: 700
+  fontSize: 20
+  lineHeight: 1.43em
+  textAlignHorizontal: CENTER
+  textAlignVertical: TOP
+layout_64bf4633:
+  mode: none
+  sizing:
+    horizontal: fixed
+    vertical: hug
+  dimensions:
+    width: 322
+style_2fa18367:
+  fontFamily: Montserrat
+  fontStyle: Medium
+  fontWeight: 500
+  fontSize: 20
+  lineHeight: 1.43em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В:
+  - '#000000'
+fill_a7a566ec:
+  - type: IMAGE
+    imageRef: 797798bc34d41073cc7bd9ea39fa1855280ef013
+    scaleMode: FIT
+    objectFit: contain
+    isBackground: false
+    imageDownloadArguments:
+      needsCropping: false
+      requiresImageDimensions: false
+ts1:
+  fontSize: 40
+layout_177c5efc:
+  mode: none
+  sizing:
+    horizontal: hug
+    vertical: hug
+Button:
+  - '#FFFFFF'
+style_a0a3421b:
+  fontFamily: Montserrat
+  fontStyle: Medium
+  fontWeight: 500
+  fontSize: 16
+  lineHeight: 1.43em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╤Б╨╡╨║╤Ж╨╕╨╣:
+  - '#000000'
+layout_ec0340cc:
+  mode: none
+  sizing: {}
+  locationRelativeToParent:
+    x: 0
+    y: 0
+  dimensions:
+    width: 1789.66
+    height: 764
+╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╤Б╨╡╨║╤Ж╨╕╨╣ (1:430):
+  fontFamily: Montserrat
+  fontStyle: Bold
+  fontWeight: 700
+  fontSize: 35
+  lineHeight: 1.28em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+╨Ю╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В:
+  fontFamily: Montserrat
+  fontStyle: Medium
+  fontWeight: 500
+  fontSize: 16
+  lineHeight: 1.43em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+layout_e70eb4c2:
+  mode: none
+  sizing: {}
+  locationRelativeToParent:
+    x: 0
+    y: 0
+  dimensions:
+    width: 380
+    height: 259.29
+layout_1325910e:
+  mode: none
+  sizing: {}
+  locationRelativeToParent:
+    x: 1
+    y: 0
+  dimensions:
+    width: 380
+    height: 259.29
+layout_d33a32eb:
+  mode: none
+  sizing: {}
+  locationRelativeToParent:
+    x: 0
+    y: 283.92
+  dimensions:
+    width: 380
+    height: 22.04
+style_73c668c5:
+  fontFamily: Montserrat
+  fontStyle: Medium
+  fontWeight: 500
+  fontSize: 12
+  lineHeight: 1.43em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+layout_cece48fb:
+  mode: none
+  sizing: {}
+  locationRelativeToParent:
+    x: 1
+    y: 0
+  dimensions:
+    width: 217
+    height: 259.29
+layout_25b02cda:
+  mode: none
+  sizing: {}
+  locationRelativeToParent:
+    x: 1
+    y: 0
+  dimensions:
+    width: 201
+    height: 259.29
+layout_56d3c81c:
+  mode: none
+  sizing:
+    horizontal: fill
+    vertical: hug
+layout_add7d214:
+  mode: none
+  sizing:
+    horizontal: fixed
+    vertical: fixed
+  dimensions:
+    width: 380
+    height: 270.65
+layout_5dc2dd9c:
+  mode: none
+  sizing:
+    horizontal: fixed
+    vertical: fixed
+  dimensions:
+    width: 285
+    height: 270.65
+layout_4513aa0c:
+  mode: none
+  sizing:
+    horizontal: fixed
+    vertical: fixed
+  dimensions:
+    width: 188
+    height: 271
+╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╨▓╨╜╤Г╤В╤А╨╕ ╤Б╨╡╨║╤Ж╨╕╨╕:
+  fontFamily: Montserrat
+  fontStyle: Bold
+  fontWeight: 700
+  fontSize: 25
+  lineHeight: 1.28em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╨▓╨╜╤Г╤В╤А╨╕ ╤Б╨╡╨║╤Ж╨╕╨╣:
+  - '#000000'
+fill_79e8644f:
+  - '#E3E9E9'
+style_a00378de:
+  fontFamily: Montserrat
+  fontStyle: Medium
+  fontWeight: 500
+  fontSize: 16
+  lineHeight: 1em
+  textAlignHorizontal: CENTER
+  textAlignVertical: TOP
+layout_16ccfab7:
+  mode: none
+  sizing:
+    horizontal: fixed
+    vertical: fixed
+  dimensions:
+    width: 186
+    height: 20
+╨Я╨╛╨┤╨╖╨░╨│╨╛╨╗╨╛╨▓╨╛╨║:
+  fontFamily: Montserrat
+  fontStyle: Bold
+  fontWeight: 700
+  fontSize: 14
+  lineHeight: 1.43em
+  letterSpacing: 0.05em
+  textCase: UPPER
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+style_aaa2db96:
+  fontFamily: Montserrat
+  fontStyle: Medium
+  fontWeight: 500
+  fontSize: 16
+  lineHeight: 1.28em
+  textAlignHorizontal: LEFT
+  textAlignVertical: TOP
+
+ELEMENTS:
+EL-fd5614c3:
+  type: FRAME
+  layout:
+    mode: row
+    gap: 30px
+    sizing:
+      horizontal: hug
+      vertical: hug
+EL-1e071b50:
+  type: INSTANCE
+  layout:
+    mode: none
+    sizing:
+      horizontal: fixed
+      vertical: fixed
+    dimensions:
+      width: 380
+      height: 98
+  fills:
+    - '#F6F6F6'
+  borderRadius: 2px
+  componentId: 1:2
+EL-4d072de5:
+  type: GROUP
+  layout: layout_ec0340cc
+  borderRadius: 2px
+EL-79a95bb6:
+  type: GROUP
+  layout:
+    mode: none
+    sizing:
+      horizontal: fixed
+      vertical: fixed
+    dimensions:
+      width: 381
+      height: 305.96
+EL-6b1adf27:
+  type: GROUP
+  layout:
+    mode: none
+    sizing:
+      horizontal: fixed
+      vertical: fixed
+    dimensions:
+      width: 380
+      height: 305.96
+EL-b9ce3647:
+  type: GROUP
+  layout:
+    mode: none
+    sizing:
+      horizontal: fixed
+      vertical: fixed
+    dimensions:
+      width: 218
+      height: 305.96
+EL-f959bda6:
+  type: TEXT
+  layout: layout_d33a32eb
+  text: ╨Ь╨╛╨╕ ╤А╨░╨▒╨╛╤В╤Л
+  textStyle: style_73c668c5
+  fills: ╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В
+EL-0a4a7c43:
+  type: GROUP
+  layout:
+    mode: none
+    sizing:
+      horizontal: fixed
+      vertical: fixed
+    dimensions:
+      width: 202
+      height: 305.96
+EL-da138a77:
+  type: FRAME
+  layout:
+    mode: row
+    alignSelf: stretch
+    alignItems: center
+    gap: 31px
+    sizing:
+      horizontal: fill
+      vertical: hug
+EL-3ce7af27:
+  type: FRAME
+  layout:
+    mode: column
+    alignItems: stretch
+    gap: 45px
+    sizing:
+      horizontal: fixed
+      vertical: hug
+    dimensions:
+      width: 322
+EL-8763256c:
+  type: FRAME
+  layout:
+    mode: row
+    padding: 0px 9px
+    justifyContent: center
+    alignItems: center
+    gap: 10px
+    sizing:
+      horizontal: fixed
+      vertical: fixed
+    dimensions:
+      width: 159
+      height: 24
+  fills: fill_79e8644f
+  borderRadius: 10px
+EL-4126af93:
+  type: FRAME
+  layout:
+    mode: column
+    gap: 20px
+    sizing:
+      horizontal: hug
+      vertical: hug
+
+COMPONENTS:
+1:2:
+  id: 1:2
+  key: 7b3d8e0632bcdf395bccacdc01d63a280b296cdd
+  name: One service
+1:321:
+  id: 1:321
+  key: 5cd96fc297c792cd0ce70401e50c864978951b34
+  name: icon=instagramm, color=no, round=yes
+  componentSetId: 1:4
+1:355:
+  id: 1:355
+  key: d1871a271d80bddcb03896d610701091d31d6f39
+  name: icon=telegramm, color=no, round=yes
+  componentSetId: 1:4
+
+COMPONENT_SETS:
+1:4:
+  id: 1:4
+  key: 5b1040f42aa3b76d7f452912366d0a5bf0d1eca6
+  name: socials
+  description: ''
+
+NODES:
+[FRAME] "Ekaterina Razumova" #1:435 layout={"mode":"none","sizing":{}} fills=["#FFFFFF"]
+  [FRAME] "╨│╨░╨╗╨╡╤А╨╡╤П" #1:436 layout={"mode":"row","overflowScroll":["x"],"padding":"10px","gap":"10px","sizing":{"horizontal":"hug","vertical":"fixed"},"locationRelativeToParent":{"x":2,"y":2305},"dimensions":{"height":319}}
+  [RECTANGLE] #1:437 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":3568},"dimensions":{"width":1600,"height":689}} fills=["#E7F9FD"]
+  [FRAME] "╨д╤Г╤В╨╡╤А" #1:480 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":199,"y":4298},"dimensions":{"width":624,"height":20}}
+    [TEXT] #1:481 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":0},"dimensions":{"width":201,"height":19}} fills=fill_34dc0314 textStyle={"fontFamily":"Montserrat","fontStyle":"Bold","fontWeight":700,"fontSize":15,"lineHeight":"1.28em","letterSpacing":"0.05em","textCase":"UPPER","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="EkATERINA RAZUMOVA"
+  [FRAME] #1:971 layout={"mode":"row","wrap":true,"gap":"30px 88px","sizing":{"horizontal":"fixed","vertical":"hug"},"locationRelativeToParent":{"x":200,"y":1035},"dimensions":{"width":1200}}
+    [FRAME] #1:467 template=EL-fd5614c3
+      [INSTANCE] "One service" #1:468 template=EL-1e071b50
+        [TEXT] #I1:468;8:64 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":152,"y":36},"dimensions":{"width":77,"height":29}} fills=fill_34dc0314 textStyle=style_03a6b6ea text="╨в╨╡╨║╤Б╤В╤Л"
+      [INSTANCE] "One service" #1:469 template=EL-1e071b50
+        [TEXT] #I1:469;8:64 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":175,"y":36},"dimensions":{"width":30,"height":29}} fills=fill_34dc0314 textStyle=style_03a6b6ea text="PR"
+      [INSTANCE] "One service" #1:470 template=EL-1e071b50
+        [TEXT] #I1:470;8:64 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":165,"y":36},"dimensions":{"width":51,"height":29}} fills=fill_34dc0314 textStyle=style_03a6b6ea text="SMM"
+    [TEXT] #1:471 layout=layout_64bf4633 fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_2fa18367 text="╨Ъ╨╛╨┐╨╕╤А╨░╨╣╤В╨╕╨╜╨│\\n╨Ц╤Г╤А╨╜╨░╨╗╨╕╤Б╤В╨╕╨║╨░\\n╨Я╤А╨╡╤Б╤Б-╤А╨╡╨╗╨╕╨╖╤Л\\n╨в╨╡╨║╤Б╤В╤Л ╨┤╨╗╤П ╨┐╤А╨╡╨╖╨╡╨╜╤В╨░╤Ж╨╕╨╣\\n╨Я╨╛╤Б╤В╤Л ╨┤╨╗╤П ╤Б╨╛╤Ж╤Б╨╡╤В╨╡╨╣тАиSEO-╤В╨╡╨║╤Б╤В╤Л"
+    [TEXT] #1:472 layout=layout_64bf4633 fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_2fa18367 text="╨Я╤А╨╡╤Б╤Б-╤А╨╡╨╗╨╕╨╖╤Л\\n╨Ь╨╡╨┤╨╕╨░╨┐╨╗╨░╨╜╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡\\n╨Ъ╨╛╨╝╨╝╤Г╨╜╨╕╨║╨░╤Ж╨╕╤П ╤Б ╨╢╤Г╤А╨╜╨░╨╗╨╕╤Б╤В╨░╨╝╨╕\\n╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨╕╨╜╤Д╨╛╨┐╨╛╨▓╨╛╨┤╨╛╨▓\\n╨Ш╨╜╨╕╤Ж╨╕╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┐╤Г╨▒╨╗╨╕╨║╨░╤Ж╨╕╨╣\\n╨Ю╤А╨│╨░╨╜╨╕╨╖╨░╤Ж╨╕╤П ╨╝╨╡╤А╨╛╨┐╤А╨╕╤П╤В╨╕╨╣ \\(╨┐╤А╨╡╤Б╤Б-╤В╤Г╤А╤Л, ╨┐╤А╨╡╤Б╤Б-╨║╨╛╨╜╤Д╨╡╤А╨╡╨╜╤Ж╨╕╨╕\\)"
+    [TEXT] #1:473 layout=layout_64bf4633 fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_2fa18367 text="╨Ъ╨╛╨╜╤В╨╡╨╜╤В-╨┐╨╗╨░╨╜╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡\\n╨Т╨╕╨╖╤Г╨░╨╗\\n╨Ь╨╛╨╜╤В╨░╨╢ ╨▓╨╕╨┤╨╡╨╛ ╨┤╨╗╤П ╤Б╨╛╤Ж╤Б╨╡╤В╨╡╨╣\\n╨в╨░╤А╨│╨╡╤В\\n"
+    [FRAME] #1:474 template=EL-fd5614c3
+      [INSTANCE] "One service" #1:475 template=EL-1e071b50
+        [TEXT] #I1:475;8:64 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":174,"y":36},"dimensions":{"width":33,"height":29}} fills=fill_34dc0314 textStyle=style_03a6b6ea text="Art"
+      [INSTANCE] "One service" #1:476 template=EL-1e071b50
+        [TEXT] #I1:476;8:64 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":47,"y":36},"dimensions":{"width":287,"height":29}} fills=fill_34dc0314 textStyle=style_03a6b6ea text="╨Ю╨▒╤Г╤З╨╡╨╜╨╕╨╡ ╨╕ ╨║╨╛╨╜╤Б╤Г╨╗╤М╤В╨░╤Ж╨╕╨╕"
+      [INSTANCE] "One service" #1:477 template=EL-1e071b50
+        [TEXT] #I1:477;8:64 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":160,"y":36},"dimensions":{"width":60,"height":29}} fills=fill_34dc0314 textStyle=style_03a6b6ea text="UI/UX"
+    [TEXT] #1:538 layout=layout_64bf4633 fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_2fa18367 text="╨н╨┐╨╛╨║╤Б╨╕╨┤╨╜╨░╤П ╤Б╨╝╨╛╨╗╨░ \\n╨Р╨║╤А╨╕╨╗\\n╨Р╨╗╨║╨╛╨│╨╛╨╗╤М╨╜╤Л╨╡ ╤З╨╡╤А╨╜╨╕╨╗╨░\\n╨в╨╡╨║╤Б╤В╤Г╤А╨╜╨░╤П ╨┐╨░╤Б╤В╨░\\n╨б╨╝╨╡╤И╨░╨╜╨╜╤Л╨╡ ╤В╨╡╤Е╨╜╨╕╨║╨╕\\n╨Я╤А╨╡╨┤╨╝╨╡╤В╤Л ╨┤╨╡╨║╨╛╤А╨░\\n╨Ъ╨░╤А╤В╨╕╨╜╤Л\\n╨г╨║╤А╨░╤И╨╡╨╜╨╕╤П\\n╨Б╨╗╨╛╤З╨╜╤Л╨╡ ╨╕╨│╤А╤Г╤И╨║╨╕"
+    [TEXT] #1:479 layout=layout_64bf4633 fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_2fa18367 text="╨Ю╨╜-╨╗╨░╨╣╨╜ ╨╛╨▒╤Г╤З╨╡╨╜╨╕╨╡\\n╨Ю╤Д╤Д-╨╗╨░╨╣╨╜ ╨╛╨▒╤Г╤З╨╡╨╜╨╕╨╡\\n╨Р╨┤╨╝╨╕╨╜╨╕╤Б╤В╤А╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨╛╨╜-╨╗╨░╨╣╨╜-╤И╨║╨╛╨╗╤Л"
+    [TEXT] #1:478 layout=layout_64bf4633 fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_2fa18367 text="Figma\\n╨а╨░╨▒╨╛╤В╨░ ╤Б Google Analytics ╨╕ ╨▓╨╡╨┤╨╡╨╜╨╕╨╡ ╤Б╨░╨╣╤В╨╛╨▓ "
+  [FRAME] " competencies" #1:539 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":197,"y":2674},"dimensions":{"width":1200,"height":264}}
+  [RECTANGLE] "png-klev-club-p-telegramm-ikonka-png-6 1" #1:559 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":222,"y":3860},"dimensions":{"width":30.25,"height":22}}
+  [FRAME] #1:646 layout={"mode":"none","overflowScroll":["x"],"sizing":{},"locationRelativeToParent":{"x":0,"y":3193},"dimensions":{"width":1598,"height":271}}
+  [FRAME] "╨║╨╛╨╜╤В╨╡╨╜╤В" #4:22 layout={"mode":"row","justifyContent":"center","wrap":true,"gap":"81px","sizing":{"horizontal":"fixed","vertical":"hug"},"locationRelativeToParent":{"x":-106,"y":73},"dimensions":{"width":1812}}
+    [FRAME] "Hero section" #1:438 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":1200,"height":786}}
+      [RECTANGLE] "klipartz 1" #1:439 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":343,"y":-478},"dimensions":{"width":1272.68,"height":1970.31}} fills=fill_a7a566ec borderRadius=12px
+      [TEXT] #1:440 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":77},"dimensions":{"width":469,"height":118}} fills=fill_34dc0314 textStyle={"fontFamily":"Montserrat","fontStyle":"Bold","fontWeight":700,"fontSize":50,"lineHeight":"1.28em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="{ts1}╨Ь╨╜╨╛╨│╨╛╨┐╤А╨╛╤Д╨╕╨╗╤М╨╜╤Л╨╣ ╤Е╤Г╨┤╨╛╨╢╨╜╨╕╨║, ╨┤╨╕╨╖╨░╨╣╨╜╨╡╤А {/ts1} "
+      [RECTANGLE] "klipartz 2" #1:442 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":-180,"y":3674},"dimensions":{"width":1180.6,"height":1916.19}} fills=fill_a7a566ec
+      [FRAME] #1:443 layout={"mode":"column","gap":"40px","sizing":{"horizontal":"fixed","vertical":"fixed"},"locationRelativeToParent":{"x":0,"y":278},"dimensions":{"width":380,"height":470}}
+        [FRAME] #1:444 layout={"mode":"column","gap":"25px","sizing":{"horizontal":"hug","vertical":"hug"}}
+          [TEXT] #1:445 layout=layout_177c5efc fills=fill_34dc0314 textStyle={"fontFamily":"Montserrat","fontStyle":"Bold","fontWeight":700,"fontSize":20,"lineHeight":"1.43em","letterSpacing":"0.05em","textCase":"UPPER","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="╨Я╨а╨Ш╨Т╨Х╨в!"
+          [TEXT] #1:446 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":380}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_2fa18367 text="╨п ╤Е╨╛╤А╨╛╤И╨░ ╨▓ ╤А╨░╨▒╨╛╤В╨╡ ╤Б ╤В╨╡╨║╤Б╤В╨░╨╝╨╕, ╨║╨╛╨╝╨╝╤Г╨╜╨╕╨║╨░╤Ж╨╕╤П╨╝╨╕, ╨▓╨╕╨╖╤Г╨░╨╗╨╛╨╝ ╨╕ ╨┤╨╡╨║╨╛╤А╨╛╨╝,  ╨▒╤Г╨┤╤Г ╤А╨░╨┤╨░ ╨┐╨╛╨╝╨╛╤З╤М ╤Б ╨╗╤О╨▒╤Л╨╝ ╨╕╨╖ ╤Н╤В╨╕╤Е ╨╜╨░╨┐╤А╨░╨▓╨╗╨╡╨╜╨╕╨╣. ╨Я╨╕╤И╤Г ╨╕ ╤А╨╕╤Б╤Г╤О ╨▓╤Б╤О ╤Б╨▓╨╛╤О ╨╢╨╕╨╖╨╜╤М.\\n╨С╨╛╨╗╨╡╨╡ 10 ╨╗╨╡╤В ╨▓ ╤Б╤Д╨╡╤А╨╡ PR, ╤А╨╡╨║╨╗╨░╨╝╤Л ╨╕ ╨╝╨░╤А╨║╨╡╤В╨╕╨╜╨│╨░. тАи╨С╨╛╨╗╨╡╨╡ 5 ╨╗╨╡╤В ╨▓ ╤Б╤Д╨╡╤А╨╡ resin ╨╕ mixed art. тАи╨Ш╨╖╤Г╤З╨░╤О UI/UX, ╤А╨░╨┤╨░ ╤А╨░╨╖╨▓╨╕╨▓╨░╤В╤М╤Б╤П ╨╕╨╝╨╡╨╜╨╜╨╛ ╨▓ ╤Н╤В╨╛╨╣ ╤Б╤Д╨╡╤А╨╡."
+        [FRAME] #1:447 layout={"mode":"row","padding":"20px 50px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"hug","vertical":"hug"}} fills=["#50A6B4"] borderRadius=2px
+          [TEXT] #1:448 layout=layout_177c5efc fills=Button textStyle={"fontFamily":"Montserrat","fontStyle":"Bold","fontWeight":700,"fontSize":20,"lineHeight":"1.43em","textCase":"UPPER","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="╨б╨Т╨п╨Ч╨Р╨в╨м╨б╨п  ╨б╨Ю  ╨Ь╨Э╨Ю╨Щ"
+      [GROUP] #167:22 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":410,"y":77},"dimensions":{"width":790,"height":603}} borderRadius=2px
+        [RECTANGLE] "image 6" #1:441 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":201},"dimensions":{"width":380,"height":402}} fills=[{"type":"IMAGE","imageRef":"aecb78e747970dc6a9e87c2a3d37f055f81711f5","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}] borderRadius=2px
+        [RECTANGLE] "image 6" #1:449 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":410,"y":0},"dimensions":{"width":380,"height":402}} fills=[{"type":"IMAGE","imageRef":"773ec84d03f9b9646e98e15fa2706fdda5096dca","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}] borderRadius=2px
+      [FRAME] "╤И╨░╨┐╨║╨░" #1:450 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":0},"dimensions":{"width":1200,"height":20}}
+        [GROUP] #1:451 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":0},"dimensions":{"width":1200,"height":26}}
+          [TEXT] #1:452 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":0},"dimensions":{"width":292,"height":26}} fills=fill_34dc0314 textStyle={"fontFamily":"Montserrat","fontStyle":"Bold","fontWeight":700,"fontSize":20,"lineHeight":"1.28em","letterSpacing":"0.05em","textCase":"UPPER","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="╨Х╨Ъ╨Р╨в╨Х╨а╨Ш╨Э╨Р   ╨а╨Р╨Ч╨г╨Ь╨Ю╨Т╨Р"
+          [FRAME] #1:453 layout={"mode":"row","gap":"50px","sizing":{"horizontal":"hug","vertical":"hug"},"locationRelativeToParent":{"x":410,"y":0}}
+            [TEXT] #1:454 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a0a3421b text="╨Ъ╨╛╨╝╨┐╨╡╤В╨╡╨╜╤Ж╨╕╨╕"
+            [TEXT] #1:455 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a0a3421b text="╨Ю╨┐╤Л╤В"
+            [TEXT] #1:456 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a0a3421b text="╨Ъ╨╛╨╜╤В╨░╨║╤В╤Л"
+          [FRAME] #1:457 layout={"mode":"row","alignItems":"center","gap":"6px","sizing":{"horizontal":"hug","vertical":"hug"},"locationRelativeToParent":{"x":820,"y":0}}
+            [IMAGE-SVG] "cil:location-pin" #1:458 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":17,"height":17}} fills=[]
+            [TEXT] #1:461 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a0a3421b text="╨С╨░╤А, ╨з╨╡╤А╨╜╨╛╨│╨╛╤А╨╕╤П"
+          [TEXT] #1:462 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":1147,"y":0},"dimensions":{"width":23,"height":23}} fills=fill_34dc0314 textStyle={"fontFamily":"Montserrat","fontStyle":"Bold","fontWeight":700,"fontSize":16,"lineHeight":"1.43em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="Ru"
+          [TEXT] #1:463 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":1172,"y":0},"dimensions":{"width":6,"height":23}} fills=fill_34dc0314 textStyle=style_a0a3421b text="/"
+          [TEXT] #1:464 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":1178,"y":0},"dimensions":{"width":22,"height":23}} fills=fill_34dc0314 textStyle=style_a0a3421b text="En"
+    [FRAME] "╨Ъ╨╛╨╝╨┐╨╡╤В╨╡╨╜╤Ж╨╕╨╕" #1:465 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":1200,"height":965}}
+      [TEXT] #1:466 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":0},"dimensions":{"width":460,"height":46}} fills="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╤Б╨╡╨║╤Ж╨╕╨╣" textStyle={"fontFamily":"Montserrat","fontStyle":"Bold","fontWeight":700,"fontSize":36,"lineHeight":"1.28em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="╨Ь╨╛╨│╤Г, ╤Г╨╝╨╡╤О, ╨┐╤А╨░╨║╤В╨╕╨║╤Г╤О"
+    [GROUP] #1:966 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":2023,"height":764}} borderRadius="0px 0px 0px 0px"
+      [GROUP] #1:969 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":233.34,"y":0},"dimensions":{"width":1789.66,"height":764}} borderRadius=2px
+        [GROUP] "╨Ю╨┐╤Л╤В" #1:554 template=EL-4d072de5
+          [GROUP] "Restrangle" #1:555 template=EL-4d072de5
+            [FRAME] "Contacts" #1:556 layout=layout_ec0340cc fills=["rgba(14, 190, 228, 0.1)"] borderRadius=2px
+        [GROUP] #1:965 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":223.29,"y":49},"dimensions":{"width":1335.27,"height":342}} borderRadius="0px 0px 0px 0px"
+          [TEXT] #1:557 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":0},"dimensions":{"width":549.29,"height":45}} fills="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╤Б╨╡╨║╤Ж╨╕╨╣" textStyle="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╤Б╨╡╨║╤Ж╨╕╨╣ (1:430)" text="╨Я╤А╨╛╤Д╨╡╤Б╤Б╨╕╨╛╨╜╨░╨╗╤М╨╜╤Л╨╣ ╨╛╨┐╤Л╤В"
+          [TEXT] #1:545 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":1.12,"y":89},"dimensions":{"width":1334.15,"height":253}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle="╨Ю╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" text="╨а╨░╨▒╨╛╤В╨░╨╗╨░ ╤Б ╨╜╨░╤З╨░╨╗╨░ ╨╛╨▒╤Г╤З╨╡╨╜╨╕╤П ╨▓ ╨г╨╜╨╕╨▓╨╡╤А╤Б╨╕╤В╨╡╤В╨╡, ╨╜╨░╤З╨╕╨╜╨░╨╗╨░ ╤Б ╨╜╨░╨┐╨╕╤Б╨░╨╜╨╕╤П ╤В╨╡╨║╤Б╤В╨╛╨▓ ╨╕ ╨┐╤А╨╛╨┤╨░╨╢╨╕ ╤А╨╡╨║╨╗╨░╨╝╨╜╤Л╤Е ╨┐╨╗╨╛╤Й╨░╨┤╨╡╨╣ ╨▓ ╨б╨Ь╨Ш, ╨▓ ╤В╨╡╤З╨╡╨╜╨╕╨╡ 10 ╨╗╨╡╤В ╨┤╨╛╤А╨╛╤Б╨╗╨░ ╨┤╨╛ PR-╨┤╨╕╤А╨╡╨║╤В╨╛╤А╨░ ╨▓ ╨╛╨┤╨╜╨╛╨╝ ╨╕╨╖ ╤В╨╛╨┐╨╛╨▓╤Л╤Е ╨░╨│╨╡╨╜╤В╤Б╤В╨▓ ╨┐╤А╨╡╨╝╨╕╨░╨╗╤М╨╜╨╛╨╣ ╨╜╨╡╨┤╨▓╨╕╨╢╨╕╨╝╨╛╤Б╤В╨╕ ╨Ь╨╛╤Б╨║╨▓╤Л. ╨Т ╨┤╨╡╨║╤А╨╡╤В ╤Г╤И╨╗╨░ ╤Б ╨┤╨╛╨╗╨╢╨╜╨╛╤Б╤В╨╕ PR-╨┤╨╕╤А╨╡╨║╤В╨╛╤А╨░ ╨У╨Ъ - ╨┤╨╡╨▓╨╡╨╗╨╛╨┐╨╡╤А╨░  ╤Н╨╗╨╕╤В╨╜╤Л╤Е ╨Ц╨Ъ.тАи╨б╤А╨╡╨┤╨╕ ╤А╨░╨▒╨╛╤В╨╛╨┤╨░╤В╨╡╨╗╨╡╨╣: ╤Д╨╡╨┤╨╡╤А╨░╨╗╤М╨╜╤Л╨╡ ╨╢╤Г╤А╨╜╨░╨╗╤Л, ╨┤╨╕╨╗╨╡╤А╤Б╨║╨╕╨╣ ╤Б╨░╨╗╨╛╨╜ Honda, ╨║╤Г╨▒╨╛╨║ ╨а╨╛╤Б╤Б╨╕╨╕ Honda ╨бivic Cup, ╤А╨╡╨║╨╗╨░╨╝╨╜╨╛╨╡ ╨░╨│╨╡╨╜╤В╤Б╤В╨▓╨╛, event-╨░╨│╨╡╨╜╤В╤Б╤В╨▓╨╛, ╨░╤А╤Е╨╕╤В╨╡╨║╤В╤Г╤А╨╜╤Л╨╡ ╨▒╤О╤А╨╛, ╨░╨│╨╡╨╜╤В╤Б╤В╨▓╨╛ ╤Н╨╗╨╕╤В╨╜╨╛╨╣ ╨╜╨╡╨┤╨▓╨╕╨╢╨╕╨╝╨╛╤Б╤В╨╕, ╨┤╨╡╨▓╨╡╨╗╨╛╨┐╨╡╤А.тАи╨Ш╨╜╤Ж╨╕╨╕╤А╨╛╨▓╨░╨╗╨░ ╨┐╤Г╨▒╨╗╨╕╨║╨░╤Ж╨╕╨╕ ╨▓ ╨▓╨╡╨┤╤Г╤Й╨╕╤Е ╤А╨╛╤Б╤Б╨╕╨╣╤Б╨║╨╕╤Е ╨б╨Ь╨Ш \\(╨д╨╛╤А╨▒╤Б, ╨Ъ╨╛╨╝╨╝╨╡╤А╤Б╨░╨╜╤В, ╨а╨С╨Ъ, ╨Т╨╡╨┤╨╛╨╝╨╛╤Б╤В╨╕, ╨С╨╕╨╖╨╜╨╡╤Б FM\\), ╨╡╨╖╨┤╨╕╨╗╨░ ╨▓ ╨┐╤А╨╡╤Б╤Б-╤В╤Г╤А ╨┤╨╗╤П ╨а╨С╨Ъ, ╤А╨░╨╖╤А╨░╨▒╨░╤В╤Л╨▓╨░╨╗╨░ ╨╕ ╤А╨╡╨░╨╗╨╕╨╖╨╛╨▓╤Л╨▓╨░╨╗╨░ PR-╤Б╤В╤А╨░╤В╨╡╨│╨╕╨╕ ╤Б ╨╜╤Г╨╗╤П.\\n╨Т ╨┤╨╡╨║╤А╨╡╤В╨╡ ╨┤╨╗╤П ╨╗╨╕╤З╨╜╤Л╤Е ╤Ж╨╡╨╗╨╡╨╣ ╨╕╨╖╤Г╤З╨╕╨╗╨░ ╨╛╤Б╨╜╨╛╨▓╤Л ╨Ш╨╗╨╗╤О╤Б╤В╤А╨░╤В╨╛╤А╨░, ╨┤╨╕╨╖╨░╨╣╨╜╨░ ╨╕╨╜╤В╨╡╤А╤М╨╡╤А╨░ \\(╤Б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨╛╨╜╤Ж╨╡╨┐╤Ж╨╕╨╕ ╨╕ ╨▓╨╕╨╖╤Г╨░╨╗╨╕╨╖╨░╤Ж╨╕╨╕ ╨▓ Planoplan\\), ╨╗╨░╨╜╨┤╤И╨░╤Д╤В╨╜╨╛╨│╨╛ ╨┤╨╕╨╖╨░╨╣╨╜╨░ \\(╤Б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨┐╤А╨╛╨╡╨║╤В╨░ ╨╕ ╨╛╤В╤А╨╕╤Б╨╛╨▓╨║╨░ ╨▓ Sketch Up\\).\\n╨г╨▓╨╗╨╡╨║╨╗╨░╤Б╤М ╤Н╨┐╨╛╨║╤Б╨╕╨┤╨╜╨╛╨╣ ╤Б╨╝╨╛╨╗╨╛╨╣, ╨▓╤Л╨╕╨│╤А╨░╨╗╨░ ╨╜╨╡╤Б╨║╨╛╨╗╤М╨║╨╛ ╤В╨╛╨┐╨╛╨▓╤Л╤Е ╤Е╤Г╨┤╨╛╨╢╨╡╤Б╤В╨▓╨╡╨╜╨╜╤Л╤Е ╨║╨╛╨╜╨║╤Г╤А╤Б╨╛╨▓, ╤Б╤В╨░╨╗╨░ ╨░╨╝╨▒╨░╤Б╤Б╨░╨┤╨╛╤А╨╛╨╝ ╨╛╨┤╨╜╨╛╨╣ ╨╕╨╖ ╨║╤А╤Г╨┐╨╜╨╡╨╣╤И╨╕╤Е ╨║╨╛╨╝╨┐╨░╨╜╨╕╨╣ ╨┐╨╛ ╨┐╤А╨╛╨╕╨╖╨▓╨╛╨┤╤Б╤В╨▓╤Г ╤Е╤Г╨┤╨╛╨╢╨╡╤Б╤В╨▓╨╡╨╜╨╜╤Л╤Е ╨╝╨░╤В╨╡╤А╨╕╨░╨╗╨╛╨▓, ╨╛╨▒╤Г╤З╨╕╨╗╨░ ╨▒╨╛╨╗╨╡╨╡ ╤Б╨╛╤В╨╜╨╕ ╤Г╤З╨╡╨╜╨╕╨║╨╛╨▓, ╨▒╤Л╨╗╨░ ╨║╤Г╤А╨░╤В╨╛╤А╨╛╨╝ ╤Е╤Г╨┤╨╛╨╢╨╡╤Б╤В╨▓╨╡╨╜╨╜╨╛╨╣ on-line ╤И╨║╨╛╨╗╤Л.тАи╨Т ╨┐╨╛╤Б╨╗╨╡╨┤╨╜╨╡╨╡ ╨▓╤А╨╡╨╝╤П ╤А╨░╨╖╨▓╨╕╨▓╨░╤О╤Б╤М ╨▓ ╤Б╤Д╨╡╤А╨╡ UI/UX, ╨╕╨╖╤Г╤З╨░╤О ╨╝╨░╤В╨╡╤А╨╕╨░╨╗ ╨▓ ╤И╨║╨╛╨╗╨╡ Contented."
+      [FRAME] #1:560 layout={"mode":"row","overflowScroll":["x"],"gap":"30px","sizing":{"horizontal":"fixed","vertical":"fixed"},"locationRelativeToParent":{"x":0,"y":445},"dimensions":{"width":2020.77,"height":259}}
+        [FRAME] #1:561 layout={"mode":"row","gap":"29px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":9812}}
+          [GROUP] #1:562 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":380,"height":259.29}}
+            [GROUP] #1:563 layout=layout_e70eb4c2
+              [RECTANGLE] #1:564 layout=layout_e70eb4c2 fills=[{"type":"IMAGE","imageRef":"f8085b06749b9f81d851c5e4473cbfe3b516fea2","scaleMode":"STRETCH","objectFit":"fill","isBackground":false,"imageDownloadArguments":{"needsCropping":true,"requiresImageDimensions":false,"cropTransform":[[1,0,-0.30270856618881226],[0,0.9842327237129211,0.015100808814167976]],"filenameSuffix":"22477c"}}]
+          [GROUP] #1:565 template=EL-79a95bb6
+            [IMAGE-SVG] #1:566 layout=layout_1325910e fills=[{"type":"IMAGE","imageRef":"023c16f938b190fc762302e5f40e8d1ac695d745","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+            [TEXT] #1:567 layout=layout_d33a32eb fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Ь╨░╤Б╤В╨╡╤А-╨║╨╗╨░╤Б╤Б ╨╜╨░ ╤Д╨╛╤А╤Г╨╝╨╡ ╤Б╨╝╨╛╨╗╤П╨╜╨╕╤Б╤В╨╛╨▓, 2021"
+          [GROUP] #1:568 template=EL-79a95bb6
+            [RECTANGLE] #1:569 layout=layout_1325910e fills=[{"type":"IMAGE","imageRef":"0d4a06c514b16fd3e5f6bba8571499ae11009f8b","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+            [TEXT] #1:570 layout=layout_d33a32eb fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Ь╨╛╨║╨░╨┐ ╨╝╨░╨│╨░╨╖╨╕╨╜╨░ ╤Б ╤Н╨╗╨╡╨║╤В╤А╨╛╨╜╨╕╨║╨╛╨╣, 2023"
+          [GROUP] #1:571 template=EL-6b1adf27
+            [RECTANGLE] #1:572 layout=layout_e70eb4c2 fills=[{"type":"IMAGE","imageRef":"e3c2983ca665cfdf9faab53308f27d9d3a00a994","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+            [TEXT] #1:573 layout=layout_d33a32eb fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Ы╨╡╨║╤Ж╨╕╤П ╨╜╨░ ╤Д╨╛╤А╤Г╨╝╨╡ ╤Б╨╝╨╛╨╗╤П╨╜╨╕╤Б╤В╨╛╨▓, 2021"
+          [GROUP] #1:574 template=EL-6b1adf27
+            [TEXT] #1:575 layout=layout_d33a32eb fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Ь╨╛╨║╨░╨┐ ╨░╨│╨╡╨╜╤В╤Б╤В╨▓╨░ ╨╜╨╡╨┤╨▓╨╕╨╢╨╕╨╝╨╛╤Б╤В╨╕, 2023"
+            [RECTANGLE] #1:576 layout=layout_e70eb4c2 fills=[{"type":"IMAGE","imageRef":"16cf3c5ecd99a83bd6400bb597c167aba773502f","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:577 template=EL-b9ce3647
+            [TEXT] #1:578 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":218,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Ь╨╛╨╕ ╤А╨░╨▒╨╛╤В╤Л"
+            [RECTANGLE] #1:579 layout=layout_cece48fb fills=[{"type":"IMAGE","imageRef":"73d670fd96978467971dee7edfbb3a2f39ca7944","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:580 template=EL-79a95bb6
+            [IMAGE-SVG] #1:581 layout=layout_1325910e fills=[{"type":"IMAGE","imageRef":"2afcfa6a10da33d15992211103ab75bcc1470393","scaleMode":"TILE","scalingFactor":0.47531992197036743,"backgroundRepeat":"repeat","backgroundSize":"calc(var(--original-width) * 0.47531992197036743) calc(var(--original-height) * 0.47531992197036743)","isBackground":true,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":true}}]
+            [TEXT] #1:582 template=EL-f959bda6
+          [GROUP] #1:583 template=EL-79a95bb6
+            [IMAGE-SVG] #1:584 layout=layout_1325910e fills=[{"type":"IMAGE","imageRef":"09db6d3d37c52588633f184653b774473ebcab28","scaleMode":"TILE","scalingFactor":0.4763636291027069,"backgroundRepeat":"repeat","backgroundSize":"calc(var(--original-width) * 0.4763636291027069) calc(var(--original-height) * 0.4763636291027069)","isBackground":true,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":true}}]
+            [TEXT] #1:585 template=EL-f959bda6
+          [GROUP] #1:586 template=EL-79a95bb6
+            [IMAGE-SVG] #1:587 layout=layout_1325910e fills=[{"type":"IMAGE","imageRef":"feceefbdcc86b84cca2d385ef2a8e23f8e314f73","scaleMode":"STRETCH","objectFit":"fill","isBackground":false,"imageDownloadArguments":{"needsCropping":true,"requiresImageDimensions":false,"cropTransform":[[0.7382023334503174,0,0.25108057260513306],[0,1,0.00020097313972655684]],"filenameSuffix":"3b8f2c"}}]
+            [TEXT] #1:588 template=EL-f959bda6
+          [GROUP] #1:589 template=EL-79a95bb6
+            [IMAGE-SVG] #1:590 layout=layout_1325910e fills=[{"type":"IMAGE","imageRef":"02b606ba56577085975732769ebb69343e6921ba","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+            [TEXT] #1:591 layout=layout_d33a32eb fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Я╤А╨╛╨╡╨║╤В ╨┐╨╛ ╨╗╨░╨╜╨┤╤И╨░╤Д╤В╤Г ╨┤╨╗╤П ╤Б╨▓╨╛╨╡╨│╨╛ ╤Г╤З╨░╤Б╤В╨║╨░"
+          [GROUP] #1:592 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":263,"height":328}}
+            [TEXT] #1:593 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":263,"height":44.08}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Я╤А╨╛╨╡╨║╤В ╤Б╨▓╨╛╨╡╨│╨╛ ╨┤╨╛╨╝╨░, ╨▓╨╕╨╖╤Г╨░╨╗╨╕╨╖╨░╤Ж╨╕╤П, ╤А╨╡╨░╨╗╨╕╨╖╨░╤Ж╨╕╤П"
+            [RECTANGLE] #1:594 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":1.21,"y":0},"dimensions":{"width":261.79,"height":259.29}} fills=[{"type":"IMAGE","imageRef":"49b37e3adec5bcc794666a5784eefe303568c9b0","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:595 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":224,"height":305.96}}
+            [TEXT] #1:596 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":207,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨а╨╡╨┐╨╛╤А╤В╨░╨╢ ╨┤╨╗╤П ╨╝╨╡╤Б╤В╨╜╨╛╨│╨╛ ╨в╨Т, 2020"
+            [RECTANGLE] #1:597 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":1,"y":0},"dimensions":{"width":223,"height":259}} fills=[{"type":"IMAGE","imageRef":"223736e36dab5d213b7887a37698bad2235c1c10","scaleMode":"STRETCH","objectFit":"fill","isBackground":false,"imageDownloadArguments":{"needsCropping":true,"requiresImageDimensions":false,"cropTransform":[[0.9477179646492004,0,0.026141025125980377],[0,0.8561890125274658,0.08484755456447601]],"filenameSuffix":"2d6a5c"}}]
+          [GROUP] #1:598 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":434,"height":305.96}}
+            [IMAGE-SVG] #1:599 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":1.14,"y":0},"dimensions":{"width":432.86,"height":259.29}} fills=[{"type":"IMAGE","imageRef":"6c41f98705255304a0528474b139a6f49dda7fdd","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+            [TEXT] #1:600 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":432.86,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨б╤В╨░╤В╤М╨╕ ╨▓ ╨б╨Ь╨Ш, 2020"
+          [GROUP] #1:601 template=EL-79a95bb6
+            [IMAGE-SVG] #1:602 layout=layout_1325910e fills=[{"type":"IMAGE","imageRef":"3e154d0e1f78e237c1e633c0c72f60509b086677","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+            [TEXT] #1:603 layout=layout_d33a32eb fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨б╤В╨░╤В╤М╤П ╨▓ ╨╝╨╡╤Б╤В╨╜╨╛╨╣ ╨│╨╛╤А╨╛╨┤╤Б╨║╨╛╨╣ ╨│╨░╨╖╨╡╤В╨╡, 2020"
+          [GROUP] #1:604 template=EL-79a95bb6
+            [IMAGE-SVG] #1:605 layout=layout_1325910e fills=[{"type":"IMAGE","imageRef":"e3771fd486ca109726c7147c13255c09c1a3cfea","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+            [TEXT] #1:606 layout=layout_d33a32eb fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨а╨╡╨┐╨╛╤А╤В╨░╨╢ ╨╜╨░ ╨╝╨╡╤Б╤В╨╜╨╛╨╝ ╨в╨Т, 2020"
+          [GROUP] #1:607 template=EL-b9ce3647
+            [TEXT] #1:608 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":193,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨а╨░╨▒╨╛╤В╤Л ╨┤╨╗╤П ╨Ь╨Ъ ╨┐╨╛ ╤Б╨╝╨╛╨╗╨╡, 2023"
+            [RECTANGLE] #1:609 layout=layout_cece48fb fills=[{"type":"IMAGE","imageRef":"cd2ed402e8512dcd83a6c1723c2c240f334d94ce","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:610 template=EL-b9ce3647
+            [TEXT] #1:611 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":117,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Ь╨Ъ ╨┐╨╛ ╤Б╨╝╨╛╨╗╨╡, 2023"
+            [RECTANGLE] #1:612 layout=layout_cece48fb fills=[{"type":"IMAGE","imageRef":"b80cec68ea5238e40be0533c8568ba191f7bff75","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:613 template=EL-b9ce3647
+            [TEXT] #1:614 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":123,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Ь╨Ъ ╨┐╨╛ ╨░╨║╤А╨╕╨╗╤Г, 2024"
+            [RECTANGLE] #1:615 layout=layout_cece48fb fills=[{"type":"IMAGE","imageRef":"db77b527dd8af38761703a6376f873e051115edd","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:616 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":410,"height":305.96}}
+            [TEXT] #1:617 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":408.92,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨У╤А╤Г╨┐╨┐╨░ ╨║╨╛╨╝╨┐╨░╨╜╨╕╨╣ Insigma, PR-╨┤╨╕╤А╨╡╨║╤В╨╛╤А, 2016-2019"
+            [RECTANGLE] #1:618 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":1.08,"y":0},"dimensions":{"width":408.92,"height":259.29}} fills=[{"type":"IMAGE","imageRef":"59998b286fcd54b9d4fde704ae810fab97876ded","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:619 template=EL-b9ce3647
+            [TEXT] #1:620 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":217,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Я╤А╨╡╤Б╤Б-╨║╨╛╨╜╤Д╨╡╤А╨╡╨╜╤Ж╨╕╤П Insigma, 2017"
+            [RECTANGLE] #1:621 layout=layout_cece48fb fills=[{"type":"IMAGE","imageRef":"9cc6e880efc55ff2a79e784b2ba119b1c8f1916c","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:622 template=EL-6b1adf27
+            [TEXT] #1:623 layout=layout_d33a32eb fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="Contact Real Estate, PR-╨┤╨╕╤А╨╡╨║╤В╨╛╤А, 2014-2016"
+            [RECTANGLE] #1:624 layout=layout_e70eb4c2 fills=[{"type":"IMAGE","imageRef":"32279aecbfe5d704b0d275a2e5e3537220146033","scaleMode":"STRETCH","objectFit":"fill","isBackground":false,"imageDownloadArguments":{"needsCropping":true,"requiresImageDimensions":false,"cropTransform":[[0.697166383266449,0,0.08347907662391663],[0,1,0.013601457700133324]],"filenameSuffix":"22b2a4"}}]
+          [GROUP] #1:625 template=EL-0a4a7c43
+            [TEXT] #1:626 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":145,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Я╤Г╨▒╨╗╨╕╨║╨░╤Ж╨╕╨╕ CRE , 2014"
+            [RECTANGLE] #1:627 layout=layout_25b02cda fills=[{"type":"IMAGE","imageRef":"17452f458fa1955d868835814c8986785556bbc1","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:628 template=EL-0a4a7c43
+            [TEXT] #1:629 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":196,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Я╤А╨╡╤Б╤Б-╨║╨╛╨╜╤Д╨╡╤А╨╡╨╜╤Ж╨╕╤П TBA , 2015"
+            [RECTANGLE] #1:630 layout=layout_25b02cda fills=[{"type":"IMAGE","imageRef":"324390a8d0778441fa4e868dc26ee0deea01560a","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:631 template=EL-0a4a7c43
+            [TEXT] #1:632 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":197,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Я╤А╨╡╤Б╤Б-╨║╨╛╨╜╤Д╨╡╤А╨╡╨╜╤Ж╨╕╤П TBA , 2014"
+            [RECTANGLE] #1:633 layout=layout_25b02cda fills=[{"type":"IMAGE","imageRef":"dc9665e6ed1ef4cd8d611053307de095f6ab2d7f","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:634 template=EL-0a4a7c43
+            [TEXT] #1:635 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":283.92},"dimensions":{"width":147,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Я╤А╨╡╤Б╤Б-╤В╤Г╤А ╨╛╤В ╨а╨С╨Ъ , 2014"
+            [RECTANGLE] #1:636 layout=layout_25b02cda fills=[{"type":"IMAGE","imageRef":"d7c8ed145ea10149c72c8503c38e8b7bd908e6b3","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:637 template=EL-6b1adf27
+            [TEXT] #1:638 layout=layout_d33a32eb fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Я╨╛╨▒╨╡╨┤╨░ ╨┤╨╕╨╖╨░╨╣╨╜╨░, PR-╨╝╨╡╨╜╨╡╨┤╨╢╨╡╤А, 2013"
+            [RECTANGLE] #1:639 layout=layout_e70eb4c2 fills=[{"type":"IMAGE","imageRef":"9ef22a6c86792238fc3885accbad19643c04bd9b","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [GROUP] #1:640 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":384,"height":306.04}}
+            [TEXT] #1:641 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":4,"y":284},"dimensions":{"width":380,"height":22.04}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨Ф╨╕╨╗╨╡╤А╤Б╨║╨╕╨╣ ╤Б╨░╨╗╨╛╨╜ Honda, ╨╝╨╡╨╜╨╡╨┤╨╢╨╡╤А ╨┐╨╛ ╤А╨╡╨║╨╗╨░╨╝╨╡, 2009"
+            [RECTANGLE] #1:642 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":0},"dimensions":{"width":384,"height":259}} fills=[{"type":"IMAGE","imageRef":"ef2bb7571e89c7e25a82f798a0a6ad9da8316166","scaleMode":"STRETCH","objectFit":"fill","isBackground":false,"imageDownloadArguments":{"needsCropping":true,"requiresImageDimensions":false,"cropTransform":[[0.6564255356788635,0,0.17417971789836884],[0,0.8407620191574097,0.0772586315870285]],"filenameSuffix":"4f2d8c"}}]
+          [GROUP] #1:643 template=EL-6b1adf27
+            [TEXT] #1:644 layout=layout_d33a32eb fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_73c668c5 text="╨У╨╛╨╜╨║╨╕ Honda Civic Cup, 2008"
+            [RECTANGLE] #1:645 layout=layout_e70eb4c2 fills=[{"type":"IMAGE","imageRef":"2d4b924a1d7d2671ed7923cea2869d2d4f2abda6","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+    [FRAME] #1:962 layout={"mode":"row","gap":"68px","sizing":{"horizontal":"hug","vertical":"hug"}}
+      [FRAME] #1:960 layout={"mode":"column","alignItems":"stretch","gap":"45px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":363}}
+        [TEXT] #1:540 layout=layout_56d3c81c fills="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╤Б╨╡╨║╤Ж╨╕╨╣" textStyle="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╤Б╨╡╨║╤Ж╨╕╨╣ (1:430)" text="╨Ю╨▒╤А╨░╨╖╨╛╨▓╨░╨╜╨╕╨╡"
+        [FRAME] #1:546 layout={"mode":"column","alignSelf":"stretch","alignItems":"stretch","gap":"45px","sizing":{"horizontal":"fill","vertical":"hug"}}
+          [FRAME] "╨Ь╨У╨г" #1:547 template=EL-da138a77
+            [RECTANGLE] "logo-mgu 1" #1:548 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":60,"height":58.98}} fills=[{"type":"IMAGE","imageRef":"7538616ecd318a367bcbdf40f53be30a78e1331e","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+            [TEXT] #1:549 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":269}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle="╨Ю╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" text="╨Ь╨У╨г ╨╕╨╝. ╨Ь.╨Т. ╨Ы╨╛╨╝╨╛╨╜╨╛╤Б╨╛╨▓╨░\\n╤Д╨░╨║╤Г╨╗╤М╤В╨╡╤В ╨╢╤Г╤А╨╜╨░╨╗╨╕╤Б╤В╨╕╨║╨╕\\n"
+          [FRAME] #1:550 template=EL-da138a77
+            [ELLIPSE] #1:551 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":60,"height":60}} fills=[{"type":"IMAGE","imageRef":"300482665a8e528cb9e5605ff237d85da8b410f8","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+            [TEXT] #1:552 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":269,"height":60}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle={"fontFamily":"Montserrat","fontStyle":"Medium","fontWeight":500,"fontSize":16,"lineHeight":"0.75em","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="Contented\\n"
+      [FRAME] #1:959 template=EL-3ce7af27
+        [TEXT] #1:541 layout=layout_56d3c81c fills="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╤Б╨╡╨║╤Ж╨╕╨╣" textStyle="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╤Б╨╡╨║╤Ж╨╕╨╣ (1:430)" text="╨п╨╖╤Л╨║╨╕"
+        [TEXT] #1:543 layout=layout_56d3c81c fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle="╨Ю╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" text="╨а╤Г╤Б╤Б╨║╨╕╨╣\\n╨Р╨╜╨│╨╗╨╕╨╣╤Б╨║╨╕╨╣\\n╨б╨╡╤А╨▒╤Б╨║╨╕╨╣ \\(╨▓ ╨╜╨░╤З╨░╨╗╨╡ ╨┐╤Г╤В╨╕\\)\\n"
+      [FRAME] #1:958 template=EL-3ce7af27
+        [TEXT] #1:542 layout=layout_56d3c81c fills="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╤Б╨╡╨║╤Ж╨╕╨╣" textStyle="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╤Б╨╡╨║╤Ж╨╕╨╣ (1:430)" text="╨Ю╤В╨╖╤Л╨▓╤Л"
+        [TEXT] #1:544 layout=layout_56d3c81c fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle="╨Ю╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" text="╨Ч╨┤╨╡╤Б╤М ╨╛╤В╨╖╤Л╨▓╤Л ╨╛ ╨╝╨╛╨╕╤Е ╤А╨░╨▒╨╛╤В╨░╤Е ╨╕ ╨╛╨▒╤Г╤З╨╡╨╜╨╕╨╕ ╨▓ ╤Б╤Д╨╡╤А╨╡ Resin Art, ╨░ ╤В╨░╨║╨╢╨╡ ╨║╨╛╨╝╨╝╨╡╨╜╤В╨░╤А╨╕╨╕ ╤Г╤З╨╡╨▒╨╜╨╛╨│╨╛ ╨┐╤А╨╛╤Ж╨╡╤Б╤Б╨░ ╨┐╨╛ UI/UX.тАи╨У╨╛╤В╨╛╨▓╨░ ╨┐╤А╨╡╨┤╨╛╤Б╤В╨░╨▓╨╕╤В╤М ╤Е╨░╤А╨░╨║╤В╨╡╤А╨╕╤Б╤В╨╕╨║╨╕ ╨╕ ╤А╨╡╨║╨╛╨╝╨╡╨╜╨┤╨░╤Ж╨╕╨╕ ╨╕╨╖ ╤Б╤Д╨╡╤А╤Л PR ╨┐╨╛ ╨╖╨░╨┐╤А╨╛╤Б╤Г. \\n"
+    [FRAME] #1:956 layout={"mode":"column","gap":"35px","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":1403}}
+      [TEXT] #1:553 layout=layout_56d3c81c fills=fill_34dc0314 textStyle="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╤Б╨╡╨║╤Ж╨╕╨╣ (1:430)" text="╨Я╤А╨╛╤З╨╡╨╡"
+      [TEXT] #1:558 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":1195,"height":51}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle="╨Ю╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" text="╨Ы╤О╨▒╨╗╤О ╨┤╨╕╨╖╨░╨╣╨╜, ╨║╨╜╨╕╨│╨╕, ╤В╨╡╨║╤Б╤В╤Л, ╨┐╤Г╤В╨╡╤И╨╡╤Б╤В╨▓╨╕╤П, ╤В╤П╨╢╤С╨╗╤Г╤О ╨╝╤Г╨╖╤Л╨║╤Г, ╨╣╨╛╨│╤Г, ╨┐╨╗╨░╨▓╨░╤В╤М, ╨┐╨░╤А╨░╤И╤О╤В╤Л ╨╕ ╤Б╨░╨╝╨╛╨╗╤С╤В╤Л, ╤Б╨░╨╝╨╛╨╕╤А╨╛╨╜╨╕╤О ╨╕ ╤Б╤Л╨╜╨░. ╨Э╨╡╤Б╨║╨╛╨╗╤М╨║╨╛ ╨╗╨╡╤В ╨┐╤А╨╛╨╢╨╕╨▓╨░╤О ╨▓ ╤Н╨╝╨╕╨│╤А╨░╤Ж╨╕╨╕, ╤Б╨╡╨╣╤З╨░╤Б ╨╛╤Б╨╡╨╗╨░ ╨▓ ╨з╨╡╤А╨╜╨╛╨│╨╛╤А╨╕╨╕, ╤Г╤З╤Г ╨╝╨╡╤Б╤В╨╜╤Л╨╣ ╤П╨╖╤Л╨║ ╨▓╨╝╨╡╤Б╤В╨╡ ╤Б ╤Б╤Л╨╜╨╛╨╝. \\n"
+      [FRAME] #1:647 layout={"mode":"column","overflowScroll":["x"],"alignSelf":"stretch","alignItems":"stretch","gap":"10px","sizing":{"horizontal":"fill","vertical":"hug"}}
+        [FRAME] #1:648 layout={"mode":"row","overflowScroll":["x"],"alignSelf":"stretch","gap":"30px","sizing":{"horizontal":"fill","vertical":"hug"}}
+          [RECTANGLE] #1:649 layout=layout_add7d214 fills=[{"type":"IMAGE","imageRef":"9eddb7fd361b8ef252833ce77e09aaa513b63d20","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:650 layout=layout_add7d214 fills=[{"type":"IMAGE","imageRef":"6f07a64f56dba74b61546317e6095ecb5c14bdef","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:651 layout=layout_add7d214 fills=[{"type":"IMAGE","imageRef":"e9470cd477a205a36459226abe0a1bc63703caed","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:652 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":226,"height":270.65}} fills=[{"type":"IMAGE","imageRef":"f78c45eec842c73e5a702e2c063328826b0f58a7","scaleMode":"STRETCH","objectFit":"fill","isBackground":false,"imageDownloadArguments":{"needsCropping":true,"requiresImageDimensions":false,"cropTransform":[[0.7410730123519897,0,0.20456469058990479],[0,1,-0.005641571711748838]],"filenameSuffix":"540435"}}]
+          [RECTANGLE] #1:653 layout=layout_add7d214 fills=[{"type":"IMAGE","imageRef":"e029803d0a3fc4a328918f58a12a44fcaeb23e34","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:654 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":367,"height":271}} fills=[{"type":"IMAGE","imageRef":"53bb3117612637baf69417088606ddad2d51bcb4","scaleMode":"STRETCH","objectFit":"fill","isBackground":false,"imageDownloadArguments":{"needsCropping":true,"requiresImageDimensions":false,"cropTransform":[[1,0,0],[0,0.7014594674110413,0.14583174884319305]],"filenameSuffix":"3d5830"}}]
+          [RECTANGLE] #1:655 layout=layout_add7d214 fills=[{"type":"IMAGE","imageRef":"115354cfe08cb90a2e6f97f3893241a3aece4548","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:656 layout=layout_add7d214 fills=[{"type":"IMAGE","imageRef":"60bdaceb51c7b1836b1452967961e7cf6466b975","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:657 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":270.65,"height":270.65}} fills=[{"type":"IMAGE","imageRef":"4a4932e9c62bc81bd1e36f8bd67b4f2182cb3d40","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:658 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":438,"height":271}} fills=[{"type":"IMAGE","imageRef":"71a7e4038040b36a95bd7e663c3991a803bcbaf3","scaleMode":"STRETCH","objectFit":"fill","isBackground":false,"imageDownloadArguments":{"needsCropping":true,"requiresImageDimensions":false,"cropTransform":[[1,0,0],[0,0.6182763576507568,0.17944201827049255]],"filenameSuffix":"28d33b"}}]
+          [RECTANGLE] #1:659 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":174.31,"height":270.65}} fills=[{"type":"IMAGE","imageRef":"b3b2f4429bd27c9648b84f31f7657f494aa07f40","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:660 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":266,"height":270.65}} fills=[{"type":"IMAGE","imageRef":"d337491dba12bb3f1aeeca2c6fc490bbd73f4d90","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:661 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":339,"height":270.65}} fills=[{"type":"IMAGE","imageRef":"8c327099e0975a978158693841342572301b5115","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:662 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":224,"height":270.65}} fills=[{"type":"IMAGE","imageRef":"de0fbf5519a8ae66b018e7714b9462bc5676a00d","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:663 layout=layout_add7d214 fills=[{"type":"IMAGE","imageRef":"dfe8f80d001026304db96c9334025f20cbb07fa7","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:664 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":300,"height":270.65}} fills=[{"type":"IMAGE","imageRef":"243d4793421b934bd6682cce71e1aaf297604fef","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:665 layout=layout_add7d214 fills=[{"type":"IMAGE","imageRef":"7a82a1bb72a3c37530bad81e3c674aa28b290b83","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:666 layout=layout_5dc2dd9c fills=[{"type":"IMAGE","imageRef":"81fe326211d9f80431d14f091bb5c4f7ed4be320","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:667 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":199.89,"height":270.65}} fills=[{"type":"IMAGE","imageRef":"8764c8c63bf0ac1bee19e89cd6c1c67ea15fabc2","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:668 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":263,"height":270.65}} fills=[{"type":"IMAGE","imageRef":"08a419e48ad17b691f9faad03402eccb17a5f31a","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:669 layout=layout_5dc2dd9c fills=[{"type":"IMAGE","imageRef":"80f3ab8e5ab25036292ff7de4265fd9825760d28","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:670 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":223,"height":270.65}} fills=[{"type":"IMAGE","imageRef":"026242380043541314a643ea89c6fc9d40d90899","scaleMode":"STRETCH","objectFit":"fill","isBackground":false,"imageDownloadArguments":{"needsCropping":true,"requiresImageDimensions":false,"cropTransform":[[1,0,0.00006490206578746438],[0,0.6817370653152466,0.3008386194705963]],"filenameSuffix":"62e9cf"}}]
+          [RECTANGLE] #1:671 layout=layout_add7d214 fills=[{"type":"IMAGE","imageRef":"082558f6986192a815788de7e7e4d3222a82fe2b","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:672 layout=layout_add7d214 fills=[{"type":"IMAGE","imageRef":"0b79b6b1463279b26c61417eda2451a82e7b5cb7","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:673 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":158,"height":271}} fills=[{"type":"IMAGE","imageRef":"3e7f2b745edec91251689246ea5642acf87874c3","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:674 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":148.89,"height":271}} fills=[{"type":"IMAGE","imageRef":"576e5de16669c8ca99de8bdba4a8a9d9f09d8b00","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:675 layout=layout_4513aa0c fills=[{"type":"IMAGE","imageRef":"65873e3e82edcb07c27d46154896bb0a9f8519d2","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:676 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":174.89,"height":270.65}} fills=[{"type":"IMAGE","imageRef":"78dd8eff5859b066b63edb2c913af72dbba00401","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:677 layout=layout_4513aa0c fills=[{"type":"IMAGE","imageRef":"53629d643c9afc85043ff230056c14b3176e2242","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:678 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":203,"height":271}} fills=[{"type":"IMAGE","imageRef":"aa38aad223e278248d9985fc1678d79e03fd5cf4","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:679 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":271,"height":271}} fills=[{"type":"IMAGE","imageRef":"34133926f5cc8c636a8cdd35cb38ed55f223c11b","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:680 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":215,"height":271}} fills=[{"type":"IMAGE","imageRef":"28cb3401cf9bc73bb202a1427d96cfb5f9ef8b69","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:681 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":453,"height":271}} fills=[{"type":"IMAGE","imageRef":"70bdf2fc0c9034ad23392313b40be47740320bad","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:682 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":150.04,"height":270.65}} fills=[{"type":"IMAGE","imageRef":"bc79f3a35498d0fc05681705558bd4e8132237af","scaleMode":"FILL","objectFit":"cover","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}]
+          [RECTANGLE] #1:683 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":165,"height":271}} fills=[{"type":"IMAGE","imageRef":"625df93a1b753e24939744a7261779c6d002fac4","scaleMode":"STRETCH","objectFit":"fill","isBackground":false,"imageDownloadArguments":{"needsCropping":true,"requiresImageDimensions":false,"cropTransform":[[1,0,0],[0,0.925146758556366,0.06467689573764801]],"filenameSuffix":"6e1fbe"}}]
+    [FRAME] "Contacts" #1:482 layout={"mode":"row","alignItems":"center","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":1200}}
+      [FRAME] "Contacts" #1:483 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":1200,"height":689}} fills=["rgba(14, 190, 228, 0)"] borderRadius=2px
+        [TEXT] #1:484 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":34},"dimensions":{"width":131,"height":32}} fills="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╨▓╨╜╤Г╤В╤А╨╕ ╤Б╨╡╨║╤Ж╨╕╨╣" textStyle="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╨▓╨╜╤Г╤В╤А╨╕ ╤Б╨╡╨║╤Ж╨╕╨╕" text="╨Ъ╨╛╨╜╤В╨░╨║╤В╤Л "
+        [FRAME] #1:485 layout={"mode":"row","wrap":true,"gap":"12px 60px","sizing":{"horizontal":"fixed","vertical":"fixed"},"locationRelativeToParent":{"x":410,"y":119},"dimensions":{"width":380,"height":432}}
+          [FRAME] #1:486 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":380,"height":47}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:487 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":376}} fills=fill_34dc0314 textStyle=style_a00378de text="╨╛╨┐╤Л╤В ╨▓╨╡╨┤╨╡╨╜╨╕╤П ╨╛╨╜-╨╗╨░╨╣╨╜ ╨╕ ╨╛╤Д╤Д-╨╗╨░╨╣╨╜ ╤Г╤А╨╛╨║╨╛╨▓"
+          [FRAME] #1:488 template=EL-8763256c
+            [TEXT] #1:489 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a00378de text="╤Г╨╝╨╡╨╜╨╕╨╡ ╨║╤А╨░╤Д╤В╨╕╤В╤М"
+          [FRAME] #1:490 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":126,"height":24}} fills=["rgba(226, 226, 224, 0.7)"] borderRadius=10px
+            [TEXT] #1:491 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":121,"height":20}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_a00378de text="╨║╤А╨╡╨░╤В╨╕╨▓╨╜╨╛╤Б╤В╤М"
+          [FRAME] #1:492 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":135,"height":24}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:493 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a00378de text="╨╢╨░╨╢╨┤╨░ ╨╖╨╜╨░╨╜╨╕╨╣"
+          [FRAME] #1:494 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":116,"height":24}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:495 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a00378de text="╨│╤А╨░╨╝╨╛╤В╨╜╨╛╤Б╤В╤М"
+          [FRAME] #1:496 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":193,"height":24}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:497 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":190,"height":20}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_a00378de text="╨║╨╛╨╝╨╝╤Г╨╜╨╕╨║╨░╨▒╨╡╨╗╤М╨╜╨╛╤Б╤В╤М"
+          [FRAME] #1:498 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":59,"height":24}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:499 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a00378de text="╨б╨Ь╨Ь"
+          [FRAME] #1:500 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":345,"height":19}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:501 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":355,"height":20}} fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_a00378de text="╤Н╨╝╨╛╤Ж╨╕╨╛╨╜╨░╨╗╤М╨╜╤Л╨╣ ╨╕╨╜╤В╨╡╨╗╨╗╨╡╨║╤В  ╨╕  ╤Н╨╝╨┐╨░╤В╨╕╤П"
+          [FRAME] #1:502 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":255,"height":24}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:503 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a00378de text="╨░╨╜╨░╨╗╨╕╤В╨╕╤З╨╡╤Б╨║╨╕╨╡ ╤Б╨┐╨╛╤Б╨╛╨▒╨╜╨╛╤Б╤В╨╕"
+          [FRAME] #1:504 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":158,"height":24}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:505 layout=layout_16ccfab7 fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_a00378de text="╤А╨░╨▒╨╛╤В╨░ ╨▓ ╨║╨╛╨╝╨░╨╜╨┤╨╡"
+          [FRAME] #1:506 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":156,"height":24}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:507 layout=layout_16ccfab7 fills="╨╛╤Б╨╜╨╛╨▓╨╜╨╛╨╣ ╤В╨╡╨║╤Б╤В" textStyle=style_a00378de text="╨▓╨╜╨╕╨╝╨░╤В╨╡╨╗╤М╨╜╨╛╤Б╤В╤М"
+          [FRAME] #1:508 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":190,"height":24}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:509 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a00378de text="╤Б╤В╤А╨╡╤Б╤Б╨╛╤Г╤Б╤В╨╛╨╣╤З╨╕╨▓╨╛╤Б╤В╤М"
+          [FRAME] #1:510 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":127,"height":24}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:511 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a00378de text="╨╝╨╡╨╜╨╡╨┤╨╢╨╝╨╡╨╜╤В"
+          [FRAME] #1:512 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":89,"height":24}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:513 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a00378de text="╤А╨╡╨╖╨╕╨╜╨░╤А╤В"
+          [FRAME] #1:514 template=EL-8763256c
+            [TEXT] #1:515 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a00378de text="digital-╨╝╨░╤А╨║╨╡╤В╨╕╨╜╨│"
+          [FRAME] #1:516 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":343,"height":47}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:517 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"hug"},"dimensions":{"width":384}} fills=fill_34dc0314 textStyle=style_a00378de text="╤Г╨╝╨╡╨╜╨╕╨╡ ╤А╨░╨▒╨╛╤В╨░╤В╤М ╨▓ ╤А╨╡╨╢╨╕╨╝╨╡ ╨╜╨╡╨╛╨┐╤А╨╡╨┤╨╡╨╗╤С╨╜╨╜╨╛╤Б╤В╨╕ ╨╕ ╨╝╨╜╨╛╨│╨╛╨╖╨░╨┤╨░╤З╨╜╨╛╤Б╤В╨╕"
+          [FRAME] #1:518 layout={"mode":"row","padding":"0px 9px","justifyContent":"center","alignItems":"center","gap":"10px","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":380,"height":24}} fills=fill_79e8644f borderRadius=10px
+            [TEXT] #1:519 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_a00378de text="╨▓╨╗╨░╨┤╨╡╨╜╨╕╨╡ ╨╝╤Г╨╗╤М╤В╨╕╨╝╨╡╨┤╨╕╨╣╨╜╤Л╨╝╨╕ ╤А╨╡╨┤╨░╨║╤В╨╛╤А╨░╨╝╨╕"
+        [RECTANGLE] "image 7" #1:520 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":820,"y":-1},"dimensions":{"width":380,"height":689}} fills=[{"type":"IMAGE","imageRef":"351fee69ba7ab330fa0e251442d815cbf01ffa2a","scaleMode":"FIT","objectFit":"contain","isBackground":false,"imageDownloadArguments":{"needsCropping":false,"requiresImageDimensions":false}}] borderRadius=2px
+      [GROUP] #1:521 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"position":"absolute","locationRelativeToParent":{"x":0,"y":115},"dimensions":{"width":215,"height":318.37}}
+        [FRAME] #1:522 layout={"mode":"column","gap":"60px","sizing":{"horizontal":"hug","vertical":"fixed"},"locationRelativeToParent":{"x":0,"y":0},"dimensions":{"height":318.37}}
+          [FRAME] #1:523 template=EL-4126af93
+            [TEXT] #1:524 layout=layout_177c5efc fills=fill_34dc0314 textStyle=╨Я╨╛╨┤╨╖╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ text="╨Я╨Ю╨Ч╨Т╨Ю╨Э╨Ш╨в╨м"
+            [TEXT] #1:525 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_aaa2db96 text="+382-695-255-30"
+          [FRAME] #1:526 template=EL-4126af93
+            [TEXT] #1:527 layout=layout_177c5efc fills=fill_34dc0314 textStyle=╨Я╨╛╨┤╨╖╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ text="╨Э╨Р╨Я╨Ш╨б╨Р╨в╨м"
+            [TEXT] #1:528 layout=layout_177c5efc fills=fill_34dc0314 textStyle=style_aaa2db96 text="erazumovaart@gmail.com"
+        [FRAME] #1:529 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":220},"dimensions":{"width":59,"height":62}}
+        [GROUP] #1:530 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":240},"dimensions":{"width":78,"height":62}}
+          [FRAME] #1:531 layout={"mode":"row","gap":"10px","sizing":{"horizontal":"fixed","vertical":"hug"},"locationRelativeToParent":{"x":0,"y":0},"dimensions":{"width":78}}
+            [GROUP] #1:532 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"dimensions":{"width":78,"height":62}}
+              [FRAME] #1:533 layout={"mode":"column","gap":"14px","sizing":{"horizontal":"hug","vertical":"hug"},"locationRelativeToParent":{"x":0,"y":0}}
+              [IMAGE-SVG] "socials" #1:534 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":40},"dimensions":{"width":22,"height":22}} componentId=1:321
+              [IMAGE-SVG] "socials" #1:535 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":56,"y":40},"dimensions":{"width":22,"height":22}} componentId=1:355
+          [TEXT] #1:536 layout={"mode":"none","sizing":{},"locationRelativeToParent":{"x":0,"y":0},"dimensions":{"width":78,"height":20}} fills=fill_34dc0314 textStyle={"fontFamily":"Montserrat","fontStyle":"Bold","fontWeight":700,"fontSize":14,"lineHeight":"1.43em","letterSpacing":"0.05em","textCase":"UPPER","textAlignHorizontal":"LEFT","textAlignVertical":"TOP"} text="╤Б╨╛╤Ж╤Б╨╡╤В╨╕"
+      [TEXT] #1:537 layout={"mode":"none","sizing":{"horizontal":"fixed","vertical":"fixed"},"position":"absolute","locationRelativeToParent":{"x":410,"y":34},"dimensions":{"width":219,"height":38.89}} fills="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╨▓╨╜╤Г╤В╤А╨╕ ╤Б╨╡╨║╤Ж╨╕╨╣" textStyle="╨Ч╨░╨│╨╛╨╗╨╛╨▓╨╛╨║ ╨▓╨╜╤Г╤В╤А╨╕ ╤Б╨╡╨║╤Ж╨╕╨╕" text="╨Э╨░╨▓╤Л╨║╨╕"
