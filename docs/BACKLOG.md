@@ -69,11 +69,14 @@
 
 ## Системные задачи
 
-### SYS-001: Удалить неиспользуемые компоненты-черновики
-- **Статус:** 🟡 TODO
+### SYS-001: Убрать неиспользуемые компоненты-черновики
+- **Статус:** ✅ DONE (29.08.2026)
 - **Приоритет:** P2
-- **Описание:** Удалить из `components/sections/` файлы, которые не импортируются в page.tsx: art-gallery.tsx, art-gallery-v2.tsx, art-gallery-concrete.tsx, art-gallery-perspective.tsx, art-gallery-hero.tsx
-- **Критерии:** Убедиться, что ни один из них не импортируется нигде
+- **Описание:** Изначально тикет считал мёртвыми 5 файлов. По факту `art-gallery-concrete.tsx`, `art-gallery-perspective.tsx`, `art-gallery-hero.tsx` используются orphan-страницами (`app/art-concrete`, `app/art-perspective`, `app/art-hero`) — оставлены намеренно, см. `docs/STATE.md`. Реально не использовались только `art-gallery.tsx` и `art-gallery-v2.tsx` — они не удалены, а перемещены (по просьбе Ника — не терять историю) в `_backups/art-gallery_backup.tsx` и `_backups/art-gallery-v2_backup.tsx`.
+- **Критерии готовности:**
+  - [x] Проверено grep-ом, что действительно не импортируются
+  - [x] Файлы не удалены, а перенесены в `_backups/` с сохранением истории git (`git mv`)
+  - [x] `docs/STATE.md` обновлён с указанием, где искать бэкап
 - **Зависимости:** нет
 
 ### SYS-002: Обновить docs/structure.md
@@ -86,8 +89,8 @@
 
 | Статус | Количество |
 |--------|-----------|
-| ✅ DONE | 1 |
+| ✅ DONE | 2 |
 | 🔵 IN PROGRESS | 0 |
-| 🟡 TODO | 3 |
+| 🟡 TODO | 2 |
 | ⬜ BACKLOG | 4 |
 | 🔴 BLOCKED | 0 |
