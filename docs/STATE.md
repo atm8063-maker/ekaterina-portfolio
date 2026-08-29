@@ -50,7 +50,8 @@
 ## Известные проблемы
 
 - ArtProtest: 6 контейнеров содержат заглушки (чёрные кресты), нужно заполнить фотографиями
-- В папке `components/sections/` лежат неиспользуемые компоненты-черновики: `art-gallery.tsx`, `art-gallery-v2.tsx`, `art-gallery-concrete.tsx`, `art-gallery-perspective.tsx`, `art-gallery-hero.tsx`
+- `art-gallery-concrete.tsx`, `art-gallery-perspective.tsx`, `art-gallery-hero.tsx` в `components/sections/` не используются в реальном сайте, но подключены orphan-страницами `app/art-concrete`, `app/art-perspective`, `app/art-hero` (плюс `app/collage-test`, `app/reference-collage`) — черновики для сравнения дизайна, нигде не залинкованы, но откроются по прямой ссылке. Оставлены намеренно (SYS-001, 29.08.2026) — могут ещё понадобиться.
+- `art-gallery.tsx` и `art-gallery-v2.tsx` не использовались нигде вообще — перемещены (не удалены) в `_backups/art-gallery_backup.tsx` и `_backups/art-gallery-v2_backup.tsx` (SYS-001, 29.08.2026).
 - 3 блока — заглушки (StubSection): Скетчи, Публикации, Отзывы
 
 ---
