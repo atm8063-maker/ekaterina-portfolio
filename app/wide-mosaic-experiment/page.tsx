@@ -88,32 +88,68 @@ export default function WideMosaicExperimentPage() {
     { id: 'G4', x: 688, y: 1130, w: 158, h: 268, type: 'img', src: 'photo_2026-08-27_17-30-20 (4).jpg' }
   ];
 
-  // Marquee Tracks for Background Infinite Loop
+  // 6 Narrow Marquee Tracks (Tiles reduced in size by 2x for fine-grain background tapestry)
   const track1 = [
-    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 230 },
-    { src: 'photo_3217@04-08-2026_21-04-08.jpg', w: 190 },
-    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 390 },
-    { src: 'photo_2026-08-30_02-47-41 (3).jpg', w: 260 },
-    { src: 'video_145@04-08-2026_22-24-35.mp4', w: 210, isVideo: true },
-    { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 240 },
+    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 115 },
+    { src: 'photo_3217@04-08-2026_21-04-08.jpg', w: 95 },
+    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 195 },
+    { src: 'photo_2026-08-30_02-47-41 (3).jpg', w: 130 },
+    { src: 'video_145@04-08-2026_22-24-35.mp4', w: 105, isVideo: true },
+    { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 120 },
   ];
 
   const track2 = [
-    { src: 'photo_2026-08-27_17-30-21 (9).jpg', w: 220 },
-    { src: 'photo_2986@31-07-2026_18-19-24.jpg', w: 190 },
-    { src: 'photo_3218@04-08-2026_21-04-08.jpg', w: 270 },
-    { src: 'photo_2026-08-27_17-30-19 (6).jpg', w: 250 },
-    { src: 'photo_3076@31-07-2026_19-44-02.jpg', w: 270 },
-    { src: 'photo_2026-08-27_19-29-35.jpg', w: 200 },
+    { src: 'photo_2026-08-27_17-30-21 (9).jpg', w: 110 },
+    { src: 'photo_2986@31-07-2026_18-19-24.jpg', w: 95 },
+    { src: 'photo_3218@04-08-2026_21-04-08.jpg', w: 135 },
+    { src: 'photo_2026-08-27_17-30-19 (6).jpg', w: 125 },
+    { src: 'photo_3076@31-07-2026_19-44-02.jpg', w: 135 },
+    { src: 'photo_2026-08-27_19-29-35.jpg', w: 100 },
   ];
 
   const track3 = [
-    { src: 'photo_2026-08-30_02-47-41 (4).jpg', w: 290 },
-    { src: 'photo_2026-08-27_17-30-18 (2).jpg', w: 160 },
-    { src: 'photo_2026-08-27_17-30-19 (4).jpg', w: 260 },
-    { src: 'video_145@04-08-2026_22-24-35.mp4', w: 230, isVideo: true },
-    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 370 },
-    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 220 },
+    { src: 'photo_2026-08-30_02-47-41 (4).jpg', w: 145 },
+    { src: 'photo_2026-08-27_17-30-18 (2).jpg', w: 80 },
+    { src: 'photo_2026-08-27_17-30-19 (4).jpg', w: 130 },
+    { src: 'video_145@04-08-2026_22-24-35.mp4', w: 115, isVideo: true },
+    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 185 },
+    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 110 },
+  ];
+
+  const track4 = [
+    { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 125 },
+    { src: 'photo_3218@04-08-2026_21-04-08.jpg', w: 130 },
+    { src: 'photo_2026-08-30_02-47-41 (3).jpg', w: 135 },
+    { src: 'photo_2986@31-07-2026_18-19-24.jpg', w: 95 },
+    { src: 'photo_3076@31-07-2026_19-44-02.jpg', w: 140 },
+    { src: 'photo_2026-08-27_17-30-21 (9).jpg', w: 115 },
+  ];
+
+  const track5 = [
+    { src: 'photo_3217@04-08-2026_21-04-08.jpg', w: 95 },
+    { src: 'video_145@04-08-2026_22-24-35.mp4', w: 110, isVideo: true },
+    { src: 'photo_2026-08-27_17-30-19 (6).jpg', w: 130 },
+    { src: 'photo_2026-08-30_02-47-41 (4).jpg', w: 145 },
+    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 190 },
+    { src: 'photo_2026-08-27_17-30-18 (2).jpg', w: 85 },
+  ];
+
+  const track6 = [
+    { src: 'photo_2026-08-27_19-29-35.jpg', w: 105 },
+    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 115 },
+    { src: 'photo_2026-08-27_17-30-19 (4).jpg', w: 135 },
+    { src: 'video_145@04-08-2026_22-24-35.mp4', w: 115, isVideo: true },
+    { src: 'photo_3218@04-08-2026_21-04-08.jpg', w: 130 },
+    { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 120 },
+  ];
+
+  const tracks = [
+    { data: track1, dir: 'left', speed: '44s' },
+    { data: track2, dir: 'right', speed: '52s' },
+    { data: track3, dir: 'left', speed: '38s' },
+    { data: track4, dir: 'right', speed: '48s' },
+    { data: track5, dir: 'left', speed: '42s' },
+    { data: track6, dir: 'right', speed: '50s' },
   ];
 
   return (
@@ -144,23 +180,17 @@ export default function WideMosaicExperimentPage() {
           100% { transform: translateX(0); }
         }
 
-        .marquee-track-1 {
+        .marquee-track-left {
           display: flex;
-          gap: 16px;
+          gap: 10px;
           width: max-content;
-          animation: marqueeLeft 42s linear infinite;
+          animation: marqueeLeft var(--speed, 40s) linear infinite;
         }
-        .marquee-track-2 {
+        .marquee-track-right {
           display: flex;
-          gap: 16px;
+          gap: 10px;
           width: max-content;
-          animation: marqueeRight 48s linear infinite;
-        }
-        .marquee-track-3 {
-          display: flex;
-          gap: 16px;
-          width: max-content;
-          animation: marqueeLeft 38s linear infinite;
+          animation: marqueeRight var(--speed, 45s) linear infinite;
         }
 
         .paused {
@@ -168,127 +198,62 @@ export default function WideMosaicExperimentPage() {
         }
       `}</style>
 
-      {/* ================= BACKGROUND: INFINITE BLURRED DRIFTING SKETCHES ================= */}
+      {/* ================= BACKGROUND: 6 NARROW DRIFTING LANES ================= */}
       <div
         style={{
           position: 'absolute',
-          inset: '-20px',
+          inset: '-30px',
           zIndex: 1,
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          gap: '22px',
+          gap: '10px',
           filter: `blur(${blurAmount}px) brightness(${brightness}) saturate(1.2)`,
-          transform: 'scale(1.05)',
+          transform: 'scale(1.04)',
           pointerEvents: 'none',
           opacity: 0.95
         }}
       >
-        {/* Track 1 (Left drifting) */}
-        <div className={`marquee-track-1 ${isPaused ? 'paused' : ''}`}>
-          {[...track1, ...track1].map((item, i) => (
-            <div
-              key={`t1-${i}`}
-              style={{
-                width: `${item.w}px`,
-                height: '280px',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                border: '1.2px solid rgba(255,255,255,0.2)',
-                backgroundColor: '#18181C',
-                flexShrink: 0
-              }}
-            >
-              {item.isVideo ? (
-                <video
-                  src={`/art-sketches/${encodeURIComponent(item.src)}`}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              ) : (
-                <img
-                  src={`/art-sketches/${encodeURIComponent(item.src)}`}
-                  alt=""
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Track 2 (Right drifting) */}
-        <div className={`marquee-track-2 ${isPaused ? 'paused' : ''}`}>
-          {[...track2, ...track2].map((item, i) => (
-            <div
-              key={`t2-${i}`}
-              style={{
-                width: `${item.w}px`,
-                height: '280px',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                border: '1.2px solid rgba(255,255,255,0.2)',
-                backgroundColor: '#18181C',
-                flexShrink: 0
-              }}
-            >
-              {item.isVideo ? (
-                <video
-                  src={`/art-sketches/${encodeURIComponent(item.src)}`}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              ) : (
-                <img
-                  src={`/art-sketches/${encodeURIComponent(item.src)}`}
-                  alt=""
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Track 3 (Left drifting) */}
-        <div className={`marquee-track-3 ${isPaused ? 'paused' : ''}`}>
-          {[...track3, ...track3].map((item, i) => (
-            <div
-              key={`t3-${i}`}
-              style={{
-                width: `${item.w}px`,
-                height: '280px',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                border: '1.2px solid rgba(255,255,255,0.2)',
-                backgroundColor: '#18181C',
-                flexShrink: 0
-              }}
-            >
-              {item.isVideo ? (
-                <video
-                  src={`/art-sketches/${encodeURIComponent(item.src)}`}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              ) : (
-                <img
-                  src={`/art-sketches/${encodeURIComponent(item.src)}`}
-                  alt=""
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              )}
-            </div>
-          ))}
-        </div>
+        {tracks.map((tr, idx) => (
+          <div
+            key={`tr-${idx}`}
+            className={`${tr.dir === 'left' ? 'marquee-track-left' : 'marquee-track-right'} ${isPaused ? 'paused' : ''}`}
+            style={{ '--speed': tr.speed } as React.CSSProperties}
+          >
+            {[...tr.data, ...tr.data, ...tr.data].map((item, i) => (
+              <div
+                key={`tr-${idx}-${i}`}
+                style={{
+                  width: `${item.w}px`,
+                  height: '135px',
+                  borderRadius: '6px',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(255,255,255,0.18)',
+                  backgroundColor: '#16161A',
+                  flexShrink: 0
+                }}
+              >
+                {item.isVideo ? (
+                  <video
+                    src={`/art-sketches/${encodeURIComponent(item.src)}`}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                ) : (
+                  <img
+                    src={`/art-sketches/${encodeURIComponent(item.src)}`}
+                    alt=""
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
 
       {/* Cinematic Vignette Layer */}
@@ -297,7 +262,7 @@ export default function WideMosaicExperimentPage() {
           position: 'absolute',
           inset: 0,
           zIndex: 2,
-          background: 'radial-gradient(ellipse at center, rgba(8,8,10,0.25) 0%, rgba(8,8,10,0.85) 75%, rgba(8,8,10,0.98) 100%)',
+          background: 'radial-gradient(ellipse at center, rgba(8,8,10,0.2) 0%, rgba(8,8,10,0.85) 75%, rgba(8,8,10,0.98) 100%)',
           pointerEvents: 'none'
         }}
       />
