@@ -94,7 +94,7 @@ export default function WideMosaicPage() {
     { id: 'G4', x: 688, y: 1130, w: 158, h: 268, type: 'img', src: 'photo_2026-08-27_17-30-20 (4).jpg' }
   ];
 
-  // Desktop Sketches Grid (starts at x: 571px, exactly 8px from portrait right border)
+  // Desktop Sketches Grid
   const desktopSketchTiles = [
     { id: 'SK_VID', x: 571, y: 263, w: 332, h: 655, isVideo: true, src: 'video_145@04-08-2026_22-24-35.mp4' },
 
@@ -503,7 +503,7 @@ export default function WideMosaicPage() {
           })}
         </div>
 
-        {/* 2. Top Video Hero Card (EXACTLY 8px below portrait photos!) */}
+        {/* 2. Top Video Hero Card (Пододвинуто ещё на пару пикселей ближе!) */}
         <div
           style={{
             width: `${mobSilhouetteW}px`,
@@ -513,7 +513,7 @@ export default function WideMosaicPage() {
             backgroundColor: theme.cardBg,
             border: `1.2px solid ${theme.border}`,
             boxSizing: 'border-box',
-            margin: '0 auto'
+            margin: '-2px auto 0'
           }}
         >
           <CornerMarks size={10} />
