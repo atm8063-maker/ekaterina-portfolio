@@ -201,6 +201,30 @@ export default function WideMosaicPage() {
         }
       `}</style>
 
+      {/* Floating Switcher Link to Experiment */}
+      <a
+        href="/wide-mosaic-experiment"
+        style={{
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+          zIndex: 50,
+          backgroundColor: 'rgba(20, 241, 217, 0.15)',
+          color: '#14F1D9',
+          border: '1px solid #14F1D9',
+          padding: '8px 16px',
+          borderRadius: '20px',
+          textDecoration: 'none',
+          fontSize: '13px',
+          fontWeight: 700,
+          backdropFilter: 'blur(10px)',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+          transition: 'all 0.2s'
+        }}
+      >
+        ✨ Открыть Эксперимент (Портрет по центру + блюр-фон) →
+      </a>
+
       {/* ================= DESKTOP 1920 x 920 SCALED VIEW ================= */}
       <div
         className="desktop-view"
@@ -394,7 +418,7 @@ export default function WideMosaicPage() {
           margin: '0 auto'
         }}
       >
-        {/* 1. Raw Masked Silhouette Portrait (No outer card padding, exactly flush bottom!) */}
+        {/* 1. Raw Masked Silhouette Portrait */}
         <div
           style={{
             position: 'relative',
@@ -503,7 +527,7 @@ export default function WideMosaicPage() {
           })}
         </div>
 
-        {/* 2. Top Video Hero Card (Пододвинуто ещё на 2px ближе!) */}
+        {/* 2. Top Video Hero Card */}
         <div
           style={{
             width: `${mobSilhouetteW}px`,
