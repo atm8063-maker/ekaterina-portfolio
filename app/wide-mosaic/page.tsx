@@ -32,6 +32,7 @@ export default function WideMosaicPage() {
 
   const totalW = 1920;
   const totalH = 920;
+  const gap = 8; // Exact 8px gap everywhere
 
   // Portrait (Full Height = 920px, Width = 557px)
   const targetSilhouetteH = totalH;
@@ -89,9 +90,9 @@ export default function WideMosaicPage() {
     { id: 'G4', x: 688, y: 1130, w: 158, h: 268, type: 'img', src: 'photo_2026-08-27_17-30-20 (4).jpg' }
   ];
 
-  // Desktop Sketches Grid (ends exactly at 918px)
+  // Desktop Sketches Grid (starts at x = 571px, exactly 8px from portrait's right border!)
   const desktopSketchTiles = [
-    { id: 'SK_VID', x: 573, y: 263, w: 330, h: 655, isVideo: true, src: 'video_145@04-08-2026_22-24-35.mp4' },
+    { id: 'SK_VID', x: 571, y: 263, w: 332, h: 655, isVideo: true, src: 'video_145@04-08-2026_22-24-35.mp4' },
 
     { id: 'R1_1', x: 911,  y: 263, w: 196, h: 236, src: 'photo_3220@04-08-2026_21-04-08.jpg' },
     { id: 'R1_2', x: 1115, y: 263, w: 166, h: 236, src: 'photo_3217@04-08-2026_21-04-08.jpg' },
@@ -114,7 +115,7 @@ export default function WideMosaicPage() {
   // Mobile Sections: Beautiful, Balanced, Rhythmic Editorial Layout
   const mobileRow1_3 = [
     { src: 'photo_3220@04-08-2026_21-04-08.jpg', objectPos: 'center center' },
-    { src: 'photo_3217@04-08-2026_21-04-08.jpg', objectPos: 'center -3px' }, // Ещё на 5px выше
+    { src: 'photo_3217@04-08-2026_21-04-08.jpg', objectPos: 'center -3px' },
     { src: 'photo_2026-08-30_02-47-41 (3).jpg', objectPos: 'center center' },
   ];
 
@@ -122,7 +123,7 @@ export default function WideMosaicPage() {
 
   const mobileRow3_3 = [
     { src: 'photo_2026-08-27_17-30-20 (2).jpg', objectPos: 'center center' },
-    { src: 'photo_2026-08-27_17-30-21 (9).jpg', objectPos: 'center -4px' }, // Ещё на 5px выше
+    { src: 'photo_2026-08-27_17-30-21 (9).jpg', objectPos: 'center -4px' },
     { src: 'photo_2986@31-07-2026_18-19-24.jpg', objectPos: 'center center' },
   ];
 
@@ -163,7 +164,7 @@ export default function WideMosaicPage() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: isMobile ? '16px 8px 32px' : '0',
+        padding: isMobile ? '8px 8px 24px' : '0',
         margin: '0',
         boxSizing: 'border-box',
         fontFamily: 'Inter, -apple-system, sans-serif'
@@ -332,7 +333,7 @@ export default function WideMosaicPage() {
             })}
           </div>
 
-          {/* RIGHT SKETCHES TILES (Every single tile has 1.2px frame, 4 cyan corners, exact 8px gap) */}
+          {/* RIGHT SKETCHES TILES (Starts at x: 571px, exactly 8px from portrait right border) */}
           {desktopSketchTiles.map((t, idx) => (
             <div
               key={`sk-${idx}`}
@@ -390,11 +391,11 @@ export default function WideMosaicPage() {
         }}
       >
         {/* 1. Portrait on Top */}
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '0px' }}>
           <DarkPortraitMosaic />
         </div>
 
-        {/* 2. Top Video Hero Card */}
+        {/* 2. Top Video Hero Card (Exact 8px gap from portrait!) */}
         <div
           style={{
             width: '100%',
