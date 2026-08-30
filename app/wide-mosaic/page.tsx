@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import DarkPortraitMosaic from '@/components/DarkPortraitMosaic';
 
 export default function WideMosaicPage() {
   const [scaleFactor, setScaleFactor] = useState(1);
@@ -32,13 +31,18 @@ export default function WideMosaicPage() {
 
   const totalW = 1920;
   const totalH = 920;
-  const gap = 8; // Exact 8px gap everywhere
 
   // Portrait (Full Height = 920px, Width = 557px)
   const targetSilhouetteH = totalH;
   const targetSilhouetteW = Math.round(846 * (totalH / 1398)); // 557 px
   const s = totalH / 1398;
   const G = 1.9; // 7.5px visual gap
+
+  // Mobile portrait dimensions (exact 420 x 694px or scaled)
+  const mobSilhouetteW = 420;
+  const mobSilhouetteH = Math.round(420 * (1398 / 846)); // 694px
+  const mobS = mobSilhouetteH / 1398;
+  const mobG = 1.6;
 
   const portraitTiles = [
     { id: 'A1', x: 0,   y: 0,    w: 190, h: 172, type: 'img', src: 'photo_2026-08-27_17-30-20 (5).jpg' },
@@ -90,7 +94,7 @@ export default function WideMosaicPage() {
     { id: 'G4', x: 688, y: 1130, w: 158, h: 268, type: 'img', src: 'photo_2026-08-27_17-30-20 (4).jpg' }
   ];
 
-  // Desktop Sketches Grid (starts at x = 571px, exactly 8px from portrait's right border!)
+  // Desktop Sketches Grid (starts at x: 571px, exactly 8px from portrait right border)
   const desktopSketchTiles = [
     { id: 'SK_VID', x: 571, y: 263, w: 332, h: 655, isVideo: true, src: 'video_145@04-08-2026_22-24-35.mp4' },
 
@@ -112,7 +116,7 @@ export default function WideMosaicPage() {
     { id: 'R3_5', x: 1698, y: 762, w: 214, h: 156, src: 'photo_2026-08-27_17-30-19 (4).jpg' },
   ];
 
-  // Mobile Sections: Beautiful, Balanced, Rhythmic Editorial Layout
+  // Mobile Sections
   const mobileRow1_3 = [
     { src: 'photo_3220@04-08-2026_21-04-08.jpg', objectPos: 'center center' },
     { src: 'photo_3217@04-08-2026_21-04-08.jpg', objectPos: 'center -3px' },
@@ -164,7 +168,7 @@ export default function WideMosaicPage() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: isMobile ? '8px 8px 24px' : '0',
+        padding: isMobile ? '12px 8px 32px' : '0',
         margin: '0',
         boxSizing: 'border-box',
         fontFamily: 'Inter, -apple-system, sans-serif'
@@ -333,7 +337,7 @@ export default function WideMosaicPage() {
             })}
           </div>
 
-          {/* RIGHT SKETCHES TILES (Starts at x: 571px, exactly 8px from portrait right border) */}
+          {/* RIGHT SKETCHES TILES */}
           {desktopSketchTiles.map((t, idx) => (
             <div
               key={`sk-${idx}`}
@@ -385,26 +389,131 @@ export default function WideMosaicPage() {
           flexDirection: 'column',
           alignItems: 'center',
           width: '100%',
-          maxWidth: '460px',
+          maxWidth: '420px',
           gap: '8px',
           margin: '0 auto'
         }}
       >
-        {/* 1. Portrait on Top */}
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '0px' }}>
-          <DarkPortraitMosaic />
-        </div>
-
-        {/* 2. Top Video Hero Card (Exact 8px gap from portrait!) */}
+        {/* 1. Raw Masked Silhouette Portrait (No outer card padding, exactly flush bottom!) */}
         <div
           style={{
-            width: '100%',
+            position: 'relative',
+            width: `${mobSilhouetteW}px`,
+            height: `${mobSilhouetteH}px`,
+            WebkitMaskImage: "url('/Group%2047.png')",
+            maskImage: "url('/Group%2047.png')",
+            WebkitMaskSize: '100% 100%',
+            maskSize: '100% 100%',
+            WebkitMaskRepeat: 'no-repeat',
+            maskRepeat: 'no-repeat',
+            overflow: 'hidden',
+            margin: '0 auto'
+          }}
+        >
+          {portraitTiles.map((t, idx) => {
+            const rx = t.x * mobS + mobG;
+            const ry = t.y * mobS + mobG;
+            const rw = t.w * mobS - (mobG * 2);
+            const rh = t.h * mobS - (mobG * 2);
+
+            const style: React.CSSProperties = {
+              position: 'absolute',
+              left: `${rx}px`,
+              top: `${ry}px`,
+              width: `${rw}px`,
+              height: `${rh}px`,
+              overflow: 'hidden',
+              backgroundColor: theme.cardBg,
+              border: t.isPolygon ? 'none' : `1.2px solid ${theme.border}`,
+              boxSizing: 'border-box',
+              clipPath: t.clipPath || undefined
+            };
+
+            const imageSrc = t.src ? `/art-portraits/${encodeURIComponent(t.src)}` : '';
+
+            return (
+              <div key={`mob-p-${idx}`} style={style}>
+                {!t.isPolygon && (
+                  <>
+                    <div style={{ position: 'absolute', top: 0, left: 0, width: '8px', height: '8px', borderTop: `1.8px solid ${theme.corner}`, borderLeft: `1.8px solid ${theme.corner}`, pointerEvents: 'none', zIndex: 3 }} />
+                    <div style={{ position: 'absolute', top: 0, right: 0, width: '8px', height: '8px', borderTop: `1.8px solid ${theme.corner}`, borderRight: `1.8px solid ${theme.corner}`, pointerEvents: 'none', zIndex: 3 }} />
+                    <div style={{ position: 'absolute', bottom: 0, left: 0, width: '8px', height: '8px', borderBottom: `1.8px solid ${theme.corner}`, borderLeft: `1.8px solid ${theme.corner}`, pointerEvents: 'none', zIndex: 3 }} />
+                    <div style={{ position: 'absolute', bottom: 0, right: 0, width: '8px', height: '8px', borderBottom: `1.8px solid ${theme.corner}`, borderRight: `1.8px solid ${theme.corner}`, pointerEvents: 'none', zIndex: 3 }} />
+                  </>
+                )}
+
+                {t.isPolygon && (
+                  <svg
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 3 }}
+                    viewBox={`0 0 ${rw} ${rh}`}
+                  >
+                    <polygon
+                      points={`0,0 ${rw*0.809},0 ${rw*0.809},${rh*0.535} ${rw},${rh*0.535} ${rw},${rh} ${rw*0.191},${rh} ${rw*0.191},${rh*0.33} 0,${rh*0.33}`}
+                      fill="none"
+                      stroke={theme.border}
+                      strokeWidth="1.5"
+                    />
+                    <path d={`M 0 8 L 0 0 L 8 0`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
+                    <path d={`M ${rw*0.809 - 8} 0 L ${rw*0.809} 0 L ${rw*0.809} 8`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
+                    <path d={`M ${rw*0.809} ${rh*0.535 - 8} L ${rw*0.809} ${rh*0.535} L ${rw*0.809 + 8} ${rh*0.535}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
+                    <path d={`M ${rw - 8} ${rh*0.535} L ${rw} ${rh*0.535} L ${rw} ${rh*0.535 + 8}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
+                    <path d={`M ${rw} ${rh - 8} L ${rw} ${rh} L ${rw - 8} ${rh}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
+                    <path d={`M ${rw*0.191 + 8} ${rh} L ${rw*0.191} ${rh} L ${rw*0.191} - 8`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
+                    <path d={`M ${rw*0.191} ${rh*0.33 + 8} L ${rw*0.191} ${rh*0.33} L ${rw*0.191 - 8} ${rh*0.33}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
+                    <path d={`M 8 ${rh*0.33} L 0 ${rh*0.33} L 0 ${rh*0.33 - 8}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
+                  </svg>
+                )}
+
+                {t.type === 'face' && (
+                  <img
+                    src="/Group%2047.png"
+                    alt="Face"
+                    style={{
+                      position: 'absolute',
+                      left: `-${t.x * mobS}px`,
+                      top: `-${t.y * mobS}px`,
+                      width: `${mobSilhouetteW}px`,
+                      height: `${mobSilhouetteH}px`,
+                      maxWidth: 'none'
+                    }}
+                  />
+                )}
+
+                {t.type === 'video' && (
+                  <video
+                    src={`/art-portraits/${encodeURIComponent(t.src!)}`}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                )}
+
+                {t.type === 'img' && (
+                  <img
+                    src={imageSrc}
+                    alt="Artwork"
+                    loading="lazy"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* 2. Top Video Hero Card (EXACTLY 8px below portrait photos!) */}
+        <div
+          style={{
+            width: `${mobSilhouetteW}px`,
             height: '340px',
             position: 'relative',
             overflow: 'hidden',
             backgroundColor: theme.cardBg,
             border: `1.2px solid ${theme.border}`,
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            margin: '0 auto'
           }}
         >
           <CornerMarks size={10} />
@@ -419,7 +528,7 @@ export default function WideMosaicPage() {
         </div>
 
         {/* Row 1: Symmetrical 3-in-a-row */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', width: '100%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', width: `${mobSilhouetteW}px` }}>
           {mobileRow1_3.map((item, idx) => (
             <div
               key={`r1-${idx}`}
@@ -451,7 +560,7 @@ export default function WideMosaicPage() {
         {/* Row 2: Hero Wide Panoramic Sketch (Kids Illustration) */}
         <div
           style={{
-            width: '100%',
+            width: `${mobSilhouetteW}px`,
             height: '180px',
             position: 'relative',
             overflow: 'hidden',
@@ -470,7 +579,7 @@ export default function WideMosaicPage() {
         </div>
 
         {/* Row 3: Symmetrical 3-in-a-row */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', width: '100%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', width: `${mobSilhouetteW}px` }}>
           {mobileRow3_3.map((item, idx) => (
             <div
               key={`r3-${idx}`}
@@ -500,7 +609,7 @@ export default function WideMosaicPage() {
         </div>
 
         {/* Row 4: Symmetrical 2-in-a-row */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px', width: '100%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px', width: `${mobSilhouetteW}px` }}>
           {mobileRow4_2.map((item, idx) => (
             <div
               key={`r4-${idx}`}
@@ -530,7 +639,7 @@ export default function WideMosaicPage() {
         </div>
 
         {/* Row 5: Symmetrical 3-in-a-row */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', width: '100%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', width: `${mobSilhouetteW}px` }}>
           {mobileRow5_3.map((item, idx) => (
             <div
               key={`r5-${idx}`}
@@ -560,7 +669,7 @@ export default function WideMosaicPage() {
         </div>
 
         {/* Row 6: Symmetrical 2-in-a-row */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px', width: '100%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px', width: `${mobSilhouetteW}px` }}>
           {mobileRow6_2.map((item, idx) => (
             <div
               key={`r6-${idx}`}
