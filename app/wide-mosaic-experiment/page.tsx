@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 
 export default function WideMosaicExperimentPage() {
-  const [scaleFactor, setScaleFactor] = useState(1);
+  const [scaleFactor, setScaleFactor] = useState(0.85);
   const [isMobile, setIsMobile] = useState(false);
-  const [blurAmount, setBlurAmount] = useState(4);
-  const [brightness, setBrightness] = useState(0.42);
+  const [blurAmount, setBlurAmount] = useState(5);
+  const [brightness, setBrightness] = useState(0.40);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
@@ -15,9 +15,9 @@ export default function WideMosaicExperimentPage() {
       const h = window.innerHeight;
       setIsMobile(w <= 900);
 
-      const availableW = w - 32;
-      const availableH = h - 32;
-      const s = Math.min(availableW / 600, availableH / 920, 1);
+      const availableW = w - 40;
+      const availableH = h - 40;
+      const s = Math.min(availableW / 560, availableH / 924, 0.95);
       setScaleFactor(Math.max(0.35, s));
     };
     handleResize();
@@ -26,15 +26,15 @@ export default function WideMosaicExperimentPage() {
   }, []);
 
   const theme = {
-    bg: '#0A0A0C',
+    bg: '#08080A',
     cardBg: '#1A1A1E',
     border: 'rgba(255, 255, 255, 0.45)',
     corner: '#14F1D9'
   };
 
-  // Silhouette scale: Base 846 x 1398 -> Target 557 x 920
+  // Silhouette scale: Base 846 x 1398 -> Target 558 x 920
   const targetSilhouetteH = 920;
-  const targetSilhouetteW = Math.round(846 * (targetSilhouetteH / 1398)); // 557 px
+  const targetSilhouetteW = 558;
   const s = targetSilhouetteH / 1398;
   const G = 1.9;
 
@@ -90,30 +90,30 @@ export default function WideMosaicExperimentPage() {
 
   // Marquee Tracks for Background Infinite Loop
   const track1 = [
-    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 220 },
+    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 230 },
     { src: 'photo_3217@04-08-2026_21-04-08.jpg', w: 190 },
-    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 380 },
+    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 390 },
     { src: 'photo_2026-08-30_02-47-41 (3).jpg', w: 260 },
-    { src: 'video_145@04-08-2026_22-24-35.mp4', w: 200, isVideo: true },
-    { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 230 },
+    { src: 'video_145@04-08-2026_22-24-35.mp4', w: 210, isVideo: true },
+    { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 240 },
   ];
 
   const track2 = [
-    { src: 'photo_2026-08-27_17-30-21 (9).jpg', w: 210 },
-    { src: 'photo_2986@31-07-2026_18-19-24.jpg', w: 180 },
-    { src: 'photo_3218@04-08-2026_21-04-08.jpg', w: 260 },
-    { src: 'photo_2026-08-27_17-30-19 (6).jpg', w: 240 },
-    { src: 'photo_3076@31-07-2026_19-44-02.jpg', w: 260 },
-    { src: 'photo_2026-08-27_19-29-35.jpg', w: 190 },
+    { src: 'photo_2026-08-27_17-30-21 (9).jpg', w: 220 },
+    { src: 'photo_2986@31-07-2026_18-19-24.jpg', w: 190 },
+    { src: 'photo_3218@04-08-2026_21-04-08.jpg', w: 270 },
+    { src: 'photo_2026-08-27_17-30-19 (6).jpg', w: 250 },
+    { src: 'photo_3076@31-07-2026_19-44-02.jpg', w: 270 },
+    { src: 'photo_2026-08-27_19-29-35.jpg', w: 200 },
   ];
 
   const track3 = [
-    { src: 'photo_2026-08-30_02-47-41 (4).jpg', w: 280 },
-    { src: 'photo_2026-08-27_17-30-18 (2).jpg', w: 150 },
-    { src: 'photo_2026-08-27_17-30-19 (4).jpg', w: 250 },
-    { src: 'video_145@04-08-2026_22-24-35.mp4', w: 220, isVideo: true },
-    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 360 },
-    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 210 },
+    { src: 'photo_2026-08-30_02-47-41 (4).jpg', w: 290 },
+    { src: 'photo_2026-08-27_17-30-18 (2).jpg', w: 160 },
+    { src: 'photo_2026-08-27_17-30-19 (4).jpg', w: 260 },
+    { src: 'video_145@04-08-2026_22-24-35.mp4', w: 230, isVideo: true },
+    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 370 },
+    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 220 },
   ];
 
   return (
@@ -121,7 +121,7 @@ export default function WideMosaicExperimentPage() {
       style={{
         backgroundColor: theme.bg,
         color: '#FFFFFF',
-        minHeight: '100vh',
+        height: '100vh',
         width: '100vw',
         overflow: 'hidden',
         position: 'relative',
@@ -148,19 +148,19 @@ export default function WideMosaicExperimentPage() {
           display: flex;
           gap: 16px;
           width: max-content;
-          animation: marqueeLeft 38s linear infinite;
+          animation: marqueeLeft 42s linear infinite;
         }
         .marquee-track-2 {
           display: flex;
           gap: 16px;
           width: max-content;
-          animation: marqueeRight 44s linear infinite;
+          animation: marqueeRight 48s linear infinite;
         }
         .marquee-track-3 {
           display: flex;
           gap: 16px;
           width: max-content;
-          animation: marqueeLeft 34s linear infinite;
+          animation: marqueeLeft 38s linear infinite;
         }
 
         .paused {
@@ -172,15 +172,15 @@ export default function WideMosaicExperimentPage() {
       <div
         style={{
           position: 'absolute',
-          inset: 0,
+          inset: '-20px',
           zIndex: 1,
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          gap: '20px',
-          filter: `blur(${blurAmount}px) brightness(${brightness}) saturate(1.15)`,
-          transform: 'scale(1.08)',
+          gap: '22px',
+          filter: `blur(${blurAmount}px) brightness(${brightness}) saturate(1.2)`,
+          transform: 'scale(1.05)',
           pointerEvents: 'none',
           opacity: 0.95
         }}
@@ -192,10 +192,10 @@ export default function WideMosaicExperimentPage() {
               key={`t1-${i}`}
               style={{
                 width: `${item.w}px`,
-                height: '270px',
+                height: '280px',
                 borderRadius: '8px',
                 overflow: 'hidden',
-                border: '1px solid rgba(255,255,255,0.2)',
+                border: '1.2px solid rgba(255,255,255,0.2)',
                 backgroundColor: '#18181C',
                 flexShrink: 0
               }}
@@ -227,10 +227,10 @@ export default function WideMosaicExperimentPage() {
               key={`t2-${i}`}
               style={{
                 width: `${item.w}px`,
-                height: '270px',
+                height: '280px',
                 borderRadius: '8px',
                 overflow: 'hidden',
-                border: '1px solid rgba(255,255,255,0.2)',
+                border: '1.2px solid rgba(255,255,255,0.2)',
                 backgroundColor: '#18181C',
                 flexShrink: 0
               }}
@@ -262,10 +262,10 @@ export default function WideMosaicExperimentPage() {
               key={`t3-${i}`}
               style={{
                 width: `${item.w}px`,
-                height: '270px',
+                height: '280px',
                 borderRadius: '8px',
                 overflow: 'hidden',
-                border: '1px solid rgba(255,255,255,0.2)',
+                border: '1.2px solid rgba(255,255,255,0.2)',
                 backgroundColor: '#18181C',
                 flexShrink: 0
               }}
@@ -291,36 +291,34 @@ export default function WideMosaicExperimentPage() {
         </div>
       </div>
 
-      {/* Cinematic Vignette & Radial Glow Layer */}
+      {/* Cinematic Vignette Layer */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           zIndex: 2,
-          background: 'radial-gradient(ellipse at center, rgba(10,10,12,0.3) 0%, rgba(10,10,12,0.85) 75%, rgba(10,10,12,0.98) 100%)',
+          background: 'radial-gradient(ellipse at center, rgba(8,8,10,0.25) 0%, rgba(8,8,10,0.85) 75%, rgba(8,8,10,0.98) 100%)',
           pointerEvents: 'none'
         }}
       />
 
-      {/* ================= FOREGROUND: CENTERPIECE CRISP PORTRAIT ================= */}
+      {/* ================= FOREGROUND: PERFECT CENTERED CRISP PORTRAIT ================= */}
       <div
         style={{
           position: 'relative',
           zIndex: 10,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: `${targetSilhouetteW * scaleFactor}px`,
-          height: `${targetSilhouetteH * scaleFactor}px`,
-          filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.8)) drop-shadow(0 0 35px rgba(20,241,217,0.25))'
+          width: `${targetSilhouetteW}px`,
+          height: `${targetSilhouetteH}px`,
+          transform: `scale(${scaleFactor})`,
+          transformOrigin: 'center center',
+          filter: 'drop-shadow(0 25px 60px rgba(0,0,0,0.9)) drop-shadow(0 0 45px rgba(20,241,217,0.35))',
+          pointerEvents: 'auto'
         }}
       >
         <div
           style={{
-            width: `${targetSilhouetteW}px`,
-            height: `${targetSilhouetteH}px`,
-            transform: `scale(${scaleFactor})`,
-            transformOrigin: 'center center',
+            width: '100%',
+            height: '100%',
             position: 'relative',
             WebkitMaskImage: "url('/Group%2047.png')",
             maskImage: "url('/Group%2047.png')",
@@ -435,12 +433,12 @@ export default function WideMosaicExperimentPage() {
           display: 'flex',
           alignItems: 'center',
           gap: '12px',
-          backgroundColor: 'rgba(15, 15, 17, 0.85)',
+          backgroundColor: 'rgba(15, 15, 17, 0.88)',
           backdropFilter: 'blur(12px)',
           padding: '10px 16px',
           borderRadius: '30px',
           border: '1px solid rgba(255,255,255,0.15)',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.6)',
           fontSize: '13px',
           color: '#E0E0E0'
         }}
