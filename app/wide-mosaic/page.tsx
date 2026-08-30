@@ -457,7 +457,7 @@ export default function WideMosaicPage() {
                     <path d={`M ${rw*0.809 - 8} 0 L ${rw*0.809} 0 L ${rw*0.809} 8`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                     <path d={`M ${rw*0.809} ${rh*0.535 - 8} L ${rw*0.809} ${rh*0.535} L ${rw*0.809 + 8} ${rh*0.535}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                     <path d={`M ${rw - 8} ${rh*0.535} L ${rw} ${rh*0.535} L ${rw} ${rh*0.535 + 8}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
-                    <path d={`M ${rw} ${rh - 8} L ${rw} ${rh} L ${rw - 8} ${rh}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
+                    <path d={`M ${rw} ${rh - 8} L ${rw} ${rh} L ${rw - 10} ${rh}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                     <path d={`M ${rw*0.191 + 8} ${rh} L ${rw*0.191} ${rh} L ${rw*0.191} - 8`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                     <path d={`M ${rw*0.191} ${rh*0.33 + 8} L ${rw*0.191} ${rh*0.33} L ${rw*0.191 - 8} ${rh*0.33}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                     <path d={`M 8 ${rh*0.33} L 0 ${rh*0.33} L 0 ${rh*0.33 - 8}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
@@ -503,7 +503,7 @@ export default function WideMosaicPage() {
           })}
         </div>
 
-        {/* 2. Top Video Hero Card (Пододвинуто ещё на пару пикселей ближе!) */}
+        {/* 2. Top Video Hero Card (Пододвинуто ещё на 2px ближе!) */}
         <div
           style={{
             width: `${mobSilhouetteW}px`,
@@ -513,7 +513,7 @@ export default function WideMosaicPage() {
             backgroundColor: theme.cardBg,
             border: `1.2px solid ${theme.border}`,
             boxSizing: 'border-box',
-            margin: '-2px auto 0'
+            margin: '-4px auto 0'
           }}
         >
           <CornerMarks size={10} />
