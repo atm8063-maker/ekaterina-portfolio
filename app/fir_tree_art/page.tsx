@@ -15,6 +15,7 @@ import { ArtAwards } from "@/components/sections/art-awards";
 import { ArtBrand } from "@/components/sections/art-brand";
 import { ArtTeaching } from "@/components/sections/art-teaching";
 import { ArtContacts } from "@/components/sections/art-contacts";
+import { ArtSketches } from "@/components/sections/art-sketches";
 import { StubSection } from "@/components/ui/stub-section";
 
 export default function ArtPage() {
@@ -65,11 +66,7 @@ export default function ArtPage() {
         <ArtTechniques />
 
         {/* 8. СКЕТЧИ И ПОРТРЕТЫ */}
-        <StubSection 
-          id="sketches-portraits"
-          title="Скетчи и портреты" 
-          desc="Выделенный блок с галереей. Здесь будет представлена огромная коллекция портретов и классического рисунка, показывающая фундаментальную базу."
-        />
+        <ArtSketches />
 
         {/* 9. БЛОК С ЦИФРАМИ */}
         <ArtNumbers />

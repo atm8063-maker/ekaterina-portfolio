@@ -16,23 +16,13 @@ export function ArtNoBorders() {
             className="lg:col-span-7 flex flex-col justify-center order-1"
           >
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white font-montserrat mb-6 leading-[1.1]">
-              ИСКУССТВО <br className="hidden sm:inline" />
-              <span className="text-[#14F1D9]">БЕЗ ГРАНИЦ</span>
+              ШИРОКИЙ <br className="hidden sm:inline" />
+              <span className="text-[#14F1D9]">ДИАПАЗОН СМОЛЫ</span>
             </h2>
             
-            <p className="text-[#A3A3A3] text-lg sm:text-xl font-medium leading-[1.7] font-inter mb-8 max-w-[560px]">
-              Мой подход к Resin Art выходит за рамки привычного: я исследую игру света, создаю глубокие, завораживающие текстуры, которые превращают обычные пространства в живые галереи.
+            <p className="text-[#A3A3A3] text-base sm:text-lg lg:text-xl font-medium leading-[1.7] font-inter max-w-[560px]">
+              Эпоксидная смола отлично демонстрирует свою универсальность при создании любых форматов. Я работаю как с малыми формами, так и с крупными: от миниатюрных украшений до мебели. Картины, домашний декор, посуда, арт-объекты, ёлочные игрушки — смола отлично подходит для любой категории.
             </p>
-
-            <div className="p-6 bg-white/[0.03] border border-white/10 relative overflow-hidden backdrop-blur-sm max-w-[520px]">
-              <div className="absolute top-0 left-0 w-1 h-full bg-[#14F1D9]"></div>
-              <p className="italic text-white/90 text-sm sm:text-base leading-relaxed font-inter">
-                «Каждая работа - это не просто картина, это диалог, способный изменить атмосферу вокруг, сделать ее уникальной».
-              </p>
-              <p className="text-xs uppercase tracking-widest text-[#14F1D9] font-bold font-montserrat mt-3">
-                - Екатерина Шумович
-              </p>
-            </div>
           </motion.div>
 
           <motion.div 
