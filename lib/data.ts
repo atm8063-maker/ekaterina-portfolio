@@ -1,13 +1,13 @@
 export const siteData = {
-  name: 'Ник Потапов',
-  role: 'AI Solutions Architect',
-  subtitle: 'AI Solutions Architect',
+  name: 'Екатерина Разумова',
+  role: 'PR-директор',
+  subtitle: 'PR & Communications',
   description:
-    'Аналитика, разработка, автоматизация бизнес-процессов, лендинги, боты, growth-стратегии, внедрение AI.',
+    'PR-сопровождение брендов, медиа-стратегии, вывод новых продуктов на рынок, работа с федеральными СМИ и личный бренд.',
   telegram: {
-    dm: '@npc_welcome_bot',
+    dm: '@ekaterina_razumova', // TODO: update with actual handle
   },
-  linkedin: 'https://www.linkedin.com/in/nickpotapov/',
+  linkedin: 'https://www.linkedin.com/', // TODO: update with actual handle
 }
 
 export type Metric = {
@@ -23,39 +23,12 @@ export type CaseSummary = {
   metrics: Metric[]
 }
 
-export const cases: CaseSummary[] = [
-  {
-    slug: 'reddit-agent',
-    tag: 'AI-агенты',
-    title: 'Reddit-агент · B2C SaaS',
-    description:
-      'Агент мониторит 15 профильных сабреддитов и приносит готовые черновики комментариев за 5 минут.',
-    metrics: [
-      { value: '340', label: 'упоминаний' },
-      { value: '12', label: 'горячих лидов' },
-      { value: '<$8', label: 'в месяц' },
-    ],
-  },
-  {
-    slug: 'b2b-landing',
-    tag: 'Лендинг · GEO',
-    title: 'Лендинг B2B SaaS · EdTech',
-    description:
-      'Лендинг без рекламного бюджета, который привёл 18 демо-заявок за 2 месяца органикой.',
-    metrics: [
-      { value: '198', label: 'уникальных' },
-      { value: '18', label: 'B2B-заявок' },
-      { value: '41→89', label: 'GEO Score' },
-    ],
-  },
-]
-
 export type CaseSection = {
   id: string
   heading: string
   paragraphs?: string[]
-  callout?: string
   steps?: string[]
+  callout?: string
 }
 
 export type CaseDetail = {
@@ -63,283 +36,301 @@ export type CaseDetail = {
   tag: string
   title: string
   lead: string
-  keyMetrics: { value: string; label: string }[]
-  metricsPeriod: string
-  beforeAfter: { before: string; after: string }[]
-  sections: CaseSection[]
-  takeaways: { lead: string; text: string }[]
-  ctaOffer: string
+  meta: {
+    client: string
+    role: string
+    year: string
+  }
+  keyMetrics: Metric[]
+  sections?: CaseSection[]
 }
+
+export const cases: CaseSummary[] = [
+  { slug: '01-insigma', tag: 'Девелопмент · PR', title: 'ГК Insigma', description: 'PR-сопровождение трёх девелоперских проектов премиум-класса', metrics: [] },
+  { slug: '02-contact-real-estate', tag: 'PR & SMM', title: 'Contact Real Estate', description: 'Несколько сотен публикаций за 2,5 года — системная PR-работа', metrics: [] },
+  { slug: '03-pobeda-dizayna', tag: 'PR & Маркетинг', title: 'Победа Дизайна', description: 'PR-стратегия с нуля — публикации на РБК и первый в Москве дизайн-бранч', metrics: [] },
+  { slug: '04-kart-motors-honda-civic-cup', tag: 'Спорт PR', title: 'КАРТ Моторс & Honda', description: 'Рекламные кампании дилера Honda и пресс-служба Кубка Honda Civic Cup', metrics: [] },
+  { slug: '05-nick-potapov-site', tag: 'UX/UI · Контент', title: 'Сайт Nick Potapov', description: 'Информационная архитектура и 8 кейсов на двух языках', metrics: [] },
+  { slug: '06-mafia-assistant', tag: 'Product · UX', title: 'Mafia Digital Assistant', description: 'Концепция и UX Telegram-бота для офлайн-игр в Мафию', metrics: [] },
+  { slug: '07-resin-art-school', tag: 'Образование · SMM', title: 'Resin Art School', description: 'Кураторство учеников, прямые эфиры и ведение SMM онлайн-школы', metrics: [] },
+  { slug: '08-mockup-real-estate', tag: 'UI/UX & Web', title: 'Агентство недвижимости', description: 'Мокап агентства недвижимости, 2023', metrics: [] },
+  { slug: '09-mockup-electronics', tag: 'UI/UX & Web', title: 'Магазин электроники', description: 'Мокап магазина с электроникой, 2023', metrics: [] },
+  { slug: '10-house-project', tag: 'Design', title: 'Проект дома', description: 'Проект своего дома, визуализация, реализация', metrics: [] },
+  { slug: '11-landscape-project', tag: 'Design', title: 'Ландшафтный дизайн', description: 'Проект по ландшафту для своего участка', metrics: [] },
+  { slug: '12-resin-masterclass', tag: 'Art & PR', title: 'Мастер-класс', description: 'Мастер-класс на форуме смолянистов, 2021', metrics: [] },
+  { slug: '13-local-tv-report', tag: 'PR & Media', title: 'ТВ Репортаж', description: 'Репортаж на местном ТВ, 2020', metrics: [] }
+]
 
 export const caseDetails: Record<string, CaseDetail> = {
-  'reddit-agent': {
-    slug: 'reddit-agent',
-    tag: 'AI-агенты',
-    title: 'Reddit-агент для B2C SaaS',
-    lead: 'Как один агент на Claude заменил ручной мониторинг 15 сабреддитов и стал приносить готовые черновики комментариев и горячих лидов меньше чем за 8 долларов в месяц.',
+  '01-insigma': {
+    slug: '01-insigma',
+    tag: 'Девелопмент · PR',
+    title: 'ГК Insigma',
+    lead: 'Три года в роли PR-директора в ГК Insigma: полная PR-стратегия и её реализация для трёх флагманских проектов — собрания клубных домов ORDYNKA, квартала премиум-класса RedSide и ЖК NV\'9. Организация пресс-конференций, пресс-туры на объекты, публикации в профильных и деловых СМИ на всех стадиях — от концепции до ввода.',
+    meta: {
+      client: 'ГК Insigma',
+      role: 'PR-директор',
+      year: '2016–2019'
+    },
     keyMetrics: [
-      { value: '340', label: 'релевантных упоминаний' },
-      { value: '12', label: 'горячих лидов' },
-      { value: '<$8', label: 'затрат в месяц' },
-      { value: '5 мин', label: 'на готовый черновик' },
-    ],
-    metricsPeriod: 'Период: март — май 2025 · Источник: Reddit API / внутренний лог',
-    beforeAfter: [
-      { before: 'Ручной обход сабреддитов раз в день', after: 'Автоматический мониторинг 15 сабреддитов 24/7' },
-      { before: '1–2 часа на поиск релевантных тредов', after: '5 минут на готовый черновик ответа' },
-      { before: 'Лиды терялись в шуме ленты', after: '12 квалифицированных лидов за квартал' },
-      { before: 'Подписки на дорогие сервисы мониторинга', after: 'Меньше $8 в месяц на API' },
+      { value: '3', label: 'флагманских проекта' },
+      { value: '10+', label: 'ведущих федеральных СМИ' },
+      { value: '100%', label: 'сопровождение от концепции до сдачи' }
     ],
     sections: [
       {
-        id: 'problem',
-        heading: 'Проблема',
+        id: 'ordynka',
+        heading: 'ORDYNKA by BOSCO Casa (Замоскворечье)',
         paragraphs: [
-          'У B2C SaaS была живая аудитория на Reddit, но дотянуться до неё вручную не получалось: релевантные обсуждения появлялись в полутора десятках сабреддитов, и без постоянного мониторинга команда узнавала о них слишком поздно.',
-          'Платные сервисы социального слушания стоили несопоставимо дорого для ранней стадии, а нанимать отдельного человека под мониторинг было нерентабельно.',
-        ],
-        callout: 'Главная боль была не в ответах, а в скорости: горячий тред живёт несколько часов, и опоздать значило потерять лида.',
+          'Клубный комплекс в самом сердце Замоскворечья — на месте исторической кондитерской фабрики «Рот Фронт» и купеческой усадьбы. Уникальная концепция: реконструированные дореволюционные фасады в сочетании с современными корпусами.',
+          'Одной из главных фишек проекта стала эксклюзивная коллаборация с брендом BOSCO Casa. Объект не раз получал престижные архитектурные премии.'
+        ]
       },
       {
-        id: 'solution',
-        heading: 'Решение',
+        id: 'redside',
+        heading: 'RedSide (Пресня)',
         paragraphs: [
-          'Я собрала агента, который раз в час опрашивает Reddit API по списку сабреддитов и ключевых тем, фильтрует шум и передаёт релевантные треды в Claude для оценки и черновика ответа.',
-        ],
+          'Квартал из 8 монолитно-кирпичных корпусов в Пресненском районе. Проект позиционировался как «тихий город в городе». Строительство было успешно завершено, и комплекс был сдан в 2017 году под моим информационным сопровождением.'
+        ]
+      },
+      {
+        id: 'actions',
+        heading: 'Что было сделано',
         steps: [
-          'Сбор свежих постов и комментариев через Reddit API по 15 сабреддитам.',
-          'Первичная фильтрация по ключевым словам и давности треда.',
-          'Оценка релевантности и тональности через Claude с заданным контекстом продукта.',
-          'Генерация черновика комментария в голосе бренда — без автопостинга, с финальной проверкой человеком.',
-          'Складирование горячих тредов и черновиков в очередь на ревью.',
-        ],
+          'Разработала и реализовывала PR-стратегию по всем трём проектам с нуля.',
+          'Организовывала масштабные пресс-конференции с участием руководства компании.',
+          'Проводила регулярные пресс-туры на объекты на разных стадиях строительства.',
+          'Готовила спикеров к интервью, писала пресс-релизы и аналитические комментарии для деловой прессы.',
+          'Выстраивала плотное взаимодействие с брокерским сообществом.'
+        ]
       },
       {
-        id: 'result',
-        heading: 'Результат',
+        id: 'media',
+        heading: 'Медиа-присутствие',
         paragraphs: [
-          'За квартал агент нашёл 340 релевантных упоминаний и довёл 12 из них до квалифицированных лидов — при затратах меньше восьми долларов в месяц на API.',
-          'Главное — изменилась скорость реакции: команда стала появляться в обсуждениях, пока они ещё живые, а не сутки спустя.',
+          'СМИ, которые активно освещали проекты Insigma в этот период благодаря выстроенным отношениям: Urbanus.ru, Novostroy-M, РБК-Недвижимость, Ведомости, Moskvadeluxe.ru, Avaho.ru, Frommillion.ru, ЕРЗ, mskguru.ru.'
         ],
-      },
-    ],
-    takeaways: [
-      { lead: 'Скорость важнее охвата', text: 'В живых обсуждениях выигрывает не тот, кто мониторит всё, а тот, кто отвечает первым и по делу.' },
-      { lead: 'Человек на финальном шаге', text: 'Агент готовит черновик, но публикует человек — это сохраняет голос бренда и страхует от ошибок.' },
-      { lead: 'Дёшево — это нормально', text: 'Тонкий агент на API закрывает задачу, для которой раньше покупали дорогие платформы.' },
-    ],
-    ctaOffer: 'Нужен похожий агент под ваш продукт или канал? Расскажите задачу — прикину, что реально собрать.',
+        callout: 'Системная PR-работа обеспечила постоянное присутствие проектов Insigma в информационном поле ведущих деловых и профильных изданий на протяжении всех трёх лет.'
+      }
+    ]
   },
-  'b2b-landing': {
-    slug: 'b2b-landing',
-    tag: 'Лендинг · GEO',
-    title: 'Лендинг B2B SaaS в EdTech',
-    lead: 'Как лендинг без рекламного бюджета вырос по GEO Score с 41 до 89 и привёл 18 демо-заявок за два месяца чистой органикой.',
+  '02-contact-real-estate': {
+    slug: '02-contact-real-estate',
+    tag: 'PR & SMM',
+    title: 'Contact Real Estate',
+    lead: 'Разработка и реализация PR-стратегии для элитного агентства недвижимости. Выстраивание долгосрочных отношений с журналистами, регулярное инициирование публикаций и полное ведение SMM-каналов агентства.',
+    meta: {
+      client: 'Contact Real Estate',
+      role: 'PR-директор',
+      year: '2014–2016'
+    },
     keyMetrics: [
-      { value: '198', label: 'уникальных визитов' },
-      { value: '18', label: 'B2B демо-заявок' },
-      { value: '41→89', label: 'GEO Score' },
-      { value: '0 ₽', label: 'рекламный бюджет' },
-    ],
-    metricsPeriod: 'Период: апрель — май 2025 · Источник: GA4',
-    beforeAfter: [
-      { before: 'Старый лендинг с GEO Score 41', after: 'Переработанная структура с GEO Score 89' },
-      { before: 'Заявки только с платного трафика', after: '18 заявок чистой органикой' },
-      { before: 'Контент без учёта AI-выдачи', after: 'Структура под цитирование в AI-ответах' },
-      { before: 'Один язык, медленный запуск', after: 'Готовность к мультиязычности с первого дня' },
+      { value: '300+', label: 'публикаций в СМИ за 2,5 года' },
+      { value: '0 ₽', label: 'бюджет на публикации' },
+      { value: 'ТОП-5', label: 'агентств элитной недвижимости' }
     ],
     sections: [
       {
-        id: 'problem',
-        heading: 'Проблема',
+        id: 'strategy',
+        heading: 'Стратегия и задачи',
         paragraphs: [
-          'B2B SaaS в EdTech жил на платном трафике: как только бюджет заканчивался, заявки прекращались. Органика почти не приносила лидов, а контент не попадал в AI-выдачу.',
-        ],
-        callout: 'Задача звучала так: получить предсказуемый поток демо-заявок без постоянных вложений в рекламу.',
+          'Главная цель заключалась в укреплении позиций Contact Real Estate на высококонкурентном рынке элитной недвижимости Москвы. Требовалось выстроить системную работу с ведущими деловыми и отраслевыми СМИ для подтверждения экспертности агентства.'
+        ]
       },
       {
-        id: 'solution',
-        heading: 'Решение',
-        paragraphs: [
-          'Я переработала лендинг под GEO — оптимизацию под ответы AI-систем и поисковую выдачу нового поколения. Контент структурировала так, чтобы его было удобно цитировать.',
-        ],
+        id: 'actions',
+        heading: 'Что было сделано',
         steps: [
-          'Аудит текущего GEO Score и слабых мест структуры.',
-          'Переписала ключевые блоки под чёткие вопросы-ответы целевой аудитории.',
-          'Добавила структурированные данные и понятную семантику разделов.',
-          'Собрала лендинг на Vercel, разметку и события повесила в GTM.',
-          'Заложила архитектуру под быстрый запуск дополнительных языков.',
-        ],
+          'Регулярное инициирование публикаций: пресс-релизы, экспертные колонки, аналитические обзоры рынка.',
+          'Организация пресс-завтраков и бизнес-встреч с журналистами пула «Недвижимость».',
+          'Спикерская поддержка первых лиц компании: подготовка тезисов, организация интервью на радио и ТВ.',
+          'Полное ведение официальных сообществ агентства в социальных сетях (Facebook, Instagram).'
+        ]
       },
       {
-        id: 'result',
+        id: 'results',
         heading: 'Результат',
         paragraphs: [
-          'GEO Score вырос с 41 до 89. За два месяца лендинг привёл 198 уникальных визитов и 18 B2B демо-заявок — без единого рубля на рекламу.',
+          'За 2,5 года было инициировано несколько сотен бесплатных публикаций в таких изданиях как Ведомости, Коммерсантъ, РБК, Forbes, Интерфакс, РИА Новости. Узнаваемость бренда в профессиональной среде значительно возросла, что помогло агентству стабильно удерживать позиции в ТОП-5.'
         ],
-      },
-    ],
-    takeaways: [
-      { lead: 'GEO — это новый SEO', text: 'Структура под цитирование в AI-ответах даёт трафик там, где обычная оптимизация уже не работает.' },
-      { lead: 'Органика предсказуема', text: 'Хорошо собранный лендинг приносит заявки и после того, как вы перестали в него вкладываться.' },
-      { lead: 'Закладывайте масштаб сразу', text: 'Архитектура под мультиязычность с первого дня экономит недели на следующем рынке.' },
-    ],
-    ctaOffer: 'Хотите лендинг, который приводит заявки органикой? Напишите — посмотрю ваш случай.',
+        callout: 'Системный PR позволил сделать бренд узнаваемым и авторитетным без раздутого маркетингового бюджета на прямую рекламу в прессе.'
+      }
+    ]
   },
-}
-
-export type Project = {
-  tag: string
-  title: string
-  description: string
-  before: string
-  after: string
-  result: string
-  stack: string[]
-}
-
-export const projects: Record<'ru' | 'en', Project[]> = {
-  ru: [
-    {
-      tag: 'Консалтинг',
-      title: 'Аудит и оптимизация бизнес-процессов',
-      description: 'Поиск узких мест в воронках и рутинных операциях, которые можно автоматизировать или ускорить с помощью AI.',
-      before:
-        'Хаотичные ручные процессы, потеря лидов и слив времени сотрудников на рутину без понимания, где автоматизация сэкономит деньги.',
-      after:
-        'Интерактивная карта процессов (AS-IS / TO-BE), пошаговый план внедрения ИИ-агентов и расчет окупаемости автоматизации.',
-      result: 'Четкий план оцифровки процессов с высвобождением до 40% рабочего времени команды.',
-      stack: ['Process Mapping', 'ROI Analysis', 'AI Feasibility Audit'],
+  '03-pobeda-dizayna': {
+    slug: '03-pobeda-dizayna',
+    tag: 'PR & Маркетинг',
+    title: 'Победа Дизайна',
+    lead: 'Вывод студии архитектуры и дизайна интерьеров на рынок с нуля. Разработка коммуникационной стратегии, позиционирования и запуск медиа-кампании, включая публикации на РБК и организацию первого в Москве дизайн-бранча.',
+    meta: {
+      client: 'Победа Дизайна',
+      role: 'PR-директор',
+      year: '2013'
     },
-    {
-      tag: 'ИИ-интеграция',
-      title: 'Внедрение AI-агентов под ключ',
-      description: 'Разработка автономных агентов для обработки почты, мониторинга соцсетей, ответов клиентам и лидогенерации.',
-      before:
-        'Команда вручную мониторит сабреддиты, соцсети и почту, отвечая клиентам часами и упуская горячих лидов.',
-      after:
-        'Автономные ИИ-агенты на базе Claude/Gemini, интегрированные по API с твоими базами данных и мессенджерами.',
-      result: 'Круглосуточный автоматический парсинг, квалификация лидов и генерация черновиков ответов за 5 минут.',
-      stack: ['OpenAI API', 'Claude API', 'n8n', 'Python', 'REST API'],
+    keyMetrics: [
+      { value: 'С нуля', label: 'вывод на рынок' },
+      { value: '#1', label: 'дизайн-бранч в Москве' },
+      { value: 'РБК', label: 'публикации в деловой прессе' }
+    ]
+  },
+  '04-kart-motors-honda-civic-cup': {
+    slug: '04-kart-motors-honda-civic-cup',
+    tag: 'Спорт PR',
+    title: 'КАРТ Моторс & Honda',
+    lead: 'Комплексная работа: рекламные кампании дилерского центра Honda и позиция пресс-секретаря гоночной команды Racing Art в рамках чемпионата Honda Civic Cup. Приглашение ТВ, написание статей в журналы, освещение соревнований.',
+    meta: {
+      client: 'КАРТ Моторс',
+      role: 'Пресс-секретарь',
+      year: '2008–2009'
     },
-    {
-      tag: 'Разработка',
-      title: 'Быстрые лендинги и многостраничные каталоги',
-      description: 'Проектирование баз данных, внедрение удобных систем управления контентом (CMS) и сборка быстрых фронтендов.',
-      before:
-        'Медленные сайты на конструкторах, сложная и перегруженная админка, падение серверов при наплыве трафика.',
-      after:
-        'Сверхбыстрые статические сайты на Astro/Next.js с подключением Headless CMS (Directus, Supabase) и деплоем в Docker.',
-      result: 'Загрузка страниц менее 0.5 секунд, удобный ввод данных и полная независимость от тяжелых конструкторов.',
-      stack: ['Astro', 'Next.js', 'Directus CMS', 'Docker', 'VPS'],
+    keyMetrics: [
+      { value: 'ТВ', label: 'охваты соревнований' },
+      { value: 'Racing Art', label: 'сопровождение команды' },
+      { value: 'Honda', label: 'федеральные рекламные кампании' }
+    ]
+  },
+  '05-nick-potapov-site': {
+    slug: '05-nick-potapov-site',
+    tag: 'UX/UI · Контент',
+    title: 'Сайт Nick Potapov',
+    lead: 'Разработка информационной архитектуры (IA), UX-проектирование и создание двуязычного контента для личного сайта-портфолио AI-архитектора. Подготовка текстов для 8 кейсов.',
+    meta: {
+      client: 'Nick Potapov',
+      role: 'Контент / UX',
+      year: '2023'
     },
-    {
-      tag: 'Mobile-first',
-      title: 'Telegram UI и Mini Apps',
-      description: 'Перенос рабочих интерфейсов и бизнес-логики в мессенджер: от CRM-панелей до полноценных магазинов.',
-      before:
-        'Необходимость пилить мобильные приложения под каждую задачу или мучить людей неудобными мобильными сайтами.',
-      after:
-        'Telegram-боты со сложной логикой и встроенные веб-приложения (Mini Apps) с корзинами, оплатой и карточками управления СУБД.',
-      result: 'Вся операционка и продажи перенесены прямо в Телеграм — интерфейс управления базой всегда под рукой.',
-      stack: ['Python', 'aiogram', 'Telegraf.js', 'React', 'Telegram WebApps'],
+    keyMetrics: [
+      { value: '8', label: 'упакованных ИТ-кейсов' },
+      { value: '2', label: 'языка: RU и EN' },
+      { value: 'IA', label: 'разработка структуры' }
+    ]
+  },
+  '06-mafia-assistant': {
+    slug: '06-mafia-assistant',
+    tag: 'Product · UX',
+    title: 'Mafia Digital Assistant',
+    lead: 'Разработка концепции и UX/UI для игрового Telegram-бота, который оцифровывает процесс ведения офлайн-игр в классическую Мафию.',
+    meta: {
+      client: 'Pet-проект',
+      role: 'Продакт / UX',
+      year: '2023'
     },
-    {
-      tag: 'Обработка данных',
-      title: 'Распознавание документов и OCR',
-      description: 'Автоматизация оцифровки бумажных накладных, чеков, счетов и паспортов с ИИ-валидацией данных.',
-      before:
-        'Сотрудники вручную перебивают номенклатуру из сотен бумажных накладных, чеков и счетов в Excel или CRM.',
-      after:
-        'Интеллектуальный OCR-пайплайн: ИИ распознает таблицы по фото документов, валидирует данные через LLM и шлет в базу по API.',
-      result: 'Время обработки одного документа сократилось с 10 минут до 15 секунд.',
-      stack: ['Vision API', 'OCR', 'Node.js', 'Google API', 'Supabase'],
+    keyMetrics: [
+      { value: 'UX/UI', label: 'Telegram Mini App' },
+      { value: '100%', label: 'оцифровка игрового процесса' },
+      { value: 'MVP', label: 'запуск прототипа' }
+    ]
+  },
+  '07-resin-art-school': {
+    slug: '07-resin-art-school',
+    tag: 'Образование · SMM',
+    title: 'Resin Art School',
+    lead: 'Полное сопровождение онлайн-школы творчества: от ведения социальных сетей (SMM) до кураторства студентов. Проведение обучающих прямых эфиров и коммуникация с учениками.',
+    meta: {
+      client: 'Онлайн-школа',
+      role: 'Куратор / SMM',
+      year: '2020–2021'
     },
-    {
-      tag: 'Локализация',
-      title: 'AI-конвейеры генерации контента',
-      description: 'Мультиязычный перевод и SEO-адаптация контента под зарубежные площадки с сохранением смысла и стиля.',
-      before:
-        'Космические расходы на переводчиков и недели ожидания материалов при выходе на международные рекламные площадки.',
-      after:
-        'Конвейеры на базе больших языковых моделей, переводящие и адаптирующие описания под сленг конкретной страны.',
-      result: 'Моментальная генерация десятков версий описаний на 6 языках напрямую в CMS.',
-      stack: ['Gemini API', 'Claude API', 'REST API', 'Automation'],
-    }
-  ],
-  en: [
-    {
-      tag: 'Consulting',
-      title: 'Business Process Audits & Optimization',
-      description: 'Pinpointing bottlenecks in your funnel and routine tasks that can be automated or accelerated with AI.',
-      before:
-        'Messy manual workflows, dropped leads, and staff wasting hours on repetitive tasks without knowing if automation actually saves money.',
-      after:
-        'Interactive process maps (AS-IS / TO-BE), a step-by-step AI deployment roadmap, and ROI calculations for automation.',
-      result: 'A clear process optimization plan, freeing up to 40% of your team’s working hours.',
-      stack: ['Process Mapping', 'ROI Analysis', 'AI Feasibility Audit'],
+    keyMetrics: [
+      { value: 'SMM', label: 'рост охватов' },
+      { value: 'Live', label: 'регулярные эфиры' },
+      { value: '500+', label: 'поддержка учеников' }
+    ]
+  },
+  '08-mockup-real-estate': {
+    slug: '08-mockup-real-estate',
+    tag: 'UI/UX & Web',
+    title: 'Агентство недвижимости',
+    lead: 'Учебный проект по дизайну и созданию мокапа сайта для агентства недвижимости.',
+    meta: {
+      client: 'Pet-проект',
+      role: 'UI/UX Дизайнер',
+      year: '2023'
     },
-    {
-      tag: 'AI Integration',
-      title: 'Turnkey AI Agents Deployment',
-      description: 'Building autonomous agents for inbox processing, social media listening, customer support, and lead generation.',
-      before:
-        'Staff manually scanning Reddit, socials, and emails, taking hours to reply and letting hot prospects slip away.',
-      after:
-        'Autonomous AI agents built on Claude/Gemini, connected via API to your databases and messaging platforms.',
-      result: '24/7 automated scraping, lead qualification, and brand-voiced draft comments generated in 5 minutes.',
-      stack: ['OpenAI API', 'Claude API', 'n8n', 'Python', 'REST API'],
+    keyMetrics: [
+      { value: 'UI/UX', label: 'Прототипирование' },
+      { value: 'Figma', label: 'Разработка макетов' }
+    ]
+  },
+  '09-mockup-electronics': {
+    slug: '09-mockup-electronics',
+    tag: 'UI/UX & Web',
+    title: 'Магазин электроники',
+    lead: 'Разработка визуальной концепции и UX-флоу для интернет-магазина электроники.',
+    meta: {
+      client: 'Pet-проект',
+      role: 'UI/UX Дизайнер',
+      year: '2023'
     },
-    {
-      tag: 'Development',
-      title: 'Lightning-Fast Landings & Multi-page Catalogs',
-      description: 'Database design, Headless CMS integration, and deploying fast, static frontends.',
-      before:
-        'Slow site-builder templates, clunky complex admin panels, and servers crashing under traffic spikes.',
-      after:
-        'Ultra-fast static sites built with Astro or Next.js, hooked up to Headless CMS (Directus, Supabase), deployed via Docker.',
-      result: 'Sub-0.5s page load times, friction-free content updates, and zero dependence on heavy site-builders.',
-      stack: ['Astro', 'Next.js', 'Directus CMS', 'Docker', 'VPS'],
+    keyMetrics: [
+      { value: 'eCommerce', label: 'Пользовательский путь' },
+      { value: 'Mobile First', label: 'Адаптивный дизайн' }
+    ]
+  },
+  '10-house-project': {
+    slug: '10-house-project',
+    tag: 'Design',
+    title: 'Проект дома',
+    lead: 'Разработка концепции, визуализация и реализация проекта собственного загородного дома.',
+    meta: {
+      client: 'Личный проект',
+      role: 'Автор проекта',
+      year: '2021-2023'
     },
-    {
-      tag: 'Mobile-first',
-      title: 'Telegram UI & Mini Apps',
-      description: 'Porting complex business logic and admin interfaces right into Telegram: from CRMs to full e-commerce stores.',
-      before:
-        'Having to code separate native apps or forcing users through clumsy mobile websites.',
-      after:
-        'Feature-rich Telegram bots and embedded WebApps (Mini Apps) complete with carts, payments, and database management panels.',
-      result: 'All ops and sales relocated to Telegram — a database control interface always at your fingertips.',
-      stack: ['Python', 'aiogram', 'Telegraf.js', 'React', 'Telegram WebApps'],
+    keyMetrics: [
+      { value: 'От и до', label: 'Полная реализация' },
+      { value: '100%', label: 'Авторский надзор' }
+    ]
+  },
+  '11-landscape-project': {
+    slug: '11-landscape-project',
+    tag: 'Design',
+    title: 'Ландшафтный дизайн',
+    lead: 'Создание проекта ландшафтного дизайна для загородного участка: зонирование, подбор растений, реализация.',
+    meta: {
+      client: 'Личный проект',
+      role: 'Автор проекта',
+      year: '2022'
     },
-    {
-      tag: 'Data Processing',
-      title: 'Document Processing & Intelligent OCR',
-      description: 'Automated digitizing of paper invoices, receipts, bills, and IDs with LLM-powered data validation.',
-      before:
-        'Employees manually copy-pasting line items from hundreds of paper invoices, bills, and receipts into Excel or CRM.',
-      after:
-        'Intelligent OCR pipeline: AI extracts tables from document scans, validates records via LLM, and logs them via API.',
-      result: 'Document processing time slashed from 10 minutes to 15 seconds.',
-      stack: ['Vision API', 'OCR', 'Node.js', 'Google API', 'Supabase'],
+    keyMetrics: [
+      { value: 'Зонирование', label: 'Пространственные решения' },
+      { value: 'Дендроплан', label: 'Подбор растений' }
+    ]
+  },
+  '12-resin-masterclass': {
+    slug: '12-resin-masterclass',
+    tag: 'Art & PR',
+    title: 'Мастер-класс',
+    lead: 'Организация и проведение мастер-класса по работе со смолой (Resin Art) на профильном форуме.',
+    meta: {
+      client: 'Форум смолянистов',
+      role: 'Спикер / Мастер',
+      year: '2021'
     },
-    {
-      tag: 'Localization',
-      title: 'AI-Powered Content Generation Engines',
-      description: 'Multilingual translation and SEO adaptation for foreign platforms, matching local slang and brand tone.',
-      before:
-        'Astronomical translation agency bills and weeks of delay when launching marketing assets in new countries.',
-      after:
-        'Generative translation pipelines that automatically rewrite copy tailored to local slang and regional tone of voice.',
-      result: 'Instant generation of dozens of localized versions across 6 languages piped directly into your CMS.',
-      stack: ['Gemini API', 'Claude API', 'REST API', 'Automation'],
-    }
-  ]
+    keyMetrics: [
+      { value: 'Public Speaking', label: 'Выступление перед аудиторией' },
+      { value: 'Resin Art', label: 'Демонстрация техники' }
+    ]
+  },
+  '13-local-tv-report': {
+    slug: '13-local-tv-report',
+    tag: 'PR & Media',
+    title: 'ТВ Репортаж',
+    lead: 'Участие в съёмке репортажа на местном телевидении. Организация процесса, подготовка к интервью.',
+    meta: {
+      client: 'Местное ТВ',
+      role: 'Организатор / Герой',
+      year: '2020'
+    },
+    keyMetrics: [
+      { value: 'ТВ', label: 'Публичное освещение' },
+      { value: 'Media Relations', label: 'Работа со съемочной группой' }
+    ]
+  }
 }
 
 export const navLinks = [
   { href: '#about', label: 'Обо мне' },
   { href: '#cases', label: 'Кейсы' },
-  { href: '#projects', label: 'Скиллы' },
   { href: '#contact', label: 'Контакты' },
 ]
