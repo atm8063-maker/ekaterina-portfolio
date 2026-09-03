@@ -59,7 +59,8 @@ export const cases: CaseSummary[] = [
   { slug: '10-house-project', tag: 'Design', title: 'Проект дома', description: 'Проект своего дома, визуализация, реализация', metrics: [] },
   { slug: '11-landscape-project', tag: 'Design', title: 'Ландшафтный дизайн', description: 'Проект по ландшафту для своего участка', metrics: [] },
   { slug: '12-resin-masterclass', tag: 'Art & PR', title: 'Мастер-класс', description: 'Мастер-класс на форуме смолянистов, 2021', metrics: [] },
-  { slug: '13-local-tv-report', tag: 'PR & Media', title: 'ТВ Репортаж', description: 'Репортаж на местном ТВ, 2020', metrics: [] }
+  { slug: '13-local-tv-report', tag: 'PR & Media', title: 'ТВ Репортаж', description: 'Репортаж на местном ТВ, 2020', metrics: [] },
+  { slug: '14-vertex-homes', tag: 'UX/UI & Web', title: 'Vertex Homes', description: 'UX/UI дизайн для проектов из ЛСТК', metrics: [] }
 ]
 
 export const caseDetails: Record<string, CaseDetail> = {
@@ -437,6 +438,42 @@ export const caseDetails: Record<string, CaseDetail> = {
     keyMetrics: [
       { value: 'ТВ', label: 'Публичное освещение' },
       { value: 'Media Relations', label: 'Работа со съемочной группой' }
+    ]
+  },
+  '14-vertex-homes': {
+    slug: '14-vertex-homes',
+    tag: 'UX/UI & Web',
+    title: 'Vertex Homes',
+    lead: 'Разработка UX/UI дизайна для лендинга строительной компании, специализирующейся на технологии ЛСТК (Легкие стальные тонкостенные конструкции). Упор на инвестиционную привлекательность.',
+    meta: {
+      client: 'Vertex Homes',
+      role: 'UX/UI Дизайнер',
+      year: '2023',
+      link: 'https://www.figma.com/design/5K61aDGctS46qE2ZajQweN/Vertex-Homes?node-id=0-1&p=f&t=ajOQPNrEWiQVIzsV-0'
+    },
+    keyMetrics: [
+      { value: '3-4', label: 'мес. цикл строительства' },
+      { value: '90+', label: 'лет долговечность' },
+      { value: '50-70%', label: 'энергоэффективность' }
+    ],
+    sections: [
+      {
+        id: 'colors-fonts',
+        heading: 'Стиль и Концепция',
+        paragraphs: [
+          'Основой визуальной концепции стала комбинация строгости, надежности и технологичности. Мы отошли от классических «деревянных» и пестрых строительных сайтов в сторону темной, сдержанной цветовой гаммы (Deep Emerald), которая ассоциируется с премиальным девелопментом и надежными инвестициями.',
+          'В типографике используется контрастная пара: массивный и уверенный шрифт с засечками Merriweather для заголовков (символизирует надежность) и чистый читабельный Rubik для интерфейсных элементов (отвечает за технологичность).'
+        ]
+      },
+      {
+        id: 'layout-grid',
+        heading: 'Сетка и Ритм',
+        steps: [
+          'Модульная структура: Строгая сетка с крупными, «дышащими» отступами, позволяющая легко усваивать большие объемы текста.',
+          'Карточная система: Блоки с инфографикой (цифры и факты об ЛСТК) упакованы в карточки для быстрого сканирования инвесторами.',
+          'Сравнение (VS): Наглядный сплит-экран, где традиционное строительство противопоставляется технологии ЛСТК (быстрый цикл 3-4 месяца, экономия до 30% на фундаменте).'
+        ]
+      }
     ]
   }
 }
