@@ -74,14 +74,15 @@ export default function Portfolio() {
           className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-12 -mx-6 px-6 gap-6 md:gap-8 scroll-smooth"
         >
           {cases.map((c, i) => {
-            // Determine placeholder graphic based on slug if it's one of the PR cases
             let img = "/placeholder.jpg";
-            if (c.slug.includes('insigma')) img = "/case_insigma_infographic_1788377959655.jpg";
-            else if (c.slug.includes('contact-real')) img = "/case_contact_re_infographic_1788377969142.jpg";
-            else if (c.slug.includes('pobeda')) img = "/case_pobeda_infographic_1788378003533.jpg";
-            else if (c.slug.includes('honda')) img = "/case_honda_civic_cup_infographic_1788377978538.jpg";
-            else if (c.slug.includes('resin-art-school')) img = "/case_resin_art_infographic_1788378015716.jpg";
-            else if (c.slug.includes('mockup-real-estate')) img = "/placeholder.jpg"; // User can upload these later
+            if (c.slug.includes('01-insigma')) img = "/case_01.jpg";
+            else if (c.slug.includes('02-contact')) img = "/case_02.jpg";
+            else if (c.slug.includes('03-pobeda')) img = "/case_03.jpg";
+            else if (c.slug.includes('04-kart-motors')) img = "/case_04.jpg";
+            else if (c.slug.includes('05-nick')) img = "/case_05.jpg";
+            else if (c.slug.includes('06-mafia')) img = "/case_06.jpg";
+            else if (c.slug.includes('08-mockup-real')) img = "/case_08.jpg";
+            else if (c.slug.includes('09-mockup-elec')) img = "/case_09.jpg";
 
             return (
               <motion.div

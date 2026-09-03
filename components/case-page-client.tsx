@@ -61,7 +61,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
             </p>
 
             {/* Meta Grid (like Nick's) */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-8 border-y border-white/10 mb-12">
+            <div className={`grid grid-cols-1 ${caseData.meta.link ? 'sm:grid-cols-4' : 'sm:grid-cols-3'} gap-8 py-8 border-y border-white/10 mb-12`}>
               <div>
                 <h3 className="text-[13px] text-white/50 mb-2">Направление</h3>
                 <p className="text-[15px] font-medium text-white">{caseData.tag}</p>
@@ -74,6 +74,14 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                 <h3 className="text-[13px] text-white/50 mb-2">Период</h3>
                 <p className="text-[15px] font-medium text-white">{caseData.meta.year}</p>
               </div>
+              {caseData.meta.link && (
+                <div>
+                  <h3 className="text-[13px] text-white/50 mb-2">Сайт</h3>
+                  <a href={caseData.meta.link} target="_blank" rel="noopener noreferrer" className="text-[15px] font-medium text-[#14F1D9] hover:underline">
+                    {caseData.meta.link.replace(/^https?:\/\//, '')}
+                  </a>
+                </div>
+              )}
             </div>
 
             {/* Key Metrics */}
@@ -98,9 +106,6 @@ export function CasePageClient({ slug, caseData, images }: Props) {
             {caseData.sections && caseData.sections.map((section, idx) => (
               <section key={section.id} id={section.id} className="mb-14">
                 <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">
-                  <span className="mr-3 font-mono text-xl text-[#14F1D9]">
-                    {String(idx + 1).padStart(2, '0')}
-                  </span>
                   {section.heading}
                 </h2>
 
@@ -120,7 +125,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                   <ol className="mt-6 flex flex-col gap-4">
                     {section.steps.map((step, i) => (
                       <li key={i} className="flex gap-4 text-lg text-white/80 font-light">
-                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-mono text-sm bg-[#14F1D9]/20 text-[#14F1D9]">
+                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#14F1D9]/30 text-sm text-[#14F1D9]">
                           {i + 1}
                         </span>
                         <span className="pt-0.5">{step}</span>
