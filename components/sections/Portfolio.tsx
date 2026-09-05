@@ -73,7 +73,7 @@ export default function Portfolio() {
           ref={scrollContainerRef}
           className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-12 -mx-6 px-6 gap-6 md:gap-8 scroll-smooth"
         >
-          {cases.map((c, i) => {
+          {cases.filter(c => !c.hidden).map((c, i) => {
             let img = "/placeholder.jpg";
             if (c.slug.includes('01-insigma')) img = "/case_01.jpg";
             else if (c.slug.includes('02-contact')) img = "/case_02.jpg";
@@ -83,6 +83,11 @@ export default function Portfolio() {
             else if (c.slug.includes('06-mafia')) img = "/case_06.jpg";
             else if (c.slug.includes('08-mockup-real')) img = "/case_08.jpg";
             else if (c.slug.includes('09-mockup-elec')) img = "/case_09.jpg";
+            else if (c.slug.includes('10-house')) img = "/case_10.jpg";
+            else if (c.slug.includes('11-landscape')) img = "/case_11.jpg";
+            else if (c.slug.includes('12-resin')) img = "/case_12.jpg";
+            else if (c.slug.includes('13-local-tv-report')) img = "/case_13.jpg";
+            else if (c.slug.includes('14-vertex')) img = "/case_14.jpg";
 
             return (
               <motion.div
@@ -93,7 +98,7 @@ export default function Portfolio() {
                 transition={{ delay: i * 0.1 }}
                 className="w-[85vw] md:w-[45vw] lg:w-[400px] shrink-0 snap-center group flex flex-col"
               >
-                <Link href={"/cases/" + c.slug} className="block w-full h-full">
+                <Link href={c.customHref || "/cases/" + c.slug} className="block w-full h-full">
                   <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-surface border border-white/5 mb-6">
                     <Image 
                       src={img}

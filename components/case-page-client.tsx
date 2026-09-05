@@ -12,16 +12,8 @@ type Props = {
 }
 
 export function CasePageClient({ slug, caseData, images }: Props) {
-  // Define infographic based on slug
-  let infographic = null;
-  if (slug.includes('insigma')) infographic = "/case_insigma_infographic_1788377959655.jpg";
-  else if (slug.includes('contact-real')) infographic = "/case_contact_re_infographic_1788377969142.jpg";
-  else if (slug.includes('pobeda')) infographic = "/case_pobeda_infographic_1788378003533.jpg";
-  else if (slug.includes('honda')) infographic = "/case_honda_civic_cup_infographic_1788377978538.jpg";
-  else if (slug.includes('resin-art-school')) infographic = "/case_resin_art_infographic_1788378015716.jpg";
-
-  // Combine infographic with user uploaded images for the top collage
-  const allImages = infographic ? [infographic, ...images] : images;
+  // Gallery images from case folder
+  const allImages = images;
 
   return (
     <>
@@ -86,14 +78,16 @@ export function CasePageClient({ slug, caseData, images }: Props) {
 
             {/* Key Metrics */}
             {caseData.keyMetrics && caseData.keyMetrics.length > 0 && (
-              <section className="rounded-2xl border border-white/10 bg-[#1A1A1A]/40 p-7 mb-16" style={{ borderLeft: '3px solid #14F1D9' }}>
+              <section 
+                className="rounded-none border-l-4 border-l-[#14F1D9] border border-[#14F1D9]/35 bg-gradient-to-r from-[#14F1D9]/20 via-[#14F1D9]/10 to-[#14F1D9]/5 backdrop-blur-md p-7 sm:p-8 mb-16 shadow-[0_0_30px_rgba(20,241,217,0.15)]"
+              >
                 <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
                   {caseData.keyMetrics.map((m, idx) => (
-                    <div key={idx}>
-                      <p className="font-serif text-4xl leading-none text-[#14F1D9]">
+                    <div key={idx} className="relative">
+                      <p className="font-serif text-3xl sm:text-4xl font-bold leading-none text-[#14F1D9] drop-shadow-[0_0_16px_rgba(20,241,217,0.35)]">
                         {m.value}
                       </p>
-                      <p className="mt-3 text-[13px] text-white/50 leading-snug">
+                      <p className="mt-3 text-sm font-medium text-white/90 leading-snug">
                         {m.label}
                       </p>
                     </div>
@@ -116,7 +110,9 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                 ))}
 
                 {section.callout && (
-                  <blockquote className="my-8 rounded-r-xl py-4 pl-6 pr-5 text-lg text-white/90 bg-[#14F1D9]/10" style={{ borderLeft: '3px solid #14F1D9' }}>
+                  <blockquote 
+                    className="my-8 py-5 pl-6 pr-6 text-lg text-white font-normal bg-gradient-to-r from-[#14F1D9]/20 via-[#14F1D9]/10 to-transparent border-l-4 border-l-[#14F1D9] border border-[#14F1D9]/30 rounded-none shadow-[0_0_25px_rgba(20,241,217,0.12)]"
+                  >
                     {section.callout}
                   </blockquote>
                 )}
@@ -124,14 +120,83 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                 {section.steps && (
                   <ol className="mt-6 flex flex-col gap-4">
                     {section.steps.map((step, i) => (
-                      <li key={i} className="flex gap-4 text-lg text-white/80 font-light">
-                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#14F1D9]/30 text-sm text-[#14F1D9]">
+                      <li key={i} className="flex gap-4 text-lg text-white/90 font-light">
+                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-none border-2 border-[#14F1D9] bg-[#14F1D9]/20 text-sm font-bold text-[#14F1D9]">
                           {i + 1}
                         </span>
                         <span className="pt-0.5">{step}</span>
                       </li>
                     ))}
                   </ol>
+                )}
+
+                {section.colorPalette && (
+                  <div className="grid grid-cols-2 md:grid-cols-6 gap-4 my-8">
+                    {section.colorPalette.map((color, i) => (
+                      <div key={i} className="flex flex-col gap-2">
+                        <div 
+                          className="h-24 w-full rounded-none border border-white/20 shadow-lg" 
+                          style={{ backgroundColor: color.hex }} 
+                        />
+                        <div className="text-[13px]">
+                          <span className="text-white block font-medium">{color.hex}</span>
+                          {color.name && <span className="text-white/50">{color.name}</span>}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {section.paragraphs2?.map((p, i) => (
+                  <p key={i} className="mb-5 text-lg text-white/80 leading-relaxed font-light">
+                    {p}
+                  </p>
+                ))}
+
+                {section.typography && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
+                    {section.typography.map((font, i) => (
+                      <div key={i} className="p-6 rounded-none border-l-4 border-l-[#14F1D9] border border-[#14F1D9]/30 bg-gradient-to-r from-[#14F1D9]/15 via-[#14F1D9]/5 to-transparent flex flex-col justify-between shadow-[0_0_20px_rgba(20,241,217,0.1)]">
+                        <div>
+                          <div className="text-5xl mb-6 text-white" style={{ fontFamily: font.name }}>
+                            {font.example}
+                          </div>
+                          <h4 className="text-xl text-[#14F1D9] font-bold mb-2">{font.name}</h4>
+                          <div className="flex flex-wrap gap-2 mt-4">
+                            {font.weights.map((w, j) => (
+                              <span key={j} className="text-xs px-2.5 py-1 rounded-none border border-[#14F1D9]/50 bg-[#14F1D9]/10 text-[#14F1D9] font-medium">
+                                {w}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {section.image && (
+                  <div className="my-10 rounded-xl overflow-hidden border border-white/10 relative w-full h-[400px] md:h-[600px]">
+                    <Image 
+                      src={section.image} 
+                      alt={section.heading} 
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+
+                {section.fullPageMockup && (
+                  <div className="my-10 rounded-xl overflow-hidden border border-white/10 shadow-2xl relative w-full" style={{ maxHeight: '800px', overflowY: 'auto' }}>
+                    <Image 
+                      src={section.fullPageMockup} 
+                      alt="Full Page Mockup" 
+                      width={1200}
+                      height={4000}
+                      className="w-full h-auto object-cover"
+                      unoptimized
+                    />
+                  </div>
                 )}
               </section>
             ))}

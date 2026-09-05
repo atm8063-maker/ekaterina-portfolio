@@ -88,8 +88,10 @@ export default function WideMosaicExperimentPage() {
     { id: 'G4', x: 688, y: 1130, w: 158, h: 268, type: 'img', src: 'photo_2026-08-27_17-30-20 (4).jpg' }
   ];
 
+  type TrackItem = { src: string; w: number; isVideo?: boolean };
+
   // 6 Narrow Marquee Tracks (Tiles reduced in size by 2x for fine-grain background tapestry)
-  const track1 = [
+  const track1: TrackItem[] = [
     { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 115 },
     { src: 'photo_3217@04-08-2026_21-04-08.jpg', w: 95 },
     { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 195 },
@@ -143,7 +145,7 @@ export default function WideMosaicExperimentPage() {
     { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 120 },
   ];
 
-  const tracks = [
+  const tracks: { data: TrackItem[]; dir: string; speed: string }[] = [
     { data: track1, dir: 'left', speed: '44s' },
     { data: track2, dir: 'right', speed: '52s' },
     { data: track3, dir: 'left', speed: '38s' },

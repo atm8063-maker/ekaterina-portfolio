@@ -94,7 +94,7 @@ function dpct(x: number, y: number, w: number, h: number) {
 }
 
 // isHero marks the biggest cell (392×483) for special content
-const DESKTOP_CELLS: { style: ReturnType<typeof dpct>; isHero?: boolean }[] = [
+const DESKTOP_CELLS: { style: ReturnType<typeof dpct>; isHero?: boolean; isText?: boolean }[] = [
   { style: dpct(0, 394, 180, 400) }, // [0] NEW FAR LEFT
   { style: dpct(422, 180, 280, 180) }, // [1] Modified to fit title
   { style: dpct(635, 84, 100, 146) }, // [2]
@@ -148,7 +148,7 @@ function mpct(x: number, y: number, w: number, h: number) {
 }
 
 // Only cells visible within the 818px mobile viewport
-const MOBILE_CELLS: { style: ReturnType<typeof mpct>; isHero?: boolean }[] = [
+const MOBILE_CELLS: { style: ReturnType<typeof mpct>; isHero?: boolean; isText?: boolean }[] = [
   // ─── Top cluster (same as Group 39) ───
   { style: mpct(310,  57,  205, 301) },   // [0]  large portrait
   { style: mpct(523,  57,  100, 146) },   // [1]  small

@@ -48,10 +48,10 @@ export default function Header() {
             </Link>
             
             <div className="absolute top-full left-1/2 -translate-x-1/2 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-              <div className="bg-[#1A1A1A] border border-white/10 rounded-sm shadow-2xl py-2 flex flex-col">
+              <div className="bg-[#1A1A1A] border border-white/10 rounded-none shadow-2xl py-2 flex flex-col">
                 <Link href="/#about" className="px-4 py-2 text-sm text-white/70 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter">Обо мне</Link>
                 <Link href="/#competencies" className="px-4 py-2 text-sm text-white/70 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter">Компетенции</Link>
-                <Link href="/#portfolio" className="px-4 py-2 text-sm text-white/70 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter">Кейсы</Link>
+                <Link href="/#cases" className="px-4 py-2 text-sm text-white/70 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter">Кейсы</Link>
               </div>
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function Header() {
             </Link>
             
             <div className="absolute top-full left-1/2 -translate-x-1/2 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-              <div className="bg-[#1A1A1A] border border-white/10 rounded-sm shadow-2xl py-2 flex flex-col">
+              <div className="bg-[#1A1A1A] border border-white/10 rounded-none shadow-2xl py-2 flex flex-col">
                 <span className="px-4 py-2 text-sm text-white/40 italic font-inter cursor-not-allowed">Скоро...</span>
               </div>
             </div>

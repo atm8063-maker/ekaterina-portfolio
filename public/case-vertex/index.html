@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vertex Homes — Умное строительство для умных инвестиций</title>
+  
+  <!-- Исключительно родные шрифты проекта Vertex Homes: Merriweather 900 и Rubik -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Оригинальная палитра Vertex Homes */
+      --bg: #222F33;                 /* Deep Emerald — благородный темно-изумрудный фон */
+      --bg-card: #26353A;            /* Dark Slate — фирменные карточки */
+      --bg-card-hover: #2d3e44;
+      --bg-surface-elevated: #1d272a;/* Глубокий слой */
+      --text-main: #F4F4F4;          /* Light Grey — основной текст */
+      --text-muted: #A4AFB3;         /* Приглушенный текст */
+      --accent-gold: #796D41;        /* Gold Accent — фирменное золото */
+      --accent-gold-light: #B8A86C;  /* Светлое золото для ховеров */
+      --accent-gold-dim: rgba(121, 109, 65, 0.22);
+      --accent-gold-glow: rgba(184, 168, 108, 0.35);
+      --accent-olive: #545743;       /* Olive Green — оливковый акцент */
+      --accent-olive-dim: rgba(84, 87, 67, 0.3);
+      --border: rgba(255, 255, 255, 0.1);
+      --border-gold: rgba(184, 168, 108, 0.35);
+      --white: #FFFFFF;
+      --card-radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Rubik', sans-serif;
+    }
+
+    /* Чистый, гладкий глубокий фон без каких-либо сеток и полос */
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 30px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: radial-gradient(circle at 50% 15%, rgba(121, 109, 65, 0.12) 0%, transparent 65%);
+    }
+
+    .case-wrapper {
+      width: 100%;
+      max-width: 1360px;
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    /* -------------------------------------------------------------
+       ШАПКА ПРЕЗЕНТАЦИИ В СТИЛЕ VERTEX HOMES
+       ------------------------------------------------------------- */
+    .brand-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 14px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.35);
+    }
+
+    .header-logo {
+      font-family: 'Rubik', sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: 1.5px;
+      color: var(--white);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-logo-badge {
+      width: 10px;
+      height: 10px;
+      background: var(--accent-gold-light);
+      border-radius: 2px;
+      transform: rotate(45deg);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .header-nav a {
+      font-family: 'Rubik', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .header-nav a:hover {
+      color: var(--accent-gold-light);
+    }
+
+    .header-btn {
+      font-family: 'Rubik', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 20px;
+      border-radius: 8px;
+      background: var(--accent-gold);
+      color: #FFFFFF;
+      border: 1px solid var(--accent-gold-light);
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(121, 109, 65, 0.3);
+    }
+
+    .header-btn:hover {
+      background: var(--accent-gold-light);
+      color: #1a2326;
+      box-shadow: 0 6px 20px var(--accent-gold-glow);
+      transform: translateY(-1px);
+    }
+
+    /* -------------------------------------------------------------
+       СЛАЙДЫ КЕЙСА
+       ------------------------------------------------------------- */
+    .case-slide {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+      padding: 56px 50px;
+      position: relative;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+    }
+
+    .slide-tag {
+      display: inline-block;
+      font-family: 'Rubik', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--accent-gold-light);
+      background: var(--accent-gold-dim);
+      border: 1px solid var(--border-gold);
+      padding: 6px 14px;
+      border-radius: 6px;
+      margin-bottom: 22px;
+    }
+
+    .slide-title {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: clamp(28px, 3.6vw, 42px);
+      line-height: 1.25;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .slide-desc {
+      font-size: 16.5px;
+      color: var(--text-muted);
+      max-width: 960px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    /* -------------------------------------------------------------
+       HERO СЕКЦИЯ С РЕАЛЬНЫМ МОКАПОМ
+       ------------------------------------------------------------- */
+    .hero-slide {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 20px 0 0;
+      text-align: center;
+    }
+
+    .hero-h1 {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: clamp(34px, 5.2vw, 60px);
+      line-height: 1.18;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero-h1 span {
+      color: var(--accent-gold-light);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 860px;
+      margin: 0 auto 44px;
+      line-height: 1.65;
+    }
+
+    /* 4 Ключевые метрики из Фигмы */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 14px;
+      padding: 24px 20px;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .metric-number {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 38px;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .metric-title {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--accent-gold-light);
+      margin-bottom: 6px;
+    }
+
+    .metric-text {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Мокап ноутбука */
+    .hero-mockup-frame {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.6), 0 0 50px rgba(121, 109, 65, 0.2);
+      border: 1px solid var(--border-gold);
+      background: #111;
+      line-height: 0;
+    }
+
+    .hero-mockup-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* -------------------------------------------------------------
+       АНАТОМИЯ СТИЛЯ VERTEX HOMES (БЕЗ СЕТКИ)
+       ------------------------------------------------------------- */
+    .style-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .pillar-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .pillar-card:hover {
+      border-color: var(--border-gold);
+      transform: translateY(-3px);
+    }
+
+    .pillar-visual {
+      height: 130px;
+      border-radius: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar-title {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 18px;
+      color: var(--white);
+    }
+
+    .pillar-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* -------------------------------------------------------------
+       КИРПИЧ VS ЛСТК (ИЗ ОРИГИНАЛА FIGMA)
+       ------------------------------------------------------------- */
+    .vs-comparison-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .vs-box {
+      border-radius: 14px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .vs-box-traditional {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border);
+    }
+
+    .vs-box-lstk {
+      background: color-mix(in srgb, var(--bg-card) 75%, var(--accent-gold-dim));
+      border: 2px solid var(--accent-gold-light);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+
+    .vs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .vs-name {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: var(--white);
+    }
+
+    .vs-badge {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent-gold-light);
+    }
+
+    .vs-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .vs-row-label {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    .vs-row-value {
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .vs-row-value.positive {
+      color: #E8E8E8;
+      font-weight: 500;
+    }
+
+    /* -------------------------------------------------------------
+       БИЗНЕС-РОУДМАП ПИЛОТНОГО ПРОЕКТА
+       ------------------------------------------------------------- */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .phase-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .phase-badge {
+      font-family: 'Rubik', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-gold-light);
+      text-transform: uppercase;
+    }
+
+    .phase-title {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 16.5px;
+      color: var(--white);
+    }
+
+    .phase-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .phase-steps li {
+      font-size: 13px;
+      color: var(--text-muted);
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .phase-steps li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+    }
+
+    /* -------------------------------------------------------------
+       ДИЗАЙН-СИСТЕМА
+       ------------------------------------------------------------- */
+    .palette-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .swatch {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .swatch-fill {
+      height: 70px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .swatch-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .swatch-code {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* -------------------------------------------------------------
+       ПОЛНЫЙ МАКЕТ И СЕКЦИИ
+       ------------------------------------------------------------- */
+    .landing-scroll-frame {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--border-gold);
+      background: #111;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .landing-scroll-inner {
+      max-height: 800px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-gold) var(--bg-card);
+    }
+
+    .landing-scroll-inner::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .landing-scroll-inner::-webkit-scrollbar-thumb {
+      background: var(--accent-gold);
+      border-radius: 4px;
+    }
+
+    .landing-scroll-inner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .sections-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 40px;
+    }
+
+    .section-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section-card-img {
+      width: 100%;
+      border-bottom: 1px solid var(--border);
+      background: #111;
+    }
+
+    .section-card-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .section-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .section-card-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-gold-light);
+      text-transform: uppercase;
+    }
+
+    .section-card-title {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 17px;
+      color: var(--white);
+    }
+
+    .section-card-text {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* -------------------------------------------------------------
+       ФИНАЛ
+       ------------------------------------------------------------- */
+    .cta-slide {
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-surface-elevated) 100%);
+      border: 1px solid var(--border-gold);
+    }
+
+    .cta-title {
+      font-family: 'Merriweather', serif;
+      font-weight: 900;
+      font-size: 36px;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .cta-text {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 36px;
+    }
+
+    @media (max-width: 1024px) {
+      .metrics-row, .palette-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .style-pillars-grid, .vs-comparison-wrapper, .roadmap-grid, .sections-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .case-slide {
+        padding: 30px 18px;
+      }
+      .header-nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="case-wrapper">
+
+    <!-- НАВИГАЦИОННАЯ ШАПКА VERTEX HOMES -->
+    <header class="brand-header">
+      <div class="header-logo">
+        <div class="header-logo-badge"></div>
+        VERTEX HOMES
+      </div>
+      <nav class="header-nav">
+        <a href="#about">Об ЛСТК</a>
+        <a href="#advantages">Преимущества</a>
+        <a href="#comparison">Инвестору</a>
+        <a href="#roadmap">Пилотный проект</a>
+        <a href="#showcase">Макет</a>
+      </nav>
+      <a href="https://www.figma.com/design/5K61aDGctS46qE2ZajQweN/Vertex-Homes?node-id=0-1" target="_blank" rel="noopener noreferrer" class="header-btn">
+        Figma дизайн ↗
+      </a>
+    </header>
+
+    <!-- HERO СЕКЦИЯ С МОКАПОМ -->
+    <section class="case-slide hero-slide" id="about">
+      <div class="slide-tag">ЛСТК: строительство будущего</div>
+      <h1 class="hero-h1">
+        Умное строительство <br><span>для умных инвестиций</span>
+      </h1>
+      <p class="hero-sub">
+        Современный метод малоэтажного девелопмента, где основа дома — прочный и легкий каркас из оцинкованной стали, произведенный на заводе с высочайшей точностью.
+      </p>
+
+      <!-- 4 Ключевые метрики из проекта -->
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-number">9+</div>
+          <div class="metric-title">Сейсмостойкость</div>
+          <p class="metric-text">Легкая и упругая конструкция из стали выдерживает землетрясения до 9 баллов.</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number">90+</div>
+          <div class="metric-title">Долговечность</div>
+          <p class="metric-text">Основа дома — прочный каркас, который не гниет и не горит. Срок службы более 90 лет.</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number">50-70%</div>
+          <div class="metric-title">Энергоэффективность</div>
+          <p class="metric-text">Расходы на отопление и кондиционирование ниже, значительная экономия средств.</p>
+        </div>
+        <div class="metric-card">
+          <div class="metric-number">3-4 мес.</div>
+          <div class="metric-title">Сроки строительства</div>
+          <p class="metric-text">Индустриальный метод сборки сокращает строительный цикл до 3-4 месяцев.</p>
+        </div>
+      </div>
+
+      <!-- Фотореалистичный мокап студии архитектора -->
+      <div class="hero-mockup-frame">
+        <img src="assets/vertex_hero_mockup.jpg" alt="Vertex Homes — Рабочая станция архитектора" />
+      </div>
+    </section>
+
+    <!-- СЛАЙД 2: АНАТОМИЯ ФИРМЕННОГО СТИЛЯ VERTEX HOMES (БЕЗ СЕТКИ) -->
+    <section class="case-slide" id="advantages">
+      <div class="slide-tag">Философия стиля</div>
+      <h2 class="slide-title">Визуальный код и архитектурная эстетика</h2>
+      <p class="slide-desc">
+        В дизайне Vertex Homes нет места дешевым строительным клише и визуальному шуму. Визуальный язык строится на глубоких природных оттенках загородного девелопмента и монументальной типографике.
+      </p>
+
+      <div class="style-pillars-grid">
+        <!-- Столп 1 -->
+        <div class="pillar-card">
+          <div class="pillar-visual">
+            <div style="font-family:'Merriweather', serif; font-weight:900; font-size:44px; color:var(--white);">Aa</div>
+          </div>
+          <h3 class="pillar-title">Merriweather Black 900</h3>
+          <p class="pillar-text">
+            Массивный и авторитетный шрифт с засечками для главных заголовков и ключевых цифр. Символизирует вековую надежность, фундаментальность и статус.
+          </p>
+        </div>
+
+        <!-- Столп 2 -->
+        <div class="pillar-card">
+          <div class="pillar-visual">
+            <div style="font-family:'Rubik', sans-serif; font-weight:500; font-size:26px; color:var(--accent-gold-light); letter-spacing:2px;">RUBIK 500</div>
+          </div>
+          <h3 class="pillar-title">Чистый гротеск Rubik</h3>
+          <p class="pillar-text">
+            Идеально выверенная интерфейсная гарнитура. Обеспечивает мгновенную считываемость параметров энергоэффективности, сметных данных и кнопок.
+          </p>
+        </div>
+
+        <!-- Столп 3 -->
+        <div class="pillar-card">
+          <div class="pillar-visual">
+            <div style="display:flex; width:80%; height:44px; border-radius:8px; overflow:hidden; border:1px solid var(--border);">
+              <div style="flex:2; background:#222F33;" title="Deep Emerald"></div>
+              <div style="flex:1.5; background:#26353A;" title="Dark Slate"></div>
+              <div style="flex:1.2; background:#796D41;" title="Gold Accent"></div>
+            </div>
+          </div>
+          <h3 class="pillar-title">Deep Emerald & Gold</h3>
+          <p class="pillar-text">
+            Сочетание темно-изумрудного фона резиденций в хвойных лесах с благородным матовым золотом. Создает ощущение инвестиционной зрелости.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЛАЙД 3: КИРПИЧ VS ЛСТК (ИЗ ОРИГИНАЛА FIGMA) -->
+    <section class="case-slide" id="comparison">
+      <div class="slide-tag">Инвестору · Сравнение технологий</div>
+      <h2 class="slide-title">Кирпич VS ЛСТК: почему это выгодно инвестору</h2>
+      <p class="slide-desc">
+        Прямое сопоставление традиционного капитального строительства и промышленной технологии ЛСТК. Прозрачные факты вместо рекламных обещаний.
+      </p>
+
+      <div class="vs-comparison-wrapper">
+        <!-- Традиционное -->
+        <div class="vs-box vs-box-traditional">
+          <div class="vs-header">
+            <div class="vs-name">Традиционное (Кирпич)</div>
+            <div class="vs-badge">Высокие риски</div>
+          </div>
+
+          <div class="vs-row">
+            <div class="vs-row-label">Сроки строительства:</div>
+            <div class="vs-row-value">12–18 месяцев (долгое ожидание возврата инвестиций).</div>
+          </div>
+
+          <div class="vs-row">
+            <div class="vs-row-label">Затраты на нулевой цикл:</div>
+            <div class="vs-row-value">100% — высокие затраты на тяжелый фундамент и ручную силу.</div>
+          </div>
+
+          <div class="vs-row">
+            <div class="vs-row-label">Риски для инвестора:</div>
+            <div class="vs-row-value">
+              • Срыв сроков из-за погоды и перезимовки<br>
+              • Неконтролируемый рост строительной сметы<br>
+              • Заморозка капитала на 1–2 года<br>
+              • Ошибки из-за человеческого фактора на стройплощадке
+            </div>
+          </div>
+        </div>
+
+        <!-- ЛСТК Vertex Homes -->
+        <div class="vs-box vs-box-lstk">
+          <div class="vs-header">
+            <div class="vs-name">⭐ ЛСТК Vertex Homes</div>
+            <div class="vs-badge" style="color:var(--white);">Быстро · Выгодно · Точно</div>
+          </div>
+
+          <div class="vs-row">
+            <div class="vs-row-label">Сроки строительства:</div>
+            <div class="vs-row-value positive">3–4 месяца — быстрый оборот капитала и ввод объекта в эксплуатацию.</div>
+          </div>
+
+          <div class="vs-row">
+            <div class="vs-row-label">Затраты на нулевой цикл:</div>
+            <div class="vs-row-value positive">Экономия до 30% на фундаменте благодаря легкости каркаса.</div>
+          </div>
+
+          <div class="vs-row">
+            <div class="vs-row-label">Преимущества для инвестора:</div>
+            <div class="vs-row-value positive">
+              • Всесезонный сухой монтаж без мокрых процессов<br>
+              • Фиксированный заводской бюджет проекта<br>
+              • Быстрый оборот капитала (сдача за 1 сезон)<br>
+              • Заводская точность роботов до 1 мм
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЛАЙД 4: ДОРОЖНАЯ КАРТА ПИЛОТНОГО ПРОЕКТА -->
+    <section class="case-slide" id="roadmap">
+      <div class="slide-tag">Пилотный проект · Черногория</div>
+      <h2 class="slide-title">Бизнес-роудмап пилотного проекта</h2>
+      <p class="slide-desc">
+        Мы ищем инвестиции в размере €200,000 для реализации пилотного проекта в Черногории. Пять ключевых фаз обеспечивают полную юридическую прозрачность и контроль на пути к прибыли.
+      </p>
+
+      <div class="roadmap-grid">
+        <div class="phase-card">
+          <div class="phase-badge">Фаза I</div>
+          <h3 class="phase-title">Структурирование сделки</h3>
+          <ul class="phase-steps">
+            <li>Регистрация компании инвестора (D.O.O.)</li>
+            <li>Открытие корпоративного банковского счета</li>
+            <li>Ввод инвестиционного капитала</li>
+            <li>Подписание Договора об Управлении</li>
+          </ul>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-badge">Фаза II</div>
+          <h3 class="phase-title">Финансирование и реализация</h3>
+          <ul class="phase-steps">
+            <li>Транш 1: Покупка актива и подготовка (40%)</li>
+            <li>Транш 2: Фундамент и «коробка» (30%)</li>
+            <li>Транш 3: Отделка и коммуникации (20%)</li>
+            <li>Транш 4: Финализация и сдача (10%)</li>
+          </ul>
+        </div>
+
+        <div class="phase-card">
+          <div class="phase-badge">Фаза III</div>
+          <h3 class="phase-title">Выход из проекта и прибыль</h3>
+          <ul class="phase-steps">
+            <li>Продажа готового объекта покупателю</li>
+            <li>Расчет и распределение прибыли</li>
+            <li>Вывод средств (полная репатриация)</li>
+            <li>Переход к масштабированию пула вилл</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЛАЙД 5: ДИЗАЙН-СИСТЕМА -->
+    <section class="case-slide">
+      <div class="slide-tag">Дизайн-система</div>
+      <h2 class="slide-title">Цветовая палитра и типографика</h2>
+      <p class="slide-desc">
+        Строгая палитра из 6 базовых цветов и контрастная шрифтовая пара Merriweather 900 + Rubik формируют целостный монолитный образ бренда.
+      </p>
+
+      <div class="palette-row">
+        <div class="swatch">
+          <div class="swatch-fill" style="background: #222F33;"></div>
+          <div class="swatch-name">Deep Emerald</div>
+          <div class="swatch-code">#222F33 · Фон</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-fill" style="background: #26353A;"></div>
+          <div class="swatch-name">Dark Slate</div>
+          <div class="swatch-code">#26353A · Карточки</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-fill" style="background: #796D41;"></div>
+          <div class="swatch-name">Gold Accent</div>
+          <div class="swatch-code">#796D41 · Золото</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-fill" style="background: #545743;"></div>
+          <div class="swatch-name">Olive Green</div>
+          <div class="swatch-code">#545743 · Олива</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-fill" style="background: #F4F4F4;"></div>
+          <div class="swatch-name" style="color:#111;">Light Grey</div>
+          <div class="swatch-code">#F4F4F4 · Текст</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-fill" style="background: #FFFFFF;"></div>
+          <div class="swatch-name" style="color:#111;">Pure White</div>
+          <div class="swatch-code">#FFFFFF · Акценты</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЛАЙД 6: ПОЛНЫЙ МАКЕТ СТРАНИЦЫ -->
+    <section class="case-slide" id="showcase">
+      <div class="slide-tag">Витрина дизайна</div>
+      <h2 class="slide-title">Полный макет посадочной страницы</h2>
+      <p class="slide-desc">
+        Макет разработан с учетом восприятия инвесторов: блоки плавно перетекают друг в друга, удерживая внимание на преимуществах технологии и экономической выгоде.
+      </p>
+
+      <!-- Интерактивный просмотрщик -->
+      <div class="landing-scroll-frame">
+        <div class="landing-scroll-inner">
+          <img src="assets/vertex_landing_full.png" alt="Полный макет Vertex Homes" />
+        </div>
+      </div>
+
+      <!-- Детальная нарезка ключевых экранов -->
+      <div class="sections-grid">
+        <div class="section-card">
+          <div class="section-card-img">
+            <img src="assets/sec_01_hero.png" alt="Первый экран" />
+          </div>
+          <div class="section-card-body">
+            <div class="section-card-tag">Экран 01</div>
+            <h3 class="section-card-title">Главный оффер и статус проекта</h3>
+            <p class="section-card-text">Четкое позиционирование ЛСТК как инструмента умных инвестиций в премиальный девелопмент.</p>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card-img">
+            <img src="assets/sec_02_tech.png" alt="Технология ЛСТК" />
+          </div>
+          <div class="section-card-body">
+            <div class="section-card-tag">Экран 02</div>
+            <h3 class="section-card-title">4 ключевых факта технологии</h3>
+            <p class="section-card-text">Сейсмостойкость 9+, долговечность 90+ лет, энергосбережение 50–70% и цикл 3–4 месяца.</p>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card-img">
+            <img src="assets/sec_03_vs.png" alt="Сравнение VS" />
+          </div>
+          <div class="section-card-body">
+            <div class="section-card-tag">Экран 03</div>
+            <h3 class="section-card-title">Кирпич VS ЛСТК</h3>
+            <p class="section-card-text">Экономия до 30% на нулевом цикле и сдача объекта за 1 строительный сезон.</p>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card-img">
+            <img src="assets/sec_04_catalog.png" alt="Пилотный проект" />
+          </div>
+          <div class="section-card-body">
+            <div class="section-card-tag">Экран 04</div>
+            <h3 class="section-card-title">Пилотный проект и дорожная карта</h3>
+            <p class="section-card-text">Поэтапный план входа в проект, этапы траншей и схема гарантированного выхода инвестора с прибылью.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЛАЙД 7: ФИНАЛЬНЫЙ CTA -->
+    <section class="case-slide cta-slide">
+      <div class="slide-tag">Связаться с командой</div>
+      <h2 class="cta-title">Приглашаем стать партнером</h2>
+      <p class="cta-text">
+        Мы готовы детально обсудить финансовую модель и юридическую схему пилотного проекта на личной встрече или онлайн.
+      </p>
+      <div>
+        <a href="https://www.figma.com/design/5K61aDGctS46qE2ZajQweN/Vertex-Homes?node-id=0-1" target="_blank" rel="noopener noreferrer" class="header-btn" style="padding: 14px 32px; font-size: 15px;">
+          Смотреть проект в Figma ↗
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Сообщение родителю о высоте
+    function notifyParent() {
+      const height = document.body.scrollHeight;
+      window.parent.postMessage({ type: 'RESIZE_BEHANCE_CASE', height: height }, '*');
+    }
+    window.addEventListener('load', () => {
+      notifyParent();
+      setTimeout(notifyParent, 400);
+      setTimeout(notifyParent, 1200);
+    });
+    window.addEventListener('resize', notifyParent);
+  </script>
+</body>
+</html>

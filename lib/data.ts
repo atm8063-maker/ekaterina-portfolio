@@ -21,14 +21,21 @@ export type CaseSummary = {
   title: string
   description: string
   metrics: Metric[]
+  customHref?: string
+  hidden?: boolean
 }
 
 export type CaseSection = {
   id: string
   heading: string
   paragraphs?: string[]
-  steps?: string[]
+  paragraphs2?: string[]
   callout?: string
+  steps?: string[]
+  image?: string
+  fullPageMockup?: string
+  colorPalette?: { hex: string; name?: string }[]
+  typography?: { name: string; weights: string[]; example: string }[]
 }
 
 export type CaseDetail = {
@@ -43,23 +50,24 @@ export type CaseDetail = {
     link?: string
   }
   keyMetrics: Metric[]
+  customHref?: string
   sections?: CaseSection[]
 }
 
 export const cases: CaseSummary[] = [
+  { slug: '05-nick-potapov-site', tag: 'UX/UI · Контент', title: 'Сайт Nick Potapov', description: 'Информационная архитектура и 8 кейсов на двух языках', metrics: [], customHref: '/case' },
   { slug: '01-insigma', tag: 'Девелопмент · PR', title: 'ГК Insigma', description: 'PR-сопровождение трёх девелоперских проектов премиум-класса', metrics: [] },
   { slug: '02-contact-real-estate', tag: 'PR & SMM', title: 'Contact Real Estate', description: 'Несколько сотен публикаций за 2,5 года — системная PR-работа', metrics: [] },
   { slug: '03-pobeda-dizayna', tag: 'PR & Маркетинг', title: 'Победа Дизайна', description: 'PR-стратегия с нуля — публикации в профильном глянце и деловых СМИ', metrics: [] },
   { slug: '04-kart-motors-honda-civic-cup', tag: 'Спорт PR', title: 'Honda Карт Моторс & Honda Civic Cup', description: 'Рекламные кампании дилера Honda и пресс-служба Кубка Honda Civic Cup', metrics: [] },
-  { slug: '05-nick-potapov-site', tag: 'UX/UI · Контент', title: 'Сайт Nick Potapov', description: 'Информационная архитектура и 8 кейсов на двух языках', metrics: [] },
   { slug: '06-mafia-assistant', tag: 'Product · UX', title: 'Mafia Digital Assistant', description: 'Игровой Telegram-движок для ведения офлайн-игр в Мафию (Python, UX)', metrics: [] },
-  { slug: '07-resin-art-school', tag: 'Образование · SMM', title: 'Resin Art School', description: 'Кураторство учеников, прямые эфиры и ведение SMM онлайн-школы', metrics: [] },
+  { slug: '07-resin-art-school', tag: 'Образование · SMM', title: 'Resin Art School', description: 'Кураторство учеников, прямые эфиры и ведение SMM онлайн-школы', metrics: [], hidden: true },
   { slug: '08-mockup-real-estate', tag: 'UI/UX & Web', title: 'Агентство недвижимости', description: 'Мокап агентства недвижимости, 2023', metrics: [] },
   { slug: '09-mockup-electronics', tag: 'UI/UX & Web', title: 'Магазин электроники', description: 'Мокап магазина с электроникой, 2023', metrics: [] },
   { slug: '10-house-project', tag: 'Design', title: 'Проект дома', description: 'Проект своего дома, визуализация, реализация', metrics: [] },
   { slug: '11-landscape-project', tag: 'Design', title: 'Ландшафтный дизайн', description: 'Проект по ландшафту для своего участка', metrics: [] },
-  { slug: '12-resin-masterclass', tag: 'Art & PR', title: 'Мастер-класс', description: 'Мастер-класс на форуме смолянистов, 2021', metrics: [] },
-  { slug: '13-local-tv-report', tag: 'PR & Media', title: 'ТВ Репортаж', description: 'Репортаж на местном ТВ, 2020', metrics: [] },
+  { slug: '12-resin-masterclass', tag: 'Art & PR', title: 'Resin Art', description: 'Мастер-класс на форуме смолянистов, 2021', metrics: [], customHref: '/fir_tree_art#resin-range' },
+  { slug: '13-local-tv-report', tag: 'PR & Media', title: 'Интервью', description: 'Репортаж на местном ТВ, 2020', metrics: [], customHref: '/fir_tree_art#interviews' },
   { slug: '14-vertex-homes', tag: 'UX/UI & Web', title: 'Vertex Homes', description: 'UX/UI дизайн для проектов из ЛСТК', metrics: [] }
 ]
 
@@ -413,7 +421,8 @@ export const caseDetails: Record<string, CaseDetail> = {
   '12-resin-masterclass': {
     slug: '12-resin-masterclass',
     tag: 'Art & PR',
-    title: 'Мастер-класс',
+    title: 'Resin Art',
+    customHref: '/fir_tree_art#resin-range',
     lead: 'Организация и проведение мастер-класса по работе со смолой (Resin Art) на профильном форуме.',
     meta: {
       client: 'Форум смолянистов',
@@ -428,7 +437,8 @@ export const caseDetails: Record<string, CaseDetail> = {
   '13-local-tv-report': {
     slug: '13-local-tv-report',
     tag: 'PR & Media',
-    title: 'ТВ Репортаж',
+    title: 'Интервью',
+    customHref: '/fir_tree_art#interviews',
     lead: 'Участие в съёмке репортажа на местном телевидении. Организация процесса, подготовка к интервью.',
     meta: {
       client: 'Местное ТВ',
@@ -461,8 +471,22 @@ export const caseDetails: Record<string, CaseDetail> = {
         id: 'colors-fonts',
         heading: 'Стиль и Концепция',
         paragraphs: [
-          'Основой визуальной концепции стала комбинация строгости, надежности и технологичности. Мы отошли от классических «деревянных» и пестрых строительных сайтов в сторону темной, сдержанной цветовой гаммы (Deep Emerald), которая ассоциируется с премиальным девелопментом и надежными инвестициями.',
+          'Основой визуальной концепции стала комбинация строгости, надежности и технологичности. Мы отошли от классических «деревянных» и пестрых строительных сайтов в сторону темной, сдержанной цветовой гаммы (Deep Emerald), которая ассоциируется с премиальным девелопментом и надежными инвестициями.'
+        ],
+        colorPalette: [
+          { hex: '#796D41', name: 'Gold Accent' },
+          { hex: '#545743', name: 'Olive Green' },
+          { hex: '#222F33', name: 'Deep Emerald' },
+          { hex: '#26353A', name: 'Dark Slate' },
+          { hex: '#F4F4F4', name: 'Light Grey' },
+          { hex: '#FFFFFF', name: 'White' }
+        ],
+        paragraphs2: [
           'В типографике используется контрастная пара: массивный и уверенный шрифт с засечками Merriweather для заголовков (символизирует надежность) и чистый читабельный Rubik для интерфейсных элементов (отвечает за технологичность).'
+        ],
+        typography: [
+          { name: 'Merriweather', weights: ['Black (900)'], example: 'Aa' },
+          { name: 'Rubik', weights: ['Regular (400)', 'Medium (500)', 'Bold (700)'], example: 'Aa' }
         ]
       },
       {
@@ -473,6 +497,14 @@ export const caseDetails: Record<string, CaseDetail> = {
           'Карточная система: Блоки с инфографикой (цифры и факты об ЛСТК) упакованы в карточки для быстрого сканирования инвесторами.',
           'Сравнение (VS): Наглядный сплит-экран, где традиционное строительство противопоставляется технологии ЛСТК (быстрый цикл 3-4 месяца, экономия до 30% на фундаменте).'
         ]
+      },
+      {
+        id: 'landing-page',
+        heading: 'Дизайн лендинга',
+        paragraphs: [
+          'Полный макет главной страницы. Дизайн проработан с учетом восприятия инвесторов: блоки плавно перетекают друг в друга, удерживая внимание на преимуществах технологии и экономической выгоде.'
+        ],
+        fullPageMockup: '/Кейсы/14-vertex-homes/mockup.png'
       }
     ]
   }
@@ -483,3 +515,7 @@ export const navLinks = [
   { href: '#cases', label: 'Кейсы' },
   { href: '#contact', label: 'Контакты' },
 ]
+
+export type Project = CaseSummary;
+export const projects = cases;
+

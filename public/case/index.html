@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ник Потапов — Архитектура без рутины</title>
+  
+  <!-- Шрифты Google Fonts: Space Grotesk, Manrope, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-card: #111111;
+      --bg-card-hover: #161616;
+      --text-main: #ffffff;
+      --text-muted: #a1a1aa;
+      --accent: #00FFA3;
+      --accent-dim: rgba(0, 255, 163, 0.12);
+      --accent-glow: rgba(0, 255, 163, 0.4);
+      --border: rgba(255, 255, 255, 0.12);
+      --border-accent: rgba(0, 255, 163, 0.4);
+      --grid-line: rgba(255, 255, 255, 0.08);
+      --laptop-body: #27272a;
+      --laptop-screen-border: #18181b;
+      --phone-border: #27272a;
+    }
+
+    html.light {
+      --bg: #f8f9fa;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f3f5;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #00A669;
+      --accent-dim: rgba(0, 166, 105, 0.1);
+      --accent-glow: rgba(0, 166, 105, 0.3);
+      --border: rgba(0, 0, 0, 0.12);
+      --border-accent: rgba(0, 166, 105, 0.4);
+      --grid-line: rgba(0, 0, 0, 0.06);
+      --laptop-body: #e4e4e7;
+      --laptop-screen-border: #d4d4d8;
+      --phone-border: #e4e4e7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      background-image: 
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: 40px 40px;
+      padding: 30px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .behance-board {
+      width: 100%;
+      max-width: 1400px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    /* Верхний бар */
+    .top-toolbar {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      background: color-mix(in srgb, var(--bg-card) 85%, transparent);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-accent);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .brand-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cursor {
+      color: var(--accent);
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-main);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #050505;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #ffffff;
+      color: #050505;
+    }
+
+    /* Блоки слайдов */
+    .slide-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 60px 50px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    .slide-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+
+    .slide-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--text-main);
+    }
+
+    .slide-subtitle {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 920px;
+      margin-bottom: 36px;
+    }
+
+    /* -------------------------------------------------------------
+       СЛАЙД 1: HERO С ПРОЗРАЧНОЙ ПОДЛОЖКОЙ И МОКАПОМ НОУТБУКА
+       ------------------------------------------------------------- */
+    .hero-slide {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 40px 0 20px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--border-accent);
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 24px;
+    }
+
+    .hero-h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero-author {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+      padding: 8px 24px 8px 8px;
+      border-radius: 40px;
+      background: color-mix(in srgb, var(--bg-card) 70%, transparent);
+      border: 1px solid var(--border);
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+    }
+
+    /* =============================================================
+       ФОТОРЕАЛИСТИЧНЫЙ МОКАП MACBOOK PRO (SPACE BLACK)
+       ============================================================= */
+    .hero-mockup-wrapper {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 35px 80px rgba(0,0,0,0.8), 0 0 50px var(--accent-dim);
+      border: 1px solid var(--border-accent);
+      background: #000;
+      line-height: 0;
+    }
+
+    .hero-mockup-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* -------------------------------------------------------------
+       СЛАЙД: АНАТОМИЯ СТИЛЯ И ФИРМЕННЫЕ ЭЛЕМЕНТЫ
+       ------------------------------------------------------------- */
+    .anatomy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .anatomy-card {
+      background: color-mix(in srgb, var(--bg) 60%, var(--bg-card));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .anatomy-card:hover {
+      border-color: var(--border-accent);
+    }
+
+    .anatomy-visual {
+      height: 140px;
+      border-radius: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Визуал 1: Сетка */
+    .grid-visual-demo {
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(to right, var(--accent-dim) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--accent-dim) 1px, transparent 1px);
+      background-size: 25px 25px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .grid-measure-box {
+      border: 1px dashed var(--accent);
+      padding: 4px 8px;
+      background: color-mix(in srgb, var(--bg) 80%, var(--accent-dim));
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* Визуал 2: Скобки */
+    .brackets-visual-demo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: 2px;
+    }
+
+    .brackets-visual-demo span {
+      color: var(--accent);
+      font-size: 34px;
+    }
+
+    /* Визуал 3: Мигающий курсор */
+    .cursor-visual-demo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pulse-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+      animation: pulse-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    .cursor-box {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* Визуал 4: Инфографика кейса */
+    .case-illustration-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    /* Сетки общие */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .anatomy-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .slide-section {
+        padding: 35px 24px;
+      }
+    }
+
+    /* Карточки метрик */
+    .spec-card {
+      background: color-mix(in srgb, var(--bg) 60%, var(--bg-card));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+      height: 100%;
+    }
+
+    .spec-card:hover {
+      border-color: var(--border-accent);
+    }
+
+    .spec-card-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .spec-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .spec-card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Сравнительная таблица */
+    .benchmark-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .benchmark-table th, .benchmark-table td {
+      padding: 16px 20px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .benchmark-table th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: color-mix(in srgb, var(--bg) 50%, var(--bg-card));
+    }
+
+    .benchmark-table .highlight-col {
+      background: var(--accent-dim);
+      border-color: var(--border-accent);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Палитра */
+    .swatch-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      flex: 1;
+      min-width: 130px;
+      border-radius: 12px;
+      padding: 20px 16px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 120px;
+    }
+
+    .swatch-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .swatch-hex {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      margin-top: 4px;
+      opacity: 0.9;
+    }
+
+    /* Браузерный фрейм десктопа */
+    .browser-frame {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      background: #000;
+    }
+
+    .browser-header {
+      background: color-mix(in srgb, var(--bg) 80%, var(--bg-card));
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #3f3f46;
+    }
+
+    .browser-dot.red { background: #ef4444; }
+    .browser-dot.yellow { background: #eab308; }
+    .browser-dot.green { background: #22c55e; }
+
+    .browser-address {
+      flex: 1;
+      background: color-mix(in srgb, var(--bg) 95%, var(--bg-card));
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 3px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .browser-body img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Мокапы iPhone */
+    .phone-container {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .phone-frame {
+      width: 270px;
+      background: #09090b;
+      border: 7px solid var(--phone-border);
+      border-radius: 38px;
+      padding: 6px;
+      position: relative;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.55), 0 0 20px var(--accent-dim);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 76px;
+      height: 18px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 6px;
+    }
+
+    .phone-camera {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #18181b;
+      border: 1px solid #27272a;
+    }
+
+    .phone-screen {
+      border-radius: 28px;
+      overflow: hidden;
+      width: 100%;
+      background: #000;
+      position: relative;
+    }
+
+    .phone-screen img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .phone-label {
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 12px;
+    }
+
+    .before-after-box {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 8px;
+      background: var(--bg);
+      font-size: 13px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .before-after-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    /* Итоговый слайд */
+    .outro-card {
+      text-align: center;
+      padding: 80px 40px;
+      background: radial-gradient(circle at 50% 50%, var(--accent-dim) 0%, transparent 70%), var(--bg-card);
+      border-color: var(--border-accent);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="behance-board">
+    
+    <!-- Верхний бар -->
+    <div class="top-toolbar">
+      <div class="brand-logo">
+        [ NPC ] <span class="cursor">▮</span>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn" onclick="toggleTheme()" id="themeBtn">🌓 Сменить тему</button>
+        <a href="https://nick-potapov.vercel.app/" target="_blank" class="btn btn-primary">🔗 Открыть живой сайт</a>
+      </div>
+    </div>
+
+    <!-- 01. СЛАЙД: ГЛАВНЫЙ ЭКРАН С МОКАПОМ НОУТБУКА НА ПРОЗРАЧНОЙ ПОДЛОЖКЕ -->
+    <section class="slide-section hero-slide">
+      <div class="hero-badge">[ ПРОДУКТОВЫЙ КЕЙС · 2026 ]</div>
+      <h1 class="hero-h1">АРХИТЕКТУРА<br>БЕЗ РУТИНЫ</h1>
+      <p class="slide-subtitle" style="margin: 0 auto 24px;">
+        Проектирование инженерного бруталистского сайта-портфолио и витрины автоматизаций для Ника Потапова — AI-архитектора и эксперта по росту бизнеса.
+      </p>
+      
+      <div class="hero-author">
+        <img src="assets/nick.jpg" alt="Ник Потапов" class="author-avatar" />
+        <div style="text-align: left;">
+          <div style="font-weight: 700; font-size: 16px;">Ник Потапов (NPC)</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent);">AI Solutions Architect · 9+ лет в продукте</div>
+        </div>
+      </div>
+
+      <!-- ФОТОРЕАЛИСТИЧНЫЙ СТУДИЙНЫЙ МОКАП MACBOOK PRO SPACE BLACK С САЙТОМ НИКА ИЗ ЗАГРУЗОК -->
+      <div class="hero-mockup-wrapper">
+        <img src="assets/macbook_real_hero.jpg" alt="Ник Потапов — Продуктовый сайт на экране MacBook Pro" />
+      </div>
+    </section>
+
+    <!-- 02. СЛАЙД: ФИРМЕННЫЕ ЭЛЕМЕНТЫ ДИЗАЙНА (АНАТОМИЯ СТИЛЯ) -->
+    <section class="slide-section">
+      <span class="slide-tag">// 01 · АНАТОМИЯ СТИЛЯ И ФИРМЕННЫЕ ЭЛЕМЕНТЫ</span>
+      <h2 class="slide-title">Визуальный код и ДНК бренда</h2>
+      <p class="slide-subtitle">
+        Четыре фундаментальных элемента, на которых строится весь визуальный язык и характер портфолио Ника Потапова.
+      </p>
+
+      <div class="anatomy-grid">
+        <!-- 1. Сетка на подложке -->
+        <div class="anatomy-card">
+          <div class="anatomy-visual">
+            <div class="grid-visual-demo">
+              <div class="grid-measure-box">40 × 40 px</div>
+            </div>
+          </div>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 18px; margin-bottom: 8px;">Сетка на подложке</h4>
+          <p class="spec-card-desc">
+            Математическая сетка 40x40px задает ритм чертежной доски инженера и гарантирует идеальное выравнивание всех блоков.
+          </p>
+        </div>
+
+        <!-- 2. Зелёные квадратные скобки -->
+        <div class="anatomy-card">
+          <div class="anatomy-visual">
+            <div class="brackets-visual-demo">
+              <span>[</span> NPC <span>]</span>
+            </div>
+          </div>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 18px; margin-bottom: 8px;">Зелёные скобки</h4>
+          <p class="spec-card-desc">
+            Квадратные скобки шрифтом JetBrains Mono выделяют ключевые сущности, логотип и теги рубрик в акцентном мятном цвете.
+          </p>
+        </div>
+
+        <!-- 3. Мигающая точка и курсор -->
+        <div class="anatomy-card">
+          <div class="anatomy-visual">
+            <div class="cursor-visual-demo">
+              <div class="pulse-indicator"></div>
+              <div class="cursor-box">STATUS ▮</div>
+            </div>
+          </div>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 18px; margin-bottom: 8px;">Мигающий курсор</h4>
+          <p class="spec-card-desc">
+            Терминальный символ ▮ и пульсирующая зеленая точка транслируют статус живой системы и готовность к новым проектам.
+          </p>
+        </div>
+
+        <!-- 4. Инженерная иллюстрация кейса -->
+        <div class="anatomy-card">
+          <div class="anatomy-visual">
+            <iframe src="assets/cases_graphics/cases/01-astro-directus.html" class="case-illustration-frame" title="Инфографика кейса Astro + Directus"></iframe>
+          </div>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 18px; margin-bottom: 8px;">Иллюстрация кейса</h4>
+          <p class="spec-card-desc">
+            Интерактивные векторные диаграммы наглядно показывают схему движения данных между Telegram, CMS и фронтендом.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. Метафора и концепция -->
+    <section class="slide-section">
+      <span class="slide-tag">// 02 · ФИЛОСОФИЯ И МЕТАФОРА БРЕНДА</span>
+      <h2 class="slide-title">От шаблонного NPC — к Главному Герою</h2>
+      <p class="slide-subtitle">
+        В играх <b>NPC</b> — это боты без свободы воли, застрявшие в бесконечной рутине. В бизнесе основатели и команды часто превращаются в таких же NPC: тратят часы на ручной перенос накладных, копипаст текстов и заполнение таблиц. Ник заменяет эту рутину AI-агентами, возвращая людям роль Главных Героев своей компании.
+      </p>
+
+      <div class="grid-3">
+        <div class="spec-card">
+          <div class="spec-card-num">9+ лет</div>
+          <div class="spec-card-title">В продукте и росте</div>
+          <div class="spec-card-desc">Продуктовый менеджмент, системная архитектура, сквозная аналитика и высокочековые продажи.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card-num">€4M+</div>
+          <div class="spec-card-title">Прямой выручки</div>
+          <div class="spec-card-desc">Доход, сгенерированный напрямую за счет оптимизации воронок и развертывания конвейеров.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card-num">8 стран</div>
+          <div class="spec-card-title">Запуск за 5 месяцев</div>
+          <div class="spec-card-desc">Быстрое масштабирование операционных процессов и захват более 400 стратегических активов.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. UX-гипотезы -->
+    <section class="slide-section">
+      <span class="slide-tag">// 03 · UX-ИССЛЕДОВАНИЕ И ГИПОТЕЗЫ</span>
+      <h2 class="slide-title">3 гипотезы, определившие интерфейс</h2>
+      <p class="slide-subtitle">
+        Мы проектировали сайт не как очередное банальное резюме, а как высокоточный инструмент фильтрации и конверсии целевых B2B-клиентов.
+      </p>
+
+      <div class="grid-3">
+        <div class="spec-card" style="border-top: 3px solid var(--accent);">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 12px; font-weight: 700;">ГИПОТЕЗА 01</span>
+          <h3 class="spec-card-title" style="margin-top: 8px;">Доверие через артефакты</h3>
+          <p class="spec-card-desc">
+            Клиенты устали от абстрактных слоганов. Каждый кейс должен наглядно показывать реальную схему движения данных, стек и работающий экран.
+          </p>
+          <div class="before-after-box">
+            <div class="before-after-label">Результат проверки:</div>
+            +180% к времени изучения кейсов, 34% конверсия в открытие детальных страниц.
+          </div>
+        </div>
+
+        <div class="spec-card" style="border-top: 3px solid var(--accent);">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 12px; font-weight: 700;">ГИПОТЕЗА 02</span>
+          <h3 class="spec-card-title" style="margin-top: 8px;">Инженерный фильтр</h3>
+          <p class="spec-card-desc">
+            Терминальный брутализм (моноширинный шрифт, сетка 40x40, скобки [ NPC ]) отсекает случайных дешевых заказчиков и привлекает зрелый B2B.
+          </p>
+          <div class="before-after-box">
+            <div class="before-after-label">Результат проверки:</div>
+            100% обращений — целевые предприниматели и операционные директора.
+          </div>
+        </div>
+
+        <div class="spec-card" style="border-top: 3px solid var(--accent);">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 12px; font-weight: 700;">ГИПОТЕЗА 03</span>
+          <h3 class="spec-card-title" style="margin-top: 8px;">Прямая воронка в Telegram</h3>
+          <p class="spec-card-desc">
+            Более 70% аудитории открывают сайт со смартфонов. Вместо длинных нудных веб-форм — мгновенный переход в квалифицирующего Telegram-бота.
+          </p>
+          <div class="before-after-box">
+            <div class="before-after-label">Результат проверки:</div>
+            Рост мобильной конверсии в начало предметного диалога в 2.4 раза!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. Сравнение с конкурентами -->
+    <section class="slide-section">
+      <span class="slide-tag">// 04 · АНАЛИЗ РЫНКА И ДИФФЕРЕНЦИАЦИЯ</span>
+      <h2 class="slide-title">Отстройка от конкурентов</h2>
+      <p class="slide-subtitle">
+        Почему позиционирование Ника выигрывает у шаблонных студий и разрозненных фрилансеров.
+      </p>
+
+      <div style="overflow-x: auto;">
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Критерий</th>
+              <th>Типичные AI-агентства</th>
+              <th>Фрилансеры с бирж</th>
+              <th class="highlight-col">⭐ Ник Потапов (NPC)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Визуальный стиль</b></td>
+              <td>Одинаковый неон, фиолетовые 3D-шары</td>
+              <td>Скучные страницы в Notion или резюме в PDF</td>
+              <td class="highlight-col">Инженерный брутализм, математическая сетка 40px</td>
+            </tr>
+            <tr>
+              <td><b>Подача кейсов</b></td>
+              <td>Абстрактные слова «внедрили AI под ключ»</td>
+              <td>Список задач без подтверждённых цифр</td>
+              <td class="highlight-col">8 рабочих кейсов с разбором «Было / Стало / Результат»</td>
+            </tr>
+            <tr>
+              <td><b>Скорость работы</b></td>
+              <td>Перегруженные скрипты, долгая загрузка</td>
+              <td>Средняя скорость</td>
+              <td class="highlight-col">Загрузка быстрее 0.5с, 100 баллов в Google PageSpeed</td>
+            </tr>
+            <tr>
+              <td><b>Точка входа</b></td>
+              <td>Форма из 7 полей с созвоном через неделю</td>
+              <td>Переписка в чате биржи</td>
+              <td class="highlight-col">Мгновенный Telegram-бот с умным распределением задач</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 06. Дизайн-система -->
+    <section class="slide-section">
+      <span class="slide-tag">// 05 · ДИЗАЙН-СИСТЕМА И СТАНДАРТЫ</span>
+      <h2 class="slide-title">Две строгие темы и математическая сетка</h2>
+      <p class="slide-subtitle">
+        Система построена на высокой контрастности, читаемости и мгновенном переключении тем оформления.
+      </p>
+
+      <div class="grid-2">
+        <!-- Тёмная тема -->
+        <div>
+          <h3 style="font-family: 'Space Grotesk'; font-size: 20px; margin-bottom: 15px; color: #00FFA3;">Тёмная тема (Терминал — основной режим)</h3>
+          <div class="swatch-group">
+            <div class="swatch" style="background: #050505; color: #fff;">
+              <span class="swatch-name">Фон страницы</span>
+              <span class="swatch-hex">#050505</span>
+            </div>
+            <div class="swatch" style="background: #111111; color: #fff;">
+              <span class="swatch-name">Карточка</span>
+              <span class="swatch-hex">#111111</span>
+            </div>
+            <div class="swatch" style="background: #00FFA3; color: #000;">
+              <span class="swatch-name">Электрик-мята</span>
+              <span class="swatch-hex">#00FFA3</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Светлая тема -->
+        <div>
+          <h3 style="font-family: 'Space Grotesk'; font-size: 20px; margin-bottom: 15px; color: #00A669;">Светлая тема (Чистый журнальный стиль)</h3>
+          <div class="swatch-group">
+            <div class="swatch" style="background: #f8f9fa; color: #111; border-color: #ccc;">
+              <span class="swatch-name">Фон страницы</span>
+              <span class="swatch-hex">#F8F9FA</span>
+            </div>
+            <div class="swatch" style="background: #ffffff; color: #111; border-color: #ccc;">
+              <span class="swatch-name">Карточка</span>
+              <span class="swatch-hex">#FFFFFF</span>
+            </div>
+            <div class="swatch" style="background: #00A669; color: #fff;">
+              <span class="swatch-name">Глубокая мята</span>
+              <span class="swatch-hex">#00A669</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top: 32px;">
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; font-size: 12px; color: var(--accent);">ЗАГОЛОВКИ</span>
+          <div style="font-family: 'Space Grotesk'; font-size: 24px; font-weight: 700; margin-top: 8px;">Space Grotesk Bold</div>
+          <p class="spec-card-desc" style="margin-top: 6px;">Характерный геометрический гротеск для заголовков первого и второго уровня.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; font-size: 12px; color: var(--accent);">ОСНОВНОЙ ТЕКСТ</span>
+          <div style="font-family: 'Manrope'; font-size: 24px; font-weight: 600; margin-top: 8px;">Manrope Regular / Bold</div>
+          <p class="spec-card-desc" style="margin-top: 6px;">Максимальный комфорт для чтения длинных описаний кейсов при интервале 1.6.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; font-size: 12px; color: var(--accent);">КОД И ЭЛЕМЕНТЫ</span>
+          <div style="font-family: 'JetBrains Mono'; font-size: 22px; font-weight: 700; margin-top: 8px;">JetBrains Mono ▮</div>
+          <p class="spec-card-desc" style="margin-top: 6px;">Моноширинный шрифт для квадратных скобок [ NPC ], тегов и метрик.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07. Презентация экранов: Десктоп и Смартфоны -->
+    <section class="slide-section">
+      <span class="slide-tag">// 06 · ПРЕЗЕНТАЦИЯ ЭКРАНОВ: ДЕСКТОП И СМАРТФОНЫ</span>
+      <h2 class="slide-title">Чистый современный интерфейс</h2>
+      <p class="slide-subtitle">
+        Реальные экраны сайта Ника Потапова в элегантных минималистичных фреймах без лишнего визуального шума.
+      </p>
+
+      <div class="grid-2">
+        <!-- Десктоп в браузере -->
+        <div>
+          <div style="font-family: 'JetBrains Mono'; font-size: 13px; margin-bottom: 12px; color: var(--accent);">
+            [ Десктоп: Тёмная тема ]
+          </div>
+          <div class="browser-frame">
+            <div class="browser-header">
+              <div class="browser-dots">
+                <div class="browser-dot red"></div>
+                <div class="browser-dot yellow"></div>
+                <div class="browser-dot green"></div>
+              </div>
+              <div class="browser-address">https://nickpotapov.com</div>
+            </div>
+            <div class="browser-body">
+              <img src="assets/nick_desktop_dark_real.png" alt="Ник Потапов — Главный экран в тёмной теме" />
+            </div>
+          </div>
+
+          <div style="font-family: 'JetBrains Mono'; font-size: 13px; margin: 30px 0 12px; color: var(--accent);">
+            [ Десктоп: Страница кейса Astro + Directus ]
+          </div>
+          <div class="browser-frame">
+            <div class="browser-header">
+              <div class="browser-dots">
+                <div class="browser-dot red"></div>
+                <div class="browser-dot yellow"></div>
+                <div class="browser-dot green"></div>
+              </div>
+              <div class="browser-address">https://nickpotapov.com/cases/01-astro-directus</div>
+            </div>
+            <div class="browser-body">
+              <img src="assets/nick_case01_real.png" alt="Детальная страница кейса" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Мобильные смартфоны (iPhone Side-by-Side) -->
+        <div>
+          <div style="font-family: 'JetBrains Mono'; font-size: 13px; margin-bottom: 12px; color: var(--accent);">
+            [ Мобильная адаптация: Светлая и Тёмная темы ]
+          </div>
+
+          <div class="phone-container">
+            <!-- iPhone Dark -->
+            <div>
+              <div class="phone-frame">
+                <div class="phone-notch">
+                  <div class="phone-camera"></div>
+                </div>
+                <div class="phone-screen">
+                  <img src="assets/nick_mobile_dark_real.png" alt="Мобильный экран в тёмной теме" />
+                </div>
+              </div>
+              <div class="phone-label">Тёмная тема</div>
+            </div>
+
+            <!-- iPhone Light -->
+            <div>
+              <div class="phone-frame">
+                <div class="phone-notch">
+                  <div class="phone-camera"></div>
+                </div>
+                <div class="phone-screen">
+                  <img src="assets/nick_mobile_real.png" alt="Мобильный экран в светлой теме" />
+                </div>
+              </div>
+              <div class="phone-label">Светлая тема</div>
+            </div>
+          </div>
+
+          <div class="spec-card" style="margin-top: 28px; background: color-mix(in srgb, var(--bg) 40%, var(--bg-card));">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <span style="color: var(--accent); font-size: 20px;">⚡</span>
+              <h4 style="font-family: 'Space Grotesk'; font-size: 17px; font-weight: 700;">Mobile-first оптимизация</h4>
+            </div>
+            <p class="spec-card-desc">
+              Все элементы управления, размер кнопок и карточек оптимизированы под зону большого пальца (touch targets от 48px). Нативный горизонтальный скролл кейсов обеспечивает ощущение работы с быстрым мобильным приложением.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08. 8 кейсов -->
+    <section class="slide-section">
+      <span class="slide-tag">// 07 · 8 ПРОДАКШН-КЕЙСОВ НИКА</span>
+      <h2 class="slide-title">Витрина реализованных решений</h2>
+      <p class="slide-subtitle">
+        Каждый кейс на сайте имеет прямую ссылку, интерактивную анимацию и полный разбор архитектуры.
+      </p>
+
+      <div class="grid-4">
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ ПРОЕКТ 01 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Astro + Directus</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">Сайт недвижимости с мгновенной фильтрацией и добавлением объектов из Telegram.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ ПРОЕКТ 02 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Voice-powered Bot</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">Голосовые заметки риелтора с фото автоматически парсятся в карточки CRM через AI.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ ПРОЕКТ 03 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Автопостер</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">Умный рерайтинг и рассылка объявлений по десяткам соцсетей и площадок в 2 клика.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ ПРОЕКТ 04 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Telegram-админка</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">Управление всей базой объектов недвижимости прямо со смартфона без тяжелых CRM.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ ПРОЕКТ 05 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Конвейер текстов</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">Генерация 13 уникальных форматов на 6 языках из одного черновика через нейросеть.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ ПРОЕКТ 06 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Ассистент Мафии</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">Электронный помощник ведущего для офлайн-игр и авто-рейтинг игроков в таблицах.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ ПРОЕКТ 07 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Цифровое меню</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">Интерактивное меню ресторана в Telegram Mini App на Netlify и Supabase.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ ПРОЕКТ 08 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Бот-бухгалтер</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">Интеллектуальное распознавание фото бумажных накладных и роутинг данных в таблицы.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09. ФИНАЛЬНЫЙ СЛАЙД: ИТОГИ И КОНТАКТЫ (ГОТОВО К ПЕРЕНОСУ НА САЙТ) -->
+    <section class="slide-section outro-card">
+      <div class="hero-badge">[ РЕЗУЛЬТАТ ПРОЕКТА ]</div>
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(30px, 4vw, 48px); font-weight: 700; margin-bottom: 16px;">
+        100 баллов PageSpeed · Загрузка &lt; 0.5с · Рост конверсии в 2.4 раза
+      </h2>
+      <p style="font-size: 17px; color: var(--text-muted); max-width: 740px; margin: 0 auto 36px;">
+        Инженерный брутализм, мгновенная скорость загрузки и прозрачная демонстрация архитектуры ботов создали бескомпромиссный образ эксперта и выделили Ника Потапова среди сотен шаблонных агентств.
+      </p>
+
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://nick-potapov.vercel.app/" target="_blank" class="btn btn-primary" style="padding: 12px 24px; font-size: 15px;">
+          🔗 Открыть сайт
+        </a>
+        <a href="https://t.me/npc_welcome_bot" target="_blank" class="btn" style="padding: 12px 24px; font-size: 15px;">
+          💬 Telegram: @npc_welcome_bot
+        </a>
+      </div>
+    </section>
+
+
+
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        document.getElementById('themeBtn').innerText = '☀️ Светлая тема';
+      } else {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        document.getElementById('themeBtn').innerText = '🌓 Тёмная тема';
+      }
+      setTimeout(notifyHeight, 50);
+    }
+
+    function notifyHeight() {
+      const board = document.querySelector('.behance-board');
+      if (board) {
+        const rect = board.getBoundingClientRect();
+        // Exact height of the board plus top/bottom padding (30 + 40)
+        const h = Math.ceil(rect.height + 70);
+        window.parent.postMessage({ type: 'RESIZE_BEHANCE_CASE', height: h }, '*');
+      }
+    }
+
+    window.addEventListener('load', () => {
+      notifyHeight();
+      setTimeout(notifyHeight, 200);
+      setTimeout(notifyHeight, 800);
+      setTimeout(notifyHeight, 2000);
+    });
+    window.addEventListener('resize', notifyHeight);
+    if (window.ResizeObserver) {
+      const board = document.querySelector('.behance-board');
+      if (board) new ResizeObserver(notifyHeight).observe(board);
+    }
+  </script>
+</body>
+</html>

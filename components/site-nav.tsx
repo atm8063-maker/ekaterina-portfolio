@@ -84,6 +84,13 @@ export function SiteNav({ anchorsActive = true }: { anchorsActive?: boolean }) {
                 </Link>
               )
             })}
+
+            <Link
+              href="/case"
+              className="rounded-md px-3 py-2 text-sm text-[color:var(--text-secondary)] hover:text-[color:var(--accent)] transition-colors duration-200 font-mono font-bold"
+            >
+              Кейс
+            </Link>
             
             <button
               onClick={() => setLang(lang === 'ru' ? 'en' : 'ru')}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Image from "next/image";
 import { ArtGalleryTest } from "@/components/sections/art-gallery-test";
@@ -19,6 +20,27 @@ import { ArtSketches } from "@/components/sections/art-sketches";
 import { StubSection } from "@/components/ui/stub-section";
 
 export default function ArtPage() {
+  useEffect(() => {
+    const scrollToHash = () => {
+      const hash = window.location.hash;
+      if (!hash) return;
+      const targetId = decodeURIComponent(hash.replace("#", ""));
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    const t1 = setTimeout(scrollToHash, 100);
+    const t2 = setTimeout(scrollToHash, 400);
+
+    window.addEventListener("hashchange", scrollToHash);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("hashchange", scrollToHash);
+    };
+  }, []);
   return (
     <main className="min-h-screen bg-[#111111] text-foreground overflow-hidden font-inter selection:bg-[#14F1D9] selection:text-black">
       
@@ -38,64 +60,121 @@ export default function ArtPage() {
       <div className="fixed top-0 left-0 w-full h-[380px] lg:h-[600px] bg-gradient-to-b from-[#111111] from-[5%] via-[#111111]/70 via-[35%] to-transparent z-[1] pointer-events-none" />
 
       {/* 1. HERO SECTION */}
-      <ArtHero />
+      <div id="hero" className="scroll-mt-4">
+        <ArtHero />
+      </div>
 
       <div className="relative z-10">
         
         {/* 2. ИСКУССТВО В ПРОСТРАНСТВЕ */}
-        <ArtSpace />
+        <div id="space" className="scroll-mt-4">
+          <div id="manifesto" className="scroll-mt-4" />
+          <div id="art-space" className="scroll-mt-4" />
+          <ArtSpace />
+        </div>
 
         {/* 3. КОЛЛАЖ ИЗ РАБОТ ИЗ СМОЛЫ */}
-        <ArtCollage />
+        <div id="collage" className="scroll-mt-4">
+          <div id="resin-collage" className="scroll-mt-4" />
+          <ArtCollage />
+        </div>
 
         {/* 4. ВСТАВКА «ИЗ ГАЛЕРЕИ» (5-VIDEO PANELS) */}
-        <div className="relative w-full overflow-hidden border-b border-white/10">
+        <div id="gallery" className="relative w-full overflow-hidden border-b border-white/10 scroll-mt-4">
+          <div id="video-panels" className="scroll-mt-4" />
+          <div id="art-gallery" className="scroll-mt-4" />
           <ArtGalleryTest />
         </div>
 
         {/* 5. CONTEMPORARY ART */}
-        <ArtContemporary />
+        <div id="contemporary" className="scroll-mt-4">
+          <div id="contemporary-art" className="scroll-mt-4" />
+          <ArtContemporary />
+        </div>
 
-        {/* БЛОК АРТИВИЗМ И ЧЕСТНОСТЬ (Скролл) */}
-        <ArtProtest />
+        {/* 6. БЛОК АРТИВИЗМ И ЧЕСТНОСТЬ (Скролл) */}
+        <div id="protest" className="scroll-mt-4">
+          <div id="artivism" className="scroll-mt-4" />
+          <div id="art-protest" className="scroll-mt-4" />
+          <ArtProtest />
+        </div>
 
-        {/* 6. ДИАПАЗОН СМОЛЫ (Бывш. Искусство без границ) */}
-        <ArtNoBorders />
+        {/* 7. ДИАПАЗОН СМОЛЫ (Широкий диапазон смолы) */}
+        <div id="resin-range" className="scroll-mt-4">
+          <div id="range" className="scroll-mt-4" />
+          <div id="wide-range" className="scroll-mt-4" />
+          <div id="no-borders" className="scroll-mt-4" />
+          <ArtNoBorders />
+        </div>
 
-        {/* 7. ТЕХНИКИ И ИНСТРУМЕНТЫ */}
-        <ArtTechniques />
+        {/* 8. ТЕХНИКИ И ИНСТРУМЕНТЫ */}
+        <div id="techniques" className="scroll-mt-4">
+          <div id="tools" className="scroll-mt-4" />
+          <ArtTechniques />
+        </div>
 
-        {/* 8. СКЕТЧИ И ПОРТРЕТЫ */}
-        <ArtSketches />
+        {/* 9. СКЕТЧИ И ПОРТРЕТЫ */}
+        <div id="sketches" className="scroll-mt-4">
+          <div id="portraits" className="scroll-mt-4" />
+          <div id="sketches-portraits" className="scroll-mt-4" />
+          <ArtSketches />
+        </div>
 
-        {/* 9. БЛОК С ЦИФРАМИ */}
-        <ArtNumbers />
+        {/* 10. БЛОК С ЦИФРАМИ */}
+        <div id="numbers" className="scroll-mt-4">
+          <div id="facts" className="scroll-mt-4" />
+          <div id="stats" className="scroll-mt-4" />
+          <ArtNumbers />
+        </div>
 
-        {/* 10. ПОБЕДЫ, ФИНАЛЫ И СУДЕЙСТВО */}
-        <ArtAwards />
+        {/* 11. ПОБЕДЫ, ФИНАЛЫ И СУДЕЙСТВО */}
+        <div id="awards" className="scroll-mt-4">
+          <div id="wins" className="scroll-mt-4" />
+          <ArtAwards />
+        </div>
 
-        {/* 11. АМБАССАДОР БРЕНДА И ПРОДУКЦИЯ */}
-        <ArtBrand />
+        {/* 12. АМБАССАДОР БРЕНДА И ПРОДУКЦИЯ */}
+        <div id="brand" className="scroll-mt-4">
+          <div id="ambassador" className="scroll-mt-4" />
+          <ArtBrand />
+        </div>
 
-        {/* 12. АРТ-МУЗА, МК, ОБУЧЕНИЕ */}
-        <ArtTeaching />
+        {/* 13. АРТ-МУЗА, МК, ОБУЧЕНИЕ */}
+        <div id="teaching" className="scroll-mt-4">
+          <div id="education" className="scroll-mt-4" />
+          <div id="masterclasses" className="scroll-mt-4" />
+          <div id="muza" className="scroll-mt-4" />
+          <div id="art-teaching" className="scroll-mt-4" />
+          <ArtTeaching />
+        </div>
 
-        {/* 13. ПУБЛИКАЦИИ В СМИ */}
-        <StubSection 
-          id="media-publications"
-          title="Публикации в СМИ" 
-          desc="Здесь покажем статьи, интервью и публикации о твоих работах и карьере в медиа."
-        />
+        {/* 14. ИНТЕРВЬЮ И ПУБЛИКАЦИИ В СМИ */}
+        <div id="interviews" className="scroll-mt-4">
+          <div id="media" className="scroll-mt-4" />
+          <div id="media-publications" className="scroll-mt-4" />
+          <StubSection 
+            id="interviews-section"
+            title="Интервью" 
+            desc="Здесь покажем статьи, интервью на ТВ и публикации о работах и карьере в медиа."
+          />
+        </div>
 
-        {/* 14. ОТЗЫВЫ */}
-        <StubSection 
-          id="testimonials"
-          title="Отзывы" 
-          desc="Снимаем последние сомнения перед Контактами. Реальные отзывы от покупателей работ и учеников (можно в виде карусели или карточек)."
-        />
+        {/* 15. ОТЗЫВЫ */}
+        <div id="testimonials" className="scroll-mt-4">
+          <div id="reviews" className="scroll-mt-4" />
+          <StubSection 
+            id="testimonials-section"
+            title="Отзывы" 
+            desc="Снимаем последние сомнения перед Контактами. Реальные отзывы от покупателей работ и учеников (можно в виде карусели или карточек)."
+          />
+        </div>
 
-        {/* 15. КОНТАКТЫ / INSTAGRAM */}
-        <ArtContacts />
+        {/* 16. КОНТАКТЫ / INSTAGRAM */}
+        <div id="contacts" className="scroll-mt-4">
+          <div id="contact" className="scroll-mt-4" />
+          <div id="instagram" className="scroll-mt-4" />
+          <ArtContacts />
+        </div>
 
       </div>
     </main>
