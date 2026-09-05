@@ -10,7 +10,7 @@ export function ArtProtest() {
   }
 
   return (
-    <section className="relative w-full h-[calc(100vh-80px)] bg-[#111111] overflow-hidden">
+    <section id="protest" className="relative w-full h-[calc(100vh-80px)] bg-[#111111] overflow-hidden scroll-mt-20">
       
       {/* The horizontal scroll track (native) with SNAP */}
       <div 

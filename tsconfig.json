@@ -37,6 +37,7 @@
   ],
   "exclude": [
     "node_modules",
+    "_backups",
     "scratch",
     "perfect_*.tsx",
     "video_block.tsx"

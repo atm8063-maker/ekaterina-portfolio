@@ -1,0 +1,147 @@
+'use client';
+
+import Image from "next/image";
+import { useRef } from "react";
+
+type MediaItem = {
+  outlet: string;
+  headline: string;
+  meta?: string;
+  quote?: string;
+  image: string;
+  imagePosition?: "center" | "top";
+  secondaryImage?: string;
+  featured?: boolean;
+};
+
+const items: MediaItem[] = [
+  {
+    outlet: "Холод",
+    headline: "«Я переехала в Черногорию и очень довольна»",
+    meta: "Федеральное издание",
+    quote: "Здесь по-доброму относятся к иммигрантам, а жизнь в маленьком городке у моря напоминает уютный ситком.",
+    image: "/media-press/holod-montenegro.jpg",
+    featured: true,
+  },
+  {
+    outlet: "«Тамбовская жизнь» №116",
+    headline: "«Как нарастить Goodwill?»",
+    meta: "21 октября 2020 · Малый бизнес, стр. 5",
+    quote: "Тамбовские предприниматели поделились историями своего успеха.",
+    image: "/media-press/tambovskaya-zhizn-cover.jpg",
+  },
+  {
+    outlet: "Газета «Жизнь» №43",
+    headline: "«На моих глазах происходит волшебство»",
+    meta: "27 октября 2020 · стр. 15, Общество",
+    quote: "Екатерина Разумова делает удивительной красоты изделия из эпоксидной смолы.",
+    image: "/media-press/zhizn-tambov-article.jpg",
+  },
+  {
+    outlet: "КП.RU",
+    headline: "«У меня получилась больше мазня, чем море»",
+    image: "/media-press/kp-ru-portrait.jpg",
+  },
+  {
+    outlet: "«Новый век» Тамбов",
+    headline: "«Жительница Тамбова во время пандемии открыла бизнес по созданию изделий из эпоксидной смолы»",
+    meta: "6 ноября 2020",
+    image: "/media-press/noviy-vek-tambov.jpg",
+    imagePosition: "top",
+  },
+  {
+    outlet: "ТВ Тамбов",
+    headline: "Репортаж «Область новостей»",
+    meta: "художник-смолянист",
+    image: "/media-press/tv-tambov.jpg",
+    secondaryImage: "/media-press/tv-tambov-backstage.jpg",
+  },
+  {
+    outlet: "Название уточняется",
+    headline: "«Тамбовская художница-смолянист превратила хобби в бизнес и стала…»",
+    image: "/media-press/unidentified-regional.jpg",
+  },
+];
+
+export function ArtMedia() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const drag = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    drag.current = { isDown: true, startX: e.clientX, scrollLeft: el.scrollLeft };
+    el.setPointerCapture(e.pointerId);
+    el.classList.add("cursor-grabbing");
+    el.classList.remove("cursor-grab");
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = scrollRef.current;
+    if (!el || !drag.current.isDown) return;
+    el.scrollLeft = drag.current.scrollLeft - (e.clientX - drag.current.startX);
+  };
+
+  const endDrag = () => {
+    drag.current.isDown = false;
+    const el = scrollRef.current;
+    el?.classList.remove("cursor-grabbing");
+    el?.classList.add("cursor-grab");
+  };
+
+  return (
+    <section id="media-publications" className="relative py-24 border-b border-white/10 bg-[#111111] overflow-hidden scroll-mt-20">
+      <div className="container mx-auto px-6">
+        <h2 className="mb-12 text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
+          Публикации в СМИ
+        </h2>
+      </div>
+
+      <div
+        ref={scrollRef}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+        onDragStart={(e) => e.preventDefault()}
+        className="hide-scrollbar flex cursor-grab select-none overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-4"
+      >
+        {items.map((item) => (
+          <article
+            key={item.outlet + item.headline}
+            className={`group shrink-0 snap-center flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1A1A1A] ${
+              item.featured ? "w-[300px] sm:w-[420px]" : "w-[260px] sm:w-[300px]"
+            }`}
+          >
+            <div className={`relative w-full ${item.featured ? "aspect-[4/5]" : "aspect-[3/4]"} bg-black/40`}>
+              <Image
+                src={item.image}
+                alt={`${item.outlet}: ${item.headline}`}
+                fill
+                className={`object-cover transition-transform duration-500 group-hover:scale-105 ${
+                  item.imagePosition === "top" ? "object-top" : "object-center"
+                }`}
+              />
+              {item.secondaryImage && (
+                <div className="absolute bottom-3 right-3 h-16 w-16 overflow-hidden rounded-lg border-2 border-[#111111] shadow-lg sm:h-20 sm:w-20">
+                  <Image src={item.secondaryImage} alt={`${item.outlet}: со съёмки`} fill className="object-cover" />
+                </div>
+              )}
+            </div>
+            <div className="flex flex-1 flex-col gap-2 p-5">
+              <p className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#14F1D9]">
+                {item.outlet}
+              </p>
+              <h3 className="font-montserrat text-sm font-black uppercase leading-snug text-white sm:text-base">
+                {item.headline}
+              </h3>
+              {item.meta && <p className="text-xs text-white/40">{item.meta}</p>}
+              {item.quote && <p className="mt-1 text-sm leading-relaxed text-white/60">{item.quote}</p>}
+            </div>
+          </article>
+        ))}
+        <div className="w-px shrink-0" />
+      </div>
+    </section>
+  );
+}

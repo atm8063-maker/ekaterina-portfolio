@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function ArtHero() {
   return (
-    <section className="relative h-[100svh] w-full bg-[#111] overflow-hidden flex items-center justify-center font-sans">
+    <section id="hero" className="relative h-[100svh] w-full bg-[#111] overflow-hidden flex items-center justify-center font-sans scroll-mt-20">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video 
           src="/hero-video.mp4" 

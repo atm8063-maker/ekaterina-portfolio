@@ -25,7 +25,7 @@
 | 11 | Победы и судейство | `sections/art-awards.tsx` | ✅ Готов | — |
 | 12 | Амбассадор бренда | `sections/art-brand.tsx` | ✅ Готов | — |
 | 13 | Арт-муза, МК, обучение | `sections/art-teaching.tsx` | ✅ Готов | — |
-| 14 | Публикации в СМИ | `ui/stub-section` | ⬜ Заглушка | Нужен отдельный компонент |
+| 14 | Публикации в СМИ | `sections/art-media.tsx` | ✅ Готов | 7 карточек, горизонтальный скролл. Одно издание не опознано (плейсхолдер) |
 | 15 | Отзывы | `ui/stub-section` | ⬜ Заглушка | Нужен отдельный компонент |
 | 16 | Контакты / Instagram | `sections/art-contacts.tsx` | ✅ Готов | — |
 
@@ -57,8 +57,58 @@
 ## Известные проблемы
 
 - ArtProtest: 6 контейнеров содержат заглушки (чёрные кресты), нужно заполнить фотографиями
-- В папке `components/sections/` лежат неиспользуемые компоненты-черновики: `art-gallery.tsx`, `art-gallery-v2.tsx`, `art-gallery-concrete.tsx`, `art-gallery-perspective.tsx`, `art-gallery-hero.tsx`
-- 3 блока — заглушки (StubSection): Скетчи, Публикации, Отзывы
+- `art-gallery-concrete.tsx`, `art-gallery-perspective.tsx`, `art-gallery-hero.tsx` в `components/sections/` не используются в реальном сайте, но подключены orphan-страницами `app/art-concrete`, `app/art-perspective`, `app/art-hero` (плюс `app/collage-test`, `app/reference-collage`) — черновики для сравнения дизайна, нигде не залинкованы, но откроются по прямой ссылке. Оставлены намеренно (SYS-001, 29.08.2026) — могут ещё понадобиться.
+- `art-gallery.tsx` и `art-gallery-v2.tsx` не использовались нигде вообще — перемещены (не удалены) в `_backups/art-gallery_backup.tsx` и `_backups/art-gallery-v2_backup.tsx` (SYS-001, 29.08.2026).
+- 2 блока — заглушки (StubSection): Скетчи, Отзывы
+- Публикации в СМИ: одна карточка («Тамбовская художница-смолянист превратила хобби в бизнес и стала…») с плейсхолдером вместо названия издания — на скрине не видно шапки/лого сайта, нужно уточнить у Екатерины
+
+---
+
+## Прямые ссылки на блоки (якоря, добавлено 29.08.2026)
+
+Каждый блок на обеих страницах имеет свой `id` — можно давать прямую ссылку на конкретный блок (например, «где у вас были публикации в СМИ»), и сайт сам откроется проскроленным точно к нему, ниже фиксированного хедера. Домен ниже — плейсхолдер `ekaterinarazumova.com`, заменится на реальный после покупки (см. `lib/site-config.ts`).
+
+**Professional (`/`):**
+
+| Блок | Ссылка |
+|---|---|
+| Обо мне | `https://ekaterinarazumova.com/#about` |
+| Компетенции | `https://ekaterinarazumova.com/#competencies` |
+| Кейсы / Portfolio | `https://ekaterinarazumova.com/#portfolio` |
+| Контакты | `https://ekaterinarazumova.com/#contact` |
+
+**Creative (`/fir_tree_art`):**
+
+| Блок | Ссылка |
+|---|---|
+| Hero | `.../fir_tree_art#hero` |
+| Искусство в пространстве | `.../fir_tree_art#art-space` |
+| Коллаж (смола) | `.../fir_tree_art#collage` |
+| Из галереи (видео-панели) | `.../fir_tree_art#gallery` |
+| Contemporary Art | `.../fir_tree_art#contemporary-art` |
+| Артивизм & Честность | `.../fir_tree_art#protest` |
+| Диапазон смолы | `.../fir_tree_art#no-borders` |
+| Техники и инструменты | `.../fir_tree_art#techniques` |
+| Скетчи и портреты | `.../fir_tree_art#sketches-portraits` |
+| Блок с цифрами | `.../fir_tree_art#numbers` |
+| Победы и судейство | `.../fir_tree_art#awards` |
+| Амбассадор бренда | `.../fir_tree_art#brand` |
+| Арт-муза, МК, обучение | `.../fir_tree_art#teaching` |
+| Публикации в СМИ | `.../fir_tree_art#media-publications` |
+| Отзывы | `.../fir_tree_art#testimonials` |
+| Контакты / Instagram | `.../fir_tree_art#contacts` (последний блок — при переходе не всегда встаёт ровно к верху, физический предел скролла страницы, не баг) |
+
+Реализация: у каждой секции `id` + `scroll-mt-20` (компенсация 80px хедера) + `scroll-behavior: smooth` в `app/globals.css`. Дропдаун «Искусство» в хедере теперь ведёт на 4 самых частых блока вместо заглушки «Скоро...».
+
+**Попутно исправлен баг:** ссылка «Компетенции» в хедере вела на `#competencies`, а секция называлась `id="approach"` — не работала. `id` секции переименован в `competencies`.
+
+---
+
+## Легаси от Ника (архивировано 29.08.2026)
+
+При аудите обнаружено: в репозитории существовала ВТОРАЯ, полностью отключённая от реального сайта система страниц — `app/cases/[slug]`, `lib/data.ts`, `lib/translations.ts`, `site-nav.tsx`, `site-footer.tsx`, `language-provider.tsx`, `case-page-client.tsx`, `case-reader.tsx`, `sections/cases.tsx`, `sections/projects.tsx`, `content/cases/*.md` (8 кейсов), `MEDIA_KIT_FINAL/`, `public/nick.jpg`/`nick.png`. Это был исходный сайт Ника (NPC — Nick Potapov Consulting) целиком: его имя, биография, LinkedIn, Telegram-бот, реальные проекты — ни один компонент реальной страницы (`Header`, `hero`, `about`, `Competencies`, `Portfolio`, `contact`) её не импортировал, но роут `/cases/<slug>` физически существовал и открывался по прямой ссылке, плюс валил `npm run build` на `/cases/reddit-agent` (`useLanguage must be used within a LanguageProvider`).
+
+**Решение:** вся эта система перенесена (не удалена) в `_backups/legacy-nick-site/` с сохранением структуры папок, `MEDIA_KIT_FINAL/` удалён (это медиакит бренда Ника, к проекту отношения не имеет). После переноса `npm run build` проходит чисто, роут `/cases` больше не существует.
 
 ---
 

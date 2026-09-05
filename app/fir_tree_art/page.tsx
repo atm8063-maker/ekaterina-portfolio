@@ -15,6 +15,7 @@ import { ArtNumbers } from "@/components/sections/art-numbers";
 import { ArtAwards } from "@/components/sections/art-awards";
 import { ArtBrand } from "@/components/sections/art-brand";
 import { ArtTeaching } from "@/components/sections/art-teaching";
+import { ArtMedia } from "@/components/sections/art-media";
 import { ArtContacts } from "@/components/sections/art-contacts";
 import { ArtSketches } from "@/components/sections/art-sketches";
 import { StubSection } from "@/components/ui/stub-section";
@@ -152,11 +153,7 @@ export default function ArtPage() {
         <div id="interviews" className="scroll-mt-4">
           <div id="media" className="scroll-mt-4" />
           <div id="media-publications" className="scroll-mt-4" />
-          <StubSection 
-            id="interviews-section"
-            title="Интервью" 
-            desc="Здесь покажем статьи, интервью на ТВ и публикации о работах и карьере в медиа."
-          />
+          <ArtMedia />
         </div>
 
         {/* 15. ОТЗЫВЫ */}

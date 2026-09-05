@@ -1,6 +1,6 @@
 export function ArtContacts() {
   return (
-    <section className="py-24 container mx-auto px-6 text-center border-t border-white/10">
+    <section id="contacts" className="py-24 container mx-auto px-6 text-center border-t border-white/10 scroll-mt-20">
       <p className="text-white/50 uppercase tracking-widest text-xs font-bold font-montserrat mb-3">Следи за новыми работами</p>
       <h2 className="text-4xl sm:text-6xl font-black uppercase text-white font-montserrat mb-8">
         INSTAGRAM: <span className="text-[#14F1D9]">@FIR_TREE_ART</span>

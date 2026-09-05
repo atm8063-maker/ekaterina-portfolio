@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function ArtSpace() {
   return (
-    <section id="art-space" className="relative w-full overflow-hidden bg-white border-b border-[#111111]/10 pt-10">
+    <section id="art-space" className="relative w-full overflow-hidden bg-white border-b border-[#111111]/10 pt-10 scroll-mt-20">
       <div className="relative w-full max-w-[1920px] mx-auto min-h-[580px] lg:min-h-[600px] flex items-center">
         
         <div className="absolute inset-0 w-full h-full pointer-events-none">

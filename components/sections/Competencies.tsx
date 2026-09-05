@@ -41,7 +41,7 @@ export default function Competencies() {
   };
 
   return (
-    <section id="approach" className="py-24 relative overflow-hidden bg-[#111111]">
+    <section id="competencies" className="py-24 scroll-mt-20 relative overflow-hidden bg-[#111111]">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
