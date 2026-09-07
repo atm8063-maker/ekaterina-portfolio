@@ -37,7 +37,7 @@ export default function About() {
           }}
         >
           <Image 
-            src="/photo_about.jpg" 
+            src="/photo_2026-09-07_17-45-33.jpg" 
             alt="Екатерина Разумова"
             fill
             className="object-cover object-center lg:object-top"
