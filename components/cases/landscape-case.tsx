@@ -389,7 +389,7 @@ export function LandscapeCase() {
                           <div className="relative aspect-[16/10] overflow-hidden bg-black">
                             <Image
                               src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (5).jpg"
-                              alt="Японский садик и каскад прудов с мостиком"
+                              alt="Японский садик и пруд с деревянным мостиком"
                               fill
                               className="object-cover group-hover:scale-105 transition-transform duration-300"
                             />
@@ -402,10 +402,10 @@ export function LandscapeCase() {
                           </div>
                           <div className="p-3.5 bg-[#141819] flex-1 flex flex-col justify-between border-t border-white/5">
                             <div className="font-semibold text-white text-sm group-hover:text-[#14F1D9] transition-colors">
-                              Японский сад и каскад прудов
+                              Японский садик и пруд с мостиком
                             </div>
                             <div className="text-xs text-white/60 mt-1 leading-relaxed">
-                              Деревянный мостик, гранитный фонарь, кувшинки и японский клен Ред Сансет
+                              Деревянный мостик, гранитный фонарь-пагода, кувшинки и цветущая сакура
                             </div>
                           </div>
                         </div>
@@ -417,7 +417,7 @@ export function LandscapeCase() {
                           <div className="relative aspect-[16/10] overflow-hidden bg-black">
                             <Image
                               src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (4).jpg"
-                              alt="Шатровая чайная беседка для айкидо и BBQ"
+                              alt="Шатровая чайная беседка и костровой очаг"
                               fill
                               className="object-cover group-hover:scale-105 transition-transform duration-300"
                             />
@@ -430,22 +430,22 @@ export function LandscapeCase() {
                           </div>
                           <div className="p-3.5 bg-[#141819] flex-1 flex flex-col justify-between border-t border-white/5">
                             <div className="font-semibold text-white text-sm group-hover:text-[#14F1D9] transition-colors">
-                              Чайная беседка айкидо и BBQ
+                              Чайная беседка и костровой очаг
                             </div>
                             <div className="text-xs text-white/60 mt-1 leading-relaxed">
-                              Помост из ДПК, восточные карнизы, мягкая подсветка и зона отдыха
+                              Шатровая беседка с настилом из ДПК, пуфы-мешки, полукруглая скамья с очагом
                             </div>
                           </div>
                         </div>
 
                         <div 
-                          onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-08 (4).jpg")}
+                          onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (2).jpg")}
                           className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-[#14F1D9]/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
                         >
                           <div className="relative aspect-[16/10] overflow-hidden bg-black">
                             <Image
-                              src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-08 (4).jpg"
-                              alt="Защитный зеленый буфер и фасад дома"
+                              src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (2).jpg"
+                              alt="Панорама двора и центрального партерного газона"
                               fill
                               className="object-cover group-hover:scale-105 transition-transform duration-300"
                             />
@@ -458,22 +458,22 @@ export function LandscapeCase() {
                           </div>
                           <div className="p-3.5 bg-[#141819] flex-1 flex flex-col justify-between border-t border-white/5">
                             <div className="font-semibold text-white text-sm group-hover:text-[#14F1D9] transition-colors">
-                              Защитная стена и терраса
+                              Панорама двора и центрального газона
                             </div>
                             <div className="text-xs text-white/60 mt-1 leading-relaxed">
-                              Плотная посадка туй и сиреней для изоляции двора от соседней многоэтажки
+                              Открытый партерный газон, детский комплекс, терраса дома и восточный сад
                             </div>
                           </div>
                         </div>
 
                         <div 
-                          onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (4).jpg")}
+                          onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (5).jpg")}
                           className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-[#14F1D9]/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
                         >
                           <div className="relative aspect-[16/10] overflow-hidden bg-black">
                             <Image
-                              src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (4).jpg"
-                              alt="Вечерняя иллюминация пруда"
+                              src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (5).jpg"
+                              alt="Детский игровой комплекс и подвесное кресло"
                               fill
                               className="object-cover group-hover:scale-105 transition-transform duration-300"
                             />
@@ -486,10 +486,10 @@ export function LandscapeCase() {
                           </div>
                           <div className="p-3.5 bg-[#141819] flex-1 flex flex-col justify-between border-t border-white/5">
                             <div className="font-semibold text-white text-sm group-hover:text-[#14F1D9] transition-colors">
-                              Вечерний сценарий подсветки
+                              Детский городок и зона отдыха
                             </div>
                             <div className="text-xs text-white/60 mt-1 leading-relaxed">
-                              Светящиеся шары-сферы на воде, скрытая подсветка ступеней и фонарь в пагоде
+                              Игровой комплекс с горкой и качелями на резиновой плитке, подвесное кресло-кокон
                             </div>
                           </div>
                         </div>
@@ -962,41 +962,41 @@ export function LandscapeCase() {
                   ))}
                 </div>
 
-                {/* 2 Сравнительных ракурса: День и Ночь */}
+                {/* 2 Схемы освещения из проекта */}
                 <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div 
-                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (4).jpg")}
-                    className="cursor-pointer rounded-2xl overflow-hidden border border-white/10 group bg-black"
+                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-07 (5).jpg")}
+                    className="cursor-pointer rounded-2xl overflow-hidden border border-white/10 group bg-[#0E1111]"
                   >
-                    <div className="relative aspect-video">
+                    <div className="relative aspect-video bg-white">
                       <Image
-                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (4).jpg"
-                        alt="Чайная беседка и водоем"
+                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-07 (5).jpg"
+                        alt="Сводный план наружного освещения (49 точек)"
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform"
+                        className="object-contain p-2 group-hover:scale-105 transition-transform"
                       />
                     </div>
                     <div className="p-4 bg-[#121516] flex justify-between items-center text-xs">
-                      <span className="text-white font-semibold">Чайная беседка и водоем</span>
-                      <span className="text-white/50">Архитектурная композиция</span>
+                      <span className="text-white font-semibold">Сводный план наружного освещения (49 точек)</span>
+                      <span className="text-[#14F1D9]">клик для увеличения ↗</span>
                     </div>
                   </div>
 
                   <div 
-                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (4).jpg")}
-                    className="cursor-pointer rounded-2xl overflow-hidden border border-[#14F1D9]/30 group bg-black shadow-xl"
+                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-07 (6).jpg")}
+                    className="cursor-pointer rounded-2xl overflow-hidden border border-white/10 group bg-[#0E1111]"
                   >
-                    <div className="relative aspect-video">
+                    <div className="relative aspect-video bg-white">
                       <Image
-                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (4).jpg"
-                        alt="Подсветка беседки и пруда"
+                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-07 (6).jpg"
+                        alt="План подсветки зоны отдыха и японского сада"
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform"
+                        className="object-contain p-2 group-hover:scale-105 transition-transform"
                       />
                     </div>
                     <div className="p-4 bg-[#121516] flex justify-between items-center text-xs">
-                      <span className="text-[#14F1D9] font-semibold">Вечерняя подсветка беседки</span>
-                      <span className="text-white/50">Светящиеся шары, пагода, бра</span>
+                      <span className="text-white font-semibold">План подсветки зоны отдыха и пруда</span>
+                      <span className="text-[#14F1D9]">клик для увеличения ↗</span>
                     </div>
                   </div>
                 </div>
@@ -1025,50 +1025,50 @@ export function LandscapeCase() {
                   <button
                     onClick={() => setActiveRenderCategory("all")}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                      activeRenderCategory === "all" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70"
+                      activeRenderCategory === "all" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
-                    Все кадры
+                    Все кадры (19)
                   </button>
                   <button
                     onClick={() => setActiveRenderCategory("japanese")}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                      activeRenderCategory === "japanese" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70"
+                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                      activeRenderCategory === "japanese" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
                     <Sparkles className="w-3.5 h-3.5" /> <span>Японский садик</span>
                   </button>
                   <button
                     onClick={() => setActiveRenderCategory("gazebo")}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                      activeRenderCategory === "gazebo" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70"
+                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                      activeRenderCategory === "gazebo" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
                     <Home className="w-3.5 h-3.5" /> <span>Беседка и BBQ</span>
                   </button>
                   <button
-                    onClick={() => setActiveRenderCategory("night")}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                      activeRenderCategory === "night" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70"
+                    onClick={() => setActiveRenderCategory("family")}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                      activeRenderCategory === "family" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
-                    <Moon className="w-3.5 h-3.5" /> <span>Вечерний свет</span>
+                    <Trees className="w-3.5 h-3.5" /> <span>Газон и детская зона</span>
                   </button>
                   <button
-                    onClick={() => setActiveRenderCategory("family")}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                      activeRenderCategory === "family" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70"
+                    onClick={() => setActiveRenderCategory("house")}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                      activeRenderCategory === "house" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
-                    <Trees className="w-3.5 h-3.5" /> <span>Сад и дети</span>
+                    <Home className="w-3.5 h-3.5" /> <span>Дом и терраса</span>
                   </button>
                   <button
                     onClick={() => setActiveRenderCategory("plan")}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                      activeRenderCategory === "plan" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70"
+                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                      activeRenderCategory === "plan" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
-                    <Layers className="w-3.5 h-3.5" /> <span>3D-планы</span>
+                    <Layers className="w-3.5 h-3.5" /> <span>3D-аксонометрии</span>
                   </button>
                 </div>
               </div>
