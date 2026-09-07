@@ -1028,7 +1028,7 @@ export function LandscapeCase() {
                       activeRenderCategory === "all" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
-                    Все кадры (19)
+                    Все кадры ({landscapeProjectData.renders.length})
                   </button>
                   <button
                     onClick={() => setActiveRenderCategory("japanese")}
