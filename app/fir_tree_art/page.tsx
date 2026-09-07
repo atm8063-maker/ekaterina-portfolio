@@ -43,7 +43,7 @@ export default function ArtPage() {
     };
   }, []);
   return (
-    <main className="min-h-screen bg-[#111111] text-foreground overflow-hidden font-inter selection:bg-[#14F1D9] selection:text-black">
+    <main className="min-h-screen bg-[#111111] text-foreground overflow-x-clip font-inter selection:bg-[#14F1D9] selection:text-black">
       
       <Header />
 

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <section id="about" className="relative overflow-hidden bg-[#111111] text-white flex flex-col lg:flex-row items-stretch min-h-[100vh] lg:min-h-[800px]">
+    <section className="relative overflow-hidden bg-[#111111] text-white flex flex-col lg:flex-row items-stretch min-h-[100vh] lg:min-h-[800px]">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
