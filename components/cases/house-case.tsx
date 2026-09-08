@@ -385,6 +385,77 @@ export function HouseCase() {
               </div>
 
             </div>
+
+            {/* Featured Side-by-Side Comparison Diptych */}
+            <div className="bg-[#181818] border border-white/15 p-6 md:p-8 rounded-none shadow-2xl">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
+                <div>
+                  <div className="text-xs font-mono uppercase tracking-widest text-[#14F1D9] mb-1">
+                    EDITORIAL DIPTYCH • SIDE-BY-SIDE COMPARISON
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
+                    Стройка и Реализация: Два мира одного дома
+                  </h3>
+                </div>
+                <div className="text-xs text-white/50 font-mono">
+                  Кликните по любому планшету для полноэкранного зума
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                {/* Left: Construction Collage */}
+                <div 
+                  onClick={() => setSelectedImage({
+                    src: "/Кейсы/10-house-project/collage_construction_vertical.jpg",
+                    title: "Хроника стройки: от блока к объёму (Архитектурный процесс)"
+                  })}
+                  className="bg-[#141414] border border-amber-500/30 hover:border-amber-500 p-2 sm:p-3 cursor-pointer group transition-all"
+                >
+                  <div className="flex items-center justify-between px-2 py-1.5 mb-2">
+                    <span className="text-xs font-bold text-amber-400 font-mono uppercase">
+                      ● 01. Хроника стройки
+                    </span>
+                    <span className="text-[10px] text-white/50 font-mono flex items-center gap-1 group-hover:text-amber-400">
+                      <Maximize2 className="w-3 h-3" /> Увеличить планшет
+                    </span>
+                  </div>
+                  <div className="relative aspect-[2/3] w-full bg-black/60 overflow-hidden">
+                    <Image
+                      src="/Кейсы/10-house-project/collage_construction_vertical.jpg"
+                      alt="Коллаж стройки"
+                      fill
+                      className="object-cover group-hover:scale-102 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+
+                {/* Right: Finished House Collage */}
+                <div 
+                  onClick={() => setSelectedImage({
+                    src: "/Кейсы/10-house-project/collage_finished_vertical.jpg",
+                    title: "Готовый дом: жизнь и сканди-эко минимализм (Реализация)"
+                  })}
+                  className="bg-[#141414] border border-[#14F1D9]/30 hover:border-[#14F1D9] p-2 sm:p-3 cursor-pointer group transition-all"
+                >
+                  <div className="flex items-center justify-between px-2 py-1.5 mb-2">
+                    <span className="text-xs font-bold text-[#14F1D9] font-mono uppercase">
+                      ● 02. Готовый дом в жизни
+                    </span>
+                    <span className="text-[10px] text-white/50 font-mono flex items-center gap-1 group-hover:text-[#14F1D9]">
+                      <Maximize2 className="w-3 h-3" /> Увеличить планшет
+                    </span>
+                  </div>
+                  <div className="relative aspect-[2/3] w-full bg-black/60 overflow-hidden">
+                    <Image
+                      src="/Кейсы/10-house-project/collage_finished_vertical.jpg"
+                      alt="Коллаж готового дома"
+                      fill
+                      className="object-cover group-hover:scale-102 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
@@ -684,7 +755,78 @@ export function HouseCase() {
 
         {/* TAB 5: GALLERY (CONSTRUCTION ➔ FINISHED HOUSE) */}
         {activeTab === "gallery" && (
-          <div className="space-y-8">
+          <div className="space-y-12">
+            {/* Featured Side-by-Side Comparison Diptych */}
+            <div className="bg-[#181818] border border-white/15 p-6 md:p-8 rounded-none shadow-2xl">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
+                <div>
+                  <div className="text-xs font-mono uppercase tracking-widest text-[#14F1D9] mb-1">
+                    EDITORIAL DIPTYCH • SIDE-BY-SIDE COMPARISON
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
+                    Стройка и Реализация: Два мира одного дома
+                  </h3>
+                </div>
+                <div className="text-xs text-white/50 font-mono">
+                  Кликните по любому планшету для полноэкранного зума
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                {/* Left: Construction Collage */}
+                <div 
+                  onClick={() => setSelectedImage({
+                    src: "/Кейсы/10-house-project/collage_construction_vertical.jpg",
+                    title: "Хроника стройки: от блока к объёму (Архитектурный процесс)"
+                  })}
+                  className="bg-[#141414] border border-amber-500/30 hover:border-amber-500 p-2 sm:p-3 cursor-pointer group transition-all"
+                >
+                  <div className="flex items-center justify-between px-2 py-1.5 mb-2">
+                    <span className="text-xs font-bold text-amber-400 font-mono uppercase">
+                      ● 01. Хроника стройки
+                    </span>
+                    <span className="text-[10px] text-white/50 font-mono flex items-center gap-1 group-hover:text-amber-400">
+                      <Maximize2 className="w-3 h-3" /> Увеличить планшет
+                    </span>
+                  </div>
+                  <div className="relative aspect-[2/3] w-full bg-black/60 overflow-hidden">
+                    <Image
+                      src="/Кейсы/10-house-project/collage_construction_vertical.jpg"
+                      alt="Коллаж стройки"
+                      fill
+                      className="object-cover group-hover:scale-102 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+
+                {/* Right: Finished House Collage */}
+                <div 
+                  onClick={() => setSelectedImage({
+                    src: "/Кейсы/10-house-project/collage_finished_vertical.jpg",
+                    title: "Готовый дом: жизнь и сканди-эко минимализм (Реализация)"
+                  })}
+                  className="bg-[#141414] border border-[#14F1D9]/30 hover:border-[#14F1D9] p-2 sm:p-3 cursor-pointer group transition-all"
+                >
+                  <div className="flex items-center justify-between px-2 py-1.5 mb-2">
+                    <span className="text-xs font-bold text-[#14F1D9] font-mono uppercase">
+                      ● 02. Готовый дом в жизни
+                    </span>
+                    <span className="text-[10px] text-white/50 font-mono flex items-center gap-1 group-hover:text-[#14F1D9]">
+                      <Maximize2 className="w-3 h-3" /> Увеличить планшет
+                    </span>
+                  </div>
+                  <div className="relative aspect-[2/3] w-full bg-black/60 overflow-hidden">
+                    <Image
+                      src="/Кейсы/10-house-project/collage_finished_vertical.jpg"
+                      alt="Коллаж готового дома"
+                      fill
+                      className="object-cover group-hover:scale-102 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Filter Buttons */}
             <div className="flex flex-wrap items-center justify-between gap-4 bg-[#181818] border border-white/10 p-4">
               <div className="flex items-center gap-2">
