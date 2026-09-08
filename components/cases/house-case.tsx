@@ -61,7 +61,7 @@ export function HouseCase() {
 
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-xs md:text-sm text-white/50 mb-6 font-mono">
+          <div className="flex items-center gap-2 text-xs md:text-sm text-white/50 mb-6 font-sans">
             <Link href="/" className="hover:text-[#14F1D9] transition-colors">Главная</Link>
             <ChevronRight className="w-3.5 h-3.5" />
             <Link href="/#cases" className="hover:text-[#14F1D9] transition-colors">Кейсы</Link>
@@ -174,14 +174,14 @@ export function HouseCase() {
             <div className="bg-[#181818] border border-white/15 p-6 md:p-8 rounded-none shadow-2xl relative overflow-hidden">
               <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-b border-white/10 pb-6 mb-8">
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-[#14F1D9] font-mono mb-1">
+                  <div className="text-xs uppercase tracking-wider text-[#14F1D9] font-montserrat font-bold mb-1">
                     PROJECT PRESENTATION SHEET • INTERIOR ARCHITECTURE
                   </div>
                   <h2 className="text-2xl sm:text-4xl font-black uppercase text-white font-montserrat">
                     RESIDENCE HOUSE: SCANDINAVIAN ECO-MINIMALISM
                   </h2>
                 </div>
-                <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-white/70">
+                <div className="flex flex-wrap items-center gap-4 text-xs font-sans text-white/70">
                   <span className="px-3 py-1.5 bg-white/5 border border-white/10">Локация: Загород</span>
                   <span className="px-3 py-1.5 bg-white/5 border border-white/10">Площадь: 140 м²</span>
                   <span className="px-3 py-1.5 bg-white/5 border border-white/10">Стиль: Сканди / Эко</span>
@@ -195,12 +195,12 @@ export function HouseCase() {
                 <div className="lg:col-span-4 bg-[#141414] border border-white/10 p-4 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-bold uppercase tracking-wider text-white/80 font-mono">
+                      <span className="text-xs font-bold uppercase tracking-wider text-white/80 font-montserrat">
                         Floor Plan (1st Floor)
                       </span>
                       <button
                         onClick={() => setSelectedImage({ src: "/Кейсы/10-house-project/extracted/распределение зон и мебели_img_12.JPEG", title: "План 1-го этажа с размерами и зонированием" })}
-                        className="text-[10px] text-[#14F1D9] hover:underline flex items-center gap-1 font-mono"
+                        className="text-[10px] text-[#14F1D9] hover:underline flex items-center gap-1 font-sans"
                       >
                         <Maximize2 className="w-3 h-3" /> Увеличить
                       </button>
@@ -216,7 +216,7 @@ export function HouseCase() {
                       />
                     </div>
                   </div>
-                  <div className="mt-4 pt-4 border-t border-white/10 text-xs text-white/60 space-y-1 font-mono">
+                  <div className="mt-4 pt-4 border-t border-white/10 text-xs text-white/60 space-y-1 font-sans">
                     <p>1. Прихожая и холл — 11.1 м²</p>
                     <p>2. Котельная/кладовая — 4.5 м²</p>
                     <p>3. Санузел с ванной — 9.3 м²</p>
@@ -228,14 +228,14 @@ export function HouseCase() {
                 <div className="lg:col-span-8 bg-[#141414] border border-white/10 p-4 relative group">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#14F1D9] font-mono">
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat">
                         Axonometric 3D Cutaway
                       </span>
-                      <span className="text-[10px] text-white/40 uppercase font-mono">Общественное ядро</span>
+                      <span className="text-[10px] text-white/40 uppercase font-montserrat font-semibold">Общественное ядро</span>
                     </div>
                     <button
                       onClick={() => setSelectedImage({ src: "/Кейсы/10-house-project/extracted/распределение зон и мебели_img_11.JPEG", title: "Аксонометрическая 3D модель первого этажа" })}
-                      className="text-[10px] text-[#14F1D9] hover:underline flex items-center gap-1 font-mono"
+                      className="text-[10px] text-[#14F1D9] hover:underline flex items-center gap-1 font-sans"
                     >
                       <Maximize2 className="w-3 h-3" /> Развернуть 3D модель
                     </button>
@@ -253,22 +253,22 @@ export function HouseCase() {
                     />
 
                     {/* Interactive Callout Badges on the Cutaway */}
-                    <div className="absolute top-[25%] left-[28%] bg-[#111111]/90 border border-[#14F1D9]/60 px-2 py-0.5 text-[9px] font-mono text-[#14F1D9] shadow-lg pointer-events-none">
+                    <div className="absolute top-[25%] left-[28%] bg-[#111111]/90 border border-[#14F1D9]/60 px-2 py-0.5 text-[10px] font-medium text-[#14F1D9] shadow-lg pointer-events-none">
                       Прихожая & Холл
                     </div>
-                    <div className="absolute top-[32%] right-[22%] bg-[#111111]/90 border border-[#14F1D9]/60 px-2 py-0.5 text-[9px] font-mono text-[#14F1D9] shadow-lg pointer-events-none">
+                    <div className="absolute top-[32%] right-[22%] bg-[#111111]/90 border border-[#14F1D9]/60 px-2 py-0.5 text-[10px] font-medium text-[#14F1D9] shadow-lg pointer-events-none">
                       U-образный кухонный фронт
                     </div>
-                    <div className="absolute bottom-[28%] right-[32%] bg-[#111111]/90 border border-[#14F1D9]/60 px-2 py-0.5 text-[9px] font-mono text-[#14F1D9] shadow-lg pointer-events-none">
+                    <div className="absolute bottom-[28%] right-[32%] bg-[#111111]/90 border border-[#14F1D9]/60 px-2 py-0.5 text-[10px] font-medium text-[#14F1D9] shadow-lg pointer-events-none">
                       Круглый обеденный стол
                     </div>
-                    <div className="absolute bottom-[20%] left-[38%] bg-[#111111]/90 border border-[#14F1D9]/60 px-2 py-0.5 text-[9px] font-mono text-[#14F1D9] shadow-lg pointer-events-none">
+                    <div className="absolute bottom-[20%] left-[38%] bg-[#111111]/90 border border-[#14F1D9]/60 px-2 py-0.5 text-[10px] font-medium text-[#14F1D9] shadow-lg pointer-events-none">
                       Бетонный камин & Бирюзовые кресла
                     </div>
                   </div>
 
                   {/* Highlights under 3D model */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4 pt-4 border-t border-white/10 text-[11px] text-white/70 font-mono">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4 pt-4 border-t border-white/10 text-[11px] text-white/70 font-sans">
                     <div>• Панорамные окна в пол</div>
                     <div>• Монолитный камин</div>
                     <div>• Единый контур кухни</div>
@@ -281,14 +281,14 @@ export function HouseCase() {
               <div className="mt-10 pt-8 border-t border-white/10">
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-[#14F1D9] font-mono">
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat">
                       MATERIAL PALETTE & FINISHES
                     </h3>
                     <p className="text-xs text-white/60">
                       Реализованная палитра: нейтральный серый, чистый белый, благородный дуб и фирменный бирюзовый акцент
                     </p>
                   </div>
-                  <span className="hidden sm:inline-block text-[11px] font-mono text-white/40">
+                  <span className="hidden sm:inline-block text-[11px] font-sans text-white/40">
                     6 базовых текстурных слоёв
                   </span>
                 </div>
@@ -306,7 +306,7 @@ export function HouseCase() {
                         )}
                       </div>
                       <div className="text-xs font-bold text-white mb-0.5">{mat.name}</div>
-                      <div className="text-[10px] text-[#14F1D9] font-mono uppercase mb-2">{mat.role}</div>
+                      <div className="text-[10px] text-[#14F1D9] font-montserrat font-bold uppercase mb-2">{mat.role}</div>
                       <p className="text-[10px] text-white/60 leading-relaxed font-sans line-clamp-3">
                         {mat.description}
                       </p>
@@ -319,7 +319,7 @@ export function HouseCase() {
               <div className="mt-10 pt-8 border-t border-white/10">
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-[#14F1D9] font-mono">
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat">
                       FURNITURE & CUSTOM BUILT-INS SCHEDULE
                     </h3>
                     <p className="text-xs text-white/60">
@@ -332,7 +332,7 @@ export function HouseCase() {
                   {houseProjectData.furniture.map((item, i) => (
                     <div key={i} className="bg-[#141414] border border-white/10 p-5 flex flex-col justify-between hover:border-white/30 transition-colors">
                       <div>
-                        <div className="flex items-center justify-between text-[10px] font-mono text-[#14F1D9] mb-1">
+                        <div className="flex items-center justify-between text-[10px] font-sans text-[#14F1D9] mb-1">
                           <span>{item.category}</span>
                           <Armchair className="w-3 h-3 text-white/40" />
                         </div>
@@ -355,7 +355,7 @@ export function HouseCase() {
               <div className="mt-10 pt-8 border-t border-white/10">
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-[#14F1D9] font-mono">
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat">
                       LIGHTING SCENARIOS & AMBIENCE
                     </h3>
                     <p className="text-xs text-white/60">
@@ -370,13 +370,13 @@ export function HouseCase() {
                       <div>
                         <div className="flex items-center justify-between mb-2">
                           <Lightbulb className="w-4 h-4 text-[#14F1D9]" />
-                          <span className="text-[10px] font-mono text-white/50">{lg.kelvin}</span>
+                          <span className="text-[10px] font-sans text-white/50">{lg.kelvin}</span>
                         </div>
                         <h5 className="text-sm font-bold text-white mb-1">{lg.name}</h5>
-                        <div className="text-[11px] text-[#14F1D9] font-mono mb-2">{lg.type}</div>
+                        <div className="text-[11px] text-[#14F1D9] font-sans font-medium mb-2">{lg.type}</div>
                         <p className="text-xs text-white/60 leading-relaxed mb-3">{lg.desc}</p>
                       </div>
-                      <div className="text-[10px] text-white/40 border-t border-white/5 pt-2 font-mono">
+                      <div className="text-[10px] text-white/40 border-t border-white/5 pt-2 font-sans">
                         {lg.placement}
                       </div>
                     </div>
@@ -390,14 +390,14 @@ export function HouseCase() {
             <div className="bg-[#181818] border border-white/15 p-6 md:p-8 rounded-none shadow-2xl">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
                 <div>
-                  <div className="text-xs font-mono uppercase tracking-widest text-[#14F1D9] mb-1">
+                  <div className="text-xs font-montserrat font-bold uppercase tracking-wider text-[#14F1D9] mb-1">
                     EDITORIAL DIPTYCH • SIDE-BY-SIDE COMPARISON
                   </div>
                   <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
                     Стройка и Реализация: Два мира одного дома
                   </h3>
                 </div>
-                <div className="text-xs text-white/50 font-mono">
+                <div className="text-xs text-white/50 font-sans">
                   Кликните по любому планшету для полноэкранного зума
                 </div>
               </div>
@@ -409,13 +409,13 @@ export function HouseCase() {
                     src: "/Кейсы/10-house-project/collage_construction_vertical.jpg",
                     title: "Хроника стройки: от блока к объёму (Архитектурный процесс)"
                   })}
-                  className="bg-[#141414] border border-amber-500/30 hover:border-amber-500 p-2 sm:p-3 cursor-pointer group transition-all"
+                  className="bg-[#141414] border border-white/20 hover:border-white/50 p-2 sm:p-3 cursor-pointer group transition-all"
                 >
                   <div className="flex items-center justify-between px-2 py-1.5 mb-2">
-                    <span className="text-xs font-bold text-amber-400 font-mono uppercase">
+                    <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
                       ● 01. Хроника стройки
                     </span>
-                    <span className="text-[10px] text-white/50 font-mono flex items-center gap-1 group-hover:text-amber-400">
+                    <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-white">
                       <Maximize2 className="w-3 h-3" /> Увеличить планшет
                     </span>
                   </div>
@@ -438,10 +438,10 @@ export function HouseCase() {
                   className="bg-[#141414] border border-[#14F1D9]/30 hover:border-[#14F1D9] p-2 sm:p-3 cursor-pointer group transition-all"
                 >
                   <div className="flex items-center justify-between px-2 py-1.5 mb-2">
-                    <span className="text-xs font-bold text-[#14F1D9] font-mono uppercase">
+                    <span className="text-xs font-bold text-[#14F1D9] font-montserrat uppercase tracking-wider">
                       ● 02. Готовый дом в жизни
                     </span>
-                    <span className="text-[10px] text-white/50 font-mono flex items-center gap-1 group-hover:text-[#14F1D9]">
+                    <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
                       <Maximize2 className="w-3 h-3" /> Увеличить планшет
                     </span>
                   </div>
@@ -465,7 +465,7 @@ export function HouseCase() {
             {/* Floor Switcher & View Switcher */}
             <div className="flex flex-wrap items-center justify-between gap-4 bg-[#181818] border border-white/10 p-4">
               <div className="flex items-center gap-2">
-                <span className="text-xs uppercase text-white/60 font-mono mr-2">Этаж:</span>
+                <span className="text-xs uppercase text-white/60 font-montserrat font-semibold mr-2">Этаж:</span>
                 <button
                   onClick={() => { setSelectedFloor(1); setSelectedZone(null); }}
                   className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
@@ -485,10 +485,10 @@ export function HouseCase() {
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="text-xs uppercase text-white/60 font-mono mr-2">Вид:</span>
+                <span className="text-xs uppercase text-white/60 font-montserrat font-semibold mr-2">Вид:</span>
                 <button
                   onClick={() => setPlanMode("3D")}
-                  className={`px-3 py-1.5 text-xs font-mono transition-colors ${
+                  className={`px-3 py-1.5 text-xs font-sans transition-colors ${
                     planMode === "3D" ? "bg-white/20 text-white font-bold" : "bg-transparent text-white/50 hover:text-white"
                   }`}
                 >
@@ -496,7 +496,7 @@ export function HouseCase() {
                 </button>
                 <button
                   onClick={() => setPlanMode("2D")}
-                  className={`px-3 py-1.5 text-xs font-mono transition-colors ${
+                  className={`px-3 py-1.5 text-xs font-sans transition-colors ${
                     planMode === "2D" ? "bg-white/20 text-white font-bold" : "bg-transparent text-white/50 hover:text-white"
                   }`}
                 >
@@ -508,7 +508,7 @@ export function HouseCase() {
             {/* Plan Image Display with Zoom */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               <div className="lg:col-span-8 bg-[#181818] border border-white/10 p-4 relative group">
-                <div className="flex items-center justify-between mb-3 text-xs font-mono text-white/70">
+                <div className="flex items-center justify-between mb-3 text-xs font-sans text-white/70">
                   <span>{currentFloorData.title}</span>
                   <button
                     onClick={() => setSelectedImage({
@@ -539,7 +539,7 @@ export function HouseCase() {
 
               {/* Zones Interactive List */}
               <div className="lg:col-span-4 space-y-3">
-                <h3 className="text-xs uppercase tracking-widest text-[#14F1D9] font-mono mb-2">
+                <h3 className="text-xs uppercase tracking-wider text-[#14F1D9] font-montserrat font-bold mb-2">
                   ФУНКЦИОНАЛЬНЫЕ ЗОНЫ ЭТАЖА
                 </h3>
                 {currentFloorData.zones.map((zone) => (
@@ -555,7 +555,7 @@ export function HouseCase() {
                     <div className="flex items-center justify-between mb-1">
                       <h4 className="text-sm font-bold text-white font-montserrat">{zone.name}</h4>
                       {zone.area && (
-                        <span className="text-xs font-mono text-[#14F1D9]">{zone.area}</span>
+                        <span className="text-xs font-montserrat font-bold text-[#14F1D9]">{zone.area}</span>
                       )}
                     </div>
                     <div className="text-xs text-white/60 line-clamp-2 mb-2">
@@ -565,11 +565,11 @@ export function HouseCase() {
                     {selectedZone?.id === zone.id && (
                       <div className="pt-3 mt-3 border-t border-white/10 space-y-2 text-xs">
                         <div>
-                          <span className="text-[#14F1D9] font-mono">Занятия / Функции: </span>
+                          <span className="text-[#14F1D9] font-semibold">Занятия / Функции: </span>
                           <span className="text-white/80">{zone.functions.join(", ")}</span>
                         </div>
                         <div>
-                          <span className="text-[#14F1D9] font-mono">Мебель и техника: </span>
+                          <span className="text-[#14F1D9] font-semibold">Мебель и техника: </span>
                           <span className="text-white/80">{zone.furniture.join(", ")}</span>
                         </div>
                       </div>
@@ -588,23 +588,23 @@ export function HouseCase() {
             <div className="bg-[#181818] border border-white/10 p-6 md:p-10 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#14F1D9]/5 blur-[100px] pointer-events-none rounded-full" />
               <div className="max-w-3xl">
-                <div className="text-xs font-mono uppercase tracking-widest text-[#14F1D9] mb-3">
+                <div className="text-xs uppercase tracking-wider text-[#14F1D9] font-montserrat font-bold mb-3">
                   ДИЗАЙН-МАНИФЕСТ И ЭВОЛЮЦИЯ
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-black uppercase text-white font-montserrat mb-6">
                   {houseProjectData.evolutionStory.title}
                 </h3>
                 <div className="space-y-4 text-white/80 leading-relaxed text-sm sm:text-base">
-                  <div className="p-4 bg-white/5 border-l-2 border-amber-400">
-                    <strong className="text-amber-400 font-mono text-xs uppercase block mb-1">Фаза 1: Смелый поиск и гипотезы</strong>
+                  <div className="p-4 bg-white/5 border-l-2 border-white/30">
+                    <strong className="text-white/90 font-montserrat font-bold text-xs uppercase block mb-1">Фаза 1: Смелый поиск и гипотезы</strong>
                     {houseProjectData.evolutionStory.initialConcept}
                   </div>
                   <div className="p-4 bg-white/5 border-l-2 border-white/40">
-                    <strong className="text-white/60 font-mono text-xs uppercase block mb-1">Фаза 2: Точка перелома на стройке</strong>
+                    <strong className="text-white/60 font-montserrat font-bold text-xs uppercase block mb-1">Фаза 2: Точка перелома на стройке</strong>
                     {houseProjectData.evolutionStory.turningPoint}
                   </div>
                   <div className="p-4 bg-[#14F1D9]/5 border-l-2 border-[#14F1D9]">
-                    <strong className="text-[#14F1D9] font-mono text-xs uppercase block mb-1">Фаза 3: Финальная сканди-гармония</strong>
+                    <strong className="text-[#14F1D9] font-montserrat font-bold text-xs uppercase block mb-1">Фаза 3: Финальная сканди-гармония</strong>
                     {houseProjectData.evolutionStory.realizedResult}
                   </div>
                 </div>
@@ -615,7 +615,7 @@ export function HouseCase() {
             <div>
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h3 className="text-lg font-bold uppercase tracking-widest text-[#14F1D9] font-mono">
+                  <h3 className="text-lg font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat">
                     ПОИСКОВЫЕ МУДБОРДЫ & КОЛЛАЖИ
                   </h3>
                   <p className="text-xs text-white/60">
@@ -667,7 +667,7 @@ export function HouseCase() {
               <div className="flex items-center gap-3 mb-8">
                 <button
                   onClick={() => setSelectedFloor(1)}
-                  className={`px-4 py-2 text-xs font-bold uppercase font-mono ${
+                  className={`px-4 py-2 text-xs font-bold uppercase font-montserrat ${
                     selectedFloor === 1 ? "bg-[#14F1D9] text-[#111111]" : "bg-[#141414] text-white/70"
                   }`}
                 >
@@ -675,7 +675,7 @@ export function HouseCase() {
                 </button>
                 <button
                   onClick={() => setSelectedFloor(2)}
-                  className={`px-4 py-2 text-xs font-bold uppercase font-mono ${
+                  className={`px-4 py-2 text-xs font-bold uppercase font-montserrat ${
                     selectedFloor === 2 ? "bg-[#14F1D9] text-[#111111]" : "bg-[#141414] text-white/70"
                   }`}
                 >
@@ -688,12 +688,12 @@ export function HouseCase() {
                 {/* Plan 1: Sockets */}
                 <div className="bg-[#141414] border border-white/10 p-4">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-bold font-mono text-[#14F1D9] uppercase">
+                    <span className="text-xs font-bold font-montserrat text-[#14F1D9] uppercase">
                       1. План розеток и высотных отметок
                     </span>
                     <button
                       onClick={() => setSelectedImage({ src: currentFloorData.socketsPlan, title: `План розеток (${selectedFloor} этаж)` })}
-                      className="text-[10px] text-white/60 hover:text-white flex items-center gap-1 font-mono"
+                      className="text-[10px] text-white/60 hover:text-white flex items-center gap-1 font-sans"
                     >
                       <Maximize2 className="w-3 h-3" /> Увеличить
                     </button>
@@ -709,7 +709,7 @@ export function HouseCase() {
                       className="object-contain group-hover:scale-102 transition-transform duration-500"
                     />
                   </div>
-                  <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-white/60 font-mono space-y-1">
+                  <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-white/60 font-sans space-y-1">
                     <p>• Высота над кухонным фартуком: 1100 мм</p>
                     <p>• Вывод под ТВ-панель: 1300 мм (скрытая проводка)</p>
                     <p>• Санузел: фен (1050 мм), полотенцесушитель (1000 мм)</p>
@@ -720,12 +720,12 @@ export function HouseCase() {
                 {/* Plan 2: Lighting */}
                 <div className="bg-[#141414] border border-white/10 p-4">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-bold font-mono text-[#14F1D9] uppercase">
+                    <span className="text-xs font-bold font-montserrat text-[#14F1D9] uppercase">
                       2. План групп освещения и выключателей
                     </span>
                     <button
                       onClick={() => setSelectedImage({ src: currentFloorData.lightingPlan, title: `План освещения (${selectedFloor} этаж)` })}
-                      className="text-[10px] text-white/60 hover:text-white flex items-center gap-1 font-mono"
+                      className="text-[10px] text-white/60 hover:text-white flex items-center gap-1 font-sans"
                     >
                       <Maximize2 className="w-3 h-3" /> Увеличить
                     </button>
@@ -741,7 +741,7 @@ export function HouseCase() {
                       className="object-contain group-hover:scale-102 transition-transform duration-500"
                     />
                   </div>
-                  <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-white/60 font-mono space-y-1">
+                  <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-white/60 font-sans space-y-1">
                     <p>• Группа 1: Точечные споты кухни и холла (синий контур)</p>
                     <p>• Группа 2: Подвесной светильник над столом (жёлтый контур)</p>
                     <p>• Группа 3: Локальная подсветка каминной зоны</p>
@@ -760,14 +760,14 @@ export function HouseCase() {
             <div className="bg-[#181818] border border-white/15 p-6 md:p-8 rounded-none shadow-2xl">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
                 <div>
-                  <div className="text-xs font-mono uppercase tracking-widest text-[#14F1D9] mb-1">
+                  <div className="text-xs font-montserrat font-bold uppercase tracking-wider text-[#14F1D9] mb-1">
                     EDITORIAL DIPTYCH • SIDE-BY-SIDE COMPARISON
                   </div>
                   <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
                     Стройка и Реализация: Два мира одного дома
                   </h3>
                 </div>
-                <div className="text-xs text-white/50 font-mono">
+                <div className="text-xs text-white/50 font-sans">
                   Кликните по любому планшету для полноэкранного зума
                 </div>
               </div>
@@ -779,13 +779,13 @@ export function HouseCase() {
                     src: "/Кейсы/10-house-project/collage_construction_vertical.jpg",
                     title: "Хроника стройки: от блока к объёму (Архитектурный процесс)"
                   })}
-                  className="bg-[#141414] border border-amber-500/30 hover:border-amber-500 p-2 sm:p-3 cursor-pointer group transition-all"
+                  className="bg-[#141414] border border-white/20 hover:border-white/50 p-2 sm:p-3 cursor-pointer group transition-all"
                 >
                   <div className="flex items-center justify-between px-2 py-1.5 mb-2">
-                    <span className="text-xs font-bold text-amber-400 font-mono uppercase">
+                    <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
                       ● 01. Хроника стройки
                     </span>
-                    <span className="text-[10px] text-white/50 font-mono flex items-center gap-1 group-hover:text-amber-400">
+                    <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-white">
                       <Maximize2 className="w-3 h-3" /> Увеличить планшет
                     </span>
                   </div>
@@ -808,10 +808,10 @@ export function HouseCase() {
                   className="bg-[#141414] border border-[#14F1D9]/30 hover:border-[#14F1D9] p-2 sm:p-3 cursor-pointer group transition-all"
                 >
                   <div className="flex items-center justify-between px-2 py-1.5 mb-2">
-                    <span className="text-xs font-bold text-[#14F1D9] font-mono uppercase">
+                    <span className="text-xs font-bold text-[#14F1D9] font-montserrat uppercase tracking-wider">
                       ● 02. Готовый дом в жизни
                     </span>
-                    <span className="text-[10px] text-white/50 font-mono flex items-center gap-1 group-hover:text-[#14F1D9]">
+                    <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
                       <Maximize2 className="w-3 h-3" /> Увеличить планшет
                     </span>
                   </div>
@@ -856,7 +856,7 @@ export function HouseCase() {
                 </button>
               </div>
 
-              <div className="text-xs text-white/50 font-mono">
+              <div className="text-xs text-white/50 font-sans">
                 Кликните по фото для полноэкранного просмотра
               </div>
             </div>
@@ -880,12 +880,12 @@ export function HouseCase() {
                       <Maximize2 className="w-6 h-6 text-[#14F1D9]" />
                     </div>
                     {item.type === "finished" && (
-                      <span className="absolute top-2 left-2 px-2 py-0.5 bg-[#14F1D9] text-[#111111] text-[9px] font-bold uppercase font-mono">
+                      <span className="absolute top-2 left-2 px-2 py-0.5 bg-[#14F1D9] text-[#111111] text-[9px] font-bold uppercase font-montserrat tracking-wider">
                         Готовый дом
                       </span>
                     )}
                     {item.type === "construction" && (
-                      <span className="absolute top-2 left-2 px-2 py-0.5 bg-amber-500 text-black text-[9px] font-bold uppercase font-mono">
+                      <span className="absolute top-2 left-2 px-2 py-0.5 bg-white/20 backdrop-blur-md text-white border border-white/30 text-[9px] font-bold uppercase font-montserrat tracking-wider">
                         Стройка
                       </span>
                     )}
@@ -893,7 +893,7 @@ export function HouseCase() {
                   <div className="p-3">
                     <p className="text-xs text-white/90 font-medium line-clamp-2">{item.title}</p>
                     {item.room && (
-                      <span className="text-[10px] text-[#14F1D9] font-mono mt-1 block uppercase">
+                      <span className="text-[10px] text-[#14F1D9] font-sans font-medium mt-1 block uppercase">
                         {item.room}
                       </span>
                     )}
@@ -937,7 +937,7 @@ export function HouseCase() {
                 {selectedImage.title}
               </p>
               {selectedImage.room && (
-                <p className="text-xs text-[#14F1D9] font-mono mt-1 uppercase">
+                <p className="text-xs text-[#14F1D9] font-sans font-medium mt-1 uppercase">
                   {selectedImage.room}
                 </p>
               )}
