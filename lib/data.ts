@@ -64,7 +64,7 @@ export const cases: CaseSummary[] = [
   { slug: '07-resin-art-school', tag: 'Образование · SMM', title: 'Resin Art School', description: 'Кураторство учеников, прямые эфиры и ведение SMM онлайн-школы', metrics: [], hidden: true },
   { slug: '08-mockup-real-estate', tag: 'UI/UX & Web', title: 'Агентство недвижимости', description: 'Мокап агентства недвижимости, 2023', metrics: [] },
   { slug: '09-mockup-electronics', tag: 'UI/UX & Web', title: 'Магазин электроники', description: 'Мокап магазина с электроникой, 2023', metrics: [] },
-  { slug: '10-house-project', tag: 'Design', title: 'Проект дома', description: 'Проект своего дома, визуализация, реализация', metrics: [] },
+  { slug: '10-house-project', tag: 'Interior · Architecture', title: 'Интерьер загородного дома', description: 'Полный цикл: планировка, 3D-аксонометрия, электрика и 100% реализация в жизни', metrics: [{ value: '140 м²', label: 'Площадь' }, { value: '100%', label: 'Реализация' }] },
   { slug: '11-landscape-project', tag: 'Design', title: 'Ландшафтный дизайн', description: 'Проект по ландшафту для своего участка', metrics: [] },
   { slug: '12-resin-masterclass', tag: 'Art & PR', title: 'Resin Art', description: 'Мастер-класс на форуме смолянистов, 2021', metrics: [], customHref: '/fir_tree_art#resin-range' },
   { slug: '13-local-tv-report', tag: 'PR & Media', title: 'Интервью', description: 'Репортаж на местном ТВ, 2020', metrics: [], customHref: '/fir_tree_art#interviews' },
@@ -390,17 +390,18 @@ export const caseDetails: Record<string, CaseDetail> = {
   },
   '10-house-project': {
     slug: '10-house-project',
-    tag: 'Design',
-    title: 'Проект дома',
-    lead: 'Разработка концепции, визуализация и реализация проекта собственного загородного дома.',
+    tag: 'Interior & Architecture',
+    title: 'Интерьер загородного дома',
+    lead: 'Скандинавский эко-минимализм: планировочные решения, 3D-аксонометрия, электрические схемы и 100% реализация в жизни.',
     meta: {
-      client: 'Личный проект',
-      role: 'Автор проекта',
-      year: '2021-2023'
+      client: 'Личный загородный дом',
+      role: 'Автор проекта, архитектор-дизайнер',
+      year: '2021 — 2023'
     },
     keyMetrics: [
-      { value: 'От и до', label: 'Полная реализация' },
-      { value: '100%', label: 'Авторский надзор' }
+      { value: '140 м²', label: 'Площадь 2 этажей' },
+      { value: '100%', label: 'Реализация и надзор' },
+      { value: '5 зон', label: 'Функциональных ядер' }
     ]
   },
   '11-landscape-project': {
