@@ -550,10 +550,10 @@ export const electronicsShopData: ElectronicsShopData = {
         description: "Презентационный мокап для обложки кейса на Behance с акцентом на чистоту верстки и воздухе в интерфейсе."
       },
       {
-        title: "Behance Editorial Poster (3456 × 2234 px)",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/11_mockup_content.png",
+        title: "Behance Editorial Poster (2400 × 1500 px)",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.jpg",
         type: "Editorial Poster",
-        description: "Полноформатный презентационный плакат высокого разрешения со всеми визуальными слоями проекта."
+        description: "Полноформатный презентационный плакат со всеми визуальными слоями и экранами проекта."
       }
     ]
   }

@@ -346,14 +346,14 @@ export function ElectronicsShopCase() {
                     EDITORIAL POSTER • HIGH-RESOLUTION RETINA SHOWCASE
                   </h3>
                   <p className="text-xs text-white/60 font-sans">
-                    Презентационный плакат высокого разрешения (3456 × 2234 px) для оформления кейса на Behance
+                    Презентационный плакат высокого разрешения (2400 × 1500 px) для оформления кейса на Behance
                   </p>
                 </div>
                 <button
                   onClick={() => setSelectedImage({
-                    src: "/Кейсы/09-mockup-electronics/figma_exports/11_mockup_content.png",
-                    title: "Editorial Showcase Poster (3456 × 2234 px)",
-                    subtitle: "Полноразмерный рендер дизайн-системы и мокапов Shop 4.0"
+                    src: "/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.jpg",
+                    title: "Editorial Showcase Poster (2400 × 1500 px)",
+                    subtitle: "Полноразмерный рендер дизайн-системы, десктопа 1440px и мобильного флоу Shop 4.0"
                   })}
                   className="text-xs text-[#30B5A3] hover:underline flex items-center gap-1 font-montserrat font-bold uppercase tracking-wider"
                 >
@@ -363,14 +363,14 @@ export function ElectronicsShopCase() {
 
               <div
                 onClick={() => setSelectedImage({
-                  src: "/Кейсы/09-mockup-electronics/figma_exports/11_mockup_content.png",
-                  title: "Editorial Showcase Poster (3456 × 2234 px)",
-                  subtitle: "Полноразмерный рендер дизайн-системы и мокапов Shop 4.0"
+                  src: "/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.jpg",
+                  title: "Editorial Showcase Poster (2400 × 1500 px)",
+                  subtitle: "Полноразмерный рендер дизайн-системы, десктопа 1440px и мобильного флоу Shop 4.0"
                 })}
-                className="relative aspect-[16/9] w-full bg-black/60 overflow-hidden cursor-pointer group border border-white/10 hover:border-[#30B5A3]/60 transition-all"
+                className="relative aspect-[16/10] w-full bg-black/60 overflow-hidden cursor-pointer group border border-white/10 hover:border-[#30B5A3]/60 transition-all"
               >
                 <Image
-                  src="/Кейсы/09-mockup-electronics/figma_exports/11_mockup_content.png"
+                  src="/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.jpg"
                   alt="Editorial Poster"
                   fill
                   className="object-contain group-hover:scale-102 transition-transform duration-500"
