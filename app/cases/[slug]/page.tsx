@@ -8,6 +8,7 @@ import { NickPotapovCase } from '@/components/cases/nick-potapov-case'
 import { VertexHomesCase } from '@/components/cases/vertex-homes-case'
 import { LandscapeCase } from '@/components/cases/landscape-case'
 import { HouseCase } from '@/components/cases/house-case'
+import { ElectronicsShopCase } from '@/components/cases/electronics-shop-case'
 
 export function generateStaticParams() {
   return cases.map((c) => ({ slug: c.slug }))
@@ -49,6 +50,10 @@ export default async function CasePage({
 
   if (slug === '10-house-project') {
     return <HouseCase />
+  }
+
+  if (slug === '09-mockup-electronics') {
+    return <ElectronicsShopCase />
   }
 
   const caseDetail = caseDetails[slug]
