@@ -62,7 +62,7 @@ export const cases: CaseSummary[] = [
   { slug: '04-kart-motors-honda-civic-cup', tag: 'Спорт PR', title: 'Honda Карт Моторс & Honda Civic Cup', description: 'Рекламные кампании дилера Honda и пресс-служба Кубка Honda Civic Cup', metrics: [] },
   { slug: '06-mafia-assistant', tag: 'Product · UX', title: 'Mafia Digital Assistant', description: 'Игровой Telegram-движок для ведения офлайн-игр в Мафию (Python, UX)', metrics: [] },
   { slug: '07-resin-art-school', tag: 'Образование · SMM', title: 'Resin Art School', description: 'Кураторство учеников, прямые эфиры и ведение SMM онлайн-школы', metrics: [], hidden: true },
-  { slug: '08-mockup-real-estate', tag: 'UI/UX & Web', title: 'Агентство недвижимости', description: 'Мокап агентства недвижимости, 2023', metrics: [] },
+  { slug: '08-mockup-real-estate', tag: 'UX/UI & Real Estate', title: 'Doors Real Estate: Премиум-агентство', description: 'UX-исследования, 4 колористические схемы под сегменты рынка и смарт-фильтр 1366px', metrics: [{ value: '+24.8%', label: 'Заявки' }, { value: '4 схемы', label: 'Колористика' }] },
   { slug: '09-mockup-electronics', tag: 'UX/UI & E-Commerce', title: 'Shop 4.0: Магазин электроники', description: 'UX-исследования, аналитика конверсий, мобильный флоу чекаута и дизайн-система', metrics: [{ value: '+18.4%', label: 'CR' }, { value: '48 с', label: 'Чекаут' }] },
   { slug: '10-house-project', tag: 'Interior · Architecture', title: 'Интерьер загородного дома', description: 'Полный цикл: планировка, 3D-аксонометрия, электрика и 100% реализация в жизни', metrics: [{ value: '140 м²', label: 'Площадь' }, { value: '100%', label: 'Реализация' }] },
   { slug: '11-landscape-project', tag: 'Design', title: 'Ландшафтный дизайн', description: 'Проект по ландшафту для своего участка', metrics: [] },
@@ -360,17 +360,19 @@ export const caseDetails: Record<string, CaseDetail> = {
   },
   '08-mockup-real-estate': {
     slug: '08-mockup-real-estate',
-    tag: 'UI/UX & Web',
-    title: 'Агентство недвижимости',
-    lead: 'Учебный проект по дизайну и созданию мокапа сайта для агентства недвижимости.',
+    tag: 'UX/UI & Real Estate',
+    title: 'Doors Real Estate: Премиум-агентство недвижимости',
+    lead: 'UX-исследования, 4 колористические схемы под сегменты рынка, смарт-фильтр первого экрана и адаптивный мобильный опыт.',
     meta: {
-      client: 'Pet-проект',
-      role: 'UI/UX Дизайнер',
-      year: '2023'
+      client: 'Doors Real Estate Agency',
+      role: 'Lead UX/UI & Product Designer',
+      year: '2023–2024'
     },
     keyMetrics: [
-      { value: 'UI/UX', label: 'Прототипирование' },
-      { value: 'Figma', label: 'Разработка макетов' }
+      { value: '+24.8%', label: 'Заявки на просмотр' },
+      { value: '38 с', label: 'Время подбора лота' },
+      { value: '4 схемы', label: 'Колористика' },
+      { value: '86/100', label: 'SUS Score' }
     ]
   },
   '09-mockup-electronics': {
