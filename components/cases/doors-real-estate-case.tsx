@@ -108,7 +108,7 @@ export function DoorsRealEstateCase() {
       {/* Navigation Tabs */}
       <section className="sticky top-16 z-30 bg-[#111111]/95 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex overflow-x-auto no-scrollbar gap-1 py-3 text-xs sm:text-sm font-montserrat font-semibold">
+          <div className="flex overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden gap-1 py-3 text-xs sm:text-sm font-montserrat font-semibold">
             <button
               onClick={() => setActiveTab('overview')}
               className={`px-4 py-2 rounded-lg whitespace-nowrap transition-all flex items-center gap-2 ${
