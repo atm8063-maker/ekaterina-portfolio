@@ -552,26 +552,25 @@ export function ElectronicsShopCase() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-8 items-center">
                 {/* Smartphone Bezel Container */}
                 <div className="lg:col-span-5 flex justify-center">
-                  <div className="relative w-[280px] sm:w-[320px] aspect-[9/19.5] bg-black rounded-[48px] p-3.5 border-4 border-white/20 shadow-2xl shadow-black/80 ring-1 ring-white/10">
-                    <div className="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-5 bg-black rounded-full z-20 border border-white/10" />
-
+                  <div className="relative w-[300px] sm:w-[340px] bg-[#1a1a1a] rounded-[38px] p-3 border-2 border-white/20 shadow-2xl shadow-black/80 ring-1 ring-white/10">
+                    {/* Screen Image Container with uncropped aspect ratio */}
                     <div 
                       onClick={() => setSelectedImage({
                         src: currentScreen.src,
                         title: `${currentScreen.title} (Экран ${activeScreenIndex + 1} из 9)`,
                         subtitle: currentScreen.description
                       })}
-                      className="relative w-full h-full rounded-[36px] overflow-hidden cursor-zoom-in group"
+                      className="relative w-full aspect-[9/16] rounded-[28px] overflow-hidden cursor-zoom-in group bg-black/90 flex items-center justify-center border border-white/10"
                     >
                       <Image
                         src={currentScreen.src}
                         alt={currentScreen.title}
                         fill
-                        className="object-cover group-hover:scale-102 transition-transform duration-300"
+                        className="object-contain group-hover:scale-102 transition-transform duration-300"
                         priority
                       />
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <div className="bg-black/80 px-3 py-1.5 rounded-lg text-xs text-[#14F1D9] border border-[#14F1D9]/30 flex items-center gap-1.5 font-montserrat">
+                        <div className="bg-black/80 px-3 py-1.5 rounded-lg text-xs text-[#14F1D9] border border-[#14F1D9]/30 flex items-center gap-1.5 font-montserrat font-semibold">
                           <Maximize2 className="w-3.5 h-3.5" />
                           <span>Увеличить</span>
                         </div>
@@ -643,12 +642,12 @@ export function ElectronicsShopCase() {
                   })}
                   className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-3 cursor-pointer group hover:border-[#14F1D9]/60 transition-all flex flex-col"
                 >
-                  <div className="relative aspect-[9/19.5] w-full rounded-xl overflow-hidden bg-black/60 mb-2">
+                  <div className="relative aspect-[9/16] w-full rounded-xl overflow-hidden bg-black/40 mb-2 flex items-center justify-center border border-white/5">
                     <Image
                       src={s.src}
                       alt={s.title}
                       fill
-                      className="object-cover group-hover:scale-102 transition-transform duration-300"
+                      className="object-contain group-hover:scale-102 transition-transform duration-300"
                     />
                   </div>
                   <div className="text-[11px] font-bold font-montserrat text-white truncate">
