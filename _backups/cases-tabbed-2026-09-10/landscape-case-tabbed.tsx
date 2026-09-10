@@ -31,6 +31,7 @@ import {
 } from "lucide-react";
 
 export function LandscapeCase() {
+  const [activeTab, setActiveTab] = useState<"board" | "dendro" | "wind" | "paths" | "lighting" | "gallery">("board");
   const [plantCategory, setPlantCategory] = useState<string>("all");
   const [plantSearch, setPlantSearch] = useState<string>("");
   const [activeRenderCategory, setActiveRenderCategory] = useState<string>("all");
@@ -130,58 +131,89 @@ export function LandscapeCase() {
           </section>
 
           {/* =========================================================================
-              ANCHOR NAVIGATION
+              NAVIGATION TABS
              ========================================================================= */}
-          <nav className="sticky top-20 z-30 mb-12 py-3 bg-[#0E1111]/90 backdrop-blur-md border-y border-white/10 flex items-center justify-start md:justify-center gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            <a
-              href="#board"
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-[#14F1D9]"
-            >
-              <LayoutDashboard className="w-4 h-4 text-[#14F1D9]" />
-              <span>01. Генплан</span>
-            </a>
-            <a
-              href="#dendro"
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-[#14F1D9]"
-            >
-              <Trees className="w-4 h-4 text-[#14F1D9]" />
-              <span>02. Дендроплан (70 видов)</span>
-            </a>
-            <a
-              href="#wind"
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-[#14F1D9]"
-            >
-              <Compass className="w-4 h-4 text-[#14F1D9]" />
-              <span>03. Роза ветров</span>
-            </a>
-            <a
-              href="#paths"
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-[#14F1D9]"
-            >
-              <Footprints className="w-4 h-4 text-[#14F1D9]" />
-              <span>04. Дорожки и покрытия</span>
-            </a>
-            <a
-              href="#lighting"
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-[#14F1D9]"
-            >
-              <Lightbulb className="w-4 h-4 text-[#14F1D9]" />
-              <span>05. Освещение (49 точек)</span>
-            </a>
-            <a
-              href="#gallery"
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-[#14F1D9]"
-            >
-              <Box className="w-4 h-4 text-[#14F1D9]" />
-              <span>06. 3D-рендеры SketchUp</span>
-            </a>
-          </nav>
+          <div className="sticky top-20 z-30 mb-10 py-3 bg-[#0E1111]/90 backdrop-blur-md border-y border-white/10 flex items-center justify-between gap-4 overflow-x-auto hide-scrollbar">
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setActiveTab("board")}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 ${
+                  activeTab === "board"
+                    ? "bg-[#14F1D9] text-[#0E1111] shadow-lg shadow-[#14F1D9]/20"
+                    : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                <LayoutDashboard className="w-4 h-4" />
+                <span>Планшет проекта</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab("dendro")}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 ${
+                  activeTab === "dendro"
+                    ? "bg-[#14F1D9] text-[#0E1111] shadow-lg shadow-[#14F1D9]/20"
+                    : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                <Trees className="w-4 h-4" />
+                <span>Дендроплан (70 видов)</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab("wind")}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 ${
+                  activeTab === "wind"
+                    ? "bg-[#14F1D9] text-[#0E1111] shadow-lg shadow-[#14F1D9]/20"
+                    : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                <Compass className="w-4 h-4" />
+                <span>Роза ветров и инсоляция</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab("paths")}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 ${
+                  activeTab === "paths"
+                    ? "bg-[#14F1D9] text-[#0E1111] shadow-lg shadow-[#14F1D9]/20"
+                    : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                <Footprints className="w-4 h-4" />
+                <span>Дорожки и покрытия</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab("lighting")}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 ${
+                  activeTab === "lighting"
+                    ? "bg-[#14F1D9] text-[#0E1111] shadow-lg shadow-[#14F1D9]/20"
+                    : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                <Lightbulb className="w-4 h-4" />
+                <span>Освещение (49 точек)</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab("gallery")}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 ${
+                  activeTab === "gallery"
+                    ? "bg-[#14F1D9] text-[#0E1111] shadow-lg shadow-[#14F1D9]/20"
+                    : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                <Box className="w-4 h-4" />
+                <span>3D-рендеры SketchUp</span>
+              </button>
+            </div>
+          </div>
 
           {/* =========================================================================
               TAB 1: АРХИТЕКТУРНЫЙ ПЛАНШЕТ (КАК В РЕФЕРЕНСЕ)
              ========================================================================= */}
-          <section id="board" className="scroll-mt-28 space-y-12 mb-20">
-            <div className="space-y-12">
+          {activeTab === "board" && (
+            <div className="space-y-12 animate-fadeIn">
               
               {/* Главный презентационный планшет */}
               <div className="rounded-3xl bg-[#141819] border border-white/15 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
@@ -472,9 +504,9 @@ export function LandscapeCase() {
                     <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
                       <h3 className="text-xs uppercase tracking-wider text-[#14F1D9] font-bold mb-3 flex items-center justify-between">
                         <span className="flex items-center gap-1.5"><Trees className="w-4 h-4 text-[#14F1D9]" /> КЛЮЧЕВЫЕ ПОСАДКИ</span>
-                        <a href="#dendro" className="text-[#14F1D9] hover:underline text-[10px]">
-                          все 70 ↓
-                        </a>
+                        <button onClick={() => setActiveTab("dendro")} className="text-[#14F1D9] hover:underline text-[10px]">
+                          все 70 ↗
+                        </button>
                       </h3>
 
                       <div className="space-y-3 text-xs">
@@ -555,13 +587,13 @@ export function LandscapeCase() {
                 </div>
               </div>
             </div>
-          </section>
+          )}
 
           {/* =========================================================================
-              SECTION 2: ИНТЕРАКТИВНЫЙ ДЕНДРОПЛАН (70 ВИДОВ РАСТЕНИЙ)
+              TAB 2: ИНТЕРАКТИВНЫЙ ДЕНДРОПЛАН (70 ВИДОВ РАСТЕНИЙ)
              ========================================================================= */}
-          <section id="dendro" className="scroll-mt-28 space-y-10 pt-16 border-t border-white/10 mb-20">
-            <div className="space-y-10">
+          {activeTab === "dendro" && (
+            <div className="space-y-10 animate-fadeIn">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-2xl bg-[#161A1B] border border-white/10">
                 <div>
                   <h2 className="text-2xl font-bold text-white font-montserrat">
@@ -679,13 +711,13 @@ export function LandscapeCase() {
               </div>
 
             </div>
-          </section>
+          )}
 
           {/* =========================================================================
-              SECTION 3: РОЗА ВЕТРОВ И КЛИМАТИЧЕСКИЙ АНАЛИЗ
+              TAB 3: РОЗА ВЕТРОВ И КЛИМАТИЧЕСКИЙ АНАЛИЗ
              ========================================================================= */}
-          <section id="wind" className="scroll-mt-28 space-y-10 pt-16 border-t border-white/10 mb-20">
-            <div className="space-y-10">
+          {activeTab === "wind" && (
+            <div className="space-y-10 animate-fadeIn">
               <div className="p-6 sm:p-10 rounded-3xl bg-[#141819] border border-white/15 shadow-2xl">
                 <div className="max-w-2xl mb-8">
                   <div className="text-xs uppercase tracking-widest text-[#14F1D9] font-bold mb-2">
@@ -798,13 +830,13 @@ export function LandscapeCase() {
                 </div>
               </div>
             </div>
-          </section>
+          )}
 
           {/* =========================================================================
-              SECTION 4: ДОРОЖНО-ТРОПИНОЧНАЯ СЕТЬ И ПОКРЫТИЯ
+              TAB 4: ДОРОЖНО-ТРОПИНОЧНАЯ СЕТЬ И ПОКРЫТИЯ
              ========================================================================= */}
-          <section id="paths" className="scroll-mt-28 space-y-10 pt-16 border-t border-white/10 mb-20">
-            <div className="space-y-10">
+          {activeTab === "paths" && (
+            <div className="space-y-10 animate-fadeIn">
               <div className="p-6 sm:p-10 rounded-3xl bg-[#141819] border border-white/15 shadow-2xl">
                 <div className="max-w-2xl mb-8">
                   <div className="text-xs uppercase tracking-widest text-[#14F1D9] font-bold mb-2">
@@ -894,13 +926,13 @@ export function LandscapeCase() {
 
               </div>
             </div>
-          </section>
+          )}
 
           {/* =========================================================================
-              SECTION 5: ПЛАН ОСВЕЩЕНИЯ (49 ТОЧЕК)
+              TAB 5: ПЛАН ОСВЕЩЕНИЯ (49 ТОЧЕК)
              ========================================================================= */}
-          <section id="lighting" className="scroll-mt-28 space-y-10 pt-16 border-t border-white/10 mb-20">
-            <div className="space-y-10">
+          {activeTab === "lighting" && (
+            <div className="space-y-10 animate-fadeIn">
               <div className="p-6 sm:p-10 rounded-3xl bg-[#141819] border border-white/15 shadow-2xl">
                 <div className="mb-8">
                   <div className="text-xs uppercase tracking-widest text-[#14F1D9] font-bold mb-2 flex items-center gap-2">
@@ -971,13 +1003,13 @@ export function LandscapeCase() {
 
               </div>
             </div>
-          </section>
+          )}
 
           {/* =========================================================================
-              SECTION 6: ГАЛЕРЕЯ 3D-РЕНДЕРОВ SKETCHUP
+              TAB 6: ГАЛЕРЕЯ 3D-РЕНДЕРОВ SKETCHUP
              ========================================================================= */}
-          <section id="gallery" className="scroll-mt-28 space-y-10 pt-16 border-t border-white/10 mb-20">
-            <div className="space-y-10">
+          {activeTab === "gallery" && (
+            <div className="space-y-10 animate-fadeIn">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-2xl bg-[#161A1B] border border-white/10">
                 <div>
                   <h2 className="text-2xl font-bold text-white font-montserrat">
@@ -1075,34 +1107,7 @@ export function LandscapeCase() {
               </div>
 
             </div>
-          </section>
-
-          {/* NEXT CASE BANNER */}
-          <div className="mt-20 pt-10 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 p-8 rounded-2xl bg-[#161A1B] border border-white/10">
-            <div>
-              <div className="text-xs uppercase tracking-widest text-[#14F1D9] font-bold mb-1">
-                СЛЕДУЮЩИЙ КЕЙС
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white font-montserrat">
-                UX/UI: Недвижимость Doors Real Estate
-              </h3>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link
-                href="/#cases"
-                className="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white text-xs font-bold uppercase tracking-wider transition-colors"
-              >
-                Все кейсы
-              </Link>
-              <Link
-                href="/cases/08-doors-real-estate"
-                className="px-6 py-3 rounded-xl bg-[#14F1D9] hover:bg-[#14F1D9]/80 text-[#0E1111] text-xs font-bold uppercase tracking-wider transition-colors font-montserrat"
-              >
-                Перейти к Doors ➔
-              </Link>
-            </div>
-          </div>
-
+          )}
 
           {/* =========================================================================
               MODAL LIGHTBOX

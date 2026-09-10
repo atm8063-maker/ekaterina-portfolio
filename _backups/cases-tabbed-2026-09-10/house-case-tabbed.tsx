@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 
 export function HouseCase() {
-  
+  const [activeTab, setActiveTab] = useState<"board" | "plans" | "concept" | "engineering" | "gallery">("board");
   const [selectedFloor, setSelectedFloor] = useState<1 | 2>(1);
   const [planMode, setPlanMode] = useState<"2D" | "3D">("3D");
   const [selectedZone, setSelectedZone] = useState<ZoneDetail | null>(null);
@@ -38,14 +38,14 @@ export function HouseCase() {
 
   const currentFloorData = houseProjectData.floorsData.find(f => f.floorNumber === selectedFloor)!;
 
-  const filteredGallery = (): Array<{ src: string; title: string; room?: string; type: string }> => {
+  const filteredGallery = () => {
     if (galleryFilter === "finished") return houseProjectData.gallery.finished.map(i => ({ ...i, type: "finished" }));
     if (galleryFilter === "construction") return houseProjectData.gallery.construction.map(i => ({ ...i, type: "construction" }));
-    if (galleryFilter === "concept") return houseProjectData.gallery.conceptBoards.map(i => ({ ...i, type: "concept", room: undefined }));
+    if (galleryFilter === "concept") return houseProjectData.gallery.conceptBoards.map(i => ({ ...i, type: "concept" }));
     return [
       ...houseProjectData.gallery.finished.map(i => ({ ...i, type: "finished" })),
       ...houseProjectData.gallery.construction.map(i => ({ ...i, type: "construction" })),
-      ...houseProjectData.gallery.conceptBoards.map(i => ({ ...i, type: "concept", room: undefined }))
+      ...houseProjectData.gallery.conceptBoards.map(i => ({ ...i, type: "concept" }))
     ];
   };
 
@@ -99,52 +99,76 @@ export function HouseCase() {
         </div>
       </section>
 
-      {/* 2. ANCHOR NAVIGATION */}
+      {/* 2. TAB NAVIGATION */}
       <nav className="sticky top-20 z-40 bg-[#111111]/95 backdrop-blur-md border-b border-white/10 py-3">
-        <div className="container mx-auto px-4 md:px-8 flex items-center justify-start md:justify-center gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-          <a
-            href="#board"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-lg"
+        <div className="container mx-auto px-4 md:px-8 flex items-center justify-start md:justify-center gap-2 overflow-x-auto hide-scrollbar">
+          <button
+            onClick={() => setActiveTab("board")}
+            className={`flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+              activeTab === "board"
+                ? "bg-[#14F1D9] text-[#111111] shadow-[0_0_20px_rgba(20,241,217,0.3)]"
+                : "bg-[#1A1A1A] text-white/70 hover:text-white hover:bg-white/10"
+            }`}
           >
-            <LayoutDashboard className="w-3.5 h-3.5 text-[#14F1D9]" />
-            01. Главный планшет
-          </a>
-          <a
-            href="#plans"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-lg"
+            <LayoutDashboard className="w-4 h-4" />
+            Главный планшет (Board)
+          </button>
+
+          <button
+            onClick={() => setActiveTab("plans")}
+            className={`flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+              activeTab === "plans"
+                ? "bg-[#14F1D9] text-[#111111] shadow-[0_0_20px_rgba(20,241,217,0.3)]"
+                : "bg-[#1A1A1A] text-white/70 hover:text-white hover:bg-white/10"
+            }`}
           >
-            <Layers className="w-3.5 h-3.5 text-[#14F1D9]" />
-            02. Планировка & Зоны
-          </a>
-          <a
-            href="#concept"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-lg"
+            <Layers className="w-4 h-4" />
+            Планировка & Зоны
+          </button>
+
+          <button
+            onClick={() => setActiveTab("concept")}
+            className={`flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+              activeTab === "concept"
+                ? "bg-[#14F1D9] text-[#111111] shadow-[0_0_20px_rgba(20,241,217,0.3)]"
+                : "bg-[#1A1A1A] text-white/70 hover:text-white hover:bg-white/10"
+            }`}
           >
-            <Palette className="w-3.5 h-3.5 text-[#14F1D9]" />
-            03. Стиль & Цвета
-          </a>
-          <a
-            href="#engineering"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-lg"
+            <Palette className="w-4 h-4" />
+            Эволюция стиля & Цвета
+          </button>
+
+          <button
+            onClick={() => setActiveTab("engineering")}
+            className={`flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+              activeTab === "engineering"
+                ? "bg-[#14F1D9] text-[#111111] shadow-[0_0_20px_rgba(20,241,217,0.3)]"
+                : "bg-[#1A1A1A] text-white/70 hover:text-white hover:bg-white/10"
+            }`}
           >
-            <Zap className="w-3.5 h-3.5 text-[#14F1D9]" />
-            04. Электрика & Свет
-          </a>
-          <a
-            href="#gallery"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-lg"
+            <Zap className="w-4 h-4" />
+            Электрика & Свет
+          </button>
+
+          <button
+            onClick={() => setActiveTab("gallery")}
+            className={`flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+              activeTab === "gallery"
+                ? "bg-[#14F1D9] text-[#111111] shadow-[0_0_20px_rgba(20,241,217,0.3)]"
+                : "bg-[#1A1A1A] text-white/70 hover:text-white hover:bg-white/10"
+            }`}
           >
-            <Camera className="w-3.5 h-3.5 text-[#14F1D9]" />
-            05. Стройка ➔ Готовый дом
-          </a>
+            <Camera className="w-4 h-4" />
+            Стройка ➔ Готовый дом
+          </button>
         </div>
       </nav>
 
       {/* 3. TAB CONTENT */}
       <main className="container mx-auto px-4 md:px-8 py-10">
 
-        {/* SECTION 1: ARCHITECTURAL BOARD */}
-        <section id="board" className="scroll-mt-28 space-y-12">
+        {/* TAB 1: ARCHITECTURAL BOARD (REFERENCE 2 STYLE) */}
+        {activeTab === "board" && (
           <div className="space-y-12">
             {/* Top Sheet Header */}
             <div className="bg-[#181818] border border-white/15 p-6 md:p-8 rounded-none shadow-2xl relative overflow-hidden">
@@ -433,10 +457,10 @@ export function HouseCase() {
               </div>
             </div>
           </div>
-        </section>
+        )}
 
-        {/* SECTION 2: PLANS & ZONING */}
-        <section id="plans" className="scroll-mt-28 space-y-8 pt-16 border-t border-white/10">
+        {/* TAB 2: PLANS & ZONING */}
+        {activeTab === "plans" && (
           <div className="space-y-8">
             {/* Floor Switcher & View Switcher */}
             <div className="flex flex-wrap items-center justify-between gap-4 bg-[#181818] border border-white/10 p-4">
@@ -555,10 +579,10 @@ export function HouseCase() {
               </div>
             </div>
           </div>
-        </section>
+        )}
 
-        {/* SECTION 3: CONCEPT & COLOR EVOLUTION */}
-        <section id="concept" className="scroll-mt-28 space-y-8 pt-16 border-t border-white/10">
+        {/* TAB 3: CONCEPT & COLOR EVOLUTION */}
+        {activeTab === "concept" && (
           <div className="space-y-12">
             {/* Story Card: Why Palette Shifted */}
             <div className="bg-[#181818] border border-white/10 p-6 md:p-10 relative overflow-hidden">
@@ -626,10 +650,10 @@ export function HouseCase() {
               </div>
             </div>
           </div>
-        </section>
+        )}
 
-        {/* SECTION 4: ENGINEERING & ELECTRICAL */}
-        <section id="engineering" className="scroll-mt-28 space-y-8 pt-16 border-t border-white/10">
+        {/* TAB 4: ENGINEERING & ELECTRICAL */}
+        {activeTab === "engineering" && (
           <div className="space-y-8">
             <div className="bg-[#181818] border border-white/10 p-6 md:p-8">
               <h3 className="text-xl font-bold uppercase text-white font-montserrat mb-2">
@@ -727,10 +751,10 @@ export function HouseCase() {
               </div>
             </div>
           </div>
-        </section>
+        )}
 
-        {/* SECTION 5: GALLERY (CONSTRUCTION ➔ FINISHED HOUSE) */}
-        <section id="gallery" className="scroll-mt-28 space-y-12 pt-16 border-t border-white/10">
+        {/* TAB 5: GALLERY (CONSTRUCTION ➔ FINISHED HOUSE) */}
+        {activeTab === "gallery" && (
           <div className="space-y-12">
             {/* Featured Side-by-Side Comparison Diptych */}
             <div className="bg-[#181818] border border-white/15 p-6 md:p-8 rounded-none shadow-2xl">
@@ -878,7 +902,7 @@ export function HouseCase() {
               ))}
             </div>
           </div>
-        </section>
+        )}
 
       </main>
 
