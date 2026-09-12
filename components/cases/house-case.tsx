@@ -17,15 +17,166 @@ import {
   ChevronRight,
   Building2,
   Lightbulb,
-  Sparkles
+  Sparkles,
+  Flame,
+  Home
 } from "lucide-react";
 
+interface SketchCallout {
+  id: number;
+  title: string;
+  tag: string;
+  desc: string;
+  x: number;
+  y: number;
+}
+
+const FLOOR_SKETCHES: Record<1 | 2, {
+  floor: 1 | 2;
+  title: string;
+  subtitle: string;
+  imageSrc: string;
+  callouts: SketchCallout[];
+}> = {
+  1: {
+    floor: 1,
+    title: "1 Этаж: Общественное ядро дома",
+    subtitle: "Гостиная с дровяным камином, кухня с бирюзовым кабанчиком, прихожая и бойлерная",
+    imageSrc: "/Кейсы/10-house-project/sketch_floor_1.jpg",
+    callouts: [
+      {
+        id: 1,
+        title: "Дровяной камин & ТВ-зона",
+        tag: "Очаг & Уют",
+        desc: "Камин с лаконичной отделкой под бетон и дерево, глубокий диван для семьи и бирюзовый ковер цвета морской волны.",
+        x: 41,
+        y: 54,
+      },
+      {
+        id: 2,
+        title: "Бирюзовый кабанчик на фартуке",
+        tag: "Кухня-столовая",
+        desc: "Глянцевая бирюзовая плитка «кабанчик», П-образная эргономичная рабочая зона, встроенная индукция и духовой шкаф.",
+        x: 77,
+        y: 38,
+      },
+      {
+        id: 3,
+        title: "Круглый обеденный стол",
+        tag: "Столовая зона",
+        desc: "Столовая группа у окна с видом на участок: белый круглый стол и комфортные скандинавские стулья.",
+        x: 71,
+        y: 51,
+      },
+      {
+        id: 4,
+        title: "Котельная / Бойлерная",
+        tag: "Инженерия",
+        desc: "Автономная котельная за лестницей: бойлер косвенного нагрева, котёл отопления, коллекторы водяного тёплого пола и хозблок.",
+        x: 62,
+        y: 20,
+      },
+      {
+        id: 5,
+        title: "Прихожая & Гардероб",
+        tag: "Входная группа",
+        desc: "Встроенный вместительный шкаф-купе с белыми жалюзийными фасадами и скошенная ниша с зеркалом в полный рост.",
+        x: 23,
+        y: 34,
+      },
+      {
+        id: 6,
+        title: "Гостевой санузел",
+        tag: "Санузел 1F",
+        desc: "Компактный санузел первого этажа с инсталляцией, подвесной раковиной и лаконичной светлой плиткой.",
+        x: 44,
+        y: 18,
+      },
+      {
+        id: 7,
+        title: "Лестничный марш",
+        tag: "Связь этажей",
+        desc: "Деревянная лестница с подсветкой ступеней и безопасным ограждением, соединяющая первый этаж со вторым.",
+        x: 52,
+        y: 36,
+      },
+    ],
+  },
+  2: {
+    floor: 2,
+    title: "2 Этаж: Приватная зона & Творчество",
+    subtitle: "Мастер-спальня с деревом, мастерская со сплошным столом и гитарами, детская с домиком и санузел",
+    imageSrc: "/Кейсы/10-house-project/sketch_floor_2.jpg",
+    callouts: [
+      {
+        id: 1,
+        title: "Мастер-спальня",
+        tag: "Приватная зона",
+        desc: "Стена с отделкой из тёмного дерева, кровать с бирюзовым текстилем, прикроватные тумбы и нейтральная серая скошенная перегородка в коридор.",
+        x: 72,
+        y: 26,
+      },
+      {
+        id: 2,
+        title: "Стол-подоконник до бирюзовой стены",
+        tag: "Мастерская",
+        desc: "Сплошной белый подоконник-стол во всю стену у окна, доходящий вплотную до бирюзовой стены, и мольберт для живописи.",
+        x: 22,
+        y: 67,
+      },
+      {
+        id: 3,
+        title: "Стойка с гитарами у стены",
+        tag: "Музыка",
+        desc: "Музыкальный уголок: гитары стоят у бирюзовой стены рядом с дверным проёмом вместо прежнего стола.",
+        x: 34,
+        y: 53,
+      },
+      {
+        id: 4,
+        title: "Детская комната",
+        tag: "Детская",
+        desc: "Игровая кровать-домик со шведской стенкой, кровать-машинка, ковёр с городскими дорогами и стеллажи под игрушки.",
+        x: 76,
+        y: 67,
+      },
+      {
+        id: 5,
+        title: "Сплошная бирюзовая стена",
+        tag: "Цветовой акцент",
+        desc: "Стена с дверями в обеих нижних комнатах целиком выкрашена в насыщенный бирюзовый оттенок с белыми дверными полотнами.",
+        x: 50,
+        y: 46,
+      },
+      {
+        id: 6,
+        title: "Санузел 2-го этажа",
+        tag: "Санузел 2F",
+        desc: "Ванная комната с белой плиткой кабанчик, деревянным полом и естественным светом из холла.",
+        x: 26,
+        y: 22,
+      },
+      {
+        id: 7,
+        title: "Холл & Окно лестничного пролёта",
+        tag: "Коридор",
+        desc: "Широкое окно в пролёте с бирюзовыми портьерами, деревянные перила и открытый доступ во все комнаты этажа.",
+        x: 44,
+        y: 27,
+      },
+    ],
+  },
+};
+
 export function HouseCase() {
+  const [sketchFloor, setSketchFloor] = useState<1 | 2>(1);
+  const [activeCallout, setActiveCallout] = useState<number | null>(null);
   const [selectedFloor, setSelectedFloor] = useState<1 | 2>(1);
   const [selectedZone, setSelectedZone] = useState<ZoneDetail | null>(null);
   const [selectedImage, setSelectedImage] = useState<{ src: string; title: string; room?: string } | null>(null);
   const [galleryFilter, setGalleryFilter] = useState<"all" | "finished" | "construction">("all");
 
+  const currentSketch = FLOOR_SKETCHES[sketchFloor];
   const currentFloorData = houseProjectData.floorsData.find(f => f.floorNumber === selectedFloor)!;
 
   const filteredGallery = (): Array<{ src: string; title: string; room?: string; type: string }> => {
@@ -90,6 +241,13 @@ export function HouseCase() {
       <nav className="sticky top-20 z-40 bg-[#111111]/95 backdrop-blur-md border-b border-white/10 py-3">
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-start md:justify-center gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <a
+            href="#sketches"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-[#14F1D9]/40 shadow-[0_0_15px_rgba(20,241,217,0.15)]"
+          >
+            <Building2 className="w-3.5 h-3.5 text-[#14F1D9]" />
+            Аксонометрия &amp; Скетчи
+          </a>
+          <a
             href="#concept"
             className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
           >
@@ -136,6 +294,190 @@ export function HouseCase() {
 
       {/* 3. MAIN STORY FLOW */}
       <main className="container mx-auto px-4 md:px-8 py-10 space-y-20">
+
+        {/* SECTION 0: AXONOMETRIC SKETCHES & FEATURE CALLOUTS */}
+        <section id="sketches" className="scroll-mt-28 space-y-8">
+          <div className="bg-[#181818] border border-white/15 p-6 md:p-8 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#14F1D9]/5 blur-[100px] pointer-events-none rounded-full" />
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4 relative z-10">
+              <div>
+                <div className="inline-flex items-center gap-2 px-2.5 py-0.5 bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-[10px] font-bold uppercase tracking-widest mb-2">
+                  <Sparkles className="w-3 h-3" />
+                  3D-Скетчинг &amp; Планировка
+                </div>
+                <h2 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
+                  Архитектурные Аксонометрические Скетчи
+                </h2>
+                <p className="text-xs text-white/60 mt-1 font-sans">
+                  Объёмно-пространственные разрезы этажей в маркерной акварели с разметкой ключевых проектных решений и интерьерных фишек
+                </p>
+              </div>
+
+              {/* Floor Switcher */}
+              <div className="flex items-center gap-2 bg-[#121212] border border-white/10 p-1 self-stretch sm:self-auto shrink-0">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSketchFloor(1);
+                    setActiveCallout(null);
+                  }}
+                  className={`flex-1 sm:flex-none px-4 py-2 text-xs font-bold uppercase tracking-wider font-montserrat transition-all ${
+                    sketchFloor === 1
+                      ? "bg-[#14F1D9] text-[#111111] shadow-[0_0_15px_rgba(20,241,217,0.3)]"
+                      : "text-white/70 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  1 Этаж (Общее ядро)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSketchFloor(2);
+                    setActiveCallout(null);
+                  }}
+                  className={`flex-1 sm:flex-none px-4 py-2 text-xs font-bold uppercase tracking-wider font-montserrat transition-all ${
+                    sketchFloor === 2
+                      ? "bg-[#14F1D9] text-[#111111] shadow-[0_0_15px_rgba(20,241,217,0.3)]"
+                      : "text-white/70 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  2 Этаж (Приватная зона)
+                </button>
+              </div>
+            </div>
+
+            {/* Stage Grid: Sketch with Pins + Feature List */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
+              {/* Left Column: Interactive Image with Pins */}
+              <div className="lg:col-span-7 flex flex-col items-center">
+                <div className="w-full flex items-center justify-between px-3 py-2 mb-2 border border-white/10 bg-[#141414]">
+                  <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#14F1D9] animate-pulse" />
+                    {currentSketch.title}
+                  </span>
+                  <button
+                    onClick={() => setSelectedImage({
+                      src: currentSketch.imageSrc,
+                      title: currentSketch.title
+                    })}
+                    className="text-[10px] text-white/50 font-sans flex items-center gap-1 hover:text-[#14F1D9] transition-colors"
+                  >
+                    <Maximize2 className="w-3 h-3" /> Увеличить скетч
+                  </button>
+                </div>
+
+                <div className="relative w-full max-w-xl mx-auto bg-[#121212] border border-white/20 p-2 shadow-2xl group">
+                  <div className="relative aspect-square sm:aspect-[4/5] w-full overflow-hidden bg-black/40">
+                    <Image
+                      src={currentSketch.imageSrc}
+                      alt={currentSketch.title}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 1024px) 100vw, 650px"
+                      priority
+                    />
+
+                    {/* Overlay Pins */}
+                    {currentSketch.callouts.map((c) => {
+                      const isActive = activeCallout === c.id;
+                      return (
+                        <div
+                          key={c.id}
+                          style={{ left: `${c.x}%`, top: `${c.y}%` }}
+                          className="absolute -translate-x-1/2 -translate-y-1/2 z-20"
+                        >
+                          <button
+                            type="button"
+                            onClick={() => setActiveCallout(isActive ? null : c.id)}
+                            onMouseEnter={() => setActiveCallout(c.id)}
+                            className={`relative flex items-center justify-center w-7 h-7 rounded-full font-montserrat font-black text-xs transition-all duration-300 ${
+                              isActive
+                                ? "bg-[#14F1D9] text-[#111111] scale-125 shadow-[0_0_20px_#14F1D9] ring-4 ring-[#14F1D9]/40"
+                                : "bg-[#1A1A1A]/90 text-white border border-[#14F1D9] hover:bg-[#14F1D9] hover:text-[#111111] hover:scale-110 shadow-lg backdrop-blur-sm"
+                            }`}
+                            aria-label={c.title}
+                          >
+                            {c.id}
+                            <span className="absolute -inset-1 rounded-full bg-[#14F1D9]/20 animate-ping pointer-events-none" />
+                          </button>
+
+                          {/* Pin Tooltip on hover/active */}
+                          {isActive && (
+                            <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-52 bg-[#111111] border border-[#14F1D9] p-2.5 text-center shadow-2xl z-30 pointer-events-none">
+                              <div className="text-[9px] uppercase font-bold text-[#14F1D9] font-montserrat tracking-wider">
+                                {c.tag}
+                              </div>
+                              <div className="text-xs font-bold text-white font-montserrat mt-0.5">
+                                {c.title}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="text-[11px] text-white/50 text-center mt-3 font-sans flex items-center gap-1.5">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#14F1D9]" />
+                  Наведите на метку или нажмите карточку справа для подсветки решения
+                </div>
+              </div>
+
+              {/* Right Column: Feature Cards */}
+              <div className="lg:col-span-5 space-y-3">
+                <div className="text-xs font-bold uppercase tracking-wider text-white font-montserrat mb-2 flex items-center gap-2">
+                  <Flame className="w-3.5 h-3.5 text-[#14F1D9]" />
+                  Фишки и функциональные узлы этажа ({currentSketch.callouts.length})
+                </div>
+
+                <div className="space-y-2.5 max-h-[580px] overflow-y-auto pr-1 [scrollbar-width:thin] [scrollbar-color:#14F1D9/30_transparent]">
+                  {currentSketch.callouts.map((c) => {
+                    const isActive = activeCallout === c.id;
+                    return (
+                      <div
+                        key={c.id}
+                        onClick={() => setActiveCallout(isActive ? null : c.id)}
+                        onMouseEnter={() => setActiveCallout(c.id)}
+                        className={`p-3.5 border transition-all cursor-pointer ${
+                          isActive
+                            ? "bg-[#14F1D9]/10 border-[#14F1D9] shadow-[0_0_15px_rgba(20,241,217,0.15)] translate-x-1"
+                            : "bg-[#141414] border-white/10 hover:border-white/30 hover:bg-white/5"
+                        }`}
+                      >
+                        <div className="flex items-start gap-3">
+                          <span
+                            className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-black shrink-0 font-montserrat ${
+                              isActive
+                                ? "bg-[#14F1D9] text-[#111111]"
+                                : "bg-white/10 text-white/80"
+                            }`}
+                          >
+                            {c.id}
+                          </span>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between gap-2">
+                              <h4 className="text-xs font-bold uppercase font-montserrat text-white truncate">
+                                {c.title}
+                              </h4>
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat shrink-0">
+                                {c.tag}
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-white/70 font-sans mt-1 leading-relaxed">
+                              {c.desc}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* SECTION 1: CONCEPT & REFS (from 'Коллажи и референсы') */}
         <section id="concept" className="scroll-mt-28 space-y-8">
