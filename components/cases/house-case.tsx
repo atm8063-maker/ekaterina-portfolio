@@ -366,9 +366,6 @@ export function HouseCase() {
             <div className="bg-[#181818] border border-white/15 p-6 md:p-8 rounded-none shadow-2xl">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
                 <div>
-                  <div className="text-xs font-montserrat font-bold uppercase tracking-wider text-[#14F1D9] mb-1">
-                    EDITORIAL DIPTYCH • SIDE-BY-SIDE COMPARISON
-                  </div>
                   <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
                     Стройка и Реализация: Два мира одного дома
                   </h3>
@@ -389,7 +386,7 @@ export function HouseCase() {
                 >
                   <div className="flex items-center justify-between px-2 py-1.5 mb-2">
                     <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
-                      ● 01. Хроника стройки
+                      Хроника стройки
                     </span>
                     <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-white">
                       <Maximize2 className="w-3 h-3" /> Увеличить планшет
@@ -415,7 +412,7 @@ export function HouseCase() {
                 >
                   <div className="flex items-center justify-between px-2 py-1.5 mb-2">
                     <span className="text-xs font-bold text-[#14F1D9] font-montserrat uppercase tracking-wider">
-                      ● 02. Готовый дом в жизни
+                      Готовый дом в жизни
                     </span>
                     <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
                       <Maximize2 className="w-3 h-3" /> Увеличить планшет
@@ -736,9 +733,6 @@ export function HouseCase() {
             <div className="bg-[#181818] border border-white/15 p-6 md:p-8 rounded-none shadow-2xl">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
                 <div>
-                  <div className="text-xs font-montserrat font-bold uppercase tracking-wider text-[#14F1D9] mb-1">
-                    EDITORIAL DIPTYCH • SIDE-BY-SIDE COMPARISON
-                  </div>
                   <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
                     Стройка и Реализация: Два мира одного дома
                   </h3>
@@ -759,7 +753,7 @@ export function HouseCase() {
                 >
                   <div className="flex items-center justify-between px-2 py-1.5 mb-2">
                     <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
-                      ● 01. Хроника стройки
+                      Хроника стройки
                     </span>
                     <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-white">
                       <Maximize2 className="w-3 h-3" /> Увеличить планшет
@@ -785,7 +779,7 @@ export function HouseCase() {
                 >
                   <div className="flex items-center justify-between px-2 py-1.5 mb-2">
                     <span className="text-xs font-bold text-[#14F1D9] font-montserrat uppercase tracking-wider">
-                      ● 02. Готовый дом в жизни
+                      Готовый дом в жизни
                     </span>
                     <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
                       <Maximize2 className="w-3 h-3" /> Увеличить планшет
