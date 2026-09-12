@@ -291,16 +291,45 @@ export function HouseCase() {
                 </div>
               </div>
 
-              {/* Furniture Schedule Section (Reference 2 style: Furniture Cards) */}
+              {/* Furniture Schedule Section */}
               <div className="mt-10 pt-8 border-t border-white/10">
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
                   <div>
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat">
-                      FURNITURE & CUSTOM BUILT-INS SCHEDULE
+                    <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
+                      Комплектация и материалы
                     </h3>
-                    <p className="text-xs text-white/60">
-                      Спецификация ключевой мебели и индивидуальных решений
+                    <p className="text-xs text-white/60 mt-1 font-sans">
+                      Реализованная мебель, индивидуальные столярные изделия и текстильные акценты
                     </p>
+                  </div>
+                  <div className="text-xs text-white/50 font-sans">
+                    Кликните по планшету для полноэкранного зума
+                  </div>
+                </div>
+
+                {/* Furniture Specification Board */}
+                <div 
+                  onClick={() => setSelectedImage({
+                    src: "/Кейсы/10-house-project/collage_furniture_spec.jpg",
+                    title: "Комплектация & Материалы: Спецификация мебели и текстиля"
+                  })}
+                  className="bg-[#141414] border border-white/20 hover:border-[#14F1D9] p-3 sm:p-4 cursor-pointer group transition-all mb-8 shadow-2xl"
+                >
+                  <div className="flex items-center justify-between px-2 py-1.5 mb-3 border-b border-white/10">
+                    <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
+                      Планшет комплектации и индивидуальных решений
+                    </span>
+                    <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
+                      <Maximize2 className="w-3 h-3" /> Увеличить планшет
+                    </span>
+                  </div>
+                  <div className="relative aspect-[2/3] max-w-xl mx-auto w-full bg-black/60 overflow-hidden">
+                    <Image
+                      src="/Кейсы/10-house-project/collage_furniture_spec.jpg"
+                      alt="Планшет комплектации и материалов"
+                      fill
+                      className="object-cover group-hover:scale-102 transition-transform duration-500"
+                    />
                   </div>
                 </div>
 
