@@ -6,46 +6,34 @@ import Link from "next/link";
 import Header from "@/components/layout/Header";
 import { houseProjectData, ZoneDetail, MaterialSwatch, FurnitureItem } from "@/lib/house-data";
 import {
-  LayoutDashboard,
-  Home,
-  Layers,
   Palette,
+  Layers,
   Zap,
+  Armchair,
   Camera,
+  FileText,
   Maximize2,
   X,
-  Compass,
-  CheckCircle2,
-  Sparkles,
-  ArrowRight,
   ChevronRight,
-  Flame,
-  Lightbulb,
-  Armchair,
-  Ruler,
   Building2,
-  SlidersHorizontal,
-  Info
+  Lightbulb,
+  Sparkles
 } from "lucide-react";
 
 export function HouseCase() {
-  
   const [selectedFloor, setSelectedFloor] = useState<1 | 2>(1);
-  const [planMode, setPlanMode] = useState<"2D" | "3D">("3D");
   const [selectedZone, setSelectedZone] = useState<ZoneDetail | null>(null);
   const [selectedImage, setSelectedImage] = useState<{ src: string; title: string; room?: string } | null>(null);
-  const [galleryFilter, setGalleryFilter] = useState<"all" | "finished" | "construction" | "concept">("all");
+  const [galleryFilter, setGalleryFilter] = useState<"all" | "finished" | "construction">("all");
 
   const currentFloorData = houseProjectData.floorsData.find(f => f.floorNumber === selectedFloor)!;
 
   const filteredGallery = (): Array<{ src: string; title: string; room?: string; type: string }> => {
     if (galleryFilter === "finished") return houseProjectData.gallery.finished.map(i => ({ ...i, type: "finished" }));
     if (galleryFilter === "construction") return houseProjectData.gallery.construction.map(i => ({ ...i, type: "construction" }));
-    if (galleryFilter === "concept") return houseProjectData.gallery.conceptBoards.map(i => ({ ...i, type: "concept", room: undefined }));
     return [
       ...houseProjectData.gallery.finished.map(i => ({ ...i, type: "finished" })),
-      ...houseProjectData.gallery.construction.map(i => ({ ...i, type: "construction" })),
-      ...houseProjectData.gallery.conceptBoards.map(i => ({ ...i, type: "concept", room: undefined }))
+      ...houseProjectData.gallery.construction.map(i => ({ ...i, type: "construction" }))
     ];
   };
 
@@ -55,7 +43,6 @@ export function HouseCase() {
 
       {/* 1. HERO SECTION */}
       <section className="relative pt-28 pb-12 md:pt-36 md:pb-20 border-b border-white/10 overflow-hidden bg-gradient-to-b from-[#161616] to-[#111111]">
-        {/* Background ambient lighting */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#14F1D9]/5 blur-[120px] pointer-events-none rounded-full" />
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40" />
 
@@ -72,12 +59,12 @@ export function HouseCase() {
           <div className="max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs font-semibold uppercase tracking-widest mb-4">
               <Building2 className="w-3.5 h-3.5" />
-              Архитектура & Дизайн интерьера
+              Архитектура &amp; Дизайн интерьера
             </div>
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white font-montserrat leading-[1.08] mb-4">
               {houseProjectData.title}
             </h1>
-            <p className="text-base sm:text-xl text-white/80 font-normal leading-relaxed mb-8 max-w-3xl">
+            <p className="text-base sm:text-xl text-white/80 font-normal leading-relaxed mb-8 max-w-3xl font-sans">
               {houseProjectData.subtitle}
             </p>
           </div>
@@ -90,7 +77,7 @@ export function HouseCase() {
                 <div className="text-2xl sm:text-3xl md:text-4xl font-black text-[#14F1D9] font-montserrat mb-1">
                   {m.value}
                 </div>
-                <div className="text-xs sm:text-sm text-white/70 font-medium">
+                <div className="text-xs sm:text-sm text-white/70 font-medium font-sans">
                   {m.label}
                 </div>
               </div>
@@ -99,483 +86,238 @@ export function HouseCase() {
         </div>
       </section>
 
-      {/* 2. ANCHOR NAVIGATION */}
+      {/* 2. STICKY NAVIGATION (Clean, unnumbered) */}
       <nav className="sticky top-20 z-40 bg-[#111111]/95 backdrop-blur-md border-b border-white/10 py-3">
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-start md:justify-center gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <a
-            href="#board"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-lg"
-          >
-            <LayoutDashboard className="w-3.5 h-3.5 text-[#14F1D9]" />
-            01. Главный планшет
-          </a>
-          <a
-            href="#plans"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-lg"
-          >
-            <Layers className="w-3.5 h-3.5 text-[#14F1D9]" />
-            02. Планировка & Зоны
-          </a>
-          <a
             href="#concept"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-lg"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
           >
             <Palette className="w-3.5 h-3.5 text-[#14F1D9]" />
-            03. Стиль & Цвета
+            Концепция &amp; Стили
           </a>
           <a
-            href="#engineering"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-lg"
+            href="#planoplan"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
+          >
+            <Layers className="w-3.5 h-3.5 text-[#14F1D9]" />
+            3D-модель Planoplan
+          </a>
+          <a
+            href="#lighting"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
           >
             <Zap className="w-3.5 h-3.5 text-[#14F1D9]" />
-            04. Электрика & Свет
+            Электрика &amp; Свет
+          </a>
+          <a
+            href="#furniture"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
+          >
+            <Armchair className="w-3.5 h-3.5 text-[#14F1D9]" />
+            Комплектация &amp; Материалы
           </a>
           <a
             href="#gallery"
-            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-lg"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
           >
             <Camera className="w-3.5 h-3.5 text-[#14F1D9]" />
-            05. Стройка ➔ Готовый дом
+            Стройка &amp; Реализация
+          </a>
+          <a
+            href="#blueprints"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
+          >
+            <FileText className="w-3.5 h-3.5 text-[#14F1D9]" />
+            Чертежи проектировщика
           </a>
         </div>
       </nav>
 
-      {/* 3. TAB CONTENT */}
-      <main className="container mx-auto px-4 md:px-8 py-10">
+      {/* 3. MAIN STORY FLOW */}
+      <main className="container mx-auto px-4 md:px-8 py-10 space-y-20">
 
-        {/* SECTION 1: ARCHITECTURAL BOARD */}
-        <section id="board" className="scroll-mt-28 space-y-12">
-          <div className="space-y-12">
-            {/* Top Sheet Header */}
-            <div className="bg-[#181818] border border-white/15 p-6 md:p-8 rounded-none shadow-2xl relative overflow-hidden">
-              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-b border-white/10 pb-6 mb-8">
-                <div>
-                  <div className="text-xs uppercase tracking-wider text-[#14F1D9] font-montserrat font-bold mb-1">
-                    PROJECT PRESENTATION SHEET • INTERIOR ARCHITECTURE
-                  </div>
-                  <h2 className="text-2xl sm:text-4xl font-black uppercase text-white font-montserrat">
-                    RESIDENCE HOUSE: SCANDINAVIAN ECO-MINIMALISM
-                  </h2>
-                </div>
-                <div className="flex flex-wrap items-center gap-4 text-xs font-sans text-white/70">
-                  <span className="px-3 py-1.5 bg-white/5 border border-white/10">Локация: Загород</span>
-                  <span className="px-3 py-1.5 bg-white/5 border border-white/10">Площадь: 140 м²</span>
-                  <span className="px-3 py-1.5 bg-white/5 border border-white/10">Стиль: Сканди / Эко</span>
-                  <span className="px-3 py-1.5 bg-[#14F1D9]/10 text-[#14F1D9] border border-[#14F1D9]/30">Реализовано</span>
-                </div>
+        {/* SECTION 1: CONCEPT & REFS (from 'Коллажи и референсы') */}
+        <section id="concept" className="scroll-mt-28 space-y-8">
+          <div className="bg-[#181818] border border-white/15 p-6 md:p-8 shadow-2xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
+                  Концепция, Стили и Цветовая Палитра
+                </h2>
+                <p className="text-xs text-white/60 mt-1 font-sans">
+                  Поисковые мудборды, природные фактуры и цветовые предпочтения (из папки «Коллажи и референсы»)
+                </p>
               </div>
-
-              {/* Main Board Grid: Left Plan, Center Axonometric, Right Highlights */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                {/* Left: 2D Floor Plan mini */}
-                <div className="lg:col-span-4 bg-[#141414] border border-white/10 p-4 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-bold uppercase tracking-wider text-white/80 font-montserrat">
-                        Floor Plan (1st Floor)
-                      </span>
-                      <button
-                        onClick={() => setSelectedImage({ src: "/Кейсы/10-house-project/extracted/распределение зон и мебели_img_12.JPEG", title: "План 1-го этажа с размерами и зонированием" })}
-                        className="text-[10px] text-[#14F1D9] hover:underline flex items-center gap-1 font-sans"
-                      >
-                        <Maximize2 className="w-3 h-3" /> Увеличить
-                      </button>
-                    </div>
-                    <div className="relative aspect-square w-full bg-black/40 overflow-hidden cursor-pointer group"
-                      onClick={() => setSelectedImage({ src: "/Кейсы/10-house-project/extracted/распределение зон и мебели_img_12.JPEG", title: "План 1-го этажа с расстановкой мебели" })}
-                    >
-                      <Image
-                        src="/Кейсы/10-house-project/extracted/распределение зон и мебели_img_12.JPEG"
-                        alt="План 1 этажа"
-                        fill
-                        className="object-contain group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                  </div>
-                  <div className="mt-4 pt-4 border-t border-white/10 text-xs text-white/60 space-y-1 font-sans">
-                    <p>1. Прихожая и холл — 11.1 м²</p>
-                    <p>2. Котельная/кладовая — 4.5 м²</p>
-                    <p>3. Санузел с ванной — 9.3 м²</p>
-                    <p>4. Кухня-столовая-гостиная — 42.5 м²</p>
-                  </div>
-                </div>
-
-                {/* Center: Hero 3D Axonometric Cutaway */}
-                <div className="lg:col-span-8 bg-[#141414] border border-white/10 p-4 relative group">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat">
-                        Axonometric 3D Cutaway
-                      </span>
-                      <span className="text-[10px] text-white/40 uppercase font-montserrat font-semibold">Общественное ядро</span>
-                    </div>
-                    <button
-                      onClick={() => setSelectedImage({ src: "/Кейсы/10-house-project/extracted/распределение зон и мебели_img_11.JPEG", title: "Аксонометрическая 3D модель первого этажа" })}
-                      className="text-[10px] text-[#14F1D9] hover:underline flex items-center gap-1 font-sans"
-                    >
-                      <Maximize2 className="w-3 h-3" /> Развернуть 3D модель
-                    </button>
-                  </div>
-
-                  <div
-                    className="relative aspect-[16/10] w-full bg-black/60 overflow-hidden cursor-pointer"
-                    onClick={() => setSelectedImage({ src: "/Кейсы/10-house-project/extracted/распределение зон и мебели_img_11.JPEG", title: "Аксонометрическая 3D модель первого этажа с камином и кухней" })}
-                  >
-                    <Image
-                      src="/Кейсы/10-house-project/extracted/распределение зон и мебели_img_11.JPEG"
-                      alt="Аксонометрический разрез дома"
-                      fill
-                      className="object-contain group-hover:scale-102 transition-transform duration-500"
-                    />
-
-                    {/* Interactive Callout Badges on the Cutaway */}
-                    <div className="absolute top-[25%] left-[28%] bg-[#111111]/90 border border-[#14F1D9]/60 px-2 py-0.5 text-[10px] font-medium text-[#14F1D9] shadow-lg pointer-events-none">
-                      Прихожая & Холл
-                    </div>
-                    <div className="absolute top-[32%] right-[22%] bg-[#111111]/90 border border-[#14F1D9]/60 px-2 py-0.5 text-[10px] font-medium text-[#14F1D9] shadow-lg pointer-events-none">
-                      U-образный кухонный фронт
-                    </div>
-                    <div className="absolute bottom-[28%] right-[32%] bg-[#111111]/90 border border-[#14F1D9]/60 px-2 py-0.5 text-[10px] font-medium text-[#14F1D9] shadow-lg pointer-events-none">
-                      Круглый обеденный стол
-                    </div>
-                    <div className="absolute bottom-[20%] left-[38%] bg-[#111111]/90 border border-[#14F1D9]/60 px-2 py-0.5 text-[10px] font-medium text-[#14F1D9] shadow-lg pointer-events-none">
-                      Бетонный камин & Бирюзовые кресла
-                    </div>
-                  </div>
-
-                  {/* Highlights under 3D model */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4 pt-4 border-t border-white/10 text-[11px] text-white/70 font-sans">
-                    <div>• Панорамные окна в пол</div>
-                    <div>• Монолитный камин</div>
-                    <div>• Единый контур кухни</div>
-                    <div>• 2 сценария отдыха</div>
-                  </div>
-                </div>
+              <div className="text-xs text-white/50 font-sans">
+                Кликните по планшету для полноэкранного зума
               </div>
-
-              {/* Material Palette Section (Reference 2 style: Circular swatches) */}
-              <div className="mt-10 pt-8 border-t border-white/10">
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat">
-                      MATERIAL PALETTE & FINISHES
-                    </h3>
-                    <p className="text-xs text-white/60">
-                      Реализованная палитра: нейтральный серый, чистый белый, благородный дуб и фирменный бирюзовый акцент
-                    </p>
-                  </div>
-                  <span className="hidden sm:inline-block text-[11px] font-sans text-white/40">
-                    6 базовых текстурных слоёв
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                  {houseProjectData.materials.map((mat, i) => (
-                    <div key={i} className="bg-[#141414] border border-white/10 p-4 flex flex-col items-center text-center group hover:border-[#14F1D9]/40 transition-colors">
-                      {/* Swatch circle */}
-                      <div
-                        className="w-16 h-16 rounded-full mb-3 shadow-inner border border-white/20 transition-transform group-hover:scale-110 flex items-center justify-center relative overflow-hidden"
-                        style={{ backgroundColor: mat.colorHex }}
-                      >
-                        {mat.colorHex === "#14F1D9" && (
-                          <Sparkles className="w-5 h-5 text-[#111111] animate-pulse" />
-                        )}
-                      </div>
-                      <div className="text-xs font-bold text-white mb-0.5">{mat.name}</div>
-                      <div className="text-[10px] text-[#14F1D9] font-montserrat font-bold uppercase mb-2">{mat.role}</div>
-                      <p className="text-[10px] text-white/60 leading-relaxed font-sans line-clamp-3">
-                        {mat.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Furniture Schedule Section */}
-              <div className="mt-10 pt-8 border-t border-white/10">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
-                      Комплектация и материалы
-                    </h3>
-                    <p className="text-xs text-white/60 mt-1 font-sans">
-                      Реализованная мебель, индивидуальные столярные изделия и текстильные акценты
-                    </p>
-                  </div>
-                  <div className="text-xs text-white/50 font-sans">
-                    Кликните по планшету для полноэкранного зума
-                  </div>
-                </div>
-
-                {/* Furniture Specification Board */}
-                <div 
-                  onClick={() => setSelectedImage({
-                    src: "/Кейсы/10-house-project/collage_furniture_spec.jpg",
-                    title: "Комплектация & Материалы: Спецификация мебели и текстиля"
-                  })}
-                  className="bg-[#141414] border border-white/20 hover:border-[#14F1D9] p-3 sm:p-4 cursor-pointer group transition-all mb-8 shadow-2xl"
-                >
-                  <div className="flex items-center justify-between px-2 py-1.5 mb-3 border-b border-white/10">
-                    <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
-                      Планшет комплектации и индивидуальных решений
-                    </span>
-                    <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
-                      <Maximize2 className="w-3 h-3" /> Увеличить планшет
-                    </span>
-                  </div>
-                  <div className="relative aspect-[2/3] max-w-xl mx-auto w-full bg-black/60 overflow-hidden">
-                    <Image
-                      src="/Кейсы/10-house-project/collage_furniture_spec.jpg"
-                      alt="Планшет комплектации и материалов"
-                      fill
-                      className="object-cover group-hover:scale-102 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {houseProjectData.furniture.map((item, i) => (
-                    <div key={i} className="bg-[#141414] border border-white/10 p-5 flex flex-col justify-between hover:border-white/30 transition-colors">
-                      <div>
-                        <div className="flex items-center justify-between text-[10px] font-sans text-[#14F1D9] mb-1">
-                          <span>{item.category}</span>
-                          <Armchair className="w-3 h-3 text-white/40" />
-                        </div>
-                        <h4 className="text-base font-bold text-white font-montserrat mb-2">
-                          {item.name}
-                        </h4>
-                        <div className="text-xs text-white/80 font-medium mb-2 bg-white/5 px-2 py-1 inline-block border border-white/5">
-                          {item.material}
-                        </div>
-                        <p className="text-xs text-white/60 leading-relaxed">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Lighting Plan Highlights */}
-              <div className="mt-10 pt-8 border-t border-white/10">
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat">
-                      LIGHTING SCENARIOS & AMBIENCE
-                    </h3>
-                    <p className="text-xs text-white/60">
-                      Сценарии искусственного света: от яркого рабочего до уютного каминного
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {houseProjectData.lightingGroups.map((lg, i) => (
-                    <div key={i} className="bg-[#141414] border border-white/10 p-4 flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <Lightbulb className="w-4 h-4 text-[#14F1D9]" />
-                          <span className="text-[10px] font-sans text-white/50">{lg.kelvin}</span>
-                        </div>
-                        <h5 className="text-sm font-bold text-white mb-1">{lg.name}</h5>
-                        <div className="text-[11px] text-[#14F1D9] font-sans font-medium mb-2">{lg.type}</div>
-                        <p className="text-xs text-white/60 leading-relaxed mb-3">{lg.desc}</p>
-                      </div>
-                      <div className="text-[10px] text-white/40 border-t border-white/5 pt-2 font-sans">
-                        {lg.placement}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
             </div>
 
-            {/* Featured Side-by-Side Comparison Diptych */}
-            <div className="bg-[#181818] border border-white/15 p-6 md:p-8 rounded-none shadow-2xl">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
-                    Стройка и Реализация: Два мира одного дома
-                  </h3>
+            {/* Concept Hero Board */}
+            <div
+              onClick={() => setSelectedImage({
+                src: "/Кейсы/10-house-project/collage_concept_references.jpg",
+                title: "Концепция, стили & цветовые предпочтения"
+              })}
+              className="bg-[#141414] border border-white/20 hover:border-[#14F1D9] p-2 sm:p-4 cursor-pointer group transition-all mb-8 shadow-2xl"
+            >
+              <div className="flex items-center justify-between px-2 py-1.5 mb-2 border-b border-white/10">
+                <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
+                  Планшет концепции и цветовых референсов
+                </span>
+                <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
+                  <Maximize2 className="w-3 h-3" /> Увеличить планшет
+                </span>
+              </div>
+              <div className="relative aspect-[2/3] max-w-xl mx-auto w-full bg-black/60 overflow-hidden">
+                <Image
+                  src="/Кейсы/10-house-project/collage_concept_references.jpg"
+                  alt="Концепция, стили и цвет"
+                  fill
+                  className="object-cover group-hover:scale-102 transition-transform duration-500"
+                />
+              </div>
+            </div>
+
+            {/* Design Evolution Story */}
+            <div className="bg-[#141414] border border-white/10 p-6 md:p-8 mt-8">
+              <h3 className="text-lg font-black uppercase text-white font-montserrat mb-4">
+                {houseProjectData.evolutionStory.title}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-sans text-white/80 leading-relaxed">
+                <div className="p-4 bg-white/5 border-l-2 border-white/30">
+                  <strong className="text-white font-montserrat font-bold text-xs uppercase block mb-1">
+                    Поиск и гипотезы
+                  </strong>
+                  {houseProjectData.evolutionStory.initialConcept}
                 </div>
-                <div className="text-xs text-white/50 font-sans">
-                  Кликните по любому планшету для полноэкранного зума
+                <div className="p-4 bg-white/5 border-l-2 border-white/40">
+                  <strong className="text-white/70 font-montserrat font-bold text-xs uppercase block mb-1">
+                    Точка перелома на стройке
+                  </strong>
+                  {houseProjectData.evolutionStory.turningPoint}
+                </div>
+                <div className="p-4 bg-[#14F1D9]/5 border-l-2 border-[#14F1D9]">
+                  <strong className="text-[#14F1D9] font-montserrat font-bold text-xs uppercase block mb-1">
+                    Финальный сканди-минимализм
+                  </strong>
+                  {houseProjectData.evolutionStory.realizedResult}
                 </div>
               </div>
+            </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-                {/* Left: Construction Collage */}
-                <div 
-                  onClick={() => setSelectedImage({
-                    src: "/Кейсы/10-house-project/collage_construction_vertical.jpg",
-                    title: "Хроника стройки: от блока к объёму (Архитектурный процесс)"
-                  })}
-                  className="bg-[#141414] border border-white/20 hover:border-white/50 p-2 sm:p-3 cursor-pointer group transition-all"
-                >
-                  <div className="flex items-center justify-between px-2 py-1.5 mb-2">
-                    <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
-                      Хроника стройки
-                    </span>
-                    <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-white">
-                      <Maximize2 className="w-3 h-3" /> Увеличить планшет
-                    </span>
+            {/* Material Swatches */}
+            <div className="mt-8 pt-6 border-t border-white/10">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white font-montserrat mb-4">
+                Базовая палитра материалов и фактур
+              </h4>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                {houseProjectData.materials.map((mat, i) => (
+                  <div key={i} className="bg-[#141414] border border-white/10 p-3 flex flex-col items-center text-center">
+                    <div
+                      className="w-12 h-12 rounded-full mb-2 border border-white/20 flex items-center justify-center"
+                      style={{ backgroundColor: mat.colorHex }}
+                    >
+                      {mat.colorHex === "#14F1D9" && (
+                        <Sparkles className="w-4 h-4 text-[#111111]" />
+                      )}
+                    </div>
+                    <div className="text-xs font-bold text-white mb-0.5">{mat.name}</div>
+                    <div className="text-[10px] text-[#14F1D9] font-montserrat font-bold uppercase mb-1">{mat.role}</div>
+                    <p className="text-[10px] text-white/60 font-sans line-clamp-2">{mat.description}</p>
                   </div>
-                  <div className="relative aspect-[2/3] w-full bg-black/60 overflow-hidden">
-                    <Image
-                      src="/Кейсы/10-house-project/collage_construction_vertical.jpg"
-                      alt="Коллаж стройки"
-                      fill
-                      className="object-cover group-hover:scale-102 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
-
-                {/* Right: Finished House Collage */}
-                <div 
-                  onClick={() => setSelectedImage({
-                    src: "/Кейсы/10-house-project/collage_finished_vertical.jpg",
-                    title: "Готовый дом: жизнь и сканди-эко минимализм (Реализация)"
-                  })}
-                  className="bg-[#141414] border border-[#14F1D9]/30 hover:border-[#14F1D9] p-2 sm:p-3 cursor-pointer group transition-all"
-                >
-                  <div className="flex items-center justify-between px-2 py-1.5 mb-2">
-                    <span className="text-xs font-bold text-[#14F1D9] font-montserrat uppercase tracking-wider">
-                      Готовый дом в жизни
-                    </span>
-                    <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
-                      <Maximize2 className="w-3 h-3" /> Увеличить планшет
-                    </span>
-                  </div>
-                  <div className="relative aspect-[2/3] w-full bg-black/60 overflow-hidden">
-                    <Image
-                      src="/Кейсы/10-house-project/collage_finished_vertical.jpg"
-                      alt="Коллаж готового дома"
-                      fill
-                      className="object-cover group-hover:scale-102 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 2: PLANS & ZONING */}
-        <section id="plans" className="scroll-mt-28 space-y-8 pt-16 border-t border-white/10">
-          <div className="space-y-8">
-            {/* Floor Switcher & View Switcher */}
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-[#181818] border border-white/10 p-4">
-              <div className="flex items-center gap-2">
-                <span className="text-xs uppercase text-white/60 font-montserrat font-semibold mr-2">Этаж:</span>
-                <button
-                  onClick={() => { setSelectedFloor(1); setSelectedZone(null); }}
-                  className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
-                    selectedFloor === 1 ? "bg-[#14F1D9] text-[#111111]" : "bg-[#141414] text-white/70 hover:text-white"
-                  }`}
-                >
-                  1 Этаж (Общественный)
-                </button>
-                <button
-                  onClick={() => { setSelectedFloor(2); setSelectedZone(null); }}
-                  className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
-                    selectedFloor === 2 ? "bg-[#14F1D9] text-[#111111]" : "bg-[#141414] text-white/70 hover:text-white"
-                  }`}
-                >
-                  2 Этаж (Приватный)
-                </button>
+        {/* SECTION 2: 3D PLANOPLAN (from 'Рендеры в планоплане') */}
+        <section id="planoplan" className="scroll-mt-28 space-y-8">
+          <div className="bg-[#181818] border border-white/15 p-6 md:p-8 shadow-2xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
+                  3D-Моделирование в Planoplan
+                </h2>
+                <p className="text-xs text-white/60 mt-1 font-sans">
+                  Виртуальное моделирование дома, видовые оси, естественный свет и планировка (из папки «Рендеры в планоплане»)
+                </p>
               </div>
-
-              <div className="flex items-center gap-2">
-                <span className="text-xs uppercase text-white/60 font-montserrat font-semibold mr-2">Вид:</span>
-                <button
-                  onClick={() => setPlanMode("3D")}
-                  className={`px-3 py-1.5 text-xs font-sans transition-colors ${
-                    planMode === "3D" ? "bg-white/20 text-white font-bold" : "bg-transparent text-white/50 hover:text-white"
-                  }`}
-                >
-                  3D Аксонометрия
-                </button>
-                <button
-                  onClick={() => setPlanMode("2D")}
-                  className={`px-3 py-1.5 text-xs font-sans transition-colors ${
-                    planMode === "2D" ? "bg-white/20 text-white font-bold" : "bg-transparent text-white/50 hover:text-white"
-                  }`}
-                >
-                  2D Архитектурный план
-                </button>
+              <div className="text-xs text-white/50 font-sans">
+                Кликните по планшету для полноэкранного зума
               </div>
             </div>
 
-            {/* Plan Image Display with Zoom */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              <div className="lg:col-span-8 bg-[#181818] border border-white/10 p-4 relative group">
-                <div className="flex items-center justify-between mb-3 text-xs font-sans text-white/70">
-                  <span>{currentFloorData.title}</span>
-                  <button
-                    onClick={() => setSelectedImage({
-                      src: planMode === "3D" ? currentFloorData.axonometric3D : currentFloorData.plan2D,
-                      title: `${currentFloorData.title} (${planMode})`
-                    })}
-                    className="text-[#14F1D9] hover:underline flex items-center gap-1"
-                  >
-                    <Maximize2 className="w-3.5 h-3.5" /> Полный экран
-                  </button>
-                </div>
+            {/* Planoplan Hero Board */}
+            <div
+              onClick={() => setSelectedImage({
+                src: "/Кейсы/10-house-project/collage_planoplan_renders.jpg",
+                title: "3D-моделирование и визуализация в Planoplan"
+              })}
+              className="bg-[#141414] border border-white/20 hover:border-[#14F1D9] p-2 sm:p-4 cursor-pointer group transition-all mb-8 shadow-2xl"
+            >
+              <div className="flex items-center justify-between px-2 py-1.5 mb-2 border-b border-white/10">
+                <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
+                  Планшет 3D-моделей Planoplan
+                </span>
+                <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
+                  <Maximize2 className="w-3 h-3" /> Увеличить планшет
+                </span>
+              </div>
+              <div className="relative aspect-[2/3] max-w-xl mx-auto w-full bg-black/60 overflow-hidden">
+                <Image
+                  src="/Кейсы/10-house-project/collage_planoplan_renders.jpg"
+                  alt="3D-моделирование в Planoplan"
+                  fill
+                  className="object-cover group-hover:scale-102 transition-transform duration-500"
+                />
+              </div>
+            </div>
 
-                <div
-                  className="relative aspect-[16/11] w-full bg-black/60 overflow-hidden cursor-pointer"
-                  onClick={() => setSelectedImage({
-                    src: planMode === "3D" ? currentFloorData.axonometric3D : currentFloorData.plan2D,
-                    title: `${currentFloorData.title} (${planMode})`
-                  })}
+            {/* Floor Zones List */}
+            <div className="bg-[#141414] border border-white/10 p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <button
+                  onClick={() => setSelectedFloor(1)}
+                  className={`px-4 py-2 text-xs font-bold uppercase font-montserrat ${
+                    selectedFloor === 1 ? "bg-[#14F1D9] text-[#111111]" : "bg-white/5 text-white/70 hover:text-white"
+                  }`}
                 >
-                  <Image
-                    src={planMode === "3D" ? currentFloorData.axonometric3D : currentFloorData.plan2D}
-                    alt={currentFloorData.title}
-                    fill
-                    className="object-contain group-hover:scale-102 transition-transform duration-500"
-                  />
-                </div>
+                  Зоны 1-го этажа
+                </button>
+                <button
+                  onClick={() => setSelectedFloor(2)}
+                  className={`px-4 py-2 text-xs font-bold uppercase font-montserrat ${
+                    selectedFloor === 2 ? "bg-[#14F1D9] text-[#111111]" : "bg-white/5 text-white/70 hover:text-white"
+                  }`}
+                >
+                  Зоны 2-го этажа
+                </button>
               </div>
 
-              {/* Zones Interactive List */}
-              <div className="lg:col-span-4 space-y-3">
-                <h3 className="text-xs uppercase tracking-wider text-[#14F1D9] font-montserrat font-bold mb-2">
-                  ФУНКЦИОНАЛЬНЫЕ ЗОНЫ ЭТАЖА
-                </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {currentFloorData.zones.map((zone) => (
                   <div
                     key={zone.id}
                     onClick={() => setSelectedZone(selectedZone?.id === zone.id ? null : zone)}
                     className={`p-4 border transition-all cursor-pointer ${
                       selectedZone?.id === zone.id
-                        ? "bg-[#14F1D9]/10 border-[#14F1D9]"
-                        : "bg-[#181818] border-white/10 hover:border-white/30"
+                        ? "bg-[#1A1A1A] border-[#14F1D9]"
+                        : "bg-black/30 border-white/10 hover:border-white/30"
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <h4 className="text-sm font-bold text-white font-montserrat">{zone.name}</h4>
+                      <h4 className="text-xs font-bold text-white font-montserrat">{zone.name}</h4>
                       {zone.area && (
                         <span className="text-xs font-montserrat font-bold text-[#14F1D9]">{zone.area}</span>
                       )}
                     </div>
-                    <div className="text-xs text-white/60 line-clamp-2 mb-2">
-                      {zone.features}
+                    <p className="text-[11px] text-white/60 font-sans line-clamp-2 mb-2">{zone.features}</p>
+                    <div className="text-[10px] text-white/40 font-sans">
+                      {zone.functions.slice(0, 2).join(" • ")}
                     </div>
-
-                    {selectedZone?.id === zone.id && (
-                      <div className="pt-3 mt-3 border-t border-white/10 space-y-2 text-xs">
-                        <div>
-                          <span className="text-[#14F1D9] font-semibold">Занятия / Функции: </span>
-                          <span className="text-white/80">{zone.functions.join(", ")}</span>
-                        </div>
-                        <div>
-                          <span className="text-[#14F1D9] font-semibold">Мебель и техника: </span>
-                          <span className="text-white/80">{zone.furniture.join(", ")}</span>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>
@@ -583,69 +325,264 @@ export function HouseCase() {
           </div>
         </section>
 
-        {/* SECTION 3: CONCEPT & COLOR EVOLUTION */}
-        <section id="concept" className="scroll-mt-28 space-y-8 pt-16 border-t border-white/10">
-          <div className="space-y-12">
-            {/* Story Card: Why Palette Shifted */}
-            <div className="bg-[#181818] border border-white/10 p-6 md:p-10 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-[#14F1D9]/5 blur-[100px] pointer-events-none rounded-full" />
-              <div className="max-w-3xl">
-                <div className="text-xs uppercase tracking-wider text-[#14F1D9] font-montserrat font-bold mb-3">
-                  ДИЗАЙН-МАНИФЕСТ И ЭВОЛЮЦИЯ
+        {/* SECTION 3: LIGHTING & ENGINEERING (from 'электрика и освещение') */}
+        <section id="lighting" className="scroll-mt-28 space-y-8">
+          <div className="bg-[#181818] border border-white/15 p-6 md:p-8 shadow-2xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
+                  Электрика и Световые Сценарии
+                </h2>
+                <p className="text-xs text-white/60 mt-1 font-sans">
+                  Планы розеток, выключателей, высотных отметок и схемы групп света (из папки «Электрика и освещение»)
+                </p>
+              </div>
+              <div className="text-xs text-white/50 font-sans">
+                Кликните по планшету для полноэкранного зума
+              </div>
+            </div>
+
+            {/* Lighting Hero Board */}
+            <div
+              onClick={() => setSelectedImage({
+                src: "/Кейсы/10-house-project/collage_lighting_engineering.jpg",
+                title: "Электрика & световые сценарии: схемы и трассировка"
+              })}
+              className="bg-[#141414] border border-white/20 hover:border-[#14F1D9] p-2 sm:p-4 cursor-pointer group transition-all mb-8 shadow-2xl"
+            >
+              <div className="flex items-center justify-between px-2 py-1.5 mb-2 border-b border-white/10">
+                <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
+                  Планшет схем электрики и освещения
+                </span>
+                <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
+                  <Maximize2 className="w-3 h-3" /> Увеличить планшет
+                </span>
+              </div>
+              <div className="relative aspect-[2/3] max-w-xl mx-auto w-full bg-black/60 overflow-hidden">
+                <Image
+                  src="/Кейсы/10-house-project/collage_lighting_engineering.jpg"
+                  alt="Электрика и освещение"
+                  fill
+                  className="object-cover group-hover:scale-102 transition-transform duration-500"
+                />
+              </div>
+            </div>
+
+            {/* Lighting Scenarios Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+              {houseProjectData.lightingGroups.map((lg, i) => (
+                <div key={i} className="bg-[#141414] border border-white/10 p-4 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <Lightbulb className="w-4 h-4 text-[#14F1D9]" />
+                      <span className="text-[10px] font-sans text-white/50">{lg.kelvin}</span>
+                    </div>
+                    <h5 className="text-xs font-bold text-white mb-1 font-montserrat">{lg.name}</h5>
+                    <div className="text-[11px] text-[#14F1D9] font-sans font-medium mb-2">{lg.type}</div>
+                    <p className="text-xs text-white/60 leading-relaxed font-sans mb-3">{lg.desc}</p>
+                  </div>
+                  <div className="text-[10px] text-white/40 border-t border-white/5 pt-2 font-sans">
+                    {lg.placement}
+                  </div>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-black uppercase text-white font-montserrat mb-6">
-                  {houseProjectData.evolutionStory.title}
-                </h3>
-                <div className="space-y-4 text-white/80 leading-relaxed text-sm sm:text-base">
-                  <div className="p-4 bg-white/5 border-l-2 border-white/30">
-                    <strong className="text-white/90 font-montserrat font-bold text-xs uppercase block mb-1">Фаза 1: Смелый поиск и гипотезы</strong>
-                    {houseProjectData.evolutionStory.initialConcept}
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 4: FURNITURE & MATERIALS */}
+        <section id="furniture" className="scroll-mt-28 space-y-8">
+          <div className="bg-[#181818] border border-white/15 p-6 md:p-8 shadow-2xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
+                  Комплектация и Материалы
+                </h2>
+                <p className="text-xs text-white/60 mt-1 font-sans">
+                  Реализованная мебель, индивидуальные столярные изделия, слэбы и текстильные акценты
+                </p>
+              </div>
+              <div className="text-xs text-white/50 font-sans">
+                Кликните по планшету для полноэкранного зума
+              </div>
+            </div>
+
+            {/* Furniture Spec Board */}
+            <div
+              onClick={() => setSelectedImage({
+                src: "/Кейсы/10-house-project/collage_furniture_spec.jpg",
+                title: "Комплектация & Материалы: Спецификация мебели и текстиля"
+              })}
+              className="bg-[#141414] border border-white/20 hover:border-[#14F1D9] p-2 sm:p-4 cursor-pointer group transition-all mb-8 shadow-2xl"
+            >
+              <div className="flex items-center justify-between px-2 py-1.5 mb-2 border-b border-white/10">
+                <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
+                  Планшет комплектации и индивидуальных решений
+                </span>
+                <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
+                  <Maximize2 className="w-3 h-3" /> Увеличить планшет
+                </span>
+              </div>
+              <div className="relative aspect-[2/3] max-w-xl mx-auto w-full bg-black/60 overflow-hidden">
+                <Image
+                  src="/Кейсы/10-house-project/collage_furniture_spec.jpg"
+                  alt="Планшет комплектации и материалов"
+                  fill
+                  className="object-cover group-hover:scale-102 transition-transform duration-500"
+                />
+              </div>
+            </div>
+
+            {/* Detailed Furniture Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {houseProjectData.furniture.map((item, i) => (
+                <div key={i} className="bg-[#141414] border border-white/10 p-5 flex flex-col justify-between hover:border-white/30 transition-colors">
+                  <div>
+                    <div className="flex items-center justify-between text-[10px] font-sans text-[#14F1D9] mb-1">
+                      <span>{item.category}</span>
+                      <Armchair className="w-3 h-3 text-white/40" />
+                    </div>
+                    <h4 className="text-sm font-bold text-white font-montserrat mb-2">
+                      {item.name}
+                    </h4>
+                    <div className="text-xs text-white/80 font-medium mb-2 bg-white/5 px-2 py-1 inline-block border border-white/5">
+                      {item.material}
+                    </div>
+                    <p className="text-xs text-white/60 leading-relaxed font-sans">
+                      {item.description}
+                    </p>
                   </div>
-                  <div className="p-4 bg-white/5 border-l-2 border-white/40">
-                    <strong className="text-white/60 font-montserrat font-bold text-xs uppercase block mb-1">Фаза 2: Точка перелома на стройке</strong>
-                    {houseProjectData.evolutionStory.turningPoint}
-                  </div>
-                  <div className="p-4 bg-[#14F1D9]/5 border-l-2 border-[#14F1D9]">
-                    <strong className="text-[#14F1D9] font-montserrat font-bold text-xs uppercase block mb-1">Фаза 3: Финальная сканди-гармония</strong>
-                    {houseProjectData.evolutionStory.realizedResult}
-                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 5: CONSTRUCTION & REALIZATION (The Diptych) */}
+        <section id="gallery" className="scroll-mt-28 space-y-12">
+          <div className="bg-[#181818] border border-white/15 p-6 md:p-8 shadow-2xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
+                  Стройка и Реализация: Два мира одного дома
+                </h2>
+                <p className="text-xs text-white/60 mt-1 font-sans">
+                  Сравнение архитектурного процесса возведения коробки и готового живого интерьера
+                </p>
+              </div>
+              <div className="text-xs text-white/50 font-sans">
+                Кликните по любому планшету для полноэкранного зума
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+              {/* Left: Construction Collage */}
+              <div
+                onClick={() => setSelectedImage({
+                  src: "/Кейсы/10-house-project/collage_construction_vertical.jpg",
+                  title: "Хроника стройки"
+                })}
+                className="bg-[#141414] border border-white/20 hover:border-white/50 p-2 sm:p-3 cursor-pointer group transition-all"
+              >
+                <div className="flex items-center justify-between px-2 py-1.5 mb-2">
+                  <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
+                    Хроника стройки
+                  </span>
+                  <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-white">
+                    <Maximize2 className="w-3 h-3" /> Увеличить планшет
+                  </span>
+                </div>
+                <div className="relative aspect-[2/3] w-full bg-black/60 overflow-hidden">
+                  <Image
+                    src="/Кейсы/10-house-project/collage_construction_vertical.jpg"
+                    alt="Коллаж стройки"
+                    fill
+                    className="object-cover group-hover:scale-102 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+
+              {/* Right: Finished House Collage */}
+              <div
+                onClick={() => setSelectedImage({
+                  src: "/Кейсы/10-house-project/collage_finished_vertical.jpg",
+                  title: "Готовый дом в жизни"
+                })}
+                className="bg-[#141414] border border-[#14F1D9]/30 hover:border-[#14F1D9] p-2 sm:p-3 cursor-pointer group transition-all"
+              >
+                <div className="flex items-center justify-between px-2 py-1.5 mb-2">
+                  <span className="text-xs font-bold text-[#14F1D9] font-montserrat uppercase tracking-wider">
+                    Готовый дом в жизни
+                  </span>
+                  <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
+                    <Maximize2 className="w-3 h-3" /> Увеличить планшет
+                  </span>
+                </div>
+                <div className="relative aspect-[2/3] w-full bg-black/60 overflow-hidden">
+                  <Image
+                    src="/Кейсы/10-house-project/collage_finished_vertical.jpg"
+                    alt="Коллаж готового дома"
+                    fill
+                    className="object-cover group-hover:scale-102 transition-transform duration-500"
+                  />
                 </div>
               </div>
             </div>
 
-            {/* Concept Moodboards (Reference 1 style) */}
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h3 className="text-lg font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat">
-                    ПОИСКОВЫЕ МУДБОРДЫ & КОЛЛАЖИ
-                  </h3>
-                  <p className="text-xs text-white/60">
-                    Материалы, текстиль, фактуры и колористические пробы
-                  </p>
+            {/* Individual Photo Gallery */}
+            <div className="mt-12 pt-8 border-t border-white/10">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+                <h3 className="text-lg font-black uppercase text-white font-montserrat">
+                  Фотогалерея: Готовый интерьер и хроника стройки
+                </h3>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setGalleryFilter("all")}
+                    className={`px-3 py-1.5 text-xs font-montserrat font-bold uppercase transition-colors ${
+                      galleryFilter === "all" ? "bg-[#14F1D9] text-[#111111]" : "bg-white/5 text-white/70 hover:text-white"
+                    }`}
+                  >
+                    Все кадры ({houseProjectData.gallery.finished.length + houseProjectData.gallery.construction.length})
+                  </button>
+                  <button
+                    onClick={() => setGalleryFilter("finished")}
+                    className={`px-3 py-1.5 text-xs font-montserrat font-bold uppercase transition-colors ${
+                      galleryFilter === "finished" ? "bg-[#14F1D9] text-[#111111]" : "bg-white/5 text-white/70 hover:text-white"
+                    }`}
+                  >
+                    Готовый дом ({houseProjectData.gallery.finished.length})
+                  </button>
+                  <button
+                    onClick={() => setGalleryFilter("construction")}
+                    className={`px-3 py-1.5 text-xs font-montserrat font-bold uppercase transition-colors ${
+                      galleryFilter === "construction" ? "bg-[#14F1D9] text-[#111111]" : "bg-white/5 text-white/70 hover:text-white"
+                    }`}
+                  >
+                    Стройка ({houseProjectData.gallery.construction.length})
+                  </button>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {houseProjectData.gallery.conceptBoards.map((item, i) => (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                {filteredGallery().map((img, i) => (
                   <div
                     key={i}
-                    onClick={() => setSelectedImage(item)}
-                    className="bg-[#181818] border border-white/10 overflow-hidden cursor-pointer group hover:border-[#14F1D9]/50 transition-colors"
+                    onClick={() => setSelectedImage(img)}
+                    className="bg-[#141414] border border-white/10 overflow-hidden cursor-pointer group hover:border-[#14F1D9] transition-all"
                   >
-                    <div className="relative aspect-[4/3] w-full bg-black/40 overflow-hidden">
+                    <div className="relative aspect-square w-full bg-black/50 overflow-hidden">
                       <Image
-                        src={item.src}
-                        alt={item.title}
+                        src={img.src}
+                        alt={img.title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <Maximize2 className="w-6 h-6 text-[#14F1D9]" />
+                        <Maximize2 className="w-5 h-5 text-[#14F1D9]" />
                       </div>
                     </div>
-                    <div className="p-4">
-                      <h4 className="text-xs font-bold text-white font-montserrat">{item.title}</h4>
+                    <div className="p-2.5">
+                      <p className="text-[11px] text-white/80 font-sans line-clamp-2">{img.title}</p>
                     </div>
                   </div>
                 ))}
@@ -654,251 +591,95 @@ export function HouseCase() {
           </div>
         </section>
 
-        {/* SECTION 4: ENGINEERING & ELECTRICAL */}
-        <section id="engineering" className="scroll-mt-28 space-y-8 pt-16 border-t border-white/10">
-          <div className="space-y-8">
-            <div className="bg-[#181818] border border-white/10 p-6 md:p-8">
-              <h3 className="text-xl font-bold uppercase text-white font-montserrat mb-2">
-                Инженерные планы: Электрика, Розетки, Сценарии освещения
-              </h3>
-              <p className="text-xs text-white/60 mb-6 max-w-3xl leading-relaxed">
-                Точные чертежи высотных отметок розеток, трассировки слаботочных сетей (интернет, ТВ, кондиционеры) и разделения светильников на независимые группы включения.
-              </p>
-
-              {/* Floor Switcher */}
-              <div className="flex items-center gap-3 mb-8">
-                <button
-                  onClick={() => setSelectedFloor(1)}
-                  className={`px-4 py-2 text-xs font-bold uppercase font-montserrat ${
-                    selectedFloor === 1 ? "bg-[#14F1D9] text-[#111111]" : "bg-[#141414] text-white/70"
-                  }`}
-                >
-                  Схемы 1-го этажа
-                </button>
-                <button
-                  onClick={() => setSelectedFloor(2)}
-                  className={`px-4 py-2 text-xs font-bold uppercase font-montserrat ${
-                    selectedFloor === 2 ? "bg-[#14F1D9] text-[#111111]" : "bg-[#141414] text-white/70"
-                  }`}
-                >
-                  Схемы 2-го этажа
-                </button>
+        {/* SECTION 6: BLUEPRINTS (from 'чертежи') */}
+        <section id="blueprints" className="scroll-mt-28 space-y-8">
+          <div className="bg-[#181818] border border-white/15 p-6 md:p-8 shadow-2xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
+                  Архитектурная Основа (Чертежи Проектировщика)
+                </h2>
+                <p className="text-xs text-white/60 mt-1 font-sans">
+                  Исходные строительные чертежи от проектировщика (из папки «Чертежи»), послужившие базой для дизайн-проекта
+                </p>
               </div>
-
-              {/* Two Column Layout: Sockets vs Lighting */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Plan 1: Sockets */}
-                <div className="bg-[#141414] border border-white/10 p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-bold font-montserrat text-[#14F1D9] uppercase">
-                      1. План розеток и высотных отметок
-                    </span>
-                    <button
-                      onClick={() => setSelectedImage({ src: currentFloorData.socketsPlan, title: `План розеток (${selectedFloor} этаж)` })}
-                      className="text-[10px] text-white/60 hover:text-white flex items-center gap-1 font-sans"
-                    >
-                      <Maximize2 className="w-3 h-3" /> Увеличить
-                    </button>
-                  </div>
-                  <div
-                    className="relative aspect-square w-full bg-black/40 overflow-hidden cursor-pointer group"
-                    onClick={() => setSelectedImage({ src: currentFloorData.socketsPlan, title: `План розеток (${selectedFloor} этаж)` })}
-                  >
-                    <Image
-                      src={currentFloorData.socketsPlan}
-                      alt="План розеток"
-                      fill
-                      className="object-contain group-hover:scale-102 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-white/60 font-sans space-y-1">
-                    <p>• Высота над кухонным фартуком: 1100 мм</p>
-                    <p>• Вывод под ТВ-панель: 1300 мм (скрытая проводка)</p>
-                    <p>• Санузел: фен (1050 мм), полотенцесушитель (1000 мм)</p>
-                    <p>• Вывод под кондиционер над входной дверью: 2300 мм</p>
-                  </div>
-                </div>
-
-                {/* Plan 2: Lighting */}
-                <div className="bg-[#141414] border border-white/10 p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-bold font-montserrat text-[#14F1D9] uppercase">
-                      2. План групп освещения и выключателей
-                    </span>
-                    <button
-                      onClick={() => setSelectedImage({ src: currentFloorData.lightingPlan, title: `План освещения (${selectedFloor} этаж)` })}
-                      className="text-[10px] text-white/60 hover:text-white flex items-center gap-1 font-sans"
-                    >
-                      <Maximize2 className="w-3 h-3" /> Увеличить
-                    </button>
-                  </div>
-                  <div
-                    className="relative aspect-square w-full bg-black/40 overflow-hidden cursor-pointer group"
-                    onClick={() => setSelectedImage({ src: currentFloorData.lightingPlan, title: `План освещения (${selectedFloor} этаж)` })}
-                  >
-                    <Image
-                      src={currentFloorData.lightingPlan}
-                      alt="План освещения"
-                      fill
-                      className="object-contain group-hover:scale-102 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-white/10 text-[11px] text-white/60 font-sans space-y-1">
-                    <p>• Группа 1: Точечные споты кухни и холла (синий контур)</p>
-                    <p>• Группа 2: Подвесной светильник над столом (жёлтый контур)</p>
-                    <p>• Группа 3: Локальная подсветка каминной зоны</p>
-                    <p>• Проходные выключатели на лестничном марше</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 5: GALLERY (CONSTRUCTION ➔ FINISHED HOUSE) */}
-        <section id="gallery" className="scroll-mt-28 space-y-12 pt-16 border-t border-white/10">
-          <div className="space-y-12">
-            {/* Featured Side-by-Side Comparison Diptych */}
-            <div className="bg-[#181818] border border-white/15 p-6 md:p-8 rounded-none shadow-2xl">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-black uppercase text-white font-montserrat">
-                    Стройка и Реализация: Два мира одного дома
-                  </h3>
-                </div>
-                <div className="text-xs text-white/50 font-sans">
-                  Кликните по любому планшету для полноэкранного зума
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-                {/* Left: Construction Collage */}
-                <div 
-                  onClick={() => setSelectedImage({
-                    src: "/Кейсы/10-house-project/collage_construction_vertical.jpg",
-                    title: "Хроника стройки: от блока к объёму (Архитектурный процесс)"
-                  })}
-                  className="bg-[#141414] border border-white/20 hover:border-white/50 p-2 sm:p-3 cursor-pointer group transition-all"
-                >
-                  <div className="flex items-center justify-between px-2 py-1.5 mb-2">
-                    <span className="text-xs font-bold text-white font-montserrat uppercase tracking-wider">
-                      Хроника стройки
-                    </span>
-                    <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-white">
-                      <Maximize2 className="w-3 h-3" /> Увеличить планшет
-                    </span>
-                  </div>
-                  <div className="relative aspect-[2/3] w-full bg-black/60 overflow-hidden">
-                    <Image
-                      src="/Кейсы/10-house-project/collage_construction_vertical.jpg"
-                      alt="Коллаж стройки"
-                      fill
-                      className="object-cover group-hover:scale-102 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
-
-                {/* Right: Finished House Collage */}
-                <div 
-                  onClick={() => setSelectedImage({
-                    src: "/Кейсы/10-house-project/collage_finished_vertical.jpg",
-                    title: "Готовый дом: жизнь и сканди-эко минимализм (Реализация)"
-                  })}
-                  className="bg-[#141414] border border-[#14F1D9]/30 hover:border-[#14F1D9] p-2 sm:p-3 cursor-pointer group transition-all"
-                >
-                  <div className="flex items-center justify-between px-2 py-1.5 mb-2">
-                    <span className="text-xs font-bold text-[#14F1D9] font-montserrat uppercase tracking-wider">
-                      Готовый дом в жизни
-                    </span>
-                    <span className="text-[10px] text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
-                      <Maximize2 className="w-3 h-3" /> Увеличить планшет
-                    </span>
-                  </div>
-                  <div className="relative aspect-[2/3] w-full bg-black/60 overflow-hidden">
-                    <Image
-                      src="/Кейсы/10-house-project/collage_finished_vertical.jpg"
-                      alt="Коллаж готового дома"
-                      fill
-                      className="object-cover group-hover:scale-102 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Filter Buttons */}
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-[#181818] border border-white/10 p-4">
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setGalleryFilter("all")}
-                  className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
-                    galleryFilter === "all" ? "bg-[#14F1D9] text-[#111111]" : "bg-[#141414] text-white/70 hover:text-white"
-                  }`}
-                >
-                  Все кадры ({houseProjectData.gallery.finished.length + houseProjectData.gallery.construction.length + houseProjectData.gallery.conceptBoards.length})
-                </button>
-                <button
-                  onClick={() => setGalleryFilter("finished")}
-                  className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
-                    galleryFilter === "finished" ? "bg-[#14F1D9] text-[#111111]" : "bg-[#141414] text-white/70 hover:text-white"
-                  }`}
-                >
-                  Готовый интерьер ({houseProjectData.gallery.finished.length})
-                </button>
-                <button
-                  onClick={() => setGalleryFilter("construction")}
-                  className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
-                    galleryFilter === "construction" ? "bg-[#14F1D9] text-[#111111]" : "bg-[#141414] text-white/70 hover:text-white"
-                  }`}
-                >
-                  Процесс стройки ({houseProjectData.gallery.construction.length})
-                </button>
-              </div>
-
               <div className="text-xs text-white/50 font-sans">
-                Кликните по фото для полноэкранного просмотра
+                Кликните для полноэкранного просмотра
               </div>
             </div>
 
-            {/* Gallery Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {filteredGallery().map((item, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => setSelectedImage(item)}
-                  className="bg-[#181818] border border-white/10 overflow-hidden cursor-pointer group hover:border-[#14F1D9]/50 transition-all flex flex-col justify-between"
-                >
-                  <div className="relative aspect-[4/3] w-full bg-black/40 overflow-hidden">
-                    <Image
-                      src={item.src}
-                      alt={item.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <Maximize2 className="w-6 h-6 text-[#14F1D9]" />
-                    </div>
-                    {item.type === "finished" && (
-                      <span className="absolute top-2 left-2 px-2 py-0.5 bg-[#14F1D9] text-[#111111] text-[9px] font-bold uppercase font-montserrat tracking-wider">
-                        Готовый дом
-                      </span>
-                    )}
-                    {item.type === "construction" && (
-                      <span className="absolute top-2 left-2 px-2 py-0.5 bg-white/20 backdrop-blur-md text-white border border-white/30 text-[9px] font-bold uppercase font-montserrat tracking-wider">
-                        Стройка
-                      </span>
-                    )}
-                  </div>
-                  <div className="p-3">
-                    <p className="text-xs text-white/90 font-medium line-clamp-2">{item.title}</p>
-                    {item.room && (
-                      <span className="text-[10px] text-[#14F1D9] font-sans font-medium mt-1 block uppercase">
-                        {item.room}
-                      </span>
-                    )}
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Blueprint 1 */}
+              <div
+                onClick={() => setSelectedImage({
+                  src: "/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221420.png",
+                  title: "Исходный архитектурный план 1-го этажа (от проектировщика)"
+                })}
+                className="bg-[#141414] border border-white/10 hover:border-white/40 p-3 cursor-pointer group transition-all"
+              >
+                <div className="flex items-center justify-between px-1 py-1 mb-2 border-b border-white/10">
+                  <span className="text-xs font-bold text-white font-montserrat uppercase">
+                    План 1-го этажа
+                  </span>
+                  <Maximize2 className="w-3.5 h-3.5 text-white/50 group-hover:text-[#14F1D9]" />
                 </div>
-              ))}
+                <div className="relative aspect-square w-full bg-white/5 overflow-hidden">
+                  <Image
+                    src="/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221420.png"
+                    alt="План 1-го этажа"
+                    fill
+                    className="object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+
+              {/* Blueprint 2 */}
+              <div
+                onClick={() => setSelectedImage({
+                  src: "/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221455.png",
+                  title: "Исходный архитектурный план 2-го этажа (от проектировщика)"
+                })}
+                className="bg-[#141414] border border-white/10 hover:border-white/40 p-3 cursor-pointer group transition-all"
+              >
+                <div className="flex items-center justify-between px-1 py-1 mb-2 border-b border-white/10">
+                  <span className="text-xs font-bold text-white font-montserrat uppercase">
+                    План 2-го этажа
+                  </span>
+                  <Maximize2 className="w-3.5 h-3.5 text-white/50 group-hover:text-[#14F1D9]" />
+                </div>
+                <div className="relative aspect-square w-full bg-white/5 overflow-hidden">
+                  <Image
+                    src="/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221455.png"
+                    alt="План 2-го этажа"
+                    fill
+                    className="object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+
+              {/* Blueprint 3 */}
+              <div
+                onClick={() => setSelectedImage({
+                  src: "/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221539.png",
+                  title: "Архитектурный разрез 1-1 (от проектировщика)"
+                })}
+                className="bg-[#141414] border border-white/10 hover:border-white/40 p-3 cursor-pointer group transition-all"
+              >
+                <div className="flex items-center justify-between px-1 py-1 mb-2 border-b border-white/10">
+                  <span className="text-xs font-bold text-white font-montserrat uppercase">
+                    Разрез дома 1-1
+                  </span>
+                  <Maximize2 className="w-3.5 h-3.5 text-white/50 group-hover:text-[#14F1D9]" />
+                </div>
+                <div className="relative aspect-square w-full bg-white/5 overflow-hidden">
+                  <Image
+                    src="/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221539.png"
+                    alt="Разрез дома"
+                    fill
+                    className="object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -908,68 +689,36 @@ export function HouseCase() {
       {/* 4. LIGHTBOX MODAL */}
       {selectedImage && (
         <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 md:p-8"
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
           onClick={() => setSelectedImage(null)}
         >
-          <button
-            onClick={() => setSelectedImage(null)}
-            className="absolute top-6 right-6 p-3 bg-white/10 hover:bg-[#14F1D9] hover:text-[#111111] text-white transition-colors z-50"
-          >
-            <X className="w-6 h-6" />
-          </button>
-
           <div
-            className="relative max-w-6xl max-h-[85vh] w-full h-full flex flex-col items-center justify-center"
+            className="relative max-w-6xl max-h-[92vh] w-full flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative w-full h-full">
+            <div className="w-full flex items-center justify-between pb-3 text-white border-b border-white/10 mb-3">
+              <div className="text-sm font-bold font-montserrat text-white/90">
+                {selectedImage.title}
+              </div>
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="p-1.5 bg-white/10 hover:bg-white/20 text-white transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="relative w-full h-[78vh] flex items-center justify-center bg-black/40">
               <Image
                 src={selectedImage.src}
                 alt={selectedImage.title}
                 fill
                 className="object-contain"
-                priority
+                sizes="(max-width: 1200px) 100vw, 1200px"
               />
-            </div>
-            <div className="mt-4 text-center">
-              <p className="text-sm md:text-base font-bold text-white font-montserrat">
-                {selectedImage.title}
-              </p>
-              {selectedImage.room && (
-                <p className="text-xs text-[#14F1D9] font-sans font-medium mt-1 uppercase">
-                  {selectedImage.room}
-                </p>
-              )}
             </div>
           </div>
         </div>
       )}
-
-      {/* 5. FOOTER CTA */}
-      <footer className="border-t border-white/10 bg-[#141414] py-16 mt-20">
-        <div className="container mx-auto px-4 md:px-8 text-center max-w-2xl">
-          <h3 className="text-2xl sm:text-3xl font-black uppercase text-white font-montserrat mb-4">
-            Хотите обсудить проект своего дома или интерьера?
-          </h3>
-          <p className="text-sm text-white/70 mb-8 leading-relaxed">
-            От архитектурной концепции и электрических чертежей до авторского надзора и комплектации мебелью.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/#contact"
-              className="px-8 py-3.5 bg-[#14F1D9] hover:bg-white text-[#111111] font-bold text-xs uppercase tracking-widest transition-colors font-montserrat"
-            >
-              Связаться с Екатериной
-            </Link>
-            <Link
-              href="/cases/11-landscape-project"
-              className="px-8 py-3.5 bg-[#1A1A1A] hover:bg-white/10 text-white font-bold text-xs uppercase tracking-widest border border-white/15 transition-colors font-montserrat"
-            >
-              Смотреть кейс ландшафта ➔
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
