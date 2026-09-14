@@ -483,7 +483,7 @@ export function HouseCase() {
                   Концепция: Стили и Цветовые Предпочтения
                 </h2>
                 <p className="text-sm sm:text-base text-white/70 mt-1.5 font-sans">
-                  Поисковые мудборды, природные фактуры и цветовой код дома (из папки «Коллажи и референсы»)
+                  Поисковые мудборды, природные фактуры и цветовой код дома
                 </p>
               </div>
               <div className="text-xs sm:text-sm text-white/50 font-sans hidden sm:block">
@@ -1036,7 +1036,7 @@ export function HouseCase() {
                   Архитектурная Основа (Чертежи Проектировщика)
                 </h2>
                 <p className="text-sm sm:text-base text-white/70 mt-1.5 font-sans">
-                  Исходные строительные чертежи от проектировщика (из папки «Чертежи»), послужившие базой для дизайн-проекта
+                  Исходные строительные чертежи от проектировщика, послужившие базой для дизайн-проекта
                 </p>
               </div>
               <div className="text-xs sm:text-sm text-white/50 font-sans hidden sm:block">
