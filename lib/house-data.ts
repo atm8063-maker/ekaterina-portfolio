@@ -111,7 +111,7 @@ export const houseProjectData = {
       name: "Dark Graphite Metal",
       role: "Контуры и фурнитура",
       colorHex: "#222427",
-      description: "Чугунная топка камина, лаконичные ручки, радиаторы и графитовые оконные профили."
+      description: "Чугунная топка камина, лаконичные мебельные ручки, радиаторы и металлическая фурнитура."
     }
   ] as MaterialSwatch[],
 
