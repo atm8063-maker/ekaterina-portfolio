@@ -24,8 +24,6 @@ import {
 
 interface SketchCallout {
   id: number;
-  badgeLabel: string;
-  isNumberBadge?: boolean;
   title: string;
   tag: string;
   desc: string;
@@ -48,58 +46,51 @@ const FLOOR_SKETCHES: Record<1 | 2, {
     callouts: [
       {
         id: 1,
-        badgeLabel: "1",
-        isNumberBadge: true,
-        title: "1. Дровяной камин",
+        title: "Дровяной камин",
         tag: "Дымоход между окнами",
-        desc: "Дровяной камин с отделкой под монолитный бетон. Дымоход расположен в кирпичном простенке точно между двумя французскими окнами в пол.",
+        desc: "Камин с отделкой под монолитный бетон. Дымоход спроектирован в кирпичном простенке точно между двумя французскими окнами в пол.",
         x: 75,
         y: 66,
       },
       {
         id: 2,
-        badgeLabel: "Кухня-гостиная",
         title: "Кухня-гостиная",
         tag: "Общественное ядро",
         desc: "Единое светлое пространство: П-образная кухня с бирюзовым фартуком-кабанчиком, обеденный стол у окна и диванная лаунж-зона с ТВ.",
-        x: 45,
+        x: 44,
         y: 64,
       },
       {
         id: 3,
-        badgeLabel: "Прихожая и коридор",
         title: "Прихожая и коридор",
         tag: "Входная группа",
-        desc: "Вместительный шкаф-купе с белыми жалюзийными фасадами, зеркало в пол в скошенной нише и удобный проход в гостиную.",
-        x: 23,
-        y: 35,
+        desc: "Вместительный шкаф-купе с белыми жалюзийными фасадами, зеркало в пол в скошенной нише и удобный проход в жилые зоны.",
+        x: 18,
+        y: 44,
       },
       {
         id: 4,
-        badgeLabel: "Бойлерная",
         title: "Бойлерная (Котельная)",
         tag: "Инженерия",
-        desc: "Автономная котельная за лестницей: котёл отопления, бойлер косвенного нагрева, гребенки тёплого пола и хозблок.",
-        x: 62,
+        desc: "Техническое помещение слева от санузла: отопительный котёл, бойлер косвенного нагрева, гидроузел и хозблок.",
+        x: 30,
         y: 20,
       },
       {
         id: 5,
-        badgeLabel: "Санузел с ванной",
         title: "Санузел с ванной",
         tag: "Санузел 1F",
-        desc: "Полноразмерная ванна, подвесная тумба с раковиной, инсталляция унитаза, стиральная машина и светлая отделка.",
-        x: 42,
+        desc: "Полноразмерная ванна, подвесная тумба с раковиной, инсталляция унитаза, стиральная машина и светлая плитка.",
+        x: 44,
         y: 17,
       },
       {
         id: 6,
-        badgeLabel: "Лестничный пролёт",
         title: "Лестничный пролёт",
         tag: "Связь этажей",
-        desc: "Двухмаршевая деревянная лестница с подсветкой ступеней и безопасным реечным ограждением.",
-        x: 52,
-        y: 35,
+        desc: "Двухмаршевая деревянная лестница с подсветкой ступеней и безопасным ограждением, соединяющая этажи.",
+        x: 55,
+        y: 22,
       },
     ],
   },
@@ -111,34 +102,30 @@ const FLOOR_SKETCHES: Record<1 | 2, {
     callouts: [
       {
         id: 1,
-        badgeLabel: "Спальня",
         title: "Спальня (Мастер-спальня)",
         tag: "Приватный блок",
         desc: "Стена с отделкой из тёмного дерева, двуспальная кровать, встроенный гардероб и симметричная трапециевидная стена входа со скосом.",
-        x: 73,
+        x: 74,
         y: 24,
       },
       {
         id: 2,
-        badgeLabel: "Детская",
         title: "Детская комната",
         tag: "Детская",
         desc: "Игровая кровать-домик со шведской стенкой, кровать-машинка, ковёр с дорогами и стеллажи под игрушки на фоне бирюзовой стены.",
-        x: 72,
+        x: 73,
         y: 72,
       },
       {
         id: 3,
-        badgeLabel: "Кабинет",
         title: "Кабинет (Мастерская / Студия)",
         tag: "Мастерская & Музыка",
         desc: "Сплошной белый подоконник-стол вдоль стены с окном до бирюзовой стены, мольберт для живописи, стойка с гитарами и диван.",
         x: 27,
-        y: 68,
+        y: 72,
       },
       {
         id: 4,
-        badgeLabel: "Санузел с душем",
         title: "Санузел с душем",
         tag: "Санузел 2F",
         desc: "Ванная комната с белой плиткой под кирпич: душевой отсек со стеклом, подвесной унитаз и раковина вдоль одной стены.",
@@ -147,29 +134,25 @@ const FLOOR_SKETCHES: Record<1 | 2, {
       },
       {
         id: 5,
-        badgeLabel: "Коридор",
         title: "Коридор 2-го этажа",
         tag: "Холл 2F",
-        desc: "Центральный связующий коридор со входами во все приватные комнаты и симметричной трапециевидной нишей входа в спальню.",
-        x: 50,
-        y: 44,
+        desc: "Центральный коридор за стенами: объединяет выходы из всех комнат, лестничную площадку и симметричный портал входа в спальню.",
+        x: 48,
+        y: 35,
       },
       {
         id: 6,
-        badgeLabel: "Лестничный пролёт",
         title: "Лестничный пролёт",
         tag: "Свет & Окно",
         desc: "Широкое видовое окно пролёта с бирюзовыми шторами в пол, деревянные балясины и проходное управление светом.",
         x: 44,
-        y: 26,
+        y: 24,
       },
     ],
   },
 };
 
 export function HouseCase() {
-  const [activeCallout1, setActiveCallout1] = useState<number | null>(null);
-  const [activeCallout2, setActiveCallout2] = useState<number | null>(null);
   const [selectedZone, setSelectedZone] = useState<ZoneDetail | null>(null);
   const [selectedImage, setSelectedImage] = useState<{ src: string; title: string; room?: string } | null>(null);
   const [galleryFilter, setGalleryFilter] = useState<"all" | "finished" | "construction">("all");
@@ -351,48 +334,20 @@ export function HouseCase() {
                     sizes="(max-width: 1024px) 100vw, 650px"
                   />
 
-                  {FLOOR_SKETCHES[1].callouts.map((c) => {
-                    const isActive = activeCallout1 === c.id;
-                    return (
+                  {FLOOR_SKETCHES[1].callouts.map((c) => (
+                    <div
+                      key={c.id}
+                      style={{ left: `${c.x}%`, top: `${c.y}%` }}
+                      className="absolute -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none select-none"
+                    >
                       <div
-                        key={c.id}
-                        style={{ left: `${c.x}%`, top: `${c.y}%` }}
-                        className="absolute -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-auto"
+                        className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full font-montserrat font-black text-xs sm:text-sm bg-[#111111]/90 text-white border-2 border-[#14F1D9] shadow-lg backdrop-blur-sm"
+                        title={c.title}
                       >
-                        {c.isNumberBadge ? (
-                          <button
-                            type="button"
-                            onClick={() => setActiveCallout1(isActive ? null : c.id)}
-                            onMouseEnter={() => setActiveCallout1(c.id)}
-                            className={`relative flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full font-montserrat font-black text-xs sm:text-sm transition-all duration-300 shadow-xl ${
-                              isActive
-                                ? "bg-[#14F1D9] text-[#111111] scale-125 shadow-[0_0_25px_#14F1D9] ring-4 ring-[#14F1D9]/50"
-                                : "bg-[#111111]/90 text-[#14F1D9] border-2 border-[#14F1D9] hover:bg-[#14F1D9] hover:text-[#111111] hover:scale-110 shadow-lg backdrop-blur-sm animate-pulse"
-                            }`}
-                            aria-label={c.title}
-                            title={c.title}
-                          >
-                            {c.badgeLabel}
-                          </button>
-                        ) : (
-                          <button
-                            type="button"
-                            onClick={() => setActiveCallout1(isActive ? null : c.id)}
-                            onMouseEnter={() => setActiveCallout1(c.id)}
-                            className={`relative flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full font-montserrat font-bold text-[10px] sm:text-xs tracking-wider uppercase transition-all duration-300 shadow-xl backdrop-blur-md whitespace-nowrap ${
-                              isActive
-                                ? "bg-[#14F1D9] text-[#111111] scale-110 shadow-[0_0_20px_#14F1D9] ring-2 ring-white/60 font-black"
-                                : "bg-[#111111]/90 text-white border border-[#14F1D9]/70 hover:bg-[#14F1D9] hover:text-[#111111] hover:scale-105 hover:border-[#14F1D9]"
-                            }`}
-                            aria-label={c.title}
-                          >
-                            <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${isActive ? "bg-[#111111]" : "bg-[#14F1D9]"}`} />
-                            {c.badgeLabel}
-                          </button>
-                        )}
+                        {c.id}
                       </div>
-                    );
-                  })}
+                    </div>
+                  ))}
                 </div>
 
                 {/* Floor 1 Zones & Elements List */}
@@ -401,48 +356,31 @@ export function HouseCase() {
                     <Flame className="w-4 h-4 text-[#14F1D9]" />
                     Зоны и элементы 1-го этажа ({FLOOR_SKETCHES[1].callouts.length})
                   </div>
-                  {FLOOR_SKETCHES[1].callouts.map((c) => {
-                    const isActive = activeCallout1 === c.id;
-                    return (
-                      <div
-                        key={c.id}
-                        onClick={() => setActiveCallout1(isActive ? null : c.id)}
-                        onMouseEnter={() => setActiveCallout1(c.id)}
-                        className={`p-3.5 border transition-all cursor-pointer ${
-                          isActive
-                            ? "bg-[#14F1D9]/10 border-[#14F1D9] shadow-[0_0_15px_rgba(20,241,217,0.15)] translate-x-1"
-                            : "bg-black/30 border-white/10 hover:border-white/25 hover:bg-white/5"
-                        }`}
-                      >
-                        <div className="flex items-start gap-3">
-                          <span
-                            className={`flex items-center justify-center shrink-0 font-montserrat ${
-                              c.isNumberBadge
-                                ? "w-6 h-6 rounded-full text-xs font-black"
-                                : "px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
-                            } ${
-                              isActive ? "bg-[#14F1D9] text-[#111111]" : "bg-white/10 text-white/80 border border-white/10"
-                            }`}
-                          >
-                            {c.badgeLabel}
-                          </span>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center justify-between gap-2 mb-1">
-                              <h4 className="text-sm sm:text-base font-bold uppercase font-montserrat text-white truncate">
-                                {c.title}
-                              </h4>
-                              <span className="text-xs font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat shrink-0">
-                                {c.tag}
-                              </span>
-                            </div>
-                            <p className="text-xs sm:text-sm text-white/75 font-sans leading-relaxed">
-                              {c.desc}
-                            </p>
+                  {FLOOR_SKETCHES[1].callouts.map((c) => (
+                    <div
+                      key={c.id}
+                      className="p-3.5 border bg-black/30 border-white/10 hover:border-white/25 hover:bg-white/5 transition-colors"
+                    >
+                      <div className="flex items-start gap-3">
+                        <span className="flex items-center justify-center w-6 h-6 rounded-full text-xs font-black shrink-0 font-montserrat bg-white/10 text-white/80">
+                          {c.id}
+                        </span>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-2 mb-1">
+                            <h4 className="text-sm sm:text-base font-bold uppercase font-montserrat text-white truncate">
+                              {c.title}
+                            </h4>
+                            <span className="text-xs font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat shrink-0">
+                              {c.tag}
+                            </span>
                           </div>
+                          <p className="text-xs sm:text-sm text-white/75 font-sans leading-relaxed">
+                            {c.desc}
+                          </p>
                         </div>
                       </div>
-                    );
-                  })}
+                    </div>
+                  ))}
                   <div className="p-3 bg-white/5 border border-dashed border-white/15 text-xs text-white/70 font-sans flex items-center gap-2">
                     <span className="text-[#14F1D9] font-bold font-montserrat uppercase">Терраса (12.8 м²):</span>
                     примыкает к кухне-гостиной с выходом в сад.
@@ -482,31 +420,20 @@ export function HouseCase() {
                     sizes="(max-width: 1024px) 100vw, 650px"
                   />
 
-                  {FLOOR_SKETCHES[2].callouts.map((c) => {
-                    const isActive = activeCallout2 === c.id;
-                    return (
+                  {FLOOR_SKETCHES[2].callouts.map((c) => (
+                    <div
+                      key={c.id}
+                      style={{ left: `${c.x}%`, top: `${c.y}%` }}
+                      className="absolute -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none select-none"
+                    >
                       <div
-                        key={c.id}
-                        style={{ left: `${c.x}%`, top: `${c.y}%` }}
-                        className="absolute -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-auto"
+                        className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full font-montserrat font-black text-xs sm:text-sm bg-[#111111]/90 text-white border-2 border-[#14F1D9] shadow-lg backdrop-blur-sm"
+                        title={c.title}
                       >
-                        <button
-                          type="button"
-                          onClick={() => setActiveCallout2(isActive ? null : c.id)}
-                          onMouseEnter={() => setActiveCallout2(c.id)}
-                          className={`relative flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full font-montserrat font-bold text-[10px] sm:text-xs tracking-wider uppercase transition-all duration-300 shadow-xl backdrop-blur-md whitespace-nowrap ${
-                            isActive
-                              ? "bg-[#14F1D9] text-[#111111] scale-110 shadow-[0_0_20px_#14F1D9] ring-2 ring-white/60 font-black"
-                              : "bg-[#111111]/90 text-white border border-[#14F1D9]/70 hover:bg-[#14F1D9] hover:text-[#111111] hover:scale-105 hover:border-[#14F1D9]"
-                          }`}
-                          aria-label={c.title}
-                        >
-                          <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${isActive ? "bg-[#111111]" : "bg-[#14F1D9]"}`} />
-                          {c.badgeLabel}
-                        </button>
+                        {c.id}
                       </div>
-                    );
-                  })}
+                    </div>
+                  ))}
                 </div>
 
                 {/* Floor 2 Zones List */}
@@ -515,44 +442,31 @@ export function HouseCase() {
                     <Flame className="w-4 h-4 text-[#14F1D9]" />
                     Зоны 2-го этажа ({FLOOR_SKETCHES[2].callouts.length})
                   </div>
-                  {FLOOR_SKETCHES[2].callouts.map((c) => {
-                    const isActive = activeCallout2 === c.id;
-                    return (
-                      <div
-                        key={c.id}
-                        onClick={() => setActiveCallout2(isActive ? null : c.id)}
-                        onMouseEnter={() => setActiveCallout2(c.id)}
-                        className={`p-3.5 border transition-all cursor-pointer ${
-                          isActive
-                            ? "bg-[#14F1D9]/10 border-[#14F1D9] shadow-[0_0_15px_rgba(20,241,217,0.15)] translate-x-1"
-                            : "bg-black/30 border-white/10 hover:border-white/25 hover:bg-white/5"
-                        }`}
-                      >
-                        <div className="flex items-start gap-3">
-                          <span
-                            className={`flex items-center justify-center shrink-0 font-montserrat px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                              isActive ? "bg-[#14F1D9] text-[#111111]" : "bg-white/10 text-white/80 border border-white/10"
-                            }`}
-                          >
-                            {c.badgeLabel}
-                          </span>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center justify-between gap-2 mb-1">
-                              <h4 className="text-sm sm:text-base font-bold uppercase font-montserrat text-white truncate">
-                                {c.title}
-                              </h4>
-                              <span className="text-xs font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat shrink-0">
-                                {c.tag}
-                              </span>
-                            </div>
-                            <p className="text-xs sm:text-sm text-white/75 font-sans leading-relaxed">
-                              {c.desc}
-                            </p>
+                  {FLOOR_SKETCHES[2].callouts.map((c) => (
+                    <div
+                      key={c.id}
+                      className="p-3.5 border bg-black/30 border-white/10 hover:border-white/25 hover:bg-white/5 transition-colors"
+                    >
+                      <div className="flex items-start gap-3">
+                        <span className="flex items-center justify-center w-6 h-6 rounded-full text-xs font-black shrink-0 font-montserrat bg-white/10 text-white/80">
+                          {c.id}
+                        </span>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between gap-2 mb-1">
+                            <h4 className="text-sm sm:text-base font-bold uppercase font-montserrat text-white truncate">
+                              {c.title}
+                            </h4>
+                            <span className="text-xs font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat shrink-0">
+                              {c.tag}
+                            </span>
                           </div>
+                          <p className="text-xs sm:text-sm text-white/75 font-sans leading-relaxed">
+                            {c.desc}
+                          </p>
                         </div>
                       </div>
-                    );
-                  })}
+                    </div>
+                  ))}
                 </div>
               </div>
 
