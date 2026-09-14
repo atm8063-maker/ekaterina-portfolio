@@ -171,7 +171,6 @@ export function DoorsRealEstateCase() {
                 alt="Doors Real Estate iPhone 12 Pro 3D Showcase"
                 fill
                 className="object-contain p-2 sm:p-6 group-hover:scale-102 transition-transform duration-700"
-                priority
               />
               <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-md text-[11px] text-white/70 border border-white/10 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Eye className="w-3.5 h-3.5 text-[#14F1D9]" />

@@ -287,7 +287,6 @@ export function LandscapeCase() {
                           alt="Генеральный план усадьбы с дендропланом"
                           fill
                           className="object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-                          priority
                         />
                       </div>
 

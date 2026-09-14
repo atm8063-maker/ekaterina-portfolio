@@ -181,7 +181,6 @@ export function ElectronicsShopCase() {
                 alt="Editorial Poster"
                 fill
                 className="object-contain group-hover:scale-101 transition-transform duration-500"
-                priority
               />
               <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-md text-[11px] text-white/70 border border-white/10 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Eye className="w-3.5 h-3.5 text-[#14F1D9]" />
@@ -567,7 +566,6 @@ export function ElectronicsShopCase() {
                         alt={currentScreen.title}
                         fill
                         className="object-contain group-hover:scale-102 transition-transform duration-300"
-                        priority
                       />
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <div className="bg-black/80 px-3 py-1.5 rounded-lg text-xs text-[#14F1D9] border border-[#14F1D9]/30 flex items-center gap-1.5 font-montserrat font-semibold">
