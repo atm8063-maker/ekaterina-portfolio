@@ -599,7 +599,7 @@ export function HouseCase() {
                     </div>
                     <div className="text-xs sm:text-sm font-bold text-white mb-0.5">{mat.name}</div>
                     <div className="text-xs text-[#14F1D9] font-montserrat font-bold uppercase mb-1.5">{mat.role}</div>
-                    <p className="text-xs text-white/60 font-sans line-clamp-3">{mat.description}</p>
+                    <p className="text-xs text-white/70 font-sans leading-relaxed">{mat.description}</p>
                   </div>
                 ))}
               </div>
