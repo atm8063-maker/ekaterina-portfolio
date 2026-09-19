@@ -3,8 +3,8 @@
 import React from "react";
 
 const data = {
-  programs: ["CloudCode", "Figma", "SketchUp", "Illustrator", "Антигравити", "Planoplan"],
-  media: ["Forbes", "Коммерсант", "РБК", "БизнесFM", "Ведомости", "СМИ"],
+  programs: ["Claude Code", "Figma", "SketchUp", "Illustrator", "Antigravity", "Planoplan", "Photoshop", "Midjourney"],
+  media: ["Forbes", "Коммерсантъ", "РБК", "Business FM", "Ведомости", "СМИ"],
   skills: ["Копирайтинг", "Реклама", "Пресс-конференции", "Пресс-туры", "Event", "Кураторство", "AI-генерация", "UX/UI Дизайн", "Медиапланирование"],
   industries: ["Honda", "Honda Civic Cup", "Авто", "Девелопмент", "Элитная недвижимость", "Арх.бюро", "Журфак МГУ", "Contented", "Resin Art", "Амбассадор", "Брендированная продукция"]
 };

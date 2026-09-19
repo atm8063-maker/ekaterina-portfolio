@@ -41,7 +41,7 @@ export default function Home() {
         <Hero />
       </div>
 
-      <MarqueeRow type="programs" direction="left" speed="40s" className="pt-16 lg:pt-32 pb-4 lg:pb-8" />
+      <MarqueeRow type="programs" direction="left" speed="40s" className="py-8 lg:py-14" />
       
       {/* 2. ABOUT */}
       <div id="about" className="scroll-mt-4">

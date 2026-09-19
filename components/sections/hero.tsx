@@ -250,7 +250,7 @@ export default function Hero() {
         </div>
         
         {/* Bottom gradient fade for smooth transition to next section */}
-        <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[500px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-full h-32 lg:h-[200px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
       </div>
     </section>
   );
