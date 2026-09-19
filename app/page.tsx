@@ -41,7 +41,7 @@ export default function Home() {
         <Hero />
       </div>
 
-      <MarqueeRow type="programs" direction="left" speed="40s" className="py-8 lg:py-14" />
+      <MarqueeRow type="skills" variant="programs" direction="left" speed="40s" className="py-8 lg:py-14" />
       
       {/* 2. ABOUT */}
       <div id="about" className="scroll-mt-4">
@@ -49,7 +49,7 @@ export default function Home() {
         <About />
       </div>
 
-      <MarqueeRow type="media" direction="right" speed="45s" />
+      <MarqueeRow type="programs" variant="media" direction="right" speed="45s" />
       
       {/* 3. COMPETENCIES / SKILLS */}
       <div id="competencies" className="scroll-mt-4">
@@ -58,7 +58,7 @@ export default function Home() {
         <Competencies />
       </div>
 
-      <MarqueeRow type="skills" direction="left" speed="50s" />
+      <MarqueeRow type="media" variant="skills" direction="left" speed="50s" />
       
       {/* 4. PORTFOLIO / CASES */}
       <div id="cases" className="scroll-mt-4">
@@ -66,7 +66,7 @@ export default function Home() {
         <Portfolio />
       </div>
 
-      <MarqueeRow type="industries" direction="right" speed="55s" />
+      <MarqueeRow type="industries" variant="industries" direction="right" speed="55s" />
       
       {/* 5. CONTACT */}
       <div id="contact" className="scroll-mt-4">
