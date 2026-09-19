@@ -23,7 +23,7 @@ const competencies = [
   },
   {
     title: "UI/UX",
-    items: ["Figma (Mobile & Desktop)", "Google Analytics", "Сборка и поддержка сайтов", "Антигравити и CloudCode (полный цикл от идеи до запуска)"]
+    items: ["Figma (Mobile & Desktop)", "Google Analytics", "Сборка и поддержка сайтов", "Antigravity и Claude Code (полный цикл от идеи до запуска)"]
   },
   {
     title: "Art",
