@@ -27,7 +27,7 @@ export default function About() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="w-full lg:w-[54%] xl:w-[52%] flex flex-col justify-center order-1 lg:order-1 relative z-20 pb-8 lg:pb-0 pr-0 lg:pr-8 xl:pr-12"
+        className="w-full lg:w-[54%] xl:w-[52%] flex flex-col justify-center order-1 lg:order-1 relative z-20 pb-4 lg:pb-0 pr-0 lg:pr-6 xl:pr-10"
       >
         <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] xl:text-[3.2rem] font-bold uppercase mb-4 lg:mb-5 text-white font-montserrat leading-tight">
           МОЙ <span className="text-[#14F1D9]">ПОДХОД</span>
@@ -59,26 +59,26 @@ export default function About() {
         </div>
       </motion.div>
 
-      {/* Visual Composition / Cutout Photo (Right on desktop, Below text on mobile, with mobile button underneath) */}
+      {/* Visual Composition / Cutout Photo (Right on desktop, Below text on mobile, slightly lifted & closer to text) */}
       <motion.div 
         initial={{ opacity: 0, x: 30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.9 }}
-        className="w-full lg:w-[46%] xl:w-[48%] order-2 lg:order-2 relative z-20 flex flex-col items-center lg:items-start justify-center lg:justify-end lg:h-[86svh] xl:h-[90svh] lg:-mt-6 xl:-mt-8"
+        className="w-full lg:w-[46%] xl:w-[48%] order-2 lg:order-2 relative z-20 flex flex-col items-center lg:items-start justify-center lg:justify-start lg:h-[88svh] xl:h-[92svh] -mt-2 lg:-mt-10 xl:-mt-14 lg:-ml-4 xl:-ml-6"
       >
-        <div className="relative w-full h-[380px] sm:h-[480px] lg:h-full max-w-[440px] sm:max-w-[520px] lg:max-w-none">
+        <div className="relative w-full h-[380px] sm:h-[480px] lg:h-full max-w-[450px] sm:max-w-[540px] lg:max-w-none">
           <Image 
             src="/about-photo-cutout.png" 
             alt="Екатерина Разумова"
             fill
-            className="object-contain object-top lg:object-right-top drop-shadow-[0_20px_50px_rgba(0,0,0,0.85)]"
+            className="object-contain object-top lg:object-left-top drop-shadow-[0_20px_50px_rgba(0,0,0,0.85)]"
             priority
           />
         </div>
 
         {/* Button (Mobile only: directly below photo) */}
-        <div className="lg:hidden pt-6 pb-4 w-full flex justify-center">
+        <div className="lg:hidden pt-4 pb-4 w-full flex justify-center">
           <Link href="#contact" className="inline-block bg-[#14F1D9] hover:bg-white text-[#111111] font-bold text-sm px-8 py-4 tracking-widest uppercase transition-all shadow-lg hover:shadow-xl font-montserrat text-center">
             ПОДРОБНЕЕ ОБО МНЕ
           </Link>
