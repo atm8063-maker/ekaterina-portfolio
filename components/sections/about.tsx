@@ -21,13 +21,13 @@ export default function About() {
       <div className="absolute top-0 left-0 w-full h-[300px] lg:h-[400px] bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-full h-[200px] lg:h-[400px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
 
-      {/* Text Content (Left side on desktop) */}
+      {/* Text Content (Left side on desktop, compact and elegant) */}
       <motion.div 
-        initial={{ opacity: 0, x: -50 }}
+        initial={{ opacity: 0, x: -40 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="w-full lg:w-7/12 xl:w-3/5 flex flex-col justify-center order-1 lg:order-1 px-6 sm:px-12 lg:pl-16 xl:pl-24 lg:pr-8 relative z-20 py-20 lg:py-28"
+        className="w-full lg:w-[52%] xl:w-[48%] flex flex-col justify-center order-1 lg:order-1 px-6 sm:px-12 lg:pl-16 xl:pl-24 lg:pr-4 relative z-20 py-16 lg:py-24"
       >
         <h2 className="text-3xl md:text-5xl font-bold uppercase mb-8 text-white font-montserrat">
           МОЙ <br className="lg:hidden" /><span className="text-[#14F1D9]">ПОДХОД</span>
@@ -58,20 +58,20 @@ export default function About() {
         </div>
       </motion.div>
 
-      {/* Visual Composition / Cutout Photo (Right side on desktop) */}
+      {/* Visual Composition / Cutout Photo (Right side on desktop, scaled up and elevated) */}
       <motion.div 
-        initial={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: 40 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.0 }}
-        className="w-full lg:w-5/12 xl:w-2/5 order-2 lg:order-2 relative z-10 flex items-center lg:items-end justify-center lg:justify-end px-6 sm:px-12 lg:pr-16 xl:pr-24 pb-12 lg:pb-0"
+        transition={{ duration: 0.9 }}
+        className="w-full lg:w-[48%] xl:w-[52%] order-2 lg:order-2 relative z-20 flex items-center lg:items-center justify-center lg:justify-end px-4 sm:px-8 lg:pr-8 xl:pr-16 pb-8 lg:pb-0"
       >
-        <div className="relative w-full max-w-[480px] lg:max-w-none h-[480px] sm:h-[600px] lg:h-[750px]">
+        <div className="relative w-full max-w-[560px] lg:max-w-none h-[560px] sm:h-[680px] lg:h-[880px] xl:h-[960px] lg:-my-8">
           <Image 
             src="/about-photo-cutout.png" 
             alt="Екатерина Разумова"
             fill
-            className="object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+            className="object-contain object-center lg:object-right drop-shadow-[0_25px_60px_rgba(0,0,0,0.85)]"
             priority
           />
         </div>
