@@ -40,16 +40,18 @@ export default function Contact() {
           className="flex flex-col sm:flex-row justify-center gap-6"
         >
           <a 
-            href="mailto:example@example.com" 
+            href="mailto:razumova.ekaterina@gmail.com" 
             className="px-10 py-5 bg-primary text-black font-bold uppercase tracking-widest rounded-none hover:bg-white transition-colors"
           >
             Написать на Email
           </a>
           <a 
-            href="#" 
+            href="https://t.me/fir_tree_art" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-10 py-5 bg-transparent border border-primary text-primary font-bold uppercase tracking-widest rounded-none hover:bg-primary/10 transition-colors"
           >
-            Telegram
+            Telegram @fir_tree_art
           </a>
         </motion.div>
       </div>
