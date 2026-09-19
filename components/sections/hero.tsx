@@ -16,16 +16,12 @@ type SplatterData = {
 };
 
 const INITIAL_SPLATTERS: SplatterData[] = [
-  // 1. Large splash behind title / right side
-  { id: 1, x: "72%", y: "42%", rotation: 25, scale: 2.6, flipX: 1, flipY: 1, isInitial: true },
-  // 2. Splash behind top-right of headline
-  { id: 2, x: "86%", y: "22%", rotation: -35, scale: 1.8, flipX: -1, flipY: 1, isInitial: true },
-  // 3. Splash behind subtitle / bottom-center
-  { id: 3, x: "62%", y: "68%", rotation: 45, scale: 2.0, flipX: 1, flipY: -1, isInitial: true },
-  // 4. Splash behind photo silhouette / neck area
-  { id: 4, x: "32%", y: "52%", rotation: -18, scale: 2.3, flipX: -1, flipY: 1, isInitial: true },
-  // 5. Splash accent near bottom-left
-  { id: 5, x: "18%", y: "76%", rotation: 80, scale: 1.5, flipX: 1, flipY: 1, isInitial: true },
+  // 1. Top right, above title corner
+  { id: 1, x: "82%", y: "20%", rotation: -20, scale: 1.7, flipX: -1, flipY: 1, isInitial: true },
+  // 2. Far left, behind outer contour
+  { id: 2, x: "16%", y: "45%", rotation: -40, scale: 1.8, flipX: 1, flipY: 1, isInitial: true },
+  // 3. Lower right, below tags/subtitle
+  { id: 3, x: "70%", y: "78%", rotation: 35, scale: 1.6, flipX: 1, flipY: -1, isInitial: true },
 ];
 
 export default function Hero() {
