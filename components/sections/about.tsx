@@ -21,40 +21,15 @@ export default function About() {
       <div className="absolute top-0 left-0 w-full h-[300px] lg:h-[400px] bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-full h-[200px] lg:h-[400px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
 
-      {/* Visual Composition / New Photo (Left side on desktop, glued to edge) */}
+      {/* Text Content (Left side on desktop) */}
       <motion.div 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.2 }}
-        className="w-full lg:w-1/4 order-2 lg:order-1 relative z-10 flex items-center lg:items-stretch justify-start mt-12 lg:mt-0"
-      >
-        <div 
-          className="relative w-full aspect-[4/5] lg:aspect-auto lg:h-full lg:w-full overflow-hidden"
-          style={{
-            WebkitMaskImage: 'linear-gradient(to right, black 85%, transparent 100%)',
-            maskImage: 'linear-gradient(to right, black 85%, transparent 100%)'
-          }}
-        >
-          <Image 
-            src="/photo_2026-09-07_17-45-33.jpg" 
-            alt="Екатерина Разумова"
-            fill
-            className="object-cover object-center lg:object-top"
-            unoptimized
-          />
-        </div>
-      </motion.div>
-
-      {/* Text Content (Right side, much wider) */}
-      <motion.div 
-        initial={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="w-full lg:w-3/4 flex flex-col justify-center order-1 lg:order-2 px-6 sm:px-12 lg:pl-24 lg:pr-[10%] xl:pr-[15%] relative z-20 py-24 lg:py-32"
+        className="w-full lg:w-7/12 xl:w-3/5 flex flex-col justify-center order-1 lg:order-1 px-6 sm:px-12 lg:pl-16 xl:pl-24 lg:pr-8 relative z-20 py-20 lg:py-28"
       >
-        <h2 className="text-3xl md:text-5xl font-bold uppercase mb-8 text-white">
+        <h2 className="text-3xl md:text-5xl font-bold uppercase mb-8 text-white font-montserrat">
           МОЙ <br className="lg:hidden" /><span className="text-[#14F1D9]">ПОДХОД</span>
         </h2>
         <div className="space-y-6 text-[#A3A3A3] text-base md:text-lg lg:text-xl font-medium leading-[1.8] font-inter">
@@ -80,6 +55,25 @@ export default function About() {
               ПОДРОБНЕЕ ОБО МНЕ
             </Link>
           </div>
+        </div>
+      </motion.div>
+
+      {/* Visual Composition / Cutout Photo (Right side on desktop) */}
+      <motion.div 
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.0 }}
+        className="w-full lg:w-5/12 xl:w-2/5 order-2 lg:order-2 relative z-10 flex items-center lg:items-end justify-center lg:justify-end px-6 sm:px-12 lg:pr-16 xl:pr-24 pb-12 lg:pb-0"
+      >
+        <div className="relative w-full max-w-[480px] lg:max-w-none h-[480px] sm:h-[600px] lg:h-[750px]">
+          <Image 
+            src="/about-photo-cutout.png" 
+            alt="Екатерина Разумова"
+            fill
+            className="object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+            priority
+          />
         </div>
       </motion.div>
     </section>
