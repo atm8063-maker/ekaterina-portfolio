@@ -77,4 +77,20 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+  /* Infinite vertical marquee (testimonial wall auto-scroll) */
+  @keyframes marquee-vertical {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
+  .animate-marquee-vertical {
+    animation-name: marquee-vertical;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee-vertical {
+      animation-play-state: paused;
+    }
+  }
 }

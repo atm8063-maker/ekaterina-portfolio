@@ -16,6 +16,7 @@ import { ArtAwards } from "@/components/sections/art-awards";
 import { ArtBrand } from "@/components/sections/art-brand";
 import { ArtTeaching } from "@/components/sections/art-teaching";
 import { ArtMedia } from "@/components/sections/art-media";
+import { ArtTestimonials } from "@/components/sections/art-testimonials";
 import { ArtContacts } from "@/components/sections/art-contacts";
 import { ArtSketches } from "@/components/sections/art-sketches";
 import { StubSection } from "@/components/ui/stub-section";
@@ -159,11 +160,7 @@ export default function ArtPage() {
         {/* 15. ОТЗЫВЫ */}
         <div id="testimonials" className="scroll-mt-4">
           <div id="reviews" className="scroll-mt-4" />
-          <StubSection 
-            id="testimonials-section"
-            title="Отзывы" 
-            desc="Снимаем последние сомнения перед Контактами. Реальные отзывы от покупателей работ и учеников (можно в виде карусели или карточек)."
-          />
+          <ArtTestimonials />
         </div>
 
         {/* 16. КОНТАКТЫ / INSTAGRAM */}
