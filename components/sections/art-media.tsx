@@ -109,11 +109,9 @@ export function ArtMedia() {
         {items.map((item) => (
           <article
             key={item.outlet + item.headline}
-            className={`group shrink-0 snap-center flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1A1A1A] ${
-              item.featured ? "w-[300px] sm:w-[420px]" : "w-[260px] sm:w-[300px]"
-            }`}
+            className="group shrink-0 snap-center flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1A1A1A] w-[280px] sm:w-[320px]"
           >
-            <div className={`relative w-full ${item.featured ? "aspect-[4/5]" : "aspect-[3/4]"} bg-black/40`}>
+            <div className="relative w-full aspect-[3/4] bg-black/40">
               <Image
                 src={item.image}
                 alt={`${item.outlet}: ${item.headline}`}
