@@ -116,9 +116,7 @@ export function ArtMedia() {
                 src={item.image}
                 alt={`${item.outlet}: ${item.headline}`}
                 fill
-                className={`object-cover transition-transform duration-500 group-hover:scale-105 ${
-                  item.imagePosition === "top" ? "object-top" : "object-center"
-                }`}
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
               />
               {item.secondaryImage && (
                 <div className="absolute bottom-3 right-3 h-16 w-16 overflow-hidden rounded-none border-2 border-[#111111] shadow-lg sm:h-20 sm:w-20">
