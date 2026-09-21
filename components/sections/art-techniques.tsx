@@ -41,8 +41,8 @@ export function ArtTechniques() {
               Цифра (Design <span className="text-[#14F1D9]">&</span> Tech)
             </h3>
             <div className="flex flex-wrap gap-3">
-              {["SketchUp", "Planoplan", "Illustrator", "Интерьерный дизайн", "Ландшафтный дизайн"].map(i => (
-                <span key={i} className="px-4 py-2 rounded-none bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs uppercase tracking-wider font-semibold">
+              {["Figma", "Photoshop", "Illustrator", "SketchUp", "Planoplan"].map(i => (
+                <span key={i} className="px-4 py-2 rounded-none bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs uppercase tracking-wider font-semibold hover:bg-[#14F1D9]/20 transition-colors cursor-default">
                   {i}
                 </span>
               ))}
