@@ -31,7 +31,7 @@ const items: MediaItem[] = [
     image: "/media-press/tambovskaya-zhizn-cover.jpg",
   },
   {
-    outlet: "Газета «Жизнь» №43",
+    outlet: "Газета «Житьё» №43",
     headline: "«На моих глазах происходит волшебство»",
     meta: "27 октября 2020 · стр. 15, Общество",
     quote: "Екатерина Разумова делает удивительной красоты изделия из эпоксидной смолы.",
@@ -57,7 +57,7 @@ const items: MediaItem[] = [
     secondaryImage: "/media-press/tv-tambov-backstage.jpg",
   },
   {
-    outlet: "Название уточняется",
+    outlet: "РИА Top68.ru",
     headline: "«Тамбовская художница-смолянист превратила хобби в бизнес и стала…»",
     image: "/media-press/unidentified-regional.jpg",
   },
