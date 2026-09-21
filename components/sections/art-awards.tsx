@@ -49,7 +49,7 @@ const otherWorks: AwardPiece[] = [
   },
   {
     id: "ice-hand",
-    title: "Скульптура «Прорыв сквозь лёд»",
+    title: "«Февраль 22-го»",
     badge: "КОНКУРСНАЯ РАБОТА",
     image: "/awards/ice-hand-sculpture.jpg",
   },
