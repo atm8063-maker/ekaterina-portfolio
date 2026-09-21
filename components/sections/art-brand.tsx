@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { ExternalLink } from "lucide-react";
 
 type BrandProduct = {
   id: string;
@@ -10,8 +9,6 @@ type BrandProduct = {
   badge: string;
   desc: string;
   image: string;
-  link?: string;
-  linkLabel?: string;
 };
 
 const products: BrandProduct[] = [
@@ -19,16 +16,14 @@ const products: BrandProduct[] = [
     id: "sawdust-box",
     title: "Защитный короб для опила смолы",
     badge: "ПРОМЫШЛЕННЫЙ ДИЗАЙН",
-    desc: "Эргономичный прозрачный бокс для безопасной и чистой шлифовки изделий. Спроектировала конструкцию с нуля, после чего бренд запустил её в серийное производство.",
+    desc: "Эргономичный прозрачный бокс для безопасной и чистой шлифовки изделий. Спроектировала конструкцию с нуля, после чего производитель запустил её в серийное производство.",
     image: "/brand/sawdust-chamber.jpg",
-    link: "https://resinartru.ru/product/zashchitnyy_korob_dlya_opila/",
-    linkLabel: "Смотреть на ResinArt",
   },
   {
     id: "toys-box",
     title: "Набор для создания ёлочных игрушек",
     badge: "КОЛЛАБОРАЦИЯ",
-    desc: "Эксклюзивный брендированный праздничный набор ResinArt & @fir_tree_art с авторскими силиконовыми молдами, смолой, красителями и пошаговым обучением.",
+    desc: "Эксклюзивный брендированный праздничный набор с авторскими силиконовыми молдами, смолой, красителями и пошаговым обучением.",
     image: "/brand/toy-box-holiday.webp",
   },
 ];
@@ -60,21 +55,21 @@ export function ArtBrand() {
 
             <div className="space-y-4 text-white/75 text-base sm:text-lg leading-relaxed font-sans">
               <p>
-                Была официальным <strong className="text-white font-semibold">амбассадором ResinArt</strong> — ведущего российского производителя эпоксидной смолы и профессиональных арт-материалов.
+                Была официальным <strong className="text-white font-semibold">амбассадором</strong> одного из ведущих производителей эпоксидной смолы и художественных материалов в России.
               </p>
               <p>
-                Сотрудничество вышло далеко за рамки рекламы: мы разрабатывали и запускали в жизнь <strong className="text-[#14F1D9] font-semibold">реальные физические продукты</strong>.
+                В рамках партнерства мы выпустили совместную брендированную продукцию: <strong className="text-[#14F1D9] font-semibold">эксклюзивную коробку для создания ёлочных игрушек</strong> из смолы, которая разошлась по всей стране.
               </p>
               <p className="text-white/60 text-sm sm:text-base">
-                Я разработала чертежи и конструктив специализированного защитного короба для опила (защищающего мастера от смоляной пыли), который пошёл в серию. А также создала совместный подарочный бокс для ёлочных игрушек, разлетевшийся тиражами по всей стране.
+                Также я спроектировала специализированный защитный короб для опила смолы, защищающий мастера от пыли при шлифовке — производитель пустил мою разработку в серийное производство.
               </p>
             </div>
 
-            {/* Быстрые факты */}
+            {/* Факты */}
             <div className="grid grid-cols-2 gap-3 pt-2">
               <div className="rounded-xl border border-white/10 bg-[#1A1A1A] p-4">
-                <div className="font-montserrat text-lg font-black text-[#14F1D9]">RESINART</div>
-                <div className="mt-1 text-xs text-white/60">Официальный амбассадор бренда</div>
+                <div className="font-montserrat text-lg font-black text-[#14F1D9]">АМБАССАДОР</div>
+                <div className="mt-1 text-xs text-white/60">Ведущего производителя смолы в РФ</div>
               </div>
               <div className="rounded-xl border border-white/10 bg-[#1A1A1A] p-4">
                 <div className="font-montserrat text-lg font-black text-white">В СЕРИИ</div>
@@ -119,18 +114,6 @@ export function ArtBrand() {
                       {item.desc}
                     </p>
                   </div>
-
-                  {item.link && (
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#14F1D9] hover:underline pt-2"
-                    >
-                      {item.linkLabel}
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  )}
                 </div>
               </article>
             ))}
@@ -182,7 +165,7 @@ export function ArtBrand() {
             <div className="relative w-full h-[70vh] rounded-2xl overflow-hidden border border-white/20">
               <Image
                 src={selectedImage}
-                alt="Продукция ResinArt"
+                alt="Продукция"
                 fill
                 className="object-contain"
               />
