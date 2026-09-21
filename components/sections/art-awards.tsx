@@ -7,7 +7,6 @@ type AwardPiece = {
   id: string;
   title: string;
   badge: string;
-  badgeType: "gold" | "cyan" | "purple";
   image: string;
   category?: string;
 };
@@ -17,7 +16,6 @@ const mainAwards: AwardPiece[] = [
     id: "wave-kingdom",
     title: "Скульптурная 3D-волна",
     badge: "1 МЕСТО • RESINART KINGDOM",
-    badgeType: "gold",
     image: "/awards/winner-resinart-kingdom-wave.jpg",
     category: "Международный конкурс",
   },
@@ -25,61 +23,53 @@ const mainAwards: AwardPiece[] = [
     id: "bulb-winner",
     title: "Лампа-террариум с папоротником",
     badge: "ПОБЕДИТЕЛЬ «АРТ-ГОНКИ»",
-    badgeType: "gold",
     image: "/awards/winner-art-race-bulb.jpg",
     category: "Всероссийский конкурс",
   },
   {
-    id: "whale-globe",
-    title: "Сфера с китом и парусником",
+    id: "turquoise-diptych",
+    title: "Диптих «Бирюзовая лагуна»",
     badge: "ФИНАЛИСТ «АРТ-ГОНКИ»",
-    badgeType: "cyan",
-    image: "/awards/whale-wave-globe.jpg",
-    category: "Новогодняя коллекция",
+    image: "/awards/turquoise-diptych.jpg",
+    category: "Интерьерный диптих",
   },
 ];
 
 const extraPieces: AwardPiece[] = [
   {
+    id: "whale-globe",
+    title: "Сфера с китом и парусником",
+    badge: "ФИНАЛИСТ АРТ-ГОНКИ",
+    image: "/awards/whale-wave-globe.jpg",
+  },
+  {
     id: "boat-sphere",
     title: "Сфера «Лодка в шторме»",
     badge: "ФИНАЛИСТ",
-    badgeType: "cyan",
     image: "/awards/boat-sphere-wave.jpg",
   },
   {
     id: "ice-hand",
     title: "Скульптура «Прорыв сквозь лёд»",
     badge: "КОНКУРСНАЯ РАБОТА",
-    badgeType: "purple",
     image: "/awards/ice-hand-sculpture.jpg",
   },
   {
     id: "ocean-canvas",
     title: "Панно «Океаническая волна»",
     badge: "АРТ-РЕЛЬЕФ",
-    badgeType: "cyan",
     image: "/awards/ocean-canvas-wave.jpg",
-  },
-  {
-    id: "turquoise-diptych",
-    title: "Диптих «Бирюзовая лагуна»",
-    badge: "ИНТЕРЬЕРНЫЙ ДИПТИХ",
-    badgeType: "cyan",
-    image: "/awards/turquoise-diptych.jpg",
   },
   {
     id: "crystal-candy",
     title: "Кристальная конфета",
     badge: "АВТОРСКАЯ ФОРМА",
-    badgeType: "purple",
     image: "/awards/crystal-candy.jpg",
   },
   {
     id: "jewelry-set",
     title: "Ювелирный гарнитур",
     badge: "ЮВЕЛИРНАЯ СМОЛА",
-    badgeType: "cyan",
     image: "/awards/jewelry-sea-set.jpg",
   },
 ];
@@ -94,10 +84,6 @@ export function ArtAwards() {
           
           {/* Левая колонка: Текст и статистика */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#14F1D9]/30 bg-[#14F1D9]/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#14F1D9]">
-              <span>🏆</span> Признание и награды
-            </div>
-            
             <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight">
               Победы, финалы и судейство
             </h2>
@@ -119,7 +105,7 @@ export function ArtAwards() {
               </div>
 
               <div className="rounded-xl border border-white/10 bg-[#1A1A1A] p-4 transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-2xl font-black text-amber-400">ПОБЕДИТЕЛЬ</div>
+                <div className="font-montserrat text-2xl font-black text-[#14F1D9]">ПОБЕДИТЕЛЬ</div>
                 <div className="mt-1 text-xs text-white/60">Всероссийская «Арт-гонка»</div>
               </div>
 
@@ -155,7 +141,7 @@ export function ArtAwards() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-opacity duration-300 group-hover:from-black/95" />
                 
                 <div className="absolute top-4 left-4">
-                  <span className="inline-block rounded-full bg-amber-400/90 backdrop-blur-md px-3 py-1 text-[11px] font-black uppercase tracking-wider text-black shadow-lg">
+                  <span className="inline-block rounded-full bg-[#14F1D9] px-3 py-1 text-[11px] font-black uppercase tracking-wider text-black shadow-lg">
                     {mainAwards[0].badge}
                   </span>
                 </div>
@@ -171,7 +157,7 @@ export function ArtAwards() {
               {/* Правая колонка: 2 карточки */}
               <div className="flex flex-col gap-4 h-[540px] sm:h-full">
                 
-                {/* Верхняя карточка */}
+                {/* Верхняя карточка (Победитель Арт-гонки) */}
                 <article 
                   onClick={() => setSelectedImage(mainAwards[1])}
                   className="group relative flex-1 overflow-hidden rounded-2xl border border-white/15 bg-[#1A1A1A] cursor-pointer"
@@ -186,7 +172,7 @@ export function ArtAwards() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-opacity duration-300 group-hover:from-black/95" />
                   
                   <div className="absolute top-3 left-3">
-                    <span className="inline-block rounded-full bg-amber-400/90 backdrop-blur-md px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-black shadow">
+                    <span className="inline-block rounded-full bg-[#14F1D9] px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-black shadow">
                       {mainAwards[1].badge}
                     </span>
                   </div>
@@ -198,7 +184,7 @@ export function ArtAwards() {
                   </div>
                 </article>
 
-                {/* Нижняя карточка */}
+                {/* Нижняя карточка (Диптих на сером фоне) */}
                 <article 
                   onClick={() => setSelectedImage(mainAwards[2])}
                   className="group relative flex-1 overflow-hidden rounded-2xl border border-white/15 bg-[#1A1A1A] cursor-pointer"
@@ -213,7 +199,7 @@ export function ArtAwards() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-opacity duration-300 group-hover:from-black/95" />
                   
                   <div className="absolute top-3 left-3">
-                    <span className="inline-block rounded-full bg-[#14F1D9] backdrop-blur-md px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-black shadow">
+                    <span className="inline-block rounded-full bg-[#14F1D9] px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-black shadow">
                       {mainAwards[2].badge}
                     </span>
                   </div>
@@ -265,7 +251,7 @@ export function ArtAwards() {
 
       </div>
 
-      {/* Простой лайтбокс при клике */}
+      {/* Лайтбокс при клике */}
       {selectedImage && (
         <div 
           onClick={() => setSelectedImage(null)}
