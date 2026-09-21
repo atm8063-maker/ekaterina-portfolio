@@ -11,7 +11,7 @@ type AwardPiece = {
   category?: string;
 };
 
-const mainAwards: AwardPiece[] = [
+const winners: AwardPiece[] = [
   {
     id: "wave-kingdom",
     title: "Скульптурная 3D-волна",
@@ -23,19 +23,18 @@ const mainAwards: AwardPiece[] = [
     id: "bulb-winner",
     title: "Лампа-террариум с папоротником",
     badge: "ПОБЕДИТЕЛЬ «АРТ-ГОНКИ»",
-    image: "/awards/winner-art-race-bulb.jpg",
+    image: "/awards/winner-art-race-bulb1.jpg",
     category: "Всероссийский конкурс",
-  },
-  {
-    id: "turquoise-diptych",
-    title: "Диптих «Бирюзовая лагуна»",
-    badge: "ФИНАЛИСТ «АРТ-ГОНКИ»",
-    image: "/awards/turquoise-diptych.jpg",
-    category: "Интерьерный диптих",
   },
 ];
 
-const extraPieces: AwardPiece[] = [
+const otherWorks: AwardPiece[] = [
+  {
+    id: "turquoise-diptych",
+    title: "Диптих «Бирюзовая лагуна»",
+    badge: "ФИНАЛИСТ АРТ-ГОНКИ",
+    image: "/awards/turquoise-diptych.jpg",
+  },
   {
     id: "whale-globe",
     title: "Сфера с китом и парусником",
@@ -72,6 +71,12 @@ const extraPieces: AwardPiece[] = [
     badge: "ЮВЕЛИРНАЯ СМОЛА",
     image: "/awards/jewelry-sea-set.jpg",
   },
+  {
+    id: "flower-coasters",
+    title: "Цветочные подстаканники",
+    badge: "АВТОРСКАЯ ТЕХНИКА",
+    image: "/awards/flower-coasters.jpg",
+  },
 ];
 
 export function ArtAwards() {
@@ -80,7 +85,7 @@ export function ArtAwards() {
   return (
     <section id="awards" className="relative border-b border-white/10 bg-[#111111] py-24 scroll-mt-20">
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           {/* Левая колонка: Текст и статистика */}
           <div className="lg:col-span-5 space-y-6">
@@ -97,7 +102,7 @@ export function ArtAwards() {
               </p>
             </div>
 
-            {/* Метрики и плашки */}
+            {/* Метрики */}
             <div className="grid grid-cols-2 gap-3 pt-2">
               <div className="rounded-xl border border-white/10 bg-[#1A1A1A] p-4 transition-colors hover:border-[#14F1D9]/40">
                 <div className="font-montserrat text-2xl font-black text-[#14F1D9]">1 МЕСТО</div>
@@ -121,113 +126,57 @@ export function ArtAwards() {
             </div>
           </div>
 
-          {/* Правая колонка: Главное трио победителей (Bento Grid) */}
+          {/* Правая колонка: 2 крупные вертикальные карточки главных победителей */}
           <div className="lg:col-span-7">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-auto sm:h-[540px]">
-              
-              {/* Главный призер (слева, на всю высоту) */}
-              <article 
-                onClick={() => setSelectedImage(mainAwards[0])}
-                className="group relative h-[360px] sm:h-full overflow-hidden rounded-2xl border border-white/15 bg-[#1A1A1A] cursor-pointer"
-              >
-                <Image
-                  src={mainAwards[0].image}
-                  alt={mainAwards[0].title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-opacity duration-300 group-hover:from-black/95" />
-                
-                <div className="absolute top-4 left-4">
-                  <span className="inline-block rounded-full bg-[#14F1D9] px-3 py-1 text-[11px] font-black uppercase tracking-wider text-black shadow-lg">
-                    {mainAwards[0].badge}
-                  </span>
-                </div>
-
-                <div className="absolute bottom-4 left-4 right-4 z-10">
-                  <p className="text-xs text-white/60 uppercase tracking-wider">{mainAwards[0].category}</p>
-                  <h3 className="text-lg font-bold text-white font-montserrat leading-snug">
-                    {mainAwards[0].title}
-                  </h3>
-                </div>
-              </article>
-
-              {/* Правая колонка: 2 карточки */}
-              <div className="flex flex-col gap-4 h-[540px] sm:h-full">
-                
-                {/* Верхняя карточка (Победитель Арт-гонки) */}
-                <article 
-                  onClick={() => setSelectedImage(mainAwards[1])}
-                  className="group relative flex-1 overflow-hidden rounded-2xl border border-white/15 bg-[#1A1A1A] cursor-pointer"
+              {winners.map((item) => (
+                <article
+                  key={item.id}
+                  onClick={() => setSelectedImage(item)}
+                  className="group relative h-[380px] sm:h-full overflow-hidden rounded-2xl border border-white/15 bg-[#1A1A1A] cursor-pointer"
                 >
                   <Image
-                    src={mainAwards[1].image}
-                    alt={mainAwards[1].title}
+                    src={item.image}
+                    alt={item.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 30vw"
+                    sizes="(max-width: 768px) 100vw, 35vw"
+                    priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-opacity duration-300 group-hover:from-black/95" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-transparent transition-opacity duration-300 group-hover:from-black/90" />
                   
-                  <div className="absolute top-3 left-3">
-                    <span className="inline-block rounded-full bg-[#14F1D9] px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-black shadow">
-                      {mainAwards[1].badge}
+                  <div className="absolute top-4 left-4">
+                    <span className="inline-block rounded-full bg-[#14F1D9] px-3 py-1 text-[11px] font-black uppercase tracking-wider text-black shadow-lg">
+                      {item.badge}
                     </span>
                   </div>
 
-                  <div className="absolute bottom-3 left-3 right-3 z-10">
-                    <h3 className="text-sm sm:text-base font-bold text-white font-montserrat leading-snug">
-                      {mainAwards[1].title}
+                  <div className="absolute bottom-4 left-4 right-4 z-10">
+                    {item.category && (
+                      <p className="text-xs text-white/60 uppercase tracking-wider mb-1">{item.category}</p>
+                    )}
+                    <h3 className="text-lg font-bold text-white font-montserrat leading-snug">
+                      {item.title}
                     </h3>
                   </div>
                 </article>
-
-                {/* Нижняя карточка (Диптих на сером фоне) */}
-                <article 
-                  onClick={() => setSelectedImage(mainAwards[2])}
-                  className="group relative flex-1 overflow-hidden rounded-2xl border border-white/15 bg-[#1A1A1A] cursor-pointer"
-                >
-                  <Image
-                    src={mainAwards[2].image}
-                    alt={mainAwards[2].title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 30vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-opacity duration-300 group-hover:from-black/95" />
-                  
-                  <div className="absolute top-3 left-3">
-                    <span className="inline-block rounded-full bg-[#14F1D9] px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-black shadow">
-                      {mainAwards[2].badge}
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-3 left-3 right-3 z-10">
-                    <h3 className="text-sm sm:text-base font-bold text-white font-montserrat leading-snug">
-                      {mainAwards[2].title}
-                    </h3>
-                  </div>
-                </article>
-
-              </div>
+              ))}
             </div>
           </div>
 
         </div>
 
-        {/* Дополнительная мини-галерея конкурсных работ */}
+        {/* Нижний ряд: Остальные работы */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex items-center justify-between mb-6">
             <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#14F1D9]">
               Другие конкурсные и финальные работы
             </h4>
-            <span className="text-xs text-white/40">Нажмите для просмотра</span>
+            <span className="text-xs text-white/40">Нажмите для увеличения</span>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            {extraPieces.map((piece) => (
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+            {otherWorks.map((piece) => (
               <div
                 key={piece.id}
                 onClick={() => setSelectedImage(piece)}
@@ -240,7 +189,7 @@ export function ArtAwards() {
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 bg-gradient-to-t from-black/90 via-transparent to-transparent">
-                  <p className="text-[11px] font-medium leading-tight text-white line-clamp-2">
+                  <p className="text-[10px] font-medium leading-tight text-white line-clamp-2">
                     {piece.title}
                   </p>
                 </div>
