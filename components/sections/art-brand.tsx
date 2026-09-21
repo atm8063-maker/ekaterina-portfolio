@@ -50,18 +50,18 @@ export function ArtBrand() {
           {/* Левая колонка: Описание и факты */}
           <div className="lg:col-span-5 space-y-6">
             <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight">
-              Амбассадор бренда & Продукция
+              Амбассадор бренда и продукция
             </h2>
 
-            <div className="space-y-4 text-white/75 text-base sm:text-lg leading-relaxed font-sans">
+            <div className="space-y-4 text-white/70 text-base sm:text-lg leading-relaxed font-inter">
               <p>
                 Была официальным <strong className="text-white font-semibold">амбассадором</strong> одного из ведущих производителей эпоксидной смолы и художественных материалов в России.
               </p>
               <p>
                 В рамках партнерства мы выпустили совместную брендированную продукцию: <strong className="text-[#14F1D9] font-semibold">эксклюзивную коробку для создания ёлочных игрушек</strong> из смолы, которая разошлась по всей стране.
               </p>
-              <p className="text-white/60 text-sm sm:text-base">
-                Также я спроектировала специализированный защитный короб для опила смолы, защищающий мастера от пыли при шлифовке — производитель пустил мою разработку в серийное производство.
+              <p>
+                Также я спроектировала специализированный <strong className="text-white font-semibold">защитный короб для опила смолы</strong>, защищающий мастера от пыли — производитель пустил мою разработку в серийное производство.
               </p>
             </div>
 
@@ -110,7 +110,7 @@ export function ArtBrand() {
                     <h3 className="text-base font-bold text-white font-montserrat leading-snug">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-xs leading-relaxed text-white/65 font-sans">
+                    <p className="mt-2 text-xs leading-relaxed text-white/65 font-inter">
                       {item.desc}
                     </p>
                   </div>

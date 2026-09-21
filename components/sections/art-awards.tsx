@@ -93,7 +93,7 @@ export function ArtAwards() {
               Победы, финалы и судейство
             </h2>
 
-            <div className="space-y-4 text-white/75 text-base sm:text-lg leading-relaxed font-sans">
+            <div className="space-y-4 text-white/70 text-base sm:text-lg leading-relaxed font-inter">
               <p>
                 Неоднократно побеждала в российских и международных конкурсах по смоле. Экспертное жюри отмечает сложную многослойную 3D-технику, реалистичность морской стихии и ювелирную чистоту исполнения.
               </p>
