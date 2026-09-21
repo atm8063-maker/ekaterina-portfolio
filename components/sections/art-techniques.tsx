@@ -2,332 +2,250 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { X, Play, ChevronLeft, ChevronRight, Layers } from "lucide-react";
-
-type Category = "all" | "craft" | "digital" | "video";
+import { X, Play, ChevronLeft, ChevronRight } from "lucide-react";
 
 type MediaItem = {
   src: string;
   type: "image" | "video";
-  category: "craft" | "digital" | "video";
   title: string;
   tag: string;
+  aspect: "wide" | "square" | "portrait";
 };
 
-const allMedia: MediaItem[] = [
-  // Digital / Mockups / 3D
+const items: MediaItem[] = [
+  // Digital Mockups & Tech
   {
     src: "/art-techniques/Free Macbook Pro Space Gray mockup on the wooden table (Mockuuups Studio).jpg",
     type: "image",
-    category: "digital",
-    title: "Презентация UI-концепта на MacBook Pro",
-    tag: "Figma & UI",
+    title: "UI-дизайн на MacBook Pro",
+    tag: "Figma",
+    aspect: "wide",
+  },
+  {
+    src: "/art-techniques/video_105@04-08-2026_22-23-33.mp4",
+    type: "video",
+    title: "Заливка морской волны",
+    tag: "Видео",
+    aspect: "square",
   },
   {
     src: "/art-techniques/Free Clean desk with Dell display mockup (Mockuuups Studio)1.jpg",
     type: "image",
-    category: "digital",
-    title: "Рабочее пространство: верстка и веб-дизайн",
-    tag: "Photoshop / Web",
+    title: "Вёрстка и графика на Dell Display",
+    tag: "Photoshop",
+    aspect: "wide",
   },
   {
-    src: "/art-techniques/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).jpg",
+    src: "/art-techniques/photo_3217@04-08-2026_21-04-08.jpg",
     type: "image",
-    category: "digital",
-    title: "Адаптивные прототипы на iPad Air",
-    tag: "Figma / Tablet",
-  },
-  {
-    src: "/art-techniques/iPhone 12 Pro.jpg",
-    type: "image",
-    category: "digital",
-    title: "Мобильный интерфейс и арт-галерея",
-    tag: "Mobile UX",
-  },
-  {
-    src: "/art-techniques/Poster mockup leaning against a textured wall (Mockuuups Studio).jpg",
-    type: "image",
-    category: "digital",
-    title: "Интерьерный арт-постер и типографика",
-    tag: "Illustrator / Print",
-  },
-  {
-    src: "/art-techniques/Gemini_Generated_Image_eirj0reirj0reirj.jpg",
-    type: "image",
-    category: "digital",
-    title: "Концепт-арт и цифровая иллюстрация",
-    tag: "Digital Art",
-  },
-  {
-    src: "/art-techniques/photo_2026-08-27_17-30-18.jpg",
-    type: "image",
-    category: "digital",
-    title: "Архитектурная схема и план пространства",
-    tag: "Planoplan",
-  },
-  {
-    src: "/art-techniques/photo_2026-08-27_17-30-19 (6).jpg",
-    type: "image",
-    category: "digital",
-    title: "3D-моделирование геометрии помещения",
-    tag: "SketchUp 3D",
-  },
-  {
-    src: "/art-techniques/photo_2026-08-30_02-47-41.jpg",
-    type: "image",
-    category: "digital",
-    title: "3D-визуализация интерьерного решения",
-    tag: "3D Render",
-  },
-  {
-    src: "/art-techniques/photo_2026-09-05_13-57-09 (2).jpg",
-    type: "image",
-    category: "digital",
-    title: "Технический чертеж и планировка",
-    tag: "2D Plan",
-  },
-  {
-    src: "/art-techniques/photo_2026-09-08_19-29-45 (6).jpg",
-    type: "image",
-    category: "digital",
-    title: "Эскизирование и концептуальный скетчинг",
-    tag: "Sketch",
-  },
-  {
-    src: "/art-techniques/photo_2026-09-08_19-29-46 (3).jpg",
-    type: "image",
-    category: "digital",
-    title: "Пространственное 3D-зонирование",
-    tag: "3D Project",
-  },
-
-  // Videos (Processes)
-  {
-    src: "/art-techniques/video_105@04-08-2026_22-23-33.mp4",
-    type: "video",
-    category: "video",
-    title: "Заливка морской волны эпоксидной смолой",
-    tag: "Видео процесса",
-  },
-  {
-    src: "/art-techniques/video_114@04-08-2026_22-24-13.mp4",
-    type: "video",
-    category: "video",
-    title: "Динамика растекания и слияние пигментов",
-    tag: "Видео процесса",
-  },
-  {
-    src: "/art-techniques/video_144@04-08-2026_22-24-35.mp4",
-    type: "video",
-    category: "video",
-    title: "Макро-сияние золота и перламутра",
-    tag: "Видео процесса",
+    title: "Градиент морских глубин",
+    tag: "Смола",
+    aspect: "square",
   },
   {
     src: "/art-techniques/video_146@04-08-2026_22-24-35.mp4",
     type: "video",
-    category: "video",
-    title: "Термическая обработка: удаление пузырьков воздуха",
-    tag: "Видео процесса",
+    title: "Термический обжиг смолы горелкой",
+    tag: "Видео",
+    aspect: "portrait",
   },
   {
-    src: "/art-techniques/video_151@04-08-2026_22-26-50.mp4",
-    type: "video",
-    category: "video",
-    title: "Формирование ажурных ячеек морской пены",
-    tag: "Видео процесса",
-  },
-  {
-    src: "/art-techniques/video_45@31-07-2026_19-44-02.mp4",
-    type: "video",
-    category: "video",
-    title: "Студийный процесс создания арт-объекта",
-    tag: "Студия & Бэкстейдж",
-  },
-
-  // Craft & Resin Photos
-  {
-    src: "/art-techniques/photo_3217@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).jpg",
     type: "image",
-    category: "craft",
-    title: "Морская глубина: многослойный градиент",
-    tag: "Эпоксидная смола",
-  },
-  {
-    src: "/art-techniques/photo_3218@04-08-2026_21-04-08.jpg",
-    type: "image",
-    category: "craft",
-    title: "Замешивание ультрамаринового пигмента",
-    tag: "Колористика",
+    title: "Планшетные прототипы на iPad Air",
+    tag: "Figma",
+    aspect: "wide",
   },
   {
     src: "/art-techniques/photo_3219@04-08-2026_21-04-08.jpg",
     type: "image",
-    category: "craft",
-    title: "Кристаллическая жеода и каменная крошка",
-    tag: "Жеода / Текстура",
+    title: "Инкрустация кристаллами и жеоды",
+    tag: "Крафт",
+    aspect: "square",
   },
   {
-    src: "/art-techniques/photo_3220@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/video_144@04-08-2026_22-24-35.mp4",
+    type: "video",
+    title: "Мерцание золота и перламутра",
+    tag: "Видео",
+    aspect: "portrait",
+  },
+  {
+    src: "/art-techniques/iPhone 12 Pro.jpg",
     type: "image",
-    category: "craft",
-    title: "Всплывающий золотой металлик",
+    title: "Мобильный интерфейс и галерея",
+    tag: "Mobile UX",
+    aspect: "portrait",
+  },
+  {
+    src: "/art-techniques/photo_3218@04-08-2026_21-04-08.jpg",
+    type: "image",
+    title: "Замешивание ультрамарина",
     tag: "Пигменты",
+    aspect: "square",
+  },
+  {
+    src: "/art-techniques/video_151@04-08-2026_22-26-50.mp4",
+    type: "video",
+    title: "Формирование ячеек морской пены",
+    tag: "Видео",
+    aspect: "portrait",
+  },
+  {
+    src: "/art-techniques/Poster mockup leaning against a textured wall (Mockuuups Studio).jpg",
+    type: "image",
+    title: "Интерьерный постер и типографика",
+    tag: "Illustrator",
+    aspect: "portrait",
   },
   {
     src: "/art-techniques/photo_3221@04-08-2026_21-04-08.jpg",
     type: "image",
-    category: "craft",
-    title: "Идеально гладкое финишное покрытие",
+    title: "Глянцевое зеркальное покрытие",
     tag: "Глянец",
+    aspect: "square",
   },
   {
-    src: "/art-techniques/photo_3222@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_2026-08-27_17-30-19 (6).jpg",
     type: "image",
-    category: "craft",
-    title: "Макросъёмка океанической волны",
-    tag: "Макро",
+    title: "3D-моделирование пространства",
+    tag: "SketchUp",
+    aspect: "wide",
   },
   {
-    src: "/art-techniques/photo_3224@04-08-2026_21-04-08.jpg",
-    type: "image",
-    category: "craft",
-    title: "Смешивание авторской цветовой палитры",
-    tag: "Краски & Смола",
-  },
-  {
-    src: "/art-techniques/photo_3227@04-08-2026_21-04-401.jpg",
-    type: "image",
-    category: "craft",
-    title: "Изумрудные и бирюзовые переливы",
-    tag: "Fluid Art",
-  },
-  {
-    src: "/art-techniques/photo_3231@04-08-2026_21-04-401.jpg",
-    type: "image",
-    category: "craft",
-    title: "Кристаллический срез и золотые прожилки",
-    tag: "Жеода",
-  },
-  {
-    src: "/art-techniques/photo_2942@31-07-2026_17-46-16.jpg",
-    type: "image",
-    category: "craft",
-    title: "Спил дуба с морем из смолы",
-    tag: "Дерево & Смола",
-  },
-  {
-    src: "/art-techniques/photo_2987@31-07-2026_18-19-52.jpg",
-    type: "image",
-    category: "craft",
-    title: "Арт-подстаканники в форме минералов",
-    tag: "Аксессуары",
+    src: "/art-techniques/video_114@04-08-2026_22-24-13.mp4",
+    type: "video",
+    title: "Динамика растекания смолы",
+    tag: "Видео",
+    aspect: "portrait",
   },
   {
     src: "/art-techniques/photo_2999@31-07-2026_18-44-13.jpg",
     type: "image",
-    category: "craft",
     title: "Интерьерный поднос ручной работы",
-    tag: "Интерьерный арт",
+    tag: "Предметный крафт",
+    aspect: "wide",
   },
   {
-    src: "/art-techniques/photo_3138@31-07-2026_19-44-20.jpg",
+    src: "/art-techniques/photo_2026-08-30_02-47-41.jpg",
     type: "image",
-    category: "craft",
-    title: "Подготовка формы и нанесение слоёв",
-    tag: "Процесс",
+    title: "3D-визуализация помещения",
+    tag: "Planoplan",
+    aspect: "wide",
   },
   {
-    src: "/art-techniques/photo_3174@04-08-2026_20-56-52.jpg",
+    src: "/art-techniques/photo_2942@31-07-2026_17-46-16.jpg",
     type: "image",
-    category: "craft",
-    title: "Работа над сложной многоуровневой заливкой",
-    tag: "Смола / Крафт",
+    title: "Спил дуба с морской заливкой",
+    tag: "Дерево & Смола",
+    aspect: "square",
   },
   {
-    src: "/art-techniques/photo_3180@04-08-2026_20-56-52.jpg",
-    type: "image",
-    category: "craft",
-    title: "Детализация и закрепление элементов",
-    tag: "Крафт",
+    src: "/art-techniques/video_45@31-07-2026_19-44-02.mp4",
+    type: "video",
+    title: "Студийный процесс создания",
+    tag: "Студия",
+    aspect: "portrait",
   },
   {
-    src: "/art-techniques/photo_3390@04-08-2026_22-16-46.jpg",
+    src: "/art-techniques/photo_2987@31-07-2026_18-19-52.jpg",
     type: "image",
-    category: "craft",
-    title: "Готовое изделие в интерьере",
-    tag: "Готовая работа",
+    title: "Сервировочный сет подстаканников",
+    tag: "Сет изделий",
+    aspect: "square",
+  },
+  {
+    src: "/art-techniques/photo_3220@04-08-2026_21-04-08.jpg",
+    type: "image",
+    title: "Золотая пудра и пигменты",
+    tag: "Пигменты",
+    aspect: "square",
+  },
+  {
+    src: "/art-techniques/photo_2026-08-27_17-30-18.jpg",
+    type: "image",
+    title: "Архитектурная планировка",
+    tag: "Схема",
+    aspect: "wide",
+  },
+  {
+    src: "/art-techniques/photo_3222@04-08-2026_21-04-08.jpg",
+    type: "image",
+    title: "Макро-волна из эпоксидной смолы",
+    tag: "Макро",
+    aspect: "square",
+  },
+  {
+    src: "/art-techniques/photo_3227@04-08-2026_21-04-401.jpg",
+    type: "image",
+    title: "Изумрудные и бирюзовые переливы",
+    tag: "Fluid Art",
+    aspect: "square",
+  },
+  {
+    src: "/art-techniques/photo_3231@04-08-2026_21-04-401.jpg",
+    type: "image",
+    title: "Кристаллический срез с золотом",
+    tag: "Жеода",
+    aspect: "square",
   },
 ];
 
 export function ArtTechniques() {
-  const [activeTab, setActiveTab] = useState<Category>("all");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const offlineTags = ["Эпоксидная смола", "Акрил", "Алкогольные чернила", "Текстурная паста", "Смешанные техники"];
   const offlineExtra = ["Гипс", "Глина", "Масло", "Скетчи"];
   const digitalTools = ["Figma", "Photoshop", "Illustrator", "SketchUp", "Planoplan"];
 
-  const filteredMedia = allMedia.filter((item) => {
-    if (activeTab === "all") return true;
-    if (activeTab === "craft") return item.category === "craft";
-    if (activeTab === "digital") return item.category === "digital";
-    if (activeTab === "video") return item.category === "video";
-    return true;
-  });
-
-  const openLightbox = (item: MediaItem) => {
-    const idx = filteredMedia.findIndex((m) => m.src === item.src);
-    setLightboxIndex(idx >= 0 ? idx : 0);
+  const openLightbox = (idx: number) => {
+    setLightboxIndex(idx);
   };
 
   const nextLightbox = (e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (lightboxIndex === null) return;
-    setLightboxIndex((lightboxIndex + 1) % filteredMedia.length);
+    setLightboxIndex((lightboxIndex + 1) % items.length);
   };
 
   const prevLightbox = (e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (lightboxIndex === null) return;
-    setLightboxIndex((lightboxIndex - 1 + filteredMedia.length) % filteredMedia.length);
+    setLightboxIndex((lightboxIndex - 1 + items.length) % items.length);
   };
 
-  const activeLightboxItem = lightboxIndex !== null ? filteredMedia[lightboxIndex] : null;
+  const activeLightboxItem = lightboxIndex !== null ? items[lightboxIndex] : null;
 
   return (
-    <section id="techniques" className="border-b border-white/10 bg-[#111111] py-24 relative overflow-hidden scroll-mt-20">
+    <section id="techniques" className="border-b border-white/10 bg-[#111111] py-16 sm:py-20 relative overflow-hidden scroll-mt-20">
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Header */}
-        <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 text-[10px] font-mono uppercase tracking-widest text-[#14F1D9] mb-4">
-            Вариант 2 · Bento-стена процессов без обрезки
-          </div>
+        <div className="max-w-3xl mb-10">
           <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat mt-2">
             Техники <span className="text-[#14F1D9]">&</span> Инструменты
           </h2>
-          <p className="text-white/60 mt-3 font-inter text-base sm:text-lg">
+          <p className="text-white/60 mt-2 font-inter text-sm sm:text-base">
             Работаю на стыке материального крафта и цифровых технологий — от изящных предметов ручной работы до сложных UI-интерфейсов и 3D-моделей.
           </p>
         </div>
 
         {/* Top Cards: Offline vs Digital */}
-        <div className="grid md:grid-cols-2 gap-8 mb-14">
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
           
-          <div className="p-8 sm:p-10 rounded-none bg-[#1A1A1A] border border-white/10 relative overflow-hidden group hover:border-white/30 transition-all">
+          <div className="p-6 sm:p-8 rounded-none bg-[#1A1A1A] border border-white/10 relative overflow-hidden group hover:border-white/30 transition-all">
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#14F1D9]/5 -z-10 group-hover:bg-[#14F1D9]/10 transition-colors"></div>
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-4">
               <h3 className="text-xs uppercase tracking-widest font-bold text-[#14F1D9] font-montserrat">
                 Офлайн · Материалы & Крафт
               </h3>
               <span className="text-[10px] font-mono text-white/40 uppercase">Физические объекты</span>
             </div>
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap gap-2">
               {offlineTags.map((t) => (
                 <span
                   key={t}
-                  className="px-3.5 py-2 rounded-none border border-white/20 text-white text-xs uppercase tracking-wider font-semibold hover:border-[#14F1D9] hover:text-[#14F1D9] transition-colors cursor-default bg-black/20"
+                  className="px-3 py-1.5 rounded-none border border-white/20 text-white text-xs uppercase tracking-wider font-semibold hover:border-[#14F1D9] hover:text-[#14F1D9] transition-colors cursor-default bg-black/20"
                 >
                   {t}
                 </span>
@@ -335,7 +253,7 @@ export function ArtTechniques() {
               {offlineExtra.map((t) => (
                 <span
                   key={t}
-                  className="px-3.5 py-2 rounded-none border border-white/10 text-white/50 text-xs uppercase tracking-wider font-semibold hover:border-[#14F1D9] hover:text-[#14F1D9] transition-colors cursor-default bg-black/10"
+                  className="px-3 py-1.5 rounded-none border border-white/10 text-white/50 text-xs uppercase tracking-wider font-semibold hover:border-[#14F1D9] hover:text-[#14F1D9] transition-colors cursor-default bg-black/10"
                 >
                   {t}
                 </span>
@@ -343,19 +261,19 @@ export function ArtTechniques() {
             </div>
           </div>
 
-          <div className="p-8 sm:p-10 rounded-none bg-[#1A1A1A] border border-white/10 relative overflow-hidden group hover:border-white/30 transition-all">
+          <div className="p-6 sm:p-8 rounded-none bg-[#1A1A1A] border border-white/10 relative overflow-hidden group hover:border-white/30 transition-all">
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#14F1D9]/5 -z-10 group-hover:bg-[#14F1D9]/10 transition-colors"></div>
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-4">
               <h3 className="text-xs uppercase tracking-widest font-bold text-[#14F1D9] font-montserrat">
                 Цифра · Design <span className="text-[#14F1D9]">&</span> Tech
               </h3>
               <span className="text-[10px] font-mono text-white/40 uppercase">Интерфейсы & 3D</span>
             </div>
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap gap-2">
               {digitalTools.map((i) => (
                 <span
                   key={i}
-                  className="px-3.5 py-2 rounded-none bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs uppercase tracking-wider font-semibold hover:bg-[#14F1D9]/20 transition-colors cursor-default"
+                  className="px-3 py-1.5 rounded-none bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs uppercase tracking-wider font-semibold hover:bg-[#14F1D9]/20 transition-colors cursor-default"
                 >
                   {i}
                 </span>
@@ -364,110 +282,71 @@ export function ArtTechniques() {
           </div>
         </div>
 
-        {/* Gallery Filter Tabs */}
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
-          <div className="flex items-center gap-2">
-            <Layers className="w-4 h-4 text-[#14F1D9]" />
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-white">
-              Медиа-архив ({filteredMedia.length})
-            </span>
-          </div>
+      </div>
 
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setActiveTab("all")}
-              className={`px-4 py-2 text-xs font-mono uppercase tracking-wider font-bold transition-all ${
-                activeTab === "all"
-                  ? "bg-[#14F1D9] text-black border border-[#14F1D9]"
-                  : "bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white"
-              }`}
-            >
-              Все ({allMedia.length})
-            </button>
-            <button
-              onClick={() => setActiveTab("craft")}
-              className={`px-4 py-2 text-xs font-mono uppercase tracking-wider font-bold transition-all ${
-                activeTab === "craft"
-                  ? "bg-[#14F1D9] text-black border border-[#14F1D9]"
-                  : "bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white"
-              }`}
-            >
-              Крафт & Смола ({allMedia.filter((m) => m.category === "craft").length})
-            </button>
-            <button
-              onClick={() => setActiveTab("digital")}
-              className={`px-4 py-2 text-xs font-mono uppercase tracking-wider font-bold transition-all ${
-                activeTab === "digital"
-                  ? "bg-[#14F1D9] text-black border border-[#14F1D9]"
-                  : "bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white"
-              }`}
-            >
-              Цифра & Мокапы ({allMedia.filter((m) => m.category === "digital").length})
-            </button>
-            <button
-              onClick={() => setActiveTab("video")}
-              className={`px-4 py-2 text-xs font-mono uppercase tracking-wider font-bold transition-all ${
-                activeTab === "video"
-                  ? "bg-[#14F1D9] text-black border border-[#14F1D9]"
-                  : "bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white"
-              }`}
-            >
-              Видео процессов ({allMedia.filter((m) => m.category === "video").length})
-            </button>
-          </div>
-        </div>
+      {/* Compact Single Infinite Stream (135px height, natural proportions) */}
+      <div className="w-full relative overflow-hidden marquee-pause py-2">
+        <div className="flex animate-marquee-left gap-3">
+          {[...items, ...items].map((item, idx) => {
+            const widthClass =
+              item.aspect === "wide"
+                ? "w-[210px]"
+                : item.aspect === "portrait"
+                ? "w-[110px]"
+                : "w-[135px]";
 
-        {/* Masonry Grid with Natural Aspect Ratios (NO CROP!) */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
-          {filteredMedia.map((item, idx) => (
-            <div
-              key={item.src + idx}
-              onClick={() => openLightbox(item)}
-              className="group relative break-inside-avoid overflow-hidden border border-white/10 bg-[#1A1A1A] hover:border-[#14F1D9] transition-all cursor-pointer"
-            >
-              {item.type === "video" ? (
-                <div className="relative w-full bg-black/40">
-                  <video
-                    src={item.src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-auto object-contain block group-hover:scale-[1.02] transition-transform duration-500"
-                  />
-                  <div className="absolute top-3 right-3 px-2 py-1 bg-black/80 border border-[#14F1D9] text-[#14F1D9] text-[9px] font-mono uppercase font-bold tracking-widest flex items-center gap-1.5 shadow-lg">
-                    <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
-                    Видео
+            return (
+              <div
+                key={idx}
+                onClick={() => openLightbox(idx % items.length)}
+                className={`group relative shrink-0 h-[135px] ${widthClass} bg-[#16161A] border border-white/15 hover:border-[#14F1D9] transition-all cursor-pointer overflow-hidden rounded-none shadow-md`}
+              >
+                {item.type === "video" ? (
+                  <div className="relative w-full h-full bg-black">
+                    <video
+                      src={item.src}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-1.5 right-1.5 p-1 bg-black/80 border border-[#14F1D9]/60 text-[#14F1D9]">
+                      <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div className="relative w-full bg-black/30">
+                ) : (
                   <Image
                     src={item.src}
                     alt={item.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-contain block group-hover:scale-[1.02] transition-transform duration-500"
+                    fill
+                    sizes="220px"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                )}
+
+                {/* Compact hover tag overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-2.5">
+                  <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-[#14F1D9]">
+                    {item.tag}
+                  </span>
+                  <p className="text-[11px] font-montserrat font-bold text-white uppercase line-clamp-1 leading-tight mt-0.5">
+                    {item.title}
+                  </p>
                 </div>
-              )}
-
-              {/* Information Footbar on Card */}
-              <div className="p-3.5 bg-[#161616] border-t border-white/5 flex flex-col gap-1">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#14F1D9]">
-                  {item.tag}
-                </span>
-                <h4 className="font-montserrat text-xs font-bold text-white uppercase line-clamp-1 group-hover:text-[#14F1D9] transition-colors">
-                  {item.title}
-                </h4>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-
       </div>
 
-      {/* Lightbox Modal with Next/Prev and Full View */}
+      <div className="container mx-auto px-6 text-center mt-3">
+        <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+          💡 Наведи курсор, чтобы приостановить · Кликни для полного размера
+        </p>
+      </div>
+
+      {/* Lightbox Modal */}
       {activeLightboxItem && (
         <div
           role="dialog"
@@ -477,7 +356,7 @@ export function ArtTechniques() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-h-[95vh] max-w-5xl w-full border border-white/20 bg-[#1A1A1A] p-4 sm:p-6 shadow-2xl rounded-none flex flex-col"
+            className="relative max-h-[92vh] max-w-5xl w-full border border-white/20 bg-[#1A1A1A] p-4 sm:p-6 shadow-2xl rounded-none flex flex-col"
           >
             {/* Close button */}
             <button
@@ -535,11 +414,9 @@ export function ArtTechniques() {
                   {activeLightboxItem.title}
                 </h3>
               </div>
-              <div className="flex items-center gap-3">
-                <span className="text-xs font-mono text-white/40 uppercase">
-                  {lightboxIndex !== null ? `${lightboxIndex + 1} / ${filteredMedia.length}` : ""}
-                </span>
-              </div>
+              <span className="text-xs font-mono text-white/40 uppercase">
+                {lightboxIndex !== null ? `${lightboxIndex + 1} / ${items.length}` : ""}
+              </span>
             </div>
           </div>
         </div>
