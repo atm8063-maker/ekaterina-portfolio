@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-type BrandProduct = {
+type BrandItem = {
   id: string;
   title: string;
   badge: string;
@@ -11,44 +11,47 @@ type BrandProduct = {
   image: string;
 };
 
-const products: BrandProduct[] = [
+const brandItems: BrandItem[] = [
   {
     id: "sawdust-box",
     title: "Защитный короб для опила изделий",
     badge: "ПРОМЫШЛЕННЫЙ ДИЗАЙН",
-    desc: "Эргономичный прозрачный бокс для безопасной и чистой шлифовки изделий. Спроектировала конструкцию с нуля, после чего производитель запустил её в серийное производство.",
+    desc: "Эргономичный прозрачный бокс для безопасной и чистой шлифовки. Спроектировала конструкцию с нуля, запущена в серийное производство.",
     image: "/brand/sawdust-chamber.jpg",
   },
   {
     id: "toys-box",
     title: "Набор для создания ёлочных игрушек",
     badge: "КОЛЛАБОРАЦИЯ",
-    desc: "Эксклюзивный брендированный праздничный набор с авторскими силиконовыми молдами, смолой, красителями и пошаговым обучением.",
+    desc: "Эксклюзивный подарочный праздничный бокс с авторскими силиконовыми молдами, смолой, красителями и пошаговым обучением.",
     image: "/brand/toy-box-holiday.webp",
   },
-];
-
-const galleryPhotos = [
   {
-    src: "/brand/toy-box-flatlay.webp",
-    title: "Полный состав набора (молды, смола, красители, весы)",
+    id: "toy-flatlay",
+    title: "Полный состав и наполнение бокса",
+    badge: "КОМПЛЕКТАЦИЯ",
+    desc: "Комплект авторских силиконовых молдов, эпоксидная смола, весы, горелка, перламутры и красители.",
+    image: "/brand/toy-box-flatlay.webp",
   },
   {
-    src: "/brand/toy-finished-collection.webp",
-    title: "Ёлочные игрушки из смолы, созданные по урокам набора",
+    id: "toy-collection",
+    title: "Готовые авторские ёлочные игрушки",
+    badge: "РЕЗУЛЬТАТ",
+    desc: "Коллекция праздничных украшений из смолы, созданных по обучающей программе набора.",
+    image: "/brand/toy-finished-collection.webp",
   },
 ];
 
 export function ArtBrand() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<BrandItem | null>(null);
 
   return (
     <section id="brand" className="relative border-b border-white/10 bg-[#111111] py-24 scroll-mt-20">
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           
           {/* Левая колонка: Описание и факты */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
             <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight">
               Амбассадор бренда и продукция
             </h2>
@@ -78,16 +81,16 @@ export function ArtBrand() {
             </div>
           </div>
 
-          {/* Правая колонка: 2 главные карточки продуктов */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {products.map((item) => (
+          {/* Правая колонка: 4 карточки 2x2 сеткой вровень с текстом */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {brandItems.map((item) => (
               <article
                 key={item.id}
                 className="group flex flex-col overflow-hidden rounded-2xl border border-white/15 bg-[#1A1A1A] transition-all hover:border-[#14F1D9]/40"
               >
                 {/* Картинка */}
                 <div 
-                  onClick={() => setSelectedImage(item.image)}
+                  onClick={() => setSelectedImage(item)}
                   className="relative aspect-[4/3] w-full bg-black/40 overflow-hidden cursor-pointer"
                 >
                   <Image
@@ -105,12 +108,12 @@ export function ArtBrand() {
                 </div>
 
                 {/* Текстовый блок */}
-                <div className="flex flex-1 flex-col justify-between p-5 space-y-3">
+                <div className="flex flex-1 flex-col justify-between p-4 space-y-2">
                   <div>
-                    <h3 className="text-base font-bold text-white font-montserrat leading-snug">
+                    <h3 className="text-sm sm:text-base font-bold text-white font-montserrat leading-snug">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-xs leading-relaxed text-white/65 font-inter">
+                    <p className="mt-1.5 text-xs leading-relaxed text-white/65 font-inter">
                       {item.desc}
                     </p>
                   </div>
@@ -120,39 +123,6 @@ export function ArtBrand() {
           </div>
 
         </div>
-
-        {/* Дополнительные фото набора */}
-        <div className="mt-12 pt-8 border-t border-white/10">
-          <div className="flex items-center justify-between mb-4">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#14F1D9]">
-              Детали коллаборации и наполнение набора
-            </h4>
-            <span className="text-xs text-white/40">Нажмите для увеличения</span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {galleryPhotos.map((photo, idx) => (
-              <div
-                key={idx}
-                onClick={() => setSelectedImage(photo.src)}
-                className="group relative h-48 sm:h-56 overflow-hidden rounded-xl border border-white/10 bg-[#1A1A1A] cursor-pointer hover:border-[#14F1D9]/50 transition-all"
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-4">
-                  <p className="text-xs font-medium text-white/90 leading-snug">
-                    {photo.title}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
       </div>
 
       {/* Лайтбокс при клике */}
@@ -164,13 +134,18 @@ export function ArtBrand() {
           <div className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center">
             <div className="relative w-full h-[70vh] rounded-2xl overflow-hidden border border-white/20">
               <Image
-                src={selectedImage}
-                alt="Продукция"
+                src={selectedImage.image}
+                alt={selectedImage.title}
                 fill
                 className="object-contain"
               />
             </div>
-            <p className="mt-3 text-xs text-white/60">Кликните в любом месте, чтобы закрыть</p>
+            <div className="mt-3 text-center">
+              <span className="inline-block rounded-full bg-[#14F1D9] px-2.5 py-0.5 text-xs font-black uppercase text-black mb-1">
+                {selectedImage.badge}
+              </span>
+              <h3 className="text-base font-bold text-white font-montserrat">{selectedImage.title}</h3>
+            </div>
           </div>
         </div>
       )}
