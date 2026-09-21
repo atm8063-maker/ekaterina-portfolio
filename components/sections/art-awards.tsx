@@ -170,7 +170,7 @@ export function ArtAwards() {
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex items-center justify-between mb-6">
             <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#14F1D9]">
-              Другие конкурсные и финальные работы
+              Другие финальные работы
             </h4>
             <span className="text-xs text-white/40">Нажмите для увеличения</span>
           </div>
@@ -180,19 +180,14 @@ export function ArtAwards() {
               <div
                 key={piece.id}
                 onClick={() => setSelectedImage(piece)}
-                className="group relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-[#1A1A1A] cursor-pointer hover:border-[#14F1D9]/50 transition-all"
+                className="group relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-[#1A1A1A] cursor-pointer hover:border-[#14F1D9]/60 hover:shadow-lg transition-all"
               >
                 <Image
                   src={piece.image}
-                  alt={piece.title}
+                  alt={piece.title || "Конкурсная работа"}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 bg-gradient-to-t from-black/90 via-transparent to-transparent">
-                  <p className="text-[10px] font-medium leading-tight text-white line-clamp-2">
-                    {piece.title}
-                  </p>
-                </div>
               </div>
             ))}
           </div>
@@ -210,17 +205,21 @@ export function ArtAwards() {
             <div className="relative w-full h-[65vh] sm:h-[75vh] rounded-2xl overflow-hidden border border-white/20">
               <Image
                 src={selectedImage.image}
-                alt={selectedImage.title}
+                alt={selectedImage.title || "Конкурсная работа"}
                 fill
                 className="object-contain"
               />
             </div>
-            <div className="mt-4 text-center">
-              <span className="inline-block rounded-full bg-[#14F1D9] px-3 py-1 text-xs font-black uppercase text-black mb-1">
-                {selectedImage.badge}
-              </span>
-              <h3 className="text-lg font-bold text-white font-montserrat">{selectedImage.title}</h3>
-            </div>
+            {selectedImage.badge && (
+              <div className="mt-4 text-center">
+                <span className="inline-block rounded-full bg-[#14F1D9] px-3 py-1 text-xs font-black uppercase text-black mb-1">
+                  {selectedImage.badge}
+                </span>
+                {selectedImage.title && (
+                  <h3 className="text-lg font-bold text-white font-montserrat">{selectedImage.title}</h3>
+                )}
+              </div>
+            )}
           </div>
         </div>
       )}
