@@ -53,7 +53,7 @@ export function ArtBrand() {
           {/* Левая колонка: Описание и факты */}
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
             <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight">
-              Амбассадор бренда и продукция
+              Амбассадор бренда <span className="text-[#14F1D9]">&</span> Продукция
             </h2>
 
             <div className="space-y-4 text-white/70 text-base sm:text-lg leading-relaxed font-inter">
@@ -70,13 +70,13 @@ export function ArtBrand() {
 
             {/* Факты */}
             <div className="grid grid-cols-2 gap-3 pt-2">
-              <div className="rounded-xl border border-white/10 bg-[#1A1A1A] p-4">
+              <div className="border border-white/10 bg-[#1A1A1A] p-4 rounded-none">
                 <div className="font-montserrat text-lg font-black text-[#14F1D9]">АМБАССАДОР</div>
-                <div className="mt-1 text-xs text-white/60">Ведущего производителя смолы в РФ</div>
+                <div className="mt-1 text-xs text-white/60 font-inter">Ведущего производителя смолы в РФ</div>
               </div>
-              <div className="rounded-xl border border-white/10 bg-[#1A1A1A] p-4">
+              <div className="border border-white/10 bg-[#1A1A1A] p-4 rounded-none">
                 <div className="font-montserrat text-lg font-black text-white">В СЕРИИ</div>
-                <div className="mt-1 text-xs text-white/60">Авторский промышленный дизайн</div>
+                <div className="mt-1 text-xs text-white/60 font-inter">Авторский промышленный дизайн</div>
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@ export function ArtBrand() {
             {brandItems.map((item) => (
               <article
                 key={item.id}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-white/15 bg-[#1A1A1A] transition-all hover:border-[#14F1D9]/40"
+                className="group flex flex-col overflow-hidden rounded-none border border-white/15 bg-[#1A1A1A] transition-all hover:border-[#14F1D9]/40"
               >
                 {/* Картинка */}
                 <div 
@@ -101,7 +101,7 @@ export function ArtBrand() {
                     sizes="(max-width: 768px) 100vw, 30vw"
                   />
                   <div className="absolute top-3 left-3">
-                    <span className="inline-block rounded-full bg-[#14F1D9] px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-black shadow">
+                    <span className="inline-block rounded-none bg-[#14F1D9] px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-black shadow">
                       {item.badge}
                     </span>
                   </div>
@@ -132,7 +132,7 @@ export function ArtBrand() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 animate-in fade-in duration-200 cursor-zoom-out"
         >
           <div className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center">
-            <div className="relative w-full h-[70vh] rounded-2xl overflow-hidden border border-white/20">
+            <div className="relative w-full h-[70vh] rounded-none overflow-hidden border border-white/20">
               <Image
                 src={selectedImage.image}
                 alt={selectedImage.title}
@@ -141,7 +141,7 @@ export function ArtBrand() {
               />
             </div>
             <div className="mt-3 text-center">
-              <span className="inline-block rounded-full bg-[#14F1D9] px-2.5 py-0.5 text-xs font-black uppercase text-black mb-1">
+              <span className="inline-block rounded-none bg-[#14F1D9] px-3 py-1 text-xs font-black uppercase text-black mb-1">
                 {selectedImage.badge}
               </span>
               <h3 className="text-base font-bold text-white font-montserrat">{selectedImage.title}</h3>

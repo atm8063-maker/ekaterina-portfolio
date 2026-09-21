@@ -142,13 +142,13 @@ const items: Testimonial[] = [
 
 function MiniCard({ item }: { item: Testimonial }) {
   return (
-    <article className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#1A1A1A] p-3">
+    <article className="flex items-center gap-3 rounded-none border border-white/10 bg-[#1A1A1A] p-3">
       {item.image ? (
-        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-black/40">
+        <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-none bg-black/40">
           <Image src={item.image} alt={item.author} fill className="object-cover" />
         </div>
       ) : (
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-black/30">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-none bg-black/30">
           <Quote className="h-5 w-5 text-[#14F1D9]" strokeWidth={2.5} />
         </div>
       )}

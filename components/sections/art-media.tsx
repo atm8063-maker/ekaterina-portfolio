@@ -109,7 +109,7 @@ export function ArtMedia() {
         {items.map((item) => (
           <article
             key={item.outlet + item.headline}
-            className="group shrink-0 snap-center flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1A1A1A] w-[280px] sm:w-[320px]"
+            className="group shrink-0 snap-center flex flex-col overflow-hidden rounded-none border border-white/10 bg-[#1A1A1A] w-[280px] sm:w-[320px]"
           >
             <div className="relative w-full aspect-[3/4] bg-black/40">
               <Image
@@ -121,7 +121,7 @@ export function ArtMedia() {
                 }`}
               />
               {item.secondaryImage && (
-                <div className="absolute bottom-3 right-3 h-16 w-16 overflow-hidden rounded-lg border-2 border-[#111111] shadow-lg sm:h-20 sm:w-20">
+                <div className="absolute bottom-3 right-3 h-16 w-16 overflow-hidden rounded-none border-2 border-[#111111] shadow-lg sm:h-20 sm:w-20">
                   <Image src={item.secondaryImage} alt={`${item.outlet}: со съёмки`} fill className="object-cover" />
                 </div>
               )}

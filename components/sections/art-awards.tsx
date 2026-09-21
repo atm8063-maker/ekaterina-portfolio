@@ -90,7 +90,7 @@ export function ArtAwards() {
           {/* Левая колонка: Текст и статистика */}
           <div className="lg:col-span-5 space-y-6">
             <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight">
-              Победы, финалы и судейство
+              Победы, финалы <span className="text-[#14F1D9]">&</span> Судейство
             </h2>
 
             <div className="space-y-4 text-white/70 text-base sm:text-lg leading-relaxed font-inter">
@@ -104,24 +104,24 @@ export function ArtAwards() {
 
             {/* Метрики */}
             <div className="grid grid-cols-2 gap-3 pt-2">
-              <div className="rounded-xl border border-white/10 bg-[#1A1A1A] p-4 transition-colors hover:border-[#14F1D9]/40">
+              <div className="border border-white/10 bg-[#1A1A1A] p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
                 <div className="font-montserrat text-2xl font-black text-[#14F1D9]">1 МЕСТО</div>
-                <div className="mt-1 text-xs text-white/60">Международный конкурс Resinart Kingdom</div>
+                <div className="mt-1 text-xs text-white/60 font-inter">Международный конкурс Resinart Kingdom</div>
               </div>
 
-              <div className="rounded-xl border border-white/10 bg-[#1A1A1A] p-4 transition-colors hover:border-[#14F1D9]/40">
+              <div className="border border-white/10 bg-[#1A1A1A] p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
                 <div className="font-montserrat text-2xl font-black text-[#14F1D9]">ПОБЕДИТЕЛЬ</div>
-                <div className="mt-1 text-xs text-white/60">Всероссийская «Арт-гонка»</div>
+                <div className="mt-1 text-xs text-white/60 font-inter">Всероссийская «Арт-гонка»</div>
               </div>
 
-              <div className="rounded-xl border border-white/10 bg-[#1A1A1A] p-4 transition-colors hover:border-[#14F1D9]/40">
+              <div className="border border-white/10 bg-[#1A1A1A] p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
                 <div className="font-montserrat text-2xl font-black text-white">ЖЮРИ</div>
-                <div className="mt-1 text-xs text-white/60">Судейство профессиональных конкурсов</div>
+                <div className="mt-1 text-xs text-white/60 font-inter">Судейство профессиональных конкурсов</div>
               </div>
 
-              <div className="rounded-xl border border-white/10 bg-[#1A1A1A] p-4 transition-colors hover:border-[#14F1D9]/40">
+              <div className="border border-white/10 bg-[#1A1A1A] p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
                 <div className="font-montserrat text-2xl font-black text-white">10+ ФИНАЛОВ</div>
-                <div className="mt-1 text-xs text-white/60">Регулярные выходы в финал арт-битв</div>
+                <div className="mt-1 text-xs text-white/60 font-inter">Регулярные выходы в финал арт-битв</div>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ export function ArtAwards() {
                 <article
                   key={item.id}
                   onClick={() => setSelectedImage(item)}
-                  className="group relative h-[380px] sm:h-full overflow-hidden rounded-2xl border border-white/15 bg-[#1A1A1A] cursor-pointer"
+                  className="group relative h-[380px] sm:h-full overflow-hidden rounded-none border border-white/15 bg-[#1A1A1A] cursor-pointer"
                 >
                   <Image
                     src={item.image}
@@ -146,14 +146,14 @@ export function ArtAwards() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-transparent transition-opacity duration-300 group-hover:from-black/90" />
                   
                   <div className="absolute top-4 left-4">
-                    <span className="inline-block rounded-full bg-[#14F1D9] px-3 py-1 text-[11px] font-black uppercase tracking-wider text-black shadow-lg">
+                    <span className="inline-block rounded-none bg-[#14F1D9] px-3 py-1 text-[11px] font-black uppercase tracking-wider text-black shadow-lg">
                       {item.badge}
                     </span>
                   </div>
 
                   <div className="absolute bottom-4 left-4 right-4 z-10">
                     {item.category && (
-                      <p className="text-xs text-white/60 uppercase tracking-wider mb-1">{item.category}</p>
+                      <p className="text-xs text-white/60 uppercase tracking-wider mb-1 font-inter">{item.category}</p>
                     )}
                     <h3 className="text-lg font-bold text-white font-montserrat leading-snug">
                       {item.title}
@@ -172,7 +172,7 @@ export function ArtAwards() {
             <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#14F1D9]">
               Другие финальные работы
             </h4>
-            <span className="text-xs text-white/40">Нажмите для увеличения</span>
+            <span className="text-xs text-white/40 font-inter">Нажмите для увеличения</span>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
@@ -180,7 +180,7 @@ export function ArtAwards() {
               <div
                 key={piece.id}
                 onClick={() => setSelectedImage(piece)}
-                className="group relative aspect-square overflow-hidden rounded-xl border border-white/10 bg-[#1A1A1A] cursor-pointer hover:border-[#14F1D9]/60 hover:shadow-lg transition-all"
+                className="group relative aspect-square overflow-hidden rounded-none border border-white/10 bg-[#1A1A1A] cursor-pointer hover:border-[#14F1D9]/60 hover:shadow-lg transition-all"
               >
                 <Image
                   src={piece.image}
@@ -202,7 +202,7 @@ export function ArtAwards() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 animate-in fade-in duration-200 cursor-zoom-out"
         >
           <div className="relative max-w-3xl w-full max-h-[90vh] flex flex-col items-center">
-            <div className="relative w-full h-[65vh] sm:h-[75vh] rounded-2xl overflow-hidden border border-white/20">
+            <div className="relative w-full h-[65vh] sm:h-[75vh] rounded-none overflow-hidden border border-white/20">
               <Image
                 src={selectedImage.image}
                 alt={selectedImage.title || "Конкурсная работа"}
@@ -212,7 +212,7 @@ export function ArtAwards() {
             </div>
             {selectedImage.badge && (
               <div className="mt-4 text-center">
-                <span className="inline-block rounded-full bg-[#14F1D9] px-3 py-1 text-xs font-black uppercase text-black mb-1">
+                <span className="inline-block rounded-none bg-[#14F1D9] px-3 py-1 text-xs font-black uppercase text-black mb-1">
                   {selectedImage.badge}
                 </span>
                 {selectedImage.title && (
