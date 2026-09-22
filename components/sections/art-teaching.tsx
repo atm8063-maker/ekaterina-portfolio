@@ -332,13 +332,13 @@ export function ArtTeaching() {
           </div>
         </div>
 
-        {/* Right Column: Hero Featured Dual Videos (ArtMuza video + Tutorial video) */}
-        <div className="lg:col-span-6 grid sm:grid-cols-2 gap-4">
+        {/* Right Column: Hero Featured Dual Videos (ArtMuza video + Tutorial video in vertical 9:16) */}
+        <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
           
-          {/* Main Video 1: ArtMuza */}
+          {/* Main Video 1: ArtMuza (Vertical) */}
           <div
             onClick={() => openLightbox(mediaList[0])}
-            className="relative h-[280px] sm:h-[360px] rounded-none overflow-hidden bg-[#1A1A1A] border border-white/15 hover:border-[#14F1D9] transition-all group cursor-pointer"
+            className="relative aspect-[9/16] w-full max-h-[520px] rounded-none overflow-hidden bg-[#1A1A1A] border border-white/15 hover:border-[#14F1D9] transition-all group cursor-pointer"
           >
             <video
               src="/art-muza/video_107@04-08-2026_22-24-05.mp4"
@@ -368,10 +368,10 @@ export function ArtTeaching() {
             </div>
           </div>
 
-          {/* Main Video 2: Tutorial */}
+          {/* Main Video 2: Tutorial (Vertical) */}
           <div
             onClick={() => openLightbox(mediaList[1])}
-            className="relative h-[280px] sm:h-[360px] rounded-none overflow-hidden bg-[#1A1A1A] border border-white/15 hover:border-[#14F1D9] transition-all group cursor-pointer"
+            className="relative aspect-[9/16] w-full max-h-[520px] rounded-none overflow-hidden bg-[#1A1A1A] border border-white/15 hover:border-[#14F1D9] transition-all group cursor-pointer"
           >
             <video
               src="/lessons/video_49@03-08-2026_23-50-53.mp4"
