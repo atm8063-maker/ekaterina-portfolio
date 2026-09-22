@@ -17,7 +17,7 @@ type TeachingMedia = {
 };
 
 const mediaList: TeachingMedia[] = [
-  // Форум АртМуза (СПб)
+  // Top Featured Videos
   {
     type: 'video',
     src: '/art-muza/video_107@04-08-2026_22-24-05.mp4',
@@ -27,6 +27,17 @@ const mediaList: TeachingMedia[] = [
     badge: 'СПИКЕР & МК',
     location: 'Музей АртМуза · СПб',
   },
+  {
+    type: 'video',
+    src: '/lessons/video_49@03-08-2026_23-50-53.mp4',
+    category: 'online',
+    title: 'Пошаговая методика заливки',
+    subtitle: 'Видеоурок: создание морской волны и пены',
+    badge: 'ТУТОРИАЛ',
+    location: 'Онлайн уроки',
+  },
+
+  // Форум АртМуза (СПб)
   {
     type: 'image',
     src: '/art-muza/photo_3254@04-08-2026_21-08-10.jpg',
@@ -121,24 +132,6 @@ const mediaList: TeachingMedia[] = [
   },
 
   // Онлайн-школа & Видеоуроки
-  {
-    type: 'video',
-    src: '/lessons/video_135@04-08-2026_22-24-33.mp4',
-    category: 'online',
-    title: 'Запись обучающих видеоуроков',
-    subtitle: 'Макро-съёмка процесса и детальный разбор',
-    badge: 'ВИДЕОКУРС',
-    location: 'Онлайн-школа',
-  },
-  {
-    type: 'video',
-    src: '/lessons/video_49@03-08-2026_23-50-53.mp4',
-    category: 'online',
-    title: 'Пошаговая методика заливки',
-    subtitle: 'Видео-туториалы для начинающих и профи',
-    badge: 'ТУТОРИАЛ',
-    location: 'Онлайн уроки',
-  },
   {
     type: 'image',
     src: '/lessons/photo_3011@31-07-2026_18-44-16.jpg',
@@ -291,32 +284,35 @@ export function ArtTeaching() {
             </div>
           </div>
 
-          {/* Spiker Photo Card */}
+          {/* Second Video Card (Tutorial) */}
           <div
             onClick={() => openLightbox(mediaList[1])}
             className="relative h-[280px] sm:h-[360px] rounded-none overflow-hidden bg-[#1A1A1A] border border-white/15 hover:border-[#14F1D9] transition-all group cursor-pointer"
           >
-            <Image
-              src="/art-muza/photo_3254@04-08-2026_21-08-10.jpg"
-              alt="Спикер на 1-м форуме смолянистов"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            <video
+              src="/lessons/video_49@03-08-2026_23-50-53.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none" />
             
-            <div className="absolute top-3 left-3 z-10 px-2.5 py-1 bg-black/80 border border-white/20 text-white text-[10px] font-inter font-bold uppercase tracking-wider">
-              Спикер форума
+            <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 bg-black/80 border border-[#14F1D9] text-[#14F1D9] text-[10px] font-inter font-bold uppercase tracking-wider">
+              <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
+              Видео • Онлайн-туториал
             </div>
 
             <div className="absolute bottom-3 left-3 right-3 z-10">
               <span className="text-[10px] font-inter font-bold uppercase tracking-wider text-[#14F1D9]">
-                1-й Форум смолянистов
+                Пошаговая методика
               </span>
               <h3 className="font-montserrat text-sm font-bold text-white uppercase mt-0.5">
-                Авторская лекция
+                Техника заливки смолы
               </h3>
               <p className="text-xs text-white/70 font-inter mt-0.5">
-                Выступление перед сообществом
+                Обучающий разбор создания морских волн
               </p>
             </div>
           </div>
