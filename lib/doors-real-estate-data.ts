@@ -429,6 +429,12 @@ export const doorsRealEstateData: DoorsRealEstateData = {
       description: "Мобильный интерфейс в руке пользователя с банковской картой: мгновенное внесение депозита и фиксация цены лота."
     },
     {
+      title: "iPhone Showcase на мультицветовом фоне",
+      type: "Editorial Mockup",
+      src: "/Кейсы/08-mockup-real-estate/Free iPhone mockup on multicolored background (Mockuuups Studio).jpg",
+      description: "Презентация мобильной адаптации каталога на ярком геометрическом фоне, подчеркивающем 4-цветную цветовую палитру проекта."
+    },
+    {
       title: "iPhone 12 Pro 3D Showcase (2716 × 2037 px)",
       type: "Photorealistic 3D Render",
       src: "/Кейсы/08-mockup-real-estate/figma_exports/05_iphone_mockup.png",
