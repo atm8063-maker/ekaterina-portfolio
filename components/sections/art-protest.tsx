@@ -635,8 +635,8 @@ function SteppedCollage({
 
       </div>
 
-      {/* Concept Wall Plaque directly under the Artwork */}
-      <div className="mt-3 w-full max-w-[640px] z-20 flex items-center justify-start px-1">
+      {/* Concept Wall Plaque directly under the Artwork - Centered & Higher */}
+      <div className="mt-1.5 w-full max-w-[640px] z-20 flex items-center justify-center px-1">
         <button
           data-interactive="true"
           onPointerDown={(e) => e.stopPropagation()}
