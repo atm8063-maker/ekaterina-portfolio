@@ -761,31 +761,37 @@ function SteppedCollage({
 function ManifestoPanel() {
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
-      <div className="w-full max-w-[640px] h-[360px] sm:h-[390px] relative flex flex-col justify-between p-6 bg-white/85 border-[4px] border-black shadow-xl backdrop-blur-sm z-20">
-        {/* Extended Architectural Lines 4px behind plaque */}
-        <div className="absolute top-[22%] -left-8 -right-8 h-[4px] bg-black pointer-events-none -z-10" />
-        <div className="absolute bottom-[22%] -left-8 -right-8 h-[4px] bg-black pointer-events-none -z-10" />
-        <div className="absolute left-[10%] top-0 -bottom-6 w-[4px] bg-black pointer-events-none -z-10" />
-        <div className="absolute right-[10%] top-0 -bottom-6 w-[4px] bg-black pointer-events-none -z-10" />
+      <div className="w-full max-w-[640px] h-[360px] sm:h-[390px] relative flex flex-col justify-between py-6 px-4 sm:px-8 bg-white/95 border-[4px] border-black shadow-xl backdrop-blur-sm z-20">
+        {/* Extended Architectural Lines 4px behind / on perimeter */}
+        <div className="absolute top-[16%] -left-8 -right-8 h-[4px] bg-black pointer-events-none -z-10" />
+        <div className="absolute bottom-[16%] -left-8 -right-8 h-[4px] bg-black pointer-events-none -z-10" />
+        <div className="absolute left-[8%] top-0 -bottom-6 w-[4px] bg-black pointer-events-none -z-10" />
+        <div className="absolute right-[8%] top-0 -bottom-6 w-[4px] bg-black pointer-events-none -z-10" />
 
-        <div className="relative z-20">
-          <span className="text-xs font-montserrat font-black uppercase tracking-widest text-black block border-b-2 border-black pb-1.5">
-            Концепция серии
-          </span>
-        </div>
+        {/* Inner Content Constrained to center to guarantee no line collision */}
+        <div className="w-full max-w-[470px] mx-auto flex flex-col justify-between h-full py-1">
+          {/* Top Header */}
+          <div className="relative z-20 pb-1 border-b-2 border-black">
+            <span className="text-xs font-montserrat font-black uppercase tracking-widest text-black block">
+              Концепция серии
+            </span>
+          </div>
 
-        <div className="relative z-20 my-auto py-2 space-y-3">
-          <p className="text-xs sm:text-sm font-sans leading-relaxed text-black font-bold">
-            «Каждая работа — это прежде всего не красота, а концепция и идея, притом чаще всего болезненная. В этом блоке собраны работы, у которых визуальная составляющая вторична, на первый план выходят образы и метафоры.
-          </p>
-          <p className="text-xs sm:text-sm font-sans leading-relaxed text-black font-bold">
-            Смола, гипс, глина, пигменты и красители выступают здесь не как декор, а как прямой манифест свободы и желания высказаться через цвет и свет».
-          </p>
-        </div>
+          {/* Center Text Body */}
+          <div className="relative z-20 my-auto py-3 space-y-2.5">
+            <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
+              «Каждая работа — это прежде всего не красота, а концепция и идея, притом чаще всего болезненная. В этом блоке собраны работы, у которых визуальная составляющая вторична, на первый план выходят образы и метафоры.
+            </p>
+            <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
+              Смола, гипс, глина, пигменты и красители выступают здесь не как декор, а как прямой манифест свободы и желания высказаться через цвет и свет».
+            </p>
+          </div>
 
-        <div className="relative z-20 pt-2 border-t-2 border-black flex items-center justify-between text-xs font-montserrat text-black uppercase font-bold tracking-wider">
-          <span>Екатерина · Fir Tree Art</span>
-          <span className="text-black/80 font-sans font-semibold">7 авторских арт-объектов</span>
+          {/* Bottom Footer Metadata */}
+          <div className="relative z-20 pt-1.5 border-t-2 border-black flex items-center justify-between text-[10px] sm:text-xs font-montserrat text-black uppercase font-bold tracking-wider">
+            <span>Екатерина · Fir Tree Art</span>
+            <span className="text-black/80 font-sans font-semibold">7 авторских арт-объектов</span>
+          </div>
         </div>
       </div>
     </div>

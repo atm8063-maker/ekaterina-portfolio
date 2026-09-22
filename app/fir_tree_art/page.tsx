@@ -68,10 +68,12 @@ export default function ArtPage() {
 
       <div className="relative z-10">
         
-        {/* 2. ИСКУССТВО В ПРОСТРАНСТВЕ */}
-        <div id="space" className="scroll-mt-4">
+        {/* 2. ГАЛЕРЕЯ РАБОТ / ИСКУССТВО В ПРОСТРАНСТВЕ (Белый блок с картиной) */}
+        <div id="gallery" className="scroll-mt-4">
+          <div id="space" className="scroll-mt-4" />
           <div id="manifesto" className="scroll-mt-4" />
           <div id="art-space" className="scroll-mt-4" />
+          <div id="art-gallery" className="scroll-mt-4" />
           <ArtSpace />
         </div>
 
@@ -82,9 +84,9 @@ export default function ArtPage() {
         </div>
 
         {/* 4. ВСТАВКА «ИЗ ГАЛЕРЕИ» (5-VIDEO PANELS) */}
-        <div id="gallery" className="relative w-full overflow-hidden border-b border-white/10 scroll-mt-4">
-          <div id="video-panels" className="scroll-mt-4" />
-          <div id="art-gallery" className="scroll-mt-4" />
+        <div id="video-panels" className="relative w-full overflow-hidden border-b border-white/10 scroll-mt-4">
+          <div id="video-gallery" className="scroll-mt-4" />
+          <div id="videos" className="scroll-mt-4" />
           <ArtGalleryTest />
         </div>
 
