@@ -227,7 +227,7 @@ const carouselMedia: TeachingMedia[] = [
     type: 'image',
     src: '/lessons/photo_3067@31-07-2026_19-44-02.jpg',
     category: 'online',
-    title: 'Кураторство онлайн-школы',
+    title: 'Кураторство в международной онлайн-школе',
     subtitle: 'Поддержка студентов и разбор домашних заданий',
     badge: 'КУРАТОРСТВО',
     location: 'Онлайн-платформа',
@@ -299,7 +299,7 @@ export function ArtTeaching() {
               Выступала с авторской лекцией и проводила живой мастер-класс на 1-м форуме смолянистов в музее современного искусства <strong className="text-white font-semibold">Артмуза</strong> (Санкт-Петербург).
             </p>
             <p>
-              Проводила масштабные прямые эфиры по колористике и физике смолы с охватом в <strong className="text-[#14F1D9] font-semibold">несколько тысяч человек</strong>, организовывала студийные и выездные воркшопы в России, Турции и Черногории, а также курировала студентов в онлайн-школе.
+              Проводила масштабные прямые эфиры по колористике и физике смолы с охватом в <strong className="text-[#14F1D9] font-semibold">несколько тысяч человек</strong>, организовывала студийные и выездные воркшопы в России, Турции и Черногории, а также курировала студентов в международной онлайн-школе.
             </p>
           </div>
 
@@ -334,7 +334,7 @@ export function ArtTeaching() {
                 <GraduationCap className="w-4 h-4" />
                 <span className="text-xs font-montserrat font-bold uppercase">Онлайн-школа</span>
               </div>
-              <p className="text-xs text-white/60 font-inter">Кураторство студентов и авторская методология</p>
+              <p className="text-xs text-white/60 font-inter">Кураторство студентов в международной онлайн-школе</p>
             </div>
           </div>
         </div>
