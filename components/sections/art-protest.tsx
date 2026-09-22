@@ -718,40 +718,24 @@ export function ArtProtest() {
   };
 
   return (
-    <section id="art-protest" className="relative w-full bg-[#111111] overflow-hidden scroll-mt-20 border-b border-white/10">
+    <section id="art-protest" className="relative w-full bg-[#111111] overflow-hidden scroll-mt-20 border-b border-white/10 group/section">
       
-      {/* Top Section Header & Controls */}
-      <div className="container mx-auto px-6 pt-10 pb-4 flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <span className="text-xs font-montserrat font-bold uppercase tracking-widest text-[#14F1D9]">
-            Виртуальная галерея вдоль стены
-          </span>
-          <h2 className="text-2xl sm:text-4xl font-black uppercase text-white font-montserrat mt-1">
-            Артивизм <span className="text-[#14F1D9]">&</span> Честность
-          </h2>
-          <p className="text-xs sm:text-sm text-white/60 font-sans mt-1">
-            Асимметричные коллажи в реальных пропорциях каждой работы на бетонной стене. Листай вправо.
-          </p>
-        </div>
+      {/* Floating Scroll Controls over the Wall */}
+      <button
+        onClick={() => scrollByAmount(-700)}
+        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
+        aria-label="Листать влево"
+      >
+        <ChevronLeft className="h-6 w-6" />
+      </button>
 
-        {/* Scroll Controls */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => scrollByAmount(-600)}
-            className="flex h-9 w-9 items-center justify-center border-2 border-white/20 bg-[#1A1A1A] text-white hover:border-[#14F1D9] hover:text-[#14F1D9] transition-all rounded-none shadow-md"
-            aria-label="Листать влево"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            onClick={() => scrollByAmount(600)}
-            className="flex h-9 w-9 items-center justify-center border-2 border-white/20 bg-[#1A1A1A] text-white hover:border-[#14F1D9] hover:text-[#14F1D9] transition-all rounded-none shadow-md"
-            aria-label="Листать вправо"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        </div>
-      </div>
+      <button
+        onClick={() => scrollByAmount(700)}
+        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
+        aria-label="Листать вправо"
+      >
+        <ChevronRight className="h-6 w-6" />
+      </button>
 
       {/* The Continuous Concrete Wall Track */}
       <div
@@ -761,7 +745,7 @@ export function ArtProtest() {
         onPointerUp={endDrag}
         onPointerLeave={endDrag}
         onDragStart={(e) => e.preventDefault()}
-        className="relative w-full h-[660px] sm:h-[720px] lg:h-[780px] overflow-x-auto overflow-y-hidden flex flex-nowrap cursor-grab select-none snap-x snap-mandatory hide-scrollbar bg-transparent"
+        className="relative w-full h-[680px] sm:h-[740px] lg:h-[800px] overflow-x-auto overflow-y-hidden flex flex-nowrap cursor-grab select-none snap-x snap-mandatory hide-scrollbar bg-transparent"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
