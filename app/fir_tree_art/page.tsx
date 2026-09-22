@@ -90,16 +90,18 @@ export default function ArtPage() {
           <ArtGalleryTest />
         </div>
 
-        {/* 5. CONTEMPORARY ART */}
-        <div id="contemporary" className="scroll-mt-4">
+        {/* 5. CONTEMPORARY ART / АРТИВИЗМ & ЧЕСТНОСТЬ (Светлый блок с рукой) */}
+        <div id="artivism" className="scroll-mt-4">
+          <div id="contemporary" className="scroll-mt-4" />
           <div id="contemporary-art" className="scroll-mt-4" />
+          <div id="art-contemporary" className="scroll-mt-4" />
           <ArtContemporary />
         </div>
 
-        {/* 6. БЛОК АРТИВИЗМ И ЧЕСТНОСТЬ (Скролл) */}
+        {/* 6. БЛОК АРТИВИЗМ И ЧЕСТНОСТЬ (Скролл на бетоне) */}
         <div id="protest" className="scroll-mt-4">
-          <div id="artivism" className="scroll-mt-4" />
           <div id="art-protest" className="scroll-mt-4" />
+          <div id="art-gallery-concrete" className="scroll-mt-4" />
           <ArtProtest />
         </div>
 

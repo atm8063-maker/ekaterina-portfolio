@@ -82,7 +82,7 @@ export default function Header() {
                     <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
                   </Link>
                   <Link 
-                    href="/fir_tree_art#protest" 
+                    href="/fir_tree_art#artivism" 
                     className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
                   >
                     <span>Артивизм</span>
