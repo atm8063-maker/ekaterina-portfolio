@@ -28,10 +28,10 @@ const artworksData: Artwork[] = [
     id: 'work-feb',
     number: '01',
     title: 'Февраль 22-го',
-    subtitle: 'Контрасты & Графика',
-    concept: 'Архитектоника формы и акцентная геометрия на стыке природного хаоса и строгого минимализма.',
-    materials: 'Эпоксидная смола, смешанная техника, текстура',
-    year: '2023–2024',
+    subtitle: 'Артивизм & Протест',
+    concept: 'Исследование переломного момента, боли и внутренней трансформации через сочетание необработанных материалов и хрома.',
+    materials: 'Масло, эпоксидная смола, глина, гипс, маркеры, хром',
+    year: '2022',
     media: [
       {
         type: 'image',
@@ -47,20 +47,14 @@ const artworksData: Artwork[] = [
       },
       {
         type: 'image',
-        src: '/art-protest/папка 2/photo_3359@04-08-2026_21-08-46.jpg',
-        label: 'Фрагмент',
-        aspect: '1024 / 1280',
-      },
-      {
-        type: 'image',
         src: '/art-protest/папка 2/photo_3291@04-08-2026_21-08-4231.jpg',
-        label: 'Макро',
+        label: 'Деталь: Текстура и смола',
         aspect: '1024 / 1280',
       },
       {
         type: 'image',
         src: '/art-protest/папка 2/photo_3362@04-08-2026_21-08-46.jpg',
-        label: 'Деталь',
+        label: 'Деталь: Хром и гипс',
         aspect: '1024 / 1280',
       },
     ],
@@ -371,39 +365,34 @@ function SteppedCollage({
       <div className="relative w-full max-w-[640px] h-[430px] sm:h-[470px]">
         
         {/* ========================================================= */}
-        {/* CASE 1: Февраль 22-го (5 items, photo_3360_1 hero)       */}
+        {/* CASE 1: Февраль 22-го (2 Left, 1 Hero, 1 Full Video)      */}
         {/* ========================================================= */}
         {artwork.id === 'work-feb' && (
           <div className="relative w-full h-full">
             {/* Bold 4px Lines (top-0 so no crossing above title) */}
-            <div className="absolute top-[36%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute top-[72%] -left-6 -right-6 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[165px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[430px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[172px] -left-8 right-[240px] h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[75%] -left-6 -right-6 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[139px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[401px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
 
-            {/* Item 2 (Bottom Left): photo_3359 (width 150px, height 187px) */}
-            <div className="absolute left-0 bottom-[8%] z-20">
-              <ProportionalItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '187px' }} />
+            {/* Left Top: photo_3291 (aspect: 1024/1280, height 168px) */}
+            <div className="absolute left-0 top-[2%] z-20">
+              <ProportionalItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '168px' }} />
             </div>
 
-            {/* Item 0 (Center Main Hero): photo_3360_1 (width ~246px, height 330px) */}
-            <div className="absolute left-[165px] top-[4%] z-20">
-              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '330px' }} />
+            {/* Left Bottom: photo_3362 (aspect: 1024/1280, height 168px) */}
+            <div className="absolute left-0 top-[174px] z-20">
+              <ProportionalItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '168px' }} />
             </div>
 
-            {/* Item 1 (Top Right): video_102 (width 110px, height 195px) */}
-            <div className="absolute left-[430px] top-0 z-20">
-              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '195px' }} />
+            {/* Center Main Hero: photo_3360_1 (aspect: 874/1170, height 340px) */}
+            <div className="absolute left-[143px] top-[2%] z-20">
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '340px' }} />
             </div>
 
-            {/* Item 3 (Bottom Right 1): photo_3291 (width 100px, height 125px) */}
-            <div className="absolute left-[430px] top-[195px] z-20">
-              <ProportionalItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '125px' }} />
-            </div>
-
-            {/* Item 4 (Bottom Right 2): photo_3362 (width 100px, height 125px) */}
-            <div className="absolute left-[535px] top-[195px] z-20">
-              <ProportionalItem item={m[4]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '125px' }} />
+            {/* Right Full Height Video: video_102 (aspect: 9/16, height 340px) */}
+            <div className="absolute left-[405px] top-[2%] z-20">
+              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '340px' }} />
             </div>
           </div>
         )}
