@@ -635,32 +635,20 @@ function SteppedCollage({
 
       </div>
 
-      {/* Museum Wall Plaque directly under the Artwork */}
-      <div
-        data-interactive="true"
-        onPointerDown={(e) => e.stopPropagation()}
-        onClick={(e) => {
-          e.stopPropagation();
-          onOpenConcept(artwork);
-        }}
-        className="mt-3 w-full max-w-[640px] z-20 flex items-center justify-between gap-3 px-3.5 py-1.5 bg-white/90 hover:bg-[#14F1D9] border-[3px] border-black transition-all cursor-pointer shadow-md group/plaque"
-      >
-        <div className="flex items-center gap-2 overflow-hidden">
-          <span className="text-[10px] font-montserrat font-black uppercase text-black bg-[#14F1D9] group-hover/plaque:bg-white px-1.5 py-0.5 border border-black shrink-0 tracking-wider">
-            ОПИСАНИЕ
-          </span>
-          <span className="text-xs font-montserrat font-black uppercase tracking-wider text-black">
-            КОНЦЕПЦИЯ
-          </span>
-          <span className="text-xs text-black/70 font-sans font-medium hidden sm:inline-block truncate">
-            — {artwork.concept}
-          </span>
-        </div>
-        <div className="flex items-center gap-1 shrink-0">
-          <span className="text-[10px] sm:text-xs font-montserrat font-black uppercase text-black group-hover/plaque:translate-x-0.5 transition-transform flex items-center gap-0.5">
-            ЧИТАТЬ <ChevronRight className="w-3.5 h-3.5" />
-          </span>
-        </div>
+      {/* Concept Wall Plaque directly under the Artwork */}
+      <div className="mt-3 w-full max-w-[640px] z-20 flex items-center justify-start px-1">
+        <button
+          data-interactive="true"
+          onPointerDown={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenConcept(artwork);
+          }}
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 hover:bg-[#14F1D9] text-black border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md group/btn"
+        >
+          <span>КОНЦЕПЦИЯ</span>
+          <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform stroke-[2.5]" />
+        </button>
       </div>
 
     </div>
