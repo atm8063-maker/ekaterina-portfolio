@@ -17,6 +17,7 @@ export type Artwork = {
   title: string;
   subtitle: string;
   concept: string;
+  fullConcept?: { heading: string; text: string }[];
   materials: string;
   year: string;
   media: MediaItem[];
@@ -29,7 +30,25 @@ const artworksData: Artwork[] = [
     number: '01',
     title: 'Февраль 22-го',
     subtitle: 'Артивизм & Протест',
-    concept: 'Исследование переломного момента, боли и внутренней трансформации через сочетание необработанных материалов и хрома.',
+    concept: 'Работа передаёт состояние катастрофы, шока и вынужденного молчания через визуальные метафоры льда, трещин и скованности.',
+    fullConcept: [
+      {
+        heading: 'Ловушка и паутина цензуры',
+        text: 'Лёд, созданный при помощи эпоксидной смолы. Переплетающиеся белые трещины напоминают липкую паутину или разорванную сеть, сковывающую пространство. Всё это символизирует тотальный контроль, атмосферу страха и невозможность пробить стену запретов, чтобы быть услышанным.',
+      },
+      {
+        heading: 'Безгласный протест',
+        text: 'В центре композиции руки, которые пытаются пробить лёд. Это жест несогласия, внутренней силы и попытки сопротивления, сталкивающейся с непреодолимой преградой.',
+      },
+      {
+        heading: 'Призрак свободы и угасание',
+        text: 'Размытый, полупрозрачный силуэт раскрытой ладони подо льдом подчёркивает бессилие, ощущение «призрачности» собственной позиции и постепенную утрату возможности действовать открыто.',
+      },
+      {
+        heading: 'Мрачная колористика',
+        text: 'Тёмный оттенок воды в прорези между осколками льда вместе с бликами создаёт ощущение холодного тупика, где свет пробивается с трудом.',
+      },
+    ],
     materials: 'Масло, эпоксидная смола, глина, гипс, маркеры, хром',
     year: '2022',
     media: [
@@ -333,9 +352,11 @@ function ProportionalItem({
 function SteppedCollage({
   artwork,
   onOpenLightbox,
+  onOpenConcept,
 }: {
   artwork: Artwork;
   onOpenLightbox: (item: MediaItem, artwork: Artwork) => void;
+  onOpenConcept: (artwork: Artwork) => void;
   index: number;
 }) {
   const m = artwork.media;
@@ -344,19 +365,27 @@ function SteppedCollage({
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
       
       {/* Title & Metadata directly over concrete - with ample bottom margin */}
-      <div className="w-full max-w-[640px] flex items-center justify-between gap-3 mb-5 z-20 px-1">
-        <div className="flex items-center gap-2">
+      <div className="w-full max-w-[640px] flex items-center justify-between gap-2 mb-5 z-20 px-1">
+        <div className="flex items-center gap-2 flex-wrap">
           <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
             {artwork.number}
           </span>
           <span className="text-xs sm:text-sm font-montserrat font-black uppercase tracking-wider text-black">
             {artwork.title}
           </span>
-          <span className="text-xs text-black/80 font-sans font-semibold hidden sm:inline-block">
+          {artwork.fullConcept && (
+            <button
+              onClick={() => onOpenConcept(artwork)}
+              className="text-[10px] sm:text-xs font-montserrat font-black uppercase text-black bg-white hover:bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider transition-colors cursor-pointer"
+            >
+              КОНЦЕПЦИЯ
+            </button>
+          )}
+          <span className="text-xs text-black/80 font-sans font-semibold hidden md:inline-block">
             · {artwork.materials}
           </span>
         </div>
-        <span className="text-xs font-montserrat font-black text-black bg-white/90 px-2 py-0.5 border-2 border-black">
+        <span className="text-xs font-montserrat font-black text-black bg-white/90 px-2 py-0.5 border-2 border-black shrink-0">
           {artwork.year}
         </span>
       </div>
@@ -663,6 +692,7 @@ export function ArtProtest() {
     item: MediaItem;
     artwork: Artwork;
   } | null>(null);
+  const [conceptModalArtwork, setConceptModalArtwork] = useState<Artwork | null>(null);
 
   const isDragging = useRef(false);
   const startX = useRef(0);
@@ -762,6 +792,7 @@ export function ArtProtest() {
                   artwork={chunk.left}
                   index={index * 2}
                   onOpenLightbox={(item, art) => setLightboxState({ item, artwork: art })}
+                  onOpenConcept={(art) => setConceptModalArtwork(art)}
                 />
               </div>
 
@@ -777,6 +808,7 @@ export function ArtProtest() {
                     artwork={chunk.right}
                     index={index * 2 + 1}
                     onOpenLightbox={(item, art) => setLightboxState({ item, artwork: art })}
+                    onOpenConcept={(art) => setConceptModalArtwork(art)}
                   />
                 ) : (
                   <div className="w-full h-full" />
@@ -793,6 +825,73 @@ export function ArtProtest() {
         <div className="w-12 shrink-0" />
       </div>
 
+      {/* Concept Modal: In-Depth Breakdown */}
+      {conceptModalArtwork && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setConceptModalArtwork(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-h-[90vh] max-w-2xl w-full border-[4px] border-black bg-[#1A1A1A] p-6 sm:p-8 shadow-2xl rounded-none flex flex-col overflow-y-auto"
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setConceptModalArtwork(null)}
+              className="absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center border-2 border-black bg-white text-black hover:bg-[#14F1D9] transition-colors shadow-md cursor-pointer"
+              aria-label="Закрыть"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            {/* Header */}
+            <div className="border-b border-white/15 pb-4 pr-10">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
+                  {conceptModalArtwork.number}
+                </span>
+                <span className="text-xs font-montserrat font-bold text-white/60 uppercase tracking-widest">
+                  {conceptModalArtwork.year} · Концепция работы
+                </span>
+              </div>
+              <h2 className="font-montserrat text-2xl sm:text-3xl font-black uppercase text-white leading-tight">
+                {conceptModalArtwork.title}
+              </h2>
+            </div>
+
+            {/* Structured Concept Body */}
+            <div className="py-6 space-y-5">
+              {conceptModalArtwork.fullConcept ? (
+                conceptModalArtwork.fullConcept.map((item, idx) => (
+                  <div key={idx} className="border-l-2 border-[#14F1D9] pl-4 space-y-1">
+                    <h4 className="text-sm sm:text-base font-montserrat font-black uppercase tracking-wide text-white">
+                      {item.heading}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-white/80 font-sans leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-white/90 font-sans leading-relaxed">
+                  {conceptModalArtwork.concept}
+                </p>
+              )}
+            </div>
+
+            {/* Footer / Materials */}
+            <div className="border-t border-white/15 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-montserrat">
+              <span className="text-white/50 uppercase font-bold">МАТЕРИАЛЫ</span>
+              <span className="font-sans font-semibold text-[#14F1D9]">
+                {conceptModalArtwork.materials}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Lightbox Modal: High-Res View on Click */}
       {lightboxState && (
         <div
@@ -808,7 +907,7 @@ export function ArtProtest() {
             {/* Close Button */}
             <button
               onClick={() => setLightboxState(null)}
-              className="absolute -top-4 -right-4 z-20 flex h-10 w-10 items-center justify-center border-2 border-white/20 bg-black text-white hover:bg-[#14F1D9] hover:text-black transition-colors shadow-lg"
+              className="absolute -top-4 -right-4 z-20 flex h-10 w-10 items-center justify-center border-2 border-white/20 bg-black text-white hover:bg-[#14F1D9] hover:text-black transition-colors shadow-lg cursor-pointer"
               aria-label="Закрыть"
             >
               <X className="h-5 w-5" />
@@ -838,10 +937,24 @@ export function ArtProtest() {
             {/* Bottom Metadata */}
             <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-white/10 pt-4">
               <div>
-                <span className="text-xs font-montserrat font-black uppercase tracking-widest text-[#14F1D9]">
-                  {lightboxState.artwork.number} · {lightboxState.artwork.title}
-                </span>
-                <h3 className="font-montserrat text-base sm:text-lg font-black uppercase text-white">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-montserrat font-black uppercase tracking-widest text-[#14F1D9]">
+                    {lightboxState.artwork.number} · {lightboxState.artwork.title}
+                  </span>
+                  {lightboxState.artwork.fullConcept && (
+                    <button
+                      onClick={() => {
+                        const art = lightboxState.artwork;
+                        setLightboxState(null);
+                        setConceptModalArtwork(art);
+                      }}
+                      className="text-[10px] font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border border-black hover:bg-white transition-colors cursor-pointer"
+                    >
+                      ЧИТАТЬ КОНЦЕПЦИЮ
+                    </button>
+                  )}
+                </div>
+                <h3 className="font-montserrat text-base sm:text-lg font-black uppercase text-white mt-1">
                   {lightboxState.item.label || lightboxState.artwork.subtitle}
                 </h3>
                 <p className="text-xs sm:text-sm text-white/70 font-sans mt-0.5">
