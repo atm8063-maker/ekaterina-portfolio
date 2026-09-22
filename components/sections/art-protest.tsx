@@ -23,10 +23,53 @@ export type Artwork = {
 };
 
 const artworksData: Artwork[] = [
-  // 1. Папка 1: Deep rest
+  // 1. Папка 2: Февраль 22-го (теперь объект 01)
   {
-    id: 'work-1',
+    id: 'work-feb',
     number: '01',
+    title: 'Февраль 22-го',
+    subtitle: 'Контрасты & Графика',
+    concept: 'Архитектоника формы и акцентная геометрия на стыке природного хаоса и строгого минимализма.',
+    materials: 'Эпоксидная смола, смешанная техника, текстура',
+    year: '2023–2024',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка 2/photo_3360@04-08-2026_21-08-46_1.jpg',
+        label: 'Главный вид',
+        aspect: '874 / 1170',
+      },
+      {
+        type: 'video',
+        src: '/art-protest/папка 2/video_102@04-08-2026_21-08-46.mp4',
+        label: 'Живой рельеф',
+        aspect: '9 / 16',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 2/photo_3359@04-08-2026_21-08-46.jpg',
+        label: 'Фрагмент',
+        aspect: '1024 / 1280',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 2/photo_3291@04-08-2026_21-08-4231.jpg',
+        label: 'Макро',
+        aspect: '1024 / 1280',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 2/photo_3362@04-08-2026_21-08-46.jpg',
+        label: 'Деталь',
+        aspect: '1024 / 1280',
+      },
+    ],
+  },
+
+  // 2. Папка 1: Deep rest (теперь объект 02)
+  {
+    id: 'work-deep',
+    number: '02',
     title: 'Deep rest',
     subtitle: 'Артивизм & Текстура',
     concept: 'Исследование многослойности, преломления света и оптической глубины через синтез смолы и пигментов.',
@@ -54,52 +97,9 @@ const artworksData: Artwork[] = [
     ],
   },
 
-  // 2. Папка 2: Февраль 22-го
-  {
-    id: 'work-2',
-    number: '02',
-    title: 'Февраль 22-го',
-    subtitle: 'Контрасты & Графика',
-    concept: 'Архитектоника формы и акцентная геометрия на стыке природного хаоса и строгого минимализма.',
-    materials: 'Эпоксидная смола, смешанная техника, текстура',
-    year: '2023–2024',
-    media: [
-      {
-        type: 'image',
-        src: '/art-protest/папка 2/photo_3291@04-08-2026_21-08-4231.jpg',
-        label: 'Главный вид',
-        aspect: '1024 / 1280',
-      },
-      {
-        type: 'video',
-        src: '/art-protest/папка 2/video_102@04-08-2026_21-08-46.mp4',
-        label: 'Живой рельеф',
-        aspect: '9 / 16',
-      },
-      {
-        type: 'image',
-        src: '/art-protest/папка 2/photo_3359@04-08-2026_21-08-46.jpg',
-        label: 'Фрагмент',
-        aspect: '1024 / 1280',
-      },
-      {
-        type: 'image',
-        src: '/art-protest/папка 2/photo_3360@04-08-2026_21-08-46_1.jpg',
-        label: 'Макро',
-        aspect: '874 / 1170',
-      },
-      {
-        type: 'image',
-        src: '/art-protest/папка 2/photo_3362@04-08-2026_21-08-46.jpg',
-        label: 'Деталь',
-        aspect: '1024 / 1280',
-      },
-    ],
-  },
-
   // 3. Папка 3: Последняя капля (оригинальное фото 1280x758 из папки)
   {
-    id: 'work-3',
+    id: 'work-last',
     number: '03',
     title: 'Последняя капля',
     subtitle: 'Монохром & Тени',
@@ -124,7 +124,7 @@ const artworksData: Artwork[] = [
 
   // 4. Папка 4: Бензиновая радуга
   {
-    id: 'work-4',
+    id: 'work-rainbow',
     number: '04',
     title: 'Бензиновая радуга',
     subtitle: 'Серия «Трансформация»',
@@ -179,7 +179,7 @@ const artworksData: Artwork[] = [
 
   // 5. Папка 5: Пусть танцуют лебеди (только 1 фото, без руки)
   {
-    id: 'work-5',
+    id: 'work-swans',
     number: '05',
     title: 'Пусть танцуют лебеди',
     subtitle: 'Глубина & Пространство',
@@ -198,7 +198,7 @@ const artworksData: Artwork[] = [
 
   // 6. Папка 6: И?
   {
-    id: 'work-6',
+    id: 'work-and',
     number: '06',
     title: 'И?',
     subtitle: 'Текстурный рельеф',
@@ -235,7 +235,7 @@ const artworksData: Artwork[] = [
 
   // 7. Папка 7: Красная серия
   {
-    id: 'work-7',
+    id: 'work-red',
     number: '07',
     title: 'Красная серия',
     subtitle: 'Свет & Метафизика',
@@ -349,8 +349,8 @@ function SteppedCollage({
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
       
-      {/* Title & Metadata directly over concrete */}
-      <div className="w-full max-w-[640px] flex items-center justify-between gap-3 mb-3 z-20 px-1">
+      {/* Title & Metadata directly over concrete - with ample bottom margin */}
+      <div className="w-full max-w-[640px] flex items-center justify-between gap-3 mb-5 z-20 px-1">
         <div className="flex items-center gap-2">
           <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
             {artwork.number}
@@ -371,14 +371,52 @@ function SteppedCollage({
       <div className="relative w-full max-w-[640px] h-[430px] sm:h-[470px]">
         
         {/* ========================================================= */}
-        {/* CASE 1: Deep rest (3 items placed side-by-side cleanly)   */}
+        {/* CASE 1: Февраль 22-го (5 items, photo_3360_1 hero)       */}
         {/* ========================================================= */}
-        {artwork.id === 'work-1' && (
+        {artwork.id === 'work-feb' && (
           <div className="relative w-full h-full">
-            {/* Bold 4px Lines with Overshoots */}
-            <div className="absolute top-[72%] -left-10 -right-10 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[330px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[475px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
+            {/* Bold 4px Lines (top-0 so no crossing above title) */}
+            <div className="absolute top-[36%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[72%] -left-6 -right-6 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[165px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[430px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
+
+            {/* Item 2 (Bottom Left): photo_3359 (width 150px, height 187px) */}
+            <div className="absolute left-0 bottom-[8%] z-20">
+              <ProportionalItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '187px' }} />
+            </div>
+
+            {/* Item 0 (Center Main Hero): photo_3360_1 (width ~246px, height 330px) */}
+            <div className="absolute left-[165px] top-[4%] z-20">
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '330px' }} />
+            </div>
+
+            {/* Item 1 (Top Right): video_102 (width 110px, height 195px) */}
+            <div className="absolute left-[430px] top-0 z-20">
+              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '195px' }} />
+            </div>
+
+            {/* Item 3 (Bottom Right 1): photo_3291 (width 100px, height 125px) */}
+            <div className="absolute left-[430px] top-[195px] z-20">
+              <ProportionalItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '125px' }} />
+            </div>
+
+            {/* Item 4 (Bottom Right 2): photo_3362 (width 100px, height 125px) */}
+            <div className="absolute left-[535px] top-[195px] z-20">
+              <ProportionalItem item={m[4]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '125px' }} />
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* CASE 2: Deep rest (3 items placed side-by-side cleanly)   */}
+        {/* ========================================================= */}
+        {artwork.id === 'work-deep' && (
+          <div className="relative w-full h-full">
+            {/* Bold 4px Lines (top-0 so no crossing above title) */}
+            <div className="absolute top-[72%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[330px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[475px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
 
             {/* Main Square Photo: Left (width 320px, height 320px) */}
             <div className="absolute left-0 top-[8%] z-20">
@@ -398,51 +436,13 @@ function SteppedCollage({
         )}
 
         {/* ========================================================= */}
-        {/* CASE 2: Февраль 22-го (5 items, zero overlap)             */}
-        {/* ========================================================= */}
-        {artwork.id === 'work-2' && (
-          <div className="relative w-full h-full">
-            {/* Bold 4px Lines */}
-            <div className="absolute top-[36%] -left-10 -right-10 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute top-[72%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[165px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[435px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
-
-            {/* Item 2 (Bottom Left): photo_3359 (width 150px, height 187px) */}
-            <div className="absolute left-0 bottom-[8%] z-20">
-              <ProportionalItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '187px' }} />
-            </div>
-
-            {/* Item 0 (Center Left Tall): photo_3291 (width 260px, height 325px) */}
-            <div className="absolute left-[165px] top-[6%] z-20">
-              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '325px' }} />
-            </div>
-
-            {/* Item 1 (Top Right): video_102 (width 110px, height 195px) */}
-            <div className="absolute left-[435px] top-0 z-20">
-              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '195px' }} />
-            </div>
-
-            {/* Item 3 (Bottom Right 1): photo_3360_1 (width 95px, height 127px) */}
-            <div className="absolute left-[435px] top-[195px] z-20">
-              <ProportionalItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '127px' }} />
-            </div>
-
-            {/* Item 4 (Bottom Right 2): photo_3362 (width 100px, height 125px) */}
-            <div className="absolute left-[535px] top-[195px] z-20">
-              <ProportionalItem item={m[4]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '125px' }} />
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================= */}
         {/* CASE 3: Последняя капля (оригинальное горизонтальное фото) */}
         {/* ========================================================= */}
-        {artwork.id === 'work-3' && (
+        {artwork.id === 'work-last' && (
           <div className="relative w-full h-full">
-            {/* Bold 4px Lines */}
-            <div className="absolute top-[46%] -left-10 -right-10 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[360px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
+            {/* Bold 4px Lines (top-0 so no crossing above title) */}
+            <div className="absolute top-[46%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[360px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
 
             {/* Top Left: Concept Card (width 340px) */}
             <div className="absolute left-0 top-[6%] w-[340px] z-20 border-[4px] border-black p-4 bg-white/80">
@@ -469,13 +469,13 @@ function SteppedCollage({
         {/* ========================================================= */}
         {/* CASE 4: Бензиновая радуга (7 items, zero overlap)         */}
         {/* ========================================================= */}
-        {artwork.id === 'work-4' && (
+        {artwork.id === 'work-rainbow' && (
           <div className="relative w-full h-full">
-            {/* Bold 4px Lines */}
-            <div className="absolute top-[44%] -left-10 -right-10 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute top-[76%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[155px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[425px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
+            {/* Bold 4px Lines (top-0 so no crossing above title) */}
+            <div className="absolute top-[44%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[76%] -left-6 -right-6 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[155px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[425px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
 
             {/* Item 1: photo_2026-08-30_02-47-39 (width 140px, height 187px) */}
             <div className="absolute left-0 bottom-[8%] z-20">
@@ -517,11 +517,11 @@ function SteppedCollage({
         {/* ========================================================= */}
         {/* CASE 5: Пусть танцуют лебеди (ТОЛЬКО 1 ФОТО, без руки)   */}
         {/* ========================================================= */}
-        {artwork.id === 'work-5' && (
+        {artwork.id === 'work-swans' && (
           <div className="relative w-full h-full">
-            {/* Bold 4px Lines */}
-            <div className="absolute top-[58%] -left-10 -right-10 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[360px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
+            {/* Bold 4px Lines (top-0 so no crossing above title) */}
+            <div className="absolute top-[58%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[360px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
 
             {/* Photo 0: photo_2933 (width 340px, height 360px) */}
             <div className="absolute left-0 top-[6%] z-20">
@@ -547,11 +547,11 @@ function SteppedCollage({
         {/* ========================================================= */}
         {/* CASE 6: И? (4 items, zero overlap)                       */}
         {/* ========================================================= */}
-        {artwork.id === 'work-6' && (
+        {artwork.id === 'work-and' && (
           <div className="relative w-full h-full">
-            {/* Bold 4px Lines */}
-            <div className="absolute top-[50%] -left-10 -right-10 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[340px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
+            {/* Bold 4px Lines (top-0 so no crossing above title) */}
+            <div className="absolute top-[50%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[340px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
 
             {/* Photo 0: photo_3168 (width 330px, height 330px) */}
             <div className="absolute left-0 top-[8%] z-20">
@@ -578,13 +578,13 @@ function SteppedCollage({
         {/* ========================================================= */}
         {/* CASE 7: Красная серия (6 items, zero overlap)             */}
         {/* ========================================================= */}
-        {artwork.id === 'work-7' && (
+        {artwork.id === 'work-red' && (
           <div className="relative w-full h-full">
-            {/* Bold 4px Lines */}
-            <div className="absolute top-[38%] -left-10 -right-10 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute top-[72%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[165px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[435px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
+            {/* Bold 4px Lines (top-0 so no crossing above title) */}
+            <div className="absolute top-[38%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[72%] -left-6 -right-6 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[165px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[435px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
 
             {/* Photo 1: photo_3394 (width 150px, height 112px) */}
             <div className="absolute left-0 bottom-[10%] z-20">
@@ -630,10 +630,10 @@ function ManifestoPanel() {
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
       <div className="w-full max-w-[640px] h-[430px] sm:h-[470px] relative flex flex-col justify-between p-6">
         {/* Extended Architectural Lines 4px */}
-        <div className="absolute top-[18%] -left-10 -right-10 h-[4px] bg-black pointer-events-none z-10" />
-        <div className="absolute bottom-[18%] -left-10 -right-8 h-[4px] bg-black pointer-events-none z-10" />
-        <div className="absolute left-[10%] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
-        <div className="absolute right-[10%] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
+        <div className="absolute top-[18%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
+        <div className="absolute bottom-[18%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
+        <div className="absolute left-[10%] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
+        <div className="absolute right-[10%] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
 
         <div className="relative z-20 pt-2">
           <div className="flex items-center gap-2">
