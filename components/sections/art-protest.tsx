@@ -365,6 +365,15 @@ function SteppedCollage({
   index: number;
 }) {
   const m = artwork.media;
+  const [isInlineOpen, setIsInlineOpen] = useState(false);
+
+  const handleConceptClick = () => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      setIsInlineOpen(!isInlineOpen);
+    } else {
+      onOpenConcept(artwork);
+    }
+  };
 
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
@@ -635,21 +644,63 @@ function SteppedCollage({
 
       </div>
 
-      {/* Concept Wall Plaque directly under the Artwork - Centered & Higher */}
+      {/* Concept Wall Plaque directly under the Artwork - Centered */}
       <div className="mt-1.5 w-full max-w-[640px] z-20 flex items-center justify-center px-1">
         <button
           data-interactive="true"
           onPointerDown={(e) => e.stopPropagation()}
           onClick={(e) => {
             e.stopPropagation();
-            onOpenConcept(artwork);
+            handleConceptClick();
           }}
           className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 hover:bg-[#14F1D9] text-black border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md group/btn"
         >
           <span>КОНЦЕПЦИЯ</span>
-          <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform stroke-[2.5]" />
+          <ChevronRight className={`w-4 h-4 transition-transform stroke-[2.5] ${isInlineOpen ? 'rotate-90' : 'group-hover/btn:translate-x-1'}`} />
         </button>
       </div>
+
+      {/* Mobile Inline Concept: strictly below the collage with zero overlap */}
+      {isInlineOpen && (
+        <div 
+          data-interactive="true"
+          onPointerDown={(e) => e.stopPropagation()}
+          className="md:hidden mt-3 w-full max-w-[640px] z-30 bg-[#161616] text-white border-[3px] border-black p-4 shadow-xl"
+        >
+          <div className="flex items-center justify-between border-b border-white/15 pb-2 mb-3">
+            <span className="text-[11px] font-montserrat font-black uppercase text-[#14F1D9] tracking-wider">
+              {artwork.title} · Концепция
+            </span>
+            <button
+              onClick={() => setIsInlineOpen(false)}
+              className="text-[10px] font-montserrat font-bold uppercase bg-white text-black px-2 py-0.5 border border-black cursor-pointer"
+            >
+              Закрыть ✕
+            </button>
+          </div>
+          <div className="space-y-2.5 text-left">
+            {artwork.fullConcept ? (
+              artwork.fullConcept.map((item, idx) => (
+                <div key={idx} className="border-l-2 border-[#14F1D9] pl-2.5 space-y-0.5">
+                  <h4 className="text-[11px] font-montserrat font-black uppercase tracking-wide text-white">
+                    {item.heading}
+                  </h4>
+                  <p className="text-[11px] text-white/80 font-sans leading-relaxed">
+                    {item.text}
+                  </p>
+                </div>
+              ))
+            ) : (
+              <p className="text-xs text-white/90 font-sans leading-relaxed">
+                {artwork.concept}
+              </p>
+            )}
+          </div>
+          <div className="mt-3 pt-2 border-t border-white/10 text-[10px] font-sans text-white/60">
+            <strong className="text-white">Материалы:</strong> {artwork.materials}
+          </div>
+        </div>
+      )}
 
     </div>
   );
@@ -846,19 +897,19 @@ export function ArtProtest() {
         <div className="w-12 shrink-0" />
       </div>
 
-      {/* Concept Slide-Over Panel: Slides from Right on Desktop, from Bottom on Mobile */}
+      {/* Concept Slide-Over Panel (Desktop Full-Height Right Drawer) */}
       {conceptModalArtwork && (
-        <div className="fixed inset-0 z-50 flex items-end md:items-stretch md:justify-end">
+        <div className="hidden md:block fixed inset-0 z-50">
           {/* Backdrop */}
           <div
             onClick={() => setConceptModalArtwork(null)}
-            className="absolute inset-0 bg-black/50 backdrop-blur-xs transition-opacity cursor-pointer"
+            className="absolute inset-0 bg-black/40 backdrop-blur-xs transition-opacity cursor-pointer"
           />
 
-          {/* Drawer Content */}
+          {/* Desktop Right Drawer - 100% Screen Height */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative z-10 w-full md:w-[460px] max-h-[75vh] md:max-h-full h-auto md:h-full bg-[#161616] text-white border-t-[4px] md:border-t-0 md:border-l-[4px] border-black p-6 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto"
+            className="absolute top-0 right-0 bottom-0 h-screen w-[460px] max-w-[90vw] z-10 bg-[#161616] text-white border-l-[4px] border-black p-6 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto"
           >
             {/* Top Close Button */}
             <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-4">
