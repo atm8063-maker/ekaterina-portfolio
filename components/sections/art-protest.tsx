@@ -8,6 +8,9 @@ export type MediaItem = {
   type: 'image' | 'video';
   src: string;
   label?: string;
+  width?: number;
+  height?: number;
+  aspect?: string; // CSS aspect-ratio string, e.g. "1280 / 1271"
 };
 
 export type Artwork = {
@@ -22,7 +25,7 @@ export type Artwork = {
 };
 
 const artworksData: Artwork[] = [
-  // 1. Папка 1 (1 фото + 1 видео)
+  // 1. Папка 1 (1280x1271 квадрат + 576x1280 деталь + 9:16 видео)
   {
     id: 'work-1',
     number: '01',
@@ -36,16 +39,24 @@ const artworksData: Artwork[] = [
         type: 'image',
         src: '/art-protest/папка 1/photo_2957@31-07-2026_18-19-07.jpg',
         label: 'Финальная работа',
+        aspect: '1280 / 1271',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 1/photo_3018@31-07-2026_18-44-23.jpg',
+        label: 'Фрагмент',
+        aspect: '576 / 1280',
       },
       {
         type: 'video',
         src: '/art-protest/папка 1/video_137@04-08-2026_22-24-33.mp4',
         label: 'Видеодеталь',
+        aspect: '9 / 16',
       },
     ],
   },
 
-  // 2. Папка 2 (4 фото + 1 видео = 5 элементов)
+  // 2. Папка 2 (4 фото 4:5/3:4 + 1 видео 9:16 = 5 элементов)
   {
     id: 'work-2',
     number: '02',
@@ -59,31 +70,36 @@ const artworksData: Artwork[] = [
         type: 'image',
         src: '/art-protest/папка 2/photo_3291@04-08-2026_21-08-4231.jpg',
         label: 'Главный вид',
+        aspect: '1024 / 1280',
       },
       {
         type: 'video',
         src: '/art-protest/папка 2/video_102@04-08-2026_21-08-46.mp4',
         label: 'Живой рельеф',
+        aspect: '9 / 16',
       },
       {
         type: 'image',
         src: '/art-protest/папка 2/photo_3359@04-08-2026_21-08-46.jpg',
         label: 'Фрагмент',
+        aspect: '1024 / 1280',
       },
       {
         type: 'image',
         src: '/art-protest/папка 2/photo_3360@04-08-2026_21-08-46_1.jpg',
         label: 'Макро',
+        aspect: '874 / 1170',
       },
       {
         type: 'image',
         src: '/art-protest/папка 2/photo_3362@04-08-2026_21-08-46.jpg',
         label: 'Деталь',
+        aspect: '1024 / 1280',
       },
     ],
   },
 
-  // 3. Папка 3 (1 фото + 1 видео)
+  // 3. Папка 3 (горизонтальное 1280x758 + вертикальное видео 9:16)
   {
     id: 'work-3',
     number: '03',
@@ -97,16 +113,18 @@ const artworksData: Artwork[] = [
         type: 'image',
         src: '/art-protest/папка 3/photo_3332@04-08-2026_21-08-45.jpg',
         label: 'Экспозиция',
+        aspect: '1280 / 758',
       },
       {
         type: 'video',
         src: '/art-protest/папка 3/video_95@04-08-2026_21-08-44.mp4',
         label: 'Видеодеталь',
+        aspect: '9 / 16',
       },
     ],
   },
 
-  // 4. Папка 4 (11 фото -> 7 кадров в ступенчатом коллаже)
+  // 4. Папка 4 (11 фото -> 7 кадров со своими честными пропорциями 3:4 и 4:5)
   {
     id: 'work-4',
     number: '04',
@@ -120,41 +138,48 @@ const artworksData: Artwork[] = [
         type: 'image',
         src: '/art-protest/папка 4/photo_3309@04-08-2026_21-08-42.jpg',
         label: 'Главный вид',
+        aspect: '1024 / 1280',
       },
       {
         type: 'image',
         src: '/art-protest/папка 4/photo_2026-08-30_02-47-39.jpg',
         label: 'Ракурс A',
+        aspect: '718 / 960',
       },
       {
         type: 'image',
         src: '/art-protest/папка 4/photo_2026-08-30_02-47-40.jpg',
         label: 'Ракурс B',
+        aspect: '718 / 960',
       },
       {
         type: 'image',
         src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (2).jpg',
         label: 'Рельеф',
+        aspect: '718 / 960',
       },
       {
         type: 'image',
         src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (3).jpg',
         label: 'Срез',
+        aspect: '718 / 960',
       },
       {
         type: 'image',
         src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (5).jpg',
         label: 'Фактура',
+        aspect: '720 / 960',
       },
       {
         type: 'image',
         src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (7).jpg',
         label: 'Макро',
+        aspect: '706 / 960',
       },
     ],
   },
 
-  // 5. Папка 5 (2 фото: photo_2933 + photo_3317)
+  // 5. Папка 5 (1212x1280 квадрат + 1280x960 4:3)
   {
     id: 'work-5',
     number: '05',
@@ -168,16 +193,18 @@ const artworksData: Artwork[] = [
         type: 'image',
         src: '/art-protest/папка 5/photo_2933@31-07-2026_17-46-11.jpg',
         label: 'Композиция',
+        aspect: '1212 / 1280',
       },
       {
         type: 'image',
         src: '/art-protest/photo_3317@04-08-2026_21-08-44.jpg',
         label: 'Контекст',
+        aspect: '1280 / 960',
       },
     ],
   },
 
-  // 6. Папка 6 (4 фото)
+  // 6. Папка 6 (1105x1105 1:1 + 1280x1022 5:4 + 2 квадрата 1:1)
   {
     id: 'work-6',
     number: '06',
@@ -191,26 +218,30 @@ const artworksData: Artwork[] = [
         type: 'image',
         src: '/art-protest/папка 6/photo_3168@04-08-2026_20-56-52.jpg',
         label: 'Общий вид',
-      },
-      {
-        type: 'image',
-        src: '/art-protest/папка 6/photo_2026-08-27_17-30-23.jpg',
-        label: 'Рельеф',
-      },
-      {
-        type: 'image',
-        src: '/art-protest/папка 6/photo_2026-08-27_17-30-23 (2).jpg',
-        label: 'Текстура',
+        aspect: '1105 / 1105',
       },
       {
         type: 'image',
         src: '/art-protest/папка 6/photo_2026-08-27_17-30-22 (8).jpg',
         label: 'Деталь',
+        aspect: '1280 / 1022',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 6/photo_2026-08-27_17-30-23.jpg',
+        label: 'Рельеф',
+        aspect: '626 / 626',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 6/photo_2026-08-27_17-30-23 (2).jpg',
+        label: 'Текстура',
+        aspect: '1078 / 1078',
       },
     ],
   },
 
-  // 7. Папка 7 (6 фото)
+  // 7. Папка 7 (1024x1280 4:5 + 1080x810 4:3 + 720x900 4:5 + 3x 3:2 горизонтали)
   {
     id: 'work-7',
     number: '07',
@@ -224,56 +255,64 @@ const artworksData: Artwork[] = [
         type: 'image',
         src: '/art-protest/папка 7/photo_3227@04-08-2026_21-04-40.jpg',
         label: 'Главный вид',
+        aspect: '1024 / 1280',
       },
       {
         type: 'image',
         src: '/art-protest/папка 7/photo_3394@04-08-2026_22-17-05.jpg',
         label: 'Контраст & Свет',
+        aspect: '1080 / 810',
       },
       {
         type: 'image',
         src: '/art-protest/папка 7/photo_3225@04-08-2026_21-04-40.jpg',
         label: 'Ракурс',
+        aspect: '720 / 900',
       },
       {
         type: 'image',
         src: '/art-protest/папка 7/photo_2026-08-27_17-30-22.jpg',
         label: 'Деталь A',
+        aspect: '604 / 402',
       },
       {
         type: 'image',
         src: '/art-protest/папка 7/photo_2026-08-27_17-30-22 (2).jpg',
         label: 'Деталь B',
+        aspect: '908 / 604',
       },
       {
         type: 'image',
         src: '/art-protest/папка 7/photo_2026-08-27_17-30-22 (3).jpg',
         label: 'Деталь C',
+        aspect: '908 / 604',
       },
     ],
   },
 ];
 
-// Single Photo / Video Box: Clean black frame, no background color, perfectly fitted image
-function CollageItem({
+// Single Item Frame: Form-fitted to EXACT pixel aspect ratio of the artwork, 0% crop
+function ProportionalItem({
   item,
   artwork,
   onOpenLightbox,
+  style,
   className = '',
-  tag,
-  aspect = 'aspect-auto',
 }: {
   item: MediaItem;
   artwork: Artwork;
   onOpenLightbox: (item: MediaItem, artwork: Artwork) => void;
+  style?: React.CSSProperties;
   className?: string;
-  tag?: string;
-  aspect?: string;
 }) {
   return (
     <div
       onClick={() => onOpenLightbox(item, artwork)}
-      className={`relative overflow-hidden border-[2.5px] border-black group cursor-pointer transition-transform hover:scale-[1.02] shadow-sm bg-transparent ${aspect} ${className}`}
+      style={{
+        aspectRatio: item.aspect || '1 / 1',
+        ...style,
+      }}
+      className={`relative overflow-hidden border-[2.5px] border-black group cursor-pointer transition-transform hover:scale-[1.02] shadow-sm bg-transparent shrink-0 ${className}`}
     >
       {item.type === 'video' ? (
         <div className="relative w-full h-full">
@@ -283,7 +322,7 @@ function CollageItem({
             loop
             muted
             playsInline
-            className="w-full h-full object-cover block"
+            className="w-full h-full object-fill block"
           />
           <div className="absolute top-1 right-1 p-1 bg-black/80 text-[#14F1D9] border border-black z-10">
             <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
@@ -296,7 +335,7 @@ function CollageItem({
             alt={item.label || 'Деталь работы'}
             fill
             sizes="350px"
-            className="object-cover block"
+            className="object-fill block"
           />
         </div>
       )}
@@ -311,7 +350,7 @@ function CollageItem({
   );
 }
 
-// Architectural De Stijl / Editorial Stepped Collage on Pure Concrete
+// Architectural De Stijl / Editorial Stepped Collage on Pure Concrete with Exact Photo Ratios
 function SteppedCollage({
   artwork,
   onOpenLightbox,
@@ -327,7 +366,7 @@ function SteppedCollage({
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
       
       {/* Title & Metadata directly over concrete */}
-      <div className="w-full max-w-[520px] flex items-center justify-between gap-2 mb-2 z-20">
+      <div className="w-full max-w-[540px] flex items-center justify-between gap-2 mb-2 z-20">
         <div className="flex items-center gap-2">
           <span className="text-[10px] font-montserrat font-black uppercase text-black bg-[#14F1D9] px-1.5 py-0.5 border border-black tracking-wider">
             {artwork.number}
@@ -335,7 +374,7 @@ function SteppedCollage({
           <span className="text-[11px] font-montserrat font-bold uppercase tracking-widest text-black">
             {artwork.title}
           </span>
-          <span className="text-[10px] text-black/70 font-inter font-medium">
+          <span className="text-[10px] text-black/70 font-inter font-medium truncate max-w-[200px]">
             · {artwork.materials}
           </span>
         </div>
@@ -345,243 +384,316 @@ function SteppedCollage({
       </div>
 
       {/* Dynamic Asymmetrical Collage Body */}
-      <div className="relative w-full max-w-[520px] h-[360px] sm:h-[400px]">
+      <div className="relative w-full max-w-[540px] h-[370px] sm:h-[410px]">
         
         {/* ========================================================= */}
-        {/* CASE 1: 5 Items (Folder 2) - Asymmetrical 4-column cluster */}
+        {/* CASE 1: Папка 1 (1:1 квадрат + 9:20 вертикаль + 9:16 видео) */}
         {/* ========================================================= */}
-        {count === 5 && (
+        {artwork.id === 'work-1' && (
+          <div className="relative w-full h-full">
+            {/* Extended Lines */}
+            <div className="absolute top-[68%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[52%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+
+            {/* Labels */}
+            <span className="absolute top-[68%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
+              Финальная работа
+            </span>
+            <span className="absolute left-[52%] -top-5 -translate-x-1/2 text-[8px] font-inter font-bold uppercase text-black">
+              Видео & Фрагмент
+            </span>
+
+            {/* Main Square Photo: Left (height 280px, aspect 1:1) */}
+            <div className="absolute left-0 top-[10%] z-20">
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '280px' }} />
+            </div>
+
+            {/* Middle Vertical Detail: photo_3018 (height 240px, aspect 9:20) */}
+            <div className="absolute left-[52%] top-[4%] z-20">
+              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '240px' }} />
+            </div>
+
+            {/* Right Vertical Video: video_137 (height 220px, aspect 9:16) */}
+            <div className="absolute right-[4%] top-[18%] z-20">
+              <ProportionalItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '220px' }} />
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* CASE 2: Папка 2 (5 items: 4:5 + 9:16 + 4:5 + 3:4 + 4:5)   */}
+        {/* ========================================================= */}
+        {artwork.id === 'work-2' && (
           <div className="relative w-full h-full">
             {/* Extended Horizontal Cross-Lines */}
-            <div className="absolute top-[28%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[32%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
             <div className="absolute top-[68%] -left-6 -right-6 h-[2.5px] bg-black pointer-events-none z-10" />
 
             {/* Extended Vertical Cross-Lines */}
-            <div className="absolute left-[24%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[64%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[26%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[66%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
 
-            {/* Text Annotations on Concrete along lines */}
-            <span className="absolute top-[28%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase tracking-wider text-black">
+            {/* Line Annotations */}
+            <span className="absolute top-[32%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase tracking-wider text-black">
               Фрагмент
             </span>
-            <span className="absolute left-[24%] -top-5 -translate-x-1/2 text-[8px] font-inter font-bold uppercase tracking-wider text-black">
+            <span className="absolute left-[26%] -top-5 -translate-x-1/2 text-[8px] font-inter font-bold uppercase tracking-wider text-black">
               Главный вид
             </span>
             <span className="absolute top-[68%] right-2 -translate-y-full text-[8px] font-inter font-bold uppercase tracking-wider text-black">
               Рельеф & Детали
             </span>
 
-            {/* Col 1 (Bottom Left): Fragment */}
-            <div className="absolute left-0 bottom-[10%] w-[24%] h-[46%] z-20">
-              <CollageItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Item 2 (Bottom Left): photo_3359 (4:5, height 170px) */}
+            <div className="absolute left-0 bottom-[8%] z-20">
+              <ProportionalItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '170px' }} />
             </div>
 
-            {/* Col 2 (Center Left): Tall Main Artwork */}
-            <div className="absolute left-[24%] top-[10%] w-[40%] h-[78%] z-20">
-              <CollageItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Item 0 (Center Left Tall): photo_3291 (4:5, height 290px) */}
+            <div className="absolute left-[26%] top-[8%] z-20">
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '290px' }} />
             </div>
 
-            {/* Col 3 (Top Right): Looping Video */}
-            <div className="absolute left-[64%] top-0 w-[36%] h-[44%] z-20">
-              <CollageItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Item 1 (Top Right): video_102 (9:16, height 175px) */}
+            <div className="absolute left-[66%] top-0 z-20">
+              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '175px' }} />
             </div>
 
-            {/* Col 3 (Bottom Right 1): Macro */}
-            <div className="absolute left-[64%] top-[44%] w-[18%] h-[36%] z-20">
-              <CollageItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Item 3 (Bottom Right 1): photo_3360_1 (3:4, height 125px) */}
+            <div className="absolute left-[66%] top-[175px] z-20">
+              <ProportionalItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '125px' }} />
             </div>
 
-            {/* Col 3 (Bottom Right 2): Detail */}
-            <div className="absolute left-[82%] top-[44%] w-[18%] h-[36%] z-20">
-              <CollageItem item={m[4]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Item 4 (Bottom Right 2): photo_3362 (4:5, height 125px) */}
+            <div className="absolute left-[760px] sm:left-[430px] top-[175px] z-20">
+              <ProportionalItem item={m[4]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '125px' }} />
             </div>
           </div>
         )}
 
         {/* ========================================================= */}
-        {/* CASE 2: 7 Items (Folder 4) - Stepped multi-cell mosaic    */}
+        {/* CASE 3: Папка 3 (1280x758 горизонталь + 9:16 вертикаль)   */}
         {/* ========================================================= */}
-        {count >= 7 && (
+        {artwork.id === 'work-3' && (
           <div className="relative w-full h-full">
-            {/* Extended Architectural Lines */}
-            <div className="absolute top-[42%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute top-[72%] -left-6 -right-6 h-[2.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[28%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[62%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+            {/* Extended Lines */}
+            <div className="absolute top-[52%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[56%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
 
             {/* Line Labels */}
-            <span className="absolute top-[42%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
+            <span className="absolute top-[52%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
+              Экспозиция
+            </span>
+            <span className="absolute left-[56%] -top-5 -translate-x-1/2 text-[8px] font-inter font-bold uppercase text-black">
+              Видеодеталь
+            </span>
+
+            {/* Left Horizontal: photo_3332 (1280x758, width 300px) */}
+            <div className="absolute left-0 bottom-[12%] z-20">
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ width: '300px' }} />
+            </div>
+
+            {/* Right Vertical Video: video_95 (9:16, height 300px) */}
+            <div className="absolute left-[56%] top-[6%] z-20">
+              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '300px' }} />
+            </div>
+
+            {/* Top Left: Concept Annotation directly on concrete */}
+            <div className="absolute left-0 top-[6%] max-w-[270px] z-20">
+              <span className="text-[8px] font-inter font-bold uppercase text-[#14F1D9] drop-shadow-sm">
+                Концепция
+              </span>
+              <p className="text-[9px] text-black font-inter font-bold leading-tight mt-0.5 line-clamp-3">
+                {artwork.concept}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* CASE 4: Папка 4 (7 items: 4:5 + 6x 3:4 ракурсов)          */}
+        {/* ========================================================= */}
+        {artwork.id === 'work-4' && (
+          <div className="relative w-full h-full">
+            {/* Extended Architectural Lines */}
+            <div className="absolute top-[44%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[74%] -left-6 -right-6 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[26%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[64%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+
+            {/* Line Labels */}
+            <span className="absolute top-[44%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
               Ракурс
             </span>
-            <span className="absolute left-[28%] -top-5 -translate-x-1/2 text-[8px] font-inter font-bold uppercase text-black">
+            <span className="absolute left-[26%] -top-5 -translate-x-1/2 text-[8px] font-inter font-bold uppercase text-black">
               Главный вид
             </span>
-            <span className="absolute top-[72%] right-0 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
+            <span className="absolute top-[74%] right-0 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
               Срез & Фактура
             </span>
 
-            {/* Photo 1: Bottom Left */}
-            <div className="absolute left-0 bottom-[14%] w-[28%] h-[44%] z-20">
-              <CollageItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Item 1: photo_2026-08-30_02-47-39 (3:4, height 170px) */}
+            <div className="absolute left-0 bottom-[10%] z-20">
+              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '170px' }} />
             </div>
 
-            {/* Photo 0: Tall Main Artwork Center */}
-            <div className="absolute left-[28%] top-[8%] w-[34%] h-[76%] z-20">
-              <CollageItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Item 0: photo_3309 Tall Center (4:5, height 285px) */}
+            <div className="absolute left-[26%] top-[6%] z-20">
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '285px' }} />
             </div>
 
-            {/* Photo 2: Top Right */}
-            <div className="absolute left-[62%] top-0 w-[24%] h-[42%] z-20">
-              <CollageItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Item 2: photo_2026-08-30_02-47-40 (3:4, height 140px) */}
+            <div className="absolute left-[64%] top-0 z-20">
+              <ProportionalItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '140px' }} />
             </div>
 
-            {/* Photo 3: Top Right Edge */}
-            <div className="absolute left-[86%] top-[12%] w-[14%] h-[30%] z-20">
-              <CollageItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Item 3: photo_2026-08-30_02-47-40 (2) (3:4, height 120px) */}
+            <div className="absolute left-[78%] top-[20px] z-20">
+              <ProportionalItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '120px' }} />
             </div>
 
-            {/* Photo 4: Mid Right */}
-            <div className="absolute left-[62%] top-[42%] w-[19%] h-[30%] z-20">
-              <CollageItem item={m[4]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Item 4: photo_2026-08-30_02-47-40 (3) (3:4, height 120px) */}
+            <div className="absolute left-[64%] top-[145px] z-20">
+              <ProportionalItem item={m[4]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '120px' }} />
             </div>
 
-            {/* Photo 5: Mid Right 2 */}
-            <div className="absolute left-[81%] top-[42%] w-[19%] h-[30%] z-20">
-              <CollageItem item={m[5]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Item 5: photo_2026-08-30_02-47-40 (5) (3:4, height 120px) */}
+            <div className="absolute left-[78%] top-[145px] z-20">
+              <ProportionalItem item={m[5]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '120px' }} />
             </div>
 
-            {/* Photo 6: Bottom Right */}
-            <div className="absolute left-[62%] top-[72%] w-[38%] h-[20%] z-20">
-              <CollageItem item={m[6]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================= */}
-        {/* CASE 3: 6 Items (Folder 7) - Stepped 4-column composition */}
-        {/* ========================================================= */}
-        {count === 6 && (
-          <div className="relative w-full h-full">
-            {/* Extended Lines */}
-            <div className="absolute top-[34%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute top-[68%] -left-6 -right-6 h-[2.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[26%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[60%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
-
-            {/* Line Labels */}
-            <span className="absolute top-[34%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
-              Свет & Блик
-            </span>
-            <span className="absolute left-[26%] -top-5 -translate-x-1/2 text-[8px] font-inter font-bold uppercase text-black">
-              Экспозиция
-            </span>
-
-            {/* Photo 1: Bottom Left */}
-            <div className="absolute left-0 bottom-[16%] w-[26%] h-[48%] z-20">
-              <CollageItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
-            </div>
-
-            {/* Photo 0: Tall Main Artwork */}
-            <div className="absolute left-[26%] top-[6%] w-[34%] h-[80%] z-20">
-              <CollageItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
-            </div>
-
-            {/* Photo 2: Top Right */}
-            <div className="absolute left-[60%] top-0 w-[40%] h-[34%] z-20">
-              <CollageItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
-            </div>
-
-            {/* Photo 3: Mid Right 1 */}
-            <div className="absolute left-[60%] top-[34%] w-[20%] h-[34%] z-20">
-              <CollageItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
-            </div>
-
-            {/* Photo 4: Mid Right 2 */}
-            <div className="absolute left-[80%] top-[34%] w-[20%] h-[34%] z-20">
-              <CollageItem item={m[4]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
-            </div>
-
-            {/* Photo 5: Bottom Right */}
-            <div className="absolute left-[60%] top-[68%] w-[40%] h-[24%] z-20">
-              <CollageItem item={m[5]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Item 6: photo_2026-08-30_02-47-40 (7) (3:4, height 85px) */}
+            <div className="absolute left-[64%] bottom-[4px] z-20">
+              <ProportionalItem item={m[6]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '85px' }} />
             </div>
           </div>
         )}
 
         {/* ========================================================= */}
-        {/* CASE 4: 4 Items (Folder 6) - 4-cell interlocking layout   */}
+        {/* CASE 5: Папка 5 (1212x1280 1:1 + 1280x960 4:3)            */}
         {/* ========================================================= */}
-        {count === 4 && (
+        {artwork.id === 'work-5' && (
           <div className="relative w-full h-full">
             {/* Extended Lines */}
-            <div className="absolute top-[45%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[56%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[54%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+
+            {/* Labels */}
+            <span className="absolute top-[56%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
+              Композиция
+            </span>
+            <span className="absolute left-[54%] -top-5 -translate-x-1/2 text-[8px] font-inter font-bold uppercase text-black">
+              Контекст
+            </span>
+
+            {/* Photo 0: photo_2933 (1212x1280, height 280px) */}
+            <div className="absolute left-0 top-[6%] z-20">
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '280px' }} />
+            </div>
+
+            {/* Photo 1: photo_3317 (1280x960 4:3, width 220px) */}
+            <div className="absolute left-[54%] top-[8%] z-20">
+              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ width: '220px' }} />
+            </div>
+
+            {/* Bottom Right: Concept Text */}
+            <div className="absolute left-[54%] bottom-[10%] max-w-[220px] z-20">
+              <span className="text-[8px] font-inter font-bold uppercase text-[#14F1D9] drop-shadow-sm">
+                Концепция
+              </span>
+              <p className="text-[9px] text-black font-inter font-bold leading-tight mt-0.5 line-clamp-3">
+                {artwork.concept}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* CASE 6: Папка 6 (4 items: 1:1 + 5:4 + 2x 1:1)             */}
+        {/* ========================================================= */}
+        {artwork.id === 'work-6' && (
+          <div className="relative w-full h-full">
+            {/* Extended Lines */}
+            <div className="absolute top-[48%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
             <div className="absolute left-[48%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
 
             {/* Labels */}
-            <span className="absolute top-[45%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
+            <span className="absolute top-[48%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
               Общий вид
             </span>
             <span className="absolute left-[48%] -top-5 -translate-x-1/2 text-[8px] font-inter font-bold uppercase text-black">
               Рельеф & Фактура
             </span>
 
-            {/* Photo 0: Large Square/Vertical Hero (Left) */}
-            <div className="absolute left-0 top-[8%] w-[48%] h-[84%] z-20">
-              <CollageItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Photo 0: photo_3168 (1:1 square main, height 260px) */}
+            <div className="absolute left-0 top-[10%] z-20">
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '260px' }} />
             </div>
 
-            {/* Photo 1: Top Right */}
-            <div className="absolute left-[48%] top-0 w-[52%] h-[45%] z-20">
-              <CollageItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Photo 1: photo_2026-08-27_17-30-22 (8) (5:4 horizontal, height 140px) */}
+            <div className="absolute left-[48%] top-[10px] z-20">
+              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '140px' }} />
             </div>
 
-            {/* Photo 2: Bottom Right 1 */}
-            <div className="absolute left-[48%] top-[45%] w-[26%] h-[45%] z-20">
-              <CollageItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Photo 2: photo_2026-08-27_17-30-23 (1:1, height 120px) */}
+            <div className="absolute left-[48%] top-[155px] z-20">
+              <ProportionalItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '120px' }} />
             </div>
 
-            {/* Photo 3: Bottom Right 2 */}
-            <div className="absolute left-[74%] top-[45%] w-[26%] h-[45%] z-20">
-              <CollageItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Photo 3: photo_2026-08-27_17-30-23 (2) (1:1, height 120px) */}
+            <div className="absolute left-[390px] top-[155px] z-20">
+              <ProportionalItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '120px' }} />
             </div>
           </div>
         )}
 
         {/* ========================================================= */}
-        {/* CASE 5: 2 Items (Folders 1, 3, 5) - Stepped Hero + Video  */}
+        {/* CASE 7: Папка 7 (6 items: 4:5 + 4:3 + 4:5 + 3x 3:2)       */}
         {/* ========================================================= */}
-        {count <= 3 && (
+        {artwork.id === 'work-7' && (
           <div className="relative w-full h-full">
             {/* Extended Lines */}
-            <div className="absolute top-[60%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[54%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[36%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[68%] -left-6 -right-6 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[26%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[62%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
 
             {/* Line Labels */}
-            <span className="absolute top-[60%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
-              Финальная работа
+            <span className="absolute top-[36%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
+              Свет & Блик
             </span>
-            <span className="absolute left-[54%] -top-5 -translate-x-1/2 text-[8px] font-inter font-bold uppercase text-black">
-              {m[1]?.type === 'video' ? 'Видеодеталь' : 'Контекст'}
+            <span className="absolute left-[26%] -top-5 -translate-x-1/2 text-[8px] font-inter font-bold uppercase text-black">
+              Экспозиция
             </span>
 
-            {/* Photo 0: Primary Artwork (Left) */}
-            <div className="absolute left-0 top-[6%] w-[54%] h-[82%] z-20">
-              <CollageItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Photo 1: photo_3394 (4:3 horizontal, width 140px) */}
+            <div className="absolute left-0 bottom-[14%] z-20">
+              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ width: '140px' }} />
             </div>
 
-            {/* Item 1: Tall Video / Context Photo (Right Top) */}
-            <div className="absolute left-[54%] top-0 w-[42%] h-[60%] z-20">
-              <CollageItem item={m[1] || m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} className="w-full h-full" />
+            {/* Photo 0: photo_3227 Tall Main (4:5, height 285px) */}
+            <div className="absolute left-[26%] top-[6%] z-20">
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '285px' }} />
             </div>
 
-            {/* Bottom Right: Clean Concept Annotation directly over concrete */}
-            <div className="absolute left-[54%] top-[60%] w-[42%] h-[32%] pl-3 pt-2 flex flex-col justify-center z-20">
-              <span className="text-[8px] font-inter font-bold uppercase text-[#14F1D9] drop-shadow-sm">
-                Концепция
-              </span>
-              <p className="text-[9px] text-black font-inter font-bold leading-tight mt-0.5 line-clamp-3 drop-shadow-sm">
-                {artwork.concept}
-              </p>
+            {/* Photo 2: photo_3225 (4:5, height 140px) */}
+            <div className="absolute left-[62%] top-0 z-20">
+              <ProportionalItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '140px' }} />
+            </div>
+
+            {/* Photo 3: photo_2026-08-27_17-30-22 (3:2, width 100px) */}
+            <div className="absolute left-[62%] top-[145px] z-20">
+              <ProportionalItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ width: '100px' }} />
+            </div>
+
+            {/* Photo 4: photo_2026-08-27_17-30-22 (2) (3:2, width 100px) */}
+            <div className="absolute left-[445px] top-[145px] z-20">
+              <ProportionalItem item={m[4]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ width: '100px' }} />
+            </div>
+
+            {/* Photo 5: photo_2026-08-27_17-30-22 (3) (3:2, width 150px) */}
+            <div className="absolute left-[62%] bottom-[10px] z-20">
+              <ProportionalItem item={m[5]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ width: '150px' }} />
             </div>
           </div>
         )}
@@ -596,7 +708,7 @@ function SteppedCollage({
 function ManifestoPanel() {
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
-      <div className="w-full max-w-[520px] h-[360px] sm:h-[400px] relative flex flex-col justify-between p-4">
+      <div className="w-full max-w-[540px] h-[370px] sm:h-[410px] relative flex flex-col justify-between p-4">
         {/* Extended Architectural Lines */}
         <div className="absolute top-[20%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
         <div className="absolute bottom-[20%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
@@ -698,7 +810,7 @@ export function ArtProtest() {
             Артивизм <span className="text-[#14F1D9]">&</span> Честность
           </h2>
           <p className="text-xs sm:text-sm text-white/60 font-inter mt-1">
-            Асимметричные коллажи деталей каждой работы на бетонной стене. Листай вправо свайпом или стрелками.
+            Асимметричные коллажи в реальных пропорциях каждой работы на бетонной стене. Листай вправо.
           </p>
         </div>
 
