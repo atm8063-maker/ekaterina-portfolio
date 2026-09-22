@@ -312,7 +312,12 @@ function ProportionalItem({
 }) {
   return (
     <div
-      onClick={() => onOpenLightbox(item, artwork)}
+      data-interactive="true"
+      onPointerDown={(e) => e.stopPropagation()}
+      onClick={(e) => {
+        e.stopPropagation();
+        onOpenLightbox(item, artwork);
+      }}
       style={{
         aspectRatio: item.aspect || '1 / 1',
         ...style,
@@ -329,7 +334,7 @@ function ProportionalItem({
             playsInline
             className="w-full h-full object-fill block"
           />
-          <div className="absolute top-1.5 right-1.5 p-1 bg-black text-[#14F1D9] border-2 border-black z-10 shadow-sm">
+          <div className="absolute top-1.5 right-1.5 p-1 bg-black text-[#14F1D9] border-2 border-black z-10 shadow-sm pointer-events-none">
             <Play className="w-3.5 h-3.5 fill-[#14F1D9]" />
           </div>
         </div>
@@ -365,7 +370,7 @@ function SteppedCollage({
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
       
       {/* Title & Metadata directly over concrete - with ample bottom margin */}
-      <div className="w-full max-w-[640px] flex items-center justify-between gap-2 mb-5 z-20 px-1">
+      <div className="w-full max-w-[640px] flex items-center justify-between gap-2 mb-4 z-20 px-1">
         <div className="flex items-center gap-2 flex-wrap">
           <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
             {artwork.number}
@@ -373,14 +378,6 @@ function SteppedCollage({
           <span className="text-xs sm:text-sm font-montserrat font-black uppercase tracking-wider text-black">
             {artwork.title}
           </span>
-          {artwork.fullConcept && (
-            <button
-              onClick={() => onOpenConcept(artwork)}
-              className="text-[10px] sm:text-xs font-montserrat font-black uppercase text-black bg-white hover:bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider transition-colors cursor-pointer"
-            >
-              КОНЦЕПЦИЯ
-            </button>
-          )}
           <span className="text-xs text-black/80 font-sans font-semibold hidden md:inline-block">
             · {artwork.materials}
           </span>
@@ -390,8 +387,8 @@ function SteppedCollage({
         </span>
       </div>
 
-      {/* Dynamic Asymmetrical Collage Body - Width 640px, Height 460px */}
-      <div className="relative w-full max-w-[640px] h-[430px] sm:h-[470px]">
+      {/* Dynamic Asymmetrical Collage Body - Width 640px, Height 430px */}
+      <div className="relative w-full max-w-[640px] h-[390px] sm:h-[430px]">
         
         {/* ========================================================= */}
         {/* CASE 1: Февраль 22-го (2 Left, 1 Hero, 1 Full Video)      */}
@@ -399,29 +396,29 @@ function SteppedCollage({
         {artwork.id === 'work-feb' && (
           <div className="relative w-full h-full">
             {/* Bold 4px Lines (top-0 so no crossing above title) */}
-            <div className="absolute top-[172px] -left-8 right-[240px] h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[162px] -left-8 right-[240px] h-[4px] bg-black pointer-events-none z-10" />
             <div className="absolute top-[75%] -left-6 -right-6 h-[4px] bg-black pointer-events-none z-10" />
             <div className="absolute left-[139px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
             <div className="absolute left-[401px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
 
-            {/* Left Top: photo_3291 (aspect: 1024/1280, height 168px) */}
+            {/* Left Top: photo_3291 (aspect: 1024/1280, height 158px) */}
             <div className="absolute left-0 top-[2%] z-20">
-              <ProportionalItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '168px' }} />
+              <ProportionalItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '158px' }} />
             </div>
 
-            {/* Left Bottom: photo_3362 (aspect: 1024/1280, height 168px) */}
-            <div className="absolute left-0 top-[174px] z-20">
-              <ProportionalItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '168px' }} />
+            {/* Left Bottom: photo_3362 (aspect: 1024/1280, height 158px) */}
+            <div className="absolute left-0 top-[166px] z-20">
+              <ProportionalItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '158px' }} />
             </div>
 
-            {/* Center Main Hero: photo_3360_1 (aspect: 874/1170, height 340px) */}
+            {/* Center Main Hero: photo_3360_1 (aspect: 874/1170, height 324px) */}
             <div className="absolute left-[143px] top-[2%] z-20">
-              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '340px' }} />
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '324px' }} />
             </div>
 
-            {/* Right Full Height Video: video_102 (aspect: 9/16, height 340px) */}
+            {/* Right Full Height Video: video_102 (aspect: 9/16, height 324px) */}
             <div className="absolute left-[405px] top-[2%] z-20">
-              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '340px' }} />
+              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '324px' }} />
             </div>
           </div>
         )}
@@ -638,6 +635,34 @@ function SteppedCollage({
 
       </div>
 
+      {/* Museum Wall Plaque directly under the Artwork */}
+      <div
+        data-interactive="true"
+        onPointerDown={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation();
+          onOpenConcept(artwork);
+        }}
+        className="mt-3 w-full max-w-[640px] z-20 flex items-center justify-between gap-3 px-3.5 py-1.5 bg-white/90 hover:bg-[#14F1D9] border-[3px] border-black transition-all cursor-pointer shadow-md group/plaque"
+      >
+        <div className="flex items-center gap-2 overflow-hidden">
+          <span className="text-[10px] font-montserrat font-black uppercase text-black bg-[#14F1D9] group-hover/plaque:bg-white px-1.5 py-0.5 border border-black shrink-0 tracking-wider">
+            ОПИСАНИЕ
+          </span>
+          <span className="text-xs font-montserrat font-black uppercase tracking-wider text-black">
+            КОНЦЕПЦИЯ
+          </span>
+          <span className="text-xs text-black/70 font-sans font-medium hidden sm:inline-block truncate">
+            — {artwork.concept}
+          </span>
+        </div>
+        <div className="flex items-center gap-1 shrink-0">
+          <span className="text-[10px] sm:text-xs font-montserrat font-black uppercase text-black group-hover/plaque:translate-x-0.5 transition-transform flex items-center gap-0.5">
+            ЧИТАТЬ <ChevronRight className="w-3.5 h-3.5" />
+          </span>
+        </div>
+      </div>
+
     </div>
   );
 }
@@ -713,6 +738,10 @@ export function ArtProtest() {
   };
 
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    // Prevent starting drag when clicking on interactive children (buttons, plaques, art frames)
+    if ((e.target as HTMLElement).closest('button, [data-interactive="true"], a')) {
+      return;
+    }
     const el = scrollContainerRef.current;
     if (!el) return;
     isDragging.current = true;
@@ -741,6 +770,8 @@ export function ArtProtest() {
       
       {/* Floating Scroll Controls over the Wall */}
       <button
+        data-interactive="true"
+        onPointerDown={(e) => e.stopPropagation()}
         onClick={() => scrollByAmount(-700)}
         className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
         aria-label="Листать влево"
@@ -749,6 +780,8 @@ export function ArtProtest() {
       </button>
 
       <button
+        data-interactive="true"
+        onPointerDown={(e) => e.stopPropagation()}
         onClick={() => scrollByAmount(700)}
         className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
         aria-label="Листать вправо"
@@ -825,48 +858,55 @@ export function ArtProtest() {
         <div className="w-12 shrink-0" />
       </div>
 
-      {/* Concept Modal: In-Depth Breakdown */}
+      {/* Concept Slide-Over Panel: Slides from Right on Desktop, from Bottom on Mobile */}
       {conceptModalArtwork && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setConceptModalArtwork(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
-        >
+        <div className="fixed inset-0 z-50 flex items-end md:items-stretch md:justify-end">
+          {/* Backdrop */}
+          <div
+            onClick={() => setConceptModalArtwork(null)}
+            className="absolute inset-0 bg-black/50 backdrop-blur-xs transition-opacity cursor-pointer"
+          />
+
+          {/* Drawer Content */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-h-[90vh] max-w-2xl w-full border-[4px] border-black bg-[#1A1A1A] p-6 sm:p-8 shadow-2xl rounded-none flex flex-col overflow-y-auto"
+            className="relative z-10 w-full md:w-[460px] max-h-[75vh] md:max-h-full h-auto md:h-full bg-[#161616] text-white border-t-[4px] md:border-t-0 md:border-l-[4px] border-black p-6 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto"
           >
-            {/* Close Button */}
-            <button
-              onClick={() => setConceptModalArtwork(null)}
-              className="absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center border-2 border-black bg-white text-black hover:bg-[#14F1D9] transition-colors shadow-md cursor-pointer"
-              aria-label="Закрыть"
-            >
-              <X className="h-5 w-5" />
-            </button>
-
-            {/* Header */}
-            <div className="border-b border-white/15 pb-4 pr-10">
-              <div className="flex items-center gap-2 mb-2">
+            {/* Top Close Button */}
+            <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-4">
+              <div className="flex items-center gap-2">
                 <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
                   {conceptModalArtwork.number}
                 </span>
                 <span className="text-xs font-montserrat font-bold text-white/60 uppercase tracking-widest">
-                  {conceptModalArtwork.year} · Концепция работы
+                  {conceptModalArtwork.year} · Концепция
                 </span>
               </div>
+              <button
+                onClick={() => setConceptModalArtwork(null)}
+                className="flex h-8 w-8 items-center justify-center border-2 border-black bg-white text-black hover:bg-[#14F1D9] transition-colors shadow-sm cursor-pointer"
+                aria-label="Закрыть"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* Title */}
+            <div>
               <h2 className="font-montserrat text-2xl sm:text-3xl font-black uppercase text-white leading-tight">
                 {conceptModalArtwork.title}
               </h2>
+              <p className="text-xs font-sans text-white/60 font-medium mt-1">
+                {conceptModalArtwork.subtitle}
+              </p>
             </div>
 
             {/* Structured Concept Body */}
-            <div className="py-6 space-y-5">
+            <div className="py-6 space-y-4 my-auto">
               {conceptModalArtwork.fullConcept ? (
                 conceptModalArtwork.fullConcept.map((item, idx) => (
-                  <div key={idx} className="border-l-2 border-[#14F1D9] pl-4 space-y-1">
-                    <h4 className="text-sm sm:text-base font-montserrat font-black uppercase tracking-wide text-white">
+                  <div key={idx} className="border-l-2 border-[#14F1D9] pl-3.5 space-y-1">
+                    <h4 className="text-xs sm:text-sm font-montserrat font-black uppercase tracking-wide text-white">
                       {item.heading}
                     </h4>
                     <p className="text-xs sm:text-sm text-white/80 font-sans leading-relaxed">
@@ -882,8 +922,8 @@ export function ArtProtest() {
             </div>
 
             {/* Footer / Materials */}
-            <div className="border-t border-white/15 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-montserrat">
-              <span className="text-white/50 uppercase font-bold">МАТЕРИАЛЫ</span>
+            <div className="border-t border-white/15 pt-4 flex flex-col gap-1 text-xs font-montserrat">
+              <span className="text-white/50 uppercase font-bold text-[10px]">МАТЕРИАЛЫ И ТЕХНИКА</span>
               <span className="font-sans font-semibold text-[#14F1D9]">
                 {conceptModalArtwork.materials}
               </span>
