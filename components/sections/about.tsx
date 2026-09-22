@@ -1,12 +1,21 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function About() {
+  const [isUnderDev, setIsUnderDev] = useState(false);
+
+  const handleAboutClick = () => {
+    setIsUnderDev(true);
+    setTimeout(() => {
+      setIsUnderDev(false);
+    }, 3000);
+  };
+
   return (
-    <section className="relative overflow-hidden bg-[#111111] text-white flex flex-col lg:flex-row items-center justify-between min-h-[100svh] lg:h-[100svh] py-12 lg:py-0 px-6 sm:px-12 lg:px-16 xl:px-24">
+    <section id="about" className="relative overflow-hidden bg-[#111111] text-white flex flex-col lg:flex-row items-center justify-between min-h-[100svh] lg:h-[100svh] py-12 lg:py-0 px-6 sm:px-12 lg:px-16 xl:px-24">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -51,10 +60,31 @@ export default function About() {
           </div>
           
           {/* Button (Desktop only here) */}
-          <div className="hidden lg:block pt-2">
-            <Link href="#contact" className="inline-block bg-[#14F1D9] hover:bg-white text-[#111111] font-bold text-xs sm:text-sm md:text-base px-7 py-3.5 tracking-widest uppercase transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-montserrat whitespace-nowrap">
-              ПОДРОБНЕЕ ОБО МНЕ
-            </Link>
+          <div className="hidden lg:block pt-2 relative">
+            <button 
+              type="button"
+              onClick={handleAboutClick}
+              className={`inline-flex items-center gap-2 font-bold text-xs sm:text-sm md:text-base px-7 py-3.5 tracking-widest uppercase transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-montserrat whitespace-nowrap cursor-pointer ${
+                isUnderDev 
+                  ? 'bg-amber-400 text-black border border-amber-300 ring-2 ring-amber-400/40' 
+                  : 'bg-[#14F1D9] hover:bg-white text-[#111111]'
+              }`}
+            >
+              {isUnderDev ? 'В разработке (Скоро)' : 'ПОДРОБНЕЕ ОБО МНЕ'}
+            </button>
+            <AnimatePresence>
+              {isUnderDev && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute -top-10 left-0 bg-[#161616] text-[#14F1D9] border border-[#14F1D9]/40 text-xs px-3 py-1.5 rounded-lg shadow-xl font-montserrat font-semibold flex items-center gap-1.5 z-30 pointer-events-none whitespace-nowrap"
+                >
+                  <span>⏳</span>
+                  <span>Раздел в разработке, скоро появится!</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </motion.div>
@@ -78,10 +108,30 @@ export default function About() {
         </div>
 
         {/* Button (Mobile only: directly below photo) */}
-        <div className="lg:hidden pt-4 pb-4 w-full flex justify-center">
-          <Link href="#contact" className="inline-block bg-[#14F1D9] hover:bg-white text-[#111111] font-bold text-sm px-8 py-4 tracking-widest uppercase transition-all shadow-lg hover:shadow-xl font-montserrat text-center">
-            ПОДРОБНЕЕ ОБО МНЕ
-          </Link>
+        <div className="lg:hidden pt-4 pb-4 w-full flex flex-col items-center relative">
+          <button 
+            type="button"
+            onClick={handleAboutClick}
+            className={`inline-flex items-center justify-center gap-2 font-bold text-sm px-8 py-4 tracking-widest uppercase transition-all shadow-lg hover:shadow-xl font-montserrat text-center w-full max-w-[320px] cursor-pointer ${
+              isUnderDev 
+                ? 'bg-amber-400 text-black border border-amber-300 ring-2 ring-amber-400/40' 
+                : 'bg-[#14F1D9] hover:bg-white text-[#111111]'
+            }`}
+          >
+            {isUnderDev ? 'В разработке (Скоро)' : 'ПОДРОБНЕЕ ОБО МНЕ'}
+          </button>
+          <AnimatePresence>
+            {isUnderDev && (
+              <motion.div
+                initial={{ opacity: 0, y: -5 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -5 }}
+                className="mt-2 text-xs text-[#14F1D9] bg-[#161616] px-3 py-1.5 rounded-lg border border-[#14F1D9]/40 text-center font-montserrat shadow-lg pointer-events-none"
+              >
+                ⏳ Раздел в разработке, скоро появится!
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.div>
     </section>

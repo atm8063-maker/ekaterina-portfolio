@@ -66,7 +66,7 @@ export const cases: CaseSummary[] = [
   { slug: '09-mockup-electronics', tag: 'UX/UI & E-Commerce', title: 'Shop 4.0: Магазин электроники', description: 'UX-исследования, аналитика конверсий, мобильный флоу чекаута и дизайн-система', metrics: [{ value: '+18.4%', label: 'CR' }, { value: '48 с', label: 'Чекаут' }] },
   { slug: '10-house-project', tag: 'Interior · Architecture', title: 'Интерьер загородного дома', description: 'Полный цикл: планировка, 3D-аксонометрия, электрика и 100% реализация в жизни', metrics: [{ value: '140 м²', label: 'Площадь' }, { value: '100%', label: 'Реализация' }] },
   { slug: '11-landscape-project', tag: 'Design', title: 'Ландшафтный дизайн', description: 'Проект по ландшафту для своего участка', metrics: [] },
-  { slug: '12-resin-masterclass', tag: 'Art & PR', title: 'Resin Art', description: 'Мастер-класс на форуме смолянистов, 2021', metrics: [], customHref: '/fir_tree_art#resin-range' },
+  { slug: '12-resin-masterclass', tag: 'Art & PR', title: 'Resin Art', description: 'Мастер-класс на форуме смолянистов, 2021', metrics: [], customHref: '/fir_tree_art' },
   { slug: '13-local-tv-report', tag: 'PR & Media', title: 'Интервью', description: 'Репортаж на местном ТВ, 2020', metrics: [], customHref: '/fir_tree_art#interviews' },
   { slug: '14-vertex-homes', tag: 'UX/UI & Web', title: 'Vertex Homes', description: 'UX/UI дизайн для проектов из ЛСТК', metrics: [] }
 ]

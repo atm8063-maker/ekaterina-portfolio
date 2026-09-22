@@ -8,6 +8,14 @@ import { ChevronDown } from "lucide-react";
 export default function Header() {
   const pathname = usePathname();
   const [lang, setLang] = useState<"RU" | "EN">("RU");
+  const [showEnToast, setShowEnToast] = useState(false);
+
+  const handleEnClick = () => {
+    setShowEnToast(true);
+    setTimeout(() => {
+      setShowEnToast(false);
+    }, 2500);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#111111] flex items-center min-h-[5rem] py-3">
@@ -103,7 +111,7 @@ export default function Header() {
                     <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
                   </Link>
                   <Link 
-                    href="/fir_tree_art#sketches" 
+                    href="/fir_tree_art#portraits" 
                     className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
                   >
                     <span>Портреты & скетчи</span>
@@ -111,27 +119,48 @@ export default function Header() {
                   </Link>
                 </div>
 
-                {/* Column 2: Признание & Экспертиза */}
+                {/* Column 2: Экспертиза & Бренд */}
                 <div className="flex flex-col space-y-1">
                   <span className="text-[11px] font-montserrat font-black uppercase tracking-wider text-[#14F1D9] border-b border-white/10 pb-1.5 mb-1.5">
-                    Признание & Экспертиза
+                    Экспертиза & Бренд
                   </span>
                   <Link 
-                    href="/fir_tree_art#numbers" 
+                    href="/fir_tree_art#competencies" 
                     className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
                   >
                     <span>Компетенции</span>
                     <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
                   </Link>
                   <Link 
-                    href="/fir_tree_art#awards" 
+                    href="/fir_tree_art#victories" 
                     className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
                   >
                     <span>Победы, финалы & Судейство</span>
                     <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
                   </Link>
                   <Link 
-                    href="/fir_tree_art#interviews" 
+                    href="/fir_tree_art#ambassador" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Амбассадор & Продукция</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                </div>
+
+                {/* Column 3: Обучение & Медиа */}
+                <div className="flex flex-col space-y-1">
+                  <span className="text-[11px] font-montserrat font-black uppercase tracking-wider text-[#14F1D9] border-b border-white/10 pb-1.5 mb-1.5">
+                    Обучение & Медиа
+                  </span>
+                  <Link 
+                    href="/fir_tree_art#education" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Обучение & Лекции</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                  <Link 
+                    href="/fir_tree_art#media" 
                     className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
                   >
                     <span>Публикации в СМИ</span>
@@ -142,27 +171,6 @@ export default function Header() {
                     className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
                   >
                     <span>Отзывы</span>
-                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                </div>
-
-                {/* Column 3: Коллаборации & Обучение */}
-                <div className="flex flex-col space-y-1">
-                  <span className="text-[11px] font-montserrat font-black uppercase tracking-wider text-[#14F1D9] border-b border-white/10 pb-1.5 mb-1.5">
-                    Коллаборации & Обучение
-                  </span>
-                  <Link 
-                    href="/fir_tree_art#brand" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Амбассадор бренда & Продукция</span>
-                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                  <Link 
-                    href="/fir_tree_art#teaching" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Обучение, Лекции & МК</span>
                     <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
                   </Link>
                 </div>
@@ -181,10 +189,31 @@ export default function Header() {
             Связаться
           </Link>
 
-          <div className="flex items-center gap-1 md:gap-3 text-[9px] sm:text-xs md:text-sm font-semibold font-montserrat text-white/70 border-l border-white/20 pl-2 md:pl-6 shrink-0">
-            <button onClick={() => setLang("RU")} className={`transition-colors hover:text-white ${lang === "RU" ? "text-white" : ""}`}>RU</button>
+          <div className="relative flex items-center gap-1 md:gap-3 text-[9px] sm:text-xs md:text-sm font-semibold font-montserrat text-white/70 border-l border-white/20 pl-2 md:pl-6 shrink-0">
+            <button 
+              type="button"
+              onClick={() => setLang("RU")} 
+              className={`transition-colors hover:text-white cursor-pointer ${lang === "RU" ? "text-[#14F1D9] font-bold" : "text-white/60"}`}
+            >
+              RU
+            </button>
             <span className="text-white/30">|</span>
-            <button onClick={() => setLang("EN")} className={`transition-colors hover:text-white ${lang === "EN" ? "text-white" : ""}`}>EN</button>
+            <button 
+              type="button"
+              onClick={handleEnClick} 
+              className="transition-colors hover:text-white text-white/60 cursor-pointer flex items-center gap-1"
+              title="English version coming soon"
+            >
+              <span>EN</span>
+            </button>
+
+            {/* In-development popup toast */}
+            {showEnToast && (
+              <div className="absolute top-full right-0 mt-3 bg-[#1A1A1A] border border-[#14F1D9]/50 text-white text-[11px] font-sans font-medium px-3.5 py-2 rounded-lg shadow-2xl z-50 whitespace-nowrap animate-in fade-in slide-in-from-top-1 pointer-events-none">
+                <span className="text-[#14F1D9] mr-1">⏳</span>
+                <span>English version in development (Скоро)</span>
+              </div>
+            )}
           </div>
         </div>
 
