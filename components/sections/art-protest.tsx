@@ -97,7 +97,7 @@ const artworksData: Artwork[] = [
     ],
   },
 
-  // 3. Папка 3: Последняя капля (фото повернуто на 90 градусов вертикально)
+  // 3. Папка 3: Последняя капля (оригинальное фото 1280x758 из папки)
   {
     id: 'work-3',
     number: '03',
@@ -111,7 +111,7 @@ const artworksData: Artwork[] = [
         type: 'image',
         src: '/art-protest/папка 3/photo_3332@04-08-2026_21-08-45.jpg',
         label: 'Экспозиция',
-        aspect: '758 / 1280',
+        aspect: '1280 / 758',
       },
       {
         type: 'video',
@@ -436,33 +436,32 @@ function SteppedCollage({
         )}
 
         {/* ========================================================= */}
-        {/* CASE 3: Последняя капля (вертикальное фото 758x1280 + видео 9:16) */}
+        {/* CASE 3: Последняя капля (оригинальное горизонтальное фото) */}
         {/* ========================================================= */}
         {artwork.id === 'work-3' && (
           <div className="relative w-full h-full">
             {/* Bold 4px Lines */}
-            <div className="absolute top-[52%] -left-10 -right-10 h-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[225px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[435px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[46%] -left-10 -right-10 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[360px] -top-8 -bottom-8 w-[4px] bg-black pointer-events-none z-10" />
 
-            {/* Left Vertical: photo_3332 (width 210px, height 355px) */}
-            <div className="absolute left-0 top-[6%] z-20">
-              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '355px' }} />
-            </div>
-
-            {/* Center Vertical Video: video_95 (width 200px, height 355px) */}
-            <div className="absolute left-[225px] top-[6%] z-20">
-              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '355px' }} />
-            </div>
-
-            {/* Right: Concept Annotation Card */}
-            <div className="absolute left-[435px] top-[12%] right-0 z-20 border-[4px] border-black p-4 bg-white/80">
+            {/* Top Left: Concept Card (width 340px) */}
+            <div className="absolute left-0 top-[6%] w-[340px] z-20 border-[4px] border-black p-4 bg-white/80">
               <span className="text-xs font-montserrat font-black uppercase text-black tracking-wider block">
                 Концепция
               </span>
-              <p className="text-xs text-black font-sans font-bold leading-relaxed mt-2">
+              <p className="text-xs text-black font-sans font-bold leading-relaxed mt-1">
                 {artwork.concept}
               </p>
+            </div>
+
+            {/* Bottom Left Horizontal: photo_3332 (1280x758, width 340px) */}
+            <div className="absolute left-0 bottom-[6%] z-20">
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ width: '340px' }} />
+            </div>
+
+            {/* Right Vertical Video: video_95 (9:16, height 360px) */}
+            <div className="absolute left-[360px] top-[6%] z-20">
+              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '360px' }} />
             </div>
           </div>
         )}
