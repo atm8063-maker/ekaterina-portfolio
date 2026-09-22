@@ -273,7 +273,7 @@ function CollageItem({
   return (
     <div
       onClick={() => onOpenLightbox(item, artwork)}
-      className={`relative overflow-hidden border-[1.5px] border-black group cursor-pointer transition-transform hover:scale-[1.02] shadow-sm bg-transparent ${aspect} ${className}`}
+      className={`relative overflow-hidden border-[2.5px] border-black group cursor-pointer transition-transform hover:scale-[1.02] shadow-sm bg-transparent ${aspect} ${className}`}
     >
       {item.type === 'video' ? (
         <div className="relative w-full h-full">
@@ -353,12 +353,12 @@ function SteppedCollage({
         {count === 5 && (
           <div className="relative w-full h-full">
             {/* Extended Horizontal Cross-Lines */}
-            <div className="absolute top-[28%] -left-8 -right-8 h-[1.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute top-[68%] -left-6 -right-6 h-[1.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[28%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[68%] -left-6 -right-6 h-[2.5px] bg-black pointer-events-none z-10" />
 
             {/* Extended Vertical Cross-Lines */}
-            <div className="absolute left-[24%] -top-6 -bottom-6 w-[1.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[64%] -top-6 -bottom-6 w-[1.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[24%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[64%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
 
             {/* Text Annotations on Concrete along lines */}
             <span className="absolute top-[28%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase tracking-wider text-black">
@@ -404,10 +404,10 @@ function SteppedCollage({
         {count >= 7 && (
           <div className="relative w-full h-full">
             {/* Extended Architectural Lines */}
-            <div className="absolute top-[42%] -left-8 -right-8 h-[1.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute top-[72%] -left-6 -right-6 h-[1.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[28%] -top-6 -bottom-6 w-[1.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[62%] -top-6 -bottom-6 w-[1.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[42%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[72%] -left-6 -right-6 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[28%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[62%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
 
             {/* Line Labels */}
             <span className="absolute top-[42%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
@@ -463,10 +463,10 @@ function SteppedCollage({
         {count === 6 && (
           <div className="relative w-full h-full">
             {/* Extended Lines */}
-            <div className="absolute top-[34%] -left-8 -right-8 h-[1.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute top-[68%] -left-6 -right-6 h-[1.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[26%] -top-6 -bottom-6 w-[1.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[60%] -top-6 -bottom-6 w-[1.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[34%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[68%] -left-6 -right-6 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[26%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[60%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
 
             {/* Line Labels */}
             <span className="absolute top-[34%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
@@ -514,8 +514,8 @@ function SteppedCollage({
         {count === 4 && (
           <div className="relative w-full h-full">
             {/* Extended Lines */}
-            <div className="absolute top-[45%] -left-8 -right-8 h-[1.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[48%] -top-6 -bottom-6 w-[1.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[45%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[48%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
 
             {/* Labels */}
             <span className="absolute top-[45%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
@@ -553,8 +553,8 @@ function SteppedCollage({
         {count <= 3 && (
           <div className="relative w-full h-full">
             {/* Extended Lines */}
-            <div className="absolute top-[60%] -left-8 -right-8 h-[1.5px] bg-black pointer-events-none z-10" />
-            <div className="absolute left-[54%] -top-6 -bottom-6 w-[1.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[60%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[54%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
 
             {/* Line Labels */}
             <span className="absolute top-[60%] -left-7 -translate-y-full text-[8px] font-inter font-bold uppercase text-black">
@@ -598,10 +598,10 @@ function ManifestoPanel() {
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
       <div className="w-full max-w-[520px] h-[360px] sm:h-[400px] relative flex flex-col justify-between p-4">
         {/* Extended Architectural Lines */}
-        <div className="absolute top-[20%] -left-8 -right-8 h-[1.5px] bg-black pointer-events-none z-10" />
-        <div className="absolute bottom-[20%] -left-8 -right-8 h-[1.5px] bg-black pointer-events-none z-10" />
-        <div className="absolute left-[10%] -top-6 -bottom-6 w-[1.5px] bg-black pointer-events-none z-10" />
-        <div className="absolute right-[10%] -top-6 -bottom-6 w-[1.5px] bg-black pointer-events-none z-10" />
+        <div className="absolute top-[20%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+        <div className="absolute bottom-[20%] -left-8 -right-8 h-[2.5px] bg-black pointer-events-none z-10" />
+        <div className="absolute left-[10%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
+        <div className="absolute right-[10%] -top-6 -bottom-6 w-[2.5px] bg-black pointer-events-none z-10" />
 
         <div className="relative z-20 pt-2">
           <div className="flex items-center gap-2">
