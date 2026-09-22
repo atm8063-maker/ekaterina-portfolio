@@ -110,7 +110,8 @@ export function DoorsRealEstateCase() {
             <a href="#cjm" className="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors">03. CJM & Гипотезы</a>
             <a href="#schemes" className="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors">04. 4 Цветовые схемы</a>
             <a href="#portal" className="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors">05. Разбор Исходника</a>
-            <a href="#system" className="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors">06. Дизайн-система</a>
+            <a href="#mockups" className="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors">06. Мокапы устройств</a>
+            <a href="#system" className="px-3 py-1 rounded-lg bg-white/5 hover:bg-white/10 hover:text-white transition-colors">07. Дизайн-система</a>
           </div>
         </div>
       </section>
@@ -823,11 +824,71 @@ export function DoorsRealEstateCase() {
           </div>
         </section>
 
-        {/* 6. DESIGN SYSTEM & TOKENS */}
+        {/* 6. PRESENTATION MOCKUPS & DEVICES */}
+        <section id="mockups" className="scroll-mt-24 space-y-10">
+          <div className="border-b border-white/10 pb-4">
+            <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+              06 / ПРЕЗЕНТАЦИОННЫЕ МОКАПЫ & УСТРОЙСТВА
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
+              Интерфейс в реальной среде и на девайсах
+            </h2>
+            <p className="text-sm text-white/70 font-sans mt-2 max-w-3xl leading-relaxed">
+              Демонстрация адаптивности веб-платформы Doors Real Estate: от широкоформатных мониторов и ноутбуков до планшетов брокеров и смартфонов клиентов.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {mockups.map((mockup, idx) => (
+              <div
+                key={idx}
+                onClick={() => setSelectedImage({
+                  src: mockup.src,
+                  title: mockup.title,
+                  subtitle: mockup.type
+                })}
+                className="bg-[#1A1A1A] border border-white/10 rounded-2xl overflow-hidden group hover:border-[#14F1D9]/50 transition-all flex flex-col cursor-pointer"
+              >
+                <div className="relative aspect-[16/10] bg-black/40 overflow-hidden">
+                  <Image
+                    src={mockup.src}
+                    alt={mockup.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-montserrat font-semibold text-[#14F1D9] border border-white/10 uppercase tracking-wider">
+                    {mockup.type}
+                  </div>
+                  <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-md p-2 rounded-lg text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Maximize2 className="w-4 h-4 text-[#14F1D9]" />
+                  </div>
+                </div>
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                  <div>
+                    <h3 className="text-base font-bold font-montserrat text-white group-hover:text-[#14F1D9] transition-colors leading-snug">
+                      {mockup.title}
+                    </h3>
+                    <p className="text-xs text-white/60 font-sans leading-relaxed mt-2">
+                      {mockup.description}
+                    </p>
+                  </div>
+                  <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-white/40 font-montserrat">
+                    <span>Mockuuups Studio Render</span>
+                    <span className="text-[#14F1D9] font-medium flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                      Открыть <ChevronRight className="w-3 h-3" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 7. DESIGN SYSTEM & TOKENS */}
         <section id="system" className="scroll-mt-24 space-y-10">
           <div className="border-b border-white/10 pb-4">
             <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
-              06 / ДИЗАЙН-СИСТЕМА
+              07 / ДИЗАЙН-СИСТЕМА
             </div>
             <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
               Дизайн-система & Типографика

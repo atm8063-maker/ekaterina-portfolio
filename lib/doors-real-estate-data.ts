@@ -405,6 +405,30 @@ export const doorsRealEstateData: DoorsRealEstateData = {
   ],
   mockups: [
     {
+      title: "MacBook Pro на каменном постаменте (Editorial Showcase)",
+      type: "Desktop Showcase",
+      src: "/Кейсы/08-mockup-real-estate/Free MacBook Pro mockup on stone pedestal (Mockuuups Studio) (1).jpg",
+      description: "Презентационный мокап флагманского 1366px портала Doors Real Estate на экране MacBook Pro на фактурном каменном постаменте."
+    },
+    {
+      title: "MacBook Pro Space Gray в рабочем интерьере",
+      type: "Workspace Environment",
+      src: "/Кейсы/08-mockup-real-estate/Free Macbook Pro Space Gray mockup on the wooden table (Mockuuups Studio).jpg",
+      description: "Отображение каталога Urban Realty и подбора элитных апартаментов на деревянном столе в премиальном офисе."
+    },
+    {
+      title: "iPad Pro: Презентация лота клиенту брокером",
+      type: "Tablet Lifestyle",
+      src: "/Кейсы/08-mockup-real-estate/Free mockup of man pointing on iPad (Mockuuups Studio).jpg",
+      description: "Планшетный сценарий: персональный брокер презентует архитектурный план и видовые оси пентхауса покупателю."
+    },
+    {
+      title: "iPhone 15 Pro: Быстрая бронь & Оплата задатка с карты",
+      type: "Mobile Transaction",
+      src: "/Кейсы/08-mockup-real-estate/Free iPhone 15 Pro mockup with credit card in hand (Mockuuups Studio).jpg",
+      description: "Мобильный интерфейс в руке пользователя с банковской картой: мгновенное внесение депозита и фиксация цены лота."
+    },
+    {
       title: "iPhone 12 Pro 3D Showcase (2716 × 2037 px)",
       type: "Photorealistic 3D Render",
       src: "/Кейсы/08-mockup-real-estate/figma_exports/05_iphone_mockup.png",

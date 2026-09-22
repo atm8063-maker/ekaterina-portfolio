@@ -532,6 +532,12 @@ export const electronicsShopData: ElectronicsShopData = {
     },
     mockups: [
       {
+        title: "Рабочее место с монитором Dell (Clean Desk Showcase)",
+        src: "/Кейсы/09-mockup-electronics/Free Clean desk with Dell display mockup (Mockuuups Studio)1.jpg",
+        type: "Desktop Workplace",
+        description: "Широкоформатный сценарий покупки и сравнения характеристик техники на профессиональном 4K мониторе Dell."
+      },
+      {
         title: "MacBook Pro 13: Десктопный сценарий выбора",
         src: "/Кейсы/09-mockup-electronics/figma_exports/12_macbook_mockup.png",
         type: "Laptop Mockup",
