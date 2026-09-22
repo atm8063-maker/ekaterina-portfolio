@@ -146,7 +146,7 @@ const artworksData: Artwork[] = [
       },
     ],
     materials: 'Арт-борд, хром, эпоксидная смола, силикон',
-    year: '2024',
+    year: '2020',
     media: [
       {
         type: 'image',
@@ -185,7 +185,7 @@ const artworksData: Artwork[] = [
       },
     ],
     materials: 'Арт-борд, эпоксидная смола, красители и пигменты, жидкий камень, акрил, силикон, скелетированные листья',
-    year: '2024',
+    year: '2021',
     media: [
       {
         type: 'image',
@@ -254,7 +254,7 @@ const artworksData: Artwork[] = [
       },
     ],
     materials: 'Ватман, ветка терновника',
-    year: '2023',
+    year: '2024',
     media: [
       {
         type: 'image',
@@ -287,7 +287,7 @@ const artworksData: Artwork[] = [
       },
     ],
     materials: 'Холст, акрил, маркеры',
-    year: '2024',
+    year: '2015',
     media: [
       {
         type: 'image',
@@ -338,7 +338,7 @@ const artworksData: Artwork[] = [
       },
     ],
     materials: '1. «Жыве!»: арт-борд, пигменты, диоксид титана, эпоксидная смола · 2. «Застрять в текстурах»: цифровая графика (ручной рисунок, фотошоп) · 3. «Телесность»: холст, акрил, маркеры',
-    year: '2024',
+    year: '2020, 2011, 2014',
     media: [
       {
         type: 'image',
