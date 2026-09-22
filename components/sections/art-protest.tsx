@@ -378,8 +378,8 @@ function SteppedCollage({
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
       
-      {/* Title & Metadata directly over concrete - with ample bottom margin */}
-      <div className="w-full max-w-[640px] flex items-center justify-between gap-2 mb-4 z-20 px-1">
+      {/* Title & Metadata directly over concrete */}
+      <div className="w-full max-w-[640px] flex items-center justify-between gap-2 mb-3 z-20 px-1">
         <div className="flex items-center gap-2 flex-wrap">
           <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
             {artwork.number}
@@ -396,8 +396,8 @@ function SteppedCollage({
         </span>
       </div>
 
-      {/* Dynamic Asymmetrical Collage Body - Width 640px, Height 430px */}
-      <div className="relative w-full max-w-[640px] h-[390px] sm:h-[430px]">
+      {/* Dynamic Asymmetrical Collage Body - Width 640px, Height 360px-400px */}
+      <div className="relative w-full max-w-[640px] h-[360px] sm:h-[390px]">
         
         {/* ========================================================= */}
         {/* CASE 1: Февраль 22-го (2 Left, 1 Hero, 1 Full Video)      */}
@@ -644,8 +644,8 @@ function SteppedCollage({
 
       </div>
 
-      {/* Concept Wall Plaque directly under the Artwork - Centered */}
-      <div className="mt-1.5 w-full max-w-[640px] z-20 flex items-center justify-center px-1">
+      {/* Concept Wall Plaque directly under the Artwork - Aligned Right to match Year badge */}
+      <div className="mt-1 w-full max-w-[640px] z-20 flex items-center justify-end px-1">
         <button
           data-interactive="true"
           onPointerDown={(e) => e.stopPropagation()}
@@ -653,10 +653,10 @@ function SteppedCollage({
             e.stopPropagation();
             handleConceptClick();
           }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/90 hover:bg-[#14F1D9] text-black border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md group/btn"
+          className="inline-flex items-center gap-2 px-3 py-1 bg-white/90 hover:bg-[#14F1D9] text-black border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md group/btn"
         >
           <span>КОНЦЕПЦИЯ</span>
-          <ChevronRight className={`w-4 h-4 transition-transform stroke-[2.5] ${isInlineOpen ? 'rotate-90' : 'group-hover/btn:translate-x-1'}`} />
+          <ChevronRight className={`w-3.5 h-3.5 transition-transform stroke-[2.5] ${isInlineOpen ? 'rotate-90' : 'group-hover/btn:translate-x-0.5'}`} />
         </button>
       </div>
 
