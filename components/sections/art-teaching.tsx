@@ -22,19 +22,19 @@ const mediaList: TeachingMedia[] = [
     type: 'video',
     src: '/art-muza/video_107@04-08-2026_22-24-05.mp4',
     category: 'forum',
-    title: 'Живая демонстрация на форуме',
-    subtitle: 'Мастер-класс со сцены перед аудиторией',
-    badge: 'СПИКЕР & МК',
+    title: '1-й Всероссийский форум смолянистов',
+    subtitle: 'Лекция и мастер-класс в музее АртМуза (СПб)',
+    badge: 'ВИДЕО • АРТМУЗА',
     location: 'Музей АртМуза · СПб',
   },
   {
     type: 'video',
     src: '/lessons/video_49@03-08-2026_23-50-53.mp4',
-    category: 'online',
-    title: 'Пошаговая методика заливки',
-    subtitle: 'Видеоурок: создание морской волны и пены',
-    badge: 'ТУТОРИАЛ',
-    location: 'Онлайн уроки',
+    category: 'workshops',
+    title: 'Мастер-классы по эпоксидной смоле',
+    subtitle: 'Офлайн воркшопы и обучение в Черногории',
+    badge: 'ВИДЕО • ЧЕРНОГОРИЯ',
+    location: 'Черногория',
   },
 
   // Музей АртМуза & Мастер-классы форума
@@ -359,16 +359,16 @@ export function ArtTeaching() {
               <span className="text-[10px] font-inter font-bold uppercase tracking-wider text-[#14F1D9]">
                 Музей АртМуза · СПб
               </span>
-              <h3 className="font-montserrat text-sm font-bold text-white uppercase mt-0.5">
-                Мастер-класс на форуме
+              <h3 className="font-montserrat text-sm sm:text-base font-bold text-white uppercase mt-0.5 leading-snug">
+                1-й Всероссийский форум смолянистов
               </h3>
               <p className="text-xs text-white/70 font-inter mt-0.5">
-                Живая демонстрация техники со сцены
+                Лекция и мастер-класс
               </p>
             </div>
           </div>
 
-          {/* Main Video 2: Tutorial (Vertical) */}
+          {/* Main Video 2: Montenegro Workshop (Vertical) */}
           <div
             onClick={() => openLightbox(mediaList[1])}
             className="relative aspect-[9/16] w-full max-h-[520px] rounded-none overflow-hidden bg-[#1A1A1A] border border-white/15 hover:border-[#14F1D9] transition-all group cursor-pointer"
@@ -385,18 +385,18 @@ export function ArtTeaching() {
             
             <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 bg-black/80 border border-[#14F1D9] text-[#14F1D9] text-[10px] font-inter font-bold uppercase tracking-wider">
               <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
-              Видео • Онлайн-туториал
+              Видео • Черногория
             </div>
 
             <div className="absolute bottom-3 left-3 right-3 z-10">
               <span className="text-[10px] font-inter font-bold uppercase tracking-wider text-[#14F1D9]">
-                Пошаговая методика
+                Офлайн воркшоп
               </span>
-              <h3 className="font-montserrat text-sm font-bold text-white uppercase mt-0.5">
-                Техника заливки смолы
+              <h3 className="font-montserrat text-sm sm:text-base font-bold text-white uppercase mt-0.5 leading-snug">
+                Мастер-классы по эпоксидной смоле
               </h3>
               <p className="text-xs text-white/70 font-inter mt-0.5">
-                Обучающий разбор создания морских волн
+                Обучение в Черногории
               </p>
             </div>
           </div>
