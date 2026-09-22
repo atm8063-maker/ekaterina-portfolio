@@ -265,13 +265,13 @@ export function ArtTechniques() {
               <h3 className="text-xs uppercase tracking-widest font-bold text-[#14F1D9] font-montserrat">
                 Офлайн · Материалы & Крафт
               </h3>
-              <span className="text-[10px] font-mono text-white/40 uppercase">Физические объекты</span>
+              <span className="text-[10px] font-inter text-white/40 uppercase tracking-wider">Физические объекты</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {offlineTags.map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1.5 rounded-none border border-white/20 text-white text-xs uppercase tracking-wider font-semibold hover:border-[#14F1D9] hover:text-[#14F1D9] transition-colors cursor-default bg-black/20"
+                  className="px-3 py-1.5 rounded-none border border-white/20 text-white text-xs uppercase tracking-wider font-semibold font-inter hover:border-[#14F1D9] hover:text-[#14F1D9] transition-colors cursor-default bg-black/20"
                 >
                   {t}
                 </span>
@@ -279,7 +279,7 @@ export function ArtTechniques() {
               {offlineExtra.map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1.5 rounded-none border border-white/10 text-white/50 text-xs uppercase tracking-wider font-semibold hover:border-[#14F1D9] hover:text-[#14F1D9] transition-colors cursor-default bg-black/10"
+                  className="px-3 py-1.5 rounded-none border border-white/10 text-white/50 text-xs uppercase tracking-wider font-semibold font-inter hover:border-[#14F1D9] hover:text-[#14F1D9] transition-colors cursor-default bg-black/10"
                 >
                   {t}
                 </span>
@@ -293,13 +293,13 @@ export function ArtTechniques() {
               <h3 className="text-xs uppercase tracking-widest font-bold text-[#14F1D9] font-montserrat">
                 Цифра · Design <span className="text-[#14F1D9]">&</span> Tech
               </h3>
-              <span className="text-[10px] font-mono text-white/40 uppercase">Интерфейсы & 3D</span>
+              <span className="text-[10px] font-inter text-white/40 uppercase tracking-wider">Интерфейсы & 3D</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {digitalTools.map((i) => (
                 <span
                   key={i}
-                  className="px-3 py-1.5 rounded-none bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs uppercase tracking-wider font-semibold hover:bg-[#14F1D9]/20 transition-colors cursor-default"
+                  className="px-3 py-1.5 rounded-none bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs uppercase tracking-wider font-semibold font-inter hover:bg-[#14F1D9]/20 transition-colors cursor-default"
                 >
                   {i}
                 </span>
@@ -345,7 +345,7 @@ export function ArtTechniques() {
 
               {/* Hover Tag & Title Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-2.5 pointer-events-none">
-                <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-[#14F1D9]">
+                <span className="text-[9px] font-inter font-bold uppercase tracking-wider text-[#14F1D9]">
                   {item.tag}
                 </span>
                 <p className="text-[11px] font-montserrat font-bold text-white uppercase line-clamp-1 leading-tight mt-0.5">
@@ -358,7 +358,7 @@ export function ArtTechniques() {
       </div>
 
       <div className="container mx-auto px-6 text-center mt-3">
-        <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+        <p className="text-[11px] font-inter text-white/50 tracking-wider">
           💡 Наведи курсор, чтобы приостановить · Кликни для полного размера
         </p>
       </div>
@@ -423,14 +423,14 @@ export function ArtTechniques() {
             {/* Bottom Bar */}
             <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-white/10 pt-4">
               <div>
-                <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#14F1D9]">
+                <span className="text-[11px] font-inter font-bold uppercase tracking-widest text-[#14F1D9]">
                   {activeLightboxItem.tag}
                 </span>
                 <h3 className="font-montserrat text-base font-bold uppercase text-white sm:text-lg">
                   {activeLightboxItem.title}
                 </h3>
               </div>
-              <span className="text-xs font-mono text-white/40 uppercase">
+              <span className="text-xs font-inter text-white/40 uppercase tracking-wider">
                 {lightboxIndex !== null ? `${lightboxIndex + 1} / ${items.length}` : ""}
               </span>
             </div>
