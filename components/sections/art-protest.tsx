@@ -4,66 +4,66 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { Play, X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
-export type CollageMediaItem = {
+export type MediaItem = {
   type: 'image' | 'video';
   src: string;
-  label?: string;
+  label: string;
 };
 
-export type ArtworkCollageData = {
+export type Artwork = {
   id: string;
   number: string;
   title: string;
   subtitle: string;
   concept: string;
   materials: string;
-  year?: string;
-  items: CollageMediaItem[];
+  year: string;
+  media: MediaItem[];
 };
 
-const artworks: ArtworkCollageData[] = [
+const artworksData: Artwork[] = [
   // 1. Папка 1 (1 фото + 1 видео)
   {
     id: 'work-1',
     number: '01',
     title: 'Арт-объект I',
     subtitle: 'Артивизм & Текстура',
-    concept: 'Исследование многослойности, преломления света и глубины через синтез смолы и пигментов.',
-    materials: 'Эпоксидная смола, пигменты, дерево',
-    year: '2023–2024',
-    items: [
+    concept: 'Исследование многослойности, преломления света и оптической глубины через синтез смолы и пигментов.',
+    materials: 'Эпоксидная смола, пигменты, арт-борд',
+    year: '2023',
+    media: [
       {
         type: 'image',
         src: '/art-protest/папка 1/photo_2957@31-07-2026_18-19-07.jpg',
-        label: 'Финальный объект',
+        label: 'Финальная работа',
       },
       {
         type: 'video',
         src: '/art-protest/папка 1/video_137@04-08-2026_22-24-33.mp4',
-        label: 'Динамика & Блик',
+        label: 'Видеодеталь & Блик',
       },
     ],
   },
 
-  // 2. Папка 2 (4 фото + 1 видео)
+  // 2. Папка 2 (4 фото + 1 видео = 5 элементов)
   {
     id: 'work-2',
     number: '02',
     title: 'Арт-объект II',
     subtitle: 'Контрасты & Графика',
     concept: 'Архитектоника формы и акцентная геометрия на стыке природного хаоса и строгого минимализма.',
-    materials: 'Смола, смешанная техника, текстура',
+    materials: 'Эпоксидная смола, смешанная техника, текстура',
     year: '2023–2024',
-    items: [
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка 2/photo_3291@04-08-2026_21-08-4231.jpg',
+        label: 'Главный вид',
+      },
       {
         type: 'video',
         src: '/art-protest/папка 2/video_102@04-08-2026_21-08-46.mp4',
         label: 'Живой рельеф',
-      },
-      {
-        type: 'image',
-        src: '/art-protest/папка 2/photo_3291@04-08-2026_21-08-4231.jpg',
-        label: 'Общий вид',
       },
       {
         type: 'image',
@@ -73,12 +73,12 @@ const artworks: ArtworkCollageData[] = [
       {
         type: 'image',
         src: '/art-protest/папка 2/photo_3360@04-08-2026_21-08-46_1.jpg',
-        label: 'Макро',
+        label: 'Макросъемка',
       },
       {
         type: 'image',
         src: '/art-protest/папка 2/photo_3362@04-08-2026_21-08-46.jpg',
-        label: 'Деталь',
+        label: 'Деталь слоя',
       },
     ],
   },
@@ -92,7 +92,7 @@ const artworks: ArtworkCollageData[] = [
     concept: 'Визуальный ритм и взаимодействие фактуры с направленным источником света.',
     materials: 'Эпоксидный глянец, пигменты, арт-борд',
     year: '2024',
-    items: [
+    media: [
       {
         type: 'image',
         src: '/art-protest/папка 3/photo_3332@04-08-2026_21-08-45.jpg',
@@ -106,7 +106,7 @@ const artworks: ArtworkCollageData[] = [
     ],
   },
 
-  // 4. Папка 4 (11 фото)
+  // 4. Папка 4 (11 фото -> показываем 7 ключевых ракурсов и макро)
   {
     id: 'work-4',
     number: '04',
@@ -115,41 +115,46 @@ const artworks: ArtworkCollageData[] = [
     concept: 'Масштабное художественное исследование структуры и тактильного восприятия поверхности.',
     materials: 'Многослойная заливка, кварц, пигменты',
     year: '2024',
-    items: [
+    media: [
       {
         type: 'image',
         src: '/art-protest/папка 4/photo_3309@04-08-2026_21-08-42.jpg',
-        label: 'Главный план',
+        label: 'Главный вид',
       },
       {
         type: 'image',
         src: '/art-protest/папка 4/photo_2026-08-30_02-47-39.jpg',
-        label: 'Фрагмент A',
+        label: 'Деталь A',
       },
       {
         type: 'image',
         src: '/art-protest/папка 4/photo_2026-08-30_02-47-40.jpg',
-        label: 'Фрагмент B',
+        label: 'Деталь B',
       },
       {
         type: 'image',
         src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (2).jpg',
-        label: 'Фрагмент C',
+        label: 'Рельеф C',
       },
       {
         type: 'image',
         src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (3).jpg',
-        label: 'Фрагмент D',
+        label: 'Срез D',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (4).jpg',
-        label: 'Деталь слоя',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (5).jpg',
+        label: 'Фактура E',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (7).jpg',
+        label: 'Макро F',
       },
     ],
   },
 
-  // 5. Папка 5 (1 фото)
+  // 5. Папка 5 (2 фото: photo_2933 + photo_3317)
   {
     id: 'work-5',
     number: '05',
@@ -158,7 +163,7 @@ const artworks: ArtworkCollageData[] = [
     concept: 'Лаконичная форма с акцентом на монолитность и оптические свойства смоляной линзы.',
     materials: 'Смола, акриловая подложка',
     year: '2023',
-    items: [
+    media: [
       {
         type: 'image',
         src: '/art-protest/папка 5/photo_2933@31-07-2026_17-46-11.jpg',
@@ -181,7 +186,7 @@ const artworks: ArtworkCollageData[] = [
     concept: 'Скульптурная пластика и послойное наращивание объёма на границе живописи и барельефа.',
     materials: 'Текстурная паста, эпоксидная смола, графит',
     year: '2024',
-    items: [
+    media: [
       {
         type: 'image',
         src: '/art-protest/папка 6/photo_3168@04-08-2026_20-56-52.jpg',
@@ -214,235 +219,322 @@ const artworks: ArtworkCollageData[] = [
     concept: 'Эмоциональный манифест свободы самовыражения через смелые цветовые переходы и плотность фактур.',
     materials: 'Смола, интерьерный арт-борд, пигменты',
     year: '2024',
-    items: [
-      {
-        type: 'image',
-        src: '/art-protest/папка 7/photo_3225@04-08-2026_21-04-40.jpg',
-        label: 'Композиция',
-      },
+    media: [
       {
         type: 'image',
         src: '/art-protest/папка 7/photo_3227@04-08-2026_21-04-40.jpg',
-        label: 'Ракурс',
+        label: 'Главный вид',
       },
       {
         type: 'image',
         src: '/art-protest/папка 7/photo_3394@04-08-2026_22-17-05.jpg',
-        label: 'Контраст',
+        label: 'Контраст & Свет',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 7/photo_3225@04-08-2026_21-04-40.jpg',
+        label: 'Ракурс',
       },
       {
         type: 'image',
         src: '/art-protest/папка 7/photo_2026-08-27_17-30-22.jpg',
-        label: 'Деталь',
+        label: 'Деталь A',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 7/photo_2026-08-27_17-30-22 (2).jpg',
+        label: 'Деталь B',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 7/photo_2026-08-27_17-30-22 (3).jpg',
+        label: 'Деталь C',
       },
     ],
   },
 ];
 
-// Asymmetrical architectural collage panel with black grid lines extending past blocks
-function ArtworkCollageCard({
+// Single Media Box with Black Borders & Zero-Crop Object Contain
+function MediaSlot({
+  item,
+  artwork,
+  onOpenLightbox,
+  className = '',
+  tag,
+}: {
+  item: MediaItem;
+  artwork: Artwork;
+  onOpenLightbox: (item: MediaItem, artwork: Artwork) => void;
+  className?: string;
+  tag?: string;
+}) {
+  return (
+    <div
+      onClick={() => onOpenLightbox(item, artwork)}
+      className={`relative overflow-hidden bg-black/70 border-2 border-black group cursor-pointer transition-all hover:border-[#14F1D9] shadow-md ${className}`}
+    >
+      {item.type === 'video' ? (
+        <div className="relative w-full h-full flex items-center justify-center bg-black">
+          <video
+            src={item.src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute top-1.5 right-1.5 p-1 bg-black/85 border border-[#14F1D9] text-[#14F1D9] z-10">
+            <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
+          </div>
+        </div>
+      ) : (
+        <div className="relative w-full h-full flex items-center justify-center bg-black/80">
+          <Image
+            src={item.src}
+            alt={item.label}
+            fill
+            sizes="400px"
+            className="object-contain group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      )}
+
+      {/* Label tag along line */}
+      <div className="absolute bottom-1 left-1 bg-black/90 px-1.5 py-0.5 text-[8px] sm:text-[9px] font-inter uppercase text-white font-semibold flex items-center gap-1 z-10 border border-white/10">
+        <Maximize2 className="w-2 h-2 text-[#14F1D9]" />
+        {tag || item.label}
+      </div>
+    </div>
+  );
+}
+
+// Collage Layout Component: Adapts specifically to the media items in each folder
+function ArtworkCollage({
   artwork,
   onOpenLightbox,
 }: {
-  artwork: ArtworkCollageData;
-  onOpenLightbox: (item: CollageMediaItem, artwork: ArtworkCollageData) => void;
+  artwork: Artwork;
+  onOpenLightbox: (item: MediaItem, artwork: Artwork) => void;
 }) {
-  const items = artwork.items;
-  const mainItem = items[0];
-  const secItem = items[1] || items[0];
-  const thirdItem = items[2];
-  const fourthItem = items[3];
+  const media = artwork.media;
+  const count = media.length;
 
   return (
-    <div className="relative w-full h-full p-2 sm:p-4 select-none flex flex-col justify-between">
+    <div className="relative w-full h-full p-2 sm:p-3 select-none flex flex-col justify-between">
       
-      {/* Extended Black Blueprint / De Stijl Grid Lines */}
-      {/* Top horizontal extended line */}
-      <div className="absolute -top-3 -left-6 -right-6 h-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
-      {/* Bottom horizontal extended line */}
-      <div className="absolute -bottom-3 -left-6 -right-6 h-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
-      {/* Left vertical extended line */}
-      <div className="absolute -left-3 -top-6 -bottom-6 w-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
-      {/* Right vertical extended line */}
-      <div className="absolute -right-3 -top-6 -bottom-6 w-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
+      {/* Structural Black Architectural Grid Lines with Overshooting Ends */}
+      <div className="absolute -top-3 -left-5 -right-5 h-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
+      <div className="absolute -bottom-3 -left-5 -right-5 h-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
+      <div className="absolute -left-3 -top-5 -bottom-5 w-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
+      <div className="absolute -right-3 -top-5 -bottom-5 w-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
 
-      {/* Internal dividing line */}
-      <div className="absolute top-0 bottom-0 left-[58%] w-[2px] bg-black pointer-events-none z-10 opacity-90" />
-      <div className="absolute left-0 right-0 top-[62%] h-[2px] bg-black pointer-events-none z-10 opacity-90" />
-
-      {/* Top Meta Header: Number & Title */}
-      <div className="relative z-20 flex items-start justify-between gap-2 pb-2">
+      {/* Top Header Bar */}
+      <div className="relative z-20 flex items-start justify-between gap-2 pb-1.5">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 tracking-wider">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[10px] sm:text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 tracking-wider border border-black">
               {artwork.number}
             </span>
-            <span className="text-[10px] sm:text-xs font-montserrat font-bold uppercase tracking-widest text-black bg-white/70 px-2 py-0.5">
+            <span className="text-[9px] sm:text-[11px] font-montserrat font-bold uppercase tracking-widest text-black bg-white/80 px-2 py-0.5 border border-black/30">
               {artwork.title}
             </span>
           </div>
-          <p className="text-[10px] text-black font-inter font-bold mt-1 tracking-tight drop-shadow-sm">
+          <p className="text-[10px] text-black font-inter font-bold mt-0.5 tracking-tight">
             {artwork.subtitle}
           </p>
         </div>
-        {artwork.year && (
-          <span className="text-[10px] font-inter font-bold text-black/80 bg-white/50 px-1.5 py-0.5">
+        <div className="text-right">
+          <span className="text-[9px] font-inter font-bold text-black/80 bg-white/60 px-1.5 py-0.5 border border-black/20 block">
             {artwork.year}
           </span>
-        )}
+          <span className="text-[8px] font-inter font-semibold text-black/70 mt-0.5 block">
+            {count} {count === 1 ? 'кадр' : count < 5 ? 'кадра' : 'кадров'}
+          </span>
+        </div>
       </div>
 
-      {/* Asymmetrical Photo/Video Collage Area */}
-      <div className="relative z-20 grid grid-cols-12 grid-rows-12 gap-1.5 flex-1 min-h-0 my-1">
+      {/* Dynamic Stepped Editorial Grid (No Cropping, Full Files Shown) */}
+      <div className="relative z-20 flex-1 min-h-0 my-1">
         
-        {/* Main Hero Slot (Left 7 cols, Top 8 rows) */}
-        <div
-          onClick={() => onOpenLightbox(mainItem, artwork)}
-          className="col-span-7 row-span-8 relative overflow-hidden bg-black/40 border border-black group cursor-pointer shadow-md"
-        >
-          {mainItem.type === 'video' ? (
-            <div className="relative w-full h-full">
-              <video
-                src={mainItem.src}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute top-1.5 right-1.5 p-1 bg-black/80 border border-[#14F1D9] text-[#14F1D9]">
-                <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
-              </div>
-            </div>
-          ) : (
-            <Image
-              src={mainItem.src}
-              alt={artwork.title}
-              fill
-              sizes="400px"
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+        {/* CASE A: 5 Media Items (e.g. Папка 2) */}
+        {count === 5 && (
+          <div className="grid grid-cols-12 grid-rows-12 gap-1.5 w-full h-full">
+            {/* Main Vertical Artwork (Left 6 cols, Full height 12 rows) */}
+            <MediaSlot
+              item={media[0]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-6 row-span-12"
+              tag="Главный вид"
             />
-          )}
-
-          {/* Micro tag overlay */}
-          <div className="absolute bottom-1 left-1 bg-black/85 px-1.5 py-0.5 text-[8px] sm:text-[9px] font-inter uppercase text-white font-semibold flex items-center gap-1">
-            <Maximize2 className="w-2.5 h-2.5 text-[#14F1D9]" />
-            {mainItem.label || 'Деталь 01'}
+            {/* Top Video Slot (Right 6 cols, Top 6 rows) */}
+            <MediaSlot
+              item={media[1]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-6 row-span-6"
+              tag="Видеодеталь"
+            />
+            {/* 3 Detail Shots (Right 6 cols, Bottom 6 rows -> 3 cols each) */}
+            <MediaSlot
+              item={media[2]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-2 row-span-6"
+              tag="Фрагмент"
+            />
+            <MediaSlot
+              item={media[3]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-2 row-span-6"
+              tag="Макро"
+            />
+            <MediaSlot
+              item={media[4]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-2 row-span-6"
+              tag="Деталь"
+            />
           </div>
-        </div>
+        )}
 
-        {/* Secondary Slot (Right 5 cols, Top 7 rows) */}
-        <div
-          onClick={() => onOpenLightbox(secItem, artwork)}
-          className="col-span-5 row-span-7 relative overflow-hidden bg-black/40 border border-black group cursor-pointer shadow-md"
-        >
-          {secItem.type === 'video' ? (
-            <div className="relative w-full h-full">
-              <video
-                src={secItem.src}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute top-1.5 right-1.5 p-1 bg-black/80 border border-[#14F1D9] text-[#14F1D9]">
-                <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
-              </div>
-            </div>
-          ) : (
-            <Image
-              src={secItem.src}
-              alt={artwork.title}
-              fill
-              sizes="300px"
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+        {/* CASE B: 6-7 Media Items (e.g. Папка 4, Папка 7) */}
+        {count >= 6 && (
+          <div className="grid grid-cols-12 grid-rows-12 gap-1.5 w-full h-full">
+            {/* Main Central/Hero Image (Left 5 cols, 12 rows) */}
+            <MediaSlot
+              item={media[0]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-5 row-span-12"
+              tag="Главный ракурс"
             />
-          )}
+            
+            {/* Secondary Hero (Cols 6-8, Rows 1-7) */}
+            <MediaSlot
+              item={media[1]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-4 row-span-7"
+              tag="Фрагмент"
+            />
 
-          <div className="absolute bottom-1 left-1 bg-black/85 px-1.5 py-0.5 text-[8px] sm:text-[9px] font-inter uppercase text-white font-semibold flex items-center gap-1">
-            <Maximize2 className="w-2.5 h-2.5 text-[#14F1D9]" />
-            {secItem.label || 'Деталь 02'}
+            {/* Third Slot (Cols 9-12, Rows 1-7) */}
+            <MediaSlot
+              item={media[2]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-3 row-span-7"
+              tag="Свет & Блик"
+            />
+
+            {/* Bottom Row Details (Cols 6-12, Rows 8-12 -> 3 micro slots) */}
+            <MediaSlot
+              item={media[3]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-2 row-span-5"
+              tag="Макро A"
+            />
+            <MediaSlot
+              item={media[4]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-2 row-span-5"
+              tag="Макро B"
+            />
+            <MediaSlot
+              item={media[5]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-3 row-span-5"
+              tag="Текстура"
+            />
           </div>
-        </div>
+        )}
 
-        {/* Third Slot (Left 7 cols, Bottom 4 rows) */}
-        <div
-          onClick={() => onOpenLightbox(thirdItem || mainItem, artwork)}
-          className="col-span-7 row-span-4 relative overflow-hidden bg-black/40 border border-black group cursor-pointer shadow-md"
-        >
-          {thirdItem ? (
-            <Image
-              src={thirdItem.src}
-              alt={artwork.title}
-              fill
-              sizes="300px"
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+        {/* CASE C: 4 Media Items (e.g. Папка 6) */}
+        {count === 4 && (
+          <div className="grid grid-cols-12 grid-rows-12 gap-1.5 w-full h-full">
+            {/* Top Large Artwork (12 cols, 7 rows) */}
+            <MediaSlot
+              item={media[0]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-6 row-span-12"
+              tag="Общий вид"
             />
-          ) : (
-            <div className="w-full h-full p-2 bg-black/75 flex flex-col justify-center">
+            {/* Right 3 Detail Blocks */}
+            <MediaSlot
+              item={media[1]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-6 row-span-4"
+              tag="Рельеф"
+            />
+            <MediaSlot
+              item={media[2]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-3 row-span-8"
+              tag="Текстура"
+            />
+            <MediaSlot
+              item={media[3]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-3 row-span-8"
+              tag="Деталь"
+            />
+          </div>
+        )}
+
+        {/* CASE D: 2 Media Items (e.g. Папка 1, Папка 3, Папка 5) */}
+        {count <= 3 && (
+          <div className="grid grid-cols-12 grid-rows-12 gap-1.5 w-full h-full">
+            {/* Primary Artwork Image (Left 7 cols, 12 rows) */}
+            <MediaSlot
+              item={media[0]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-7 row-span-12"
+              tag="Финальная работа"
+            />
+            {/* Secondary Media / Video (Right 5 cols, Top 7 rows) */}
+            <MediaSlot
+              item={media[1] || media[0]}
+              artwork={artwork}
+              onOpenLightbox={onOpenLightbox}
+              className="col-span-5 row-span-7"
+              tag={media[1]?.type === 'video' ? 'Видеодеталь' : 'Контекст'}
+            />
+            {/* Concept / Materials Architectural Callout Panel (Right 5 cols, Bottom 5 rows) */}
+            <div className="col-span-5 row-span-5 p-2 bg-black/85 border-2 border-black flex flex-col justify-center text-white">
               <span className="text-[8px] font-inter font-bold uppercase text-[#14F1D9] tracking-wider">
                 КОНЦЕПЦИЯ
               </span>
-              <p className="text-[9px] text-white/90 font-inter line-clamp-2 mt-0.5 leading-snug">
+              <p className="text-[9px] text-white/90 font-inter line-clamp-3 mt-0.5 leading-snug">
                 {artwork.concept}
               </p>
             </div>
-          )}
-
-          {thirdItem && (
-            <div className="absolute bottom-1 left-1 bg-black/85 px-1.5 py-0.5 text-[8px] sm:text-[9px] font-inter uppercase text-white font-semibold flex items-center gap-1">
-              <Maximize2 className="w-2.5 h-2.5 text-[#14F1D9]" />
-              {thirdItem.label || 'Макро'}
-            </div>
-          )}
-        </div>
-
-        {/* Fourth Slot (Right 5 cols, Bottom 5 rows) */}
-        <div
-          onClick={() => onOpenLightbox(fourthItem || secItem, artwork)}
-          className="col-span-5 row-span-5 relative overflow-hidden bg-black/40 border border-black group cursor-pointer shadow-md"
-        >
-          {fourthItem ? (
-            <Image
-              src={fourthItem.src}
-              alt={artwork.title}
-              fill
-              sizes="250px"
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          ) : (
-            <div className="w-full h-full p-2 bg-black/75 flex flex-col justify-center">
-              <span className="text-[8px] font-inter font-bold uppercase text-[#14F1D9] tracking-wider">
-                МАТЕРИАЛЫ
-              </span>
-              <p className="text-[9px] text-white/90 font-inter line-clamp-2 mt-0.5 leading-snug">
-                {artwork.materials}
-              </p>
-            </div>
-          )}
-
-          {fourthItem && (
-            <div className="absolute bottom-1 left-1 bg-black/85 px-1.5 py-0.5 text-[8px] sm:text-[9px] font-inter uppercase text-white font-semibold flex items-center gap-1">
-              <Maximize2 className="w-2.5 h-2.5 text-[#14F1D9]" />
-              {fourthItem.label || 'Фактура'}
-            </div>
-          )}
-        </div>
+          </div>
+        )}
 
       </div>
 
-      {/* Bottom Materials & Concept Bar */}
-      <div className="relative z-20 pt-2 flex items-center justify-between gap-2 border-t border-black/40">
-        <div className="flex items-center gap-2 overflow-hidden">
-          <span className="text-[9px] font-inter font-bold uppercase tracking-wider text-black bg-white/60 px-1.5 py-0.2 shrink-0">
+      {/* Bottom Materials & Concept Line */}
+      <div className="relative z-20 pt-1.5 flex items-center justify-between gap-2 border-t border-black/40">
+        <div className="flex items-center gap-1.5 overflow-hidden">
+          <span className="text-[8px] sm:text-[9px] font-inter font-bold uppercase tracking-wider text-black bg-white/70 px-1.5 py-0.2 shrink-0 border border-black/20">
             МАТЕРИАЛЫ
           </span>
-          <p className="text-[10px] text-black font-inter font-semibold truncate">
+          <p className="text-[9px] sm:text-[10px] text-black font-inter font-semibold truncate">
             {artwork.materials}
           </p>
         </div>
-        <span className="text-[9px] font-inter font-bold text-black/70 uppercase shrink-0">
+        <span className="text-[8px] sm:text-[9px] font-inter font-bold text-black/80 uppercase shrink-0">
           Смола · Текстура
         </span>
       </div>
@@ -452,32 +544,32 @@ function ArtworkCollageCard({
 }
 
 // Concluding Manifesto Panel (Balances 4th Wall Segment)
-function ManifestoCard() {
+function ManifestoPanel() {
   return (
     <div className="relative w-full h-full p-4 sm:p-6 select-none flex flex-col justify-between">
       {/* Extended Black Blueprint Lines */}
-      <div className="absolute -top-3 -left-6 -right-6 h-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
-      <div className="absolute -bottom-3 -left-6 -right-6 h-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
-      <div className="absolute -left-3 -top-6 -bottom-6 w-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
-      <div className="absolute -right-3 -top-6 -bottom-6 w-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
+      <div className="absolute -top-3 -left-5 -right-5 h-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
+      <div className="absolute -bottom-3 -left-5 -right-5 h-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
+      <div className="absolute -left-3 -top-5 -bottom-5 w-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
+      <div className="absolute -right-3 -top-5 -bottom-5 w-[2px] bg-black pointer-events-none z-10 opacity-90 shadow-sm" />
 
       <div className="relative z-20">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 tracking-wider">
+          <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 tracking-wider border border-black">
             VIII
           </span>
-          <span className="text-xs font-montserrat font-bold uppercase tracking-widest text-black bg-white/70 px-2 py-0.5">
+          <span className="text-xs font-montserrat font-bold uppercase tracking-widest text-black bg-white/80 px-2 py-0.5 border border-black/30">
             Концепция серии
           </span>
         </div>
-        <h3 className="font-montserrat text-lg sm:text-xl font-black uppercase text-black mt-2 leading-tight">
+        <h3 className="font-montserrat text-lg sm:text-2xl font-black uppercase text-black mt-2 leading-tight">
           Артивизм <span className="text-[#14F1D9] drop-shadow-sm">&</span> Честность
         </h3>
       </div>
 
-      <div className="relative z-20 space-y-3 bg-black/85 p-4 sm:p-5 border border-black my-2 text-white">
+      <div className="relative z-20 space-y-3 bg-black/90 p-4 sm:p-5 border-2 border-black my-2 text-white shadow-xl">
         <p className="text-xs sm:text-sm font-inter leading-relaxed text-white/90">
-          «Каждая работа — это отказ от компромиссов. Эпоксидная смола и грубые минеральные текстуры здесь выступают не как декор, а как прямой визуальный манифест свободы, объема и чистой эмоции».
+          «Каждая работа — это отказ от компромиссов. Эпоксидная смола и минеральные рельефы здесь выступают не как декор, а как прямой визуальный манифест свободы, формы и чистой эмоции».
         </p>
         <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-inter text-[#14F1D9] uppercase font-bold tracking-wider">
           <span>Екатерина · Fir Tree Art</span>
@@ -486,8 +578,8 @@ function ManifestoCard() {
       </div>
 
       <div className="relative z-20 flex items-center justify-between text-[10px] font-inter font-bold text-black border-t border-black/40 pt-2">
-        <span className="bg-white/60 px-1.5 py-0.5 uppercase">Виртуальная галерея</span>
-        <span>7 арт-объектов</span>
+        <span className="bg-white/70 px-2 py-0.5 uppercase border border-black/20">Виртуальная галерея</span>
+        <span>7 арт-объектов · детали & видео</span>
       </div>
     </div>
   );
@@ -496,8 +588,8 @@ function ManifestoCard() {
 export function ArtProtest() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [lightboxState, setLightboxState] = useState<{
-    item: CollageMediaItem;
-    artwork: ArtworkCollageData;
+    item: MediaItem;
+    artwork: Artwork;
   } | null>(null);
 
   const isDragging = useRef(false);
@@ -505,11 +597,11 @@ export function ArtProtest() {
   const scrollLeft = useRef(0);
 
   // Group 7 artworks + 1 manifesto into 4 wall chunks (2 artworks per wall segment)
-  const chunks: Array<{ left: ArtworkCollageData; right?: ArtworkCollageData | 'manifesto' }> = [
-    { left: artworks[0], right: artworks[1] },
-    { left: artworks[2], right: artworks[3] },
-    { left: artworks[4], right: artworks[5] },
-    { left: artworks[6], right: 'manifesto' },
+  const chunks: Array<{ left: Artwork; right?: Artwork | 'manifesto' }> = [
+    { left: artworksData[0], right: artworksData[1] },
+    { left: artworksData[2], right: artworksData[3] },
+    { left: artworksData[4], right: artworksData[5] },
+    { left: artworksData[6], right: 'manifesto' },
   ];
 
   const scrollByAmount = (offset: number) => {
@@ -555,7 +647,7 @@ export function ArtProtest() {
             Артивизм <span className="text-[#14F1D9]">&</span> Честность
           </h2>
           <p className="text-xs sm:text-sm text-white/60 font-inter mt-1">
-            Коллажи деталей каждой работы на бетонной стене экспозиции. Листай вправо.
+            Архитектурные коллажи деталей каждой работы без обрезки. Листай вправо свайпом или стрелками.
           </p>
         </div>
 
@@ -586,7 +678,7 @@ export function ArtProtest() {
         onPointerUp={endDrag}
         onPointerLeave={endDrag}
         onDragStart={(e) => e.preventDefault()}
-        className="relative w-full h-[620px] sm:h-[680px] lg:h-[720px] overflow-x-auto overflow-y-hidden flex flex-nowrap cursor-grab select-none snap-x snap-mandatory hide-scrollbar"
+        className="relative w-full h-[620px] sm:h-[680px] lg:h-[730px] overflow-x-auto overflow-y-hidden flex flex-nowrap cursor-grab select-none snap-x snap-mandatory hide-scrollbar"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
@@ -609,8 +701,8 @@ export function ArtProtest() {
               <div className="w-[5%] md:w-[4.8%] h-full shrink-0" />
 
               {/* Spot 1: Left Collage */}
-              <div className="relative w-[43%] md:w-[40.2%] h-[68%] sm:h-[72%] shrink-0 flex items-center justify-center overflow-visible">
-                <ArtworkCollageCard
+              <div className="relative w-[43%] md:w-[40.2%] h-[72%] sm:h-[76%] shrink-0 flex items-center justify-center overflow-visible">
+                <ArtworkCollage
                   artwork={chunk.left}
                   onOpenLightbox={(item, art) => setLightboxState({ item, artwork: art })}
                 />
@@ -620,11 +712,11 @@ export function ArtProtest() {
               <div className="w-[9%] md:w-[10%] h-full shrink-0" />
 
               {/* Spot 2: Right Collage */}
-              <div className="relative w-[43%] md:w-[40.2%] h-[68%] sm:h-[72%] shrink-0 flex items-center justify-center overflow-visible">
+              <div className="relative w-[43%] md:w-[40.2%] h-[72%] sm:h-[76%] shrink-0 flex items-center justify-center overflow-visible">
                 {chunk.right === 'manifesto' ? (
-                  <ManifestoCard />
+                  <ManifestoPanel />
                 ) : chunk.right ? (
-                  <ArtworkCollageCard
+                  <ArtworkCollage
                     artwork={chunk.right}
                     onOpenLightbox={(item, art) => setLightboxState({ item, artwork: art })}
                   />
