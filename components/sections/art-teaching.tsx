@@ -23,9 +23,9 @@ const mediaList: TeachingMedia[] = [
     src: '/art-muza/video_107@04-08-2026_22-24-05.mp4',
     category: 'forum',
     title: '1-й Всероссийский форум смолянистов',
-    subtitle: 'Лекция и мастер-класс в музее АртМуза (СПб)',
+    subtitle: 'Лекция и мастер-класс в музее Артмуза (СПб)',
     badge: 'ВИДЕО • АРТМУЗА',
-    location: 'Музей АртМуза · СПб',
+    location: 'Музей Артмуза · СПб',
   },
   {
     type: 'video',
@@ -37,15 +37,15 @@ const mediaList: TeachingMedia[] = [
     location: 'Черногория',
   },
 
-  // Музей АртМуза & Мастер-классы форума
+  // Музей Артмуза & Мастер-классы форума
   {
     type: 'video',
     src: '/art-muza/video_108@04-08-2026_22-24-09.mp4',
     category: 'forum',
-    title: 'Видео мастер-класса в АртМузе',
+    title: 'Видео мастер-класса в Артмузе',
     subtitle: 'Практическая демонстрация авторской техники со сцены',
     badge: 'ВИДЕО • АРТМУЗА',
-    location: 'Музей АртМуза · СПб',
+    location: 'Музей Артмуза · СПб',
   },
   {
     type: 'image',
@@ -54,7 +54,7 @@ const mediaList: TeachingMedia[] = [
     title: '1-й Всероссийский форум смолянистов',
     subtitle: 'Выступление с авторской лекцией перед сообществом',
     badge: 'СПИКЕР',
-    location: 'Музей АртМуза · СПб',
+    location: 'Музей Артмуза · СПб',
   },
   {
     type: 'image',
@@ -63,7 +63,7 @@ const mediaList: TeachingMedia[] = [
     title: 'Мастер-класс: тонкости работы со смолой',
     subtitle: 'Демонстрация послойной заливки и пигментов',
     badge: 'МАСТЕР-КЛАСС',
-    location: 'Музей АртМуза',
+    location: 'Музей Артмуза',
   },
   {
     type: 'image',
@@ -72,16 +72,16 @@ const mediaList: TeachingMedia[] = [
     title: 'Сценический процесс и постановка техники',
     subtitle: 'Живая работа на глазах у сотен участников',
     badge: 'ДЕМОНСТРАЦИЯ',
-    location: 'АртМуза',
+    location: 'Артмуза',
   },
   {
     type: 'image',
     src: '/art-muza/photo_3257@04-08-2026_21-08-10.jpg',
     category: 'forum',
-    title: 'Аудитория и участники форума',
-    subtitle: 'Профессиональное комьюнити художников-смолянистов',
-    badge: 'КОМЬЮНИТИ',
-    location: 'Санкт-Петербург',
+    title: 'Процесс создания среза камня',
+    subtitle: 'Послойная заливка смолы и пигментов',
+    badge: 'ПРОЦЕСС',
+    location: 'Артмуза · СПб',
   },
   {
     type: 'image',
@@ -90,7 +90,7 @@ const mediaList: TeachingMedia[] = [
     title: 'Практика и секреты многослойности',
     subtitle: 'Разбор ошибок и нюансов полимеризации',
     badge: 'ПРАКТИКА',
-    location: 'Музей АртМуза',
+    location: 'Музей Артмуза',
   },
   {
     type: 'image',
@@ -99,16 +99,16 @@ const mediaList: TeachingMedia[] = [
     title: 'Воркшоп в музее современного искусства',
     subtitle: 'Общение с участниками и ответы на вопросы',
     badge: 'ВОРКШОП',
-    location: 'Музей АртМуза',
+    location: 'Музей Артмуза',
   },
   {
     type: 'image',
     src: '/art-muza/photo_3261@04-08-2026_21-08-10.jpg',
     category: 'forum',
-    title: 'Арт-материалы и подготовка',
-    subtitle: 'Колористическая палитра и красители',
-    badge: 'МАТЕРИАЛЫ',
-    location: 'Форум смолянистов',
+    title: 'Спикеры в Артмузе',
+    subtitle: 'Участники и спикеры 1-го Всероссийского форума',
+    badge: 'СПИКЕРЫ',
+    location: 'Музей Артмуза',
   },
   {
     type: 'image',
@@ -117,7 +117,7 @@ const mediaList: TeachingMedia[] = [
     title: 'Инструменты и оснащение рабочего места',
     subtitle: 'Профессиональная экипировка и средства защиты',
     badge: 'ЭКИПИРОВКА',
-    location: 'АртМуза',
+    location: 'Артмуза',
   },
   {
     type: 'image',
@@ -132,19 +132,19 @@ const mediaList: TeachingMedia[] = [
     type: 'image',
     src: '/art-muza/photo_10_2026-08-04_22-38-17.jpg',
     category: 'forum',
-    title: 'Работа с пигментами и эффектами',
-    subtitle: 'Формирование морских волн в реальном времени',
-    badge: 'ПРАКТИКА',
-    location: 'АртМуза',
+    title: 'Лекция в Артмузе',
+    subtitle: 'Выступление перед сообществом смолянистов',
+    badge: 'ЛЕКЦИЯ',
+    location: 'Артмуза',
   },
   {
     type: 'image',
     src: '/art-muza/photo_2026-02-19_01-56-13.jpg',
-    category: 'forum',
-    title: 'Мастер-класс: взаимодействие с залом',
-    subtitle: 'Разбор нюансов и авторских фишек',
+    category: 'workshops',
+    title: 'Воркшоп по акрилу в Черногории',
+    subtitle: 'Офлайн мастер-класс по интерьерной живописи',
     badge: 'ВОРКШОП',
-    location: 'Музей АртМуза',
+    location: 'Черногория',
   },
   {
     type: 'image',
@@ -153,7 +153,7 @@ const mediaList: TeachingMedia[] = [
     title: 'Участники воркшопа на форуме',
     subtitle: 'Художники из десятков городов России',
     badge: 'УЧАСТНИКИ',
-    location: 'АртМуза',
+    location: 'Артмуза',
   },
   {
     type: 'image',
@@ -162,7 +162,7 @@ const mediaList: TeachingMedia[] = [
     title: 'Результаты практической сессии',
     subtitle: 'Готовые демонстрационные планшеты',
     badge: 'РЕЗУЛЬТАТ',
-    location: 'Музей АртМуза',
+    location: 'Музей Артмуза',
   },
 
   // Студийные и Офлайн Мастер-классы (РФ, Черногория, Турция)
@@ -289,7 +289,7 @@ export function ArtTeaching() {
 
           <div className="space-y-4 text-white/70 text-base sm:text-lg leading-relaxed font-inter">
             <p>
-              Выступала с авторской лекцией и проводила живой мастер-класс на 1-м форуме смолянистов в музее современного искусства <strong className="text-white font-semibold">АртМуза</strong> (Санкт-Петербург).
+              Выступала с авторской лекцией и проводила живой мастер-класс на 1-м форуме смолянистов в музее современного искусства <strong className="text-white font-semibold">Артмуза</strong> (Санкт-Петербург).
             </p>
             <p>
               Проводила масштабные прямые эфиры по колористике и физике смолы с охватом в <strong className="text-[#14F1D9] font-semibold">несколько тысяч человек</strong>, организовывала студийные и выездные воркшопы в России, Турции и Черногории, а также курировала студентов в онлайн-школе.
@@ -301,7 +301,7 @@ export function ArtTeaching() {
             <div className="p-4 bg-[#1A1A1A] border border-white/10">
               <div className="flex items-center gap-2 text-[#14F1D9] mb-1">
                 <Award className="w-4 h-4" />
-                <span className="text-xs font-montserrat font-bold uppercase">Музей АртМуза (СПб)</span>
+                <span className="text-xs font-montserrat font-bold uppercase">Музей Артмуза (СПб)</span>
               </div>
               <p className="text-xs text-white/60 font-inter">Спикер и ведущая МК на 1-м Всероссийском форуме</p>
             </div>
@@ -352,12 +352,12 @@ export function ArtTeaching() {
             
             <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 bg-black/80 border border-[#14F1D9] text-[#14F1D9] text-[10px] font-inter font-bold uppercase tracking-wider">
               <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
-              Видео • АртМуза
+              Видео • Артмуза
             </div>
 
             <div className="absolute bottom-3 left-3 right-3 z-10">
               <span className="text-[10px] font-inter font-bold uppercase tracking-wider text-[#14F1D9]">
-                Музей АртМуза · СПб
+                Музей Артмуза · СПб
               </span>
               <h3 className="font-montserrat text-sm sm:text-base font-bold text-white uppercase mt-0.5 leading-snug">
                 1-й Всероссийский форум смолянистов
@@ -430,7 +430,7 @@ export function ArtTeaching() {
                 : 'bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
             }`}
           >
-            Форум & МК АртМуза ({mediaList.filter((m) => m.category === 'forum').length})
+            Форум & МК Артмуза ({mediaList.filter((m) => m.category === 'forum').length})
           </button>
           <button
             onClick={() => setActiveTab('workshops')}
