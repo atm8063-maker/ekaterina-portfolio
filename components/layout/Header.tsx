@@ -56,7 +56,7 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Art Dropdown */}
+          {/* Art Dropdown - 3 Column Mega-Menu */}
           <div className="relative group">
             <Link 
               href="/fir_tree_art" 
@@ -66,9 +66,107 @@ export default function Header() {
               <ChevronDown className="w-2.5 h-2.5 md:w-4 md:h-4 opacity-70 group-hover:rotate-180 transition-transform duration-300" />
             </Link>
             
-            <div className="absolute top-full left-1/2 -translate-x-1/2 w-48 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-              <div className="bg-[#1A1A1A] border border-white/10 rounded-none shadow-2xl py-2 flex flex-col">
-                <span className="px-4 py-2 text-sm text-white/40 italic font-inter cursor-not-allowed">Скоро...</span>
+            <div className="absolute top-full left-1/2 -translate-x-[65%] sm:-translate-x-1/2 w-[90vw] sm:w-[680px] lg:w-[780px] max-w-[820px] pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pointer-events-none group-hover:pointer-events-auto z-50">
+              <div className="bg-[#161616]/95 backdrop-blur-md border-2 border-black sm:border border-white/15 shadow-2xl p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-left">
+                
+                {/* Column 1: Творчество & Объекты */}
+                <div className="flex flex-col space-y-1">
+                  <span className="text-[11px] font-montserrat font-black uppercase tracking-wider text-[#14F1D9] border-b border-white/10 pb-1.5 mb-1.5">
+                    Творчество & Галерея
+                  </span>
+                  <Link 
+                    href="/fir_tree_art#gallery" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Галерея</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                  <Link 
+                    href="/fir_tree_art#protest" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Артивизм</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                  <Link 
+                    href="/fir_tree_art#resin-range" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Диапазон смолы</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                  <Link 
+                    href="/fir_tree_art#techniques" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Техники & инструменты</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                  <Link 
+                    href="/fir_tree_art#sketches" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Портреты & скетчи</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                </div>
+
+                {/* Column 2: Признание & Экспертиза */}
+                <div className="flex flex-col space-y-1">
+                  <span className="text-[11px] font-montserrat font-black uppercase tracking-wider text-[#14F1D9] border-b border-white/10 pb-1.5 mb-1.5">
+                    Признание & Экспертиза
+                  </span>
+                  <Link 
+                    href="/fir_tree_art#numbers" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Компетенции</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                  <Link 
+                    href="/fir_tree_art#awards" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Победы, финалы & Судейство</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                  <Link 
+                    href="/fir_tree_art#interviews" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Публикации в СМИ</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                  <Link 
+                    href="/fir_tree_art#testimonials" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Отзывы</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                </div>
+
+                {/* Column 3: Коллаборации & Обучение */}
+                <div className="flex flex-col space-y-1">
+                  <span className="text-[11px] font-montserrat font-black uppercase tracking-wider text-[#14F1D9] border-b border-white/10 pb-1.5 mb-1.5">
+                    Коллаборации & Обучение
+                  </span>
+                  <Link 
+                    href="/fir_tree_art#brand" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Амбассадор бренда & Продукция</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                  <Link 
+                    href="/fir_tree_art#teaching" 
+                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hover:text-[#14F1D9] hover:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
+                  >
+                    <span>Обучение, Лекции & МК</span>
+                    <span className="text-[#14F1D9] opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+                  </Link>
+                </div>
+
               </div>
             </div>
           </div>
