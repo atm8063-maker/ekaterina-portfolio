@@ -575,6 +575,7 @@ export function ArtTeaching() {
                   src={lightboxItem.src}
                   controls
                   autoPlay
+                  muted
                   playsInline
                   className="max-h-[70vh] w-auto max-w-full object-contain"
                 />

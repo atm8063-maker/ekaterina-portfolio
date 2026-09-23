@@ -104,24 +104,24 @@ export function ArtAwards() {
 
             {/* Метрики */}
             <div className="grid grid-cols-2 gap-3 pt-2">
-              <div className="border border-white/10 bg-[#1A1A1A] p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-2xl font-black text-[#14F1D9]">1 МЕСТО</div>
-                <div className="mt-1 text-xs text-white/60 font-inter">Международный конкурс Resinart Kingdom</div>
+              <div className="border border-white/10 bg-[#1A1A1A] p-3.5 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
+                <div className="font-montserrat text-lg sm:text-2xl font-black text-[#14F1D9] leading-tight">1 МЕСТО</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Resinart Kingdom</div>
               </div>
 
-              <div className="border border-white/10 bg-[#1A1A1A] p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-2xl font-black text-[#14F1D9]">ПОБЕДИТЕЛЬ</div>
-                <div className="mt-1 text-xs text-white/60 font-inter">Всероссийская «Арт-гонка»</div>
+              <div className="border border-white/10 bg-[#1A1A1A] p-3.5 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
+                <div className="font-montserrat text-base sm:text-2xl font-black text-[#14F1D9] leading-tight">ПОБЕДИТЕЛЬ</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">«Арт-гонка»</div>
               </div>
 
-              <div className="border border-white/10 bg-[#1A1A1A] p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-2xl font-black text-white">ЖЮРИ</div>
-                <div className="mt-1 text-xs text-white/60 font-inter">Судейство профессиональных конкурсов</div>
+              <div className="border border-white/10 bg-[#1A1A1A] p-3.5 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
+                <div className="font-montserrat text-lg sm:text-2xl font-black text-white leading-tight">ЖЮРИ</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Судейство конкурсов</div>
               </div>
 
-              <div className="border border-white/10 bg-[#1A1A1A] p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-2xl font-black text-white">10+ ФИНАЛОВ</div>
-                <div className="mt-1 text-xs text-white/60 font-inter">Регулярные выходы в финал арт-битв</div>
+              <div className="border border-white/10 bg-[#1A1A1A] p-3.5 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
+                <div className="font-montserrat text-lg sm:text-2xl font-black text-white leading-tight">10+ ФИНАЛОВ</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Выходы в финал арт-битв</div>
               </div>
             </div>
           </div>

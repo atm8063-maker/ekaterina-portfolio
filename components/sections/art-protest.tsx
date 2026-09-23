@@ -431,15 +431,6 @@ function SteppedCollage({
   index: number;
 }) {
   const m = artwork.media;
-  const [isInlineOpen, setIsInlineOpen] = useState(false);
-
-  const handleConceptClick = () => {
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      setIsInlineOpen(!isInlineOpen);
-    } else {
-      onOpenConcept(artwork);
-    }
-  };
 
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
@@ -702,56 +693,14 @@ function SteppedCollage({
           onPointerDown={(e) => e.stopPropagation()}
           onClick={(e) => {
             e.stopPropagation();
-            handleConceptClick();
+            onOpenConcept(artwork);
           }}
           className="inline-flex items-center gap-2 px-3 py-1 bg-white/90 hover:bg-[#14F1D9] text-black border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md group/btn"
         >
           <span>КОНЦЕПЦИЯ</span>
-          <ChevronRight className={`w-3.5 h-3.5 transition-transform stroke-[2.5] ${isInlineOpen ? 'rotate-90' : 'group-hover/btn:translate-x-0.5'}`} />
+          <ChevronRight className="w-3.5 h-3.5 transition-transform stroke-[2.5] group-hover/btn:translate-x-0.5" />
         </button>
       </div>
-
-      {/* Mobile Inline Concept: strictly below the collage with zero overlap */}
-      {isInlineOpen && (
-        <div 
-          data-interactive="true"
-          onPointerDown={(e) => e.stopPropagation()}
-          className="md:hidden mt-3 w-full max-w-[640px] z-30 bg-[#161616] text-white border-[3px] border-black p-4 shadow-xl"
-        >
-          <div className="flex items-center justify-between border-b border-white/15 pb-2 mb-3">
-            <span className="text-[11px] font-montserrat font-black uppercase text-[#14F1D9] tracking-wider">
-              {artwork.title} · Концепция
-            </span>
-            <button
-              onClick={() => setIsInlineOpen(false)}
-              className="text-[10px] font-montserrat font-bold uppercase bg-white text-black px-2 py-0.5 border border-black cursor-pointer"
-            >
-              Закрыть ✕
-            </button>
-          </div>
-          <div className="space-y-2.5 text-left">
-            {artwork.fullConcept ? (
-              artwork.fullConcept.map((item, idx) => (
-                <div key={idx} className="border-l-2 border-[#14F1D9] pl-2.5 space-y-0.5">
-                  <h4 className="text-[11px] font-montserrat font-black uppercase tracking-wide text-white">
-                    {item.heading}
-                  </h4>
-                  <p className="text-[11px] text-white/80 font-sans leading-relaxed">
-                    {item.text}
-                  </p>
-                </div>
-              ))
-            ) : (
-              <p className="text-xs text-white/90 font-sans leading-relaxed">
-                {artwork.concept}
-              </p>
-            )}
-          </div>
-          <div className="mt-3 pt-2 border-t border-white/10 text-[10px] font-sans text-white/60">
-            <strong className="text-white">Материалы:</strong> {artwork.materials}
-          </div>
-        </div>
-      )}
 
     </div>
   );
@@ -855,25 +804,32 @@ export function ArtProtest() {
   return (
     <section id="art-protest" className="relative w-full bg-[#111111] overflow-hidden scroll-mt-20 border-b border-white/10 group/section">
       
+      {/* Mobile Swipe Hint Badge */}
+      <div className="sm:hidden absolute top-4 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+        <span className="px-3.5 py-1 bg-black/80 backdrop-blur-md border border-[#14F1D9]/50 text-[#14F1D9] text-[10px] font-mono font-bold tracking-widest uppercase rounded-full shadow-xl animate-pulse">
+          ← Свайпайте стену →
+        </span>
+      </div>
+
       {/* Floating Scroll Controls over the Wall */}
       <button
         data-interactive="true"
         onPointerDown={(e) => e.stopPropagation()}
         onClick={() => scrollByAmount(-700)}
-        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
+        className="flex absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-11 sm:w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
         aria-label="Листать влево"
       >
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
       </button>
 
       <button
         data-interactive="true"
         onPointerDown={(e) => e.stopPropagation()}
         onClick={() => scrollByAmount(700)}
-        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
+        className="flex absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-11 sm:w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
         aria-label="Листать вправо"
       >
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
       </button>
 
       {/* The Continuous Concrete Wall Track */}
@@ -945,19 +901,19 @@ export function ArtProtest() {
         <div className="w-12 shrink-0" />
       </div>
 
-      {/* Concept Slide-Over Panel (Desktop Full-Height Right Drawer) */}
+      {/* Concept Detail Modal (Universal Bottom Sheet on Mobile, Right Drawer on Desktop) */}
       {conceptModalArtwork && (
-        <div className="hidden md:block fixed inset-0 z-50">
+        <div className="fixed inset-0 z-50 flex items-end md:items-stretch justify-end">
           {/* Backdrop */}
           <div
             onClick={() => setConceptModalArtwork(null)}
-            className="absolute inset-0 bg-black/40 backdrop-blur-xs transition-opacity cursor-pointer"
+            className="absolute inset-0 bg-black/75 backdrop-blur-sm transition-opacity cursor-pointer"
           />
 
-          {/* Desktop Right Drawer - 100% Screen Height */}
+          {/* Modal Container */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="absolute top-0 right-0 bottom-0 h-screen w-[460px] max-w-[90vw] z-10 bg-[#161616] text-white border-l-[4px] border-black p-6 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto"
+            className="relative z-10 w-full md:w-[480px] max-h-[85vh] md:max-h-none md:h-screen bg-[#161616] text-white border-t-[4px] md:border-t-0 md:border-l-[4px] border-black p-6 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto rounded-t-2xl md:rounded-none animate-in slide-in-from-bottom md:slide-in-from-right duration-300"
           >
             {/* Top Close Button */}
             <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-4">
@@ -971,10 +927,10 @@ export function ArtProtest() {
               </div>
               <button
                 onClick={() => setConceptModalArtwork(null)}
-                className="flex h-8 w-8 items-center justify-center border-2 border-black bg-white text-black hover:bg-[#14F1D9] transition-colors shadow-sm cursor-pointer"
+                className="flex h-9 w-9 items-center justify-center border-2 border-black bg-white text-black hover:bg-[#14F1D9] transition-colors shadow-sm cursor-pointer"
                 aria-label="Закрыть"
               >
-                <X className="h-4 w-4" />
+                <X className="h-5 w-5" />
               </button>
             </div>
 
@@ -1047,6 +1003,7 @@ export function ArtProtest() {
                   src={lightboxState.item.src}
                   controls
                   autoPlay
+                  muted
                   playsInline
                   className="max-h-[70vh] w-auto max-w-full object-contain"
                 />

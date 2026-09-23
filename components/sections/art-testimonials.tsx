@@ -190,15 +190,21 @@ export function ArtTestimonials() {
   const lane2 = items.filter((_, i) => i % 3 === 2);
 
   return (
-    <section id="testimonials" className="relative border-b border-white/10 bg-[#111111] py-24 scroll-mt-20">
-      <div className="container mx-auto px-6">
-        <h2 className="mb-12 text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
+    <section id="testimonials" className="relative border-b border-white/10 bg-[#111111] py-20 lg:py-24 scroll-mt-20">
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 mb-8 sm:mb-10">
+        <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
           Отзывы
         </h2>
       </div>
 
-      <div className="container mx-auto px-6">
-        <div className="flex gap-4">
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
+        {/* Mobile Single Lane */}
+        <div className="sm:hidden w-full">
+          <AutoScrollLane laneItems={items} direction="up" duration={45} />
+        </div>
+
+        {/* Tablet & Desktop Multi-Lane */}
+        <div className="hidden sm:flex gap-4">
           <div className="flex-1">
             <AutoScrollLane laneItems={lane0} direction="up" duration={34} />
           </div>

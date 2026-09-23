@@ -235,19 +235,21 @@ export function ArtSketches({
                   flexShrink: 0
                 }}
               >
-                {item.isVideo ? (
+                {item.isVideo && !isMobile ? (
                   <video
                     src={`/art-sketches/${encodeURIComponent(item.src)}`}
                     autoPlay
                     loop
                     muted
                     playsInline
+                    preload="none"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 ) : (
                   <img
-                    src={`/art-sketches/${encodeURIComponent(item.src)}`}
+                    src={`/art-sketches/${encodeURIComponent(item.isVideo ? 'photo_3220@04-08-2026_21-04-08.jpg' : item.src)}`}
                     alt=""
+                    loading="lazy"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 )}
