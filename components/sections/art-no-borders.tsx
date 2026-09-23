@@ -42,7 +42,7 @@ export function ArtNoBorders() {
                   loop
                   muted
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className="w-full h-auto aspect-[9/16] object-cover block"
                 />
 

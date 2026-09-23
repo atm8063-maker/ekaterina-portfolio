@@ -398,6 +398,7 @@ function ProportionalItem({
             loop
             muted
             playsInline
+            preload="metadata"
             className="w-full h-full object-fill block"
           />
           <div className="absolute top-1.5 right-1.5 p-1 bg-black text-[#14F1D9] border-2 border-black z-10 shadow-sm pointer-events-none">
