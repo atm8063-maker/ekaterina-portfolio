@@ -64,11 +64,7 @@ export default function About() {
             <button 
               type="button"
               onClick={handleAboutClick}
-              className={`inline-flex items-center gap-2 font-bold text-xs sm:text-sm md:text-base px-7 py-3.5 tracking-widest uppercase transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-montserrat whitespace-nowrap cursor-pointer ${
-                isUnderDev 
-                  ? 'bg-amber-400 text-black border border-amber-300 ring-2 ring-amber-400/40' 
-                  : 'bg-[#14F1D9] hover:bg-white text-[#111111]'
-              }`}
+              className="inline-flex items-center gap-2 font-bold text-xs sm:text-sm md:text-base px-7 py-3.5 tracking-widest uppercase transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-montserrat whitespace-nowrap cursor-pointer bg-[#14F1D9] hover:bg-white text-[#111111]"
             >
               {isUnderDev ? 'В разработке (Скоро)' : 'ПОДРОБНЕЕ ОБО МНЕ'}
             </button>
@@ -112,11 +108,7 @@ export default function About() {
           <button 
             type="button"
             onClick={handleAboutClick}
-            className={`inline-flex items-center justify-center gap-2 font-bold text-sm px-8 py-4 tracking-widest uppercase transition-all shadow-lg hover:shadow-xl font-montserrat text-center w-full max-w-[320px] cursor-pointer ${
-              isUnderDev 
-                ? 'bg-amber-400 text-black border border-amber-300 ring-2 ring-amber-400/40' 
-                : 'bg-[#14F1D9] hover:bg-white text-[#111111]'
-            }`}
+            className="inline-flex items-center justify-center gap-2 font-bold text-sm px-8 py-4 tracking-widest uppercase transition-all shadow-lg hover:shadow-xl font-montserrat text-center w-full max-w-[320px] cursor-pointer bg-[#14F1D9] hover:bg-white text-[#111111]"
           >
             {isUnderDev ? 'В разработке (Скоро)' : 'ПОДРОБНЕЕ ОБО МНЕ'}
           </button>
