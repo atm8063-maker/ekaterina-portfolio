@@ -15,7 +15,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="relative overflow-hidden bg-[#111111] text-white flex flex-col lg:flex-row items-center justify-between min-h-[100svh] lg:h-[100svh] py-12 lg:py-0 px-6 sm:px-12 lg:px-16 xl:px-24">
+    <section id="about" className="relative overflow-hidden bg-[#111111] text-white flex flex-col lg:flex-row items-center justify-center lg:justify-between lg:min-h-[100svh] lg:h-[100svh] pt-16 pb-14 lg:py-0 px-5 sm:px-12 lg:px-16 xl:px-24 gap-6 lg:gap-0">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -27,8 +27,8 @@ export default function About() {
       </div>
 
       {/* Seamless ultra-smooth blend gradient at the top & bottom */}
-      <div className="absolute top-0 left-0 w-full h-[150px] lg:h-[220px] bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-[150px] lg:h-[220px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-[120px] lg:h-[220px] bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-[120px] lg:h-[220px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
 
       {/* Text Content (Left on desktop, First on mobile) */}
       <motion.div 
@@ -36,9 +36,9 @@ export default function About() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="w-full lg:w-[54%] xl:w-[52%] flex flex-col justify-center order-1 lg:order-1 relative z-20 pb-2 lg:pb-0 pr-0 lg:pr-8 xl:pr-12"
+        className="w-full lg:w-[54%] xl:w-[52%] flex flex-col justify-center order-1 lg:order-1 relative z-20 pb-0 pr-0 lg:pr-8 xl:pr-12"
       >
-        <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] xl:text-[3.2rem] font-bold uppercase mb-4 lg:mb-5 text-white font-montserrat leading-tight">
+        <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] xl:text-[3.2rem] font-bold uppercase mb-3.5 lg:mb-5 text-white font-montserrat leading-tight">
           МОЙ <span className="text-[#14F1D9]">ПОДХОД</span>
         </h2>
         
@@ -51,7 +51,7 @@ export default function About() {
           </p>
           
           {/* Quote */}
-          <div className="pt-1.5 pb-2">
+          <div className="pt-1 pb-1.5">
             <div className="pl-4 lg:pl-5 border-l-[3px] border-[#14F1D9] italic font-semibold text-white/90 space-y-1 text-xs sm:text-sm lg:text-[0.95rem] xl:text-[1.05rem] w-full lg:w-[106%] xl:w-[110%]">
               <p>От первого черновика UX-текста до финального пикселя в интерфейсе.</p>
               <p>От начальной строки пресс-релиза до публикаций в Forbes.</p>
@@ -91,9 +91,9 @@ export default function About() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.9 }}
-        className="w-full lg:w-[46%] xl:w-[48%] order-2 lg:order-2 relative z-20 flex flex-col items-center lg:items-start justify-center lg:justify-end lg:h-[86svh] xl:h-[90svh] -mt-4 lg:-mt-6 xl:-mt-8"
+        className="w-full lg:w-[46%] xl:w-[48%] order-2 lg:order-2 relative z-20 flex flex-col items-center lg:items-start justify-center lg:justify-end lg:h-[86svh] xl:h-[90svh] -mt-1 sm:-mt-3 lg:-mt-6 xl:-mt-8"
       >
-        <div className="relative w-full h-[380px] sm:h-[480px] lg:h-full max-w-[440px] sm:max-w-[520px] lg:max-w-none">
+        <div className="relative w-full h-[460px] sm:h-[540px] lg:h-full max-w-[460px] sm:max-w-[540px] lg:max-w-none">
           <Image 
             src="/about-photo-cutout.png" 
             alt="Екатерина Разумова"
@@ -104,7 +104,7 @@ export default function About() {
         </div>
 
         {/* Button (Mobile only: directly below photo) */}
-        <div className="lg:hidden pt-4 pb-4 w-full flex flex-col items-center relative">
+        <div className="lg:hidden pt-3 pb-2 w-full flex flex-col items-center relative">
           <button 
             type="button"
             onClick={handleAboutClick}
