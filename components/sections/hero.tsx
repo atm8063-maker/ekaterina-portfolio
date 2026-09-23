@@ -205,34 +205,37 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Full Height Photo Cutout on Desktop */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="absolute top-[5rem] bottom-0 left-[10%] lg:left-[15%] w-[45%] xl:w-[40%] z-10 pointer-events-none"
-        >
-          <Image 
-            src="/hero-cutout.png" 
-            alt="Екатерина Разумова"
-            fill
-            className="object-contain object-[left_bottom] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-            priority
-          />
-        </motion.div>
+        {/* Desktop Content Centered Container (Max 1440px to keep laptop proportions on ultrawide) */}
+        <div className="relative w-full max-w-[1440px] h-full mx-auto z-10 flex items-center justify-between px-6 lg:px-12 pointer-events-none">
+          {/* Full Height Photo Cutout on Desktop */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="absolute top-[5rem] bottom-0 left-[2%] lg:left-[4%] w-[48%] xl:w-[45%] z-10 pointer-events-none"
+          >
+            <Image 
+              src="/hero-cutout.png" 
+              alt="Екатерина Разумова"
+              fill
+              className="object-contain object-[left_bottom] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+              priority
+            />
+          </motion.div>
 
-        {/* Typography */}
-        <div className="absolute top-[5rem] bottom-0 left-0 right-[5%] lg:right-[10%] z-20 flex items-center justify-end pointer-events-none translate-x-[4px]">
-          <div className="text-center pointer-events-auto mt-20">
-            <h1 className="text-[4.5rem] lg:text-[6.5rem] xl:text-[8rem] font-black uppercase tracking-tighter mb-4 leading-[0.98] text-white font-montserrat drop-shadow-2xl mix-blend-difference">
-              ЕКАТЕРИНА<br/>РАЗУМОВА
-            </h1>
-            <p className="text-[#14F1D9] font-bold text-xl lg:text-2xl xl:text-3xl mb-6 tracking-widest uppercase font-montserrat drop-shadow-md">
-              Creative Generalist
-            </p>
-            <p className="text-sm lg:text-base xl:text-lg text-white/90 leading-relaxed font-medium font-inter drop-shadow-md">
-              Texts & Design • PR & Media • UX/UI + AI • Mixed Art
-            </p>
+          {/* Typography */}
+          <div className="absolute top-[5rem] bottom-0 right-[2%] lg:right-[4%] z-20 flex items-center justify-end pointer-events-none">
+            <div className="text-center pointer-events-auto mt-20">
+              <h1 className="text-[4.2rem] lg:text-[5.8rem] xl:text-[7.2rem] font-black uppercase tracking-tighter mb-4 leading-[0.98] text-white font-montserrat drop-shadow-2xl mix-blend-difference">
+                ЕКАТЕРИНА<br/>РАЗУМОВА
+              </h1>
+              <p className="text-[#14F1D9] font-bold text-xl lg:text-2xl xl:text-3xl mb-6 tracking-widest uppercase font-montserrat drop-shadow-md">
+                Creative Generalist
+              </p>
+              <p className="text-sm lg:text-base xl:text-lg text-white/90 leading-relaxed font-medium font-inter drop-shadow-md">
+                Texts & Design • PR & Media • UX/UI + AI • Mixed Art
+              </p>
+            </div>
           </div>
         </div>
         

@@ -3,7 +3,7 @@ import Image from "next/image";
 export function ArtSpace() {
   return (
     <section id="art-space" className="relative w-full overflow-hidden bg-white border-b border-[#111111]/10 pt-10 scroll-mt-20">
-      <div className="relative w-full max-w-[1920px] mx-auto min-h-[580px] lg:min-h-[600px] flex items-center">
+      <div className="relative w-full max-w-[1440px] mx-auto min-h-[580px] lg:min-h-[600px] flex items-center">
         
         <div className="absolute inset-0 w-full h-full pointer-events-none">
           <div className="absolute right-0 top-[80px] sm:top-0 bottom-0 w-full sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[55%] translate-x-[105px] sm:translate-x-0">
@@ -15,6 +15,7 @@ export function ArtSpace() {
             />
             
             <div className="absolute inset-y-0 left-0 w-[180px] md:w-[250px] bg-gradient-to-r from-white via-white/90 to-white/0" />
+            <div className="absolute inset-y-0 right-0 w-[60px] lg:w-[120px] bg-gradient-to-l from-white to-transparent" />
             <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-white to-white/0" />
             <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-white to-white/0" />
           </div>
@@ -22,7 +23,7 @@ export function ArtSpace() {
         
         <div className="absolute inset-y-0 left-0 w-[240px] md:w-[350px] bg-gradient-to-r from-white via-white/90 to-transparent pointer-events-none z-[5]" />
 
-        <div className="relative z-10 w-full px-6 sm:px-12 lg:px-[8%] xl:px-[12%] pt-4 pb-16 sm:py-16 lg:py-0 mt-0 sm:mt-0">
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-12 pt-4 pb-16 sm:py-16 lg:py-0 mt-0 sm:mt-0">
           <div className="max-w-[230px] sm:max-w-sm md:max-w-md lg:max-w-lg">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-[#111111] font-montserrat mb-12 sm:mb-6 leading-[1.05] tracking-tight relative sm:top-0 whitespace-nowrap">
               ГАЛЕРЕЯ <span className="text-[#0D9488]">РАБОТ</span>

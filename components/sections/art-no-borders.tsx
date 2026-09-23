@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 export function ArtNoBorders() {
   return (
     <section className="py-12 lg:py-20 relative overflow-hidden text-white border-b border-white/10">
-      <div className="w-full px-6 sm:px-12 lg:px-[8%] xl:px-[12%]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           <motion.div 
             initial={{ opacity: 0, x: -40 }}
@@ -15,7 +15,7 @@ export function ArtNoBorders() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-7 flex flex-col justify-center order-1"
           >
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white font-montserrat mb-6 leading-[1.1]">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white font-montserrat mb-6 leading-[1.1]">
               ШИРОКИЙ <br className="hidden sm:inline" />
               <span className="text-[#14F1D9]">ДИАПАЗОН СМОЛЫ</span>
             </h2>
@@ -32,7 +32,7 @@ export function ArtNoBorders() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-5 order-2 flex justify-center lg:justify-end"
           >
-            <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[400px]">
+            <div className="relative w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[380px]">
               <div className="absolute -inset-4 bg-gradient-to-tr from-[#14F1D9]/25 via-[#074F98]/20 to-transparent rounded-[32px] blur-2xl z-0 pointer-events-none"></div>
 
               <div className="relative z-10 rounded-2xl overflow-hidden border border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.8)] bg-[#111111]">
@@ -42,6 +42,7 @@ export function ArtNoBorders() {
                   loop
                   muted
                   playsInline
+                  preload="auto"
                   className="w-full h-auto aspect-[9/16] object-cover block"
                 />
 

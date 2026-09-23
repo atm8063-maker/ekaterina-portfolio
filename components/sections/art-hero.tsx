@@ -9,13 +9,15 @@ export function ArtHero() {
         <video 
           src="/hero-video.mp4" 
           autoPlay 
+          loop 
           muted 
           playsInline 
-          className="absolute inset-0 w-full h-full object-cover opacity-80 scale-[1.15]"
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover opacity-80"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-black/80"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#111]/80 via-transparent to-black/80"></div>
-        <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-black/25"></div>
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 max-w-6xl mx-auto pt-[60px]">

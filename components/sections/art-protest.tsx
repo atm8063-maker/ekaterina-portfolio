@@ -1047,6 +1047,7 @@ export function ArtProtest() {
                   src={lightboxState.item.src}
                   controls
                   autoPlay
+                  muted
                   playsInline
                   className="max-h-[70vh] w-auto max-w-full object-contain"
                 />
