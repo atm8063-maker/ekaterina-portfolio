@@ -855,25 +855,32 @@ export function ArtProtest() {
   return (
     <section id="art-protest" className="relative w-full bg-[#111111] overflow-hidden scroll-mt-20 border-b border-white/10 group/section">
       
+      {/* Mobile Swipe Hint Badge */}
+      <div className="sm:hidden absolute top-4 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+        <span className="px-3.5 py-1 bg-black/80 backdrop-blur-md border border-[#14F1D9]/50 text-[#14F1D9] text-[10px] font-mono font-bold tracking-widest uppercase rounded-full shadow-xl animate-pulse">
+          ← Свайпайте стену →
+        </span>
+      </div>
+
       {/* Floating Scroll Controls over the Wall */}
       <button
         data-interactive="true"
         onPointerDown={(e) => e.stopPropagation()}
         onClick={() => scrollByAmount(-700)}
-        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
+        className="flex absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-11 sm:w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
         aria-label="Листать влево"
       >
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
       </button>
 
       <button
         data-interactive="true"
         onPointerDown={(e) => e.stopPropagation()}
         onClick={() => scrollByAmount(700)}
-        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
+        className="flex absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-11 sm:w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
         aria-label="Листать вправо"
       >
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
       </button>
 
       {/* The Continuous Concrete Wall Track */}
