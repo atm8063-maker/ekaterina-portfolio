@@ -53,10 +53,10 @@ export function ArtHero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 sm:gap-6"
         >
-          <a href="#art-gallery" className="group relative px-8 py-4 bg-white text-black font-medium tracking-wider overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 text-sm sm:text-base uppercase">
+          <a href="#space" className="group relative px-8 py-4 bg-white text-black font-medium tracking-wider overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 text-sm sm:text-base uppercase">
             <span className="relative z-10">Смотреть галерею</span>
           </a>
-          <a href="#about" className="px-8 py-4 text-white font-medium tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/15 hover:border-white/30 text-sm sm:text-base uppercase">
+          <a href="#numbers" className="px-8 py-4 text-white font-medium tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/15 hover:border-white/30 text-sm sm:text-base uppercase">
             Узнать больше
           </a>
         </motion.div>

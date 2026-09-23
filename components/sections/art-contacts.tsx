@@ -9,7 +9,7 @@ export function ArtContacts() {
         href="https://instagram.com/fir_tree_art" 
         target="_blank" 
         rel="noreferrer"
-        className="inline-block px-10 py-5 bg-[#14F1D9] text-[#111111] font-black uppercase tracking-widest rounded-full hover:bg-white transition-all shadow-[0_0_30px_rgba(20,241,217,0.3)] hover:scale-105"
+        className="inline-block px-10 py-5 bg-[#14F1D9] text-[#111111] font-black uppercase tracking-widest rounded-none hover:bg-white transition-all shadow-[0_0_30px_rgba(20,241,217,0.3)] hover:scale-105"
       >
         Перейти в Instagram ↗
       </a>

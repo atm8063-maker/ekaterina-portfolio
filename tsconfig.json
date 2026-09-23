@@ -36,6 +36,10 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "_backups",
+    "scratch",
+    "perfect_*.tsx",
+    "video_block.tsx"
   ]
 }

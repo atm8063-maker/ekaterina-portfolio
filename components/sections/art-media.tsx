@@ -31,7 +31,7 @@ const items: MediaItem[] = [
     image: "/media-press/tambovskaya-zhizn-cover.jpg",
   },
   {
-    outlet: "Газета «Жизнь» №43",
+    outlet: "Газета «Житьё» №43",
     headline: "«На моих глазах происходит волшебство»",
     meta: "27 октября 2020 · стр. 15, Общество",
     quote: "Екатерина Разумова делает удивительной красоты изделия из эпоксидной смолы.",
@@ -57,7 +57,7 @@ const items: MediaItem[] = [
     secondaryImage: "/media-press/tv-tambov-backstage.jpg",
   },
   {
-    outlet: "Название уточняется",
+    outlet: "РИА Top68.ru",
     headline: "«Тамбовская художница-смолянист превратила хобби в бизнес и стала…»",
     image: "/media-press/unidentified-regional.jpg",
   },
@@ -109,21 +109,17 @@ export function ArtMedia() {
         {items.map((item) => (
           <article
             key={item.outlet + item.headline}
-            className={`group shrink-0 snap-center flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1A1A1A] ${
-              item.featured ? "w-[300px] sm:w-[420px]" : "w-[260px] sm:w-[300px]"
-            }`}
+            className="group shrink-0 snap-center flex flex-col overflow-hidden rounded-none border border-white/10 bg-[#1A1A1A] w-[280px] sm:w-[320px]"
           >
-            <div className={`relative w-full ${item.featured ? "aspect-[4/5]" : "aspect-[3/4]"} bg-black/40`}>
+            <div className="relative w-full aspect-[3/4] bg-black/40">
               <Image
                 src={item.image}
                 alt={`${item.outlet}: ${item.headline}`}
                 fill
-                className={`object-cover transition-transform duration-500 group-hover:scale-105 ${
-                  item.imagePosition === "top" ? "object-top" : "object-center"
-                }`}
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
               />
               {item.secondaryImage && (
-                <div className="absolute bottom-3 right-3 h-16 w-16 overflow-hidden rounded-lg border-2 border-[#111111] shadow-lg sm:h-20 sm:w-20">
+                <div className="absolute bottom-3 right-3 h-16 w-16 overflow-hidden rounded-none border-2 border-[#111111] shadow-lg sm:h-20 sm:w-20">
                   <Image src={item.secondaryImage} alt={`${item.outlet}: со съёмки`} fill className="object-cover" />
                 </div>
               )}

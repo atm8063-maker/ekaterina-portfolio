@@ -2,17 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const cases = [
-  { id: 1, title: "Мокап агентства недвижимости, 2023", category: "UI/UX & Web", image: "/placeholder.jpg" },
-  { id: 2, title: "Мокап магазина с электроникой, 2023", category: "UI/UX & Web", image: "/placeholder.jpg" },
-  { id: 3, title: "Проект своего дома, визуализация, реализация", category: "Design", image: "/placeholder.jpg" },
-  { id: 4, title: "Проект по ландшафту для своего участка", category: "Design", image: "/placeholder.jpg" },
-  { id: 5, title: "Мастер-класс на форуме смолянистов, 2021", category: "Art & PR", image: "/placeholder.jpg" },
-  { id: 6, title: "Репортаж на местном ТВ, 2020", category: "PR & Media", image: "/placeholder.jpg" },
-];
+import { cases } from "@/lib/data";
 
 export default function Portfolio() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -20,7 +13,7 @@ export default function Portfolio() {
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
       const { current } = scrollContainerRef;
-      const scrollAmount = current.clientWidth * 0.8; // Scroll by 80% of the container width
+      const scrollAmount = current.clientWidth * 0.8;
       current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth"
@@ -29,7 +22,7 @@ export default function Portfolio() {
   };
 
   return (
-    <section id="portfolio" className="py-24 scroll-mt-20 relative overflow-hidden bg-[#111111]">
+    <section id="cases" className="py-24 relative overflow-hidden bg-[#111111]">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -80,37 +73,57 @@ export default function Portfolio() {
           ref={scrollContainerRef}
           className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-12 -mx-6 px-6 gap-6 md:gap-8 scroll-smooth"
         >
-          {cases.map((c, i) => (
-            <motion.div
-              key={c.id}
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="w-[85vw] md:w-[45vw] lg:w-[400px] shrink-0 snap-center group cursor-pointer flex flex-col"
-            >
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-surface border border-white/5 mb-6">
-                <Image 
-                  src={c.image}
-                  alt={c.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-60 group-hover:opacity-100"
-                />
-              </div>
-              <div className="flex-1 flex flex-col justify-between">
-                <div>
-                  <p className="text-[#14F1D9] text-xs font-bold uppercase tracking-widest mb-3">{c.category}</p>
-                  <h3 className="text-xl md:text-2xl font-semibold text-white group-hover:text-[#14F1D9] transition-colors leading-snug mb-4">{c.title}</h3>
-                </div>
-                <span className="flex items-center gap-2 text-sm font-semibold text-white/70 group-hover:text-white mt-4">
-                  Смотреть кейс 
-                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </span>
-              </div>
-            </motion.div>
-          ))}
+          {cases.filter(c => !c.hidden).map((c, i) => {
+            let img = "/placeholder.jpg";
+            if (c.slug.includes('01-insigma')) img = "/case_01.jpg";
+            else if (c.slug.includes('02-contact')) img = "/case_02.jpg";
+            else if (c.slug.includes('03-pobeda')) img = "/case_03.jpg";
+            else if (c.slug.includes('04-kart-motors')) img = "/case_04.jpg";
+            else if (c.slug.includes('05-nick')) img = "/case_05.jpg";
+            else if (c.slug.includes('06-mafia')) img = "/case_06.jpg";
+            else if (c.slug.includes('08-mockup-real')) img = "/case_08.jpg";
+            else if (c.slug.includes('09-mockup-elec')) img = "/case_09.jpg";
+            else if (c.slug.includes('10-house')) img = "/case_10.jpg";
+            else if (c.slug.includes('11-landscape')) img = "/case_11.jpg";
+            else if (c.slug.includes('12-resin')) img = "/case_12.jpg";
+            else if (c.slug.includes('13-local-tv-report')) img = "/case_13.jpg";
+            else if (c.slug.includes('14-vertex')) img = "/case_14.jpg";
+
+            return (
+              <motion.div
+                key={c.slug}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="w-[85vw] md:w-[45vw] lg:w-[400px] shrink-0 snap-center group flex flex-col"
+              >
+                <Link href={c.customHref || "/cases/" + c.slug} className="block w-full h-full">
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-surface border border-white/5 mb-6">
+                    <Image 
+                      src={img}
+                      alt={c.title}
+                      fill
+                      className="object-contain transition-transform duration-500 group-hover:scale-105 opacity-60 group-hover:opacity-100"
+                    />
+                  </div>
+                  <div className="flex-1 flex flex-col justify-between">
+                    <div>
+                      <p className="text-[#14F1D9] text-xs font-bold uppercase tracking-widest mb-3">{c.tag}</p>
+                      <h3 className="text-xl md:text-2xl font-semibold text-white group-hover:text-[#14F1D9] transition-colors leading-snug mb-4">{c.title}</h3>
+                      <p className="text-sm text-white/60 mb-4 line-clamp-2">{c.description}</p>
+                    </div>
+                    <span className="flex items-center gap-2 text-sm font-semibold text-white/70 group-hover:text-[#14F1D9] mt-2">
+                      Смотреть кейс 
+                      <svg className="w-4 h-4 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

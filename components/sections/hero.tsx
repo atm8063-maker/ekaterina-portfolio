@@ -6,16 +6,26 @@ import { useState, useRef, useEffect, useCallback } from "react";
 
 type SplatterData = {
   id: number;
-  x: number;
-  y: number;
+  x: number | string;
+  y: number | string;
   rotation: number;
   scale: number;
   flipX: number;
   flipY: number;
+  isInitial?: boolean;
 };
 
+const INITIAL_SPLATTERS: SplatterData[] = [
+  // 1. Top right, above title corner
+  { id: 1, x: "82%", y: "20%", rotation: -20, scale: 1.7, flipX: -1, flipY: 1, isInitial: true },
+  // 2. Far left, behind outer contour
+  { id: 2, x: "16%", y: "45%", rotation: -40, scale: 1.8, flipX: 1, flipY: 1, isInitial: true },
+  // 3. Lower right, below tags/subtitle
+  { id: 3, x: "70%", y: "78%", rotation: 35, scale: 1.6, flipX: 1, flipY: -1, isInitial: true },
+];
+
 export default function Hero() {
-  const [splatters, setSplatters] = useState<SplatterData[]>([]);
+  const [splatters, setSplatters] = useState<SplatterData[]>(INITIAL_SPLATTERS);
   const mousePosRef = useRef({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -33,12 +43,11 @@ export default function Hero() {
     if (!isHovering) return;
 
     let timeoutId: NodeJS.Timeout;
-    const delays = [500, 1500, 3000, 2300, 4000, 2700, 3700];
+    const delays = [400, 1200, 2400, 1800, 3200, 2200, 3000];
     let stepIndex = 0;
 
     const scheduleNext = () => {
       const currentDelay = delays[stepIndex % delays.length];
-      const isFirst = stepIndex === 0;
       
       timeoutId = setTimeout(() => {
         setSplatters(prev => {
@@ -47,12 +56,15 @@ export default function Hero() {
             x: mousePosRef.current.x,
             y: mousePosRef.current.y,
             rotation: Math.random() * 360,
-            // First splatter is small (0.3-0.5), subsequent are normal size (0.5-2.0)
-            scale: isFirst ? 0.3 + Math.random() * 0.2 : 0.5 + Math.random() * 1.5,
+            scale: 0.6 + Math.random() * 1.6,
             flipX: Math.random() > 0.5 ? -1 : 1,
             flipY: Math.random() > 0.5 ? -1 : 1,
+            isInitial: false,
           };
-          return [...prev, newSplat].slice(-15); // keep max 15 splatters
+          // Keep initial splatters + up to 12 interactive splatters
+          const initials = prev.filter(s => s.isInitial);
+          const dynamic = prev.filter(s => !s.isInitial).slice(-12);
+          return [...initials, ...dynamic, newSplat];
         });
         
         stepIndex++;
@@ -83,6 +95,44 @@ export default function Hero() {
 
         {/* Seamless ultra-smooth blend gradient at the top (covers paper, but NOT photo) */}
         <div className="absolute top-0 left-0 right-0 w-full h-[85vh] bg-gradient-to-b from-[#111111] from-[10%] via-[#111111]/40 via-[60%] to-transparent z-[5] pointer-events-none" />
+
+        {/* Mobile Splatter Backdrop Layer */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <div
+            className="absolute mix-blend-screen"
+            style={{
+              left: "45%",
+              top: "30%",
+              transform: "translate(-50%, -50%) rotate(25deg) scale(2.2)",
+              width: 300,
+              height: 300
+            }}
+          >
+            <img 
+              src="/splatters/splatter_1.png" 
+              alt="Splatter" 
+              className="w-full h-full object-contain pointer-events-none"
+              style={{ filter: "sepia(1) saturate(10) hue-rotate(140deg) brightness(1.2) opacity(0.35)" }}
+            />
+          </div>
+          <div
+            className="absolute mix-blend-screen"
+            style={{
+              left: "75%",
+              top: "65%",
+              transform: "translate(-50%, -50%) rotate(-40deg) scale(1.8)",
+              width: 300,
+              height: 300
+            }}
+          >
+            <img 
+              src="/splatters/splatter_1.png" 
+              alt="Splatter" 
+              className="w-full h-full object-contain pointer-events-none"
+              style={{ filter: "sepia(1) saturate(10) hue-rotate(140deg) brightness(1.2) opacity(0.3)" }}
+            />
+          </div>
+        </div>
 
         {/* Full screen photo cutout bounded strictly below the header */}
         <div className="absolute top-[5rem] bottom-0 left-0 right-0 z-10 pointer-events-none">
@@ -140,7 +190,11 @@ export default function Hero() {
           {splatters.map((splat) => (
             <motion.div
               key={splat.id}
-              initial={{ scaleX: 0, scaleY: 0, opacity: 0 }}
+              initial={
+                splat.isInitial
+                  ? { scaleX: splat.scale * splat.flipX, scaleY: splat.scale * splat.flipY, opacity: 1 }
+                  : { scaleX: 0, scaleY: 0, opacity: 0 }
+              }
               animate={{ scaleX: splat.scale * splat.flipX, scaleY: splat.scale * splat.flipY, opacity: 1 }}
               transition={{ type: "spring", damping: 15, stiffness: 100 }}
               className="absolute mix-blend-screen"
@@ -150,15 +204,15 @@ export default function Hero() {
                 x: "-50%",
                 y: "-50%",
                 rotate: splat.rotation,
-                width: 300,
-                height: 300
+                width: 320,
+                height: 320
               }}
             >
               <img 
                 src="/splatters/splatter_1.png" 
                 alt="Splatter" 
                 className="w-full h-full object-contain pointer-events-none"
-                style={{ filter: "sepia(1) saturate(10) hue-rotate(140deg) brightness(1.2) opacity(0.3)" }}
+                style={{ filter: "sepia(1) saturate(10) hue-rotate(140deg) brightness(1.2) opacity(0.35)" }}
               />
             </motion.div>
           ))}
@@ -196,7 +250,7 @@ export default function Hero() {
         </div>
         
         {/* Bottom gradient fade for smooth transition to next section */}
-        <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[500px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-full h-32 lg:h-[200px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
       </div>
     </section>
   );

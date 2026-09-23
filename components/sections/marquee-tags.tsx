@@ -3,9 +3,23 @@
 import React from "react";
 
 const data = {
-  programs: ["CloudCode", "Figma", "SketchUp", "Illustrator", "Антигравити", "Planoplan"],
-  media: ["Forbes", "Коммерсант", "РБК", "БизнесFM", "Ведомости", "СМИ"],
-  skills: ["Копирайтинг", "Реклама", "Пресс-конференции", "Пресс-туры", "Event", "Кураторство", "AI-генерация", "UX/UI Дизайн", "Медиапланирование"],
+  programs: ["Claude Code", "Figma", "SketchUp", "Illustrator", "Antigravity", "Planoplan", "Photoshop"],
+  media: ["Forbes", "Коммерсантъ", "РБК", "Business FM", "Ведомости", "СМИ"],
+  skills: [
+    "Копирайтинг", 
+    "Журналистика", 
+    "Контент", 
+    "SMM", 
+    "SEO", 
+    "Медиапланирование", 
+    "Реклама", 
+    "Пресс-конференции", 
+    "Пресс-туры", 
+    "Event", 
+    "Кураторство", 
+    "AI-генерация", 
+    "UX/UI Дизайн"
+  ],
   industries: ["Honda", "Honda Civic Cup", "Авто", "Девелопмент", "Элитная недвижимость", "Арх.бюро", "Журфак МГУ", "Contented", "Resin Art", "Амбассадор", "Брендированная продукция"]
 };
 
@@ -13,18 +27,31 @@ const createMarqueeContent = (items: string[]) => {
   return [...items, ...items, ...items, ...items];
 };
 
-export function MarqueeRow({ type, direction = "left", speed = "40s", className = "" }: { type: keyof typeof data, direction?: "left" | "right", speed?: string, className?: string }) {
+export function MarqueeRow({ 
+  type, 
+  variant,
+  direction = "left", 
+  speed = "40s", 
+  className = "" 
+}: { 
+  type: keyof typeof data, 
+  variant?: keyof typeof data | "white-solid" | "cyan-solid" | "white-border" | "cyan-border",
+  direction?: "left" | "right", 
+  speed?: string, 
+  className?: string 
+}) {
   const items = data[type];
   const animationClass = direction === "left" ? "animate-marquee-left" : "animate-marquee-right";
   
+  const styleKey = variant || type;
   let itemStyle = "";
-  if (type === "programs") {
+  if (styleKey === "programs" || styleKey === "white-solid") {
     itemStyle = "bg-white text-black font-bold shadow-[0_0_15px_rgba(255,255,255,0.1)]";
-  } else if (type === "media") {
+  } else if (styleKey === "media" || styleKey === "cyan-solid") {
     itemStyle = "bg-[#14F1D9] text-[#111111] font-bold shadow-[0_0_15px_rgba(20,241,217,0.3)]";
-  } else if (type === "skills") {
+  } else if (styleKey === "skills" || styleKey === "white-border") {
     itemStyle = "bg-transparent border border-white/80 text-white font-semibold";
-  } else if (type === "industries") {
+  } else if (styleKey === "industries" || styleKey === "cyan-border") {
     itemStyle = "bg-transparent border border-[#14F1D9] text-[#14F1D9] font-semibold";
   }
 

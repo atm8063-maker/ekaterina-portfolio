@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autoposter — NPC</title>
+<style>
+/* ============================================================
+   NP Consulting — Graphics System
+   Theme-adaptive, transparent-background diagram components.
+   All sizing in cqw (container query width) so any square scales.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+
+/* ---- Light is the default; [data-theme="dark"] flips tokens ---- */
+:root {
+  --ink:        #111827;
+  --ink-2:      #374151;
+  --muted:      #6b7280;
+  --line:       rgba(17,24,39,0.22);
+  --line-soft:  rgba(17,24,39,0.10);
+  --node:       #ffffff;
+  --node-2:     #f8f9fa;
+  --accent:     #00A669;
+  --accent-ink: #007a4d;
+  --accent-soft:rgba(0,166,105,0.10);
+  --glow:       rgba(0,166,105,0.28);
+}
+[data-theme="dark"] {
+  --ink:        #ffffff;
+  --ink-2:      #e4e4e7;
+  --muted:      #a1a1aa;
+  --line:       rgba(255,255,255,0.24);
+  --line-soft:  rgba(255,255,255,0.10);
+  --node:       #111111;
+  --node-2:     #0a0a0a;
+  --accent:     #00FFA3;
+  --accent-ink: #00FFA3;
+  --accent-soft:rgba(0,255,163,0.10);
+  --glow:       rgba(0,255,163,0.40);
+}
+
+* { box-sizing: border-box; }
+
+/* The square canvas. Drop one .asset per file; it fills its parent. */
+.asset {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  container-type: size;
+  font-family: 'Manrope', system-ui, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- NODE (card) ---------- */
+.node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4cqw;
+  background: var(--node);
+  border: 0.2cqw solid var(--line);
+  border-radius: 0.5cqw;          /* strict ~4px */
+  padding: 2cqw;
+}
+.node .glyph { width: 100%; display: flex; align-items: center; justify-content: center; }
+.node svg { display: block; }
+
+/* ---------- LABELS ---------- */
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.tag .br { color: var(--accent-ink); }   /* bracket accents */
+.tag.sm { font-size: 2cqw; }
+.tag.md { font-size: 2.5cqw; }
+
+.cap {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* free-floating mono labels placed on the canvas */
+.float {
+  position: absolute;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- SVG WIRING LAYER ---------- */
+.wires {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.wires .edge   { fill: none; stroke: var(--line);   stroke-width: 0.45; }
+.wires .edge-a { fill: none; stroke: var(--accent); stroke-width: 0.6; }
+.wires .edge-d { fill: none; stroke: var(--accent); stroke-width: 0.55; stroke-dasharray: 1.6 1.6; }
+.wires .head   { fill: var(--accent); }
+.wires .dot    { fill: var(--accent); }
+.wires .dot-o  { fill: var(--node); stroke: var(--accent); stroke-width: 0.5; }
+
+/* data packet chip riding a wire (static position for now) */
+.packet {
+  position: absolute;
+  width: 3.4cqw; height: 3.4cqw;
+  background: var(--accent);
+  border-radius: 0.4cqw;
+  transform: translate(-50%, -50%) rotate(45deg);
+  box-shadow: 0 0 3cqw var(--glow);
+}
+
+/* ---------- shared SVG icon strokes ---------- */
+.ic { fill: none; stroke: var(--ink); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.ic-2   { stroke: var(--muted); }
+.ic-a   { stroke: var(--accent); }
+.ic-fill{ fill: var(--accent); stroke: none; }
+.ic-node{ fill: var(--node-2); }
+.ic-soft{ fill: var(--accent-soft); stroke: none; }
+
+/* small pill used for social / language tokens */
+.pill {
+  position: absolute;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  background: var(--node);
+  border: 0.2cqw solid var(--line);
+  border-radius: 0.5cqw;
+  transform: translate(-50%, -50%);
+}
+.pill.on { color: var(--accent-ink); border-color: var(--accent); }
+
+/* ============================================================
+   ASSET CHROME — frames the transparent square consistently
+   ============================================================ */
+
+/* L-shaped corner ticks (blueprint registration marks) */
+.ticks i {
+  position: absolute;
+  width: 4cqw; height: 4cqw;
+  border: 0.2cqw solid var(--line);
+}
+.ticks i:nth-child(1){ top:5%;    left:5%;    border-right:0; border-bottom:0; }
+.ticks i:nth-child(2){ top:5%;    right:5%;   border-left:0;  border-bottom:0; }
+.ticks i:nth-child(3){ bottom:5%; left:5%;    border-right:0; border-top:0; }
+.ticks i:nth-child(4){ bottom:5%; right:5%;   border-left:0;  border-top:0; }
+
+.kicker {
+  position: absolute; top: 8%; left: 9%;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  font-size: 2cqw; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted);
+}
+.kicker b { color: var(--accent-ink); font-weight: 700; }
+
+.wordmark {
+  position: absolute; bottom: 8%; left: 9%;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  font-size: 2.3cqw; letter-spacing: 0.1em; color: var(--ink);
+}
+.wordmark .br  { color: var(--accent-ink); }
+.wordmark .cur { color: var(--accent); }
+
+.idx {
+  position: absolute; bottom: 7.4%; right: 9%;
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 3cqw; color: var(--ink-2); letter-spacing: 0.02em;
+}
+.idx i { color: var(--muted); font-style: normal; font-weight: 500; }
+
+/* the diagram lives in this inset band, vertically centred */
+.stage { position: absolute; inset: 16% 9% 16% 9%; }
+
+@keyframes npc-blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+.blink { animation: npc-blink 1s step-end infinite; }
+
+/* ============================================================
+   RICH COMPONENTS — devices, chat, cards, qr, cloud, prism
+   ============================================================ */
+
+/* phone / chat device */
+.device {
+  position: absolute;
+  background: var(--node);
+  border: 0.25cqw solid var(--line);
+  border-radius: 2.4cqw;
+  display: flex; flex-direction: column; overflow: hidden;
+  transform: translate(-50%, -50%);
+}
+.device .bar {
+  display: flex; align-items: center; gap: 1cqw;
+  padding: 1.6cqw 2cqw; border-bottom: 0.18cqw solid var(--line-soft);
+  font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  font-size: 1.7cqw; color: var(--ink-2); letter-spacing: 0.04em;
+}
+.device .bar .dot { width: 1.4cqw; height: 1.4cqw; border-radius: 50%; background: var(--accent); }
+.device .scr { flex: 1; padding: 2cqw; display: flex; flex-direction: column; gap: 1.6cqw; }
+
+.bubble {
+  max-width: 80%; padding: 1.3cqw 1.7cqw; border-radius: 0.6cqw;
+  font-family: 'JetBrains Mono', monospace; font-size: 1.6cqw; line-height: 1.4;
+  background: var(--node-2); border: 0.16cqw solid var(--line-soft); color: var(--ink-2);
+}
+.bubble.me { align-self: flex-end; background: var(--accent-soft); border-color: var(--accent); color: var(--accent-ink); }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 0.6cqw;
+  padding: 0.5cqw 1.1cqw; border-radius: 0.4cqw; border: 0.18cqw solid var(--accent);
+  color: var(--accent-ink); background: var(--accent-soft);
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.4cqw; letter-spacing: 0.05em;
+}
+
+/* browser window with property cards */
+.win { position: absolute; background: var(--node); border: 0.2cqw solid var(--line);
+  border-radius: 0.6cqw; overflow: hidden; transform: translate(-50%,-50%); }
+.win .top { display: flex; gap: 1cqw; padding: 1.4cqw 1.6cqw; border-bottom: 0.18cqw solid var(--line-soft); }
+.win .top i { width: 1.3cqw; height: 1.3cqw; border-radius: 50%; background: var(--line); }
+.grid2 { padding: 2cqw; display: grid; grid-template-columns: 1fr 1fr; gap: 1.6cqw; }
+.pcard { border: 0.18cqw solid var(--line-soft); border-radius: 0.5cqw; padding: 1.3cqw;
+  display: flex; flex-direction: column; gap: 1cqw; }
+.pcard .ph { height: 6cqw; background: var(--node-2); border-radius: 0.3cqw; }
+.pcard .ln { height: 1.1cqw; background: var(--line-soft); border-radius: 0.2cqw; }
+.pcard .ln.s { width: 55%; }
+.pcard.on { border-color: var(--accent); box-shadow: 0 0 4cqw var(--glow); }
+.pcard.on .ph { background: var(--accent-soft); }
+.dim { opacity: 0.45; }
+
+/* QR */
+.qr { display: grid; grid-template-columns: repeat(7,1fr); gap: 0.5cqw; width: 58%; aspect-ratio: 1; }
+.qr i { background: var(--ink); border-radius: 0.15cqw; }
+.qr i.o { background: transparent; }
+.qr i.a { background: var(--accent); }
+
+/* menu rows inside a screen */
+.mrow { display: flex; align-items: center; gap: 1.2cqw; }
+.mrow .mph { width: 6cqw; height: 6cqw; background: var(--node-2); border:0.16cqw solid var(--line-soft); border-radius: 0.4cqw; flex: none; }
+.mrow .mln { flex: 1; display: flex; flex-direction: column; gap: 0.8cqw; }
+.mrow .mln b { height: 1.4cqw; background: var(--line); border-radius: 0.2cqw; width: 70%; display: block; }
+.mrow .mln span { height: 1cqw; background: var(--line-soft); border-radius: 0.2cqw; width: 45%; display: block; }
+.mrow .mpr { font-family:'Space Grotesk'; font-weight:700; font-size:1.7cqw; color: var(--accent-ink); }
+
+html,body{margin:0;background:transparent;}
+body{min-height:100vh;display:grid;place-items:center;}
+.wrap{width:min(90vmin,820px);}
+
+/* ============================================================
+   MOTION — flowing packets, node pulse, dashed flow
+   ============================================================ */
+@keyframes npc-flow{
+  0%{ transform:translate(-50%,-50%) rotate(45deg); opacity:0; }
+  14%{ opacity:1; }
+  82%{ opacity:1; }
+  100%{ transform:translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(45deg); opacity:0; }
+}
+.flowp{
+  position:absolute; width:1.6cqw; height:1.6cqw; background:var(--accent);
+  border-radius:0.25cqw; box-shadow:0 0 1.8cqw var(--glow);
+  transform:translate(-50%,-50%) rotate(45deg);
+  animation:npc-flow var(--dur,2.4s) cubic-bezier(.45,.02,.55,.98) var(--delay,0s) infinite;
+  will-change:transform,opacity;
+}
+@keyframes npc-pulse{
+  0%,100%{ box-shadow:0 0 0 0 rgba(0,0,0,0); }
+  45%,55%{ box-shadow:0 0 4.5cqw var(--glow); }
+}
+.pulse{ animation:npc-pulse var(--dur,2.4s) ease-in-out var(--delay,0s) infinite; }
+@keyframes npc-breathe{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.06); } }
+.breathe{ display:inline-flex; transform-origin:center; animation:npc-breathe var(--dur,2.8s) ease-in-out infinite; }
+@keyframes npc-dash{ to{ stroke-dashoffset:-3.2; } }
+.wires .edge-d{ animation:npc-dash .7s linear infinite; }
+@media (prefers-reduced-motion: reduce){
+  .flowp{ animation:none; transform:translate(calc(-50% + var(--mdx)),calc(-50% + var(--mdy))) rotate(45deg); opacity:1; }
+  .pulse, .breathe, .wires .edge-d, .blink{ animation:none; }
+}
+html,body{margin:0;background:transparent;}
+body{min-height:100vh;display:grid;place-items:center;}
+.wrap{width:min(90vmin,820px);}
+</style>
+<script>
+(function(){
+  var p=new URLSearchParams(location.search), t=p.get('theme');
+  if(!t){ t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'; }
+  document.documentElement.dataset.theme=t;
+  if(window.matchMedia){ matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(e){ if(!new URLSearchParams(location.search).get('theme')) document.documentElement.dataset.theme=e.matches?'dark':'light'; }); }
+  addEventListener('message',function(e){ if(e.data&&e.data.npcTheme){ document.documentElement.dataset.theme=e.data.npcTheme; } });
+})();
+</script>
+</head>
+<body>
+<div class="wrap"><div class="asset">
+  <div class="ticks"><i></i><i></i><i></i><i></i></div>
+  <div class="kicker">// <b>omnichannel push</b></div>
+  <div class="wordmark"><span class="br">[</span> NPC <span class="br">]</span> <span class="cur blink">▮</span></div>
+  <div class="idx">03<i> / 08</i></div>
+<svg class="wires" viewBox="0 0 100 100"><defs><marker id="ah" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"></path></marker></defs><line class="edge-a" x1="50" y1="46" x2="50" y2="16" marker-end="url(#ah)"></line><line class="edge-a" x1="50" y1="46" x2="21.5" y2="36.7" marker-end="url(#ah)"></line><line class="edge-a" x1="50" y1="46" x2="32.4" y2="70.3" marker-end="url(#ah)"></line><line class="edge-a" x1="50" y1="46" x2="67.6" y2="70.3" marker-end="url(#ah)"></line><line class="edge-a" x1="50" y1="46" x2="78.5" y2="36.7" marker-end="url(#ah)"></line></svg>
+  <div class="flowp" style="left:50%;top:46%;--dx:0.00cqw;--dy:-30.00cqw;--mdx:0.00cqw;--mdy:-15.00cqw;--dur:2.4s;--delay:0s;"></div><div class="flowp" style="left:50%;top:46%;--dx:-28.50cqw;--dy:-9.30cqw;--mdx:-14.25cqw;--mdy:-4.65cqw;--dur:2.4s;--delay:0.28s;"></div><div class="flowp" style="left:50%;top:46%;--dx:-17.60cqw;--dy:24.30cqw;--mdx:-8.80cqw;--mdy:12.15cqw;--dur:2.4s;--delay:0.56s;"></div><div class="flowp" style="left:50%;top:46%;--dx:17.60cqw;--dy:24.30cqw;--mdx:8.80cqw;--mdy:12.15cqw;--dur:2.4s;--delay:0.8400000000000001s;"></div><div class="flowp" style="left:50%;top:46%;--dx:28.50cqw;--dy:-9.30cqw;--mdx:14.25cqw;--mdy:-4.65cqw;--dur:2.4s;--delay:1.12s;"></div>
+  <div class="pill on pulse" style="left:50%;top:16%;width:14cqw;height:7cqw;font-size:2cqw;--delay:0.9s;--dur:2.4s;">TG</div><div class="pill on pulse" style="left:21.5%;top:36.7%;width:14cqw;height:7cqw;font-size:2cqw;--delay:1.1800000000000002s;--dur:2.4s;">IG</div><div class="pill on pulse" style="left:32.4%;top:70.3%;width:14cqw;height:7cqw;font-size:2cqw;--delay:1.46s;--dur:2.4s;">FB</div><div class="pill on pulse" style="left:67.6%;top:70.3%;width:14cqw;height:7cqw;font-size:2cqw;--delay:1.7400000000000002s;--dur:2.4s;">VK</div><div class="pill on pulse" style="left:78.5%;top:36.7%;width:14cqw;height:7cqw;font-size:2cqw;--delay:2.02s;--dur:2.4s;">X</div>
+  <div class="node " style="left:50%;top:46%;width:24cqw;height:28cqw;transform:translate(-50%,-50%);">
+    <div class="glyph"><svg width="42%" viewBox="0 0 80 80"><line class="ic" x1="40" y1="8" x2="40" y2="16"></line><circle class="ic-fill" cx="40" cy="7" r="3"></circle><rect class="ic ic-node" x="14" y="16" width="52" height="46" rx="6"></rect><circle class="ic-fill" cx="29" cy="36" r="4"></circle><circle class="ic-fill" cx="51" cy="36" r="4"></circle><path class="ic ic-2" d="M28 50 H52"></path></svg></div>
+    <div class="tag" style="font-size:2cqw"><span class="br">[</span> BOT <span class="br">]</span></div>
+  </div>
+
+</div></div>
+</body>
+</html>
