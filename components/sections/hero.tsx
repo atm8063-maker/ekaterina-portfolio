@@ -117,21 +117,21 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Full Height Portrait Photo Bounded from below header down to screen bottom */}
-        <div className="absolute inset-0 top-[4.5rem] bottom-0 left-0 right-0 z-10 pointer-events-none flex items-end justify-center">
-          <div className="relative w-full h-full max-w-[480px]">
+        {/* Full Height Portrait Photo Filling Mobile Viewport */}
+        <div className="absolute inset-0 top-0 bottom-0 left-0 right-0 z-10 pointer-events-none flex items-center justify-center overflow-hidden">
+          <div className="relative w-full h-full max-w-[540px]">
             <Image 
               src="/hero-cutout.png" 
               alt="Екатерина Разумова"
               fill
-              className="object-contain object-bottom scale-[1.08] origin-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)]"
+              className="object-cover object-[center_top] sm:object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)]"
               priority
             />
           </div>
         </div>
         
         {/* Gradient overlay for perfect readability over the shirt */}
-        <div className="absolute bottom-0 left-0 right-0 h-[48vh] bg-gradient-to-t from-[#111111] from-15% via-[#111111]/85 via-60% to-transparent z-15 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-[52vh] bg-gradient-to-t from-[#111111] from-25% via-[#111111]/85 via-65% to-transparent z-15 pointer-events-none" />
         
         {/* Text on the shirt area (strictly below the face) */}
         <div className="relative z-20 pb-7 sm:pb-9 px-4 sm:px-6 text-center w-full pointer-events-none">
