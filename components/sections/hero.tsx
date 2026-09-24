@@ -81,7 +81,7 @@ export default function Hero() {
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background">
       
       {/* MOBILE VERSION */}
-      <div className="md:hidden relative w-full h-[100svh] overflow-hidden bg-[#111111] flex flex-col justify-end">
+      <div className="md:hidden relative w-full h-[100svh] overflow-hidden bg-[#111111]">
         {/* Dark Paper Background for Mobile */}
         <div className="absolute inset-0 z-0">
           <Image 
@@ -93,19 +93,19 @@ export default function Hero() {
           />
         </div>
 
-        {/* Seamless ultra-smooth blend gradient at the top */}
-        <div className="absolute top-0 left-0 right-0 w-full h-[35vh] bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[5] pointer-events-none" />
+        {/* Seamless ultra-smooth blend gradient at the top (covers paper, but NOT photo) */}
+        <div className="absolute top-0 left-0 right-0 w-full h-[85vh] bg-gradient-to-b from-[#111111] from-[10%] via-[#111111]/40 via-[60%] to-transparent z-[5] pointer-events-none" />
 
         {/* Mobile Splatter Backdrop Layer */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div
             className="absolute mix-blend-screen"
             style={{
-              left: "50%",
-              top: "28%",
+              left: "45%",
+              top: "30%",
               transform: "translate(-50%, -50%) rotate(25deg) scale(2.2)",
-              width: 320,
-              height: 320
+              width: 300,
+              height: 300
             }}
           >
             <img 
@@ -115,37 +115,50 @@ export default function Hero() {
               style={{ filter: "sepia(1) saturate(10) hue-rotate(140deg) brightness(1.2) opacity(0.35)" }}
             />
           </div>
-        </div>
-
-        {/* Full Height Portrait Photo Filling Mobile Viewport */}
-        <div className="absolute inset-0 top-0 bottom-0 left-0 right-0 z-10 pointer-events-none flex items-center justify-center overflow-hidden">
-          <div className="relative w-full h-full max-w-[540px]">
-            <Image 
-              src="/hero-cutout.png" 
-              alt="Екатерина Разумова"
-              fill
-              className="object-cover object-[center_top] sm:object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)]"
-              priority
+          <div
+            className="absolute mix-blend-screen"
+            style={{
+              left: "75%",
+              top: "65%",
+              transform: "translate(-50%, -50%) rotate(-40deg) scale(1.8)",
+              width: 300,
+              height: 300
+            }}
+          >
+            <img 
+              src="/splatters/splatter_1.png" 
+              alt="Splatter" 
+              className="w-full h-full object-contain pointer-events-none"
+              style={{ filter: "sepia(1) saturate(10) hue-rotate(140deg) brightness(1.2) opacity(0.3)" }}
             />
           </div>
         </div>
+
+        {/* Full screen photo cutout bounded strictly below the header */}
+        <div className="absolute top-[5rem] bottom-0 left-0 right-0 z-10 pointer-events-none">
+          <Image 
+            src="/hero-cutout.png" 
+            alt="Екатерина Разумова"
+            fill
+            className="object-cover object-top"
+            priority
+          />
+        </div>
         
-        {/* Gradient overlay for perfect readability over the shirt */}
-        <div className="absolute bottom-0 left-0 right-0 h-[52vh] bg-gradient-to-t from-[#111111] from-25% via-[#111111]/85 via-65% to-transparent z-15 pointer-events-none" />
+        {/* Gradient overlay for readability at the bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/40 to-transparent z-10 pointer-events-none" />
         
-        {/* Text on the shirt area (strictly below the face) */}
-        <div className="relative z-20 pb-7 sm:pb-9 px-4 sm:px-6 text-center w-full pointer-events-none">
-          <div className="pointer-events-auto">
-            <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight mb-2 leading-[1.05] text-white font-montserrat drop-shadow-2xl">
-              ЕКАТЕРИНА<br/>РАЗУМОВА
-            </h1>
-            <p className="text-[#14F1D9] font-bold text-xs sm:text-sm mb-2.5 tracking-widest uppercase font-montserrat drop-shadow-md">
-              CREATIVE GENERALIST
-            </p>
-            <p className="text-[11px] sm:text-xs text-white/90 leading-relaxed font-medium font-inter drop-shadow-md max-w-[340px] mx-auto">
-              Texts & Design • PR & Media • UX/UI + AI • Mixed Art
-            </p>
-          </div>
+        {/* Text on the shoulder area (bottom zone) */}
+        <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-6 right-4 sm:right-6 z-20">
+          <h1 className="text-4xl font-bold uppercase tracking-tight mb-2 leading-none text-white font-montserrat drop-shadow-lg">
+            Екатерина<br/>Разумова
+          </h1>
+          <p className="text-[#14F1D9] font-bold text-sm mb-4 tracking-widest uppercase font-montserrat drop-shadow-md">
+            Creative Generalist
+          </p>
+          <p className="text-xs text-white/90 leading-relaxed font-medium font-inter drop-shadow-md">
+            Texts & Design • PR & Media • UX/UI + AI • Mixed Art
+          </p>
         </div>
       </div>
 
@@ -205,37 +218,34 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Desktop Content Centered Container (Max 1440px to keep laptop proportions on ultrawide) */}
-        <div className="relative w-full max-w-[1440px] h-full mx-auto z-10 flex items-center justify-between px-6 lg:px-12 pointer-events-none">
-          {/* Full Height Photo Cutout on Desktop */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute top-[5rem] bottom-0 left-[2%] lg:left-[4%] w-[48%] xl:w-[45%] z-10 pointer-events-none"
-          >
-            <Image 
-              src="/hero-cutout.png" 
-              alt="Екатерина Разумова"
-              fill
-              className="object-contain object-[left_bottom] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-              priority
-            />
-          </motion.div>
+        {/* Full Height Photo Cutout on Desktop */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute top-[5rem] bottom-0 left-[10%] lg:left-[15%] w-[45%] xl:w-[40%] z-10 pointer-events-none"
+        >
+          <Image 
+            src="/hero-cutout.png" 
+            alt="Екатерина Разумова"
+            fill
+            className="object-contain object-[left_bottom] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+            priority
+          />
+        </motion.div>
 
-          {/* Typography */}
-          <div className="absolute top-[5rem] bottom-0 right-[2%] lg:right-[4%] z-20 flex items-center justify-end pointer-events-none">
-            <div className="text-center pointer-events-auto mt-20">
-              <h1 className="text-[4.2rem] lg:text-[5.8rem] xl:text-[7.2rem] font-black uppercase tracking-tighter mb-4 leading-[0.98] text-white font-montserrat drop-shadow-2xl mix-blend-difference">
-                ЕКАТЕРИНА<br/>РАЗУМОВА
-              </h1>
-              <p className="text-[#14F1D9] font-bold text-xl lg:text-2xl xl:text-3xl mb-6 tracking-widest uppercase font-montserrat drop-shadow-md">
-                Creative Generalist
-              </p>
-              <p className="text-sm lg:text-base xl:text-lg text-white/90 leading-relaxed font-medium font-inter drop-shadow-md">
-                Texts & Design • PR & Media • UX/UI + AI • Mixed Art
-              </p>
-            </div>
+        {/* Typography */}
+        <div className="absolute top-[5rem] bottom-0 left-0 right-[5%] lg:right-[10%] z-20 flex items-center justify-end pointer-events-none translate-x-[4px]">
+          <div className="text-center pointer-events-auto mt-20">
+            <h1 className="text-[4.5rem] lg:text-[6.5rem] xl:text-[8rem] font-black uppercase tracking-tighter mb-4 leading-[0.98] text-white font-montserrat drop-shadow-2xl mix-blend-difference">
+              ЕКАТЕРИНА<br/>РАЗУМОВА
+            </h1>
+            <p className="text-[#14F1D9] font-bold text-xl lg:text-2xl xl:text-3xl mb-6 tracking-widest uppercase font-montserrat drop-shadow-md">
+              Creative Generalist
+            </p>
+            <p className="text-sm lg:text-base xl:text-lg text-white/90 leading-relaxed font-medium font-inter drop-shadow-md">
+              Texts & Design • PR & Media • UX/UI + AI • Mixed Art
+            </p>
           </div>
         </div>
         

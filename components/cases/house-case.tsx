@@ -178,7 +178,7 @@ export function HouseCase() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#14F1D9]/5 blur-[120px] pointer-events-none rounded-full" />
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40" />
 
-        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-8 relative z-10">
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
           {/* Breadcrumbs */}
           <div className="flex items-center gap-2 text-sm text-white/50 mb-6 font-sans">
             <Link href="/" className="hover:text-[#14F1D9] transition-colors">Главная</Link>
@@ -220,7 +220,7 @@ export function HouseCase() {
 
       {/* 2. STICKY NAVIGATION (Direct anchors) */}
       <nav className="sticky top-20 z-40 bg-[#111111]/95 backdrop-blur-md border-b border-white/10 py-3">
-        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-8 flex items-center justify-start md:justify-center gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="container mx-auto px-4 md:px-8 flex items-center justify-start md:justify-center gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <a
             href="#sketches"
             className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-[#14F1D9]/40 shadow-[0_0_15px_rgba(20,241,217,0.15)]"
@@ -274,7 +274,7 @@ export function HouseCase() {
       </nav>
 
       {/* 3. MAIN STORY FLOW */}
-      <main className="w-full max-w-[1440px] mx-auto px-4 md:px-8 py-10 space-y-24">
+      <main className="container mx-auto px-4 md:px-8 py-10 space-y-24">
 
         {/* SECTION 1: AXONOMETRIC SKETCHES (Floors 1 & 2 side-by-side on desktop, stacked on mobile) */}
         <section id="sketches" className="scroll-mt-28 space-y-8">
