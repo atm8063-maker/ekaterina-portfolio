@@ -105,10 +105,15 @@ export function ArtMedia() {
       <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-20">
-        <h2 className="mb-12 text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
-          Публикации в СМИ
-        </h2>
+      <div className="container mx-auto px-6 relative z-20 mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
+            Публикации в СМИ
+          </h2>
+        </div>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase shadow-md">
+          <span>←</span> Листайте публикации <span>→</span>
+        </div>
       </div>
 
       <div

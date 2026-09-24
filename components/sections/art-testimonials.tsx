@@ -211,17 +211,23 @@ export function ArtTestimonials() {
         </h2>
       </div>
 
-      <div className="container mx-auto px-6">
-        <div className="flex gap-4">
+      <div className="container mx-auto px-6 relative z-20">
+        {/* Desktop: 3 Columns */}
+        <div className="hidden lg:flex gap-4">
           <div className="flex-1">
             <AutoScrollLane laneItems={lane0} direction="up" duration={34} />
           </div>
           <div className="flex-1">
             <AutoScrollLane laneItems={lane1} direction="down" duration={26} />
           </div>
-          <div className="hidden flex-1 lg:block">
+          <div className="flex-1">
             <AutoScrollLane laneItems={lane2} direction="up" duration={40} />
           </div>
+        </div>
+
+        {/* Mobile & Tablet: 1 Single Clean Column */}
+        <div className="block lg:hidden w-full max-w-md mx-auto">
+          <AutoScrollLane laneItems={items} direction="up" duration={65} />
         </div>
       </div>
     </section>

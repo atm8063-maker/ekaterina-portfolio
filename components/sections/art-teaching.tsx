@@ -429,13 +429,18 @@ export function ArtTeaching() {
 
       {/* Single-Row Photo Carousel Header & Controls */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
-        <div>
-          <h3 className="text-sm font-montserrat font-bold uppercase tracking-wider text-white">
-            Фотоархив: воркшопы <span className="text-[#14F1D9]">&</span> мастер-классы
-          </h3>
-          <p className="text-xs text-white/50 font-inter mt-0.5">
-            Листай карусель свайпом или стрелками
-          </p>
+        <div className="flex items-center gap-3 flex-wrap">
+          <div>
+            <h3 className="text-sm sm:text-base font-montserrat font-bold uppercase tracking-wider text-white">
+              Фотоархив: воркшопы <span className="text-[#14F1D9]">&</span> мастер-классы
+            </h3>
+            <p className="text-xs text-white/50 font-inter mt-0.5">
+              Листай карусель свайпом или стрелками
+            </p>
+          </div>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase shadow-md">
+            <span>←</span> Листайте <span>→</span>
+          </div>
         </div>
 
         <div className="flex items-center gap-3">

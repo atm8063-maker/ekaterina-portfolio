@@ -462,8 +462,8 @@ function SteppedCollage({
         </span>
       </div>
 
-      {/* Dynamic Asymmetrical Collage Body - Width 640px, Height 360px-400px */}
-      <div className="relative w-full max-w-[640px] h-[360px] sm:h-[390px]">
+      {/* Dynamic Asymmetrical Collage Body - Scaled on mobile to fit 100% inside screen */}
+      <div className="relative w-full max-w-[640px] h-[360px] sm:h-[390px] scale-[0.52] xs:scale-[0.62] sm:scale-100 origin-center my-[-70px] xs:my-[-50px] sm:my-0">
         
         {/* ========================================================= */}
         {/* CASE 1: Февраль 22-го (2 Left, 1 Hero, 1 Full Video)      */}
@@ -761,7 +761,7 @@ function SteppedCollage({
 function ManifestoPanel() {
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
-      <div className="w-full max-w-[640px] h-[360px] sm:h-[390px] relative flex flex-col justify-between py-6 px-4 sm:px-8 bg-white/95 border-[4px] border-black shadow-xl backdrop-blur-sm z-20">
+      <div className="w-full max-w-[640px] h-[360px] sm:h-[390px] scale-[0.56] xs:scale-[0.68] sm:scale-100 origin-center my-[-60px] xs:my-[-40px] sm:my-0 relative flex flex-col justify-between py-6 px-4 sm:px-8 bg-white/95 border-[4px] border-black shadow-xl backdrop-blur-sm z-20">
         {/* Extended Architectural Lines 4px behind / on perimeter */}
         <div className="absolute top-[16%] -left-8 -right-8 h-[4px] bg-black pointer-events-none -z-10" />
         <div className="absolute bottom-[16%] -left-8 -right-8 h-[4px] bg-black pointer-events-none -z-10" />

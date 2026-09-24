@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { X, Play, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -220,6 +220,30 @@ const items: MediaItem[] = [
 
 export function ArtTechniques() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const drag = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    drag.current = { isDown: true, startX: e.clientX, scrollLeft: el.scrollLeft };
+    el.setPointerCapture(e.pointerId);
+    el.classList.add("cursor-grabbing");
+    el.classList.remove("cursor-grab");
+  };
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = scrollRef.current;
+    if (!el || !drag.current.isDown) return;
+    el.scrollLeft = drag.current.scrollLeft - (e.clientX - drag.current.startX);
+  };
+
+  const endDrag = () => {
+    drag.current.isDown = false;
+    const el = scrollRef.current;
+    el?.classList.remove("cursor-grabbing");
+    el?.classList.add("cursor-grab");
+  };
 
   const offlineTags = ["Эпоксидная смола", "Акрил", "Алкогольные чернила", "Текстурная паста", "Смешанные техники"];
   const offlineExtra = ["Гипс", "Глина", "Масло", "Скетчи"];
@@ -325,13 +349,28 @@ export function ArtTechniques() {
 
       </div>
 
-      {/* Zero-Crop Stream: Uniform Height (140px), Natural Width */}
-      <div className="w-full relative overflow-hidden marquee-pause py-2">
-        <div className="flex animate-marquee-left gap-3">
-          {[...items, ...items].map((item, idx) => (
+      {/* Swipe Badge for Desktop & Mobile */}
+      <div className="container mx-auto px-6 text-center mb-4 relative z-20">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase shadow-md">
+          <span>←</span> Листайте галерею <span>→</span>
+        </div>
+      </div>
+
+      {/* Zero-Crop Stream: Uniform Height (140px), Natural Width, Swipeable */}
+      <div 
+        ref={scrollRef}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+        onDragStart={(e) => e.preventDefault()}
+        className="w-full relative overflow-x-auto overflow-y-hidden cursor-grab select-none hide-scrollbar py-2 z-20"
+      >
+        <div className="flex gap-3 px-6 w-max">
+          {items.map((item, idx) => (
             <div
               key={idx}
-              onClick={() => openLightbox(idx % items.length)}
+              onClick={() => openLightbox(idx)}
               className="group relative shrink-0 h-[140px] w-auto bg-[#16161A] border border-white/15 hover:border-[#14F1D9] transition-all cursor-pointer overflow-hidden rounded-none shadow-md flex items-center justify-center"
             >
               {item.type === "video" ? (
@@ -372,9 +411,9 @@ export function ArtTechniques() {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 text-center mt-3">
+      <div className="container mx-auto px-6 text-center mt-3 relative z-20">
         <p className="text-[11px] font-inter text-white/50 tracking-wider">
-          💡 Наведи курсор, чтобы приостановить · Кликни для полного размера
+          💡 Свайпайте или перетаскивайте мышкой · Кликните для полного размера
         </p>
       </div>
 
