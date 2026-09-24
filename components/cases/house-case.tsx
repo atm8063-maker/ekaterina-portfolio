@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
+import { CaseNavigation } from "@/components/cases/case-navigation";
 import { houseProjectData, ZoneDetail } from "@/lib/house-data";
 import {
   Palette,
@@ -179,14 +180,8 @@ export function HouseCase() {
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40" />
 
         <div className="container mx-auto px-4 md:px-8 relative z-10">
-          {/* Breadcrumbs */}
-          <div className="flex items-center gap-2 text-sm text-white/50 mb-6 font-sans">
-            <Link href="/" className="hover:text-[#14F1D9] transition-colors">Главная</Link>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <Link href="/#cases" className="hover:text-[#14F1D9] transition-colors">Кейсы</Link>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-[#14F1D9]">Интерьер загородного дома</span>
-          </div>
+          {/* Top Navigation */}
+          <CaseNavigation currentSlug="10-house-project" position="top" className="mb-8" />
 
           <div className="max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs font-semibold uppercase tracking-widest mb-4">
@@ -1253,6 +1248,11 @@ export function HouseCase() {
             </div>
           </div>
         </section>
+        
+        {/* Bottom Full Navigation */}
+        <div className="container mx-auto px-4 md:px-8 pb-16">
+          <CaseNavigation currentSlug="10-house-project" position="bottom" />
+        </div>
 
       </main>
 

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
+import { CaseNavigation } from "@/components/cases/case-navigation";
 import { landscapeProjectData } from "@/lib/landscape-data";
 import {
   LayoutDashboard,
@@ -85,14 +86,8 @@ export function LandscapeCase() {
 
         <main className="container mx-auto px-4 sm:px-6 pt-28 md:pt-32 pb-24 max-w-[1440px]">
           
-          {/* Breadcrumbs */}
-          <nav aria-label="Breadcrumbs" className="text-xs sm:text-sm text-white/50 mb-8 flex flex-wrap items-center gap-2 font-sans">
-            <Link href="/" className="transition-colors hover:text-[#14F1D9]">Главная</Link>
-            <span>/</span>
-            <Link href="/#cases" className="transition-colors hover:text-[#14F1D9]">Кейсы</Link>
-            <span>/</span>
-            <span className="text-[#14F1D9] font-medium">Ландшафтный дизайн (6.5 соток)</span>
-          </nav>
+          {/* Top Navigation */}
+          <CaseNavigation currentSlug="11-landscape-project" position="top" className="mb-8" />
 
           {/* =========================================================================
               HERO SECTION
@@ -1076,31 +1071,8 @@ export function LandscapeCase() {
             </div>
           </section>
 
-          {/* NEXT CASE BANNER */}
-          <div className="mt-20 pt-10 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6 p-8 rounded-2xl bg-[#161A1B] border border-white/10">
-            <div>
-              <div className="text-xs uppercase tracking-widest text-[#14F1D9] font-bold mb-1">
-                СЛЕДУЮЩИЙ КЕЙС
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white font-montserrat">
-                UX/UI: Недвижимость Doors Real Estate
-              </h3>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link
-                href="/#cases"
-                className="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white text-xs font-bold uppercase tracking-wider transition-colors"
-              >
-                Все кейсы
-              </Link>
-              <Link
-                href="/cases/08-doors-real-estate"
-                className="px-6 py-3 rounded-xl bg-[#14F1D9] hover:bg-[#14F1D9]/80 text-[#0E1111] text-xs font-bold uppercase tracking-wider transition-colors font-montserrat"
-              >
-                Перейти к Doors ➔
-              </Link>
-            </div>
-          </div>
+          {/* Bottom Full Navigation */}
+          <CaseNavigation currentSlug="11-landscape-project" position="bottom" />
 
 
           {/* =========================================================================
