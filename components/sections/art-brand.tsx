@@ -83,14 +83,14 @@ export function ArtBrand() {
             </div>
 
             {/* Факты */}
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              <div className="border border-white/10 bg-[#1A1A1A] p-4 rounded-none">
-                <div className="font-montserrat text-lg font-black text-[#14F1D9]">АМБАССАДОР</div>
-                <div className="mt-1 text-xs text-white/60 font-inter">Ведущего производителя смолы в РФ</div>
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3 pt-2">
+              <div className="border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
+                <div className="font-montserrat text-xs xs:text-sm sm:text-base lg:text-lg font-black text-[#14F1D9] tracking-tight leading-tight">АМБАССАДОР</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Ведущего производителя смолы в РФ</div>
               </div>
-              <div className="border border-white/10 bg-[#1A1A1A] p-4 rounded-none">
-                <div className="font-montserrat text-lg font-black text-white">В СЕРИИ</div>
-                <div className="mt-1 text-xs text-white/60 font-inter">Авторский промышленный дизайн</div>
+              <div className="border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
+                <div className="font-montserrat text-xs xs:text-sm sm:text-base lg:text-lg font-black text-white leading-tight">В СЕРИИ</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Авторский промышленный дизайн</div>
               </div>
             </div>
           </div>

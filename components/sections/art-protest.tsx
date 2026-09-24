@@ -444,26 +444,29 @@ function SteppedCollage({
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
       
-      {/* Title & Metadata directly over concrete */}
-      <div className="w-full max-w-[640px] flex items-center justify-between gap-2 mb-3 z-20 px-1">
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
-            {artwork.number}
-          </span>
-          <span className="text-xs sm:text-sm font-montserrat font-black uppercase tracking-wider text-black">
-            {artwork.title}
-          </span>
-          <span className="text-xs text-black/80 font-sans font-semibold hidden md:inline-block">
-            · {artwork.materials}
+      {/* Scaled Unified Artwork Block on Mobile so title, collage & button stay tightly together */}
+      <div className="relative flex flex-col items-center justify-center scale-[0.52] xs:scale-[0.62] sm:scale-100 origin-center w-[640px] max-w-none">
+        
+        {/* Title & Metadata directly over concrete */}
+        <div className="w-[640px] flex items-center justify-between gap-2 mb-2 z-20 px-1">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
+              {artwork.number}
+            </span>
+            <span className="text-xs sm:text-sm font-montserrat font-black uppercase tracking-wider text-black">
+              {artwork.title}
+            </span>
+            <span className="text-xs text-black/80 font-sans font-semibold hidden md:inline-block">
+              · {artwork.materials}
+            </span>
+          </div>
+          <span className="text-xs font-montserrat font-black text-black bg-white/90 px-2 py-0.5 border-2 border-black shrink-0">
+            {artwork.year}
           </span>
         </div>
-        <span className="text-xs font-montserrat font-black text-black bg-white/90 px-2 py-0.5 border-2 border-black shrink-0">
-          {artwork.year}
-        </span>
-      </div>
 
-      {/* Dynamic Asymmetrical Collage Body - Scaled on mobile to fit 100% inside screen */}
-      <div className="relative w-full max-w-[640px] h-[360px] sm:h-[390px] scale-[0.52] xs:scale-[0.62] sm:scale-100 origin-center my-[-70px] xs:my-[-50px] sm:my-0">
+        {/* Dynamic Asymmetrical Collage Body */}
+        <div className="relative w-[640px] h-[360px] sm:h-[390px]">
         
         {/* ========================================================= */}
         {/* CASE 1: Февраль 22-го (2 Left, 1 Hero, 1 Full Video)      */}
@@ -711,48 +714,49 @@ function SteppedCollage({
         </button>
       </div>
 
-      {/* Mobile Inline Concept: strictly below the collage with zero overlap */}
-      {isInlineOpen && (
-        <div 
-          data-interactive="true"
-          onPointerDown={(e) => e.stopPropagation()}
-          className="md:hidden mt-3 w-full max-w-[640px] z-30 bg-[#161616] text-white border-[3px] border-black p-4 shadow-xl"
-        >
-          <div className="flex items-center justify-between border-b border-white/15 pb-2 mb-3">
-            <span className="text-[11px] font-montserrat font-black uppercase text-[#14F1D9] tracking-wider">
-              {artwork.title} · Концепция
-            </span>
-            <button
-              onClick={() => setIsInlineOpen(false)}
-              className="text-[10px] font-montserrat font-bold uppercase bg-white text-black px-2 py-0.5 border border-black cursor-pointer"
-            >
-              Закрыть ✕
-            </button>
+        {/* Mobile Inline Concept: strictly below the collage with zero overlap */}
+        {isInlineOpen && (
+          <div 
+            data-interactive="true"
+            onPointerDown={(e) => e.stopPropagation()}
+            className="md:hidden mt-3 w-full max-w-[640px] z-30 bg-[#161616] text-white border-[3px] border-black p-4 shadow-xl"
+          >
+            <div className="flex items-center justify-between border-b border-white/15 pb-2 mb-3">
+              <span className="text-[11px] font-montserrat font-black uppercase text-[#14F1D9] tracking-wider">
+                {artwork.title} · Концепция
+              </span>
+              <button
+                onClick={() => setIsInlineOpen(false)}
+                className="text-[10px] font-montserrat font-bold uppercase bg-white text-black px-2 py-0.5 border border-black cursor-pointer"
+              >
+                Закрыть ✕
+              </button>
+            </div>
+            <div className="space-y-2.5 text-left">
+              {artwork.fullConcept ? (
+                artwork.fullConcept.map((item, idx) => (
+                  <div key={idx} className="border-l-2 border-[#14F1D9] pl-2.5 space-y-0.5">
+                    <h4 className="text-[11px] font-montserrat font-black uppercase tracking-wide text-white">
+                      {item.heading}
+                    </h4>
+                    <p className="text-[11px] text-white/80 font-sans leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
+                ))
+              ) : (
+                <p className="text-xs text-white/90 font-sans leading-relaxed">
+                  {artwork.concept}
+                </p>
+              )}
+            </div>
+            <div className="mt-3 pt-2 border-t border-white/10 text-[10px] font-sans text-white/60">
+              <strong className="text-white">Материалы:</strong> {artwork.materials}
+            </div>
           </div>
-          <div className="space-y-2.5 text-left">
-            {artwork.fullConcept ? (
-              artwork.fullConcept.map((item, idx) => (
-                <div key={idx} className="border-l-2 border-[#14F1D9] pl-2.5 space-y-0.5">
-                  <h4 className="text-[11px] font-montserrat font-black uppercase tracking-wide text-white">
-                    {item.heading}
-                  </h4>
-                  <p className="text-[11px] text-white/80 font-sans leading-relaxed">
-                    {item.text}
-                  </p>
-                </div>
-              ))
-            ) : (
-              <p className="text-xs text-white/90 font-sans leading-relaxed">
-                {artwork.concept}
-              </p>
-            )}
-          </div>
-          <div className="mt-3 pt-2 border-t border-white/10 text-[10px] font-sans text-white/60">
-            <strong className="text-white">Материалы:</strong> {artwork.materials}
-          </div>
-        </div>
-      )}
+        )}
 
+      </div>
     </div>
   );
 }
@@ -761,7 +765,7 @@ function SteppedCollage({
 function ManifestoPanel() {
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
-      <div className="w-full max-w-[640px] h-[360px] sm:h-[390px] scale-[0.56] xs:scale-[0.68] sm:scale-100 origin-center my-[-60px] xs:my-[-40px] sm:my-0 relative flex flex-col justify-between py-6 px-4 sm:px-8 bg-white/95 border-[4px] border-black shadow-xl backdrop-blur-sm z-20">
+      <div className="w-[640px] max-w-none h-[360px] sm:h-[390px] scale-[0.52] xs:scale-[0.62] sm:scale-100 origin-center relative flex flex-col justify-between py-6 px-4 sm:px-8 bg-white/95 border-[4px] border-black shadow-xl backdrop-blur-sm z-20">
         {/* Extended Architectural Lines 4px behind / on perimeter */}
         <div className="absolute top-[16%] -left-8 -right-8 h-[4px] bg-black pointer-events-none -z-10" />
         <div className="absolute bottom-[16%] -left-8 -right-8 h-[4px] bg-black pointer-events-none -z-10" />
