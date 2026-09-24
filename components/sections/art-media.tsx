@@ -90,7 +90,7 @@ export function ArtMedia() {
   };
 
   return (
-    <section id="media-publications" className="relative py-24 border-b border-white/10 bg-[#111111] overflow-hidden scroll-mt-20">
+    <section id="media-publications" className="relative py-24 bg-[#111111] overflow-hidden scroll-mt-20">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -101,7 +101,11 @@ export function ArtMedia() {
         />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      {/* Top & bottom gradient blend fades */}
+      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-20">
         <h2 className="mb-12 text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
           Публикации в СМИ
         </h2>
