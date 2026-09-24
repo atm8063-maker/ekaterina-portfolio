@@ -84,7 +84,7 @@ export function ArtAwards() {
 
   return (
     <section id="awards" className="relative border-b border-white/10 bg-[#111111] py-24 scroll-mt-20">
-      <div className="container mx-auto px-6">
+      <div className="w-full max-w-[1440px] mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           {/* Левая колонка: Текст и статистика */}

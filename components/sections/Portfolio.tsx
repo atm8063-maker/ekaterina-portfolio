@@ -3,12 +3,15 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cases } from "@/lib/data";
 
 export default function Portfolio() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeftState, setScrollLeftState] = useState(0);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
@@ -19,6 +22,49 @@ export default function Portfolio() {
         behavior: "smooth"
       });
     }
+  };
+
+  // Convert vertical mouse wheel on the tape to horizontal smooth scroll
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const handleWheel = (e: WheelEvent) => {
+      // If mostly vertical scrolling, redirect horizontally
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX) * 0.5) {
+        if (
+          (e.deltaY > 0 && el.scrollLeft < el.scrollWidth - el.clientWidth - 5) ||
+          (e.deltaY < 0 && el.scrollLeft > 5)
+        ) {
+          e.preventDefault();
+          el.scrollBy({
+            left: e.deltaY * 1.5,
+            behavior: "auto"
+          });
+        }
+      }
+    };
+    el.addEventListener("wheel", handleWheel, { passive: false });
+    return () => el.removeEventListener("wheel", handleWheel);
+  }, []);
+
+  // Desktop mouse click & drag
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeftState(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    scrollContainerRef.current.scrollLeft = scrollLeftState - walk;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    setIsDragging(false);
   };
 
   return (
@@ -40,15 +86,21 @@ export default function Portfolio() {
 
       {/* Header Container (Centered) */}
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 relative z-20">
-        <div className="mb-10 flex items-end justify-between">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold uppercase text-white font-montserrat"
-          >
-            КЕЙСЫ
-          </motion.h2>
+        <div className="mb-6 md:mb-10 flex items-end justify-between">
+          <div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-5xl font-bold uppercase text-white font-montserrat mb-2"
+            >
+              КЕЙСЫ
+            </motion.h2>
+            {/* Mobile swipe indicator */}
+            <div className="md:hidden inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase">
+              <span>←</span> Листайте кейсы <span>→</span>
+            </div>
+          </div>
 
           {/* Navigation Arrows */}
           <div className="hidden md:flex gap-4">
@@ -74,7 +126,11 @@ export default function Portfolio() {
       <div className="w-full relative z-20">
         <div 
           ref={scrollContainerRef}
-          className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-10 px-6 sm:px-10 lg:px-12 xl:px-16 gap-6 md:gap-8 scroll-smooth"
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUpOrLeave}
+          onMouseLeave={handleMouseUpOrLeave}
+          className={`flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-10 px-6 sm:px-10 lg:px-12 xl:px-16 gap-6 md:gap-8 scroll-smooth select-none ${isDragging ? "cursor-grabbing" : "cursor-grab md:cursor-default"}`}
         >
           {cases.filter(c => !c.hidden).map((c, i) => {
             let img = "/placeholder.jpg";
