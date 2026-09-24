@@ -21,46 +21,48 @@ export function ArtNumbers() {
         <div className="flex flex-col lg:flex-row items-start justify-between w-full relative">
           
           {/* Текстовые плашки с цифрами - мгновенная отрисовка без задержек */}
-          <div className="flex w-full lg:w-[375px] flex-col justify-start order-3 lg:order-1 relative z-20 mt-4 lg:mt-0 pt-4 lg:pt-[138px] pb-8 lg:pb-24">
-            <div className="grid grid-cols-2 gap-x-4 gap-y-6 lg:flex lg:flex-col lg:gap-0 lg:space-y-7 text-[#A3A3A3] text-sm sm:text-base md:text-lg font-medium leading-[1.4] lg:leading-[1.6] font-inter">
-              <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
-                <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-[#14F1D9] font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">20+ ЛЕТ</p>
-                <p className="text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">Работы с креативом</p>
+          <div className="flex w-full lg:w-[375px] flex-col justify-start order-3 lg:order-1 relative z-20 mt-6 lg:mt-0 pt-2 lg:pt-[138px] pb-12 lg:pb-24">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:flex lg:flex-col lg:gap-0 lg:space-y-7 text-[#A3A3A3] text-sm sm:text-base md:text-lg font-medium leading-[1.4] lg:leading-[1.6] font-inter">
+              <div className="border-l-4 border-[#14F1D9] pl-3.5 lg:pl-4 py-1 bg-white/[0.02] lg:bg-transparent rounded-r">
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#14F1D9] font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">20+ ЛЕТ</p>
+                <p className="text-xs sm:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">Работы с креативом</p>
               </div>
-              <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
-                <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">7+ ЛЕТ</p>
-                <p className="text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">В сфере Resin Art</p>
+              <div className="border-l-4 border-[#14F1D9] pl-3.5 lg:pl-4 py-1 bg-white/[0.02] lg:bg-transparent rounded-r">
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">7+ ЛЕТ</p>
+                <p className="text-xs sm:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">В сфере Resin Art</p>
               </div>
-              <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
-                <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-[#14F1D9] font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">АМБАССАДОР</p>
-                <p className="text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">ведущего бренда в России</p>
+              <div className="border-l-4 border-[#14F1D9] pl-3.5 lg:pl-4 py-1 bg-white/[0.02] lg:bg-transparent rounded-r">
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#14F1D9] font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">АМБАССАДОР</p>
+                <p className="text-xs sm:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">ведущего бренда в России</p>
               </div>
-              <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
-                <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">БОЛЕЕ 10 РАЗ</p>
-                <p className="text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">в финале арт-гонки</p>
+              <div className="border-l-4 border-[#14F1D9] pl-3.5 lg:pl-4 py-1 bg-white/[0.02] lg:bg-transparent rounded-r">
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">БОЛЕЕ 10 РАЗ</p>
+                <p className="text-xs sm:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">в финале арт-гонки</p>
               </div>
-              <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
-                <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-[#14F1D9] font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">БОЛЕЕ 10000</p>
-                <p className="text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">
-                  Зрителей на прямых эфирах <br className="hidden sm:inline" />и мастер-классах
+              <div className="border-l-4 border-[#14F1D9] pl-3.5 lg:pl-4 py-1 bg-white/[0.02] lg:bg-transparent rounded-r">
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#14F1D9] font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">БОЛЕЕ 10000</p>
+                <p className="text-xs sm:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">
+                  Зрителей на прямых эфирах и МК
                 </p>
               </div>
-              <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
-                <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">БОЛЕЕ 1000+</p>
-                <p className="text-[10px] sm:text-xs lg:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">учеников</p>
+              <div className="border-l-4 border-[#14F1D9] pl-3.5 lg:pl-4 py-1 bg-white/[0.02] lg:bg-transparent rounded-r">
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-black text-white font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">БОЛЕЕ 1000+</p>
+                <p className="text-xs sm:text-sm uppercase tracking-wider text-white/90 font-bold font-montserrat">учеников</p>
               </div>
             </div>
           </div>
           
           {/* Статичная композиция без спецэффектов и анимаций */}
-          <div className="w-[calc(100%+48px)] sm:w-[calc(100%+96px)] order-2 relative z-10 -mx-6 sm:-mx-12 lg:mx-0 -mt-16 -mb-32 lg:mt-0 lg:mb-0 lg:w-auto lg:static lg:overflow-visible lg:pointer-events-none">
-            <img 
-              src="/about-composition.png" 
-              alt="Art numbers composition"
-              loading="eager"
-              decoding="async"
-              className="block lg:hidden w-full max-w-none h-auto relative -mt-[200px]"
-            />
+          <div className="w-full order-2 relative z-10 lg:w-auto lg:static lg:overflow-visible lg:pointer-events-none mt-2 lg:mt-0">
+            <div className="block lg:hidden w-full max-w-[340px] sm:max-w-[420px] mx-auto overflow-hidden">
+              <img 
+                src="/about-composition.png" 
+                alt="Art numbers composition"
+                loading="eager"
+                decoding="async"
+                className="w-full h-auto object-contain"
+              />
+            </div>
             
             <img 
               src="/art-composition.png" 
