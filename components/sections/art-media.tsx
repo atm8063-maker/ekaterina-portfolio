@@ -97,7 +97,7 @@ export function ArtMedia() {
           src="/paper-clean-dark.png" 
           alt="Paper texture" 
           fill 
-          className="object-cover opacity-70 mix-blend-screen"
+          className="object-cover opacity-50 mix-blend-screen"
         />
       </div>
 
@@ -118,12 +118,12 @@ export function ArtMedia() {
         onPointerUp={endDrag}
         onPointerLeave={endDrag}
         onDragStart={(e) => e.preventDefault()}
-        className="hide-scrollbar flex cursor-grab select-none overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-4"
+        className="hide-scrollbar flex cursor-grab select-none overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-4 relative z-20"
       >
         {items.map((item) => (
           <article
             key={item.outlet + item.headline}
-            className="group shrink-0 snap-center flex flex-col overflow-hidden rounded-none border border-white/10 bg-[#1A1A1A] w-[280px] sm:w-[320px]"
+            className="group shrink-0 snap-center flex flex-col overflow-hidden rounded-none border border-white/15 bg-[#181818] hover:border-[#14F1D9]/50 transition-colors w-[280px] sm:w-[320px] shadow-xl"
           >
             <div className="relative w-full aspect-[3/4] bg-black/40">
               <Image
@@ -138,15 +138,15 @@ export function ArtMedia() {
                 </div>
               )}
             </div>
-            <div className="flex flex-1 flex-col gap-2 p-5">
-              <p className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#14F1D9]">
+            <div className="flex flex-1 flex-col gap-2 p-5 bg-[#181818]">
+              <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#14F1D9]">
                 {item.outlet}
               </p>
-              <h3 className="font-montserrat text-sm font-black uppercase leading-snug text-white sm:text-base">
+              <h3 className="font-montserrat text-sm sm:text-base font-black uppercase leading-snug text-white">
                 {item.headline}
               </h3>
-              {item.meta && <p className="text-xs text-white/40">{item.meta}</p>}
-              {item.quote && <p className="mt-1 text-sm leading-relaxed text-white/60">{item.quote}</p>}
+              {item.meta && <p className="text-xs text-white/70 font-medium font-inter">{item.meta}</p>}
+              {item.quote && <p className="mt-1 text-sm leading-relaxed text-white/90 font-inter">{item.quote}</p>}
             </div>
           </article>
         ))}

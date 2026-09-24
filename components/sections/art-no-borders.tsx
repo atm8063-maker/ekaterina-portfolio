@@ -1,11 +1,26 @@
 'use client';
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function ArtNoBorders() {
   return (
-    <section className="py-12 lg:py-20 relative overflow-hidden text-white border-b border-white/10">
-      <div className="w-full px-6 sm:px-12 lg:px-[8%] xl:px-[12%]">
+    <section className="py-16 lg:py-24 relative overflow-hidden text-white bg-[#111111]">
+      {/* Clean Dark Paper Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image 
+          src="/paper-clean-dark.png" 
+          alt="Paper texture" 
+          fill 
+          className="object-cover opacity-70 mix-blend-screen"
+        />
+      </div>
+
+      {/* Top & bottom gradient blend fades */}
+      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+
+      <div className="w-full px-6 sm:px-12 lg:px-[8%] xl:px-[12%] relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           <motion.div 
