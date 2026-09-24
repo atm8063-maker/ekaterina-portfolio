@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
+import { CaseNavigation } from "@/components/cases/case-navigation";
 import { Maximize2, Eye, X, ArrowLeft, ArrowRight, Sparkles, ChevronRight } from "lucide-react";
 
 interface VertexMockup {
@@ -90,23 +91,8 @@ export function VertexHomesCase() {
         {/* Framed case study presentation */}
         <main className="container mx-auto px-4 sm:px-6 pt-28 md:pt-32 pb-24 max-w-[1440px] space-y-16">
           
-          {/* Breadcrumbs matching Vertex Homes typography */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#796D41]/30 pb-6">
-            <nav aria-label="Breadcrumbs" className="text-xs sm:text-sm text-white/50 flex flex-wrap items-center gap-2 font-sans">
-              <Link href="/" className="transition-colors hover:text-[#B8A86C]">Главная</Link>
-              <span>/</span>
-              <Link href="/#cases" className="transition-colors hover:text-[#B8A86C]">Кейсы</Link>
-              <span>/</span>
-              <span className="text-[#B8A86C] font-medium">Vertex Homes</span>
-            </nav>
-
-            <div className="flex items-center gap-3 text-xs font-mono">
-              <span className="px-3 py-1 rounded-full bg-[#B8A86C]/10 text-[#B8A86C] border border-[#B8A86C]/30 font-semibold uppercase tracking-wider">
-                Vertex Homes Real Estate
-              </span>
-              <span className="text-white/40">2024</span>
-            </div>
-          </div>
+          {/* Top Navigation */}
+          <CaseNavigation currentSlug="14-vertex-homes" position="top" className="mb-8" />
 
           {/* Framed case study: completely seamless */}
           <div className="w-full rounded-2xl overflow-hidden border border-[#796D41]/30 shadow-2xl bg-[#222F33] transition-all duration-300">
@@ -192,29 +178,8 @@ export function VertexHomesCase() {
             </div>
           </section>
 
-          {/* Bottom Navigation: All Cases */}
-          <section className="pt-8 border-t border-[#796D41]/30">
-            <div className="bg-[#222F33] border border-[#796D41]/30 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 hover:border-[#B8A86C]/50 transition-all">
-              <div>
-                <div className="text-xs font-montserrat font-bold text-[#B8A86C] uppercase tracking-wider mb-1">
-                  Портфолио
-                </div>
-                <div className="text-xl sm:text-2xl font-black font-montserrat uppercase text-white">
-                  Смотреть другие кейсы
-                </div>
-                <p className="text-xs text-white/60 font-sans mt-1">
-                  Исследования, дизайн-системы, веб-сервисы и мобильные приложения
-                </p>
-              </div>
-              <Link
-                href="/#cases"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#B8A86C] text-[#222F33] font-montserrat font-bold uppercase tracking-wider text-xs hover:bg-white transition-colors shrink-0"
-              >
-                <span>Все кейсы</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </section>
+          {/* Bottom Full Navigation */}
+          <CaseNavigation currentSlug="14-vertex-homes" position="bottom" />
 
         </main>
       </div>

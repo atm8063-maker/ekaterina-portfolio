@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
+import { CaseNavigation } from "@/components/cases/case-navigation";
 
 export function NickPotapovCase() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -51,7 +52,7 @@ export function NickPotapovCase() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#111111] text-white relative">
+    <div className="min-h-screen bg-[#111111] text-white relative font-inter">
       {/* Background paper texture matching Ekaterina's site */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Image
@@ -74,14 +75,8 @@ export function NickPotapovCase() {
         {/* NOT full screen - framed container with Catherine's site layout */}
         <main className="container mx-auto px-4 sm:px-6 pt-28 md:pt-32 pb-24 max-w-[1440px]">
           
-          {/* Breadcrumbs matching Ekaterina's site typography and colors */}
-          <nav aria-label="Breadcrumbs" className="text-xs sm:text-sm text-white/50 mb-8 flex flex-wrap items-center gap-2 font-inter">
-            <Link href="/" className="transition-colors hover:text-[#14F1D9]">Главная</Link>
-            <span>/</span>
-            <Link href="/#cases" className="transition-colors hover:text-[#14F1D9]">Кейсы</Link>
-            <span>/</span>
-            <span className="text-[#14F1D9]">Сайт Nick Potapov</span>
-          </nav>
+          {/* Top Navigation */}
+          <CaseNavigation currentSlug="05-nick-potapov-site" position="top" className="mb-8" />
 
           {/* Framed case study: completely verbatim from prepared source */}
           <div className="w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#050505] transition-all duration-300">
@@ -105,6 +100,9 @@ export function NickPotapovCase() {
               title="Кейс Ника Потапова — Архитектура без рутины"
             />
           </div>
+
+          {/* Bottom Navigation */}
+          <CaseNavigation currentSlug="05-nick-potapov-site" position="bottom" />
 
         </main>
       </div>

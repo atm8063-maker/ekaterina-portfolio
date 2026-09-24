@@ -41,6 +41,9 @@ import {
   CompetitorComparison
 } from "@/lib/electronics-shop-data";
 
+import Header from "@/components/layout/Header";
+import { CaseNavigation } from "@/components/cases/case-navigation";
+
 export function ElectronicsShopCase() {
   const [selectedImage, setSelectedImage] = useState<{ src: string; title: string; subtitle?: string } | null>(null);
   const [activeScreenIndex, setActiveScreenIndex] = useState<number>(2); // Default to Home screen
@@ -51,26 +54,15 @@ export function ElectronicsShopCase() {
   const activePersona: UserPersona = electronicsShopData.personas[selectedPersonaIndex];
 
   return (
-    <div className="min-h-screen bg-[#111111] text-[#E0E0E0] selection:bg-[#14F1D9] selection:text-black">
-      {/* Top Header & Breadcrumb Bar */}
-      <header className="sticky top-0 z-40 bg-[#111111]/90 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link 
-            href="/#cases" 
-            className="flex items-center gap-2 text-sm text-white/70 hover:text-[#14F1D9] transition-colors group font-montserrat font-medium"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span>Назад ко всем кейсам</span>
-          </Link>
-          
-          <div className="flex items-center gap-3">
-            <span className="hidden sm:inline-flex text-xs px-3 py-1 rounded-full bg-[#14F1D9]/10 text-[#14F1D9] border border-[#14F1D9]/30 font-montserrat font-semibold uppercase tracking-wider">
-              {electronicsShopData.meta.client}
-            </span>
-            <span className="text-xs text-white/50 font-mono">2023–2024</span>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-[#111111] text-[#E0E0E0] selection:bg-[#14F1D9] selection:text-black font-inter">
+      {/* Ekaterina's Header */}
+      <Header />
+
+      {/* Top Bar Container */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-28">
+        {/* Top Navigation */}
+        <CaseNavigation currentSlug="09-mockup-electronics" position="top" className="mb-6" />
+      </div>
 
       {/* Hero Section */}
       <section className="relative pt-16 pb-20 overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#162e2a]/25 via-[#111111] to-[#111111]">
@@ -856,30 +848,8 @@ export function ElectronicsShopCase() {
           </div>
         </section>
 
-        {/* 7. BOTTOM NAVIGATION: NEXT CASE */}
-        <section className="pt-12 border-t border-white/10">
-          <div className="bg-gradient-to-r from-[#1A1A1A] via-[#1a2d2a] to-[#1A1A1A] border border-white/10 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 hover:border-[#14F1D9]/50 transition-all">
-            <div>
-              <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-1">
-                Следующий кейс
-              </div>
-              <div className="text-xl sm:text-2xl font-black font-montserrat uppercase text-white">
-                Интерьер загородного дома
-              </div>
-              <p className="text-xs text-white/60 font-sans mt-1">
-                Полный цикл: планировка, 3D-аксонометрия, электрика и 100% реализация в жизни
-              </p>
-            </div>
-            <Link
-              href="/cases/10-house-project"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#14F1D9] text-black font-montserrat font-bold uppercase tracking-wider text-xs hover:bg-white transition-colors shrink-0"
-            >
-              <span>Смотреть кейс</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </section>
-
+        {/* Bottom Full Navigation */}
+        <CaseNavigation currentSlug="09-mockup-electronics" position="bottom" />
       </main>
 
       {/* Fullscreen Image Lightbox Modal */}

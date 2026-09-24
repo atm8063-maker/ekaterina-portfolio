@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Header from '@/components/layout/Header'
 import type { CaseDetail } from '@/lib/data'
+import { CaseNavigation } from '@/components/cases/case-navigation'
 
 type Props = {
   slug: string
@@ -17,7 +18,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
 
   return (
     <>
-      <div className="min-h-screen bg-[#111111] text-white overflow-hidden relative">
+      <div className="min-h-screen bg-[#111111] text-white overflow-hidden relative font-inter">
         <div className="fixed inset-0 z-0 pointer-events-none">
           <Image 
             src="/paper-clean-dark.png" 
@@ -33,15 +34,9 @@ export function CasePageClient({ slug, caseData, images }: Props) {
         <div className="relative z-10">
           <Header />
           
-          <main className="container mx-auto px-6 py-32 max-w-[760px]">
-            {/* Breadcrumbs */}
-            <nav aria-label="Breadcrumbs" className="text-sm text-white/50 mb-12 flex flex-wrap items-center gap-2">
-              <Link href="/" className="transition-colors hover:text-[#14F1D9]">Главная</Link>
-              <span>/</span>
-              <Link href="/#cases" className="transition-colors hover:text-[#14F1D9]">Кейсы</Link>
-              <span>/</span>
-              <span className="text-white/30">{caseData.title}</span>
-            </nav>
+          <main className="container mx-auto px-4 sm:px-6 pt-28 md:pt-32 pb-24 max-w-[880px]">
+            {/* Top Navigation */}
+            <CaseNavigation currentSlug={slug} position="top" className="mb-8" />
 
             <h1 className="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight">
               {caseData.title}
@@ -224,16 +219,8 @@ export function CasePageClient({ slug, caseData, images }: Props) {
               </section>
             )}
 
-            {/* Back Nav */}
-            <Link
-              href="/#cases"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#14F1D9] hover:opacity-80 transition-opacity"
-            >
-              <svg className="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-              Назад к портфолио
-            </Link>
+            {/* Bottom Full Navigation */}
+            <CaseNavigation currentSlug={slug} position="bottom" />
           </main>
         </div>
       </div>
