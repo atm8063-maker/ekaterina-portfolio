@@ -278,7 +278,7 @@ export function ArtTeaching() {
   };
 
   return (
-    <section id="art-teaching" className="w-full max-w-[1440px] mx-auto px-6 py-20 sm:py-24 border-b border-white/10 relative overflow-hidden scroll-mt-20">
+    <section id="art-teaching" className="container mx-auto px-6 py-20 sm:py-24 border-b border-white/10 relative overflow-hidden scroll-mt-20">
       {/* Background cyan glow */}
       <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#14F1D9]/5 rounded-none blur-3xl pointer-events-none -z-10" />
 
@@ -575,7 +575,6 @@ export function ArtTeaching() {
                   src={lightboxItem.src}
                   controls
                   autoPlay
-                  muted
                   playsInline
                   className="max-h-[70vh] w-auto max-w-full object-contain"
                 />

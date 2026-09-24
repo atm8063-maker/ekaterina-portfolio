@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { Preloader } from "@/components/ui/preloader";
 import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/hero";
 import { MarqueeRow } from "@/components/sections/marquee-tags";
@@ -35,7 +34,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-background text-foreground overflow-x-clip">
-      <Preloader />
       <Header />
       
       {/* 1. HERO */}

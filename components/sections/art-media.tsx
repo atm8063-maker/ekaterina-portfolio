@@ -89,46 +89,12 @@ export function ArtMedia() {
     el?.classList.add("cursor-grab");
   };
 
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const { current } = scrollRef;
-      const scrollAmount = current.clientWidth * 0.8;
-      current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth"
-      });
-    }
-  };
-
   return (
-    <section id="media-publications" className="relative py-20 lg:py-24 border-b border-white/10 bg-[#111111] overflow-hidden scroll-mt-20">
-      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12 mb-8 sm:mb-10 flex items-end justify-between">
-        <div>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
-            Публикации в СМИ
-          </h2>
-          <p className="text-xs sm:text-sm text-[#14F1D9] font-mono uppercase tracking-wider mt-2">
-            ← Листайте публикации →
-          </p>
-        </div>
-
-        {/* Navigation Arrows */}
-        <div className="hidden sm:flex gap-3">
-          <button 
-            onClick={() => scroll("left")}
-            className="p-3 rounded-full border border-white/20 text-white/70 hover:text-[#14F1D9] hover:border-[#14F1D9] transition-all cursor-pointer bg-[#1A1A1A]"
-            aria-label="Назад"
-          >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-          </button>
-          <button 
-            onClick={() => scroll("right")}
-            className="p-3 rounded-full border border-white/20 text-white/70 hover:text-[#14F1D9] hover:border-[#14F1D9] transition-all cursor-pointer bg-[#1A1A1A]"
-            aria-label="Вперед"
-          >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-          </button>
-        </div>
+    <section id="media-publications" className="relative py-24 border-b border-white/10 bg-[#111111] overflow-hidden scroll-mt-20">
+      <div className="container mx-auto px-6">
+        <h2 className="mb-12 text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
+          Публикации в СМИ
+        </h2>
       </div>
 
       <div

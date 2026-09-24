@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import Header from "@/components/layout/Header";
-import { Preloader } from "@/components/ui/preloader";
 import Image from "next/image";
 import { ArtGalleryTest } from "@/components/sections/art-gallery-test";
 import { ArtHero } from "@/components/sections/art-hero";
@@ -46,7 +45,7 @@ export default function ArtPage() {
   }, []);
   return (
     <main className="min-h-screen bg-[#111111] text-foreground overflow-x-clip font-inter selection:bg-[#14F1D9] selection:text-black">
-      <Preloader />
+      
       <Header />
 
       {/* Clean Dark Crumpled Paper Background - Visible only in transparent blocks */}

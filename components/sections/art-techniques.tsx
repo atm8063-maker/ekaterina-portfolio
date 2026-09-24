@@ -244,7 +244,7 @@ export function ArtTechniques() {
 
   return (
     <section id="techniques" className="border-b border-white/10 bg-[#111111] py-16 sm:py-20 relative overflow-hidden scroll-mt-20">
-      <div className="w-full max-w-[1440px] mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10">
         
         {/* Header */}
         <div className="max-w-3xl mb-10">
@@ -407,7 +407,6 @@ export function ArtTechniques() {
                   src={activeLightboxItem.src}
                   controls
                   autoPlay
-                  muted
                   playsInline
                   className="max-h-[70vh] w-auto max-w-full object-contain"
                 />
