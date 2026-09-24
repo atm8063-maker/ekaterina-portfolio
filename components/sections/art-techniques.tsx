@@ -244,18 +244,22 @@ export function ArtTechniques() {
   const activeLightboxItem = lightboxIndex !== null ? items[lightboxIndex] : null;
 
   return (
-    <section id="techniques" className="border-b border-white/10 bg-[#111111] py-16 sm:py-20 relative overflow-hidden scroll-mt-20">
-      {/* Clean Dark Paper Background */}
+    <section id="techniques" className="bg-[#111111] py-16 sm:py-20 relative overflow-hidden scroll-mt-20">
+      {/* Light Crumpled Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
-          alt="Paper texture" 
+          src="/paper-bg.png" 
+          alt="Light paper texture" 
           fill 
-          className="object-cover opacity-70 mix-blend-screen"
+          className="object-cover opacity-85 mix-blend-screen"
         />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      {/* Top & bottom gradient blend fades */}
+      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/70 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/70 to-transparent z-[15] pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-20">
         
         {/* Header */}
         <div className="max-w-3xl mb-10">

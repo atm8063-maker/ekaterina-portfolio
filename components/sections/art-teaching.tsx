@@ -278,12 +278,27 @@ export function ArtTeaching() {
   };
 
   return (
-    <section id="art-teaching" className="container mx-auto px-6 py-20 sm:py-24 border-b border-white/10 relative overflow-hidden scroll-mt-20">
+    <section id="art-teaching" className="relative bg-[#111111] py-20 sm:py-24 overflow-hidden scroll-mt-20">
+      {/* Clean Dark Paper Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image 
+          src="/paper-clean-dark.png" 
+          alt="Paper texture" 
+          fill 
+          className="object-cover opacity-70 mix-blend-screen"
+        />
+      </div>
+
+      {/* Top & bottom gradient blend fades */}
+      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+
       {/* Background cyan glow */}
       <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#14F1D9]/5 rounded-none blur-3xl pointer-events-none -z-10" />
 
-      {/* Main Grid: Info + Key Metrics + 2 Top Hero Videos */}
-      <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start mb-14">
+      <div className="container mx-auto px-6 relative z-20">
+        {/* Main Grid: Info + Key Metrics + 2 Top Hero Videos */}
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start mb-14">
         
         {/* Left Column: Heading & Description */}
         <div className="lg:col-span-6 space-y-6">
@@ -545,6 +560,7 @@ export function ArtTeaching() {
           </article>
         ))}
         <div className="w-2 shrink-0" />
+      </div>
       </div>
 
       {/* Lightbox Modal */}

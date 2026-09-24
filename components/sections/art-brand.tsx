@@ -46,7 +46,7 @@ export function ArtBrand() {
   const [selectedImage, setSelectedImage] = useState<BrandItem | null>(null);
 
   return (
-    <section id="brand" className="relative border-b border-white/10 bg-[#111111] py-24 scroll-mt-20 overflow-hidden">
+    <section id="brand" className="relative bg-[#111111] py-24 scroll-mt-20 overflow-hidden">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -57,7 +57,11 @@ export function ArtBrand() {
         />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      {/* Top & bottom gradient blend fades */}
+      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-20">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           
           {/* Левая колонка: Описание и факты */}
