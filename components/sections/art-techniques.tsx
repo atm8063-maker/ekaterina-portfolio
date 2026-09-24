@@ -13,202 +13,202 @@ type MediaItem = {
 
 const items: MediaItem[] = [
   {
-    src: "/art-techniques/Free Macbook Pro Space Gray mockup on the wooden table (Mockuuups Studio).jpg",
+    src: "/art-techniques/photo_3390@04-08-2026_22-16-46.jpg",
     type: "image",
-    title: "UI-дизайн на MacBook Pro",
-    tag: "Figma",
-  },
-  {
-    src: "/art-techniques/photo_3217@04-08-2026_21-04-08.jpg",
-    type: "image",
-    title: "Градиент морских глубин",
-    tag: "Смола / Макро",
-  },
-  {
-    src: "/art-techniques/video_105@04-08-2026_22-23-33.mp4",
-    type: "video",
-    title: "Заливка морской волны",
-    tag: "Видео процесса",
-  },
-  {
-    src: "/art-techniques/Free Clean desk with Dell display mockup (Mockuuups Studio)1.jpg",
-    type: "image",
-    title: "Вёрстка и графика на Dell Display",
-    tag: "Photoshop",
-  },
-  {
-    src: "/art-techniques/photo_3219@04-08-2026_21-04-08.jpg",
-    type: "image",
-    title: "Инкрустация кристаллами и жеоды",
-    tag: "Текстура",
-  },
-  {
-    src: "/art-techniques/photo_2026-08-27_17-30-19 (6).jpg",
-    type: "image",
-    title: "3D-моделирование пространства",
-    tag: "SketchUp 3D",
-  },
-  {
-    src: "/art-techniques/video_146@04-08-2026_22-24-35.mp4",
-    type: "video",
-    title: "Термический обжиг смолы горелкой",
-    tag: "Видео процесса",
-  },
-  {
-    src: "/art-techniques/photo_2942@31-07-2026_17-46-16.jpg",
-    type: "image",
-    title: "Спил дуба с морской заливкой",
-    tag: "Дерево & Смола",
-  },
-  {
-    src: "/art-techniques/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).jpg",
-    type: "image",
-    title: "Планшетные прототипы на iPad Air",
-    tag: "Figma / Tablet",
-  },
-  {
-    src: "/art-techniques/photo_3218@04-08-2026_21-04-08.jpg",
-    type: "image",
-    title: "Замешивание ультрамаринового пигмента",
-    tag: "Колористика",
-  },
-  {
-    src: "/art-techniques/video_144@04-08-2026_22-24-35.mp4",
-    type: "video",
-    title: "Мерцание золота и перламутра",
-    tag: "Видео процесса",
-  },
-  {
-    src: "/art-techniques/photo_2026-08-30_02-47-41.jpg",
-    type: "image",
-    title: "3D-визуализация помещения",
-    tag: "Planoplan",
-  },
-  {
-    src: "/art-techniques/photo_2999@31-07-2026_18-44-13.jpg",
-    type: "image",
-    title: "Интерьерный поднос ручной работы",
-    tag: "Предметный крафт",
-  },
-  {
-    src: "/art-techniques/iPhone 12 Pro.jpg",
-    type: "image",
-    title: "Мобильный интерфейс и галерея",
-    tag: "Mobile UX",
-  },
-  {
-    src: "/art-techniques/photo_3220@04-08-2026_21-04-08.jpg",
-    type: "image",
-    title: "Золотая пудра и всплывающие пигменты",
-    tag: "Пигменты",
-  },
-  {
-    src: "/art-techniques/video_151@04-08-2026_22-26-50.mp4",
-    type: "video",
-    title: "Формирование ячеек морской пены",
-    tag: "Видео процесса",
-  },
-  {
-    src: "/art-techniques/Poster mockup leaning against a textured wall (Mockuuups Studio).jpg",
-    type: "image",
-    title: "Интерьерный постер и типографика",
-    tag: "Illustrator / Print",
-  },
-  {
-    src: "/art-techniques/photo_3221@04-08-2026_21-04-08.jpg",
-    type: "image",
-    title: "Глянцевое зеркальное покрытие",
-    tag: "Финишный глянец",
-  },
-  {
-    src: "/art-techniques/photo_2026-08-27_17-30-18.jpg",
-    type: "image",
-    title: "Архитектурная планировка и схема",
-    tag: "2D Plan",
-  },
-  {
-    src: "/art-techniques/photo_3231@04-08-2026_21-04-401.jpg",
-    type: "image",
-    title: "Кристаллический срез с золотыми прожилками",
-    tag: "Жеода",
-  },
-  {
-    src: "/art-techniques/video_114@04-08-2026_22-24-13.mp4",
-    type: "video",
-    title: "Динамика растекания смолы",
-    tag: "Видео процесса",
-  },
-  {
-    src: "/art-techniques/photo_2026-09-08_19-29-46 (3).jpg",
-    type: "image",
-    title: "Пространственное 3D-зонирование",
-    tag: "3D Project",
-  },
-  {
-    src: "/art-techniques/photo_2987@31-07-2026_18-19-52.jpg",
-    type: "image",
-    title: "Сервировочный сет подстаканников",
-    tag: "Сет изделий",
-  },
-  {
-    src: "/art-techniques/photo_3227@04-08-2026_21-04-401.jpg",
-    type: "image",
-    title: "Изумрудные и бирюзовые переливы",
-    tag: "Fluid Art",
-  },
-  {
-    src: "/art-techniques/video_45@31-07-2026_19-44-02.mp4",
-    type: "video",
-    title: "Студийный процесс создания арт-объекта",
-    tag: "Студия",
-  },
-  {
-    src: "/art-techniques/photo_2026-09-08_19-29-45 (6).jpg",
-    type: "image",
-    title: "Эскизирование и концептуальный скетчинг",
-    tag: "Скетч",
-  },
-  {
-    src: "/art-techniques/photo_3222@04-08-2026_21-04-08.jpg",
-    type: "image",
-    title: "Макро-волна из эпоксидной смолы",
-    tag: "Макро",
-  },
-  {
-    src: "/art-techniques/photo_2026-09-05_13-57-09 (2).jpg",
-    type: "image",
-    title: "Технический чертёж и зонирование",
-    tag: "Planoplan",
-  },
-  {
-    src: "/art-techniques/photo_3224@04-08-2026_21-04-08.jpg",
-    type: "image",
-    title: "Смешивание авторской палитры",
-    tag: "Колористика",
-  },
-  {
-    src: "/art-techniques/photo_3174@04-08-2026_20-56-52.jpg",
-    type: "image",
-    title: "Многоуровневая заливка и текстура",
-    tag: "Крафт",
-  },
-  {
-    src: "/art-techniques/photo_3138@31-07-2026_19-44-20.jpg",
-    type: "image",
-    title: "Подготовка формы и нанесение слоёв",
-    tag: "Процесс",
+    title: "",
+    tag: "",
   },
   {
     src: "/art-techniques/photo_3180@04-08-2026_20-56-52.jpg",
     type: "image",
-    title: "Детализация крафтового изделия",
-    tag: "Детали",
+    title: "",
+    tag: "",
   },
   {
-    src: "/art-techniques/photo_3390@04-08-2026_22-16-46.jpg",
+    src: "/art-techniques/photo_3138@31-07-2026_19-44-20.jpg",
     type: "image",
-    title: "Готовая интерьерная работа",
-    tag: "Готовая работа",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_3174@04-08-2026_20-56-52.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_3224@04-08-2026_21-04-08.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_2026-09-05_13-57-09 (2).jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_3222@04-08-2026_21-04-08.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_2026-09-08_19-29-45 (6).jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/video_45@31-07-2026_19-44-02.mp4",
+    type: "video",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_3227@04-08-2026_21-04-401.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_2987@31-07-2026_18-19-52.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_2026-09-08_19-29-46 (3).jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/video_114@04-08-2026_22-24-13.mp4",
+    type: "video",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_3231@04-08-2026_21-04-401.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_2026-08-27_17-30-18.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_3221@04-08-2026_21-04-08.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/Poster mockup leaning against a textured wall (Mockuuups Studio).jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/video_151@04-08-2026_22-26-50.mp4",
+    type: "video",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_3220@04-08-2026_21-04-08.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/iPhone 12 Pro.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_2999@31-07-2026_18-44-13.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_2026-08-30_02-47-41.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/video_144@04-08-2026_22-24-35.mp4",
+    type: "video",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_3218@04-08-2026_21-04-08.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_2942@31-07-2026_17-46-16.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/video_146@04-08-2026_22-24-35.mp4",
+    type: "video",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_2026-08-27_17-30-19 (6).jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_3219@04-08-2026_21-04-08.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/Free Clean desk with Dell display mockup (Mockuuups Studio)1.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/video_105@04-08-2026_22-23-33.mp4",
+    type: "video",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/photo_3217@04-08-2026_21-04-08.jpg",
+    type: "image",
+    title: "",
+    tag: "",
+  },
+  {
+    src: "/art-techniques/Free Macbook Pro Space Gray mockup on the wooden table (Mockuuups Studio).jpg",
+    type: "image",
+    title: "",
+    tag: "",
   },
 ];
 
@@ -390,16 +390,6 @@ export function ArtTechniques() {
                   className="h-[140px] w-auto max-w-none block object-contain group-hover:scale-105 transition-transform duration-300"
                 />
               )}
-
-              {/* Hover Tag & Title Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-2.5 pointer-events-none">
-                <span className="text-[9px] font-inter font-bold uppercase tracking-wider text-[#14F1D9]">
-                  {item.tag}
-                </span>
-                <p className="text-[11px] font-montserrat font-bold text-white uppercase line-clamp-1 leading-tight mt-0.5">
-                  {item.title}
-                </p>
-              </div>
             </div>
           ))}
         </div>
@@ -455,6 +445,7 @@ export function ArtTechniques() {
                   src={activeLightboxItem.src}
                   controls
                   autoPlay
+                  muted
                   playsInline
                   className="max-h-[70vh] w-auto max-w-full object-contain"
                 />
@@ -462,23 +453,15 @@ export function ArtTechniques() {
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img
                   src={activeLightboxItem.src}
-                  alt={activeLightboxItem.title}
+                  alt="Gallery item"
                   className="max-h-[70vh] w-auto max-w-full object-contain"
                 />
               )}
             </div>
 
-            {/* Bottom Bar */}
-            <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-white/10 pt-4">
-              <div>
-                <span className="text-[11px] font-inter font-bold uppercase tracking-widest text-[#14F1D9]">
-                  {activeLightboxItem.tag}
-                </span>
-                <h3 className="font-montserrat text-base font-bold uppercase text-white sm:text-lg">
-                  {activeLightboxItem.title}
-                </h3>
-              </div>
-              <span className="text-xs font-inter text-white/40 uppercase tracking-wider">
+            {/* Counter Only */}
+            <div className="mt-3 flex items-center justify-end border-t border-white/10 pt-3">
+              <span className="text-xs font-mono text-white/50 tracking-wider">
                 {lightboxIndex !== null ? `${lightboxIndex + 1} / ${items.length}` : ""}
               </span>
             </div>
