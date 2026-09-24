@@ -21,7 +21,7 @@ export function ArtNumbers() {
         <div className="flex flex-col lg:flex-row items-start justify-between w-full relative">
           
           {/* Текстовые плашки с цифрами - мгновенная отрисовка без задержек */}
-          <div className="flex w-full lg:w-[375px] flex-col justify-start order-3 lg:order-1 relative z-20 -mt-[400px] lg:mt-0 pt-8 lg:pt-[138px] pb-8 lg:pb-24">
+          <div className="flex w-full lg:w-[375px] flex-col justify-start order-3 lg:order-1 relative z-20 mt-4 lg:mt-0 pt-4 lg:pt-[138px] pb-8 lg:pb-24">
             <div className="grid grid-cols-2 gap-x-4 gap-y-6 lg:flex lg:flex-col lg:gap-0 lg:space-y-7 text-[#A3A3A3] text-sm sm:text-base md:text-lg font-medium leading-[1.4] lg:leading-[1.6] font-inter">
               <div className="border-l-[3px] border-[#14F1D9] pl-3 lg:pl-4">
                 <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-[#14F1D9] font-montserrat mb-0.5 lg:mb-1 leading-[1.1]">20+ ЛЕТ</p>

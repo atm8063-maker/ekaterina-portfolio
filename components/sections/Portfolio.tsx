@@ -39,15 +39,21 @@ export default function Portfolio() {
       <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[500px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-20">
-        <div className="mb-12 flex items-end justify-between">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold uppercase text-white"
-          >
-            КЕЙСЫ
-          </motion.h2>
+        <div className="mb-6 md:mb-12 flex items-end justify-between">
+          <div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-5xl font-bold uppercase text-white font-montserrat mb-2"
+            >
+              КЕЙСЫ
+            </motion.h2>
+            {/* Mobile-only swipe hint */}
+            <div className="md:hidden inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase">
+              <span>←</span> Листайте кейсы <span>→</span>
+            </div>
+          </div>
 
           {/* Navigation Arrows */}
           <div className="hidden md:flex gap-4">

@@ -945,19 +945,26 @@ export function ArtProtest() {
         <div className="w-12 shrink-0" />
       </div>
 
-      {/* Concept Slide-Over Panel (Desktop Full-Height Right Drawer) */}
+      {/* Mobile Swipe Hint */}
+      <div className="sm:hidden absolute top-4 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/80 backdrop-blur-md border border-[#14F1D9]/40 text-[#14F1D9] text-[11px] font-mono font-bold uppercase tracking-wider shadow-lg">
+          <span>←</span> Свайпайте стену <span>→</span>
+        </div>
+      </div>
+
+      {/* Concept Slide-Over Panel (Universal: Desktop Right Drawer + Mobile Bottom Sheet) */}
       {conceptModalArtwork && (
-        <div className="hidden md:block fixed inset-0 z-50">
+        <div className="fixed inset-0 z-50 flex flex-col justify-end md:block">
           {/* Backdrop */}
           <div
             onClick={() => setConceptModalArtwork(null)}
-            className="absolute inset-0 bg-black/40 backdrop-blur-xs transition-opacity cursor-pointer"
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity cursor-pointer"
           />
 
-          {/* Desktop Right Drawer - 100% Screen Height */}
+          {/* Drawer / Sheet */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="absolute top-0 right-0 bottom-0 h-screen w-[460px] max-w-[90vw] z-10 bg-[#161616] text-white border-l-[4px] border-black p-6 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto"
+            className="relative z-10 w-full md:w-[460px] md:max-w-[90vw] md:absolute md:top-0 md:right-0 md:bottom-0 md:h-screen max-h-[85vh] md:max-h-none bg-[#161616] text-white border-t-4 md:border-t-0 md:border-l-[4px] border-black p-5 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto"
           >
             {/* Top Close Button */}
             <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-4">
@@ -980,7 +987,7 @@ export function ArtProtest() {
 
             {/* Title */}
             <div>
-              <h2 className="font-montserrat text-2xl sm:text-3xl font-black uppercase text-white leading-tight">
+              <h2 className="font-montserrat text-xl sm:text-3xl font-black uppercase text-white leading-tight">
                 {conceptModalArtwork.title}
               </h2>
               <p className="text-xs font-sans text-white/60 font-medium mt-1">
@@ -989,7 +996,7 @@ export function ArtProtest() {
             </div>
 
             {/* Structured Concept Body */}
-            <div className="py-6 space-y-4 my-auto">
+            <div className="py-4 sm:py-6 space-y-4 my-auto">
               {conceptModalArtwork.fullConcept ? (
                 conceptModalArtwork.fullConcept.map((item, idx) => (
                   <div key={idx} className="border-l-2 border-[#14F1D9] pl-3.5 space-y-1">
