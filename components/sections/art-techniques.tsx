@@ -151,12 +151,6 @@ const items: MediaItem[] = [
     tag: "Сет изделий",
   },
   {
-    src: "/art-techniques/Gemini_Generated_Image_eirj0reirj0reirj.jpg",
-    type: "image",
-    title: "Концепт-арт и цифровая графика",
-    tag: "Digital Art",
-  },
-  {
     src: "/art-techniques/photo_3227@04-08-2026_21-04-401.jpg",
     type: "image",
     title: "Изумрудные и бирюзовые переливы",
