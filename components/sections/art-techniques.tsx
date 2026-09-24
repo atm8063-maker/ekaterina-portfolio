@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from "react";
+import Image from "next/image";
 import { X, Play, ChevronLeft, ChevronRight } from "lucide-react";
 
 type MediaItem = {
@@ -244,6 +245,16 @@ export function ArtTechniques() {
 
   return (
     <section id="techniques" className="border-b border-white/10 bg-[#111111] py-16 sm:py-20 relative overflow-hidden scroll-mt-20">
+      {/* Clean Dark Paper Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image 
+          src="/paper-clean-dark.png" 
+          alt="Paper texture" 
+          fill 
+          className="object-cover opacity-70 mix-blend-screen"
+        />
+      </div>
+
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Header */}

@@ -83,8 +83,18 @@ export function ArtAwards() {
   const [selectedImage, setSelectedImage] = useState<AwardPiece | null>(null);
 
   return (
-    <section id="awards" className="relative border-b border-white/10 bg-[#111111] py-24 scroll-mt-20">
-      <div className="container mx-auto px-6">
+    <section id="awards" className="relative border-b border-white/10 bg-[#111111] py-24 scroll-mt-20 overflow-hidden">
+      {/* Clean Dark Paper Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image 
+          src="/paper-clean-dark.png" 
+          alt="Paper texture" 
+          fill 
+          className="object-cover opacity-70 mix-blend-screen"
+        />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           {/* Левая колонка: Текст и статистика */}
