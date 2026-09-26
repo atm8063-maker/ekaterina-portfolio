@@ -230,23 +230,23 @@ export function CasePageClient({ slug, caseData, images }: Props) {
               </section>
             ))}
 
-            {/* Documentary Gallery / Archival Exhibition */}
+            {/* Media & Photo Gallery */}
             {allImages.length > 0 && (
               <section className="mb-16 pt-8 border-t border-white/10">
                 <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
                   <div>
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center gap-2 mb-1.5">
                       <span className="inline-block w-2 h-2 rounded-full bg-[#14F1D9] animate-pulse" />
                       <span className="text-xs font-mono font-bold tracking-widest text-[#14F1D9] uppercase">
-                        Архив материалов
+                        Материалы
                       </span>
                     </div>
                     <h2 className="font-montserrat font-black uppercase text-2xl sm:text-3xl text-white tracking-tight">
-                      Медиа & Фотохроника
+                      Фотохроника & Медиа
                     </h2>
                   </div>
                   <p className="text-xs text-white/50 font-inter">
-                    Нажмите на кадр для полноэкранного просмотра
+                    Нажмите на фото для полноэкранного просмотра
                   </p>
                 </div>
 
@@ -255,40 +255,23 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                     <div 
                       key={idx} 
                       onClick={() => setActiveImageIndex(idx)}
-                      className="group relative bg-[#181818] rounded-xl p-3 sm:p-4 border border-white/15 hover:border-[#14F1D9]/60 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,241,217,0.18)] cursor-pointer flex flex-col justify-between"
+                      className="group relative rounded-xl overflow-hidden border border-white/15 hover:border-[#14F1D9]/60 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,241,217,0.2)] cursor-pointer bg-neutral-900"
                     >
-                      {/* Top bar inside documentary card */}
-                      <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-xs text-white/60 font-mono">
-                        <span className="flex items-center gap-1.5 text-[#14F1D9]">
-                          <Sparkles className="w-3.5 h-3.5" />
-                          Кадр #{idx + 1}
-                        </span>
-                        <span className="opacity-70 group-hover:text-white transition-colors">
-                          {caseData.meta.year}
-                        </span>
-                      </div>
-
-                      {/* Image container with subtle dark vignette border */}
-                      <div className="relative rounded-lg overflow-hidden bg-black/60 aspect-[4/3] w-full flex items-center justify-center">
-                        <Image
-                          src={imgSrc}
-                          alt={`${caseData.title} фото #${idx + 1}`}
-                          fill
-                          className="object-contain p-1 group-hover:scale-105 transition-transform duration-500"
-                          unoptimized
-                        />
-                        
-                        {/* Hover overlay hint */}
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white text-sm font-semibold">
-                          <ZoomIn className="w-5 h-5 text-[#14F1D9]" />
-                          <span className="font-montserrat uppercase tracking-wider text-xs">Увеличить</span>
+                      <Image
+                        src={imgSrc}
+                        alt={`${caseData.title} фото #${idx + 1}`}
+                        width={800}
+                        height={600}
+                        className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500 block"
+                        unoptimized
+                      />
+                      
+                      {/* Subtle hover overlay hint */}
+                      <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white">
+                        <div className="px-3 py-1.5 rounded-full bg-black/70 border border-[#14F1D9]/50 flex items-center gap-1.5 text-xs font-montserrat uppercase tracking-wider text-[#14F1D9]">
+                          <ZoomIn className="w-4 h-4" />
+                          <span>Увеличить</span>
                         </div>
-                      </div>
-
-                      {/* Bottom label */}
-                      <div className="pt-3 mt-1 flex items-center justify-between text-xs text-white/50 group-hover:text-white/80 transition-colors">
-                        <span className="font-inter line-clamp-1">{caseData.title}</span>
-                        <span className="font-mono text-[#14F1D9] text-[11px] shrink-0 ml-2">🔍 Lightbox</span>
                       </div>
                     </div>
                   ))}
