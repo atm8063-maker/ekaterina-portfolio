@@ -777,55 +777,6 @@ export function DoorsRealEstateCase() {
               </div>
             </div>
           </div>
-
-          {/* Full-Height Canvas Window */}
-          <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div>
-                <h3 className="text-xl font-bold font-montserrat uppercase text-white tracking-tight">
-                  Холст десктопного портала (1366 × 5909 px)
-                </h3>
-                <p className="text-xs text-white/60 font-sans mt-0.5">
-                  Кликните по макету, чтобы открыть полноразмерный файл в модальном просмотрщике
-                </p>
-              </div>
-              <button
-                onClick={() => setSelectedImage({
-                  src: "/Кейсы/08-mockup-real-estate/figma_exports/01_scheme_original.png",
-                  title: "Doors Real Estate — Исходник (1366 × 5909 px)",
-                  subtitle: "Полноразмерный презентационный холст десктопного портала"
-                })}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#14F1D9] text-black text-xs font-montserrat font-bold uppercase tracking-wider transition-all hover:bg-white"
-              >
-                <Maximize2 className="w-4 h-4" />
-                <span>Развернуть на весь экран</span>
-              </button>
-            </div>
-
-            <div 
-              onClick={() => setSelectedImage({
-                src: "/Кейсы/08-mockup-real-estate/figma_exports/01_scheme_original.png",
-                title: "Doors Real Estate — Исходник (1366 × 5909 px)",
-                subtitle: "Полноразмерный презентационный холст десктопного портала"
-              })}
-              className="relative w-full h-[600px] bg-black/60 rounded-xl overflow-hidden cursor-pointer group border border-white/10 hover:border-[#14F1D9]/50 transition-all"
-            >
-              <div className="overflow-y-auto h-full custom-scrollbar">
-                <div className="relative w-full" style={{ height: '4000px' }}>
-                  <Image
-                    src="/Кейсы/08-mockup-real-estate/figma_exports/01_scheme_original.png"
-                    alt="Doors Real Estate Original Canvas"
-                    fill
-                    className="object-contain object-top group-hover:scale-101 transition-transform duration-500"
-                  />
-                </div>
-              </div>
-              <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-md text-[11px] text-white/70 border border-white/10 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                <Eye className="w-3.5 h-3.5 text-[#14F1D9]" />
-                <span>Нажмите для полноэкранного просмотра</span>
-              </div>
-            </div>
-          </div>
         </section>
 
         {/* 6. PRESENTATION MOCKUPS & DEVICES */}
