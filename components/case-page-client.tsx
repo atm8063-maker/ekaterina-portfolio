@@ -250,24 +250,24 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="columns-1 sm:columns-2 gap-6 [column-fill:_balance] space-y-6">
                   {allImages.map((imgSrc, idx) => (
                     <div 
                       key={idx} 
                       onClick={() => setActiveImageIndex(idx)}
-                      className="group relative rounded-xl overflow-hidden border border-white/15 hover:border-[#14F1D9]/60 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,241,217,0.2)] cursor-pointer bg-neutral-900"
+                      className="group relative rounded-xl overflow-hidden border border-white/15 hover:border-[#14F1D9]/60 transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,241,217,0.2)] cursor-pointer break-inside-avoid"
                     >
                       <Image
                         src={imgSrc}
                         alt={`${caseData.title} фото #${idx + 1}`}
                         width={800}
                         height={600}
-                        className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500 block"
+                        className="w-full h-auto block group-hover:scale-105 transition-transform duration-500"
                         unoptimized
                       />
                       
                       {/* Subtle hover overlay hint */}
-                      <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white">
+                      <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white pointer-events-none">
                         <div className="px-3 py-1.5 rounded-full bg-black/70 border border-[#14F1D9]/50 flex items-center gap-1.5 text-xs font-montserrat uppercase tracking-wider text-[#14F1D9]">
                           <ZoomIn className="w-4 h-4" />
                           <span>Увеличить</span>
