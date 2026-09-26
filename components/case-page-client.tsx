@@ -38,33 +38,33 @@ export function CasePageClient({ slug, caseData, images }: Props) {
             {/* Top Navigation */}
             <CaseNavigation currentSlug={slug} position="top" className="mb-8" />
 
-            <h1 className="text-4xl md:text-5xl font-serif text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-montserrat font-black uppercase text-white mb-6 leading-tight tracking-tight">
               {caseData.title}
             </h1>
 
             {/* Lead Text */}
-            <p className="text-lg text-white/90 leading-relaxed max-w-3xl mb-12">
+            <p className="text-base sm:text-xl text-white/80 leading-relaxed max-w-3xl mb-12 font-inter font-normal">
               {caseData.lead}
             </p>
 
-            {/* Meta Grid (like Nick's) */}
-            <div className={`grid grid-cols-1 ${caseData.meta.link ? 'sm:grid-cols-4' : 'sm:grid-cols-3'} gap-8 py-8 border-y border-white/10 mb-12`}>
+            {/* Meta Grid */}
+            <div className={`grid grid-cols-1 ${caseData.meta.link ? 'sm:grid-cols-4' : 'sm:grid-cols-3'} gap-6 sm:gap-8 py-6 border-y border-white/10 mb-12`}>
               <div>
-                <h3 className="text-[13px] text-white/50 mb-2">Направление</h3>
-                <p className="text-[15px] font-medium text-white">{caseData.tag}</p>
+                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">Направление</h3>
+                <p className="text-sm sm:text-base font-semibold text-white font-inter">{caseData.tag}</p>
               </div>
               <div>
-                <h3 className="text-[13px] text-white/50 mb-2">Роль</h3>
-                <p className="text-[15px] font-medium text-white">{caseData.meta.role}</p>
+                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">Роль</h3>
+                <p className="text-sm sm:text-base font-semibold text-white font-inter">{caseData.meta.role}</p>
               </div>
               <div>
-                <h3 className="text-[13px] text-white/50 mb-2">Период</h3>
-                <p className="text-[15px] font-medium text-white">{caseData.meta.year}</p>
+                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">Период</h3>
+                <p className="text-sm sm:text-base font-semibold text-white font-inter">{caseData.meta.year}</p>
               </div>
               {caseData.meta.link && (
                 <div>
-                  <h3 className="text-[13px] text-white/50 mb-2">Сайт</h3>
-                  <a href={caseData.meta.link} target="_blank" rel="noopener noreferrer" className="text-[15px] font-medium text-[#14F1D9] hover:underline">
+                  <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">Сайт</h3>
+                  <a href={caseData.meta.link} target="_blank" rel="noopener noreferrer" className="text-sm sm:text-base font-semibold text-[#14F1D9] hover:underline font-inter">
                     {caseData.meta.link.replace(/^https?:\/\//, '')}
                   </a>
                 </div>
@@ -74,15 +74,15 @@ export function CasePageClient({ slug, caseData, images }: Props) {
             {/* Key Metrics */}
             {caseData.keyMetrics && caseData.keyMetrics.length > 0 && (
               <section 
-                className="rounded-none border-l-4 border-l-[#14F1D9] border border-[#14F1D9]/35 bg-gradient-to-r from-[#14F1D9]/20 via-[#14F1D9]/10 to-[#14F1D9]/5 backdrop-blur-md p-7 sm:p-8 mb-16 shadow-[0_0_30px_rgba(20,241,217,0.15)]"
+                className="rounded-none border-l-4 border-l-[#14F1D9] border border-[#14F1D9]/35 bg-gradient-to-r from-[#14F1D9]/20 via-[#14F1D9]/10 to-[#14F1D9]/5 backdrop-blur-md p-6 sm:p-8 mb-16 shadow-[0_0_30px_rgba(20,241,217,0.15)]"
               >
                 <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
                   {caseData.keyMetrics.map((m, idx) => (
                     <div key={idx} className="relative">
-                      <p className="font-serif text-3xl sm:text-4xl font-bold leading-none text-[#14F1D9] drop-shadow-[0_0_16px_rgba(20,241,217,0.35)]">
+                      <p className="font-montserrat text-2xl sm:text-4xl font-black leading-none text-[#14F1D9] drop-shadow-[0_0_16px_rgba(20,241,217,0.35)]">
                         {m.value}
                       </p>
-                      <p className="mt-3 text-sm font-medium text-white/90 leading-snug">
+                      <p className="mt-2.5 text-xs sm:text-sm font-medium text-white/90 leading-snug font-inter">
                         {m.label}
                       </p>
                     </div>
@@ -94,19 +94,19 @@ export function CasePageClient({ slug, caseData, images }: Props) {
             {/* Content Sections */}
             {caseData.sections && caseData.sections.map((section, idx) => (
               <section key={section.id} id={section.id} className="mb-14">
-                <h2 className="font-serif text-3xl md:text-4xl text-white mb-6">
+                <h2 className="font-montserrat font-black uppercase text-2xl sm:text-3xl text-white mb-6 tracking-tight">
                   {section.heading}
                 </h2>
 
                 {section.paragraphs?.map((p, i) => (
-                  <p key={i} className="mb-5 text-lg text-white/80 leading-relaxed font-light">
+                  <p key={i} className="mb-5 text-base sm:text-lg text-white/80 leading-relaxed font-inter font-normal">
                     {p}
                   </p>
                 ))}
 
                 {section.callout && (
                   <blockquote 
-                    className="my-8 py-5 pl-6 pr-6 text-lg text-white font-normal bg-gradient-to-r from-[#14F1D9]/20 via-[#14F1D9]/10 to-transparent border-l-4 border-l-[#14F1D9] border border-[#14F1D9]/30 rounded-none shadow-[0_0_25px_rgba(20,241,217,0.12)]"
+                    className="my-8 py-5 pl-6 pr-6 text-base sm:text-lg text-white font-normal bg-gradient-to-r from-[#14F1D9]/20 via-[#14F1D9]/10 to-transparent border-l-4 border-l-[#14F1D9] border border-[#14F1D9]/30 rounded-none shadow-[0_0_25px_rgba(20,241,217,0.12)] font-inter"
                   >
                     {section.callout}
                   </blockquote>

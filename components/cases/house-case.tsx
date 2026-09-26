@@ -171,8 +171,19 @@ export function HouseCase() {
   };
 
   return (
-    <div className="min-h-screen bg-[#111111] text-white selection:bg-[#14F1D9] selection:text-[#111111]">
-      <Header />
+    <div className="min-h-screen bg-[#111111] text-white selection:bg-[#14F1D9] selection:text-[#111111] relative">
+      {/* Clean Dark Paper Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Image 
+          src="/paper-clean-dark.png" 
+          alt="Paper texture" 
+          fill 
+          className="object-cover opacity-70 mix-blend-screen"
+        />
+      </div>
+
+      <div className="relative z-10">
+        <Header />
 
       {/* 1. HERO SECTION */}
       <section className="relative pt-28 pb-12 md:pt-36 md:pb-20 border-b border-white/10 overflow-hidden bg-gradient-to-b from-[#161616] to-[#111111]">
@@ -1289,6 +1300,7 @@ export function HouseCase() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

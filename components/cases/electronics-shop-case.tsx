@@ -54,9 +54,21 @@ export function ElectronicsShopCase() {
   const activePersona: UserPersona = electronicsShopData.personas[selectedPersonaIndex];
 
   return (
-    <div className="min-h-screen bg-[#111111] text-[#E0E0E0] selection:bg-[#14F1D9] selection:text-black font-inter">
-      {/* Ekaterina's Header */}
-      <Header />
+    <div className="min-h-screen bg-[#111111] text-[#E0E0E0] selection:bg-[#14F1D9] selection:text-black font-inter relative">
+      {/* Background paper texture matching Ekaterina's site */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Image
+          src="/paper-clean-dark.png"
+          alt="Paper texture"
+          fill
+          className="object-cover opacity-70 mix-blend-screen"
+          priority
+        />
+      </div>
+
+      <div className="relative z-10">
+        {/* Ekaterina's Header */}
+        <Header />
 
       {/* Top Bar Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-28">
@@ -891,6 +903,7 @@ export function ElectronicsShopCase() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }
