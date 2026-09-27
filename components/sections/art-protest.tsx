@@ -791,6 +791,30 @@ export function ArtProtest() {
   const startX = useRef(0);
   const scrollLeft = useRef(0);
 
+  // Auto-center first artwork on mobile so Artwork 01 is immediately fully visible
+  React.useEffect(() => {
+    const centerFirstSpot = () => {
+      if (!scrollContainerRef.current) return;
+      const el = scrollContainerRef.current;
+      const firstSpot = el.querySelector<HTMLElement>('.art-spot-first');
+      if (firstSpot) {
+        const spotRect = firstSpot.getBoundingClientRect();
+        const containerRect = el.getBoundingClientRect();
+        const spotCenterRelative = spotRect.left - containerRect.left + el.scrollLeft + spotRect.width / 2;
+        el.scrollLeft = Math.max(0, spotCenterRelative - el.clientWidth / 2);
+      }
+    };
+
+    const t1 = setTimeout(centerFirstSpot, 50);
+    const t2 = setTimeout(centerFirstSpot, 300);
+    window.addEventListener('resize', centerFirstSpot);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener('resize', centerFirstSpot);
+    };
+  }, []);
+
   // Group 7 artworks + 1 manifesto into 4 wall chunks (2 artworks per wall segment)
   const chunks: Array<{ left: Artwork; right?: Artwork | 'manifesto' }> = [
     { left: artworksData[0], right: artworksData[1] },
@@ -865,7 +889,7 @@ export function ArtProtest() {
         onPointerUp={endDrag}
         onPointerLeave={endDrag}
         onDragStart={(e) => e.preventDefault()}
-        className="relative w-full h-[680px] sm:h-[740px] lg:h-[800px] overflow-x-auto overflow-y-hidden flex flex-nowrap cursor-grab select-none snap-x snap-mandatory hide-scrollbar bg-transparent"
+        className="relative w-full h-[680px] sm:h-[740px] lg:h-[800px] overflow-x-auto overflow-y-hidden flex flex-nowrap cursor-grab select-none snap-x snap-mandatory hide-scrollbar bg-transparent scroll-smooth"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
@@ -873,7 +897,7 @@ export function ArtProtest() {
         {chunks.map((chunk, index) => (
           <div
             key={index}
-            className="relative h-full shrink-0 flex items-center justify-center snap-center bg-transparent"
+            className="relative h-full shrink-0 flex items-center justify-center bg-transparent"
           >
             {/* Seamless Concrete Wall Texture Segment */}
             <img
@@ -888,7 +912,7 @@ export function ArtProtest() {
               <div className="w-[6%] md:w-[5.5%] h-full shrink-0" />
 
               {/* Spot 1: Left Collage */}
-              <div className="relative w-[43%] md:w-[42%] h-[76%] sm:h-[80%] shrink-0 flex items-center justify-center overflow-visible bg-transparent">
+              <div className={`relative w-[43%] md:w-[42%] h-[76%] sm:h-[80%] shrink-0 flex items-center justify-center overflow-visible bg-transparent snap-center ${index === 0 ? 'art-spot-first' : ''}`}>
                 <SteppedCollage
                   artwork={chunk.left}
                   index={index * 2}
@@ -901,7 +925,7 @@ export function ArtProtest() {
               <div className="w-[5%] md:w-[5%] h-full shrink-0" />
 
               {/* Spot 2: Right Collage */}
-              <div className="relative w-[43%] md:w-[42%] h-[76%] sm:h-[80%] shrink-0 flex items-center justify-center overflow-visible bg-transparent">
+              <div className="relative w-[43%] md:w-[42%] h-[76%] sm:h-[80%] shrink-0 flex items-center justify-center overflow-visible bg-transparent snap-center">
                 {chunk.right === 'manifesto' ? (
                   <ManifestoPanel />
                 ) : chunk.right ? (
