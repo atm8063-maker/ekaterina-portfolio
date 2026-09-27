@@ -529,31 +529,22 @@ function SteppedCollage({
         )}
 
         {/* ========================================================= */}
+        {/* ========================================================= */}
         {/* CASE 3: Последняя капля (оригинальное горизонтальное фото) */}
         {/* ========================================================= */}
         {artwork.id === 'work-last' && (
           <div className="relative w-full h-full">
             {/* Bold 4px Lines (top-0 so no crossing above title) */}
-            <div className="absolute top-[46%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[50%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
             <div className="absolute left-[360px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
 
-            {/* Top Left: Concept Card (width 340px) */}
-            <div className="absolute left-0 top-[6%] w-[340px] z-20 border-[4px] border-black p-4 bg-white/80">
-              <span className="text-xs font-montserrat font-black uppercase text-black tracking-wider block">
-                Концепция
-              </span>
-              <p className="text-xs text-black font-sans font-bold leading-relaxed mt-1">
-                {artwork.concept}
-              </p>
-            </div>
-
-            {/* Bottom Left Horizontal: photo_3332 (1280x758, width 340px) */}
-            <div className="absolute left-0 bottom-[6%] z-20">
+            {/* Left Horizontal Photo: photo_3332 (1280x758, width 340px) */}
+            <div className="absolute left-0 top-[18%] z-20">
               <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ width: '340px' }} />
             </div>
 
             {/* Right Vertical Video: video_95 (9:16, height 360px) */}
-            <div className="absolute left-[360px] top-[6%] z-20">
+            <div className="absolute left-[360px] top-[4%] z-20">
               <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '360px' }} />
             </div>
           </div>
@@ -613,26 +604,12 @@ function SteppedCollage({
         {artwork.id === 'work-swans' && (
           <div className="relative w-full h-full">
             {/* Bold 4px Lines (top-0 so no crossing above title) */}
-            <div className="absolute top-[58%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[50%] -left-8 -right-8 h-[4px] bg-black pointer-events-none z-10" />
             <div className="absolute left-[360px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
 
-            {/* Photo 0: photo_2933 (width 340px, height 360px) */}
+            {/* Photo 0: photo_2933 (width 340px, height 350px) */}
             <div className="absolute left-0 top-[6%] z-20">
-              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '360px' }} />
-            </div>
-
-            {/* Right: Architectural Concept Card */}
-            <div className="absolute left-[360px] top-[14%] right-0 z-20 border-[4px] border-black p-5 bg-white/80">
-              <span className="text-xs font-montserrat font-black uppercase text-black tracking-wider block">
-                Концепция работы
-              </span>
-              <p className="text-xs sm:text-sm text-black font-sans font-bold leading-relaxed mt-2">
-                {artwork.concept}
-              </p>
-              <div className="mt-4 pt-3 border-t-2 border-black flex items-center justify-between text-xs font-montserrat font-black uppercase text-black">
-                <span>Материалы</span>
-                <span className="font-sans font-semibold text-black/80">{artwork.materials}</span>
-              </div>
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '350px' }} />
             </div>
           </div>
         )}
