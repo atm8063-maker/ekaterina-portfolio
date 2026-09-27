@@ -66,9 +66,7 @@ export function DoorsRealEstateCase() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-16 pb-20 overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#16253b]/25 via-[#111111] to-[#111111]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#14F1D9]/10 via-transparent to-transparent pointer-events-none" />
-        
+      <section className="relative pt-16 pb-20 overflow-hidden border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-[#14F1D9] font-montserrat font-bold uppercase tracking-widest mb-6">
             <Sparkles className="w-3.5 h-3.5 text-[#14F1D9]" />
@@ -169,7 +167,7 @@ export function DoorsRealEstateCase() {
                 title: "Apple iPhone 12 Pro 3D Showcase (2716 × 2037 px)",
                 subtitle: "Фотореалистичный 3D-рендер мобильного интерфейса Doors Real Estate"
               })}
-              className="relative w-full aspect-[4/3] max-h-[640px] bg-gradient-to-b from-[#1c293d]/30 via-black/60 to-black/90 rounded-xl overflow-hidden cursor-pointer group border border-white/10 hover:border-[#14F1D9]/50 transition-all flex items-center justify-center p-4"
+              className="relative w-full aspect-[4/3] max-h-[640px] bg-black/50 rounded-xl overflow-hidden cursor-pointer group border border-white/10 hover:border-[#14F1D9]/50 transition-all flex items-center justify-center p-4"
             >
               <Image
                 src="/Кейсы/08-mockup-real-estate/figma_exports/05_iphone_mockup.png"
