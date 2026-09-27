@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
-import { Play, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Play, X, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
 
 export type MediaItem = {
   type: 'image' | 'video';
@@ -699,9 +699,13 @@ function SteppedCollage({
             className="md:hidden mt-3 w-full max-w-[640px] z-30 bg-[#161616] text-white border-[3px] border-black p-4 shadow-xl"
           >
             <div className="flex items-center justify-between border-b border-white/15 pb-2 mb-3">
-              <span className="text-[11px] font-montserrat font-black uppercase text-[#14F1D9] tracking-wider">
-                {artwork.title} · Концепция
-              </span>
+              <button
+                onClick={() => setIsInlineOpen(false)}
+                className="flex items-center gap-1.5 px-2.5 py-1 bg-[#14F1D9] text-black border border-black font-montserrat font-black text-[11px] uppercase tracking-wider cursor-pointer"
+              >
+                <ArrowLeft className="w-3.5 h-3.5 stroke-[2.5]" />
+                <span>Назад к стене</span>
+              </button>
               <button
                 onClick={() => setIsInlineOpen(false)}
                 className="text-[10px] font-montserrat font-bold uppercase bg-white text-black px-2 py-0.5 border border-black cursor-pointer"
@@ -973,21 +977,29 @@ export function ArtProtest() {
           >
             {/* Top Close Button */}
             <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-4">
+              <button
+                onClick={() => setConceptModalArtwork(null)}
+                className="flex items-center gap-2 px-3 py-1.5 bg-[#14F1D9] text-black hover:bg-white border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
+              >
+                <ArrowLeft className="w-4 h-4 stroke-[3]" />
+                <span>Назад к стене</span>
+              </button>
+
               <div className="flex items-center gap-2">
                 <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
                   {conceptModalArtwork.number}
                 </span>
-                <span className="text-xs font-montserrat font-bold text-white/60 uppercase tracking-widest">
-                  {conceptModalArtwork.year} · Концепция
+                <span className="text-xs font-montserrat font-bold text-white/60 uppercase tracking-widest hidden sm:inline-block">
+                  {conceptModalArtwork.year}
                 </span>
+                <button
+                  onClick={() => setConceptModalArtwork(null)}
+                  className="flex h-8 w-8 items-center justify-center border-2 border-black bg-white text-black hover:bg-[#14F1D9] transition-colors shadow-sm cursor-pointer ml-1"
+                  aria-label="Закрыть"
+                >
+                  <X className="h-4 w-4" />
+                </button>
               </div>
-              <button
-                onClick={() => setConceptModalArtwork(null)}
-                className="flex h-8 w-8 items-center justify-center border-2 border-black bg-white text-black hover:bg-[#14F1D9] transition-colors shadow-sm cursor-pointer"
-                aria-label="Закрыть"
-              >
-                <X className="h-4 w-4" />
-              </button>
             </div>
 
             {/* Title */}
@@ -1037,20 +1049,30 @@ export function ArtProtest() {
           role="dialog"
           aria-modal="true"
           onClick={() => setLightboxState(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-3 sm:p-4 backdrop-blur-md"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-h-[92vh] max-w-5xl w-full border-2 border-white/20 bg-[#1A1A1A] p-4 sm:p-6 shadow-2xl rounded-none flex flex-col"
+            className="relative max-h-[95vh] max-w-5xl w-full border-2 border-white/20 bg-[#1A1A1A] p-3 sm:p-6 shadow-2xl rounded-none flex flex-col"
           >
-            {/* Close Button */}
-            <button
-              onClick={() => setLightboxState(null)}
-              className="absolute -top-4 -right-4 z-20 flex h-10 w-10 items-center justify-center border-2 border-white/20 bg-black text-white hover:bg-[#14F1D9] hover:text-black transition-colors shadow-lg cursor-pointer"
-              aria-label="Закрыть"
-            >
-              <X className="h-5 w-5" />
-            </button>
+            {/* Top Navigation Bar with Back to Wall Button */}
+            <div className="flex items-center justify-between pb-3 mb-2 border-b border-white/10">
+              <button
+                onClick={() => setLightboxState(null)}
+                className="flex items-center gap-2 px-3 py-1.5 bg-[#14F1D9] text-black hover:bg-white border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
+              >
+                <ArrowLeft className="w-4 h-4 stroke-[3]" />
+                <span>Назад к стене</span>
+              </button>
+
+              <button
+                onClick={() => setLightboxState(null)}
+                className="flex h-8 w-8 items-center justify-center border-2 border-white/20 bg-black text-white hover:bg-[#14F1D9] hover:text-black transition-colors cursor-pointer"
+                aria-label="Закрыть"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
 
             {/* Media Display Area */}
             <div className="relative max-h-[72vh] w-full flex items-center justify-center overflow-hidden bg-black/90">
