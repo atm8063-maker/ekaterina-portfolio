@@ -17,10 +17,10 @@ export function ArtNumbers() {
       <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
 
-      <div className="w-full max-w-[1200px] mx-auto px-6 sm:px-12 lg:px-0 relative z-20">
+      <div className="w-full relative z-20">
         
         {/* ================= DESKTOP LAYOUT (lg+) ================= */}
-        <div className="hidden lg:flex flex-row items-center justify-between w-full relative min-h-[640px] py-16">
+        <div className="hidden lg:flex flex-row items-center justify-between w-full max-w-[1200px] mx-auto px-6 sm:px-12 lg:px-0 relative min-h-[640px] py-16">
           {/* Numbers list left */}
           <div className="flex w-[380px] flex-col justify-center relative z-20">
             <div className="flex flex-col space-y-7 text-[#A3A3A3] text-lg font-medium leading-[1.6] font-inter">
@@ -66,20 +66,20 @@ export function ArtNumbers() {
         </div>
 
         {/* ================= MOBILE & TABLET LAYOUT (< lg) ================= */}
-        <div className="lg:hidden flex flex-col items-center gap-6 w-full pt-4 pb-8">
-          {/* Top image on mobile */}
-          <div className="relative w-full max-w-[340px] xs:max-w-[360px] mx-auto overflow-hidden">
+        <div className="lg:hidden flex flex-col items-center gap-6 w-full pt-0 pb-8">
+          {/* Top image on mobile - 100% EDGE-TO-EDGE FULL WIDTH */}
+          <div className="relative w-full overflow-hidden">
             <img 
               src="/about-composition.png" 
               alt="Art numbers composition"
               loading="eager"
               decoding="async"
-              className="w-full h-auto object-contain block drop-shadow-xl"
+              className="w-full h-auto object-cover block scale-[1.01]"
             />
           </div>
 
           {/* Numbers grid cleanly below image */}
-          <div className="w-full grid grid-cols-2 gap-3 sm:gap-4">
+          <div className="w-full max-w-[500px] mx-auto px-4 xs:px-5 sm:px-6 grid grid-cols-2 gap-3 sm:gap-4">
             <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
               <p className="text-xl sm:text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1">20+ ЛЕТ</p>
               <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">Работы с креативом</p>
