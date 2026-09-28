@@ -81,9 +81,9 @@ export default function Hero() {
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background">
       
       {/* MOBILE VERSION */}
-      <div className="md:hidden relative w-full min-h-[100svh] overflow-hidden bg-[#111111] flex flex-col justify-between pt-20">
+      <div className="md:hidden relative w-full h-[100svh] overflow-hidden bg-[#111111]">
         {/* Dark Paper Background for Mobile */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 z-0">
           <Image 
             src="/paper-bg-dark.png" 
             alt="Crumpled paper texture" 
@@ -93,17 +93,17 @@ export default function Hero() {
           />
         </div>
 
-        {/* Seamless blend gradient at the top */}
-        <div className="absolute top-0 left-0 right-0 w-full h-[300px] bg-gradient-to-b from-[#111111] via-[#111111]/70 to-transparent z-[5] pointer-events-none" />
+        {/* Seamless ultra-smooth blend gradient at the top (covers paper, but NOT photo) */}
+        <div className="absolute top-0 left-0 right-0 w-full h-[85vh] bg-gradient-to-b from-[#111111] from-[10%] via-[#111111]/40 via-[60%] to-transparent z-[5] pointer-events-none" />
 
         {/* Mobile Splatter Backdrop Layer */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div
             className="absolute mix-blend-screen"
             style={{
-              left: "50%",
-              top: "55%",
-              transform: "translate(-50%, -50%) rotate(25deg) scale(1.9)",
+              left: "45%",
+              top: "30%",
+              transform: "translate(-50%, -50%) rotate(25deg) scale(2.2)",
               width: 300,
               height: 300
             }}
@@ -115,36 +115,51 @@ export default function Hero() {
               style={{ filter: "sepia(1) saturate(10) hue-rotate(140deg) brightness(1.2) opacity(0.35)" }}
             />
           </div>
-        </div>
-
-        {/* Typography Top Section */}
-        <div className="relative z-20 px-5 pt-4 text-center">
-          <h1 className="text-3xl xs:text-4xl font-black uppercase tracking-tight mb-2 leading-none text-white font-montserrat drop-shadow-2xl">
-            ЕКАТЕРИНА<br/>РАЗУМОВА
-          </h1>
-          <p className="text-[#14F1D9] font-bold text-xs xs:text-sm mb-2 tracking-widest uppercase font-montserrat drop-shadow-md">
-            Creative Generalist
-          </p>
-          <p className="text-[11px] xs:text-xs text-white/85 leading-relaxed font-medium font-inter drop-shadow-md max-w-[320px] mx-auto">
-            Texts & Design • PR & Media • UX/UI + AI • Mixed Art
-          </p>
-        </div>
-
-        {/* Portrait Cutout Bottom Section */}
-        <div className="relative z-10 w-full flex-grow flex items-end justify-center px-4 mt-2">
-          <div className="relative w-full max-w-[320px] xs:max-w-[360px] h-[360px] xs:h-[420px]">
-            <Image 
-              src="/hero-cutout.png" 
-              alt="Екатерина Разумова"
-              fill
-              className="object-contain object-bottom drop-shadow-[0_15px_35px_rgba(0,0,0,0.8)]"
-              priority
+          <div
+            className="absolute mix-blend-screen"
+            style={{
+              left: "75%",
+              top: "65%",
+              transform: "translate(-50%, -50%) rotate(-40deg) scale(1.8)",
+              width: 300,
+              height: 300
+            }}
+          >
+            <img 
+              src="/splatters/splatter_1.png" 
+              alt="Splatter" 
+              className="w-full h-full object-contain pointer-events-none"
+              style={{ filter: "sepia(1) saturate(10) hue-rotate(140deg) brightness(1.2) opacity(0.3)" }}
             />
           </div>
         </div>
+
+        {/* Full screen photo cutout bounded strictly below the header */}
+        <div className="absolute top-[5rem] bottom-0 left-0 right-0 z-10 pointer-events-none">
+          <Image 
+            src="/hero-cutout.png" 
+            alt="Екатерина Разумова"
+            fill
+            className="object-cover object-top"
+            priority
+          />
+        </div>
         
-        {/* Bottom gradient fade for smooth transition to Marquee */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#111111] to-transparent z-10 pointer-events-none" />
+        {/* Gradient overlay for readability at the bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/40 to-transparent z-10 pointer-events-none" />
+        
+        {/* Text on the shoulder area (bottom zone) */}
+        <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-6 right-4 sm:right-6 z-20">
+          <h1 className="text-4xl font-bold uppercase tracking-tight mb-2 leading-none text-white font-montserrat drop-shadow-lg">
+            Екатерина<br/>Разумова
+          </h1>
+          <p className="text-[#14F1D9] font-bold text-sm mb-4 tracking-widest uppercase font-montserrat drop-shadow-md">
+            Creative Generalist
+          </p>
+          <p className="text-xs text-white/90 leading-relaxed font-medium font-inter drop-shadow-md">
+            Texts & Design • PR & Media • UX/UI + AI • Mixed Art
+          </p>
+        </div>
       </div>
 
       {/* DESKTOP VERSION */}
