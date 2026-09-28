@@ -33,6 +33,8 @@ export const metadata: Metadata = {
   },
 }
 
+import { LanguageProvider } from '@/components/language-provider'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,7 +47,9 @@ export default function RootLayout({
       className={`${inter.variable} ${montserrat.variable}`}
     >
       <body className="font-sans antialiased text-foreground bg-background">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
