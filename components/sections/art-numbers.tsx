@@ -66,9 +66,9 @@ export function ArtNumbers() {
         </div>
 
         {/* ================= MOBILE & TABLET LAYOUT (< lg) ================= */}
-        <div className="lg:hidden flex flex-col w-full relative pt-0 pb-12 overflow-hidden">
-          {/* 100% full-bleed edge-to-edge: left photo at 0px left, right photo at 0px right, tail on right */}
-          <div className="w-full relative z-10">
+        <div className="lg:hidden flex flex-col w-full relative pt-0 pb-8 overflow-hidden">
+          {/* 100% full-bleed edge-to-edge with compact top margin to previous block */}
+          <div className="w-full relative z-10 -mt-6 xs:-mt-8 sm:-mt-10">
             <img 
               src="/about-composition.png" 
               alt="Art numbers composition"
@@ -78,8 +78,8 @@ export function ArtNumbers() {
             />
           </div>
 
-          {/* Numbers in 2 columns strictly to the left of the tail */}
-          <div className="relative z-20 w-full pl-3 pr-2 -mt-[38vw] xs:-mt-[40vw] sm:-mt-[42vw]">
+          {/* Numbers in 2 columns: placed directly below the photo */}
+          <div className="relative z-20 w-full pl-3 pr-2 -mt-[33vw] xs:-mt-[35vw] sm:-mt-[37vw]">
             <div className="grid grid-cols-2 gap-2 xs:gap-2.5 max-w-[62%] xs:max-w-[58%]">
               <div className="border-l-[3px] border-[#14F1D9] pl-2 xs:pl-2.5 py-1.5 bg-[#111111]/85 backdrop-blur-sm rounded-r">
                 <p className="text-lg xs:text-xl font-black text-[#14F1D9] font-montserrat leading-tight mb-0.5">20+ ЛЕТ</p>
