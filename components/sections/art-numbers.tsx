@@ -2,21 +2,7 @@ import Image from "next/image";
 
 export function ArtNumbers() {
   return (
-    <section id="numbers" className="pt-4 lg:pt-0 pb-12 lg:pb-0 relative overflow-hidden text-white bg-[#111111] scroll-mt-20">
-      {/* Clean Dark Paper Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <Image 
-          src="/paper-clean-dark.png" 
-          alt="Paper texture" 
-          fill 
-          className="object-cover opacity-70 mix-blend-screen"
-        />
-      </div>
-
-      {/* Top & bottom gradient fades */}
-      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
-
+    <section id="numbers" className="pt-0 pb-0 lg:pb-0 relative overflow-hidden text-white scroll-mt-20">
       <div className="w-full max-w-[1200px] mx-auto px-6 sm:px-12 lg:px-0 min-h-[auto] lg:min-h-[740px] relative z-20">
         
         {/* ================= DESKTOP LAYOUT (lg+) ================= */}
