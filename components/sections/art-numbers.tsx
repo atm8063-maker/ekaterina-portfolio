@@ -66,20 +66,20 @@ export function ArtNumbers() {
         </div>
 
         {/* ================= MOBILE & TABLET LAYOUT (< lg) ================= */}
-        <div className="lg:hidden flex flex-col items-center gap-6 w-full pt-0 pb-8">
-          {/* Top image on mobile - 100% EDGE-TO-EDGE FULL WIDTH */}
-          <div className="relative w-full overflow-hidden">
+        <div className="lg:hidden flex flex-col items-center gap-6 w-full pt-4">
+          {/* Top image on mobile */}
+          <div className="relative w-full max-w-[380px] rounded-xl overflow-hidden shadow-2xl border border-white/10">
             <img 
               src="/about-composition.png" 
               alt="Art numbers composition"
               loading="eager"
               decoding="async"
-              className="w-full h-auto object-cover block scale-[1.01]"
+              className="w-full h-auto object-cover block"
             />
           </div>
 
           {/* Numbers grid cleanly below image */}
-          <div className="w-full max-w-[500px] mx-auto px-4 xs:px-5 sm:px-6 grid grid-cols-2 gap-3 sm:gap-4">
+          <div className="w-full grid grid-cols-2 gap-3 sm:gap-4">
             <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
               <p className="text-xl sm:text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1">20+ ЛЕТ</p>
               <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">Работы с креативом</p>
