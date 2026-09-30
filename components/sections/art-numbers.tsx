@@ -17,12 +17,12 @@ export function ArtNumbers() {
       <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
 
-      <div className="w-full relative z-20">
+      <div className="w-full max-w-[1200px] mx-auto px-6 sm:px-12 lg:px-0 min-h-[auto] lg:min-h-[740px] relative z-20">
         
         {/* ================= DESKTOP LAYOUT (lg+) ================= */}
-        <div className="hidden lg:flex flex-row items-center justify-between w-full max-w-[1200px] mx-auto px-6 sm:px-12 lg:px-0 relative min-h-[640px] py-16">
+        <div className="hidden lg:flex flex-row items-start justify-between w-full relative">
           {/* Numbers list left */}
-          <div className="flex w-[380px] flex-col justify-center relative z-20">
+          <div className="flex w-[375px] flex-col justify-start relative z-20 pt-[138px] pb-24">
             <div className="flex flex-col space-y-7 text-[#A3A3A3] text-lg font-medium leading-[1.6] font-inter">
               <div className="border-l-4 border-[#14F1D9] pl-4">
                 <p className="text-4xl font-black text-[#14F1D9] font-montserrat mb-1 leading-[1.1]">20+ ЛЕТ</p>
@@ -54,13 +54,13 @@ export function ArtNumbers() {
           </div>
           
           {/* Composition image right */}
-          <div className="relative z-10 w-[680px] xl:w-[740px] flex items-center justify-center pointer-events-none">
+          <div className="relative z-10 w-auto static overflow-visible pointer-events-none">
             <img 
               src="/art-composition.png" 
               alt="Art numbers composition"
               loading="eager"
               decoding="async"
-              className="w-full h-auto object-contain pointer-events-none drop-shadow-2xl"
+              className="absolute left-[343px] -top-[493px] w-[1273px] max-w-none translate-x-0 h-[1970px] pointer-events-none"
             />
           </div>
         </div>
