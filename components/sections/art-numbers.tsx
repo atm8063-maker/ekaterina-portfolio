@@ -17,10 +17,10 @@ export function ArtNumbers() {
       <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
 
-      <div className="w-full max-w-[1200px] mx-auto px-6 sm:px-12 lg:px-0 min-h-[auto] lg:min-h-[740px] relative z-20">
+      <div className="w-full max-w-[1200px] mx-auto px-0 lg:px-0 min-h-[auto] lg:min-h-[740px] relative z-20">
         
         {/* ================= DESKTOP LAYOUT (lg+) ================= */}
-        <div className="hidden lg:flex flex-row items-start justify-between w-full relative">
+        <div className="hidden lg:flex flex-row items-start justify-between w-full relative px-6 sm:px-12 lg:px-0">
           {/* Numbers list left */}
           <div className="flex w-[375px] flex-col justify-start relative z-20 pt-[138px] pb-24">
             <div className="flex flex-col space-y-7 text-[#A3A3A3] text-lg font-medium leading-[1.6] font-inter">
@@ -66,8 +66,8 @@ export function ArtNumbers() {
         </div>
 
         {/* ================= MOBILE & TABLET LAYOUT (< lg) ================= */}
-        <div className="lg:hidden flex flex-col w-full relative pt-2 pb-12 overflow-hidden">
-          {/* Edge-to-edge composition: left photo touches left edge, right photo touches right edge, tail flows down to the right */}
+        <div className="lg:hidden flex flex-col w-full relative pt-0 pb-12 overflow-hidden">
+          {/* 100% full-bleed edge-to-edge: left photo at 0px left, right photo at 0px right, tail on right */}
           <div className="w-full relative z-10">
             <img 
               src="/about-composition.png" 
@@ -78,32 +78,32 @@ export function ArtNumbers() {
             />
           </div>
 
-          {/* Numbers in 2 columns: placed directly to the left of the tail below the face */}
-          <div className="relative z-20 w-full px-4 -mt-[26vw] xs:-mt-[28vw] sm:-mt-28">
-            <div className="grid grid-cols-2 gap-2.5 xs:gap-3 sm:gap-4 max-w-[480px]">
-              <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-[#111111]/80 backdrop-blur-sm p-2.5 rounded-r-lg">
-                <p className="text-xl sm:text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1">20+ ЛЕТ</p>
-                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">Работы с креативом</p>
+          {/* Numbers in 2 columns strictly to the left of the tail */}
+          <div className="relative z-20 w-full pl-3 pr-2 -mt-[38vw] xs:-mt-[40vw] sm:-mt-[42vw]">
+            <div className="grid grid-cols-2 gap-2 xs:gap-2.5 max-w-[62%] xs:max-w-[58%]">
+              <div className="border-l-[3px] border-[#14F1D9] pl-2 xs:pl-2.5 py-1.5 bg-[#111111]/85 backdrop-blur-sm rounded-r">
+                <p className="text-lg xs:text-xl font-black text-[#14F1D9] font-montserrat leading-tight mb-0.5">20+ ЛЕТ</p>
+                <p className="text-[9px] xs:text-[10px] uppercase tracking-wider text-white/90 font-bold font-montserrat leading-tight">Работы с креативом</p>
               </div>
-              <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-[#111111]/80 backdrop-blur-sm p-2.5 rounded-r-lg">
-                <p className="text-xl sm:text-2xl font-black text-white font-montserrat leading-tight mb-1">7+ ЛЕТ</p>
-                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">В сфере Resin Art</p>
+              <div className="border-l-[3px] border-[#14F1D9] pl-2 xs:pl-2.5 py-1.5 bg-[#111111]/85 backdrop-blur-sm rounded-r">
+                <p className="text-lg xs:text-xl font-black text-white font-montserrat leading-tight mb-0.5">7+ ЛЕТ</p>
+                <p className="text-[9px] xs:text-[10px] uppercase tracking-wider text-white/90 font-bold font-montserrat leading-tight">В сфере Resin Art</p>
               </div>
-              <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-[#111111]/80 backdrop-blur-sm p-2.5 rounded-r-lg">
-                <p className="text-xl sm:text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1 tracking-tight">АМБАССАДОР</p>
-                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">ведущего бренда РФ</p>
+              <div className="border-l-[3px] border-[#14F1D9] pl-2 xs:pl-2.5 py-1.5 bg-[#111111]/85 backdrop-blur-sm rounded-r">
+                <p className="text-lg xs:text-xl font-black text-[#14F1D9] font-montserrat leading-tight mb-0.5 tracking-tight">АМБАССАДОР</p>
+                <p className="text-[9px] xs:text-[10px] uppercase tracking-wider text-white/90 font-bold font-montserrat leading-tight">бренда РФ</p>
               </div>
-              <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-[#111111]/80 backdrop-blur-sm p-2.5 rounded-r-lg">
-                <p className="text-xl sm:text-2xl font-black text-white font-montserrat leading-tight mb-1">10+ РАЗ</p>
-                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">в финале арт-гонки</p>
+              <div className="border-l-[3px] border-[#14F1D9] pl-2 xs:pl-2.5 py-1.5 bg-[#111111]/85 backdrop-blur-sm rounded-r">
+                <p className="text-lg xs:text-xl font-black text-white font-montserrat leading-tight mb-0.5">10+ РАЗ</p>
+                <p className="text-[9px] xs:text-[10px] uppercase tracking-wider text-white/90 font-bold font-montserrat leading-tight">в финале гонки</p>
               </div>
-              <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-[#111111]/80 backdrop-blur-sm p-2.5 rounded-r-lg">
-                <p className="text-xl sm:text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1">10 000+</p>
-                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">Зрителей эфиров & МК</p>
+              <div className="border-l-[3px] border-[#14F1D9] pl-2 xs:pl-2.5 py-1.5 bg-[#111111]/85 backdrop-blur-sm rounded-r">
+                <p className="text-lg xs:text-xl font-black text-[#14F1D9] font-montserrat leading-tight mb-0.5">10 000+</p>
+                <p className="text-[9px] xs:text-[10px] uppercase tracking-wider text-white/90 font-bold font-montserrat leading-tight">Зрителей МК</p>
               </div>
-              <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-[#111111]/80 backdrop-blur-sm p-2.5 rounded-r-lg">
-                <p className="text-xl sm:text-2xl font-black text-white font-montserrat leading-tight mb-1">1 000+</p>
-                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">учеников</p>
+              <div className="border-l-[3px] border-[#14F1D9] pl-2 xs:pl-2.5 py-1.5 bg-[#111111]/85 backdrop-blur-sm rounded-r">
+                <p className="text-lg xs:text-xl font-black text-white font-montserrat leading-tight mb-0.5">1 000+</p>
+                <p className="text-[9px] xs:text-[10px] uppercase tracking-wider text-white/90 font-bold font-montserrat leading-tight">учеников</p>
               </div>
             </div>
           </div>
