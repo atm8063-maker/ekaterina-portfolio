@@ -66,43 +66,45 @@ export function ArtNumbers() {
         </div>
 
         {/* ================= MOBILE & TABLET LAYOUT (< lg) ================= */}
-        <div className="lg:hidden flex flex-col items-center w-full pt-4 pb-12">
-          {/* 100% clean trimmed image without empty transparent padding */}
-          <div className="w-full max-w-[500px] mx-auto px-2">
+        <div className="lg:hidden flex flex-col w-full relative pt-2 pb-12 overflow-hidden">
+          {/* Edge-to-edge composition: left photo touches left edge, right photo touches right edge, tail flows down to the right */}
+          <div className="w-full relative z-10">
             <img 
               src="/about-composition.png" 
               alt="Art numbers composition"
               loading="eager"
               decoding="async"
-              className="w-full h-auto object-contain block drop-shadow-2xl"
+              className="w-full h-auto block"
             />
           </div>
 
-          {/* Numbers grid right below the image with clean margin */}
-          <div className="w-full max-w-[500px] mx-auto mt-6 px-4 grid grid-cols-2 gap-3 sm:gap-4">
-            <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
-              <p className="text-xl sm:text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1">20+ ЛЕТ</p>
-              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">Работы с креативом</p>
-            </div>
-            <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
-              <p className="text-xl sm:text-2xl font-black text-white font-montserrat leading-tight mb-1">7+ ЛЕТ</p>
-              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">В сфере Resin Art</p>
-            </div>
-            <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
-              <p className="text-xl sm:text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1 tracking-tight">АМБАССАДОР</p>
-              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">ведущего бренда РФ</p>
-            </div>
-            <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
-              <p className="text-xl sm:text-2xl font-black text-white font-montserrat leading-tight mb-1">10+ РАЗ</p>
-              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">в финале арт-гонки</p>
-            </div>
-            <div className="border-l-[3px] border-[#14F1D9] pl-3 border-[#14F1D9] py-2 bg-white/[0.03] p-3 rounded-r-lg">
-              <p className="text-xl sm:text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1">10 000+</p>
-              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">Зрителей эфиров & МК</p>
-            </div>
-            <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
-              <p className="text-xl sm:text-2xl font-black text-white font-montserrat leading-tight mb-1">1 000+</p>
-              <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">учеников</p>
+          {/* Numbers in 2 columns: placed directly to the left of the tail below the face */}
+          <div className="relative z-20 w-full px-4 -mt-[26vw] xs:-mt-[28vw] sm:-mt-28">
+            <div className="grid grid-cols-2 gap-2.5 xs:gap-3 sm:gap-4 max-w-[480px]">
+              <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-[#111111]/80 backdrop-blur-sm p-2.5 rounded-r-lg">
+                <p className="text-xl sm:text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1">20+ ЛЕТ</p>
+                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">Работы с креативом</p>
+              </div>
+              <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-[#111111]/80 backdrop-blur-sm p-2.5 rounded-r-lg">
+                <p className="text-xl sm:text-2xl font-black text-white font-montserrat leading-tight mb-1">7+ ЛЕТ</p>
+                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">В сфере Resin Art</p>
+              </div>
+              <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-[#111111]/80 backdrop-blur-sm p-2.5 rounded-r-lg">
+                <p className="text-xl sm:text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1 tracking-tight">АМБАССАДОР</p>
+                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">ведущего бренда РФ</p>
+              </div>
+              <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-[#111111]/80 backdrop-blur-sm p-2.5 rounded-r-lg">
+                <p className="text-xl sm:text-2xl font-black text-white font-montserrat leading-tight mb-1">10+ РАЗ</p>
+                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">в финале арт-гонки</p>
+              </div>
+              <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-[#111111]/80 backdrop-blur-sm p-2.5 rounded-r-lg">
+                <p className="text-xl sm:text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1">10 000+</p>
+                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">Зрителей эфиров & МК</p>
+              </div>
+              <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-[#111111]/80 backdrop-blur-sm p-2.5 rounded-r-lg">
+                <p className="text-xl sm:text-2xl font-black text-white font-montserrat leading-tight mb-1">1 000+</p>
+                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">учеников</p>
+              </div>
             </div>
           </div>
         </div>
