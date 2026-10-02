@@ -103,9 +103,6 @@ export function ArtNumbers() {
               <p className="text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">учеников</p>
             </div>
           </div>
-            </div>
-          </div>
-
         </div>
 
       </div>

@@ -8,6 +8,8 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
+  minimumScale: 1,
+  viewportFit: 'cover',
   themeColor: '#111111',
 }
 
@@ -22,13 +24,6 @@ const inter = Inter({
   subsets: ['latin', 'cyrillic'],
   display: 'swap',
 })
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  minimumScale: 1,
-  viewportFit: 'cover',
-}
 
 export const metadata: Metadata = {
   title: 'Екатерина Разумова — Creative Generalist',
