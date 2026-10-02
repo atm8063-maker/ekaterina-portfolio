@@ -81,7 +81,7 @@ export default function Hero() {
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background">
       
       {/* MOBILE VERSION */}
-      <div className="md:hidden relative w-full h-[100svh] overflow-hidden bg-[#111111]">
+      <div className="md:hidden relative w-full overflow-hidden bg-[#111111]" style={{ height: '100dvh', minHeight: '100svh' }}>
         {/* Dark Paper Background for Mobile */}
         <div className="absolute inset-0 z-0">
           <Image 
@@ -168,7 +168,7 @@ export default function Hero() {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        className="hidden md:flex relative w-full h-[100svh] overflow-hidden bg-[#111111]"
+        className="hidden md:flex relative w-full overflow-hidden bg-[#111111]" style={{ height: '100dvh', minHeight: '100svh' }}
       >
         
         {/* Dark Paper Background */}
