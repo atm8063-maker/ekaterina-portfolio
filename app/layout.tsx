@@ -4,6 +4,13 @@ import { Analytics } from '@vercel/analytics/next'
 import { SITE_URL } from '@/lib/site-config'
 import './globals.css'
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#111111',
+}
+
 const montserrat = Montserrat({
   variable: '--font-montserrat',
   subsets: ['latin', 'cyrillic'],
@@ -33,6 +40,8 @@ export const metadata: Metadata = {
   },
 }
 
+import { LanguageProvider } from '@/components/language-provider'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,7 +54,9 @@ export default function RootLayout({
       className={`${inter.variable} ${montserrat.variable}`}
     >
       <body className="font-sans antialiased text-foreground bg-background">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

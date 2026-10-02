@@ -130,12 +130,14 @@ export default function ArtPage() {
         <div id="numbers" className="scroll-mt-4">
           <div id="facts" className="scroll-mt-4" />
           <div id="stats" className="scroll-mt-4" />
+          <div id="competencies" className="scroll-mt-4" />
           <ArtNumbers />
         </div>
 
         {/* 11. ПОБЕДЫ, ФИНАЛЫ И СУДЕЙСТВО */}
         <div id="awards" className="scroll-mt-4">
           <div id="wins" className="scroll-mt-4" />
+          <div id="victories" className="scroll-mt-4" />
           <ArtAwards />
         </div>
 
