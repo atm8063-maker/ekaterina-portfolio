@@ -27,11 +27,12 @@
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
-    /* Adding a subtle paper texture overlay */
-    background-image: url('/paper-bg-dark.png'); /* Fixed filename */
+    /* Paper texture — without fixed attachment (breaks mobile browsers) */
+    background-image: url('/paper-bg-dark.png');
     background-blend-mode: overlay;
-    background-size: cover;
-    background-attachment: fixed;
+    background-size: 600px auto;
+    background-repeat: repeat;
+    background-attachment: scroll;
   }
 }
 

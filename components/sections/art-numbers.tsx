@@ -76,35 +76,36 @@ export function ArtNumbers() {
             className="w-full h-auto block"
           />
 
-          {/* Numbers in 2 columns on the bottom-left over the dark area next to the tail */}
-          <div className="absolute bottom-2 xs:bottom-3 sm:bottom-4 left-2.5 xs:left-3 sm:left-4 right-[36%] xs:right-[38%] z-20">
-            <div className="grid grid-cols-2 gap-1 xs:gap-1.5 sm:gap-2">
-              <div className="border-l-[2px] xs:border-l-[3px] border-[#14F1D9] pl-1.5 xs:pl-2 py-0.5 xs:py-1 bg-black/85 backdrop-blur-sm rounded-r">
-                <p className="text-base xs:text-lg sm:text-xl font-black text-[#14F1D9] font-montserrat leading-tight mb-0.5">20+ ЛЕТ</p>
-                <p className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-wider text-white/90 font-bold font-montserrat leading-tight">Работы с креативом</p>
-              </div>
-              <div className="border-l-[2px] xs:border-l-[3px] border-[#14F1D9] pl-1.5 xs:pl-2 py-0.5 xs:py-1 bg-black/85 backdrop-blur-sm rounded-r">
-                <p className="text-base xs:text-lg sm:text-xl font-black text-white font-montserrat leading-tight mb-0.5">7+ ЛЕТ</p>
-                <p className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-wider text-white/90 font-bold font-montserrat leading-tight">В сфере Resin Art</p>
-              </div>
-              <div className="border-l-[2px] xs:border-l-[3px] border-[#14F1D9] pl-1.5 xs:pl-2 py-0.5 xs:py-1 bg-black/85 backdrop-blur-sm rounded-r">
-                <p className="text-base xs:text-lg sm:text-xl font-black text-[#14F1D9] font-montserrat leading-tight mb-0.5 tracking-tight">АМБАССАДОР</p>
-                <p className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-wider text-white/90 font-bold font-montserrat leading-tight">бренда РФ</p>
-              </div>
-              <div className="border-l-[2px] xs:border-l-[3px] border-[#14F1D9] pl-1.5 xs:pl-2 py-0.5 xs:py-1 bg-black/85 backdrop-blur-sm rounded-r">
-                <p className="text-base xs:text-lg sm:text-xl font-black text-white font-montserrat leading-tight mb-0.5">10+ РАЗ</p>
-                <p className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-wider text-white/90 font-bold font-montserrat leading-tight">в финале гонки</p>
-              </div>
-              <div className="border-l-[2px] xs:border-l-[3px] border-[#14F1D9] pl-1.5 xs:pl-2 py-0.5 xs:py-1 bg-black/85 backdrop-blur-sm rounded-r">
-                <p className="text-base xs:text-lg sm:text-xl font-black text-[#14F1D9] font-montserrat leading-tight mb-0.5">10 000+</p>
-                <p className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-wider text-white/90 font-bold font-montserrat leading-tight">Зрителей МК</p>
-              </div>
-              <div className="border-l-[2px] xs:border-l-[3px] border-[#14F1D9] pl-1.5 xs:pl-2 py-0.5 xs:py-1 bg-black/85 backdrop-blur-sm rounded-r">
-                <p className="text-base xs:text-lg sm:text-xl font-black text-white font-montserrat leading-tight mb-0.5">1 000+</p>
-                <p className="text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] uppercase tracking-wider text-white/90 font-bold font-montserrat leading-tight">учеников</p>
-              </div>
+          {/* Numbers grid cleanly below image */}
+          <div className="w-full max-w-[440px] mx-auto px-4 xs:px-5 sm:px-6 grid grid-cols-1 gap-3 sm:gap-4">
+            <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
+              <p className="text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1">20+ ЛЕТ</p>
+              <p className="text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">Работы с креативом</p>
+            </div>
+            <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
+              <p className="text-2xl font-black text-white font-montserrat leading-tight mb-1">7+ ЛЕТ</p>
+              <p className="text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">В сфере Resin Art</p>
+            </div>
+            <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
+              <p className="text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1">АМБАССАДОР</p>
+              <p className="text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">ведущего бренда в России</p>
+            </div>
+            <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
+              <p className="text-2xl font-black text-white font-montserrat leading-tight mb-1">10+ РАЗ</p>
+              <p className="text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">в финале арт-гонки</p>
+            </div>
+            <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
+              <p className="text-2xl font-black text-[#14F1D9] font-montserrat leading-tight mb-1">10 000+</p>
+              <p className="text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">Зрителей эфиров & МК</p>
+            </div>
+            <div className="border-l-[3px] border-[#14F1D9] pl-3 py-2 bg-white/[0.03] p-3 rounded-r-lg">
+              <p className="text-2xl font-black text-white font-montserrat leading-tight mb-1">1 000+</p>
+              <p className="text-xs uppercase tracking-wider text-white/90 font-bold font-montserrat">учеников</p>
             </div>
           </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
