@@ -33,7 +33,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-x-clip">
+    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Header />
       
       {/* 1. HERO */}
