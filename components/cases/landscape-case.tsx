@@ -285,11 +285,6 @@ export function LandscapeCase() {
                         />
                       </div>
 
-                      {/* Компас сторон света в правом верхнем углу */}
-                      <div className="absolute top-4 right-4 p-2 rounded-xl bg-black/70 backdrop-blur-md border border-white/20 flex flex-col items-center">
-                        <div className="text-[10px] font-bold tracking-widest text-[#14F1D9]">NORTH</div>
-                        <div className="text-xl">▲</div>
-                      </div>
 
                       {/* Бейдж выбранной зоны */}
                       {selectedZone && (
