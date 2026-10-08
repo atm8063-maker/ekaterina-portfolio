@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Reveal } from '@/components/reveal'
+import { Reveal } from '../reveal'
 import { ArrowRightIcon } from '@/components/icons'
 import { SectionHeading, SectionLabel } from '@/components/sections/section-heading'
 import { useLanguage } from '@/components/language-provider'
