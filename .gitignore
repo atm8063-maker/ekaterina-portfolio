@@ -16,7 +16,7 @@ node_modules
 .vercel
 *.tsbuildinfo
 scratch/
-scripts/
+scripts/*
 !scripts/generate-favicons.mjs
 temp.txt
 step*.txt
