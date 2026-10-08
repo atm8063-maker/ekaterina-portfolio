@@ -38,7 +38,7 @@ export function LandscapeCase() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedZone, setSelectedZone] = useState<number | null>(null);
 
-  const renderCategoryIcon = (iconKey?: string, className = "w-3.5 h-3.5 text-[#14F1D9]") => {
+  const renderCategoryIcon = (iconKey?: string, className = "w-3.5 h-3.5 text-primary") => {
     switch (iconKey) {
       case "apple": return <Apple className={className} />;
       case "pine": return <Trees className={className} />;
@@ -65,7 +65,7 @@ export function LandscapeCase() {
   );
 
   return (
-    <div className="min-h-screen bg-[#0E1111] text-[#F3F4F6] relative selection:bg-[#14F1D9] selection:text-black">
+    <div className="min-h-screen bg-[#0E1111] text-[#F3F4F6] relative selection:bg-primary selection:text-black">
       {/* Background paper texture matching Ekaterina's portfolio */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Image
@@ -78,7 +78,7 @@ export function LandscapeCase() {
       </div>
 
       {/* Atmospheric radial background glows */}
-      <div className="fixed top-0 left-1/4 w-[600px] h-[500px] bg-gradient-to-b from-[#14F1D9]/10 via-[#2E8B57]/5 to-transparent rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="fixed top-0 left-1/4 w-[600px] h-[500px] bg-gradient-to-b from-primary/10 via-[#2E8B57]/5 to-transparent rounded-full blur-3xl pointer-events-none z-0" />
       <div className="fixed top-1/3 right-10 w-[500px] h-[500px] bg-gradient-to-b from-[#E07A5F]/10 via-transparent to-transparent rounded-full blur-3xl pointer-events-none z-0" />
 
       <div className="relative z-10">
@@ -93,14 +93,14 @@ export function LandscapeCase() {
               HERO SECTION
              ========================================================================= */}
           <section className="mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs font-semibold tracking-wider uppercase mb-5">
-              <span className="w-2 h-2 rounded-full bg-[#14F1D9] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-semibold tracking-wider uppercase mb-5">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Ландшафтная архитектура · Личный проект
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 font-montserrat">
               Пейзажный сад <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#14F1D9] via-[#8EE4AF] to-[#E07A5F]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#8EE4AF] to-[#E07A5F]">
                 с восточными акцентами
               </span>
             </h1>
@@ -113,10 +113,10 @@ export function LandscapeCase() {
             {/* Key Metrics */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {landscapeProjectData.metrics.map((m, idx) => (
-                <div key={idx} className="p-5 rounded-2xl bg-[#161A1B]/80 border border-white/10 hover:border-[#14F1D9]/40 transition-all">
+                <div key={idx} className="p-5 rounded-2xl bg-[#161A1B]/80 border border-white/10 hover:border-primary/40 transition-all">
                   <div className="flex items-baseline gap-2 mb-1">
                     <span className="text-3xl sm:text-4xl font-extrabold text-white font-montserrat">{m.value}</span>
-                    <span className="text-sm font-semibold text-[#14F1D9]">{m.unit}</span>
+                    <span className="text-sm font-semibold text-primary">{m.unit}</span>
                   </div>
                   <div className="text-xs text-white/60 font-medium">{m.label}</div>
                 </div>
@@ -130,44 +130,44 @@ export function LandscapeCase() {
           <nav className="sticky top-20 z-30 mb-12 py-3 bg-[#0E1111]/90 backdrop-blur-md border-y border-white/10 flex items-center justify-start md:justify-center gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             <a
               href="#board"
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-[#14F1D9]"
+              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-primary"
             >
-              <LayoutDashboard className="w-4 h-4 text-[#14F1D9]" />
+              <LayoutDashboard className="w-4 h-4 text-primary" />
               <span>01. Генплан</span>
             </a>
             <a
               href="#dendro"
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-[#14F1D9]"
+              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-primary"
             >
-              <Trees className="w-4 h-4 text-[#14F1D9]" />
+              <Trees className="w-4 h-4 text-primary" />
               <span>02. Дендроплан (70 видов)</span>
             </a>
             <a
               href="#wind"
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-[#14F1D9]"
+              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-primary"
             >
-              <Compass className="w-4 h-4 text-[#14F1D9]" />
+              <Compass className="w-4 h-4 text-primary" />
               <span>03. Роза ветров</span>
             </a>
             <a
               href="#paths"
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-[#14F1D9]"
+              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-primary"
             >
-              <Footprints className="w-4 h-4 text-[#14F1D9]" />
+              <Footprints className="w-4 h-4 text-primary" />
               <span>04. Дорожки и покрытия</span>
             </a>
             <a
               href="#lighting"
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-[#14F1D9]"
+              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-primary"
             >
-              <Lightbulb className="w-4 h-4 text-[#14F1D9]" />
+              <Lightbulb className="w-4 h-4 text-primary" />
               <span>05. Освещение (49 точек)</span>
             </a>
             <a
               href="#gallery"
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-[#14F1D9]"
+              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap flex items-center gap-2 bg-white/5 text-white/80 hover:bg-white/10 hover:text-primary"
             >
-              <Box className="w-4 h-4 text-[#14F1D9]" />
+              <Box className="w-4 h-4 text-primary" />
               <span>06. 3D-рендеры SketchUp</span>
             </a>
           </nav>
@@ -184,7 +184,7 @@ export function LandscapeCase() {
                 {/* Верхняя плашка планшета */}
                 <div className="border-b border-white/10 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                   <div>
-                    <div className="text-xs uppercase tracking-widest text-[#14F1D9] font-semibold mb-1">
+                    <div className="text-xs uppercase tracking-widest text-primary font-semibold mb-1">
                       ПРОЕКТ БЛАГОУСТРОЙСТВА ЧАСТНОГО УСАДЕБНОГО ДОМА
                     </div>
                     <h2 className="text-2xl sm:text-4xl font-extrabold text-white font-montserrat">
@@ -216,24 +216,24 @@ export function LandscapeCase() {
                     
                     {/* Концепция */}
                     <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
-                      <h3 className="text-xs uppercase tracking-wider text-[#14F1D9] font-bold mb-3 flex items-center gap-2">
-                        <Target className="w-4 h-4 text-[#14F1D9]" /> КОНЦЕПЦИЯ САДА
+                      <h3 className="text-xs uppercase tracking-wider text-primary font-bold mb-3 flex items-center gap-2">
+                        <Target className="w-4 h-4 text-primary" /> КОНЦЕПЦИЯ САДА
                       </h3>
                       <ul className="text-xs text-white/80 space-y-2 leading-relaxed">
                         <li className="flex items-start gap-1.5">
-                          <span className="text-[#14F1D9]">•</span>
+                          <span className="text-primary">•</span>
                           <span><strong>Пейзажный стиль:</strong> мягкие природные линии, извилистые гравийные тропы со шпалами.</span>
                         </li>
                         <li className="flex items-start gap-1.5">
-                          <span className="text-[#14F1D9]">•</span>
+                          <span className="text-primary">•</span>
                           <span><strong>Восточный акцент:</strong> шатровая беседка для айкидо, тсукубаи, валуны, 2 каскадных пруда.</span>
                         </li>
                         <li className="flex items-start gap-1.5">
-                          <span className="text-[#14F1D9]">•</span>
+                          <span className="text-primary">•</span>
                           <span><strong>Приватность:</strong> плотная стена туй и сиреней для защиты от семиэтажного комплекса на юге.</span>
                         </li>
                         <li className="flex items-start gap-1.5">
-                          <span className="text-[#14F1D9]">•</span>
+                          <span className="text-primary">•</span>
                           <span><strong>Семейный круг:</strong> открытый газон для игр, детская зона и новогодняя ель для хороводов.</span>
                         </li>
                       </ul>
@@ -241,8 +241,8 @@ export function LandscapeCase() {
 
                     {/* Экспликация 15 зон */}
                     <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
-                      <h3 className="text-xs uppercase tracking-wider text-[#14F1D9] font-bold mb-3 flex items-center justify-between">
-                        <span className="flex items-center gap-1.5"><ListOrdered className="w-4 h-4 text-[#14F1D9]" /> ЭКСПЛИКАЦИЯ ЗОН</span>
+                      <h3 className="text-xs uppercase tracking-wider text-primary font-bold mb-3 flex items-center justify-between">
+                        <span className="flex items-center gap-1.5"><ListOrdered className="w-4 h-4 text-primary" /> ЭКСПЛИКАЦИЯ ЗОН</span>
                         <span className="text-[10px] text-white/50 font-normal">клик для подсветки</span>
                       </h3>
                       
@@ -253,11 +253,11 @@ export function LandscapeCase() {
                             onClick={() => setSelectedZone(selectedZone === z.id ? null : z.id)}
                             className={`p-2 rounded-lg cursor-pointer transition-all flex items-start gap-2.5 ${
                               selectedZone === z.id
-                                ? "bg-[#14F1D9]/20 border border-[#14F1D9]/50 text-white"
+                                ? "bg-primary/20 border border-primary/50 text-white"
                                 : "hover:bg-white/5 text-white/70"
                             }`}
                           >
-                            <span className="w-5 h-5 rounded-full bg-[#14F1D9]/20 text-[#14F1D9] font-bold flex items-center justify-center shrink-0 text-[10px] border border-[#14F1D9]/40">
+                            <span className="w-5 h-5 rounded-full bg-primary/20 text-primary font-bold flex items-center justify-center shrink-0 text-[10px] border border-primary/40">
                               {z.id}
                             </span>
                             <div>
@@ -288,8 +288,8 @@ export function LandscapeCase() {
 
                       {/* Бейдж выбранной зоны */}
                       {selectedZone && (
-                        <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-black/85 backdrop-blur-md border border-[#14F1D9]/60 text-xs animate-fadeIn">
-                          <span className="text-[#14F1D9] font-bold">Зона #{selectedZone}: </span>
+                        <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-black/85 backdrop-blur-md border border-primary/60 text-xs animate-fadeIn">
+                          <span className="text-primary font-bold">Зона #{selectedZone}: </span>
                           <span className="text-white font-semibold">
                             {landscapeProjectData.zones.find(z => z.id === selectedZone)?.name}
                           </span>
@@ -330,9 +330,9 @@ export function LandscapeCase() {
 
                     {/* Видовые точки сада из SketchUp — крупный коллаж 2x2 под генпланом */}
                     <div className="pt-2 space-y-3">
-                      <div className="text-xs uppercase tracking-wider text-[#14F1D9] font-bold flex items-center justify-between">
+                      <div className="text-xs uppercase tracking-wider text-primary font-bold flex items-center justify-between">
                         <span className="flex items-center gap-2">
-                          <Sparkles className="w-4 h-4 text-[#14F1D9]" />
+                          <Sparkles className="w-4 h-4 text-primary" />
                           <span>КЛЮЧЕВЫЕ ВИДОВЫЕ ТОЧКИ УЧАСТКА (SKETCHUP)</span>
                         </span>
                         <span className="text-xs text-white/50 font-normal">клик для увеличения ↗</span>
@@ -341,7 +341,7 @@ export function LandscapeCase() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div 
                           onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (5).jpg")}
-                          className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-[#14F1D9]/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
+                          className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-primary/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
                         >
                           <div className="relative aspect-[16/10] overflow-hidden bg-black">
                             <Image
@@ -352,13 +352,13 @@ export function LandscapeCase() {
                             />
                             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                               <span className="px-3 py-1.5 rounded-lg bg-black/80 text-white text-xs font-semibold border border-white/20 flex items-center gap-1.5">
-                                <Maximize2 className="w-3.5 h-3.5 text-[#14F1D9]" />
+                                <Maximize2 className="w-3.5 h-3.5 text-primary" />
                                 <span>Открыть</span>
                               </span>
                             </div>
                           </div>
                           <div className="p-3.5 bg-[#141819] flex-1 flex flex-col justify-between border-t border-white/5">
-                            <div className="font-semibold text-white text-sm group-hover:text-[#14F1D9] transition-colors">
+                            <div className="font-semibold text-white text-sm group-hover:text-primary transition-colors">
                               Японский садик и пруд с мостиком
                             </div>
                             <div className="text-xs text-white/60 mt-1 leading-relaxed">
@@ -369,7 +369,7 @@ export function LandscapeCase() {
 
                         <div 
                           onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (4).jpg")}
-                          className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-[#14F1D9]/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
+                          className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-primary/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
                         >
                           <div className="relative aspect-[16/10] overflow-hidden bg-black">
                             <Image
@@ -380,13 +380,13 @@ export function LandscapeCase() {
                             />
                             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                               <span className="px-3 py-1.5 rounded-lg bg-black/80 text-white text-xs font-semibold border border-white/20 flex items-center gap-1.5">
-                                <Maximize2 className="w-3.5 h-3.5 text-[#14F1D9]" />
+                                <Maximize2 className="w-3.5 h-3.5 text-primary" />
                                 <span>Открыть</span>
                               </span>
                             </div>
                           </div>
                           <div className="p-3.5 bg-[#141819] flex-1 flex flex-col justify-between border-t border-white/5">
-                            <div className="font-semibold text-white text-sm group-hover:text-[#14F1D9] transition-colors">
+                            <div className="font-semibold text-white text-sm group-hover:text-primary transition-colors">
                               Чайная беседка и костровой очаг
                             </div>
                             <div className="text-xs text-white/60 mt-1 leading-relaxed">
@@ -397,7 +397,7 @@ export function LandscapeCase() {
 
                         <div 
                           onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (2).jpg")}
-                          className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-[#14F1D9]/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
+                          className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-primary/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
                         >
                           <div className="relative aspect-[16/10] overflow-hidden bg-black">
                             <Image
@@ -408,13 +408,13 @@ export function LandscapeCase() {
                             />
                             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                               <span className="px-3 py-1.5 rounded-lg bg-black/80 text-white text-xs font-semibold border border-white/20 flex items-center gap-1.5">
-                                <Maximize2 className="w-3.5 h-3.5 text-[#14F1D9]" />
+                                <Maximize2 className="w-3.5 h-3.5 text-primary" />
                                 <span>Открыть</span>
                               </span>
                             </div>
                           </div>
                           <div className="p-3.5 bg-[#141819] flex-1 flex flex-col justify-between border-t border-white/5">
-                            <div className="font-semibold text-white text-sm group-hover:text-[#14F1D9] transition-colors">
+                            <div className="font-semibold text-white text-sm group-hover:text-primary transition-colors">
                               Панорама двора и центрального газона
                             </div>
                             <div className="text-xs text-white/60 mt-1 leading-relaxed">
@@ -425,7 +425,7 @@ export function LandscapeCase() {
 
                         <div 
                           onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (5).jpg")}
-                          className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-[#14F1D9]/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
+                          className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-primary/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
                         >
                           <div className="relative aspect-[16/10] overflow-hidden bg-black">
                             <Image
@@ -436,13 +436,13 @@ export function LandscapeCase() {
                             />
                             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                               <span className="px-3 py-1.5 rounded-lg bg-black/80 text-white text-xs font-semibold border border-white/20 flex items-center gap-1.5">
-                                <Maximize2 className="w-3.5 h-3.5 text-[#14F1D9]" />
+                                <Maximize2 className="w-3.5 h-3.5 text-primary" />
                                 <span>Открыть</span>
                               </span>
                             </div>
                           </div>
                           <div className="p-3.5 bg-[#141819] flex-1 flex flex-col justify-between border-t border-white/5">
-                            <div className="font-semibold text-white text-sm group-hover:text-[#14F1D9] transition-colors">
+                            <div className="font-semibold text-white text-sm group-hover:text-primary transition-colors">
                               Детский городок и зона отдыха
                             </div>
                             <div className="text-xs text-white/60 mt-1 leading-relaxed">
@@ -459,9 +459,9 @@ export function LandscapeCase() {
                     
                     {/* Топ растений проекта */}
                     <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
-                      <h3 className="text-xs uppercase tracking-wider text-[#14F1D9] font-bold mb-3 flex items-center justify-between">
-                        <span className="flex items-center gap-1.5"><Trees className="w-4 h-4 text-[#14F1D9]" /> КЛЮЧЕВЫЕ ПОСАДКИ</span>
-                        <a href="#dendro" className="text-[#14F1D9] hover:underline text-[10px]">
+                      <h3 className="text-xs uppercase tracking-wider text-primary font-bold mb-3 flex items-center justify-between">
+                        <span className="flex items-center gap-1.5"><Trees className="w-4 h-4 text-primary" /> КЛЮЧЕВЫЕ ПОСАДКИ</span>
+                        <a href="#dendro" className="text-primary hover:underline text-[10px]">
                           все 70 ↓
                         </a>
                       </h3>
@@ -469,7 +469,7 @@ export function LandscapeCase() {
                       <div className="space-y-3 text-xs">
                         <div>
                           <div className="font-semibold text-white/90 mb-1 flex items-center gap-1.5">
-                            <Trees className="w-3.5 h-3.5 text-[#14F1D9]" /> Хвойный скелет:
+                            <Trees className="w-3.5 h-3.5 text-primary" /> Хвойный скелет:
                           </div>
                           <div className="text-white/60 text-[11px] leading-snug">
                             Туя Смарагд (живая изгородь), Сосна горная Мугус, Сосна кедровая Glauca, Пихта корейская.
@@ -478,7 +478,7 @@ export function LandscapeCase() {
 
                         <div>
                           <div className="font-semibold text-white/90 mb-1 flex items-center gap-1.5">
-                            <Flower2 className="w-3.5 h-3.5 text-[#14F1D9]" /> Восточные акценты:
+                            <Flower2 className="w-3.5 h-3.5 text-primary" /> Восточные акценты:
                           </div>
                           <div className="text-white/60 text-[11px] leading-snug">
                             Клен Ред Сансет, Ива Матсудана у пруда, бамбук Саза курильская, Гортензия Dharuma.
@@ -487,7 +487,7 @@ export function LandscapeCase() {
 
                         <div>
                           <div className="font-semibold text-white/90 mb-1 flex items-center gap-1.5">
-                            <Apple className="w-3.5 h-3.5 text-[#14F1D9]" /> Карликовый плодовый сад:
+                            <Apple className="w-3.5 h-3.5 text-primary" /> Карликовый плодовый сад:
                           </div>
                           <div className="text-white/60 text-[11px] leading-snug">
                             Яблони Арбат и Мельба, вишня Русинка, черешня Овстуженка, сливы и ягодники.
@@ -496,7 +496,7 @@ export function LandscapeCase() {
 
                         <div>
                           <div className="font-semibold text-white/90 mb-1 flex items-center gap-1.5">
-                            <Leaf className="w-3.5 h-3.5 text-[#14F1D9]" /> Цветочная лента:
+                            <Leaf className="w-3.5 h-3.5 text-primary" /> Цветочная лента:
                           </div>
                           <div className="text-white/60 text-[11px] leading-snug">
                             12 сортов травянистых пионов (Сара Бернар, Канзас), мискантус, хосты и ирисы в воде.
@@ -507,8 +507,8 @@ export function LandscapeCase() {
 
                     {/* Баланс территорий */}
                     <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
-                      <h3 className="text-xs uppercase tracking-wider text-[#14F1D9] font-bold mb-3 flex items-center gap-2">
-                        <PieChart className="w-4 h-4 text-[#14F1D9]" /> БАЛАНС ТЕРРИТОРИИ
+                      <h3 className="text-xs uppercase tracking-wider text-primary font-bold mb-3 flex items-center gap-2">
+                        <PieChart className="w-4 h-4 text-primary" /> БАЛАНС ТЕРРИТОРИИ
                       </h3>
 
                       <div className="space-y-2 text-xs">
@@ -526,7 +526,7 @@ export function LandscapeCase() {
                         </div>
                         <div className="flex justify-between py-1 border-b border-white/5">
                           <span className="text-white/60">Озеленение и газон:</span>
-                          <span className="text-[#14F1D9] font-semibold">310.0 м² (47.7%)</span>
+                          <span className="text-primary font-semibold">310.0 м² (47.7%)</span>
                         </div>
                         <div className="flex justify-between py-1 border-b border-white/5">
                           <span className="text-white/60">Тропы (галька/ДПК):</span>
@@ -569,7 +569,7 @@ export function LandscapeCase() {
                     placeholder="Поиск по названию или №..."
                     value={plantSearch}
                     onChange={(e) => setPlantSearch(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#14F1D9]"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-primary"
                   />
                 </div>
               </div>
@@ -580,7 +580,7 @@ export function LandscapeCase() {
                   onClick={() => setPlantCategory("all")}
                   className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                     plantCategory === "all"
-                      ? "bg-[#14F1D9] text-[#0E1111]"
+                      ? "bg-primary text-[#0E1111]"
                       : "bg-white/5 text-white/70 hover:bg-white/10"
                   }`}
                 >
@@ -592,11 +592,11 @@ export function LandscapeCase() {
                     onClick={() => setPlantCategory(cat.id)}
                     className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
                       plantCategory === cat.id
-                        ? "bg-[#14F1D9] text-[#0E1111]"
+                        ? "bg-primary text-[#0E1111]"
                         : "bg-white/5 text-white/70 hover:bg-white/10"
                     }`}
                   >
-                    {renderCategoryIcon(cat.icon, plantCategory === cat.id ? "w-3.5 h-3.5 text-[#0E1111]" : "w-3.5 h-3.5 text-[#14F1D9]")}
+                    {renderCategoryIcon(cat.icon, plantCategory === cat.id ? "w-3.5 h-3.5 text-[#0E1111]" : "w-3.5 h-3.5 text-primary")}
                     <span>{cat.title} ({cat.items.length})</span>
                   </button>
                 ))}
@@ -607,9 +607,9 @@ export function LandscapeCase() {
                 {filteredPlants.map(p => (
                   <div
                     key={p.num}
-                    className="p-3.5 rounded-xl bg-[#141819] border border-white/10 hover:border-[#14F1D9]/40 transition-all flex items-start gap-3"
+                    className="p-3.5 rounded-xl bg-[#141819] border border-white/10 hover:border-primary/40 transition-all flex items-start gap-3"
                   >
-                    <span className="w-7 h-7 rounded-lg bg-[#14F1D9]/15 text-[#14F1D9] font-bold flex items-center justify-center shrink-0 text-xs border border-[#14F1D9]/30">
+                    <span className="w-7 h-7 rounded-lg bg-primary/15 text-primary font-bold flex items-center justify-center shrink-0 text-xs border border-primary/30">
                       {p.num}
                     </span>
                     <div className="overflow-hidden">
@@ -617,7 +617,7 @@ export function LandscapeCase() {
                         {p.name}
                       </div>
                       <div className="text-[10px] text-white/40 mt-0.5 flex items-center gap-1.5">
-                        {renderCategoryIcon(p.categoryIcon, "w-3 h-3 text-[#14F1D9]")}
+                        {renderCategoryIcon(p.categoryIcon, "w-3 h-3 text-primary")}
                         <span className="truncate">{p.categoryTitle}</span>
                       </div>
                     </div>
@@ -677,7 +677,7 @@ export function LandscapeCase() {
             <div className="space-y-10">
               <div className="p-6 sm:p-10 rounded-3xl bg-[#141819] border border-white/15 shadow-2xl">
                 <div className="max-w-2xl mb-8">
-                  <div className="text-xs uppercase tracking-widest text-[#14F1D9] font-bold mb-2">
+                  <div className="text-xs uppercase tracking-widest text-primary font-bold mb-2">
                     КЛИМАТИЧЕСКИЙ АНАЛИЗ УЧАСТКА
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-montserrat">
@@ -760,7 +760,7 @@ export function LandscapeCase() {
                     <div className="grid grid-cols-4 gap-2 text-xs">
                       {landscapeProjectData.windRose.map((w, idx) => (
                         <div key={idx} className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-center">
-                          <div className="font-bold text-[#14F1D9]">{w.dir}</div>
+                          <div className="font-bold text-primary">{w.dir}</div>
                           <div className="text-[11px] text-white/50">{w.label}</div>
                           <div className="text-sm font-extrabold text-white mt-1">{w.percent}%</div>
                         </div>
@@ -796,7 +796,7 @@ export function LandscapeCase() {
             <div className="space-y-10">
               <div className="p-6 sm:p-10 rounded-3xl bg-[#141819] border border-white/15 shadow-2xl">
                 <div className="max-w-2xl mb-8">
-                  <div className="text-xs uppercase tracking-widest text-[#14F1D9] font-bold mb-2">
+                  <div className="text-xs uppercase tracking-widest text-primary font-bold mb-2">
                     ИНФРАСТРУКТУРА И МОЩЕНИЕ
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-montserrat">
@@ -810,8 +810,8 @@ export function LandscapeCase() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   
-                  <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3 hover:border-[#14F1D9]/40 transition-all">
-                    <div className="w-10 h-10 rounded-xl bg-[#14F1D9]/10 text-[#14F1D9] border border-[#14F1D9]/25 flex items-center justify-center">
+                  <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3 hover:border-primary/40 transition-all">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary border border-primary/25 flex items-center justify-center">
                       <Grid3x3 className="w-5 h-5" />
                     </div>
                     <h3 className="font-bold text-white text-base">Декоративный бетон</h3>
@@ -819,11 +819,11 @@ export function LandscapeCase() {
                       Парадная въездная дорога для автомобиля от ворот до навеса и отмостка вокруг дома. 
                       Текстура кирпичной кладки рыжего оттенка, стойкая к шипам и реагентам.
                     </p>
-                    <div className="text-[11px] text-[#14F1D9] font-semibold">Площадь: ~135 м²</div>
+                    <div className="text-[11px] text-primary font-semibold">Площадь: ~135 м²</div>
                   </div>
 
-                  <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3 hover:border-[#14F1D9]/40 transition-all">
-                    <div className="w-10 h-10 rounded-xl bg-[#14F1D9]/10 text-[#14F1D9] border border-[#14F1D9]/25 flex items-center justify-center">
+                  <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3 hover:border-primary/40 transition-all">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary border border-primary/25 flex items-center justify-center">
                       <Layers className="w-5 h-5" />
                     </div>
                     <h3 className="font-bold text-white text-base">Настилы из ДПК</h3>
@@ -831,11 +831,11 @@ export function LandscapeCase() {
                       Северная терраса дома (5.13×2.44 м), помост чайной беседки для занятий айкидо и площадка вокруг зоны барбекю. 
                       Приятно ходить босиком, не скользит в дождь.
                     </p>
-                    <div className="text-[11px] text-[#14F1D9] font-semibold">Площадь: ~28.5 м²</div>
+                    <div className="text-[11px] text-primary font-semibold">Площадь: ~28.5 м²</div>
                   </div>
 
-                  <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3 hover:border-[#14F1D9]/40 transition-all">
-                    <div className="w-10 h-10 rounded-xl bg-[#14F1D9]/10 text-[#14F1D9] border border-[#14F1D9]/25 flex items-center justify-center">
+                  <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3 hover:border-primary/40 transition-all">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary border border-primary/25 flex items-center justify-center">
                       <Footprints className="w-5 h-5" />
                     </div>
                     <h3 className="font-bold text-white text-base">Галька со шпалами</h3>
@@ -843,11 +843,11 @@ export function LandscapeCase() {
                       Извилистая тропа через японский садик к прудам, а также дорожка в плодово-ягодном саду. 
                       Бурая окатанная галька с шаговыми досками-шпалами, создающая эффект медитативного пути.
                     </p>
-                    <div className="text-[11px] text-[#14F1D9] font-semibold">Длина: ~38 пог. м</div>
+                    <div className="text-[11px] text-primary font-semibold">Длина: ~38 пог. м</div>
                   </div>
 
-                  <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3 hover:border-[#14F1D9]/40 transition-all">
-                    <div className="w-10 h-10 rounded-xl bg-[#14F1D9]/10 text-[#14F1D9] border border-[#14F1D9]/25 flex items-center justify-center">
+                  <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3 hover:border-primary/40 transition-all">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary border border-primary/25 flex items-center justify-center">
                       <ShieldCheck className="w-5 h-5" />
                     </div>
                     <h3 className="font-bold text-white text-base">Резиновая плитка</h3>
@@ -855,7 +855,7 @@ export function LandscapeCase() {
                       Травмобезопасное покрытие детской игровой зоны с горкой и качелями. 
                       Теплый оранжевый цвет плитки гармонирует с цветовой гаммой кирпичных фасадов.
                     </p>
-                    <div className="text-[11px] text-[#14F1D9] font-semibold">Площадь: ~18 м²</div>
+                    <div className="text-[11px] text-primary font-semibold">Площадь: ~18 м²</div>
                   </div>
 
                 </div>
@@ -876,7 +876,7 @@ export function LandscapeCase() {
                     </div>
                     <div className="p-3 bg-[#121516] text-xs text-white/80 border-t border-white/10 flex justify-between">
                       <span>Схема дорожно-тропиночной сети и функциональных связей</span>
-                      <span className="text-[#14F1D9]">клик для увеличения ↗</span>
+                      <span className="text-primary">клик для увеличения ↗</span>
                     </div>
                   </div>
                 </div>
@@ -892,8 +892,8 @@ export function LandscapeCase() {
             <div className="space-y-10">
               <div className="p-6 sm:p-10 rounded-3xl bg-[#141819] border border-white/15 shadow-2xl">
                 <div className="mb-8">
-                  <div className="text-xs uppercase tracking-widest text-[#14F1D9] font-bold mb-2 flex items-center gap-2">
-                    <Lightbulb className="w-4 h-4 text-[#14F1D9]" />
+                  <div className="text-xs uppercase tracking-widest text-primary font-bold mb-2 flex items-center gap-2">
+                    <Lightbulb className="w-4 h-4 text-primary" />
                     <span>СВЕТОВОЙ ДИЗАЙН И СЦЕНАРИИ</span>
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-montserrat">
@@ -909,8 +909,8 @@ export function LandscapeCase() {
                   {landscapeProjectData.lighting.map((lg, idx) => (
                     <div key={idx} className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-[#14F1D9] uppercase tracking-wider">{lg.group}</span>
-                        <span className="px-2.5 py-1 rounded-full bg-[#14F1D9]/15 text-[#14F1D9] text-xs font-extrabold">
+                        <span className="text-xs font-bold text-primary uppercase tracking-wider">{lg.group}</span>
+                        <span className="px-2.5 py-1 rounded-full bg-primary/15 text-primary text-xs font-extrabold">
                           {lg.count} шт.
                         </span>
                       </div>
@@ -935,7 +935,7 @@ export function LandscapeCase() {
                     </div>
                     <div className="p-4 bg-[#121516] flex justify-between items-center text-xs">
                       <span className="text-white font-semibold">Сводный план наружного освещения (49 точек)</span>
-                      <span className="text-[#14F1D9]">клик для увеличения ↗</span>
+                      <span className="text-primary">клик для увеличения ↗</span>
                     </div>
                   </div>
 
@@ -953,7 +953,7 @@ export function LandscapeCase() {
                     </div>
                     <div className="p-4 bg-[#121516] flex justify-between items-center text-xs">
                       <span className="text-white font-semibold">План подсветки зоны отдыха и пруда</span>
-                      <span className="text-[#14F1D9]">клик для увеличения ↗</span>
+                      <span className="text-primary">клик для увеличения ↗</span>
                     </div>
                   </div>
                 </div>
@@ -982,7 +982,7 @@ export function LandscapeCase() {
                   <button
                     onClick={() => setActiveRenderCategory("all")}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                      activeRenderCategory === "all" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
+                      activeRenderCategory === "all" ? "bg-primary text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
                     Все кадры ({landscapeProjectData.renders.length})
@@ -990,7 +990,7 @@ export function LandscapeCase() {
                   <button
                     onClick={() => setActiveRenderCategory("japanese")}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
-                      activeRenderCategory === "japanese" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
+                      activeRenderCategory === "japanese" ? "bg-primary text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
                     <Sparkles className="w-3.5 h-3.5" /> <span>Японский садик</span>
@@ -998,7 +998,7 @@ export function LandscapeCase() {
                   <button
                     onClick={() => setActiveRenderCategory("gazebo")}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
-                      activeRenderCategory === "gazebo" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
+                      activeRenderCategory === "gazebo" ? "bg-primary text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
                     <Home className="w-3.5 h-3.5" /> <span>Беседка и BBQ</span>
@@ -1006,7 +1006,7 @@ export function LandscapeCase() {
                   <button
                     onClick={() => setActiveRenderCategory("family")}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
-                      activeRenderCategory === "family" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
+                      activeRenderCategory === "family" ? "bg-primary text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
                     <Trees className="w-3.5 h-3.5" /> <span>Газон и детская зона</span>
@@ -1014,7 +1014,7 @@ export function LandscapeCase() {
                   <button
                     onClick={() => setActiveRenderCategory("house")}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
-                      activeRenderCategory === "house" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
+                      activeRenderCategory === "house" ? "bg-primary text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
                     <Home className="w-3.5 h-3.5" /> <span>Дом и терраса</span>
@@ -1022,7 +1022,7 @@ export function LandscapeCase() {
                   <button
                     onClick={() => setActiveRenderCategory("plan")}
                     className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 ${
-                      activeRenderCategory === "plan" ? "bg-[#14F1D9] text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
+                      activeRenderCategory === "plan" ? "bg-primary text-[#0E1111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
                     <Layers className="w-3.5 h-3.5" /> <span>3D-аксонометрии</span>
@@ -1036,7 +1036,7 @@ export function LandscapeCase() {
                   <div
                     key={idx}
                     onClick={() => setSelectedImage(r.src)}
-                    className="group cursor-pointer rounded-2xl overflow-hidden bg-[#141819] border border-white/10 hover:border-[#14F1D9]/50 transition-all flex flex-col shadow-lg"
+                    className="group cursor-pointer rounded-2xl overflow-hidden bg-[#141819] border border-white/10 hover:border-primary/50 transition-all flex flex-col shadow-lg"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden bg-black">
                       <Image
@@ -1052,7 +1052,7 @@ export function LandscapeCase() {
                       </div>
                     </div>
                     <div className="p-4 flex-1 flex flex-col justify-between">
-                      <h3 className="text-sm font-bold text-white group-hover:text-[#14F1D9] transition-colors">
+                      <h3 className="text-sm font-bold text-white group-hover:text-primary transition-colors">
                         {r.title}
                       </h3>
                       <p className="text-xs text-white/60 mt-1 line-clamp-2">

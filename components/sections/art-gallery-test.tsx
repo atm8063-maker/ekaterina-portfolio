@@ -12,11 +12,11 @@ export function ArtGalleryTest() {
       <div className="relative md:absolute md:inset-0 md:inset-y-0 md:left-auto md:right-0 w-full md:w-[55%] lg:w-[50%] xl:w-[45%] order-1 md:order-none bg-black md:bg-transparent md:bg-gradient-to-l from-black/95 via-black/80 to-transparent z-[30] pointer-events-none flex items-center justify-center md:justify-end flex-shrink-0">
         <div className="px-6 md:pr-6 sm:pr-12 lg:pr-[12%] xl:pr-[15%] md:pl-6 sm:pl-8 pt-12 pb-6 md:pt-12 md:pb-12 max-w-xl pointer-events-auto text-center md:text-left">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white font-montserrat mb-6 leading-[1.1]">
-            <span className="text-[#14F1D9]">ЭСТЕТИКА &</span> <br />
+            <span className="text-primary">ЭСТЕТИКА &</span> <br />
             КРАСОТА
           </h2>
           
-          <p className="text-[#A3A3A3] text-sm sm:text-base font-medium leading-[1.7] mb-6">
+          <p className="text-muted-foreground text-sm sm:text-base font-medium leading-[1.7] mb-6">
             Идеальный глянец, созданный для того, чтобы приносить гармонию в любой интерьер. Эта сторона моего творчества — о безупречной гладкости, эстетике, попытке остановить мгновение и запечатлеть природную красоту с помощью химии и физики.
           </p>
         </div>

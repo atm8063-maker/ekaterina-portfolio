@@ -1,15 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { useSyncExternalStore } from "react";
 import { motion } from "framer-motion";
 import galleryData from "@/public/gallery-data.json";
 
 type MediaItem = { src: string; type: "image" | "video" };
 
+const subscribeNoop = () => () => {};
+
 export default function ArtGalleryPerspective() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
 
   if (!mounted) return <div className="h-screen bg-black" />;
 

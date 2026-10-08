@@ -32,7 +32,7 @@ export function ArtContemporary() {
         {/* Левая половина: Текст (ровно 50%) */}
         <div className="w-full md:w-1/2 flex flex-col justify-center items-center px-6 sm:px-12 py-10 md:py-16 relative z-10 bg-[#f4f4f4]">
           <div className="max-w-[500px] w-full">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight font-montserrat mb-6 leading-[1.05] text-[#111]">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight font-montserrat mb-6 leading-[1.05] text-background">
               АРТИВИЗМ & <br />
               ЧЕСТНОСТЬ
             </h2>

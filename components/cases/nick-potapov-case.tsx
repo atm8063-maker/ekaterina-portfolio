@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import Header from "@/components/layout/Header";
 import { CaseNavigation } from "@/components/cases/case-navigation";
+import { CasePaperBackground } from "@/components/cases/shared/case-paper-background";
 
 export function NickPotapovCase() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -41,32 +40,28 @@ export function NickPotapovCase() {
         }
       }
     };
+    let rafId = 0;
+    const onResize = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(syncHeight);
+    };
     window.addEventListener("message", handleMessage);
-    window.addEventListener("resize", syncHeight);
-    const interval = setInterval(syncHeight, 600);
+    window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("message", handleMessage);
-      window.removeEventListener("resize", syncHeight);
-      clearInterval(interval);
+      window.removeEventListener("resize", onResize);
+      cancelAnimationFrame(rafId);
     };
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#111111] text-white relative font-inter">
+    <div className="min-h-screen bg-background text-white relative font-inter">
       {/* Background paper texture matching Ekaterina's site */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <Image
-          src="/paper-clean-dark.png"
-          alt="Paper texture"
-          fill
-          className="object-cover opacity-70 mix-blend-screen"
-          priority
-        />
-      </div>
+      <CasePaperBackground priority />
 
       {/* Top & bottom gradient fades */}
-      <div className="fixed top-0 left-0 w-full h-[400px] bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[1] pointer-events-none" />
-      <div className="fixed bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#111111] to-transparent z-[1] pointer-events-none" />
+      <div className="fixed top-0 left-0 w-full h-[400px] bg-gradient-to-b from-background via-background/60 to-transparent z-[1] pointer-events-none" />
+      <div className="fixed bottom-0 left-0 w-full h-40 bg-gradient-to-t from-background to-transparent z-[1] pointer-events-none" />
 
       <div className="relative z-10">
         {/* Ekaterina's Header */}

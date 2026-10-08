@@ -159,7 +159,7 @@ const items: Testimonial[] = [
 function SectionLabel({ n, title, note }: { n: string; title: string; note: string }) {
   return (
     <div className="container mx-auto px-6 pt-20 pb-10">
-      <p className="mb-2 font-mono text-xs font-bold uppercase tracking-widest text-[#14F1D9]">
+      <p className="mb-2 font-mono text-xs font-bold uppercase tracking-widest text-primary">
         Вариант {n}
       </p>
       <h2 className="mb-3 text-3xl font-black uppercase text-white font-montserrat sm:text-5xl">
@@ -177,7 +177,7 @@ function BentoCard({ item }: { item: Testimonial }) {
 
   return (
     <article
-      className={`flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1A1A1A] ${
+      className={`flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface ${
         isBig ? "sm:col-span-2 sm:row-span-2" : ""
       }`}
     >
@@ -190,7 +190,7 @@ function BentoCard({ item }: { item: Testimonial }) {
       <div className="flex flex-1 flex-col gap-3 p-5">
         {item.quote ? (
           <div className="flex flex-1 flex-col justify-center">
-            <Quote className={`mb-2 text-[#14F1D9] ${isBig ? "h-8 w-8" : "h-5 w-5"}`} strokeWidth={2.5} />
+            <Quote className={`mb-2 text-primary ${isBig ? "h-8 w-8" : "h-5 w-5"}`} strokeWidth={2.5} />
             <p className={`leading-relaxed text-white/80 ${isBig ? "text-xl sm:text-2xl" : "text-sm"}`}>
               {item.quote}
             </p>
@@ -223,7 +223,7 @@ function BentoVariant() {
 function ScrollCard({ item }: { item: Testimonial }) {
   return (
     <article
-      className={`group flex shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1A1A1A] ${
+      className={`group flex shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface ${
         item.featured ? "w-[300px] sm:w-[420px]" : "w-[260px] sm:w-[300px]"
       }`}
     >
@@ -296,14 +296,14 @@ function ScrollVariant() {
 
 function MiniCard({ item }: { item: Testimonial }) {
   return (
-    <article className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#1A1A1A] p-3">
+    <article className="flex items-center gap-3 rounded-xl border border-white/10 bg-surface p-3">
       {item.image ? (
         <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-black/40">
           <Image src={item.image} alt={item.author} fill className="object-cover" />
         </div>
       ) : (
         <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-black/30">
-          <Quote className="h-5 w-5 text-[#14F1D9]" strokeWidth={2.5} />
+          <Quote className="h-5 w-5 text-primary" strokeWidth={2.5} />
         </div>
       )}
       <div className="min-w-0 flex-1">
@@ -364,7 +364,7 @@ function FeedVariant() {
 
 export default function TestimonialsTestPage() {
   return (
-    <main className="min-h-screen bg-[#111111] pb-32">
+    <main className="min-h-screen bg-background pb-32">
       <div className="container mx-auto px-6 pt-24">
         <p className="font-mono text-xs uppercase tracking-widest text-white/40">
           Черновик для сравнения — не в навигации. Выбран вариант C, он на проде: /fir_tree_art#testimonials

@@ -142,14 +142,14 @@ const items: Testimonial[] = [
 
 function MiniCard({ item }: { item: Testimonial }) {
   return (
-    <article className="flex items-center gap-3 rounded-none border border-white/10 bg-[#1A1A1A] p-3">
+    <article className="flex items-center gap-3 rounded-none border border-white/10 bg-surface p-3">
       {item.image ? (
         <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-none bg-black/40">
           <Image src={item.image} alt={item.author} fill className="object-cover" />
         </div>
       ) : (
         <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-none bg-black/30">
-          <Quote className="h-5 w-5 text-[#14F1D9]" strokeWidth={2.5} />
+          <Quote className="h-5 w-5 text-primary" strokeWidth={2.5} />
         </div>
       )}
       <div className="min-w-0 flex-1">
@@ -190,7 +190,7 @@ export function ArtTestimonials() {
   const lane2 = items.filter((_, i) => i % 3 === 2);
 
   return (
-    <section id="testimonials" className="relative bg-[#111111] py-24 scroll-mt-20 overflow-hidden">
+    <section id="testimonials" className="relative bg-background py-24 scroll-mt-20 overflow-hidden">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -202,8 +202,8 @@ export function ArtTestimonials() {
       </div>
 
       {/* Top & bottom gradient blend fades */}
-      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-background via-background/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-background via-background/60 to-transparent z-[15] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-20">
         <h2 className="mb-12 text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">

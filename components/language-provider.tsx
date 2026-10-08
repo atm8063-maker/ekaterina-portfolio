@@ -20,6 +20,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     try {
       const saved = localStorage.getItem('portfolio-language') as Language
       if (saved === 'RU' || saved === 'EN') {
+        // Hydration-safe: read persisted language after mount (not during render)
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional post-mount sync from localStorage
         setLangState(saved)
       }
     } catch {

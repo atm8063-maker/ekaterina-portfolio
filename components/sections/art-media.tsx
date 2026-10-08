@@ -90,7 +90,7 @@ export function ArtMedia() {
   };
 
   return (
-    <section id="media-publications" className="relative py-24 bg-[#111111] overflow-hidden scroll-mt-20">
+    <section id="media-publications" className="relative py-24 bg-background overflow-hidden scroll-mt-20">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -102,8 +102,8 @@ export function ArtMedia() {
       </div>
 
       {/* Top & bottom gradient blend fades */}
-      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-background via-background/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-background via-background/60 to-transparent z-[15] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-20 mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
@@ -111,7 +111,7 @@ export function ArtMedia() {
             Публикации в СМИ
           </h2>
         </div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase shadow-md">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-primary uppercase shadow-md">
           <span>←</span> Листайте публикации <span>→</span>
         </div>
       </div>
@@ -128,7 +128,7 @@ export function ArtMedia() {
         {items.map((item) => (
           <article
             key={item.outlet + item.headline}
-            className="group shrink-0 snap-center flex flex-col overflow-hidden rounded-none border border-white/15 bg-[#181818] hover:border-[#14F1D9]/50 transition-colors w-[280px] sm:w-[320px] shadow-xl"
+            className="group shrink-0 snap-center flex flex-col overflow-hidden rounded-none border border-white/15 bg-surface-elevated hover:border-primary/50 transition-colors w-[280px] sm:w-[320px] shadow-xl"
           >
             <div className="relative w-full aspect-[3/4] bg-black/40">
               <Image
@@ -138,13 +138,13 @@ export function ArtMedia() {
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
               />
               {item.secondaryImage && (
-                <div className="absolute bottom-3 right-3 h-16 w-16 overflow-hidden rounded-none border-2 border-[#111111] shadow-lg sm:h-20 sm:w-20">
+                <div className="absolute bottom-3 right-3 h-16 w-16 overflow-hidden rounded-none border-2 border-background shadow-lg sm:h-20 sm:w-20">
                   <Image src={item.secondaryImage} alt={`${item.outlet}: со съёмки`} fill className="object-cover" />
                 </div>
               )}
             </div>
-            <div className="flex flex-1 flex-col gap-2 p-5 bg-[#181818]">
-              <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#14F1D9]">
+            <div className="flex flex-1 flex-col gap-2 p-5 bg-surface-elevated">
+              <p className="text-xs font-mono font-bold uppercase tracking-wider text-primary">
                 {item.outlet}
               </p>
               <h3 className="font-montserrat text-sm sm:text-base font-black uppercase leading-snug text-white">

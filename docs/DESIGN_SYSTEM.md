@@ -110,3 +110,24 @@ Desktop: `w-[40%] h-[60vh]`, Mobile: `w-[25%] h-[50vh]`
 | `next/image` | Оптимизация картинок |
 | `next/font/google` | Шрифты |
 | `@vercel/analytics` | Аналитика (prod) |
+
+---
+
+## 8. Tailwind token classes (R1 Phase 2)
+
+Hex arbitrary values in `className` map to `@theme` tokens in `app/globals.css`:
+
+| Legacy arbitrary class | Token class | CSS variable |
+|------------------------|-------------|--------------|
+| `text-[#14F1D9]` | `text-primary` | `--color-primary` |
+| `bg-[#14F1D9]` | `bg-primary` | `--color-primary` |
+| `border-[#14F1D9]` | `border-primary` | `--color-primary` |
+| `bg-[#111111]` / `bg-[#111]` | `bg-background` | `--color-background` |
+| `text-[#A3A3A3]` | `text-muted-foreground` | `--color-text-muted` |
+| `bg-[#1A1A1A]` / `bg-[#161616]` (panels) | `bg-surface` | `--color-surface` |
+| `bg-[#181818]` (elevated cards) | `bg-surface-elevated` | `--color-surface-elevated` |
+| `text-[#111111]` / `text-[#111]` (on primary, ink on light) | `text-background` | `--color-background` |
+| `border-[#111111]` / `border-[#111]` | `border-background` | `--color-background` |
+| `selection:bg-[#14F1D9]` | `selection:bg-primary` | `--color-primary` |
+
+Opacity modifiers stay on the token (e.g. `bg-primary/10`, `border-primary/30`, `bg-surface/95`, `border-background/10`). Gradient stops and side borders use the same tokens (`from-background`, `border-l-primary`, `fill-primary`) where the hex matched the table above. Inline `style` may use `var(--color-primary)`, `var(--color-surface)`, etc. when arbitrary hex matched this table.

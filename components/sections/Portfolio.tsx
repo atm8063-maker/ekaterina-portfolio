@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cases } from "@/lib/data";
+import { easeOutMedium, fadeUp, viewportOnce } from "@/lib/motion/presets";
 
 export default function Portfolio() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -22,7 +23,7 @@ export default function Portfolio() {
   };
 
   return (
-    <section id="cases" className="py-24 relative overflow-hidden bg-[#111111]">
+    <section id="cases" className="py-24 relative overflow-hidden bg-background">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -34,23 +35,25 @@ export default function Portfolio() {
       </div>
 
       {/* Top gradient fade */}
-      <div className="absolute top-0 left-0 w-full h-[440px] lg:h-[670px] bg-gradient-to-b from-[#111111] from-[7%] via-[#111111]/40 via-[35%] to-transparent z-[15] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-[440px] lg:h-[670px] bg-gradient-to-b from-background from-[7%] via-background/40 via-[35%] to-transparent z-[15] pointer-events-none" />
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[500px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[500px] bg-gradient-to-t from-background to-transparent z-[15] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-20">
         <div className="mb-6 md:mb-12 flex items-end justify-between">
           <div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            <motion.h2
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
+              transition={easeOutMedium}
               className="text-3xl md:text-5xl font-bold uppercase text-white font-montserrat mb-2"
             >
               КЕЙСЫ
             </motion.h2>
             {/* Mobile-only swipe hint */}
-            <div className="md:hidden inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase">
+            <div className="md:hidden inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-primary uppercase">
               <span>←</span> Листайте кейсы <span>→</span>
             </div>
           </div>
@@ -59,14 +62,14 @@ export default function Portfolio() {
           <div className="hidden md:flex gap-4">
             <button 
               onClick={() => scroll("left")}
-              className="p-3 rounded-full border border-white/20 text-white/50 hover:text-[#14F1D9] hover:border-[#14F1D9] transition-all"
+              className="p-3 rounded-full border border-white/20 text-white/50 hover:text-primary hover:border-primary transition-all"
               aria-label="Previous cases"
             >
               <ChevronLeft size={24} />
             </button>
             <button 
               onClick={() => scroll("right")}
-              className="p-3 rounded-full border border-white/20 text-white/50 hover:text-[#14F1D9] hover:border-[#14F1D9] transition-all"
+              className="p-3 rounded-full border border-white/20 text-white/50 hover:text-primary hover:border-primary transition-all"
               aria-label="Next cases"
             >
               <ChevronRight size={24} />
@@ -115,11 +118,11 @@ export default function Portfolio() {
                   </div>
                   <div className="flex-1 flex flex-col justify-between">
                     <div>
-                      <p className="text-[#14F1D9] text-xs font-bold uppercase tracking-widest mb-3">{c.tag}</p>
-                      <h3 className="text-xl md:text-2xl font-semibold text-white group-hover:text-[#14F1D9] transition-colors leading-snug mb-4">{c.title}</h3>
+                      <p className="text-primary text-xs font-bold uppercase tracking-widest mb-3">{c.tag}</p>
+                      <h3 className="text-xl md:text-2xl font-semibold text-white group-hover:text-primary transition-colors leading-snug mb-4">{c.title}</h3>
                       <p className="text-sm text-white/60 mb-4 line-clamp-2">{c.description}</p>
                     </div>
-                    <span className="flex items-center gap-2 text-sm font-semibold text-white/70 group-hover:text-[#14F1D9] mt-2">
+                    <span className="flex items-center gap-2 text-sm font-semibold text-white/70 group-hover:text-primary mt-2">
                       Смотреть кейс 
                       <svg className="w-4 h-4 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

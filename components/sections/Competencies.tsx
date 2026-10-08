@@ -41,7 +41,7 @@ export default function Competencies() {
   };
 
   return (
-    <section id="competencies" className="py-24 scroll-mt-20 relative overflow-hidden bg-[#111111]">
+    <section id="competencies" className="py-24 scroll-mt-20 relative overflow-hidden bg-background">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -53,9 +53,9 @@ export default function Competencies() {
       </div>
 
       {/* Top gradient fade */}
-      <div className="absolute top-0 left-0 w-full h-[440px] lg:h-[670px] bg-gradient-to-b from-[#111111] from-[7%] via-[#111111]/40 via-[35%] to-transparent z-[15] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-[440px] lg:h-[670px] bg-gradient-to-b from-background from-[7%] via-background/40 via-[35%] to-transparent z-[15] pointer-events-none" />
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[500px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[500px] bg-gradient-to-t from-background to-transparent z-[15] pointer-events-none" />
 
       <div className="container mx-auto px-6 max-w-4xl relative z-20">
         <div className="text-center mb-16">

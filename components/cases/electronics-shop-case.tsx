@@ -54,7 +54,7 @@ export function ElectronicsShopCase() {
   const activePersona: UserPersona = electronicsShopData.personas[selectedPersonaIndex];
 
   return (
-    <div className="min-h-screen bg-[#111111] text-[#E0E0E0] selection:bg-[#14F1D9] selection:text-black font-inter relative">
+    <div className="min-h-screen bg-background text-[#E0E0E0] selection:bg-primary selection:text-black font-inter relative">
       {/* Background paper texture matching Ekaterina's site */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Image
@@ -77,12 +77,12 @@ export function ElectronicsShopCase() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-16 pb-20 overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#162e2a]/25 via-[#111111] to-[#111111]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#14F1D9]/10 via-transparent to-transparent pointer-events-none" />
+      <section className="relative pt-16 pb-20 overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#162e2a]/25 via-background to-background">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-[#14F1D9] font-montserrat font-bold uppercase tracking-widest mb-6">
-            <Sparkles className="w-3.5 h-3.5 text-[#14F1D9]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-primary font-montserrat font-bold uppercase tracking-widest mb-6">
+            <Sparkles className="w-3.5 h-3.5 text-primary" />
             UX/UI ДИЗАЙН & E-COMMERCE АНАЛИТИКА
           </div>
 
@@ -102,9 +102,9 @@ export function ElectronicsShopCase() {
             {electronicsShopData.metrics.map((m, idx) => (
               <div
                 key={idx}
-                className="bg-[#1A1A1A] border border-white/10 p-6 rounded-2xl hover:border-[#14F1D9]/50 transition-all group"
+                className="bg-surface border border-white/10 p-6 rounded-2xl hover:border-primary/50 transition-all group"
               >
-                <div className="text-2xl sm:text-3xl font-bold font-montserrat text-white group-hover:text-[#14F1D9] transition-colors">
+                <div className="text-2xl sm:text-3xl font-bold font-montserrat text-white group-hover:text-primary transition-colors">
                   {m.value}
                 </div>
                 <div className="text-xs font-semibold text-white/90 uppercase tracking-wider font-montserrat mt-1.5">
@@ -137,7 +137,7 @@ export function ElectronicsShopCase() {
         <section id="poster" className="scroll-mt-24 space-y-8">
           <div className="border-b border-white/10 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+              <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
                 01 / ШОУКЕЙС BEHANCE
               </div>
               <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -149,10 +149,10 @@ export function ElectronicsShopCase() {
             </p>
           </div>
 
-          <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6">
+          <div className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <span className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider">
+                <span className="text-xs font-montserrat font-bold text-primary uppercase tracking-wider">
                   Полноформатный презентационный плакат
                 </span>
                 <p className="text-xs text-white/70 font-sans mt-0.5">
@@ -165,7 +165,7 @@ export function ElectronicsShopCase() {
                   title: "Editorial Showcase Poster (2400 × 1500 px)",
                   subtitle: "Полноразмерный рендер дизайн-системы, десктопа 1440px и мобильного флоу Shop 4.0"
                 })}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-[#14F1D9] hover:text-black text-white text-xs font-montserrat font-semibold transition-all border border-white/10 hover:border-[#14F1D9]"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-primary hover:text-black text-white text-xs font-montserrat font-semibold transition-all border border-white/10 hover:border-primary"
               >
                 <Maximize2 className="w-4 h-4" />
                 <span>Открыть плакат на весь экран</span>
@@ -178,7 +178,7 @@ export function ElectronicsShopCase() {
                 title: "Editorial Showcase Poster (2400 × 1500 px)",
                 subtitle: "Полноразмерный рендер дизайн-системы, десктопа 1440px и мобильного флоу Shop 4.0"
               })}
-              className="relative aspect-[16/10] w-full bg-black/60 rounded-xl overflow-hidden cursor-pointer group border border-white/10 hover:border-[#14F1D9]/50 transition-all"
+              className="relative aspect-[16/10] w-full bg-black/60 rounded-xl overflow-hidden cursor-pointer group border border-white/10 hover:border-primary/50 transition-all"
             >
               <Image
                 src="/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.jpg"
@@ -187,7 +187,7 @@ export function ElectronicsShopCase() {
                 className="object-contain group-hover:scale-101 transition-transform duration-500"
               />
               <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-md text-[11px] text-white/70 border border-white/10 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Eye className="w-3.5 h-3.5 text-[#14F1D9]" />
+                <Eye className="w-3.5 h-3.5 text-primary" />
                 <span>Кликните для зума (2.4K)</span>
               </div>
             </div>
@@ -224,7 +224,7 @@ export function ElectronicsShopCase() {
         {/* 2. UX RESEARCH & COMPETITOR BENCHMARK */}
         <section id="research" className="scroll-mt-24 space-y-10">
           <div className="border-b border-white/10 pb-4">
-            <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+            <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
               02 / UX АНАЛИТИКА
             </div>
             <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -236,7 +236,7 @@ export function ElectronicsShopCase() {
           </div>
 
           {/* Competitor Benchmark Grid */}
-          <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6">
+          <div className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold font-montserrat text-white uppercase tracking-tight">
@@ -246,7 +246,7 @@ export function ElectronicsShopCase() {
                   Сравнительный аудит по 10-балльной шкале юзабилити
                 </p>
               </div>
-              <div className="text-xs font-montserrat font-bold text-[#14F1D9]">
+              <div className="text-xs font-montserrat font-bold text-primary">
                 Shop 4.0 Standard
               </div>
             </div>
@@ -257,7 +257,7 @@ export function ElectronicsShopCase() {
                   key={idx}
                   className={`p-5 rounded-2xl border transition-all flex flex-col justify-between ${
                     comp.name.includes("Shop 4.0")
-                      ? "bg-[#14F1D9]/10 border-[#14F1D9] shadow-lg shadow-[#14F1D9]/10"
+                      ? "bg-primary/10 border-primary shadow-lg shadow-[#14F1D9]/10"
                       : "bg-black/30 border-white/10 hover:border-white/20"
                   }`}
                 >
@@ -266,13 +266,13 @@ export function ElectronicsShopCase() {
                       <h4 className="text-base font-bold text-white font-montserrat">{comp.name}</h4>
                       <span
                         className={`text-xs font-black px-2.5 py-0.5 rounded-full font-montserrat ${
-                          comp.score > 8 ? "bg-[#14F1D9] text-black" : "bg-white/10 text-white"
+                          comp.score > 8 ? "bg-primary text-black" : "bg-white/10 text-white"
                         }`}
                       >
                         {comp.score} / 10
                       </span>
                     </div>
-                    <div className="text-[11px] text-[#14F1D9] font-montserrat font-bold uppercase mb-3">
+                    <div className="text-[11px] text-primary font-montserrat font-bold uppercase mb-3">
                       {comp.category}
                     </div>
 
@@ -289,7 +289,7 @@ export function ElectronicsShopCase() {
                   </div>
 
                   <div className="pt-3 border-t border-white/10 text-[11px] text-white/70 font-sans">
-                    <span className="text-[#14F1D9] font-montserrat font-bold uppercase text-[10px] block mb-0.5">Точка роста:</span>
+                    <span className="text-primary font-montserrat font-bold uppercase text-[10px] block mb-0.5">Точка роста:</span>
                     {comp.opportunity}
                   </div>
                 </div>
@@ -310,8 +310,8 @@ export function ElectronicsShopCase() {
                     onClick={() => setSelectedPersonaIndex(idx)}
                     className={`px-3.5 py-1.5 rounded-xl text-xs font-montserrat font-bold transition-all ${
                       selectedPersonaIndex === idx
-                        ? "bg-[#14F1D9] text-black"
-                        : "bg-[#1A1A1A] border border-white/10 text-white/70 hover:text-white"
+                        ? "bg-primary text-black"
+                        : "bg-surface border border-white/10 text-white/70 hover:text-white"
                     }`}
                   >
                     {p.name.split(" ")[0]}
@@ -320,31 +320,31 @@ export function ElectronicsShopCase() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-[#1A1A1A] border border-white/10 p-6 sm:p-8 rounded-2xl">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-surface border border-white/10 p-6 sm:p-8 rounded-2xl">
               <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-white/10 pb-6 lg:pb-0 lg:pr-6">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#14F1D9] to-[#092e27] flex items-center justify-center text-black font-black font-montserrat text-lg mb-4 shadow-lg shadow-[#14F1D9]/10">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-[#092e27] flex items-center justify-center text-black font-black font-montserrat text-lg mb-4 shadow-lg shadow-[#14F1D9]/10">
                   {activePersona.name.slice(0, 2).toUpperCase()}
                 </div>
                 <h4 className="text-xl font-bold text-white font-montserrat uppercase tracking-tight mb-1">{activePersona.name}</h4>
-                <p className="text-xs text-[#14F1D9] font-montserrat font-semibold mb-3">{activePersona.role}</p>
+                <p className="text-xs text-primary font-montserrat font-semibold mb-3">{activePersona.role}</p>
                 <div className="text-xs text-white/60 space-y-1 font-sans mb-4">
                   <p>Возраст: {activePersona.age}</p>
                   <p>Техническая грамотность: {activePersona.techLiteracy}</p>
                 </div>
-                <div className="p-3.5 bg-black/40 border-l-2 border-[#14F1D9] text-xs italic text-white/80 font-sans rounded-r-xl">
+                <div className="p-3.5 bg-black/40 border-l-2 border-primary text-xs italic text-white/80 font-sans rounded-r-xl">
                   &ldquo;{activePersona.quote}&rdquo;
                 </div>
               </div>
 
               <div className="lg:col-span-8 space-y-5">
                 <div>
-                  <h5 className="text-xs uppercase font-montserrat font-bold text-[#14F1D9] mb-2 text-[11px] tracking-wider">
+                  <h5 className="text-xs uppercase font-montserrat font-bold text-primary mb-2 text-[11px] tracking-wider">
                     Покупательские цели и задачи:
                   </h5>
                   <ul className="space-y-1.5 text-xs text-white/80 font-sans">
                     {activePersona.goals.map((g, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#14F1D9] shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
                         <span>{g}</span>
                       </li>
                     ))}
@@ -383,7 +383,7 @@ export function ElectronicsShopCase() {
         {/* 3. CJM & HYPOTHESES */}
         <section id="cjm" className="scroll-mt-24 space-y-10">
           <div className="border-b border-white/10 pb-4">
-            <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+            <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
               03 / ПУТЬ ПОЛЬЗОВАТЕЛЯ
             </div>
             <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -403,14 +403,14 @@ export function ElectronicsShopCase() {
               {electronicsShopData.cjm.map((item, idx) => (
                 <div 
                   key={idx}
-                  className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:border-[#14F1D9]/50 transition-all"
+                  className="bg-surface border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:border-primary/50 transition-all"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[11px] font-montserrat font-bold uppercase tracking-wider text-[#14F1D9]">
+                      <span className="text-[11px] font-montserrat font-bold uppercase tracking-wider text-primary">
                         {item.stage}
                       </span>
-                      <span className="text-xs font-bold font-montserrat px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[#14F1D9]">
+                      <span className="text-xs font-bold font-montserrat px-2 py-0.5 rounded bg-white/5 border border-white/10 text-primary">
                         {item.emotionalScore} / 5
                       </span>
                     </div>
@@ -427,7 +427,7 @@ export function ElectronicsShopCase() {
                       <span className="font-semibold text-rose-400">Боль:</span> {item.painPoint}
                     </div>
                     <div className="text-white/90 leading-snug">
-                      <span className="font-semibold text-[#14F1D9]">Решение:</span> {item.uxSolution}
+                      <span className="font-semibold text-primary">Решение:</span> {item.uxSolution}
                     </div>
                   </div>
                 </div>
@@ -444,10 +444,10 @@ export function ElectronicsShopCase() {
               {electronicsShopData.hypotheses.map((h) => (
                 <div 
                   key={h.id}
-                  className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4 hover:border-[#14F1D9]/50 transition-all"
+                  className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4 hover:border-primary/50 transition-all"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-montserrat font-bold px-3 py-1 rounded-full bg-[#14F1D9]/10 text-[#14F1D9] border border-[#14F1D9]/30">
+                    <span className="text-xs font-montserrat font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                       {h.id}
                     </span>
                     <span className="text-xs font-montserrat font-semibold text-[#27C93F] flex items-center gap-1">
@@ -484,7 +484,7 @@ export function ElectronicsShopCase() {
                       <div className="text-white font-medium mt-0.5 font-sans">{h.metric}</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-[10px] text-[#14F1D9] uppercase font-montserrat font-semibold">
+                      <div className="text-[10px] text-primary uppercase font-montserrat font-semibold">
                         Результат теста
                       </div>
                       <div className="text-white font-bold font-montserrat mt-0.5">{h.result}</div>
@@ -500,7 +500,7 @@ export function ElectronicsShopCase() {
         <section id="flow" className="scroll-mt-24 space-y-10">
           <div className="border-b border-white/10 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+              <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
                 04 / МОБИЛЬНЫЙ ФЛОУ
               </div>
               <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -512,7 +512,7 @@ export function ElectronicsShopCase() {
                 onClick={() => setFlowViewMode("step")}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-montserrat font-semibold transition-all ${
                   flowViewMode === "step"
-                    ? "bg-[#14F1D9] text-black"
+                    ? "bg-primary text-black"
                     : "bg-white/5 text-white/70 hover:bg-white/10"
                 }`}
               >
@@ -522,7 +522,7 @@ export function ElectronicsShopCase() {
                 onClick={() => setFlowViewMode("grid")}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-montserrat font-semibold transition-all ${
                   flowViewMode === "grid"
-                    ? "bg-[#14F1D9] text-black"
+                    ? "bg-primary text-black"
                     : "bg-white/5 text-white/70 hover:bg-white/10"
                 }`}
               >
@@ -532,7 +532,7 @@ export function ElectronicsShopCase() {
           </div>
 
           {flowViewMode === "step" ? (
-            <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8">
+            <div className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8">
               {/* Screen Pills Bar */}
               <div className="flex overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden gap-2 pb-6 border-b border-white/10">
                 {electronicsShopData.screens.mobileFlow.map((s, idx) => (
@@ -541,7 +541,7 @@ export function ElectronicsShopCase() {
                     onClick={() => setActiveScreenIndex(idx)}
                     className={`px-4 py-2 rounded-xl text-xs font-montserrat font-semibold whitespace-nowrap transition-all flex items-center gap-2 ${
                       activeScreenIndex === idx
-                        ? "bg-[#14F1D9] text-black shadow-lg shadow-[#14F1D9]/20"
+                        ? "bg-primary text-black shadow-lg shadow-[#14F1D9]/20"
                         : "bg-black/30 border border-white/10 text-white/70 hover:text-white hover:border-white/30"
                     }`}
                   >
@@ -555,7 +555,7 @@ export function ElectronicsShopCase() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-8 items-center">
                 {/* Smartphone Bezel Container */}
                 <div className="lg:col-span-5 flex justify-center">
-                  <div className="relative w-[300px] sm:w-[340px] bg-[#1a1a1a] rounded-[38px] p-3 border-2 border-white/20 shadow-2xl shadow-black/80 ring-1 ring-white/10">
+                  <div className="relative w-[300px] sm:w-[340px] bg-surface rounded-[38px] p-3 border-2 border-white/20 shadow-2xl shadow-black/80 ring-1 ring-white/10">
                     {/* Screen Image Container with uncropped aspect ratio */}
                     <div 
                       onClick={() => setSelectedImage({
@@ -572,7 +572,7 @@ export function ElectronicsShopCase() {
                         className="object-contain group-hover:scale-102 transition-transform duration-300"
                       />
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <div className="bg-black/80 px-3 py-1.5 rounded-lg text-xs text-[#14F1D9] border border-[#14F1D9]/30 flex items-center gap-1.5 font-montserrat font-semibold">
+                        <div className="bg-black/80 px-3 py-1.5 rounded-lg text-xs text-primary border border-primary/30 flex items-center gap-1.5 font-montserrat font-semibold">
                           <Maximize2 className="w-3.5 h-3.5" />
                           <span>Увеличить</span>
                         </div>
@@ -584,7 +584,7 @@ export function ElectronicsShopCase() {
                 {/* Screen Details & Key UX Decisions */}
                 <div className="lg:col-span-7 space-y-6">
                   <div>
-                    <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-1">
+                    <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-1">
                       Экран {activeScreenIndex + 1} из 9 • {currentScreen.category}
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-black font-montserrat text-white uppercase tracking-tight">
@@ -596,13 +596,13 @@ export function ElectronicsShopCase() {
                   </div>
 
                   <div className="bg-black/40 border border-white/10 p-6 rounded-2xl space-y-3">
-                    <div className="text-xs font-montserrat font-bold uppercase tracking-wider text-[#14F1D9]">
+                    <div className="text-xs font-montserrat font-bold uppercase tracking-wider text-primary">
                       Ключевые UX-решения экрана:
                     </div>
                     <ul className="space-y-2 text-xs font-sans text-white/80">
                       {currentScreen.uxHighlights.map((f, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-[#14F1D9] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                           <span>{f}</span>
                         </li>
                       ))}
@@ -623,7 +623,7 @@ export function ElectronicsShopCase() {
                     <button
                       onClick={() => setActiveScreenIndex(prev => Math.min(electronicsShopData.screens.mobileFlow.length - 1, prev + 1))}
                       disabled={activeScreenIndex === electronicsShopData.screens.mobileFlow.length - 1}
-                      className="px-4 py-2 rounded-xl bg-[#14F1D9] hover:bg-white text-black text-xs font-montserrat font-bold uppercase tracking-wider flex items-center gap-2 transition-colors"
+                      className="px-4 py-2 rounded-xl bg-primary hover:bg-white text-black text-xs font-montserrat font-bold uppercase tracking-wider flex items-center gap-2 transition-colors"
                     >
                       <span>Следующий экран</span>
                       <ChevronRight className="w-4 h-4" />
@@ -642,7 +642,7 @@ export function ElectronicsShopCase() {
                     title: `${s.title} (Экран ${idx + 1})`,
                     subtitle: s.description
                   })}
-                  className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-3 cursor-pointer group hover:border-[#14F1D9]/60 transition-all flex flex-col"
+                  className="bg-surface border border-white/10 rounded-2xl p-3 cursor-pointer group hover:border-primary/60 transition-all flex flex-col"
                 >
                   <div className="relative aspect-[9/16] w-full rounded-xl overflow-hidden bg-black/40 mb-2 flex items-center justify-center border border-white/5">
                     <Image
@@ -667,7 +667,7 @@ export function ElectronicsShopCase() {
         {/* 5. DESKTOP STORE 1440PX & DEVICE MOCKUPS */}
         <section id="desktop" className="scroll-mt-24 space-y-10">
           <div className="border-b border-white/10 pb-4">
-            <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+            <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
               05 / ДЕСКТОПНАЯ ВЕРСИЯ
             </div>
             <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -679,7 +679,7 @@ export function ElectronicsShopCase() {
           </div>
 
           {/* Desktop 1440px Showcase Window */}
-          <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
+          <div className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <h3 className="text-xl font-bold font-montserrat uppercase text-white tracking-tight">
@@ -695,7 +695,7 @@ export function ElectronicsShopCase() {
                   title: electronicsShopData.screens.desktop.title,
                   subtitle: electronicsShopData.screens.desktop.description
                 })}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#14F1D9] text-black text-xs font-montserrat font-bold uppercase tracking-wider transition-all hover:bg-white"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-black text-xs font-montserrat font-bold uppercase tracking-wider transition-all hover:bg-white"
               >
                 <Maximize2 className="w-4 h-4" />
                 <span>Развернуть десктоп</span>
@@ -708,7 +708,7 @@ export function ElectronicsShopCase() {
                 title: electronicsShopData.screens.desktop.title,
                 subtitle: electronicsShopData.screens.desktop.description
               })}
-              className="relative aspect-[16/10] w-full bg-black/60 rounded-xl overflow-hidden cursor-pointer group border border-white/10 hover:border-[#14F1D9]/50 transition-all"
+              className="relative aspect-[16/10] w-full bg-black/60 rounded-xl overflow-hidden cursor-pointer group border border-white/10 hover:border-primary/50 transition-all"
             >
               <Image
                 src={electronicsShopData.screens.desktop.src}
@@ -717,7 +717,7 @@ export function ElectronicsShopCase() {
                 className="object-contain group-hover:scale-101 transition-transform duration-500"
               />
               <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-md text-[11px] text-white/70 border border-white/10 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Eye className="w-3.5 h-3.5 text-[#14F1D9]" />
+                <Eye className="w-3.5 h-3.5 text-primary" />
                 <span>Нажмите для зума</span>
               </div>
             </div>
@@ -733,7 +733,7 @@ export function ElectronicsShopCase() {
                   title: m.title,
                   subtitle: m.description
                 })}
-                className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 cursor-pointer group hover:border-[#14F1D9]/50 transition-all space-y-4"
+                className="bg-surface border border-white/10 rounded-2xl p-6 cursor-pointer group hover:border-primary/50 transition-all space-y-4"
               >
                 <div className="relative aspect-[16/10] w-full bg-black/40 rounded-xl overflow-hidden">
                   <Image
@@ -744,7 +744,7 @@ export function ElectronicsShopCase() {
                   />
                 </div>
                 <div>
-                  <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-1">
+                  <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-1">
                     {m.type}
                   </div>
                   <div className="text-base font-bold font-montserrat text-white uppercase tracking-tight">
@@ -762,7 +762,7 @@ export function ElectronicsShopCase() {
         {/* 6. DESIGN SYSTEM & TOKENS */}
         <section id="system" className="scroll-mt-24 space-y-10">
           <div className="border-b border-white/10 pb-4">
-            <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+            <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
               06 / ДИЗАЙН-СИСТЕМА
             </div>
             <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -773,7 +773,7 @@ export function ElectronicsShopCase() {
             </p>
           </div>
 
-          <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-8">
+          <div className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8 space-y-8">
             <h3 className="text-xl font-bold font-montserrat text-white uppercase tracking-tight">
               Шрифтовая иерархия проекта (Typography Tokens)
             </h3>
@@ -781,7 +781,7 @@ export function ElectronicsShopCase() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-black/30 p-6 rounded-2xl border border-white/5 space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-montserrat font-bold uppercase tracking-wider text-[#14F1D9]">
+                  <span className="text-xs font-montserrat font-bold uppercase tracking-wider text-primary">
                     Заголовки & Акценты
                   </span>
                   <span className="text-xs font-mono text-white/50">Montserrat</span>
@@ -800,7 +800,7 @@ export function ElectronicsShopCase() {
 
               <div className="bg-black/30 p-6 rounded-2xl border border-white/5 space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-montserrat font-bold uppercase tracking-wider text-[#14F1D9]">
+                  <span className="text-xs font-montserrat font-bold uppercase tracking-wider text-primary">
                     Интерфейс & Наборный текст
                   </span>
                   <span className="text-xs font-mono text-white/50">Inter</span>
@@ -822,8 +822,8 @@ export function ElectronicsShopCase() {
 
           {/* Design Tokens Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-[#1A1A1A] border border-white/10 p-6 rounded-2xl">
-              <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-2">
+            <div className="bg-surface border border-white/10 p-6 rounded-2xl">
+              <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-2">
                 Акцентный тил
               </div>
               <div className="text-2xl font-bold font-montserrat text-white mb-2">
@@ -834,8 +834,8 @@ export function ElectronicsShopCase() {
               </p>
             </div>
 
-            <div className="bg-[#1A1A1A] border border-white/10 p-6 rounded-2xl">
-              <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-2">
+            <div className="bg-surface border border-white/10 p-6 rounded-2xl">
+              <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-2">
                 8-точечный грид
               </div>
               <div className="text-2xl font-bold font-montserrat text-white mb-2">
@@ -846,8 +846,8 @@ export function ElectronicsShopCase() {
               </p>
             </div>
 
-            <div className="bg-[#1A1A1A] border border-white/10 p-6 rounded-2xl">
-              <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-2">
+            <div className="bg-surface border border-white/10 p-6 rounded-2xl">
+              <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-2">
                 Шкала юзабилити SUS
               </div>
               <div className="text-2xl font-bold font-montserrat text-white mb-2">

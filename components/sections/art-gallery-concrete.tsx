@@ -49,7 +49,7 @@ const frames = [
 
 export default function ArtGalleryConcrete() {
   return (
-    <section id="art-gallery" className="relative w-full bg-[#111111] overflow-hidden">
+    <section id="art-gallery" className="relative w-full bg-background overflow-hidden">
       {/* 
         Контейнер, который держит пропорции изображения.
       */}

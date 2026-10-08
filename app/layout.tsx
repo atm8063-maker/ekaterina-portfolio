@@ -29,9 +29,22 @@ export const metadata: Metadata = {
   title: 'Екатерина Разумова — Creative Generalist',
   description:
     'Специалист полного цикла. Texts & Design • PR & Media • Mixed Art • UX/UI + AI. От идеи до реализации.',
-  generator: 'v0.app',
   alternates: {
     canonical: SITE_URL,
+  },
+  manifest: '/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
+  appleWebApp: {
+    capable: true,
+    title: 'Разумова',
+    statusBarStyle: 'black-translucent',
   },
 }
 

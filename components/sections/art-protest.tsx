@@ -400,8 +400,8 @@ function ProportionalItem({
             playsInline
             className="w-full h-full object-fill block"
           />
-          <div className="absolute top-1.5 right-1.5 p-1 bg-black text-[#14F1D9] border-2 border-black z-10 shadow-sm pointer-events-none">
-            <Play className="w-3.5 h-3.5 fill-[#14F1D9]" />
+          <div className="absolute top-1.5 right-1.5 p-1 bg-black text-primary border-2 border-black z-10 shadow-sm pointer-events-none">
+            <Play className="w-3.5 h-3.5 fill-primary" />
           </div>
         </div>
       ) : (
@@ -450,7 +450,7 @@ function SteppedCollage({
         {/* Title & Metadata directly over concrete */}
         <div className="w-[640px] flex items-center justify-between gap-2 mb-2 z-20 px-1">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
+            <span className="text-xs font-montserrat font-black uppercase text-black bg-primary px-2 py-0.5 border-2 border-black tracking-wider">
               {artwork.number}
             </span>
             <span className="text-xs sm:text-sm font-montserrat font-black uppercase tracking-wider text-black">
@@ -684,7 +684,7 @@ function SteppedCollage({
             e.stopPropagation();
             handleConceptClick();
           }}
-          className="inline-flex items-center gap-2 px-3 py-1 bg-white/90 hover:bg-[#14F1D9] text-black border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md group/btn"
+          className="inline-flex items-center gap-2 px-3 py-1 bg-white/90 hover:bg-primary text-black border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md group/btn"
         >
           <span>КОНЦЕПЦИЯ</span>
           <ChevronRight className={`w-3.5 h-3.5 transition-transform stroke-[2.5] ${isInlineOpen ? 'rotate-90' : 'group-hover/btn:translate-x-0.5'}`} />
@@ -696,12 +696,12 @@ function SteppedCollage({
           <div 
             data-interactive="true"
             onPointerDown={(e) => e.stopPropagation()}
-            className="md:hidden mt-3 w-full max-w-[640px] z-30 bg-[#161616] text-white border-[3px] border-black p-4 shadow-xl"
+            className="md:hidden mt-3 w-full max-w-[640px] z-30 bg-surface text-white border-[3px] border-black p-4 shadow-xl"
           >
             <div className="flex items-center justify-between border-b border-white/15 pb-2 mb-3">
               <button
                 onClick={() => setIsInlineOpen(false)}
-                className="flex items-center gap-1.5 px-2.5 py-1 bg-[#14F1D9] text-black border border-black font-montserrat font-black text-[11px] uppercase tracking-wider cursor-pointer"
+                className="flex items-center gap-1.5 px-2.5 py-1 bg-primary text-black border border-black font-montserrat font-black text-[11px] uppercase tracking-wider cursor-pointer"
               >
                 <ArrowLeft className="w-3.5 h-3.5 stroke-[2.5]" />
                 <span>Назад к стене</span>
@@ -716,7 +716,7 @@ function SteppedCollage({
             <div className="space-y-2.5 text-left">
               {artwork.fullConcept ? (
                 artwork.fullConcept.map((item, idx) => (
-                  <div key={idx} className="border-l-2 border-[#14F1D9] pl-2.5 space-y-0.5">
+                  <div key={idx} className="border-l-2 border-primary pl-2.5 space-y-0.5">
                     <h4 className="text-[11px] font-montserrat font-black uppercase tracking-wide text-white">
                       {item.heading}
                     </h4>
@@ -862,14 +862,14 @@ export function ArtProtest() {
   };
 
   return (
-    <section id="art-protest" className="relative w-full bg-[#111111] overflow-hidden scroll-mt-20 border-b border-white/10 group/section">
+    <section id="art-protest" className="relative w-full bg-background overflow-hidden scroll-mt-20 border-b border-white/10 group/section">
       
       {/* Floating Scroll Controls over the Wall */}
       <button
         data-interactive="true"
         onPointerDown={(e) => e.stopPropagation()}
         onClick={() => scrollByAmount(-700)}
-        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
+        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-primary hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
         aria-label="Листать влево"
       >
         <ChevronLeft className="h-6 w-6" />
@@ -879,7 +879,7 @@ export function ArtProtest() {
         data-interactive="true"
         onPointerDown={(e) => e.stopPropagation()}
         onClick={() => scrollByAmount(700)}
-        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
+        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-primary hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
         aria-label="Листать вправо"
       >
         <ChevronRight className="h-6 w-6" />
@@ -956,7 +956,7 @@ export function ArtProtest() {
 
       {/* Mobile Swipe Hint */}
       <div className="sm:hidden absolute top-4 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/80 backdrop-blur-md border border-[#14F1D9]/40 text-[#14F1D9] text-[11px] font-mono font-bold uppercase tracking-wider shadow-lg">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/80 backdrop-blur-md border border-primary/40 text-primary text-[11px] font-mono font-bold uppercase tracking-wider shadow-lg">
           <span>←</span> Свайпайте стену <span>→</span>
         </div>
       </div>
@@ -973,20 +973,20 @@ export function ArtProtest() {
           {/* Drawer / Sheet */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative z-10 w-full md:w-[460px] md:max-w-[90vw] md:absolute md:top-0 md:right-0 md:bottom-0 md:h-screen max-h-[85vh] md:max-h-none bg-[#161616] text-white border-t-4 md:border-t-0 md:border-l-[4px] border-black p-5 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto"
+            className="relative z-10 w-full md:w-[460px] md:max-w-[90vw] md:absolute md:top-0 md:right-0 md:bottom-0 md:h-screen max-h-[85vh] md:max-h-none bg-surface text-white border-t-4 md:border-t-0 md:border-l-[4px] border-black p-5 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto"
           >
             {/* Top Close Button */}
             <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-4">
               <button
                 onClick={() => setConceptModalArtwork(null)}
-                className="flex items-center gap-2 px-3 py-1.5 bg-[#14F1D9] text-black hover:bg-white border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
+                className="flex items-center gap-2 px-3 py-1.5 bg-primary text-black hover:bg-white border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
               >
                 <ArrowLeft className="w-4 h-4 stroke-[3]" />
                 <span>Назад к стене</span>
               </button>
 
               <div className="flex items-center gap-2">
-                <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
+                <span className="text-xs font-montserrat font-black uppercase text-black bg-primary px-2 py-0.5 border-2 border-black tracking-wider">
                   {conceptModalArtwork.number}
                 </span>
                 <span className="text-xs font-montserrat font-bold text-white/60 uppercase tracking-widest hidden sm:inline-block">
@@ -994,7 +994,7 @@ export function ArtProtest() {
                 </span>
                 <button
                   onClick={() => setConceptModalArtwork(null)}
-                  className="flex h-8 w-8 items-center justify-center border-2 border-black bg-white text-black hover:bg-[#14F1D9] transition-colors shadow-sm cursor-pointer ml-1"
+                  className="flex h-8 w-8 items-center justify-center border-2 border-black bg-white text-black hover:bg-primary transition-colors shadow-sm cursor-pointer ml-1"
                   aria-label="Закрыть"
                 >
                   <X className="h-4 w-4" />
@@ -1016,7 +1016,7 @@ export function ArtProtest() {
             <div className="py-4 sm:py-6 space-y-4 my-auto">
               {conceptModalArtwork.fullConcept ? (
                 conceptModalArtwork.fullConcept.map((item, idx) => (
-                  <div key={idx} className="border-l-2 border-[#14F1D9] pl-3.5 space-y-1">
+                  <div key={idx} className="border-l-2 border-primary pl-3.5 space-y-1">
                     <h4 className="text-xs sm:text-sm font-montserrat font-black uppercase tracking-wide text-white">
                       {item.heading}
                     </h4>
@@ -1035,7 +1035,7 @@ export function ArtProtest() {
             {/* Footer / Materials */}
             <div className="border-t border-white/15 pt-4 flex flex-col gap-1 text-xs font-montserrat">
               <span className="text-white/50 uppercase font-bold text-[10px]">МАТЕРИАЛЫ И ТЕХНИКА</span>
-              <span className="font-sans font-semibold text-[#14F1D9]">
+              <span className="font-sans font-semibold text-primary">
                 {conceptModalArtwork.materials}
               </span>
             </div>
@@ -1053,13 +1053,13 @@ export function ArtProtest() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-h-[95vh] max-w-5xl w-full border-2 border-white/20 bg-[#1A1A1A] p-3 sm:p-6 shadow-2xl rounded-none flex flex-col"
+            className="relative max-h-[95vh] max-w-5xl w-full border-2 border-white/20 bg-surface p-3 sm:p-6 shadow-2xl rounded-none flex flex-col"
           >
             {/* Top Navigation Bar with Back to Wall Button */}
             <div className="flex items-center justify-between pb-3 mb-2 border-b border-white/10">
               <button
                 onClick={() => setLightboxState(null)}
-                className="flex items-center gap-2 px-3 py-1.5 bg-[#14F1D9] text-black hover:bg-white border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
+                className="flex items-center gap-2 px-3 py-1.5 bg-primary text-black hover:bg-white border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
               >
                 <ArrowLeft className="w-4 h-4 stroke-[3]" />
                 <span>Назад к стене</span>
@@ -1067,7 +1067,7 @@ export function ArtProtest() {
 
               <button
                 onClick={() => setLightboxState(null)}
-                className="flex h-8 w-8 items-center justify-center border-2 border-white/20 bg-black text-white hover:bg-[#14F1D9] hover:text-black transition-colors cursor-pointer"
+                className="flex h-8 w-8 items-center justify-center border-2 border-white/20 bg-black text-white hover:bg-primary hover:text-black transition-colors cursor-pointer"
                 aria-label="Закрыть"
               >
                 <X className="h-4 w-4" />
@@ -1100,7 +1100,7 @@ export function ArtProtest() {
             <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-white/10 pt-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-montserrat font-black uppercase tracking-widest text-[#14F1D9]">
+                  <span className="text-xs font-montserrat font-black uppercase tracking-widest text-primary">
                     {lightboxState.artwork.number} · {lightboxState.artwork.title}
                   </span>
                   {lightboxState.artwork.fullConcept && (
@@ -1110,7 +1110,7 @@ export function ArtProtest() {
                         setLightboxState(null);
                         setConceptModalArtwork(art);
                       }}
-                      className="text-[10px] font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border border-black hover:bg-white transition-colors cursor-pointer"
+                      className="text-[10px] font-montserrat font-black uppercase text-black bg-primary px-2 py-0.5 border border-black hover:bg-white transition-colors cursor-pointer"
                     >
                       ЧИТАТЬ КОНЦЕПЦИЮ
                     </button>

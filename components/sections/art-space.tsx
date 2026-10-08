@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function ArtSpace() {
   return (
-    <section id="art-space" className="relative w-full overflow-hidden bg-white border-b border-[#111111]/10 pt-10 scroll-mt-20">
+    <section id="art-space" className="relative w-full overflow-hidden bg-white border-b border-background/10 pt-10 scroll-mt-20">
       <div className="relative w-full max-w-[1920px] mx-auto min-h-[580px] lg:min-h-[600px] flex items-center">
         
         <div className="absolute inset-0 w-full h-full pointer-events-none">
@@ -27,7 +27,7 @@ export function ArtSpace() {
 
         <div className="relative z-10 w-full px-5 sm:px-12 lg:px-[8%] xl:px-[12%] pt-4 pb-16 sm:py-16 lg:py-0 mt-0 sm:mt-0">
           <div className="max-w-[200px] xs:max-w-[215px] sm:max-w-sm md:max-w-md lg:max-w-lg">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-[#111111] font-montserrat mb-8 sm:mb-6 leading-[1.05] tracking-tight relative sm:top-0 whitespace-nowrap">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-background font-montserrat mb-8 sm:mb-6 leading-[1.05] tracking-tight relative sm:top-0 whitespace-nowrap">
               ГАЛЕРЕЯ <span className="text-[#0D9488]">РАБОТ</span>
             </h2>
             

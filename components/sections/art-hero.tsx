@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function ArtHero() {
   return (
-    <section id="hero" className="relative h-[100svh] w-full bg-[#111] overflow-hidden flex items-center justify-center font-sans scroll-mt-20">
+    <section id="hero" className="relative h-[100svh] w-full bg-background overflow-hidden flex items-center justify-center font-sans scroll-mt-20">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video 
           src="/hero-video.mp4" 
@@ -13,8 +13,8 @@ export function ArtHero() {
           playsInline 
           className="absolute inset-0 w-full h-full object-cover opacity-80 scale-[1.15]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-transparent to-black/80"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#111]/80 via-transparent to-black/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-black/80"></div>
         <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]"></div>
       </div>
 
@@ -62,7 +62,7 @@ export function ArtHero() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#111111] to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none"></div>
     </section>
   );
 }

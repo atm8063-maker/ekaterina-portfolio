@@ -83,7 +83,7 @@ export function ArtAwards() {
   const [selectedImage, setSelectedImage] = useState<AwardPiece | null>(null);
 
   return (
-    <section id="awards" className="relative bg-[#111111] py-24 scroll-mt-20 overflow-hidden">
+    <section id="awards" className="relative bg-background py-24 scroll-mt-20 overflow-hidden">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -95,8 +95,8 @@ export function ArtAwards() {
       </div>
 
       {/* Top & bottom gradient blend fades */}
-      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-background via-background/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-background via-background/60 to-transparent z-[15] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-20">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -104,7 +104,7 @@ export function ArtAwards() {
           {/* Левая колонка: Текст и статистика */}
           <div className="lg:col-span-5 space-y-6">
             <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight">
-              Победы, финалы <span className="text-[#14F1D9]">&</span> Судейство
+              Победы, финалы <span className="text-primary">&</span> Судейство
             </h2>
 
             <div className="space-y-4 text-white/70 text-base sm:text-lg leading-relaxed font-inter">
@@ -112,28 +112,28 @@ export function ArtAwards() {
                 Неоднократно побеждала в российских и международных конкурсах по смоле.
               </p>
               <p>
-                <strong className="text-white font-semibold">Более 10 раз</strong> изделия выходили в финал всероссийской «Арт-гонки». Впоследствии была приглашена в качестве <strong className="text-[#14F1D9] font-semibold">члена Жюри «Арт-гонки»</strong> — главного профессионального баттла мастеров-смолянистов.
+                <strong className="text-white font-semibold">Более 10 раз</strong> изделия выходили в финал всероссийской «Арт-гонки». Впоследствии была приглашена в качестве <strong className="text-primary font-semibold">члена Жюри «Арт-гонки»</strong> — главного профессионального баттла мастеров-смолянистов.
               </p>
             </div>
 
             {/* Метрики */}
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3 pt-2">
-              <div className="border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-[#14F1D9] leading-tight">1 МЕСТО</div>
+              <div className="border border-white/10 bg-surface p-3 sm:p-4 rounded-none transition-colors hover:border-primary/40">
+                <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-primary leading-tight">1 МЕСТО</div>
                 <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Международный конкурс Resinart Kingdom</div>
               </div>
 
-              <div className="border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-[#14F1D9] leading-tight tracking-tight">ПОБЕДИТЕЛЬ</div>
+              <div className="border border-white/10 bg-surface p-3 sm:p-4 rounded-none transition-colors hover:border-primary/40">
+                <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-primary leading-tight tracking-tight">ПОБЕДИТЕЛЬ</div>
                 <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Всероссийская «Арт-гонка»</div>
               </div>
 
-              <div className="border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
+              <div className="border border-white/10 bg-surface p-3 sm:p-4 rounded-none transition-colors hover:border-primary/40">
                 <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-white leading-tight">ЖЮРИ</div>
                 <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Судейство профессиональных конкурсов</div>
               </div>
 
-              <div className="border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
+              <div className="border border-white/10 bg-surface p-3 sm:p-4 rounded-none transition-colors hover:border-primary/40">
                 <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-white leading-tight">10+ ФИНАЛОВ</div>
                 <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Регулярные выходы в финал арт-битв</div>
               </div>
@@ -147,7 +147,7 @@ export function ArtAwards() {
                 <article
                   key={item.id}
                   onClick={() => setSelectedImage(item)}
-                  className="group relative h-[380px] sm:h-full overflow-hidden rounded-none border border-white/15 bg-[#1A1A1A] cursor-pointer"
+                  className="group relative h-[380px] sm:h-full overflow-hidden rounded-none border border-white/15 bg-surface cursor-pointer"
                 >
                   <Image
                     src={item.image}
@@ -160,7 +160,7 @@ export function ArtAwards() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-transparent transition-opacity duration-300 group-hover:from-black/90" />
                   
                   <div className="absolute top-4 left-4">
-                    <span className="inline-block rounded-none bg-[#14F1D9] px-3 py-1 text-[11px] font-black uppercase tracking-wider text-black shadow-lg">
+                    <span className="inline-block rounded-none bg-primary px-3 py-1 text-[11px] font-black uppercase tracking-wider text-black shadow-lg">
                       {item.badge}
                     </span>
                   </div>
@@ -183,7 +183,7 @@ export function ArtAwards() {
         {/* Нижний ряд: Остальные работы */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex items-center justify-between mb-6">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#14F1D9]">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-primary">
               Другие финальные работы
             </h4>
             <span className="text-xs text-white/40 font-inter">Нажмите для увеличения</span>
@@ -194,7 +194,7 @@ export function ArtAwards() {
               <div
                 key={piece.id}
                 onClick={() => setSelectedImage(piece)}
-                className="group relative aspect-square overflow-hidden rounded-none border border-white/10 bg-[#1A1A1A] cursor-pointer hover:border-[#14F1D9]/60 hover:shadow-lg transition-all"
+                className="group relative aspect-square overflow-hidden rounded-none border border-white/10 bg-surface cursor-pointer hover:border-primary/60 hover:shadow-lg transition-all"
               >
                 <Image
                   src={piece.image}
@@ -226,7 +226,7 @@ export function ArtAwards() {
             </div>
             {selectedImage.badge && (
               <div className="mt-4 text-center">
-                <span className="inline-block rounded-none bg-[#14F1D9] px-3 py-1 text-xs font-black uppercase text-black mb-1">
+                <span className="inline-block rounded-none bg-primary px-3 py-1 text-xs font-black uppercase text-black mb-1">
                   {selectedImage.badge}
                 </span>
                 {selectedImage.title && (

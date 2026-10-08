@@ -17,6 +17,7 @@ node_modules
 *.tsbuildinfo
 scratch/
 scripts/
+!scripts/generate-favicons.mjs
 temp.txt
 step*.txt
 step*.json

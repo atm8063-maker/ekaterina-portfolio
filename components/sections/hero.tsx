@@ -42,15 +42,18 @@ export default function Hero() {
   useEffect(() => {
     if (!isHovering) return;
 
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let cancelled = false;
     const delays = [400, 1200, 2400, 1800, 3200, 2200, 3000];
     let stepIndex = 0;
 
     const scheduleNext = () => {
+      if (cancelled) return;
       const currentDelay = delays[stepIndex % delays.length];
-      
+
       timeoutId = setTimeout(() => {
-        setSplatters(prev => {
+        if (cancelled) return;
+        setSplatters((prev) => {
           const newSplat: SplatterData = {
             id: Date.now(),
             x: mousePosRef.current.x,
@@ -61,12 +64,11 @@ export default function Hero() {
             flipY: Math.random() > 0.5 ? -1 : 1,
             isInitial: false,
           };
-          // Keep initial splatters + up to 12 interactive splatters
-          const initials = prev.filter(s => s.isInitial);
-          const dynamic = prev.filter(s => !s.isInitial).slice(-12);
+          const initials = prev.filter((s) => s.isInitial);
+          const dynamic = prev.filter((s) => !s.isInitial).slice(-12);
           return [...initials, ...dynamic, newSplat];
         });
-        
+
         stepIndex++;
         scheduleNext();
       }, currentDelay);
@@ -74,14 +76,17 @@ export default function Hero() {
 
     scheduleNext();
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      cancelled = true;
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
   }, [isHovering]);
 
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background">
       
       {/* MOBILE VERSION */}
-      <div className="md:hidden relative w-full overflow-hidden bg-[#111111]" style={{ height: '100dvh', minHeight: '100svh' }}>
+      <div className="md:hidden relative w-full overflow-hidden bg-background" style={{ height: '100dvh', minHeight: '100svh' }}>
         {/* Dark Paper Background for Mobile */}
         <div className="absolute inset-0 z-0">
           <Image 
@@ -94,7 +99,7 @@ export default function Hero() {
         </div>
 
         {/* Seamless ultra-smooth blend gradient at the top (covers paper, but NOT photo) */}
-        <div className="absolute top-0 left-0 right-0 w-full h-[85vh] bg-gradient-to-b from-[#111111] from-[10%] via-[#111111]/40 via-[60%] to-transparent z-[5] pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 w-full h-[85vh] bg-gradient-to-b from-background from-[10%] via-background/40 via-[60%] to-transparent z-[5] pointer-events-none" />
 
         {/* Mobile Splatter Backdrop Layer */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -146,14 +151,14 @@ export default function Hero() {
         </div>
         
         {/* Gradient overlay for readability at the bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/40 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10 pointer-events-none" />
         
         {/* Text on the shoulder area (bottom zone) */}
         <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-6 right-4 sm:right-6 z-20">
           <h1 className="text-4xl font-bold uppercase tracking-tight mb-2 leading-none text-white font-montserrat drop-shadow-lg">
             Екатерина<br/>Разумова
           </h1>
-          <p className="text-[#14F1D9] font-bold text-sm mb-4 tracking-widest uppercase font-montserrat drop-shadow-md">
+          <p className="text-primary font-bold text-sm mb-4 tracking-widest uppercase font-montserrat drop-shadow-md">
             Creative Generalist
           </p>
           <p className="text-xs text-white/90 leading-relaxed font-medium font-inter drop-shadow-md">
@@ -168,7 +173,7 @@ export default function Hero() {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        className="hidden md:flex relative w-full overflow-hidden bg-[#111111]" style={{ height: '100dvh', minHeight: '100svh' }}
+        className="hidden md:flex relative w-full overflow-hidden bg-background" style={{ height: '100dvh', minHeight: '100svh' }}
       >
         
         {/* Dark Paper Background */}
@@ -183,7 +188,7 @@ export default function Hero() {
         </div>
 
         {/* Seamless ultra-smooth blend gradient at the top (covers paper, but NOT photo) */}
-        <div className="absolute top-0 left-0 right-0 w-full h-[85vh] bg-gradient-to-b from-[#111111] from-[10%] via-[#111111]/40 via-[60%] to-transparent z-[5] pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 w-full h-[85vh] bg-gradient-to-b from-background from-[10%] via-background/40 via-[60%] to-transparent z-[5] pointer-events-none" />
 
         {/* Splatter Animations Layer (on top of paper, behind photo) */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -240,7 +245,7 @@ export default function Hero() {
             <h1 className="text-[4.5rem] lg:text-[6.5rem] xl:text-[8rem] font-black uppercase tracking-tighter mb-4 leading-[0.98] text-white font-montserrat drop-shadow-2xl mix-blend-difference">
               ЕКАТЕРИНА<br/>РАЗУМОВА
             </h1>
-            <p className="text-[#14F1D9] font-bold text-xl lg:text-2xl xl:text-3xl mb-6 tracking-widest uppercase font-montserrat drop-shadow-md">
+            <p className="text-primary font-bold text-xl lg:text-2xl xl:text-3xl mb-6 tracking-widest uppercase font-montserrat drop-shadow-md">
               Creative Generalist
             </p>
             <p className="text-sm lg:text-base xl:text-lg text-white/90 leading-relaxed font-medium font-inter drop-shadow-md">
@@ -250,7 +255,7 @@ export default function Hero() {
         </div>
         
         {/* Bottom gradient fade for smooth transition to next section */}
-        <div className="absolute bottom-0 left-0 w-full h-32 lg:h-[200px] bg-gradient-to-t from-[#111111] to-transparent z-[15] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-full h-32 lg:h-[200px] bg-gradient-to-t from-background to-transparent z-[15] pointer-events-none" />
       </div>
     </section>
   );

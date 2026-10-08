@@ -171,7 +171,7 @@ export function HouseCase() {
   };
 
   return (
-    <div className="min-h-screen bg-[#111111] text-white selection:bg-[#14F1D9] selection:text-[#111111] relative">
+    <div className="min-h-screen bg-background text-white selection:bg-primary selection:text-[#111111] relative">
       {/* Clean Dark Paper Background */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Image 
@@ -186,8 +186,8 @@ export function HouseCase() {
         <Header />
 
       {/* 1. HERO SECTION */}
-      <section className="relative pt-28 pb-12 md:pt-36 md:pb-20 border-b border-white/10 overflow-hidden bg-gradient-to-b from-[#161616] to-[#111111]">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#14F1D9]/5 blur-[120px] pointer-events-none rounded-full" />
+      <section className="relative pt-28 pb-12 md:pt-36 md:pb-20 border-b border-white/10 overflow-hidden bg-gradient-to-b from-[#161616] to-background">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-primary/5 blur-[120px] pointer-events-none rounded-full" />
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40" />
 
         <div className="container mx-auto px-4 md:px-8 relative z-10">
@@ -195,7 +195,7 @@ export function HouseCase() {
           <CaseNavigation currentSlug="10-house-project" position="top" className="mb-8" />
 
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs font-semibold uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/30 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
               <Building2 className="w-3.5 h-3.5" />
               Архитектура &amp; Дизайн интерьера
             </div>
@@ -210,9 +210,9 @@ export function HouseCase() {
           {/* Key Metrics Strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-8">
             {houseProjectData.metrics.map((m, idx) => (
-              <div key={idx} className="bg-[#1A1A1A] border border-white/10 p-5 md:p-6 relative group hover:border-[#14F1D9]/50 transition-colors">
-                <div className="absolute top-0 left-0 w-1 h-full bg-[#14F1D9] opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-[#14F1D9] font-montserrat mb-1">
+              <div key={idx} className="bg-surface border border-white/10 p-5 md:p-6 relative group hover:border-primary/50 transition-colors">
+                <div className="absolute top-0 left-0 w-1 h-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-primary font-montserrat mb-1">
                   {m.value}
                 </div>
                 <div className="text-sm text-white/80 font-medium font-sans">
@@ -225,55 +225,55 @@ export function HouseCase() {
       </section>
 
       {/* 2. STICKY NAVIGATION (Direct anchors) */}
-      <nav className="sticky top-20 z-40 bg-[#111111]/95 backdrop-blur-md border-b border-white/10 py-3">
+      <nav className="sticky top-20 z-40 bg-background/95 backdrop-blur-md border-b border-white/10 py-3">
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-start md:justify-center gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <a
             href="#sketches"
-            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-[#14F1D9]/40 shadow-[0_0_15px_rgba(20,241,217,0.15)]"
+            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-surface text-primary hover:bg-white/10 transition-colors font-montserrat rounded-none border border-primary/40 shadow-[0_0_15px_rgba(20,241,217,0.15)]"
           >
-            <Building2 className="w-4 h-4 text-[#14F1D9]" />
+            <Building2 className="w-4 h-4 text-primary" />
             Скетчи 1 &amp; 2 этаж
           </a>
           <a
             href="#concept"
-            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
+            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-surface text-white/80 hover:text-primary hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
           >
-            <Palette className="w-4 h-4 text-[#14F1D9]" />
+            <Palette className="w-4 h-4 text-primary" />
             Стили &amp; Цвета
           </a>
           <a
             href="#planoplan"
-            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
+            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-surface text-white/80 hover:text-primary hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
           >
-            <Layers className="w-4 h-4 text-[#14F1D9]" />
+            <Layers className="w-4 h-4 text-primary" />
             3D Planoplan
           </a>
           <a
             href="#furniture"
-            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
+            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-surface text-white/80 hover:text-primary hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
           >
-            <Armchair className="w-4 h-4 text-[#14F1D9]" />
+            <Armchair className="w-4 h-4 text-primary" />
             Мебель &amp; Комплектация
           </a>
           <a
             href="#lighting"
-            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
+            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-surface text-white/80 hover:text-primary hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
           >
-            <Zap className="w-4 h-4 text-[#14F1D9]" />
+            <Zap className="w-4 h-4 text-primary" />
             Электрика &amp; Свет
           </a>
           <a
             href="#blueprints"
-            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
+            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-surface text-white/80 hover:text-primary hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
           >
-            <FileText className="w-4 h-4 text-[#14F1D9]" />
+            <FileText className="w-4 h-4 text-primary" />
             Чертежи
           </a>
           <a
             href="#gallery"
-            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-[#1A1A1A] text-white/80 hover:text-[#14F1D9] hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
+            className="flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap bg-surface text-white/80 hover:text-primary hover:bg-white/10 transition-colors font-montserrat rounded-none border border-white/10"
           >
-            <Camera className="w-4 h-4 text-[#14F1D9]" />
+            <Camera className="w-4 h-4 text-primary" />
             Стройка &amp; Готовый дом
           </a>
         </div>
@@ -285,11 +285,11 @@ export function HouseCase() {
         {/* SECTION 1: AXONOMETRIC SKETCHES (Floors 1 & 2 side-by-side on desktop, stacked on mobile) */}
         <section id="sketches" className="scroll-mt-28 space-y-8">
           <div className="bg-[#181818] border border-white/15 p-6 md:p-8 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#14F1D9]/5 blur-[100px] pointer-events-none rounded-full" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 blur-[100px] pointer-events-none rounded-full" />
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 border-b border-white/10 pb-4 relative z-10">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs font-bold uppercase tracking-widest mb-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest mb-2">
                   <Sparkles className="w-3.5 h-3.5" />
                   3D-Скетчинг &amp; Планировка
                 </div>
@@ -312,7 +312,7 @@ export function HouseCase() {
               <div className="bg-[#141414] border border-white/15 p-4 sm:p-6 shadow-xl flex flex-col">
                 <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10">
                   <div>
-                    <span className="text-xs font-bold uppercase text-[#14F1D9] font-montserrat tracking-widest block mb-1">
+                    <span className="text-xs font-bold uppercase text-primary font-montserrat tracking-widest block mb-1">
                       Общественное ядро дома
                     </span>
                     <h3 className="text-lg sm:text-xl font-black uppercase text-white font-montserrat">
@@ -324,7 +324,7 @@ export function HouseCase() {
                       src: FLOOR_SKETCHES[1].imageSrc,
                       title: "1 Этаж: Гостиная с камином, кухня с бирюзовым кабанчиком, прихожая и бойлерная"
                     })}
-                    className="text-xs text-white/60 hover:text-[#14F1D9] font-sans flex items-center gap-1.5 transition-colors"
+                    className="text-xs text-white/60 hover:text-primary font-sans flex items-center gap-1.5 transition-colors"
                   >
                     <Maximize2 className="w-4 h-4" /> Увеличить
                   </button>
@@ -347,7 +347,7 @@ export function HouseCase() {
                       className="absolute -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none select-none"
                     >
                       <div
-                        className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full font-montserrat font-black text-xs sm:text-sm bg-[#111111]/90 text-white border-2 border-[#14F1D9] shadow-lg backdrop-blur-sm"
+                        className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full font-montserrat font-black text-xs sm:text-sm bg-background/90 text-white border-2 border-primary shadow-lg backdrop-blur-sm"
                         title={c.title}
                       >
                         {c.id}
@@ -359,7 +359,7 @@ export function HouseCase() {
                 {/* Floor 1 Zones & Elements List */}
                 <div className="space-y-2.5">
                   <div className="text-xs font-bold uppercase tracking-wider text-white/80 font-montserrat mb-2 flex items-center gap-1.5">
-                    <Flame className="w-4 h-4 text-[#14F1D9]" />
+                    <Flame className="w-4 h-4 text-primary" />
                     Зоны и элементы 1-го этажа ({FLOOR_SKETCHES[1].callouts.length})
                   </div>
                   {FLOOR_SKETCHES[1].callouts.map((c) => (
@@ -376,7 +376,7 @@ export function HouseCase() {
                             <h4 className="text-sm sm:text-base font-bold uppercase font-montserrat text-white truncate">
                               {c.title}
                             </h4>
-                            <span className="text-xs font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat shrink-0">
+                            <span className="text-xs font-bold uppercase tracking-wider text-primary font-montserrat shrink-0">
                               {c.tag}
                             </span>
                           </div>
@@ -388,7 +388,7 @@ export function HouseCase() {
                     </div>
                   ))}
                   <div className="p-3 bg-white/5 border border-dashed border-white/15 text-xs text-white/70 font-sans flex items-center gap-2">
-                    <span className="text-[#14F1D9] font-bold font-montserrat uppercase">Терраса (12.8 м²):</span>
+                    <span className="text-primary font-bold font-montserrat uppercase">Терраса (12.8 м²):</span>
                     примыкает к кухне-гостиной с выходом в сад.
                   </div>
                 </div>
@@ -398,7 +398,7 @@ export function HouseCase() {
               <div className="bg-[#141414] border border-white/15 p-4 sm:p-6 shadow-xl flex flex-col">
                 <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10">
                   <div>
-                    <span className="text-xs font-bold uppercase text-[#14F1D9] font-montserrat tracking-widest block mb-1">
+                    <span className="text-xs font-bold uppercase text-primary font-montserrat tracking-widest block mb-1">
                       Приватная зона &amp; Творчество
                     </span>
                     <h3 className="text-lg sm:text-xl font-black uppercase text-white font-montserrat">
@@ -410,7 +410,7 @@ export function HouseCase() {
                       src: FLOOR_SKETCHES[2].imageSrc,
                       title: "2 Этаж: Мастер-спальня с деревом, мастерская со столом-подоконником и гитарами, детская с домиком"
                     })}
-                    className="text-xs text-white/60 hover:text-[#14F1D9] font-sans flex items-center gap-1.5 transition-colors"
+                    className="text-xs text-white/60 hover:text-primary font-sans flex items-center gap-1.5 transition-colors"
                   >
                     <Maximize2 className="w-4 h-4" /> Увеличить
                   </button>
@@ -433,7 +433,7 @@ export function HouseCase() {
                       className="absolute -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none select-none"
                     >
                       <div
-                        className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full font-montserrat font-black text-xs sm:text-sm bg-[#111111]/90 text-white border-2 border-[#14F1D9] shadow-lg backdrop-blur-sm"
+                        className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full font-montserrat font-black text-xs sm:text-sm bg-background/90 text-white border-2 border-primary shadow-lg backdrop-blur-sm"
                         title={c.title}
                       >
                         {c.id}
@@ -445,7 +445,7 @@ export function HouseCase() {
                 {/* Floor 2 Zones List */}
                 <div className="space-y-2.5">
                   <div className="text-xs font-bold uppercase tracking-wider text-white/80 font-montserrat mb-2 flex items-center gap-1.5">
-                    <Flame className="w-4 h-4 text-[#14F1D9]" />
+                    <Flame className="w-4 h-4 text-primary" />
                     Зоны 2-го этажа ({FLOOR_SKETCHES[2].callouts.length})
                   </div>
                   {FLOOR_SKETCHES[2].callouts.map((c) => (
@@ -462,7 +462,7 @@ export function HouseCase() {
                             <h4 className="text-sm sm:text-base font-bold uppercase font-montserrat text-white truncate">
                               {c.title}
                             </h4>
-                            <span className="text-xs font-bold uppercase tracking-wider text-[#14F1D9] font-montserrat shrink-0">
+                            <span className="text-xs font-bold uppercase tracking-wider text-primary font-montserrat shrink-0">
                               {c.tag}
                             </span>
                           </div>
@@ -506,7 +506,7 @@ export function HouseCase() {
                   src: "/Кейсы/10-house-project/collage_styles.jpg",
                   title: "Стили и интерьерные ориентиры: сканди-минимализм, натуральный дуб, открытое пространство"
                 })}
-                className="bg-[#141414] border border-white/20 hover:border-[#14F1D9] p-4 sm:p-5 cursor-pointer group transition-all shadow-xl flex flex-col justify-between"
+                className="bg-[#141414] border border-white/20 hover:border-primary p-4 sm:p-5 cursor-pointer group transition-all shadow-xl flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between px-1 py-1 mb-3 border-b border-white/10">
                   <div>
@@ -515,7 +515,7 @@ export function HouseCase() {
                     </h3>
                     <span className="text-xs sm:text-sm text-white/60 font-sans">Скандинавский минимализм, дерево и уют</span>
                   </div>
-                  <span className="text-xs text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9] shrink-0">
+                  <span className="text-xs text-white/50 font-sans flex items-center gap-1 group-hover:text-primary shrink-0">
                     <Maximize2 className="w-4 h-4" /> Увеличить
                   </span>
                 </div>
@@ -535,16 +535,16 @@ export function HouseCase() {
                   src: "/Кейсы/10-house-project/collage_colors.jpg",
                   title: "Цветовые предпочтения: бирюза, морская волна, теплый дуб, серый бетон и белый"
                 })}
-                className="bg-[#141414] border border-[#14F1D9]/30 hover:border-[#14F1D9] p-4 sm:p-5 cursor-pointer group transition-all shadow-xl flex flex-col justify-between"
+                className="bg-[#141414] border border-primary/30 hover:border-primary p-4 sm:p-5 cursor-pointer group transition-all shadow-xl flex flex-col justify-between"
               >
                 <div className="flex items-center justify-between px-1 py-1 mb-3 border-b border-white/10">
                   <div>
-                    <h3 className="text-base sm:text-lg font-bold text-[#14F1D9] font-montserrat uppercase tracking-wider block">
+                    <h3 className="text-base sm:text-lg font-bold text-primary font-montserrat uppercase tracking-wider block">
                       Цветовая палитра и референсы
                     </h3>
                     <span className="text-xs sm:text-sm text-white/60 font-sans">Акцентная бирюза, дуб, серый и белый</span>
                   </div>
-                  <span className="text-xs text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9] shrink-0">
+                  <span className="text-xs text-white/50 font-sans flex items-center gap-1 group-hover:text-primary shrink-0">
                     <Maximize2 className="w-4 h-4" /> Увеличить
                   </span>
                 </div>
@@ -578,8 +578,8 @@ export function HouseCase() {
                   </strong>
                   {houseProjectData.evolutionStory.turningPoint}
                 </div>
-                <div className="p-5 bg-[#14F1D9]/5 border-l-2 border-[#14F1D9]">
-                  <strong className="text-[#14F1D9] font-montserrat font-bold text-sm uppercase block mb-1.5">
+                <div className="p-5 bg-primary/5 border-l-2 border-primary">
+                  <strong className="text-primary font-montserrat font-bold text-sm uppercase block mb-1.5">
                     Финальный сканди-минимализм
                   </strong>
                   {houseProjectData.evolutionStory.realizedResult}
@@ -604,7 +604,7 @@ export function HouseCase() {
                       )}
                     </div>
                     <div className="text-xs sm:text-sm font-bold text-white mb-0.5">{mat.name}</div>
-                    <div className="text-xs text-[#14F1D9] font-montserrat font-bold uppercase mb-1.5">{mat.role}</div>
+                    <div className="text-xs text-primary font-montserrat font-bold uppercase mb-1.5">{mat.role}</div>
                     <p className="text-xs text-white/70 font-sans leading-relaxed">{mat.description}</p>
                   </div>
                 ))}
@@ -667,7 +667,7 @@ export function HouseCase() {
                 <div
                   key={idx}
                   onClick={() => setSelectedImage({ src: render.src, title: render.title })}
-                  className="bg-[#141414] border border-white/10 hover:border-[#14F1D9] p-4 cursor-pointer group transition-all flex flex-col justify-between shadow-lg"
+                  className="bg-[#141414] border border-white/10 hover:border-primary p-4 cursor-pointer group transition-all flex flex-col justify-between shadow-lg"
                 >
                   <div className="relative aspect-[16/10] w-full bg-black/50 overflow-hidden mb-3 border border-white/5">
                     <Image
@@ -677,7 +677,7 @@ export function HouseCase() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <Maximize2 className="w-6 h-6 text-[#14F1D9]" />
+                      <Maximize2 className="w-6 h-6 text-primary" />
                     </div>
                   </div>
                   <div>
@@ -695,7 +695,7 @@ export function HouseCase() {
             {/* Dual Column Zones (Floor 1 & Floor 2 side-by-side) */}
             <div className="bg-[#141414] border border-white/10 p-6 sm:p-8">
               <h3 className="text-base sm:text-lg font-bold uppercase tracking-wider text-white font-montserrat mb-6 flex items-center gap-2">
-                <Layers className="w-5 h-5 text-[#14F1D9]" />
+                <Layers className="w-5 h-5 text-primary" />
                 Функциональные зоны дома: 1 и 2 этажи
               </h3>
 
@@ -704,7 +704,7 @@ export function HouseCase() {
                 {/* Floor 1 Zones */}
                 <div className="space-y-4">
                   <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                    <span className="text-sm font-black uppercase text-[#14F1D9] font-montserrat tracking-wider">
+                    <span className="text-sm font-black uppercase text-primary font-montserrat tracking-wider">
                       1 Этаж: Общественные зоны
                     </span>
                     <span className="text-xs text-white/50 font-sans">
@@ -718,14 +718,14 @@ export function HouseCase() {
                         onClick={() => setSelectedZone(selectedZone?.id === zone.id ? null : zone)}
                         className={`p-4 border transition-all cursor-pointer ${
                           selectedZone?.id === zone.id
-                            ? "bg-[#1A1A1A] border-[#14F1D9] shadow-lg"
+                            ? "bg-surface border-primary shadow-lg"
                             : "bg-black/30 border-white/10 hover:border-white/30 hover:bg-white/5"
                         }`}
                       >
                         <div className="flex items-center justify-between mb-1.5">
                           <h4 className="text-sm font-bold text-white font-montserrat truncate">{zone.name}</h4>
                           {zone.area && (
-                            <span className="text-xs font-montserrat font-bold text-[#14F1D9] shrink-0 ml-1.5">{zone.area}</span>
+                            <span className="text-xs font-montserrat font-bold text-primary shrink-0 ml-1.5">{zone.area}</span>
                           )}
                         </div>
                         <p className="text-xs sm:text-sm text-white/70 font-sans leading-relaxed mb-2">{zone.features}</p>
@@ -740,7 +740,7 @@ export function HouseCase() {
                 {/* Floor 2 Zones */}
                 <div className="space-y-4">
                   <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                    <span className="text-sm font-black uppercase text-[#14F1D9] font-montserrat tracking-wider">
+                    <span className="text-sm font-black uppercase text-primary font-montserrat tracking-wider">
                       2 Этаж: Приватные зоны
                     </span>
                     <span className="text-xs text-white/50 font-sans">
@@ -754,14 +754,14 @@ export function HouseCase() {
                         onClick={() => setSelectedZone(selectedZone?.id === zone.id ? null : zone)}
                         className={`p-4 border transition-all cursor-pointer ${
                           selectedZone?.id === zone.id
-                            ? "bg-[#1A1A1A] border-[#14F1D9] shadow-lg"
+                            ? "bg-surface border-primary shadow-lg"
                             : "bg-black/30 border-white/10 hover:border-white/30 hover:bg-white/5"
                         }`}
                       >
                         <div className="flex items-center justify-between mb-1.5">
                           <h4 className="text-sm font-bold text-white font-montserrat truncate">{zone.name}</h4>
                           {zone.area && (
-                            <span className="text-xs font-montserrat font-bold text-[#14F1D9] shrink-0 ml-1.5">{zone.area}</span>
+                            <span className="text-xs font-montserrat font-bold text-primary shrink-0 ml-1.5">{zone.area}</span>
                           )}
                         </div>
                         <p className="text-xs sm:text-sm text-white/70 font-sans leading-relaxed mb-2">{zone.features}</p>
@@ -801,7 +801,7 @@ export function HouseCase() {
                 <div
                   key={i}
                   onClick={() => item.image && setSelectedImage({ src: item.image, title: item.name })}
-                  className="bg-[#141414] border border-white/10 hover:border-[#14F1D9] p-4 flex flex-col justify-between cursor-pointer group transition-all shadow-lg"
+                  className="bg-[#141414] border border-white/10 hover:border-primary p-4 flex flex-col justify-between cursor-pointer group transition-all shadow-lg"
                 >
                   <div>
                     {item.image && (
@@ -813,11 +813,11 @@ export function HouseCase() {
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                          <Maximize2 className="w-6 h-6 text-[#14F1D9]" />
+                          <Maximize2 className="w-6 h-6 text-primary" />
                         </div>
                       </div>
                     )}
-                    <div className="flex items-center justify-between text-xs font-sans text-[#14F1D9] mb-2">
+                    <div className="flex items-center justify-between text-xs font-sans text-primary mb-2">
                       <span className="font-semibold uppercase tracking-wider">{item.category}</span>
                       <Armchair className="w-4 h-4 text-white/40" />
                     </div>
@@ -860,7 +860,7 @@ export function HouseCase() {
               {/* FLOOR 1 ENGINEERING */}
               <div className="bg-[#141414] border border-white/15 p-4 sm:p-6 flex flex-col space-y-6">
                 <div className="border-b border-white/10 pb-3">
-                  <span className="text-xs font-bold uppercase text-[#14F1D9] font-montserrat tracking-widest block mb-1">
+                  <span className="text-xs font-bold uppercase text-primary font-montserrat tracking-widest block mb-1">
                     Инженерные схемы 1-го этажа
                   </span>
                   <h3 className="text-lg sm:text-xl font-black uppercase text-white font-montserrat">
@@ -879,7 +879,7 @@ export function HouseCase() {
                         src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_6.jpg",
                         title: "1 Этаж: План групп освещения и выключателей"
                       })}
-                      className="text-xs text-white/60 hover:text-[#14F1D9] flex items-center gap-1 font-sans transition-colors"
+                      className="text-xs text-white/60 hover:text-primary flex items-center gap-1 font-sans transition-colors"
                     >
                       <Maximize2 className="w-3.5 h-3.5" /> Во весь экран
                     </button>
@@ -889,7 +889,7 @@ export function HouseCase() {
                       src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_6.jpg",
                       title: "1 Этаж: План групп освещения и выключателей"
                     })}
-                    className="relative aspect-[4/3] w-full bg-white border border-white/10 overflow-hidden cursor-pointer group hover:border-[#14F1D9] transition-all"
+                    className="relative aspect-[4/3] w-full bg-white border border-white/10 overflow-hidden cursor-pointer group hover:border-primary transition-all"
                   >
                     <Image
                       src="/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_6.jpg"
@@ -911,7 +911,7 @@ export function HouseCase() {
                         src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_7.jpg",
                         title: "1 Этаж: План розеток и высотных отметок"
                       })}
-                      className="text-xs text-white/60 hover:text-[#14F1D9] flex items-center gap-1 font-sans transition-colors"
+                      className="text-xs text-white/60 hover:text-primary flex items-center gap-1 font-sans transition-colors"
                     >
                       <Maximize2 className="w-3.5 h-3.5" /> Во весь экран
                     </button>
@@ -921,7 +921,7 @@ export function HouseCase() {
                       src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_7.jpg",
                       title: "1 Этаж: План розеток и высотных отметок"
                     })}
-                    className="relative aspect-[4/3] w-full bg-white border border-white/10 overflow-hidden cursor-pointer group hover:border-[#14F1D9] transition-all"
+                    className="relative aspect-[4/3] w-full bg-white border border-white/10 overflow-hidden cursor-pointer group hover:border-primary transition-all"
                   >
                     <Image
                       src="/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_7.jpg"
@@ -936,7 +936,7 @@ export function HouseCase() {
               {/* FLOOR 2 ENGINEERING */}
               <div className="bg-[#141414] border border-white/15 p-4 sm:p-6 flex flex-col space-y-6">
                 <div className="border-b border-white/10 pb-3">
-                  <span className="text-xs font-bold uppercase text-[#14F1D9] font-montserrat tracking-widest block mb-1">
+                  <span className="text-xs font-bold uppercase text-primary font-montserrat tracking-widest block mb-1">
                     Инженерные схемы 2-го этажа
                   </span>
                   <h3 className="text-lg sm:text-xl font-black uppercase text-white font-montserrat">
@@ -955,7 +955,7 @@ export function HouseCase() {
                         src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_14.jpg",
                         title: "2 Этаж: План групп освещения и выключателей"
                       })}
-                      className="text-xs text-white/60 hover:text-[#14F1D9] flex items-center gap-1 font-sans transition-colors"
+                      className="text-xs text-white/60 hover:text-primary flex items-center gap-1 font-sans transition-colors"
                     >
                       <Maximize2 className="w-3.5 h-3.5" /> Во весь экран
                     </button>
@@ -965,7 +965,7 @@ export function HouseCase() {
                       src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_14.jpg",
                       title: "2 Этаж: План групп освещения и выключателей"
                     })}
-                    className="relative aspect-[4/3] w-full bg-white border border-white/10 overflow-hidden cursor-pointer group hover:border-[#14F1D9] transition-all"
+                    className="relative aspect-[4/3] w-full bg-white border border-white/10 overflow-hidden cursor-pointer group hover:border-primary transition-all"
                   >
                     <Image
                       src="/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_14.jpg"
@@ -987,7 +987,7 @@ export function HouseCase() {
                         src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_1.jpg",
                         title: "2 Этаж: План розеток и высотных отметок"
                       })}
-                      className="text-xs text-white/60 hover:text-[#14F1D9] flex items-center gap-1 font-sans transition-colors"
+                      className="text-xs text-white/60 hover:text-primary flex items-center gap-1 font-sans transition-colors"
                     >
                       <Maximize2 className="w-3.5 h-3.5" /> Во весь экран
                     </button>
@@ -997,7 +997,7 @@ export function HouseCase() {
                       src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_1.jpg",
                       title: "2 Этаж: План розеток и высотных отметок"
                     })}
-                    className="relative aspect-[4/3] w-full bg-white border border-white/10 overflow-hidden cursor-pointer group hover:border-[#14F1D9] transition-all"
+                    className="relative aspect-[4/3] w-full bg-white border border-white/10 overflow-hidden cursor-pointer group hover:border-primary transition-all"
                   >
                     <Image
                       src="/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_1.jpg"
@@ -1017,11 +1017,11 @@ export function HouseCase() {
                 <div key={i} className="bg-[#141414] border border-white/10 p-5 flex flex-col justify-between hover:border-white/30 transition-colors">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <Lightbulb className="w-5 h-5 text-[#14F1D9]" />
+                      <Lightbulb className="w-5 h-5 text-primary" />
                       <span className="text-xs font-sans text-white/60 bg-white/5 px-2 py-0.5">{lg.kelvin}</span>
                     </div>
                     <h5 className="text-sm sm:text-base font-bold text-white mb-1 font-montserrat">{lg.name}</h5>
-                    <div className="text-xs text-[#14F1D9] font-sans font-medium mb-2">{lg.type}</div>
+                    <div className="text-xs text-primary font-sans font-medium mb-2">{lg.type}</div>
                     <p className="text-xs sm:text-sm text-white/70 leading-relaxed font-sans mb-3">{lg.desc}</p>
                   </div>
                   <div className="text-xs text-white/50 border-t border-white/10 pt-2 font-sans">
@@ -1063,7 +1063,7 @@ export function HouseCase() {
                   <span className="text-sm sm:text-base font-bold text-white font-montserrat uppercase">
                     План 1-го этажа
                   </span>
-                  <Maximize2 className="w-4 h-4 text-white/50 group-hover:text-[#14F1D9]" />
+                  <Maximize2 className="w-4 h-4 text-white/50 group-hover:text-primary" />
                 </div>
                 <div className="relative aspect-[4/3] w-full bg-white/5 overflow-hidden">
                   <Image
@@ -1087,7 +1087,7 @@ export function HouseCase() {
                   <span className="text-sm sm:text-base font-bold text-white font-montserrat uppercase">
                     План 2-го этажа
                   </span>
-                  <Maximize2 className="w-4 h-4 text-white/50 group-hover:text-[#14F1D9]" />
+                  <Maximize2 className="w-4 h-4 text-white/50 group-hover:text-primary" />
                 </div>
                 <div className="relative aspect-[4/3] w-full bg-white/5 overflow-hidden">
                   <Image
@@ -1111,7 +1111,7 @@ export function HouseCase() {
                   <span className="text-sm sm:text-base font-bold text-white font-montserrat uppercase">
                     Разрез дома 1-1
                   </span>
-                  <Maximize2 className="w-4 h-4 text-white/50 group-hover:text-[#14F1D9]" />
+                  <Maximize2 className="w-4 h-4 text-white/50 group-hover:text-primary" />
                 </div>
                 <div className="relative aspect-[4/3] w-full bg-white/5 overflow-hidden">
                   <Image
@@ -1177,13 +1177,13 @@ export function HouseCase() {
                   src: "/Кейсы/10-house-project/collage_finished_vertical.jpg",
                   title: "Готовый дом в жизни"
                 })}
-                className="bg-[#141414] border border-[#14F1D9]/30 hover:border-[#14F1D9] p-4 sm:p-5 cursor-pointer group transition-all"
+                className="bg-[#141414] border border-primary/30 hover:border-primary p-4 sm:p-5 cursor-pointer group transition-all"
               >
                 <div className="flex items-center justify-between px-1 py-1 mb-3">
-                  <h3 className="text-base sm:text-lg font-bold text-[#14F1D9] font-montserrat uppercase tracking-wider">
+                  <h3 className="text-base sm:text-lg font-bold text-primary font-montserrat uppercase tracking-wider">
                     Готовый дом в жизни
                   </h3>
-                  <span className="text-xs text-white/50 font-sans flex items-center gap-1 group-hover:text-[#14F1D9]">
+                  <span className="text-xs text-white/50 font-sans flex items-center gap-1 group-hover:text-primary">
                     <Maximize2 className="w-4 h-4" /> Увеличить планшет
                   </span>
                 </div>
@@ -1208,7 +1208,7 @@ export function HouseCase() {
                   <button
                     onClick={() => setGalleryFilter("all")}
                     className={`px-3.5 py-2 text-xs sm:text-sm font-montserrat font-bold uppercase transition-colors ${
-                      galleryFilter === "all" ? "bg-[#14F1D9] text-[#111111]" : "bg-white/5 text-white/70 hover:text-white"
+                      galleryFilter === "all" ? "bg-primary text-[#111111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
                     Все кадры ({houseProjectData.gallery.finished.length + houseProjectData.gallery.construction.length})
@@ -1216,7 +1216,7 @@ export function HouseCase() {
                   <button
                     onClick={() => setGalleryFilter("finished")}
                     className={`px-3.5 py-2 text-xs sm:text-sm font-montserrat font-bold uppercase transition-colors ${
-                      galleryFilter === "finished" ? "bg-[#14F1D9] text-[#111111]" : "bg-white/5 text-white/70 hover:text-white"
+                      galleryFilter === "finished" ? "bg-primary text-[#111111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
                     Готовый дом ({houseProjectData.gallery.finished.length})
@@ -1224,7 +1224,7 @@ export function HouseCase() {
                   <button
                     onClick={() => setGalleryFilter("construction")}
                     className={`px-3.5 py-2 text-xs sm:text-sm font-montserrat font-bold uppercase transition-colors ${
-                      galleryFilter === "construction" ? "bg-[#14F1D9] text-[#111111]" : "bg-white/5 text-white/70 hover:text-white"
+                      galleryFilter === "construction" ? "bg-primary text-[#111111]" : "bg-white/5 text-white/70 hover:text-white"
                     }`}
                   >
                     Стройка ({houseProjectData.gallery.construction.length})
@@ -1237,7 +1237,7 @@ export function HouseCase() {
                   <div
                     key={i}
                     onClick={() => setSelectedImage(img)}
-                    className="bg-[#141414] border border-white/10 overflow-hidden cursor-pointer group hover:border-[#14F1D9] transition-all"
+                    className="bg-[#141414] border border-white/10 overflow-hidden cursor-pointer group hover:border-primary transition-all"
                   >
                     <div className="relative aspect-square w-full bg-black/50 overflow-hidden">
                       <Image
@@ -1247,7 +1247,7 @@ export function HouseCase() {
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <Maximize2 className="w-5 h-5 text-[#14F1D9]" />
+                        <Maximize2 className="w-5 h-5 text-primary" />
                       </div>
                     </div>
                     <div className="p-3">

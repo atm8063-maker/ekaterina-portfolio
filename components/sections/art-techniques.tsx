@@ -262,7 +262,7 @@ export function ArtTechniques() {
   const activeLightboxItem = lightboxIndex !== null ? items[lightboxIndex] : null;
 
   return (
-    <section id="techniques" className="bg-[#111111] py-16 sm:py-20 relative overflow-hidden scroll-mt-20">
+    <section id="techniques" className="bg-background py-16 sm:py-20 relative overflow-hidden scroll-mt-20">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -274,15 +274,15 @@ export function ArtTechniques() {
       </div>
 
       {/* Top & bottom gradient blend fades */}
-      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-background via-background/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-background via-background/60 to-transparent z-[15] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-20">
         
         {/* Header */}
         <div className="max-w-3xl mb-10">
           <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat mt-2">
-            Техники <span className="text-[#14F1D9]">&</span> Инструменты
+            Техники <span className="text-primary">&</span> Инструменты
           </h2>
           <p className="text-white/60 mt-2 font-inter text-sm sm:text-base">
             Работаю на стыке материального крафта и цифровых технологий — от изящных предметов ручной работы до сложных UI-интерфейсов и 3D-моделей.
@@ -292,10 +292,10 @@ export function ArtTechniques() {
         {/* Top Cards: Offline vs Digital */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           
-          <div className="p-6 sm:p-8 rounded-none bg-[#1A1A1A] border border-white/10 relative overflow-hidden group hover:border-white/30 transition-all">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#14F1D9]/5 -z-10 group-hover:bg-[#14F1D9]/10 transition-colors"></div>
+          <div className="p-6 sm:p-8 rounded-none bg-surface border border-white/10 relative overflow-hidden group hover:border-white/30 transition-all">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 -z-10 group-hover:bg-primary/10 transition-colors"></div>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xs uppercase tracking-widest font-bold text-[#14F1D9] font-montserrat">
+              <h3 className="text-xs uppercase tracking-widest font-bold text-primary font-montserrat">
                 Офлайн · Материалы & Крафт
               </h3>
               <span className="text-[10px] font-inter text-white/40 uppercase tracking-wider">Физические объекты</span>
@@ -304,7 +304,7 @@ export function ArtTechniques() {
               {offlineTags.map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1.5 rounded-none border border-white/20 text-white text-xs uppercase tracking-wider font-semibold font-inter hover:border-[#14F1D9] hover:text-[#14F1D9] transition-colors cursor-default bg-black/20"
+                  className="px-3 py-1.5 rounded-none border border-white/20 text-white text-xs uppercase tracking-wider font-semibold font-inter hover:border-primary hover:text-primary transition-colors cursor-default bg-black/20"
                 >
                   {t}
                 </span>
@@ -312,7 +312,7 @@ export function ArtTechniques() {
               {offlineExtra.map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1.5 rounded-none border border-white/10 text-white/50 text-xs uppercase tracking-wider font-semibold font-inter hover:border-[#14F1D9] hover:text-[#14F1D9] transition-colors cursor-default bg-black/10"
+                  className="px-3 py-1.5 rounded-none border border-white/10 text-white/50 text-xs uppercase tracking-wider font-semibold font-inter hover:border-primary hover:text-primary transition-colors cursor-default bg-black/10"
                 >
                   {t}
                 </span>
@@ -320,11 +320,11 @@ export function ArtTechniques() {
             </div>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-none bg-[#1A1A1A] border border-white/10 relative overflow-hidden group hover:border-white/30 transition-all">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#14F1D9]/5 -z-10 group-hover:bg-[#14F1D9]/10 transition-colors"></div>
+          <div className="p-6 sm:p-8 rounded-none bg-surface border border-white/10 relative overflow-hidden group hover:border-white/30 transition-all">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 -z-10 group-hover:bg-primary/10 transition-colors"></div>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xs uppercase tracking-widest font-bold text-[#14F1D9] font-montserrat">
-                Цифра · Design <span className="text-[#14F1D9]">&</span> Tech
+              <h3 className="text-xs uppercase tracking-widest font-bold text-primary font-montserrat">
+                Цифра · Design <span className="text-primary">&</span> Tech
               </h3>
               <span className="text-[10px] font-inter text-white/40 uppercase tracking-wider">Интерфейсы & 3D</span>
             </div>
@@ -332,7 +332,7 @@ export function ArtTechniques() {
               {digitalTools.map((i) => (
                 <span
                   key={i}
-                  className="px-3 py-1.5 rounded-none bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs uppercase tracking-wider font-semibold font-inter hover:bg-[#14F1D9]/20 transition-colors cursor-default"
+                  className="px-3 py-1.5 rounded-none bg-primary/10 border border-primary/30 text-primary text-xs uppercase tracking-wider font-semibold font-inter hover:bg-primary/20 transition-colors cursor-default"
                 >
                   {i}
                 </span>
@@ -345,7 +345,7 @@ export function ArtTechniques() {
 
       {/* Swipe Badge for Desktop & Mobile */}
       <div className="container mx-auto px-6 text-center mb-4 relative z-20">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase shadow-md">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-primary uppercase shadow-md">
           <span>←</span> Листайте галерею <span>→</span>
         </div>
       </div>
@@ -365,11 +365,11 @@ export function ArtTechniques() {
             <div
               key={idx}
               onClick={() => openLightbox(idx)}
-              className="group relative shrink-0 h-[140px] w-auto bg-[#16161A] border border-white/15 hover:border-[#14F1D9] transition-all cursor-pointer overflow-hidden rounded-none shadow-md flex items-center justify-center"
+              className="group relative shrink-0 h-[140px] w-auto bg-surface border border-white/15 hover:border-primary transition-all cursor-pointer overflow-hidden rounded-none shadow-md flex items-center justify-center"
             >
               {item.type === "video" ? (
                 <div className="relative h-[140px] w-auto bg-black flex items-center justify-center">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  { }
                   <video
                     src={item.src}
                     autoPlay
@@ -378,8 +378,8 @@ export function ArtTechniques() {
                     playsInline
                     className="h-[140px] w-auto max-w-none block object-contain group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-1.5 right-1.5 p-1 bg-black/80 border border-[#14F1D9]/60 text-[#14F1D9] pointer-events-none">
-                    <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
+                  <div className="absolute top-1.5 right-1.5 p-1 bg-black/80 border border-primary/60 text-primary pointer-events-none">
+                    <Play className="w-2.5 h-2.5 fill-primary" />
                   </div>
                 </div>
               ) : (
@@ -411,12 +411,12 @@ export function ArtTechniques() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-h-[92vh] max-w-5xl w-full border border-white/20 bg-[#1A1A1A] p-4 sm:p-6 shadow-2xl rounded-none flex flex-col"
+            className="relative max-h-[92vh] max-w-5xl w-full border border-white/20 bg-surface p-4 sm:p-6 shadow-2xl rounded-none flex flex-col"
           >
             {/* Close button */}
             <button
               onClick={() => setLightboxIndex(null)}
-              className="absolute -top-4 -right-4 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black text-white hover:bg-[#14F1D9] hover:text-black transition-colors shadow-lg"
+              className="absolute -top-4 -right-4 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black text-white hover:bg-primary hover:text-black transition-colors shadow-lg"
               aria-label="Закрыть"
             >
               <X className="h-5 w-5" />
@@ -425,14 +425,14 @@ export function ArtTechniques() {
             {/* Prev/Next arrows */}
             <button
               onClick={prevLightbox}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black/80 text-white hover:bg-[#14F1D9] hover:text-black transition-colors"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black/80 text-white hover:bg-primary hover:text-black transition-colors"
               aria-label="Предыдущий"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={nextLightbox}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black/80 text-white hover:bg-[#14F1D9] hover:text-black transition-colors"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black/80 text-white hover:bg-primary hover:text-black transition-colors"
               aria-label="Следующий"
             >
               <ChevronRight className="h-5 w-5" />

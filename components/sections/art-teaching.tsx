@@ -278,7 +278,7 @@ export function ArtTeaching() {
   };
 
   return (
-    <section id="art-teaching" className="relative bg-[#111111] py-20 sm:py-24 overflow-hidden scroll-mt-20">
+    <section id="art-teaching" className="relative bg-background py-20 sm:py-24 overflow-hidden scroll-mt-20">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
@@ -290,11 +290,11 @@ export function ArtTeaching() {
       </div>
 
       {/* Top & bottom gradient blend fades */}
-      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-background via-background/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-background via-background/60 to-transparent z-[15] pointer-events-none" />
 
       {/* Background cyan glow */}
-      <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#14F1D9]/5 rounded-none blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-1/4 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-none blur-3xl pointer-events-none -z-10" />
 
       <div className="container mx-auto px-6 relative z-20">
         {/* Main Grid: Info + Key Metrics + 2 Top Hero Videos */}
@@ -305,7 +305,7 @@ export function ArtTeaching() {
           <div>
             <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight">
               Обучение, Лекции <br />
-              <span className="text-[#14F1D9]">&</span> Мастер-классы
+              <span className="text-primary">&</span> Мастер-классы
             </h2>
           </div>
 
@@ -314,39 +314,39 @@ export function ArtTeaching() {
               Выступала с авторской лекцией и проводила живой мастер-класс на 1-м форуме смолянистов в музее современного искусства <strong className="text-white font-semibold">Артмуза</strong> (Санкт-Петербург).
             </p>
             <p>
-              Проводила масштабные прямые эфиры по смоле с охватом в <strong className="text-[#14F1D9] font-semibold">несколько тысяч человек</strong>, организовывала студийные и выездные воркшопы в России, Турции и Черногории, а также курировала студентов в международной онлайн-школе.
+              Проводила масштабные прямые эфиры по смоле с охватом в <strong className="text-primary font-semibold">несколько тысяч человек</strong>, организовывала студийные и выездные воркшопы в России, Турции и Черногории, а также курировала студентов в международной онлайн-школе.
 
             </p>
           </div>
 
           {/* Feature Badges */}
           <div className="grid grid-cols-2 gap-3 pt-2">
-            <div className="p-4 bg-[#1A1A1A] border border-white/10">
-              <div className="flex items-center gap-2 text-[#14F1D9] mb-1">
+            <div className="p-4 bg-surface border border-white/10">
+              <div className="flex items-center gap-2 text-primary mb-1">
                 <Award className="w-4 h-4" />
                 <span className="text-xs font-montserrat font-bold uppercase">Музей Артмуза (СПб)</span>
               </div>
               <p className="text-xs text-white/60 font-inter">Спикер и ведущая МК на 1-м Всероссийском форуме</p>
             </div>
 
-            <div className="p-4 bg-[#1A1A1A] border border-white/10">
-              <div className="flex items-center gap-2 text-[#14F1D9] mb-1">
+            <div className="p-4 bg-surface border border-white/10">
+              <div className="flex items-center gap-2 text-primary mb-1">
                 <Users className="w-4 h-4" />
                 <span className="text-xs font-montserrat font-bold uppercase">Офлайн Воркшопы</span>
               </div>
               <p className="text-xs text-white/60 font-inter">Студии в РФ, выездные классы в Турции и Черногории</p>
             </div>
 
-            <div className="p-4 bg-[#1A1A1A] border border-white/10">
-              <div className="flex items-center gap-2 text-[#14F1D9] mb-1">
+            <div className="p-4 bg-surface border border-white/10">
+              <div className="flex items-center gap-2 text-primary mb-1">
                 <Video className="w-4 h-4" />
                 <span className="text-xs font-montserrat font-bold uppercase">Тысячи зрителей</span>
               </div>
               <p className="text-xs text-white/60 font-inter">Прямые трансляции, обучающие вебинары и туториалы</p>
             </div>
 
-            <div className="p-4 bg-[#1A1A1A] border border-white/10">
-              <div className="flex items-center gap-2 text-[#14F1D9] mb-1">
+            <div className="p-4 bg-surface border border-white/10">
+              <div className="flex items-center gap-2 text-primary mb-1">
                 <GraduationCap className="w-4 h-4" />
                 <span className="text-xs font-montserrat font-bold uppercase">Онлайн-школа</span>
               </div>
@@ -361,7 +361,7 @@ export function ArtTeaching() {
           {/* Main Video 1: Artmuza (Vertical) */}
           <div
             onClick={() => setLightboxItem(heroVideos[0])}
-            className="relative aspect-[9/16] w-full max-h-[520px] rounded-none overflow-hidden bg-[#1A1A1A] border border-white/15 hover:border-[#14F1D9] transition-all group cursor-pointer"
+            className="relative aspect-[9/16] w-full max-h-[520px] rounded-none overflow-hidden bg-surface border border-white/15 hover:border-primary transition-all group cursor-pointer"
           >
             <video
               src={heroVideos[0].src}
@@ -373,13 +373,13 @@ export function ArtTeaching() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none" />
             
-            <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 bg-black/80 border border-[#14F1D9] text-[#14F1D9] text-[10px] font-inter font-bold uppercase tracking-wider">
-              <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
+            <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 bg-black/80 border border-primary text-primary text-[10px] font-inter font-bold uppercase tracking-wider">
+              <Play className="w-2.5 h-2.5 fill-primary" />
               Видео • Артмуза
             </div>
 
             <div className="absolute bottom-3 left-3 right-3 z-10">
-              <span className="text-[10px] font-inter font-bold uppercase tracking-wider text-[#14F1D9]">
+              <span className="text-[10px] font-inter font-bold uppercase tracking-wider text-primary">
                 {heroVideos[0].location}
               </span>
               <h3 className="font-montserrat text-sm sm:text-base font-bold text-white uppercase mt-0.5 leading-snug">
@@ -394,7 +394,7 @@ export function ArtTeaching() {
           {/* Main Video 2: Montenegro Workshop (Vertical) */}
           <div
             onClick={() => setLightboxItem(heroVideos[1])}
-            className="relative aspect-[9/16] w-full max-h-[520px] rounded-none overflow-hidden bg-[#1A1A1A] border border-white/15 hover:border-[#14F1D9] transition-all group cursor-pointer"
+            className="relative aspect-[9/16] w-full max-h-[520px] rounded-none overflow-hidden bg-surface border border-white/15 hover:border-primary transition-all group cursor-pointer"
           >
             <video
               src={heroVideos[1].src}
@@ -406,13 +406,13 @@ export function ArtTeaching() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent pointer-events-none" />
             
-            <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 bg-black/80 border border-[#14F1D9] text-[#14F1D9] text-[10px] font-inter font-bold uppercase tracking-wider">
-              <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
+            <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 bg-black/80 border border-primary text-primary text-[10px] font-inter font-bold uppercase tracking-wider">
+              <Play className="w-2.5 h-2.5 fill-primary" />
               Видео • Черногория
             </div>
 
             <div className="absolute bottom-3 left-3 right-3 z-10">
-              <span className="text-[10px] font-inter font-bold uppercase tracking-wider text-[#14F1D9]">
+              <span className="text-[10px] font-inter font-bold uppercase tracking-wider text-primary">
                 {heroVideos[1].location}
               </span>
               <h3 className="font-montserrat text-sm sm:text-base font-bold text-white uppercase mt-0.5 leading-snug">
@@ -433,13 +433,13 @@ export function ArtTeaching() {
         <div className="flex items-center gap-3 flex-wrap">
           <div>
             <h3 className="text-sm sm:text-base font-montserrat font-bold uppercase tracking-wider text-white">
-              Фотоархив: воркшопы <span className="text-[#14F1D9]">&</span> мастер-классы
+              Фотоархив: воркшопы <span className="text-primary">&</span> мастер-классы
             </h3>
             <p className="text-xs text-white/50 font-inter mt-0.5">
               Листай карусель свайпом или стрелками
             </p>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase shadow-md">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-primary uppercase shadow-md">
             <span>←</span> Листайте <span>→</span>
           </div>
         </div>
@@ -451,8 +451,8 @@ export function ArtTeaching() {
               onClick={() => setActiveTab('all')}
               className={`px-3 py-1 text-xs font-inter uppercase tracking-wider font-bold transition-all rounded-none ${
                 activeTab === 'all'
-                  ? 'bg-[#14F1D9] text-black border border-[#14F1D9]'
-                  : 'bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
+                  ? 'bg-primary text-black border border-primary'
+                  : 'bg-surface text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
               }`}
             >
               Все ({carouselMedia.length})
@@ -461,8 +461,8 @@ export function ArtTeaching() {
               onClick={() => setActiveTab('forum')}
               className={`px-3 py-1 text-xs font-inter uppercase tracking-wider font-bold transition-all rounded-none ${
                 activeTab === 'forum'
-                  ? 'bg-[#14F1D9] text-black border border-[#14F1D9]'
-                  : 'bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
+                  ? 'bg-primary text-black border border-primary'
+                  : 'bg-surface text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
               }`}
             >
               Артмуза ({carouselMedia.filter((m) => m.category === 'forum').length})
@@ -471,8 +471,8 @@ export function ArtTeaching() {
               onClick={() => setActiveTab('workshops')}
               className={`px-3 py-1 text-xs font-inter uppercase tracking-wider font-bold transition-all rounded-none ${
                 activeTab === 'workshops'
-                  ? 'bg-[#14F1D9] text-black border border-[#14F1D9]'
-                  : 'bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
+                  ? 'bg-primary text-black border border-primary'
+                  : 'bg-surface text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
               }`}
             >
               Офлайн МК ({carouselMedia.filter((m) => m.category === 'workshops').length})
@@ -481,8 +481,8 @@ export function ArtTeaching() {
               onClick={() => setActiveTab('online')}
               className={`px-3 py-1 text-xs font-inter uppercase tracking-wider font-bold transition-all rounded-none ${
                 activeTab === 'online'
-                  ? 'bg-[#14F1D9] text-black border border-[#14F1D9]'
-                  : 'bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
+                  ? 'bg-primary text-black border border-primary'
+                  : 'bg-surface text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
               }`}
             >
               Онлайн ({carouselMedia.filter((m) => m.category === 'online').length})
@@ -493,14 +493,14 @@ export function ArtTeaching() {
           <div className="hidden sm:flex items-center gap-1.5 border-l border-white/10 pl-3">
             <button
               onClick={() => scrollByAmount(-340)}
-              className="flex h-8 w-8 items-center justify-center border border-white/15 bg-[#1A1A1A] text-white hover:border-[#14F1D9] hover:text-[#14F1D9] transition-all rounded-none"
+              className="flex h-8 w-8 items-center justify-center border border-white/15 bg-surface text-white hover:border-primary hover:text-primary transition-all rounded-none"
               aria-label="Назад"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <button
               onClick={() => scrollByAmount(340)}
-              className="flex h-8 w-8 items-center justify-center border border-white/15 bg-[#1A1A1A] text-white hover:border-[#14F1D9] hover:text-[#14F1D9] transition-all rounded-none"
+              className="flex h-8 w-8 items-center justify-center border border-white/15 bg-surface text-white hover:border-primary hover:text-primary transition-all rounded-none"
               aria-label="Вперёд"
             >
               <ChevronRight className="h-4 w-4" />
@@ -523,7 +523,7 @@ export function ArtTeaching() {
           <article
             key={item.src + idx}
             onClick={() => setLightboxItem(item)}
-            className="group shrink-0 snap-start relative h-[210px] w-[280px] sm:w-[320px] overflow-hidden rounded-none border border-white/10 bg-[#1A1A1A] hover:border-[#14F1D9] transition-all cursor-pointer shadow-lg"
+            className="group shrink-0 snap-start relative h-[210px] w-[280px] sm:w-[320px] overflow-hidden rounded-none border border-white/10 bg-surface hover:border-primary transition-all cursor-pointer shadow-lg"
           >
             {item.type === 'video' ? (
               <div className="relative w-full h-full bg-black">
@@ -535,8 +535,8 @@ export function ArtTeaching() {
                   playsInline
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute top-2.5 right-2.5 p-1 bg-black/80 border border-[#14F1D9] text-[#14F1D9]">
-                  <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
+                <div className="absolute top-2.5 right-2.5 p-1 bg-black/80 border border-primary text-primary">
+                  <Play className="w-2.5 h-2.5 fill-primary" />
                 </div>
               </div>
             ) : (
@@ -551,10 +551,10 @@ export function ArtTeaching() {
 
             {/* Gradient & Meta Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-3.5">
-              <span className="text-[9px] font-inter font-bold uppercase tracking-wider text-[#14F1D9]">
+              <span className="text-[9px] font-inter font-bold uppercase tracking-wider text-primary">
                 {item.badge}
               </span>
-              <h4 className="font-montserrat text-xs sm:text-sm font-bold text-white uppercase line-clamp-1 mt-0.5 group-hover:text-[#14F1D9] transition-colors">
+              <h4 className="font-montserrat text-xs sm:text-sm font-bold text-white uppercase line-clamp-1 mt-0.5 group-hover:text-primary transition-colors">
                 {item.title}
               </h4>
               {item.location && (
@@ -579,12 +579,12 @@ export function ArtTeaching() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-h-[92vh] max-w-5xl w-full border border-white/20 bg-[#1A1A1A] p-4 sm:p-6 shadow-2xl rounded-none flex flex-col"
+            className="relative max-h-[92vh] max-w-5xl w-full border border-white/20 bg-surface p-4 sm:p-6 shadow-2xl rounded-none flex flex-col"
           >
             {/* Close button */}
             <button
               onClick={() => setLightboxItem(null)}
-              className="absolute -top-4 -right-4 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black text-white hover:bg-[#14F1D9] hover:text-black transition-colors shadow-lg"
+              className="absolute -top-4 -right-4 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black text-white hover:bg-primary hover:text-black transition-colors shadow-lg"
               aria-label="Закрыть"
             >
               <X className="h-5 w-5" />
@@ -615,7 +615,7 @@ export function ArtTeaching() {
             {/* Bottom Bar */}
             <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-white/10 pt-4">
               <div>
-                <span className="text-[11px] font-inter font-bold uppercase tracking-widest text-[#14F1D9]">
+                <span className="text-[11px] font-inter font-bold uppercase tracking-widest text-primary">
                   {lightboxItem.badge} {lightboxItem.location ? `· ${lightboxItem.location}` : ''}
                 </span>
                 <h3 className="font-montserrat text-base font-bold uppercase text-white sm:text-lg">

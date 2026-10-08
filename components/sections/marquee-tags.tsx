@@ -48,15 +48,15 @@ export function MarqueeRow({
   if (styleKey === "programs" || styleKey === "white-solid") {
     itemStyle = "bg-white text-black font-bold shadow-[0_0_15px_rgba(255,255,255,0.1)]";
   } else if (styleKey === "media" || styleKey === "cyan-solid") {
-    itemStyle = "bg-[#14F1D9] text-[#111111] font-bold shadow-[0_0_15px_rgba(20,241,217,0.3)]";
+    itemStyle = "bg-primary text-background font-bold shadow-[0_0_15px_rgba(20,241,217,0.3)]";
   } else if (styleKey === "skills" || styleKey === "white-border") {
     itemStyle = "bg-transparent border border-white/80 text-white font-semibold";
   } else if (styleKey === "industries" || styleKey === "cyan-border") {
-    itemStyle = "bg-transparent border border-[#14F1D9] text-[#14F1D9] font-semibold";
+    itemStyle = "bg-transparent border border-primary text-primary font-semibold";
   }
 
   return (
-    <section className={`bg-[#111111] overflow-hidden relative z-20 w-full ${className || 'py-8 lg:py-12'}`}>
+    <section className={`bg-background overflow-hidden relative z-20 w-full ${className || 'py-8 lg:py-12'}`}>
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes marquee-left {
           0% { transform: translateX(0); }

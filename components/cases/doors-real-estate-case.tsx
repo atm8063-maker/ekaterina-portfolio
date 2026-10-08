@@ -43,7 +43,7 @@ export function DoorsRealEstateCase() {
   const selectedScheme = schemes.find(s => s.id === selectedSchemeId) || schemes[0];
 
   return (
-    <div className="min-h-screen bg-[#111111] text-[#E0E0E0] selection:bg-[#14F1D9] selection:text-black font-inter relative">
+    <div className="min-h-screen bg-background text-[#E0E0E0] selection:bg-primary selection:text-black font-inter relative">
       {/* Background paper texture matching Ekaterina's site */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Image
@@ -68,8 +68,8 @@ export function DoorsRealEstateCase() {
       {/* Hero Section */}
       <section className="relative pt-16 pb-20 overflow-hidden border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-[#14F1D9] font-montserrat font-bold uppercase tracking-widest mb-6">
-            <Sparkles className="w-3.5 h-3.5 text-[#14F1D9]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-primary font-montserrat font-bold uppercase tracking-widest mb-6">
+            <Sparkles className="w-3.5 h-3.5 text-primary" />
             {meta.category}
           </div>
 
@@ -89,9 +89,9 @@ export function DoorsRealEstateCase() {
             {metrics.map((m, idx) => (
               <div 
                 key={idx} 
-                className="bg-[#1A1A1A] border border-white/10 p-6 rounded-2xl hover:border-[#14F1D9]/50 transition-all group"
+                className="bg-surface border border-white/10 p-6 rounded-2xl hover:border-primary/50 transition-all group"
               >
-                <div className="text-2xl sm:text-3xl font-bold font-montserrat text-white group-hover:text-[#14F1D9] transition-colors">
+                <div className="text-2xl sm:text-3xl font-bold font-montserrat text-white group-hover:text-primary transition-colors">
                   {m.value}
                 </div>
                 <div className="text-xs font-semibold text-white/90 uppercase tracking-wider font-montserrat mt-1.5">
@@ -125,7 +125,7 @@ export function DoorsRealEstateCase() {
         <section id="showcase" className="scroll-mt-24 space-y-8">
           <div className="border-b border-white/10 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+              <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
                 01 / ШОУКЕЙС
               </div>
               <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -137,10 +137,10 @@ export function DoorsRealEstateCase() {
             </p>
           </div>
 
-          <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+          <div className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8 relative overflow-hidden">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
               <div>
-                <span className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider">
+                <span className="text-xs font-montserrat font-bold text-primary uppercase tracking-wider">
                   Мобильный опыт состоятельного покупателя
                 </span>
                 <p className="text-xs text-white/70 font-sans mt-0.5">
@@ -153,7 +153,7 @@ export function DoorsRealEstateCase() {
                   title: "Apple iPhone 12 Pro 3D Showcase (2716 × 2037 px)",
                   subtitle: "Фотореалистичный 3D-рендер мобильного интерфейса Doors Real Estate"
                 })}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-[#14F1D9] hover:text-black text-white text-xs font-montserrat font-semibold transition-all border border-white/10 hover:border-[#14F1D9]"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-primary hover:text-black text-white text-xs font-montserrat font-semibold transition-all border border-white/10 hover:border-primary"
               >
                 <Maximize2 className="w-4 h-4" />
                 <span>Открыть рендер в 2.7K</span>
@@ -167,7 +167,7 @@ export function DoorsRealEstateCase() {
                 title: "Apple iPhone 12 Pro 3D Showcase (2716 × 2037 px)",
                 subtitle: "Фотореалистичный 3D-рендер мобильного интерфейса Doors Real Estate"
               })}
-              className="relative w-full aspect-[4/3] max-h-[640px] bg-black/50 rounded-xl overflow-hidden cursor-pointer group border border-white/10 hover:border-[#14F1D9]/50 transition-all flex items-center justify-center p-4"
+              className="relative w-full aspect-[4/3] max-h-[640px] bg-black/50 rounded-xl overflow-hidden cursor-pointer group border border-white/10 hover:border-primary/50 transition-all flex items-center justify-center p-4"
             >
               <Image
                 src="/Кейсы/08-mockup-real-estate/figma_exports/05_iphone_mockup.png"
@@ -176,7 +176,7 @@ export function DoorsRealEstateCase() {
                 className="object-contain p-2 sm:p-6 group-hover:scale-102 transition-transform duration-700"
               />
               <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-md text-[11px] text-white/70 border border-white/10 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Eye className="w-3.5 h-3.5 text-[#14F1D9]" />
+                <Eye className="w-3.5 h-3.5 text-primary" />
                 <span>Кликните для зума</span>
               </div>
             </div>
@@ -214,7 +214,7 @@ export function DoorsRealEstateCase() {
         {/* 2. UX RESEARCH & BENCHMARKING */}
         <section id="research" className="scroll-mt-24 space-y-10">
           <div className="border-b border-white/10 pb-4">
-            <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+            <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
               02 / UX АНАЛИТИКА
             </div>
             <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -226,7 +226,7 @@ export function DoorsRealEstateCase() {
           </div>
 
           {/* Competitor Benchmark Matrix */}
-          <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8">
+          <div className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold font-montserrat text-white uppercase tracking-tight">
@@ -236,8 +236,8 @@ export function DoorsRealEstateCase() {
                   Сравнение ключевых параметров UX/UI классифайдов и премиум-бутиков
                 </p>
               </div>
-              <div className="hidden sm:flex items-center gap-2 text-xs font-montserrat font-semibold text-[#14F1D9]">
-                <CheckCircle2 className="w-4 h-4 text-[#14F1D9]" />
+              <div className="hidden sm:flex items-center gap-2 text-xs font-montserrat font-semibold text-primary">
+                <CheckCircle2 className="w-4 h-4 text-primary" />
                 <span>Стандарт Shop 4.0</span>
               </div>
             </div>
@@ -260,13 +260,13 @@ export function DoorsRealEstateCase() {
                       key={idx} 
                       className={`transition-colors ${
                         c.name === 'Doors Real Estate' 
-                          ? 'bg-[#14F1D9]/10 text-white font-medium' 
+                          ? 'bg-primary/10 text-white font-medium' 
                           : 'hover:bg-white/5 text-white/80'
                       }`}
                     >
                       <td className="py-4 pr-4 font-bold font-montserrat text-white flex items-center gap-2">
                         {c.name === 'Doors Real Estate' && (
-                          <span className="w-2 h-2 rounded-full bg-[#14F1D9]" />
+                          <span className="w-2 h-2 rounded-full bg-primary" />
                         )}
                         {c.name}
                       </td>
@@ -274,7 +274,7 @@ export function DoorsRealEstateCase() {
                       <td className="py-4 px-4">{c.searchSpeed}</td>
                       <td className="py-4 px-4">
                         {c.directIdSearch ? (
-                          <span className="inline-flex items-center gap-1 text-[#14F1D9] font-bold font-montserrat">
+                          <span className="inline-flex items-center gap-1 text-primary font-bold font-montserrat">
                             <CheckCircle2 className="w-3.5 h-3.5" /> Да
                           </span>
                         ) : (
@@ -299,24 +299,24 @@ export function DoorsRealEstateCase() {
               {personas.map((p, idx) => (
                 <div 
                   key={idx}
-                  className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 hover:border-[#14F1D9]/50 transition-all"
+                  className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8 space-y-6 hover:border-primary/50 transition-all"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#14F1D9] to-[#09253B] flex items-center justify-center text-black font-black font-montserrat text-lg border border-white/20 shadow-lg">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-[#09253B] flex items-center justify-center text-black font-black font-montserrat text-lg border border-white/20 shadow-lg">
                       {p.avatar}
                     </div>
                     <div>
                       <div className="text-lg font-bold font-montserrat text-white uppercase tracking-tight">
                         {p.name}, {p.age} года
                       </div>
-                      <div className="text-xs text-[#14F1D9] font-medium mt-0.5 font-montserrat">
+                      <div className="text-xs text-primary font-medium mt-0.5 font-montserrat">
                         {p.role}
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-black/40 border-l-2 border-[#14F1D9] p-4 rounded-r-lg text-xs italic text-white/80 leading-relaxed font-sans">
-                    "{p.quote}"
+                  <div className="bg-black/40 border-l-2 border-primary p-4 rounded-r-lg text-xs italic text-white/80 leading-relaxed font-sans">
+                    &ldquo;{p.quote}&rdquo;
                   </div>
 
                   <div className="space-y-4 text-xs font-sans">
@@ -327,7 +327,7 @@ export function DoorsRealEstateCase() {
                       <ul className="space-y-1.5 text-white/80">
                         {p.goals.map((g, gIdx) => (
                           <li key={gIdx} className="flex items-start gap-2">
-                            <span className="text-[#14F1D9] mt-0.5">•</span>
+                            <span className="text-primary mt-0.5">•</span>
                             <span>{g}</span>
                           </li>
                         ))}
@@ -349,13 +349,13 @@ export function DoorsRealEstateCase() {
                     </div>
 
                     <div className="pt-2 border-t border-white/10">
-                      <div className="font-montserrat font-bold uppercase tracking-wider text-[#14F1D9] mb-2 text-[11px]">
+                      <div className="font-montserrat font-bold uppercase tracking-wider text-primary mb-2 text-[11px]">
                         UX-решения в Doors Real Estate:
                       </div>
                       <ul className="space-y-1.5 text-white/90">
                         {p.uxSolutions.map((sol, sIdx) => (
                           <li key={sIdx} className="flex items-start gap-2">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#14F1D9] shrink-0 mt-0.5" />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
                             <span>{sol}</span>
                           </li>
                         ))}
@@ -371,7 +371,7 @@ export function DoorsRealEstateCase() {
         {/* 3. CJM & HYPOTHESES */}
         <section id="cjm" className="scroll-mt-24 space-y-10">
           <div className="border-b border-white/10 pb-4">
-            <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+            <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
               03 / ПУТЬ ПОЛЬЗОВАТЕЛЯ
             </div>
             <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -391,14 +391,14 @@ export function DoorsRealEstateCase() {
               {cjm.map((item, idx) => (
                 <div 
                   key={idx}
-                  className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:border-[#14F1D9]/50 transition-all"
+                  className="bg-surface border border-white/10 rounded-2xl p-5 flex flex-col justify-between hover:border-primary/50 transition-all"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-[11px] font-montserrat font-bold uppercase tracking-wider text-[#14F1D9]">
+                      <span className="text-[11px] font-montserrat font-bold uppercase tracking-wider text-primary">
                         {item.step}
                       </span>
-                      <span className="text-xs font-bold font-montserrat px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[#14F1D9]">
+                      <span className="text-xs font-bold font-montserrat px-2 py-0.5 rounded bg-white/5 border border-white/10 text-primary">
                         {item.score}%
                       </span>
                     </div>
@@ -415,7 +415,7 @@ export function DoorsRealEstateCase() {
                       <span className="font-semibold text-rose-400">Боль:</span> {item.painPoint}
                     </div>
                     <div className="text-white/90 leading-snug">
-                      <span className="font-semibold text-[#14F1D9]">Решение:</span> {item.solution}
+                      <span className="font-semibold text-primary">Решение:</span> {item.solution}
                     </div>
                   </div>
                 </div>
@@ -432,10 +432,10 @@ export function DoorsRealEstateCase() {
               {hypotheses.map((h) => (
                 <div 
                   key={h.id}
-                  className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4 hover:border-[#14F1D9]/50 transition-all"
+                  className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8 space-y-4 hover:border-primary/50 transition-all"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-montserrat font-bold px-3 py-1 rounded-full bg-[#14F1D9]/10 text-[#14F1D9] border border-[#14F1D9]/30">
+                    <span className="text-xs font-montserrat font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30">
                       {h.id}
                     </span>
                     <span className="text-xs font-montserrat font-semibold text-[#27C93F] flex items-center gap-1">
@@ -472,7 +472,7 @@ export function DoorsRealEstateCase() {
                       <div className="text-white font-medium mt-0.5 font-sans">{h.metric}</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-[10px] text-[#14F1D9] uppercase font-montserrat font-semibold">
+                      <div className="text-[10px] text-primary uppercase font-montserrat font-semibold">
                         Результат теста
                       </div>
                       <div className="text-white font-bold font-montserrat mt-0.5">{h.result}</div>
@@ -487,7 +487,7 @@ export function DoorsRealEstateCase() {
         {/* 4. INTERACTIVE 4-SCHEMES COLOR THEORY */}
         <section id="schemes" className="scroll-mt-24 space-y-10">
           <div className="border-b border-white/10 pb-4">
-            <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+            <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
               04 / ТЕОРИЯ ЦВЕТА
             </div>
             <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -506,7 +506,7 @@ export function DoorsRealEstateCase() {
                 onClick={() => setSelectedSchemeId(s.id)}
                 className={`p-4 rounded-2xl border text-left transition-all relative overflow-hidden ${
                   selectedSchemeId === s.id
-                    ? 'bg-[#1A1A1A] border-[#14F1D9] shadow-lg shadow-[#14F1D9]/10'
+                    ? 'bg-surface border-primary shadow-lg shadow-[#14F1D9]/10'
                     : 'bg-black/30 border-white/10 hover:border-white/25'
                 }`}
               >
@@ -530,10 +530,10 @@ export function DoorsRealEstateCase() {
           </div>
 
           {/* Active Scheme Details Panel */}
-          <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-8">
+          <div className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8 space-y-8">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-montserrat font-bold uppercase tracking-wider mb-3 bg-[#14F1D9]/10 text-[#14F1D9] border border-[#14F1D9]/30">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-montserrat font-bold uppercase tracking-wider mb-3 bg-primary/10 text-primary border border-primary/30">
                   <Palette className="w-3.5 h-3.5" />
                   {selectedScheme.type}
                 </div>
@@ -551,7 +551,7 @@ export function DoorsRealEstateCase() {
                   title: `${selectedScheme.name} — 1366 × 5909 px`,
                   subtitle: selectedScheme.nameRu
                 })}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-[#14F1D9] hover:text-black text-white text-xs font-montserrat font-semibold transition-all border border-white/20 self-start"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-primary hover:text-black text-white text-xs font-montserrat font-semibold transition-all border border-white/20 self-start"
               >
                 <Maximize2 className="w-4 h-4" />
                 <span>Открыть весь макет (5909 px)</span>
@@ -587,7 +587,7 @@ export function DoorsRealEstateCase() {
             {/* Theory & Market Application */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-black/30 border border-white/5 p-5 rounded-xl">
-                <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-2 flex items-center gap-1.5">
                   <Compass className="w-4 h-4" />
                   Теория цветовой гармонии
                 </div>
@@ -597,7 +597,7 @@ export function DoorsRealEstateCase() {
               </div>
 
               <div className="bg-black/30 border border-white/5 p-5 rounded-xl">
-                <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-2 flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4" />
                   Целевой сегмент рынка
                 </div>
@@ -632,7 +632,7 @@ export function DoorsRealEstateCase() {
                       title: `${selectedScheme.name} — 1366 × 5909 px`,
                       subtitle: selectedScheme.nameRu
                     })}
-                    className="text-[11px] text-[#14F1D9] hover:underline flex items-center gap-1 font-montserrat"
+                    className="text-[11px] text-primary hover:underline flex items-center gap-1 font-montserrat"
                   >
                     <Maximize2 className="w-3 h-3" />
                     <span>На весь экран</span>
@@ -666,7 +666,7 @@ export function DoorsRealEstateCase() {
         {/* 5. DEEP DIVE INTO 1ST SCHEME (ИСХОДНИК) */}
         <section id="portal" className="scroll-mt-24 space-y-10">
           <div className="border-b border-white/10 pb-4">
-            <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+            <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
               05 / РАЗБОР ИСХОДНИКА (5909 PX)
             </div>
             <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -679,9 +679,9 @@ export function DoorsRealEstateCase() {
 
           {/* 6 Structural Breakdown Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 hover:border-[#14F1D9]/50 transition-all">
-              <div className="flex items-center gap-2 text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-3">
-                <span className="w-5 h-5 rounded-full bg-[#14F1D9]/20 flex items-center justify-center text-[#14F1D9] text-[10px]">1</span>
+            <div className="bg-surface border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
+              <div className="flex items-center gap-2 text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-3">
+                <span className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-primary text-[10px]">1</span>
                 Hero Banner & Слоган бренда
               </div>
               <h3 className="text-lg font-bold font-montserrat text-white mb-2 uppercase tracking-tight">
@@ -695,9 +695,9 @@ export function DoorsRealEstateCase() {
               </div>
             </div>
 
-            <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 hover:border-[#14F1D9]/50 transition-all">
-              <div className="flex items-center gap-2 text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-3">
-                <span className="w-5 h-5 rounded-full bg-[#14F1D9]/20 flex items-center justify-center text-[#14F1D9] text-[10px]">2</span>
+            <div className="bg-surface border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
+              <div className="flex items-center gap-2 text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-3">
+                <span className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-primary text-[10px]">2</span>
                 Инлайн смарт-фильтр & Селектор Buy / Rent
               </div>
               <h3 className="text-lg font-bold font-montserrat text-white mb-2 uppercase tracking-tight">
@@ -711,9 +711,9 @@ export function DoorsRealEstateCase() {
               </div>
             </div>
 
-            <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 hover:border-[#14F1D9]/50 transition-all">
-              <div className="flex items-center gap-2 text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-3">
-                <span className="w-5 h-5 rounded-full bg-[#14F1D9]/20 flex items-center justify-center text-[#14F1D9] text-[10px]">3</span>
+            <div className="bg-surface border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
+              <div className="flex items-center gap-2 text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-3">
+                <span className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-primary text-[10px]">3</span>
                 Витрина Urban Realty
               </div>
               <h3 className="text-lg font-bold font-montserrat text-white mb-2 uppercase tracking-tight">
@@ -727,9 +727,9 @@ export function DoorsRealEstateCase() {
               </div>
             </div>
 
-            <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 hover:border-[#14F1D9]/50 transition-all">
-              <div className="flex items-center gap-2 text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-3">
-                <span className="w-5 h-5 rounded-full bg-[#14F1D9]/20 flex items-center justify-center text-[#14F1D9] text-[10px]">4</span>
+            <div className="bg-surface border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
+              <div className="flex items-center gap-2 text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-3">
+                <span className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-primary text-[10px]">4</span>
                 Загородные резиденции & Зарубежные лоты
               </div>
               <h3 className="text-lg font-bold font-montserrat text-white mb-2 uppercase tracking-tight">
@@ -743,9 +743,9 @@ export function DoorsRealEstateCase() {
               </div>
             </div>
 
-            <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 hover:border-[#14F1D9]/50 transition-all">
-              <div className="flex items-center gap-2 text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-3">
-                <span className="w-5 h-5 rounded-full bg-[#14F1D9]/20 flex items-center justify-center text-[#14F1D9] text-[10px]">5</span>
+            <div className="bg-surface border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
+              <div className="flex items-center gap-2 text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-3">
+                <span className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-primary text-[10px]">5</span>
                 Индикаторы масштаба & Экспертиза
               </div>
               <h3 className="text-lg font-bold font-montserrat text-white mb-2 uppercase tracking-tight">
@@ -759,9 +759,9 @@ export function DoorsRealEstateCase() {
               </div>
             </div>
 
-            <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 hover:border-[#14F1D9]/50 transition-all">
-              <div className="flex items-center gap-2 text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-3">
-                <span className="w-5 h-5 rounded-full bg-[#14F1D9]/20 flex items-center justify-center text-[#14F1D9] text-[10px]">6</span>
+            <div className="bg-surface border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
+              <div className="flex items-center gap-2 text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-3">
+                <span className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-primary text-[10px]">6</span>
                 Конверсионный футер & Прямой контакт
               </div>
               <h3 className="text-lg font-bold font-montserrat text-white mb-2 uppercase tracking-tight">
@@ -780,7 +780,7 @@ export function DoorsRealEstateCase() {
         {/* 6. PRESENTATION MOCKUPS & DEVICES */}
         <section id="mockups" className="scroll-mt-24 space-y-10">
           <div className="border-b border-white/10 pb-4">
-            <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+            <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
               06 / ПРЕЗЕНТАЦИОННЫЕ МОКАПЫ & УСТРОЙСТВА
             </div>
             <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -800,7 +800,7 @@ export function DoorsRealEstateCase() {
                   title: mockup.title,
                   subtitle: mockup.type
                 })}
-                className="bg-[#1A1A1A] border border-white/10 rounded-2xl overflow-hidden group hover:border-[#14F1D9]/50 transition-all flex flex-col cursor-pointer"
+                className="bg-surface border border-white/10 rounded-2xl overflow-hidden group hover:border-primary/50 transition-all flex flex-col cursor-pointer"
               >
                 <div className="relative aspect-[16/10] bg-black/40 overflow-hidden">
                   <Image
@@ -809,16 +809,16 @@ export function DoorsRealEstateCase() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-montserrat font-semibold text-[#14F1D9] border border-white/10 uppercase tracking-wider">
+                  <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-montserrat font-semibold text-primary border border-white/10 uppercase tracking-wider">
                     {mockup.type}
                   </div>
                   <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-md p-2 rounded-lg text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Maximize2 className="w-4 h-4 text-[#14F1D9]" />
+                    <Maximize2 className="w-4 h-4 text-primary" />
                   </div>
                 </div>
                 <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                   <div>
-                    <h3 className="text-base font-bold font-montserrat text-white group-hover:text-[#14F1D9] transition-colors leading-snug">
+                    <h3 className="text-base font-bold font-montserrat text-white group-hover:text-primary transition-colors leading-snug">
                       {mockup.title}
                     </h3>
                     <p className="text-xs text-white/60 font-sans leading-relaxed mt-2">
@@ -827,7 +827,7 @@ export function DoorsRealEstateCase() {
                   </div>
                   <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-white/40 font-montserrat">
                     <span>Mockuuups Studio Render</span>
-                    <span className="text-[#14F1D9] font-medium flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    <span className="text-primary font-medium flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                       Открыть <ChevronRight className="w-3 h-3" />
                     </span>
                   </div>
@@ -840,7 +840,7 @@ export function DoorsRealEstateCase() {
         {/* 7. DESIGN SYSTEM & TOKENS */}
         <section id="system" className="scroll-mt-24 space-y-10">
           <div className="border-b border-white/10 pb-4">
-            <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-widest mb-1">
+            <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-widest mb-1">
               07 / ДИЗАЙН-СИСТЕМА
             </div>
             <h2 className="text-2xl sm:text-4xl font-black font-montserrat uppercase text-white tracking-tight">
@@ -851,7 +851,7 @@ export function DoorsRealEstateCase() {
             </p>
           </div>
 
-          <div className="bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 sm:p-8 space-y-8">
+          <div className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8 space-y-8">
             <h3 className="text-xl font-bold font-montserrat text-white uppercase tracking-tight">
               Шрифтовая иерархия проекта (Typography Tokens)
             </h3>
@@ -859,7 +859,7 @@ export function DoorsRealEstateCase() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-black/30 p-6 rounded-2xl border border-white/5 space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-montserrat font-bold uppercase tracking-wider text-[#14F1D9]">
+                  <span className="text-xs font-montserrat font-bold uppercase tracking-wider text-primary">
                     Заголовки & Акценты
                   </span>
                   <span className="text-xs font-mono text-white/50">Montserrat</span>
@@ -879,7 +879,7 @@ export function DoorsRealEstateCase() {
 
               <div className="bg-black/30 p-6 rounded-2xl border border-white/5 space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-montserrat font-bold uppercase tracking-wider text-[#14F1D9]">
+                  <span className="text-xs font-montserrat font-bold uppercase tracking-wider text-primary">
                     Интерфейс & Наборный текст
                   </span>
                   <span className="text-xs font-mono text-white/50">Inter</span>
@@ -901,8 +901,8 @@ export function DoorsRealEstateCase() {
 
           {/* Grid standards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-[#1A1A1A] border border-white/10 p-6 rounded-2xl">
-              <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-2">
+            <div className="bg-surface border border-white/10 p-6 rounded-2xl">
+              <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-2">
                 Ширина холста
               </div>
               <div className="text-2xl font-bold font-montserrat text-white mb-2">
@@ -913,8 +913,8 @@ export function DoorsRealEstateCase() {
               </p>
             </div>
 
-            <div className="bg-[#1A1A1A] border border-white/10 p-6 rounded-2xl">
-              <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-2">
+            <div className="bg-surface border border-white/10 p-6 rounded-2xl">
+              <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-2">
                 8-точечный базовый грид
               </div>
               <div className="text-2xl font-bold font-montserrat text-white mb-2">
@@ -925,8 +925,8 @@ export function DoorsRealEstateCase() {
               </p>
             </div>
 
-            <div className="bg-[#1A1A1A] border border-white/10 p-6 rounded-2xl">
-              <div className="text-xs font-montserrat font-bold text-[#14F1D9] uppercase tracking-wider mb-2">
+            <div className="bg-surface border border-white/10 p-6 rounded-2xl">
+              <div className="text-xs font-montserrat font-bold text-primary uppercase tracking-wider mb-2">
                 Контрастность WCAG
               </div>
               <div className="text-2xl font-bold font-montserrat text-white mb-2">

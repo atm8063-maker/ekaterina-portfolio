@@ -3,12 +3,16 @@
 @theme {
   --font-sans: "Inter", var(--default-font-family);
   --font-montserrat: "Montserrat", var(--default-font-family);
-  
-  --color-primary: #14F1D9; /* Turquoise from Figma */
-  --color-background: #111111; /* Dark theme */
+
+  --color-primary: #14F1D9;
+  --color-accent: #14F1D9;
+  --color-background: #111111;
   --color-surface: #1A1A1A;
-  --color-text-main: #FFFFFF;
-  --color-text-muted: #A3A3A3;
+  --color-surface-elevated: #181818;
+  --color-text-main: #ffffff;
+  --color-text-muted: #a3a3a3;
+
+  --spacing-header: 5rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -43,6 +47,26 @@
   
   .font-inter {
     font-family: var(--font-sans);
+  }
+
+  .text-accent {
+    color: var(--color-accent);
+  }
+
+  .text-muted-foreground {
+    color: var(--color-text-muted);
+  }
+
+  .bg-surface {
+    background-color: var(--color-surface);
+  }
+
+  .bg-surface-elevated {
+    background-color: var(--color-surface-elevated);
+  }
+
+  .scroll-mt-header {
+    scroll-margin-top: var(--spacing-header);
   }
 
   .text-hero-oversized {
