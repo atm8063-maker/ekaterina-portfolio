@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { MotionReveal } from "@/components/shared/motion-reveal";
 
 export default function About() {
   const [isUnderDev, setIsUnderDev] = useState(false);
@@ -31,11 +31,9 @@ export default function About() {
       <div className="absolute bottom-0 left-0 w-full h-[150px] lg:h-[220px] bg-gradient-to-t from-background to-transparent z-[15] pointer-events-none" />
 
       {/* Text Content (Left on desktop, First on mobile) */}
-      <motion.div 
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+      <MotionReveal
+        variant="fade-left"
+        duration={0.8}
         className="w-full lg:w-[54%] xl:w-[52%] flex flex-col justify-center order-1 lg:order-1 relative z-20 pb-2 lg:pb-0 pr-0 lg:pr-8 xl:pr-12"
       >
         <h2 className="text-3xl sm:text-4xl lg:text-[2.6rem] xl:text-[3.2rem] font-bold uppercase mb-4 lg:mb-5 text-white font-montserrat leading-tight">
@@ -64,33 +62,27 @@ export default function About() {
             <button 
               type="button"
               onClick={handleAboutClick}
-              className="inline-flex items-center gap-2 font-bold text-xs sm:text-sm md:text-base px-7 py-3.5 tracking-widest uppercase transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 font-montserrat whitespace-nowrap cursor-pointer bg-primary hover:bg-white text-background"
+              className="inline-flex items-center gap-2 font-bold text-xs sm:text-sm md:text-base px-7 py-3.5 tracking-widest uppercase transition-all shadow-lg hov:shadow-xl hov:-translate-y-0.5 font-montserrat whitespace-nowrap cursor-pointer bg-primary hov:bg-white text-background"
             >
               {isUnderDev ? 'В разработке (Скоро)' : 'ПОДРОБНЕЕ ОБО МНЕ'}
             </button>
-            <AnimatePresence>
-              {isUnderDev && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  className="absolute -top-10 left-0 bg-surface text-primary border border-primary/40 text-xs px-3 py-1.5 rounded-lg shadow-xl font-montserrat font-semibold flex items-center gap-1.5 z-30 pointer-events-none whitespace-nowrap"
-                >
-                  <span>⏳</span>
-                  <span>Раздел в разработке, скоро появится!</span>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {isUnderDev && (
+              <div
+                role="status"
+                className="absolute -top-10 left-0 bg-surface text-primary border border-primary/40 text-xs px-3 py-1.5 rounded-lg shadow-xl font-montserrat font-semibold flex items-center gap-1.5 z-30 pointer-events-none whitespace-nowrap motion-reveal motion-reveal--fade-up motion-reveal--on-load is-visible"
+              >
+                <span>⏳</span>
+                <span>Раздел в разработке, скоро появится!</span>
+              </div>
+            )}
           </div>
         </div>
-      </motion.div>
+      </MotionReveal>
 
       {/* Visual Composition / Cutout Photo (Right on desktop, Below text on mobile, with mobile button underneath) */}
-      <motion.div 
-        initial={{ opacity: 0, x: 30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.9 }}
+      <MotionReveal
+        variant="fade-right"
+        duration={0.9}
         className="w-full lg:w-[46%] xl:w-[48%] order-2 lg:order-2 relative z-20 flex flex-col items-center lg:items-start justify-center lg:justify-end lg:h-[86svh] xl:h-[90svh] -mt-4 lg:-mt-6 xl:-mt-8"
       >
         <div className="relative w-full h-[380px] sm:h-[480px] lg:h-full max-w-[440px] sm:max-w-[520px] lg:max-w-none">
@@ -108,24 +100,20 @@ export default function About() {
           <button 
             type="button"
             onClick={handleAboutClick}
-            className="inline-flex items-center justify-center gap-2 font-bold text-sm px-8 py-4 tracking-widest uppercase transition-all shadow-lg hover:shadow-xl font-montserrat text-center w-full max-w-[320px] cursor-pointer bg-primary hover:bg-white text-background"
+            className="inline-flex items-center justify-center gap-2 font-bold text-sm px-8 py-4 tracking-widest uppercase transition-all shadow-lg hov:shadow-xl font-montserrat text-center w-full max-w-[320px] cursor-pointer bg-primary hov:bg-white text-background"
           >
             {isUnderDev ? 'В разработке (Скоро)' : 'ПОДРОБНЕЕ ОБО МНЕ'}
           </button>
-          <AnimatePresence>
-            {isUnderDev && (
-              <motion.div
-                initial={{ opacity: 0, y: -5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                className="mt-2 text-xs text-primary bg-surface px-3 py-1.5 rounded-lg border border-primary/40 text-center font-montserrat shadow-lg pointer-events-none"
-              >
-                ⏳ Раздел в разработке, скоро появится!
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {isUnderDev && (
+            <div
+              role="status"
+              className="mt-2 text-xs text-primary bg-surface px-3 py-1.5 rounded-lg border border-primary/40 text-center font-montserrat shadow-lg pointer-events-none motion-reveal motion-reveal--fade-up motion-reveal--on-load is-visible"
+            >
+              ⏳ Раздел в разработке, скоро появится!
+            </div>
+          )}
         </div>
-      </motion.div>
+      </MotionReveal>
     </section>
   );
 }

@@ -1,12 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cases } from "@/lib/data";
-import { easeOutMedium, fadeUp, viewportOnce } from "@/lib/motion/presets";
+import { MotionReveal } from "@/components/shared/motion-reveal";
 
 export default function Portfolio() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -42,16 +41,9 @@ export default function Portfolio() {
       <div className="container mx-auto px-6 relative z-20">
         <div className="mb-6 md:mb-12 flex items-end justify-between">
           <div>
-            <motion.h2
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              transition={easeOutMedium}
-              className="text-3xl md:text-5xl font-bold uppercase text-white font-montserrat mb-2"
-            >
+            <MotionReveal as="h2" variant="fade-up" className="text-3xl md:text-5xl font-bold uppercase text-white font-montserrat mb-2">
               КЕЙСЫ
-            </motion.h2>
+            </MotionReveal>
             {/* Mobile-only swipe hint */}
             <div className="md:hidden inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-primary uppercase">
               <span>←</span> Листайте кейсы <span>→</span>
@@ -62,14 +54,14 @@ export default function Portfolio() {
           <div className="hidden md:flex gap-4">
             <button 
               onClick={() => scroll("left")}
-              className="p-3 rounded-full border border-white/20 text-white/50 hover:text-primary hover:border-primary transition-all"
+              className="p-3 rounded-full border border-white/20 text-white/50 hov:text-primary hov:border-primary transition-all"
               aria-label="Previous cases"
             >
               <ChevronLeft size={24} />
             </button>
             <button 
               onClick={() => scroll("right")}
-              className="p-3 rounded-full border border-white/20 text-white/50 hover:text-primary hover:border-primary transition-all"
+              className="p-3 rounded-full border border-white/20 text-white/50 hov:text-primary hov:border-primary transition-all"
               aria-label="Next cases"
             >
               <ChevronRight size={24} />
@@ -99,12 +91,10 @@ export default function Portfolio() {
             else if (c.slug.includes('14-vertex')) img = "/case_14.jpg";
 
             return (
-              <motion.div
+              <MotionReveal
                 key={c.slug}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                variant="fade-right"
+                delay={Math.min(i * 0.1, 0.5)}
                 className="w-[85vw] md:w-[45vw] lg:w-[400px] shrink-0 snap-center group flex flex-col"
               >
                 <Link href={c.customHref || "/cases/" + c.slug} className="block w-full h-full">
@@ -113,24 +103,24 @@ export default function Portfolio() {
                       src={img}
                       alt={c.title}
                       fill
-                      className="object-contain transition-transform duration-500 group-hover:scale-105 opacity-60 group-hover:opacity-100"
+                      className="object-contain transition-transform duration-500 group-hov:scale-105 opacity-60 group-hov:opacity-100"
                     />
                   </div>
                   <div className="flex-1 flex flex-col justify-between">
                     <div>
                       <p className="text-primary text-xs font-bold uppercase tracking-widest mb-3">{c.tag}</p>
-                      <h3 className="text-xl md:text-2xl font-semibold text-white group-hover:text-primary transition-colors leading-snug mb-4">{c.title}</h3>
+                      <h3 className="text-xl md:text-2xl font-semibold text-white group-hov:text-primary transition-colors leading-snug mb-4">{c.title}</h3>
                       <p className="text-sm text-white/60 mb-4 line-clamp-2">{c.description}</p>
                     </div>
-                    <span className="flex items-center gap-2 text-sm font-semibold text-white/70 group-hover:text-primary mt-2">
+                    <span className="flex items-center gap-2 text-sm font-semibold text-white/70 group-hov:text-primary mt-2">
                       Смотреть кейс 
-                      <svg className="w-4 h-4 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-4 h-4 transition-transform group-hov:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
                     </span>
                   </div>
                 </Link>
-              </motion.div>
+              </MotionReveal>
             );
           })}
         </div>

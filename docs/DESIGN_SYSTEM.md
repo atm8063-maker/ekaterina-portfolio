@@ -91,12 +91,39 @@ Desktop: `w-[40%] h-[60vh]`, Mobile: `w-[25%] h-[50vh]`
 
 ## 6. Анимации
 
+### Viewports (один источник в `app/globals.css`)
+
+| Имя | Tailwind | `@custom-media` |
+|-----|----------|-----------------|
+| mobile | default, `sm:` | `--viewport-mobile` (&lt; 768px) |
+| tablet | `md:` | `--viewport-tablet` (768–1023px) |
+| desktop | `lg:` / `xl:` | `--viewport-desktop` (≥ 1024px) |
+
+### Hover только на pointer-устройствах
+
+- Tailwind: `hov:` и `group-hov:` (`@custom-variant` в `globals.css`, `@media (hover: hover) and (pointer: fine)`).
+- Утилиты: `.photo-hover-effect`, `.marquee-pause:hover` — то же правило в CSS.
+
+### Marquee / бесконечный скролл
+
+| Класс | Назначение |
+|-------|------------|
+| `.animate-marquee-left` / `.animate-marquee-right` / `.animate-marquee-vertical` | `transform`, длительность `--marquee-duration` |
+| `.marquee-track` | flex + `width: max-content` |
+| `.marquee-pause` | пауза при hover (pointer) или `.marquee-paused` |
+
+### Появление при скролле / загрузке
+
+- Компонент [`components/shared/motion-reveal.tsx`](../components/shared/motion-reveal.tsx) + классы `.motion-reveal`, `.motion-reveal--fade-up` и т.д.
+- `prefers-reduced-motion`: анимации отключены, контент сразу виден.
+
 | Эффект | Реализация | Где |
 |--------|-----------|-----|
-| Появление при скролле | framer-motion useInView | ArtSpace, ArtContemporary |
-| Параллакс | framer-motion useScroll | ArtHero |
-| Ч/Б → Цвет ховер | CSS `.photo-hover-effect` | Фото-карточки |
-| Горизонтальный скролл | Нативный overflow-x + Scroll Snap | ArtProtest |
+| Появление при скролле | `MotionReveal` + CSS | About, Contact, Portfolio, Competencies, art-секции |
+| Hero splatter | framer-motion (spring) | `hero.tsx` desktop |
+| Marquee теги | CSS | `marquee-tags.tsx`, `/` |
+| Ч/Б → Цвет ховер | `.photo-hover-effect` | Фото-карточки |
+| Горизонтальный скролл | overflow-x + snap | ArtProtest, Portfolio |
 | Glassmorphism | `backdrop-blur-sm bg-white/5` | ArtHero badge |
 
 ---
@@ -105,7 +132,7 @@ Desktop: `w-[40%] h-[60vh]`, Mobile: `w-[25%] h-[50vh]`
 
 | Пакет | Для чего |
 |-------|---------|
-| `framer-motion` | Анимации |
+| `framer-motion` | Hero splatter (desktop); draft `art-gallery` carousel при необходимости |
 | `lucide-react` | Иконки |
 | `next/image` | Оптимизация картинок |
 | `next/font/google` | Шрифты |

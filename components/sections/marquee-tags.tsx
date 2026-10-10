@@ -57,29 +57,11 @@ export function MarqueeRow({
 
   return (
     <section className={`bg-background overflow-hidden relative z-20 w-full ${className || 'py-8 lg:py-12'}`}>
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes marquee-left {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        @keyframes marquee-right {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-        .animate-marquee-left {
-          animation: marquee-left linear infinite;
-        }
-        .animate-marquee-right {
-          animation: marquee-right linear infinite;
-        }
-        .marquee-container:hover .animate-marquee-left,
-        .marquee-container:hover .animate-marquee-right {
-          animation-play-state: paused;
-        }
-      `}} />
-
-      <div className="marquee-container w-full flex whitespace-nowrap overflow-hidden">
-        <div className={`${animationClass} flex gap-4 md:gap-6 px-2 w-max`} style={{ animationDuration: speed }}>
+      <div className="marquee-pause w-full flex whitespace-nowrap overflow-hidden">
+        <div
+          className={`marquee-track ${animationClass} flex gap-4 md:gap-6 px-2`}
+          style={{ ["--marquee-duration" as string]: speed }}
+        >
           {createMarqueeContent(items).map((tag, i) => (
             <div key={`${type}-${i}`} className={`${itemStyle} uppercase tracking-wider px-4 md:px-5 py-2 md:py-2.5 rounded-full text-[10px] md:text-xs flex-shrink-0`}>
               {tag}

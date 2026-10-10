@@ -224,11 +224,9 @@ export default function Hero() {
         </div>
 
         {/* Full Height Photo Cutout on Desktop */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="absolute top-[5rem] bottom-0 left-[10%] lg:left-[15%] w-[45%] xl:w-[40%] z-10 pointer-events-none"
+        <div 
+          className="absolute top-[5rem] bottom-0 left-[10%] lg:left-[15%] w-[45%] xl:w-[40%] z-10 pointer-events-none motion-reveal motion-reveal--fade-up motion-reveal--on-load is-visible"
+          style={{ ["--motion-reveal-duration" as string]: "0.8s" }}
         >
           <Image 
             src="/hero-cutout.png" 
@@ -237,7 +235,7 @@ export default function Hero() {
             className="object-contain object-[left_bottom] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
             priority
           />
-        </motion.div>
+        </div>
 
         {/* Typography */}
         <div className="absolute top-[5rem] bottom-0 left-0 right-[5%] lg:right-[10%] z-20 flex items-center justify-end pointer-events-none translate-x-[4px]">

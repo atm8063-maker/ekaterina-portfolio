@@ -790,10 +790,31 @@ export function ArtProtest() {
     artwork: Artwork;
   } | null>(null);
   const [conceptModalArtwork, setConceptModalArtwork] = useState<Artwork | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  type ProtestSlide =
+    | { kind: 'artwork'; artwork: Artwork; index: number }
+    | { kind: 'manifesto' };
+
+  const slides: ProtestSlide[] = [
+    ...artworksData.map((artwork, index) => ({ kind: 'artwork' as const, artwork, index })),
+    { kind: 'manifesto' },
+  ];
 
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
+
+  const updateScrollEdges = React.useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    const edge = 4;
+    const left = el.scrollLeft;
+    setCanScrollLeft(left > edge);
+    setCanScrollRight(left < maxScroll - edge);
+  }, []);
 
   // Auto-center first artwork on mobile so Artwork 01 is immediately fully visible
   React.useEffect(() => {
@@ -807,6 +828,7 @@ export function ArtProtest() {
         const spotCenterRelative = spotRect.left - containerRect.left + el.scrollLeft + spotRect.width / 2;
         el.scrollLeft = Math.max(0, spotCenterRelative - el.clientWidth / 2);
       }
+      updateScrollEdges();
     };
 
     const t1 = setTimeout(centerFirstSpot, 50);
@@ -817,20 +839,35 @@ export function ArtProtest() {
       clearTimeout(t2);
       window.removeEventListener('resize', centerFirstSpot);
     };
-  }, []);
+  }, [updateScrollEdges]);
 
-  // Group 7 artworks + 1 manifesto into 4 wall chunks (2 artworks per wall segment)
-  const chunks: Array<{ left: Artwork; right?: Artwork | 'manifesto' }> = [
-    { left: artworksData[0], right: artworksData[1] },
-    { left: artworksData[2], right: artworksData[3] },
-    { left: artworksData[4], right: artworksData[5] },
-    { left: artworksData[6], right: 'manifesto' },
-  ];
+  React.useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
 
-  const scrollByAmount = (offset: number) => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: offset, behavior: 'smooth' });
-    }
+    updateScrollEdges();
+    el.addEventListener('scroll', updateScrollEdges, { passive: true });
+
+    const ro = new ResizeObserver(() => updateScrollEdges());
+    ro.observe(el);
+
+    return () => {
+      el.removeEventListener('scroll', updateScrollEdges);
+      ro.disconnect();
+    };
+  }, [updateScrollEdges, slides.length]);
+
+  const scrollByPage = (direction: -1 | 1) => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const slide = el.querySelector<HTMLElement>('[data-art-protest-slide]');
+    if (!slide) return;
+    const styles = getComputedStyle(el);
+    const gap =
+      parseFloat(styles.columnGap || '0') ||
+      parseFloat(styles.gap || '0') ||
+      0;
+    el.scrollBy({ left: direction * (slide.offsetWidth + gap), behavior: 'smooth' });
   };
 
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -859,27 +896,42 @@ export function ArtProtest() {
     const el = scrollContainerRef.current;
     el?.classList.remove('cursor-grabbing');
     el?.classList.add('cursor-grab');
+    updateScrollEdges();
   };
 
   return (
     <section id="art-protest" className="relative w-full bg-background overflow-hidden scroll-mt-20 border-b border-white/10 group/section">
-      
+      {/* Fixed wall: height-fit tile (repeat-x), gallery scrolls above */}
+      <div className="art-protest-wall-bg absolute inset-0 z-0 pointer-events-none" aria-hidden />
+
       {/* Floating Scroll Controls over the Wall */}
       <button
+        type="button"
         data-interactive="true"
         onPointerDown={(e) => e.stopPropagation()}
-        onClick={() => scrollByAmount(-700)}
-        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-primary hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
+        onClick={() => scrollByPage(-1)}
+        disabled={!canScrollLeft}
+        aria-hidden={!canScrollLeft}
+        tabIndex={canScrollLeft ? 0 : -1}
+        className={`hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hov:bg-primary hov:border-black shadow-2xl rounded-none transition-opacity duration-300 ease-out ${
+          canScrollLeft ? 'opacity-100 pointer-events-auto cursor-pointer' : 'opacity-0 pointer-events-none cursor-default'
+        }`}
         aria-label="Листать влево"
       >
         <ChevronLeft className="h-6 w-6" />
       </button>
 
       <button
+        type="button"
         data-interactive="true"
         onPointerDown={(e) => e.stopPropagation()}
-        onClick={() => scrollByAmount(700)}
-        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-primary hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
+        onClick={() => scrollByPage(1)}
+        disabled={!canScrollRight}
+        aria-hidden={!canScrollRight}
+        tabIndex={canScrollRight ? 0 : -1}
+        className={`hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hov:bg-primary hov:border-black shadow-2xl rounded-none transition-opacity duration-300 ease-out ${
+          canScrollRight ? 'opacity-100 pointer-events-auto cursor-pointer' : 'opacity-0 pointer-events-none cursor-default'
+        }`}
         aria-label="Листать вправо"
       >
         <ChevronRight className="h-6 w-6" />
@@ -892,66 +944,28 @@ export function ArtProtest() {
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}
         onPointerLeave={endDrag}
+        onScroll={updateScrollEdges}
         onDragStart={(e) => e.preventDefault()}
-        className="relative w-full h-[680px] sm:h-[740px] lg:h-[800px] overflow-x-auto overflow-y-hidden flex flex-nowrap cursor-grab select-none snap-x snap-mandatory hide-scrollbar bg-transparent scroll-smooth"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        className="art-protest-scroll relative z-10 w-full h-[680px] sm:h-[740px] lg:h-[800px] overflow-x-auto overflow-y-hidden flex flex-nowrap items-center cursor-grab select-none snap-x snap-mandatory hide-scrollbar bg-transparent scroll-smooth px-0"
       >
-        <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
-
-        {chunks.map((chunk, index) => (
+        {slides.map((slide, slideIndex) => (
           <div
-            key={index}
-            className="relative h-full shrink-0 flex items-center justify-center bg-transparent"
+            key={slide.kind === 'artwork' ? slide.artwork.id : 'manifesto'}
+            data-art-protest-slide
+            className={`art-protest-slide relative h-[76%] sm:h-[80%] flex items-center justify-center overflow-visible bg-transparent ${slideIndex === 0 ? 'art-spot-first' : ''}`}
           >
-            {/* Seamless Concrete Wall Texture Segment */}
-            <img
-              src="/seamless_ceiling_v3_11_final1.jpg"
-              alt={`wall segment ${index + 1}`}
-              className="h-full w-auto max-w-none block pointer-events-none object-cover"
-            />
-
-            {/* Exactly positioned over the 2 spotlight wall frames with closer gap */}
-            <div className="absolute inset-0 flex items-center bg-transparent">
-              {/* Left padding */}
-              <div className="w-[6%] md:w-[5.5%] h-full shrink-0" />
-
-              {/* Spot 1: Left Collage */}
-              <div className={`relative w-[43%] md:w-[42%] h-[76%] sm:h-[80%] shrink-0 flex items-center justify-center overflow-visible bg-transparent snap-center ${index === 0 ? 'art-spot-first' : ''}`}>
-                <SteppedCollage
-                  artwork={chunk.left}
-                  index={index * 2}
-                  onOpenLightbox={(item, art) => setLightboxState({ item, artwork: art })}
-                  onOpenConcept={(art) => setConceptModalArtwork(art)}
-                />
-              </div>
-
-              {/* Reduced Central Wall Gap */}
-              <div className="w-[5%] md:w-[5%] h-full shrink-0" />
-
-              {/* Spot 2: Right Collage */}
-              <div className="relative w-[43%] md:w-[42%] h-[76%] sm:h-[80%] shrink-0 flex items-center justify-center overflow-visible bg-transparent snap-center">
-                {chunk.right === 'manifesto' ? (
-                  <ManifestoPanel />
-                ) : chunk.right ? (
-                  <SteppedCollage
-                    artwork={chunk.right}
-                    index={index * 2 + 1}
-                    onOpenLightbox={(item, art) => setLightboxState({ item, artwork: art })}
-                    onOpenConcept={(art) => setConceptModalArtwork(art)}
-                  />
-                ) : (
-                  <div className="w-full h-full" />
-                )}
-              </div>
-
-              {/* Right padding */}
-              <div className="w-[6%] md:w-[5.5%] h-full shrink-0" />
-            </div>
+            {slide.kind === 'manifesto' ? (
+              <ManifestoPanel />
+            ) : (
+              <SteppedCollage
+                artwork={slide.artwork}
+                index={slide.index}
+                onOpenLightbox={(item, art) => setLightboxState({ item, artwork: art })}
+                onOpenConcept={(art) => setConceptModalArtwork(art)}
+              />
+            )}
           </div>
         ))}
-
-        {/* Trailing spacer */}
-        <div className="w-12 shrink-0" />
       </div>
 
       {/* Mobile Swipe Hint */}

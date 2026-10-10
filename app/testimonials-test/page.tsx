@@ -325,10 +325,13 @@ function AutoScrollLane({
 }) {
   const looped = [...laneItems, ...laneItems];
   return (
-    <div className="group relative h-[560px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_92%,transparent)]">
+    <div className="marquee-pause group relative h-[560px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_92%,transparent)]">
       <div
-        className="animate-marquee-vertical flex flex-col gap-3 group-hover:[animation-play-state:paused]"
-        style={{ animationDuration: `${duration}s`, animationDirection: direction === "down" ? "reverse" : "normal" }}
+        className="animate-marquee-vertical flex flex-col gap-3"
+        style={{
+          ["--marquee-duration" as string]: `${duration}s`,
+          animationDirection: direction === "down" ? "reverse" : "normal",
+        }}
       >
         {looped.map((item, i) => (
           <MiniCard key={`${item.id}-${i}`} item={item} />

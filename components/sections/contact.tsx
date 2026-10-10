@@ -1,8 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 import Image from "next/image";
+import { MotionReveal } from "@/components/shared/motion-reveal";
 
 export default function Contact() {
   return (
@@ -23,25 +22,14 @@ export default function Contact() {
       <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[500px] bg-gradient-to-t from-background to-transparent z-[15] pointer-events-none" />
 
       <div className="container mx-auto px-6 max-w-3xl relative z-20">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-bold uppercase text-white tracking-widest mb-12"
-        >
+        <MotionReveal as="h2" variant="fade-up" className="text-4xl md:text-6xl font-bold uppercase text-white tracking-widest mb-12">
           СВЯЗАТЬСЯ <span className="text-primary block mt-2">СО МНОЙ</span>
-        </motion.h2>
+        </MotionReveal>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="flex flex-col sm:flex-row justify-center gap-6"
-        >
+        <MotionReveal variant="fade-up" delay={0.2} className="flex flex-col sm:flex-row justify-center gap-6">
           <a 
             href="mailto:razumova.ekaterina@gmail.com" 
-            className="px-10 py-5 bg-primary text-black font-bold uppercase tracking-widest rounded-none hover:bg-white transition-colors"
+            className="px-10 py-5 bg-primary text-black font-bold uppercase tracking-widest rounded-none hov:bg-white transition-colors"
           >
             Написать на Email
           </a>
@@ -49,11 +37,11 @@ export default function Contact() {
             href="https://t.me/fir_tree_art" 
             target="_blank"
             rel="noopener noreferrer"
-            className="px-10 py-5 bg-transparent border border-primary text-primary font-bold uppercase tracking-widest rounded-none hover:bg-primary/10 transition-colors"
+            className="px-10 py-5 bg-transparent border border-primary text-primary font-bold uppercase tracking-widest rounded-none hov:bg-primary/10 transition-colors"
           >
             Telegram @fir_tree_art
           </a>
-        </motion.div>
+        </MotionReveal>
       </div>
       
       <div className="mt-24 pt-8 text-center text-text-muted text-sm tracking-widest uppercase">

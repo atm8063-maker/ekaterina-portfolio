@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { MotionReveal } from "@/components/shared/motion-reveal";
 
 const competencies = [
   {
@@ -31,8 +32,6 @@ const competencies = [
   }
 ];
 
-import Image from "next/image";
-
 export default function Competencies() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -42,7 +41,6 @@ export default function Competencies() {
 
   return (
     <section id="competencies" className="py-24 scroll-mt-20 relative overflow-hidden bg-background">
-      {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
           src="/paper-clean-dark.png" 
@@ -52,21 +50,14 @@ export default function Competencies() {
         />
       </div>
 
-      {/* Top gradient fade */}
       <div className="absolute top-0 left-0 w-full h-[440px] lg:h-[670px] bg-gradient-to-b from-background from-[7%] via-background/40 via-[35%] to-transparent z-[15] pointer-events-none" />
-      {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 w-full h-48 lg:h-[500px] bg-gradient-to-t from-background to-transparent z-[15] pointer-events-none" />
 
       <div className="container mx-auto px-6 max-w-4xl relative z-20">
         <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold uppercase text-white mb-4"
-          >
+          <MotionReveal as="h2" variant="fade-up" className="text-3xl md:text-5xl font-bold uppercase text-white mb-4">
             Могу, Умею, <span className="text-primary">Практикую</span>
-          </motion.h2>
+          </MotionReveal>
           <p className="text-text-muted text-lg">Компетенции, позволяющие закрывать проекты под ключ.</p>
         </div>
 
@@ -74,50 +65,46 @@ export default function Competencies() {
           {competencies.map((comp, index) => {
             const isOpen = openIndex === index;
             return (
-              <motion.div 
+              <MotionReveal
                 key={comp.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                variant="fade-up"
+                delay={index * 0.1}
                 className="border border-white/10 rounded-xl overflow-hidden bg-surface/50"
               >
                 <button
+                  type="button"
                   onClick={() => toggleAccordion(index)}
-                  className="w-full px-6 py-5 flex justify-between items-center text-left hover:bg-white/5 transition-colors"
+                  className="w-full px-6 py-5 flex justify-between items-center text-left hov:bg-white/5 transition-colors"
+                  aria-expanded={isOpen}
                 >
                   <h3 className="text-xl font-semibold uppercase tracking-wide text-white">{comp.title}</h3>
-                  <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-primary"
+                  <span
+                    className={`text-primary transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                    aria-hidden
                   >
                     <ChevronDown size={24} />
-                  </motion.div>
+                  </span>
                 </button>
                 
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                    >
-                      <div className="px-6 pb-6 pt-2">
-                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
-                          {comp.items.map((item, i) => (
-                            <li key={i} className="flex items-start gap-2 text-text-muted">
-                              <span className="text-primary mt-1.5 h-1.5 w-1.5 rounded-full flex-shrink-0" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                <div
+                  className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                    isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                  }`}
+                >
+                  <div className="min-h-0 overflow-hidden">
+                    <div className="px-6 pb-6 pt-2">
+                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
+                        {comp.items.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-text-muted">
+                            <span className="text-primary mt-1.5 h-1.5 w-1.5 rounded-full flex-shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </MotionReveal>
             );
           })}
         </div>

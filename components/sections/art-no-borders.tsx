@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { MotionReveal } from "@/components/shared/motion-reveal";
 
 export function ArtNoBorders() {
   return (
@@ -23,11 +23,9 @@ export function ArtNoBorders() {
       <div className="w-full px-6 sm:px-12 lg:px-[8%] xl:px-[12%] relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          <motion.div 
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+          <MotionReveal
+            variant="fade-left"
+            duration={0.8}
             className="lg:col-span-7 flex flex-col justify-center order-1"
           >
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white font-montserrat mb-6 leading-[1.1]">
@@ -38,13 +36,12 @@ export function ArtNoBorders() {
             <p className="text-muted-foreground text-base sm:text-lg lg:text-xl font-medium leading-[1.7] font-inter max-w-[560px]">
               Эпоксидная смола отлично демонстрирует свою универсальность при создании любых форматов. Я работаю как с малыми формами, так и с крупными: от миниатюрных украшений до мебели. Картины, домашний декор, посуда, арт-объекты, ёлочные игрушки — смола отлично подходит для любой категории.
             </p>
-          </motion.div>
+          </MotionReveal>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <MotionReveal
+            variant="fade-up"
+            delay={0.2}
+            duration={0.8}
             className="lg:col-span-5 order-2 flex justify-center lg:justify-end"
           >
             <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[400px]">
@@ -65,7 +62,7 @@ export function ArtNoBorders() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </MotionReveal>
         </div>
       </div>
     </section>

@@ -125,36 +125,9 @@ export default function WideMosaicExperimentPage() {
         fontFamily: 'Inter, -apple-system, sans-serif'
       }}
     >
-      <style>{`
-        @keyframes marqueeLeft {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        @keyframes marqueeRight {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-
-        .marquee-track-left {
-          display: flex;
-          gap: 10px;
-          width: max-content;
-          animation: marqueeLeft var(--speed, 40s) linear infinite;
-        }
-        .marquee-track-right {
-          display: flex;
-          gap: 10px;
-          width: max-content;
-          animation: marqueeRight var(--speed, 45s) linear infinite;
-        }
-
-        .paused {
-          animation-play-state: paused !important;
-        }
-      `}</style>
-
       {/* ================= BACKGROUND: 6 NARROW DRIFTING LANES ================= */}
       <div
+        className={`marquee-pause ${isPaused ? 'marquee-paused' : ''}`}
         style={{
           position: 'absolute',
           inset: '-30px',
@@ -173,8 +146,8 @@ export default function WideMosaicExperimentPage() {
         {tracks.map((tr, idx) => (
           <div
             key={`tr-${idx}`}
-            className={`${tr.dir === 'left' ? 'marquee-track-left' : 'marquee-track-right'} ${isPaused ? 'paused' : ''}`}
-            style={{ '--speed': tr.speed } as React.CSSProperties}
+            className={`marquee-track gap-2.5 ${tr.dir === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'}`}
+            style={{ ['--marquee-duration' as string]: tr.speed }}
           >
             {[...tr.data, ...tr.data, ...tr.data].map((item, i) => (
               <div
