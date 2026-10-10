@@ -6,7 +6,6 @@ import Hero from "@/components/sections/hero";
 import { MarqueeRow } from "@/components/sections/marquee-tags";
 import About from "@/components/sections/about";
 import { SectionSkeleton } from "@/components/shared/section-skeleton";
-import { useHashScroll } from "@/components/shared/use-hash-scroll";
 
 const Competencies = dynamic(() => import("@/components/sections/Competencies"), {
   loading: () => <SectionSkeleton minHeight="min-h-[40vh]" />,
@@ -21,8 +20,6 @@ const Contact = dynamic(() => import("@/components/sections/contact"), {
 });
 
 export default function Home() {
-  useHashScroll();
-
   return (
     <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Header />

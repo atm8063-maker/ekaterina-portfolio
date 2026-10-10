@@ -1,48 +1,81 @@
 "use client";
 
 import React from "react";
+import { buildMarqueeHalf } from "@/lib/marquee-sequence";
 
 const data = {
   programs: ["Claude Code", "Figma", "SketchUp", "Illustrator", "Antigravity", "Planoplan", "Photoshop"],
   media: ["Forbes", "Коммерсантъ", "РБК", "Business FM", "Ведомости", "СМИ"],
   skills: [
-    "Копирайтинг", 
-    "Журналистика", 
-    "Контент", 
-    "SMM", 
-    "SEO", 
-    "Медиапланирование", 
-    "Реклама", 
-    "Пресс-конференции", 
-    "Пресс-туры", 
-    "Event", 
-    "Кураторство", 
-    "AI-генерация", 
-    "UX/UI Дизайн"
+    "Копирайтинг",
+    "Журналистика",
+    "Контент",
+    "SMM",
+    "SEO",
+    "Медиапланирование",
+    "Реклама",
+    "Пресс-конференции",
+    "Пресс-туры",
+    "Event",
+    "Кураторство",
+    "AI-генерация",
+    "UX/UI Дизайн",
   ],
-  industries: ["Honda", "Honda Civic Cup", "Авто", "Девелопмент", "Элитная недвижимость", "Арх.бюро", "Журфак МГУ", "Contented", "Resin Art", "Амбассадор", "Брендированная продукция"]
+  industries: [
+    "Honda",
+    "Honda Civic Cup",
+    "Авто",
+    "Девелопмент",
+    "Элитная недвижимость",
+    "Арх.бюро",
+    "Журфак МГУ",
+    "Contented",
+    "Resin Art",
+    "Амбассадор",
+    "Брендированная продукция",
+  ],
 };
 
-const createMarqueeContent = (items: string[]) => {
-  return [...items, ...items, ...items, ...items];
-};
+function MarqueePills({
+  tags,
+  type,
+  itemStyle,
+}: {
+  tags: string[];
+  type: string;
+  itemStyle: string;
+}) {
+  return (
+    <>
+      {tags.map((tag, i) => (
+        <div
+          key={`${type}-${i}-${tag}`}
+          className={`${itemStyle} shrink-0 rounded-full px-4 py-2 text-[10px] uppercase tracking-wider md:px-5 md:py-2.5 md:text-xs`}
+        >
+          {tag}
+        </div>
+      ))}
+    </>
+  );
+}
 
-export function MarqueeRow({ 
-  type, 
+export function MarqueeRow({
+  type,
   variant,
-  direction = "left", 
-  speed = "40s", 
-  className = "" 
-}: { 
-  type: keyof typeof data, 
-  variant?: keyof typeof data | "white-solid" | "cyan-solid" | "white-border" | "cyan-border",
-  direction?: "left" | "right", 
-  speed?: string, 
-  className?: string 
+  direction = "left",
+  speed = "40s",
+  className = "",
+}: {
+  type: keyof typeof data;
+  variant?: keyof typeof data | "white-solid" | "cyan-solid" | "white-border" | "cyan-border";
+  direction?: "left" | "right";
+  speed?: string;
+  className?: string;
 }) {
   const items = data[type];
+  const half = buildMarqueeHalf(items);
   const animationClass = direction === "left" ? "animate-marquee-left" : "animate-marquee-right";
-  
+
   const styleKey = variant || type;
   let itemStyle = "";
   if (styleKey === "programs" || styleKey === "white-solid") {
@@ -56,17 +89,15 @@ export function MarqueeRow({
   }
 
   return (
-    <section className={`bg-background overflow-hidden relative z-20 w-full ${className || 'py-8 lg:py-12'}`}>
-      <div className="marquee-pause w-full flex whitespace-nowrap overflow-hidden">
+    <section className={`relative z-20 w-full overflow-hidden bg-background ${className || "py-8 lg:py-12"}`}>
+      <div className="marquee-pause w-full overflow-hidden px-2">
+        {/* No padding on the animated node — it breaks the 50% loop period. */}
         <div
-          className={`marquee-track ${animationClass} flex gap-4 md:gap-6 px-2`}
+          className={`marquee-track ${animationClass} flex w-max flex-nowrap gap-4 md:gap-6`}
           style={{ ["--marquee-duration" as string]: speed }}
         >
-          {createMarqueeContent(items).map((tag, i) => (
-            <div key={`${type}-${i}`} className={`${itemStyle} uppercase tracking-wider px-4 md:px-5 py-2 md:py-2.5 rounded-full text-[10px] md:text-xs flex-shrink-0`}>
-              {tag}
-            </div>
-          ))}
+          <MarqueePills tags={half} type={`${type}-a`} itemStyle={itemStyle} />
+          <MarqueePills tags={half} type={`${type}-b`} itemStyle={itemStyle} />
         </div>
       </div>
     </section>

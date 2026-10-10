@@ -49,6 +49,8 @@ export const metadata: Metadata = {
 }
 
 import { LanguageProvider } from '@/components/language-provider'
+import { HashScrollProvider } from '@/components/shared/use-hash-scroll'
+import { ScrollToTopOnNavigate } from '@/components/shared/scroll-to-top-on-navigate'
 
 export default function RootLayout({
   children,
@@ -63,6 +65,8 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased text-foreground bg-background">
         <LanguageProvider>
+          <ScrollToTopOnNavigate />
+          <HashScrollProvider />
           {children}
         </LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}

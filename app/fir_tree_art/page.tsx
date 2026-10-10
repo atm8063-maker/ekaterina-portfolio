@@ -21,11 +21,8 @@ import {
 } from "@/components/fir-tree-art/lazy-sections";
 import { SitePaperBackground } from "@/components/shared/site-paper-background";
 import { SectionGradientFade } from "@/components/shared/section-gradient-fade";
-import { useHashScroll } from "@/components/shared/use-hash-scroll";
 
 export default function ArtPage() {
-  useHashScroll();
-
   return (
     <main className="min-h-screen bg-background text-foreground overflow-x-hidden font-inter selection:bg-primary selection:text-black">
       <Header />

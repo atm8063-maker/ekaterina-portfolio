@@ -42,6 +42,7 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
           {prevCase && (
             <Link
               href={getHref(prevCase)}
+              scroll={false}
               title={prevCase.title}
               className="inline-flex items-center gap-1.5 text-white/60 hover:text-white transition-colors py-1 px-2 rounded hover:bg-white/5"
             >
@@ -53,6 +54,7 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
           {nextCase && (
             <Link
               href={getHref(nextCase)}
+              scroll={false}
               title={nextCase.title}
               className="inline-flex items-center gap-1.5 text-white/60 hover:text-primary transition-colors py-1 px-2 rounded hover:bg-white/5"
             >
@@ -73,6 +75,7 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
         {prevCase ? (
           <Link
             href={getHref(prevCase)}
+            scroll={false}
             className="group flex items-center gap-3 p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-primary/40 transition-all text-left"
           >
             <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-white/70 group-hover:text-primary group-hover:border-primary/50 transition-colors">
@@ -93,6 +96,7 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
         <div className="flex justify-center order-first sm:order-none">
           <Link
             href="/#cases"
+            scroll={false}
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-primary/40 bg-primary/10 hover:bg-primary/20 text-primary font-bold text-xs uppercase tracking-widest font-montserrat transition-all shadow-[0_0_20px_rgba(20,241,217,0.15)]"
           >
             <Grid className="w-4 h-4" />
@@ -104,6 +108,7 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
         {nextCase ? (
           <Link
             href={getHref(nextCase)}
+            scroll={false}
             className="group flex items-center justify-end gap-3 p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-primary/40 transition-all text-right"
           >
             <div className="min-w-0">

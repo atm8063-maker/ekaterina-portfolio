@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { X, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArtTechniquesGallery } from "@/components/sections/art-techniques-gallery";
 
 type MediaItem = {
   src: string;
@@ -214,30 +215,6 @@ const items: MediaItem[] = [
 
 export function ArtTechniques() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const drag = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
-
-  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    drag.current = { isDown: true, startX: e.clientX, scrollLeft: el.scrollLeft };
-    el.setPointerCapture(e.pointerId);
-    el.classList.add("cursor-grabbing");
-    el.classList.remove("cursor-grab");
-  };
-
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = scrollRef.current;
-    if (!el || !drag.current.isDown) return;
-    el.scrollLeft = drag.current.scrollLeft - (e.clientX - drag.current.startX);
-  };
-
-  const endDrag = () => {
-    drag.current.isDown = false;
-    const el = scrollRef.current;
-    el?.classList.remove("cursor-grabbing");
-    el?.classList.add("cursor-grab");
-  };
 
   const offlineTags = ["Эпоксидная смола", "Акрил", "Алкогольные чернила", "Текстурная паста", "Смешанные техники"];
   const offlineExtra = ["Гипс", "Глина", "Масло", "Скетчи"];
@@ -350,50 +327,7 @@ export function ArtTechniques() {
         </div>
       </div>
 
-      {/* Zero-Crop Stream: Uniform Height (140px), Natural Width, Swipeable */}
-      <div 
-        ref={scrollRef}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={endDrag}
-        onPointerLeave={endDrag}
-        onDragStart={(e) => e.preventDefault()}
-        className="w-full relative overflow-x-auto overflow-y-hidden cursor-grab select-none hide-scrollbar py-2 z-20"
-      >
-        <div className="flex gap-3 px-6 w-max">
-          {items.map((item, idx) => (
-            <div
-              key={idx}
-              onClick={() => openLightbox(idx)}
-              className="group relative shrink-0 h-[140px] w-auto bg-surface border border-white/15 hover:border-primary transition-all cursor-pointer overflow-hidden rounded-none shadow-md flex items-center justify-center"
-            >
-              {item.type === "video" ? (
-                <div className="relative h-[140px] w-auto bg-black flex items-center justify-center">
-                  { }
-                  <video
-                    src={item.src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="h-[140px] w-auto max-w-none block object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute top-1.5 right-1.5 p-1 bg-black/80 border border-primary/60 text-primary pointer-events-none">
-                    <Play className="w-2.5 h-2.5 fill-primary" />
-                  </div>
-                </div>
-              ) : (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  className="h-[140px] w-auto max-w-none block object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
+      <ArtTechniquesGallery items={items} onOpenLightbox={openLightbox} />
 
       <div className="container mx-auto px-6 text-center mt-3 relative z-20">
         <p className="text-[11px] font-inter text-white/50 tracking-wider">

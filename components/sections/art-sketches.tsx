@@ -55,6 +55,23 @@ export function ArtSketches({
 
   type TrackItem = { src: string; w: number; isVideo?: boolean };
 
+  /** One tile row must cover at least this width per marquee half (≈ full-bleed on large screens). */
+  const MARQUEE_LANE_GAP_PX = 10;
+  const MARQUEE_HALF_MIN_PX = 3200;
+
+  const trackItemsWidth = (data: TrackItem[]) => {
+    if (data.length === 0) return 0;
+    return data.reduce((sum, item, i) => sum + item.w + (i > 0 ? MARQUEE_LANE_GAP_PX : 0), 0);
+  };
+
+  /** Repeat the lane’s tile set until one loop segment is wide enough to fill the viewport. */
+  const expandTrackHalf = (data: TrackItem[]) => {
+    const unit = trackItemsWidth(data);
+    if (unit <= 0) return data;
+    const repeats = Math.max(1, Math.ceil(MARQUEE_HALF_MIN_PX / unit));
+    return Array.from({ length: repeats }, () => data).flat();
+  };
+
   // 6 Narrow Background Tracks
   const track1: TrackItem[] = [
     { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 115 },
@@ -110,7 +127,7 @@ export function ArtSketches({
     { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 120 },
   ];
 
-  const tracks: { data: TrackItem[]; dir: string; speed: string }[] = [
+  const tracks: { data: TrackItem[]; dir: 'left' | 'right'; speed: string }[] = [
     { data: track1, dir: 'left', speed: '44s' },
     { data: track2, dir: 'right', speed: '52s' },
     { data: track3, dir: 'left', speed: '38s' },
@@ -133,7 +150,9 @@ export function ArtSketches({
           zIndex: 1,
           overflow: 'hidden',
           display: 'flex',
+          width: '100%',
           flexDirection: 'column',
+          alignItems: 'stretch',
           justifyContent: 'center',
           gap: '10px',
           filter: `blur(${blurAmount}px) brightness(${brightness}) saturate(1.2)`,
@@ -142,45 +161,58 @@ export function ArtSketches({
           opacity: 0.95
         }}
       >
-        {tracks.map((tr, idx) => (
-          <div
-            key={`tr-${idx}`}
-            className={`marquee-track gap-2.5 ${tr.dir === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'}`}
-            style={{ ['--marquee-duration' as string]: tr.speed }}
-          >
-            {[...tr.data, ...tr.data, ...tr.data].map((item, i) => (
+        {tracks.map((tr, idx) => {
+          const half = expandTrackHalf(tr.data);
+          const sequence = [...half, ...half];
+          const anim = tr.dir === 'left' ? 'animate-marquee-left' : 'animate-marquee-right';
+
+          return (
+            <div
+              key={`tr-lane-${idx}`}
+              className="w-full min-w-full shrink-0 overflow-hidden"
+            >
               <div
-                key={`tr-${idx}-${i}`}
-                style={{
-                  width: `${item.w}px`,
-                  height: '135px',
-                  borderRadius: '6px',
-                  overflow: 'hidden',
-                  border: '1px solid rgba(255,255,255,0.18)',
-                  backgroundColor: 'var(--color-surface)',
-                  flexShrink: 0
-                }}
+                className={`marquee-track gap-2.5 ${anim}`}
+                style={{ ['--marquee-duration' as string]: tr.speed }}
               >
-                {item.isVideo ? (
-                  <video
-                    src={`/art-sketches/${encodeURIComponent(item.src)}`}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                ) : (
-                  <img
-                    src={`/art-sketches/${encodeURIComponent(item.src)}`}
-                    alt=""
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                )}
+                {sequence.map((item, i) => (
+                  <div
+                    key={`tr-${idx}-${i}-${item.src}`}
+                    style={{
+                      width: `${item.w}px`,
+                      height: '135px',
+                      borderRadius: '6px',
+                      overflow: 'hidden',
+                      border: '1px solid rgba(255,255,255,0.18)',
+                      backgroundColor: 'var(--color-surface)',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {item.isVideo ? (
+                      <video
+                        src={`/art-sketches/${encodeURIComponent(item.src)}`}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    ) : (
+                      <img
+                        src={`/art-sketches/${encodeURIComponent(item.src)}`}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    )}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        ))}
+            </div>
+          );
+        })}
       </div>
 
       {/* Cinematic Vignette Layer */}
@@ -290,7 +322,7 @@ export function ArtSketches({
                       <path d={`M ${rw*0.809} ${rh*0.535 - 10} L ${rw*0.809} ${rh*0.535} L ${rw*0.809 + 10} ${rh*0.535}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                       <path d={`M ${rw - 10} ${rh*0.535} L ${rw} ${rh*0.535} L ${rw} ${rh*0.535 + 10}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                       <path d={`M ${rw} ${rh - 10} L ${rw} ${rh} L ${rw - 10} ${rh}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
-                      <path d={`M ${rw*0.191 + 10} ${rh} L ${rw*0.191} ${rh} L ${rw*0.191} - 10`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
+                      <path d={`M ${rw*0.191 + 10} ${rh} L ${rw*0.191} ${rh} L ${rw*0.191} ${rh - 10}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                       <path d={`M ${rw*0.191} ${rh*0.33 + 10} L ${rw*0.191} ${rh*0.33} L ${rw*0.191 - 10} ${rh*0.33}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                       <path d={`M 10 ${rh*0.33} L 0 ${rh*0.33} L 0 ${rh*0.33 - 10}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                     </svg>

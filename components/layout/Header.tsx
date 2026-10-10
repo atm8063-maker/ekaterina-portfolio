@@ -1,223 +1,360 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
+import {
+  ART_MENU_COLUMNS,
+  CAREER_SECTION_LINKS,
+  isArtRoute,
+  isCareerRoute,
+} from "@/components/layout/header-nav-data";
+import { useHeaderScrollState } from "@/components/shared/use-header-scroll-reveal";
+import { cn } from "@/lib/utils";
+
+const DROPDOWN_PANEL =
+  "pointer-events-none absolute top-full z-50 pt-2 opacity-0 invisible transition-all duration-300 group-hov:pointer-events-auto group-hov:opacity-100 group-hov:visible focus-within:pointer-events-auto focus-within:opacity-100 focus-within:visible";
+
+const HEADER_INNER =
+  "container mx-auto flex w-full flex-nowrap items-center justify-between gap-2 px-2 md:gap-4 lg:px-6";
+
+const HEADER_COMPACT_SIZE =
+  "min-h-14 border-white/10 py-2 shadow-lg shadow-black/20";
+
+const MOBILE_MENU_TOGGLE =
+  "group flex shrink-0 items-center gap-1.5 rounded-none border-l border-white/10 py-2 pl-2 font-montserrat text-[10px] font-bold tracking-[0.25em] text-white/75 uppercase transition-colors hov:text-primary";
+
+const MENU_BAR =
+  "block h-[2px] w-full shrink-0 rounded-none bg-current transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none";
+
+function NavMenuIcon({ open, className }: { open: boolean; className?: string }) {
+  return (
+    <span
+      className={cn("relative flex h-3.5 w-[1.125rem] flex-col justify-center gap-[5px]", className)}
+      aria-hidden
+    >
+      <span className={cn(MENU_BAR, open && "translate-y-[7px] rotate-45")} />
+      <span className={cn(MENU_BAR, open && "opacity-0")} />
+      <span className={cn(MENU_BAR, open && "-translate-y-[7px] -rotate-45")} />
+    </span>
+  );
+}
+
+function NavSectionLink({
+  href,
+  label,
+  onNavigate,
+  className = "px-4 py-2 text-sm text-white/70 hov:text-primary hov:bg-white/5 transition-colors font-inter",
+}: {
+  href: string;
+  label: string;
+  onNavigate?: () => void;
+  className?: string;
+}) {
+  return (
+    <Link href={href} className={className} onClick={onNavigate}>
+      {label}
+    </Link>
+  );
+}
+
+function ArtMenuColumns({ onNavigate, compact }: { onNavigate?: () => void; compact?: boolean }) {
+  return (
+    <>
+      {ART_MENU_COLUMNS.map((column) => (
+        <div key={column.title} className="flex flex-col space-y-1">
+          <span className="mb-1.5 border-b border-white/10 pb-1.5 font-montserrat text-[11px] font-black uppercase tracking-wider text-primary">
+            {column.title}
+          </span>
+          {column.links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={onNavigate}
+              className={`flex items-center justify-between rounded-sm px-2 py-1.5 font-inter text-white/80 transition-colors hov:bg-white/5 hov:text-primary ${
+                compact ? "text-sm" : "text-xs sm:text-sm"
+              } group/link`}
+            >
+              <span>{link.label}</span>
+              {!compact && (
+                <span className="text-primary opacity-0 transition-opacity group-hov/link:opacity-100">
+                  →
+                </span>
+              )}
+            </Link>
+          ))}
+        </div>
+      ))}
+    </>
+  );
+}
 
 export default function Header() {
   const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [lang, setLang] = useState<"RU" | "EN">("RU");
   const [showEnToast, setShowEnToast] = useState(false);
+  const enToastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const careerActive = isCareerRoute(pathname);
+  const artActive = isArtRoute(pathname);
+  const { compact: headerCompact } = useHeaderScrollState(mobileOpen);
+
+  const closeMobile = () => setMobileOpen(false);
+
+  useEffect(() => {
+    // Close drawer after client navigation (links also call closeMobile).
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional on pathname change
+    setMobileOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMobile();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [mobileOpen]);
+
+  useEffect(
+    () => () => {
+      if (enToastTimer.current) clearTimeout(enToastTimer.current);
+    },
+    [],
+  );
 
   const handleEnClick = () => {
     setShowEnToast(true);
-    setTimeout(() => {
+    if (enToastTimer.current) clearTimeout(enToastTimer.current);
+    enToastTimer.current = setTimeout(() => {
       setShowEnToast(false);
+      enToastTimer.current = null;
     }, 2500);
   };
 
+  const navTriggerClass = (active: boolean) =>
+    `flex items-center gap-1 py-2 font-montserrat text-sm font-bold uppercase tracking-widest whitespace-nowrap transition-colors md:text-sm ${
+      active ? "text-primary" : "text-white/70 hov:text-white"
+    }`;
+
+  const mobileMenu =
+    mobileOpen && typeof document !== "undefined"
+      ? createPortal(
+          <>
+            <button
+              type="button"
+              className="fixed inset-0 z-40 bg-black/55 md:hidden motion-reduce:transition-none"
+              aria-label="Закрыть меню"
+              onClick={closeMobile}
+            />
+            <nav
+              className="fixed inset-x-0 bottom-0 top-14 z-40 flex flex-col gap-8 overflow-y-auto overscroll-contain border-t border-white/10 bg-background px-4 py-6 pb-10 md:hidden"
+              aria-label="Мобильная навигация"
+              id="mobile-nav-drawer"
+              role="dialog"
+              aria-modal="true"
+            >
+              <section>
+                <Link
+                  href="/"
+                  onClick={closeMobile}
+                  className={`mb-3 block font-montserrat text-base font-bold tracking-widest uppercase ${careerActive ? "text-primary" : "text-white"}`}
+                >
+                  Карьера
+                </Link>
+                <div className="flex flex-col overflow-hidden rounded-sm border border-white/10">
+                  {CAREER_SECTION_LINKS.map((link, i) => (
+                    <NavSectionLink
+                      key={link.href}
+                      href={link.href}
+                      label={link.label}
+                      onNavigate={closeMobile}
+                      className={`px-4 py-3.5 text-base text-white/85 hov:bg-white/5 hov:text-primary font-inter ${
+                        i < CAREER_SECTION_LINKS.length - 1 ? "border-b border-white/5" : ""
+                      }`}
+                    />
+                  ))}
+                </div>
+              </section>
+
+              <section>
+                <Link
+                  href="/fir_tree_art"
+                  onClick={closeMobile}
+                  className={`mb-3 block font-montserrat text-base font-bold tracking-widest uppercase ${artActive ? "text-primary" : "text-white"}`}
+                >
+                  Искусство
+                </Link>
+                <div className="flex flex-col gap-6 rounded-sm border border-white/10 bg-background/40 p-4">
+                  <ArtMenuColumns onNavigate={closeMobile} compact />
+                </div>
+              </section>
+
+              <Link
+                href="/#contact"
+                onClick={closeMobile}
+                className="block bg-primary py-4 text-center font-montserrat text-sm font-bold tracking-widest text-background uppercase hov:bg-white"
+              >
+                Связаться
+              </Link>
+            </nav>
+          </>,
+          document.body,
+        )
+      : null;
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background flex items-center min-h-[5rem] py-3">
-      <div className="container mx-auto px-2 lg:px-6 flex items-center justify-between gap-2 md:gap-4 w-full flex-nowrap">
-        
-        {/* Left: Initials / Logo */}
-        <div className="flex-1 flex justify-start">
-          <Link href="/" className="flex-shrink-0 hov:opacity-80 transition-opacity relative block ml-[10px] md:ml-0">
-            {/* Hidden image to force natural width/aspect ratio */}
-            <img src="/logo.png" alt="Logo" className="h-8 md:h-10 lg:h-12 w-auto object-contain opacity-0 pointer-events-none" />
-            {/* The actual visible logo tinted cyan */}
-            <div 
-              className="absolute inset-0 bg-primary" 
+    <>
+    <header
+      className={cn(
+        "fixed top-0 right-0 left-0 z-50 flex items-center border-b bg-background/95 backdrop-blur-md transition-[min-height,padding,box-shadow] duration-300 ease-out motion-reduce:transition-none",
+        headerCompact ? HEADER_COMPACT_SIZE : "min-h-[5rem] border-white/5 py-3",
+      )}
+    >
+      <div className={HEADER_INNER}>
+        <div className="flex flex-1 justify-start">
+          <Link
+            href="/"
+            className="relative ml-2 block shrink-0 hov:opacity-80 transition-opacity md:ml-0"
+            aria-label="На главную"
+          >
+            <Image
+              src="/logo.png"
+              alt=""
+              width={160}
+              height={48}
+              className={cn(
+                "w-auto opacity-0 transition-[height] duration-300 motion-reduce:transition-none",
+                headerCompact ? "h-7 md:h-8" : "h-8 md:h-10 lg:h-12",
+              )}
+              priority
+            />
+            <div
+              className="absolute inset-0 bg-primary"
+              aria-hidden
               style={{
-                maskImage: 'url(/logo.png)',
-                maskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                maskPosition: 'left center',
-                WebkitMaskImage: 'url(/logo.png)',
-                WebkitMaskSize: 'contain',
-                WebkitMaskRepeat: 'no-repeat',
-                WebkitMaskPosition: 'left center',
+                maskImage: "url(/logo.png)",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "left center",
+                WebkitMaskImage: "url(/logo.png)",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "left center",
               }}
             />
           </Link>
         </div>
 
-        {/* Center: Main Navigation */}
-        <nav className="flex items-center justify-center gap-3 md:gap-6 lg:gap-10 min-w-0 flex-shrink-0">
-          {/* Career Dropdown */}
-          <div className="relative group">
-            <Link 
-              href="/" 
-              className={`flex items-center gap-0.5 md:gap-1 text-[9px] sm:text-xs md:text-sm font-bold tracking-widest uppercase transition-colors font-montserrat py-2 whitespace-nowrap ${pathname === '/' ? 'text-primary' : 'text-white/70 hov:text-white'}`}
-            >
+        <nav
+          className="hidden shrink-0 items-center justify-center gap-6 lg:gap-10 md:flex"
+          aria-label="Основная навигация"
+        >
+          <div className="group relative">
+            <Link href="/" className={navTriggerClass(careerActive)} aria-haspopup="true">
               Карьера
-              <ChevronDown className="w-2.5 h-2.5 md:w-4 md:h-4 opacity-70 group-hov:rotate-180 transition-transform duration-300" />
+              <ChevronDown
+                className="h-4 w-4 opacity-70 transition-transform duration-300 group-hov:rotate-180"
+                aria-hidden
+              />
             </Link>
-            
-            <div className="absolute top-full left-1/2 -translate-x-1/2 w-48 pt-2 opacity-0 invisible group-hov:opacity-100 group-hov:visible transition-all duration-300">
-              <div className="bg-surface border border-white/10 rounded-none shadow-2xl py-2 flex flex-col">
-                <Link href="/#about" className="px-4 py-2 text-sm text-white/70 hov:text-primary hov:bg-white/5 transition-colors font-inter">Обо мне</Link>
-                <Link href="/#competencies" className="px-4 py-2 text-sm text-white/70 hov:text-primary hov:bg-white/5 transition-colors font-inter">Компетенции</Link>
-                <Link href="/#cases" className="px-4 py-2 text-sm text-white/70 hov:text-primary hov:bg-white/5 transition-colors font-inter">Кейсы</Link>
+            <div className={`${DROPDOWN_PANEL} left-1/2 w-48 -translate-x-1/2`}>
+              <div
+                role="menu"
+                className="flex flex-col rounded-none border border-white/10 bg-surface py-2 shadow-2xl"
+              >
+                {CAREER_SECTION_LINKS.map((link) => (
+                  <NavSectionLink key={link.href} href={link.href} label={link.label} />
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Art Dropdown - 3 Column Mega-Menu */}
-          <div className="relative group">
-            <Link 
-              href="/fir_tree_art" 
-              className={`flex items-center gap-0.5 md:gap-1 text-[9px] sm:text-xs md:text-sm font-bold tracking-widest uppercase transition-colors font-montserrat py-2 whitespace-nowrap ${pathname === '/fir_tree_art' ? 'text-primary' : 'text-white/70 hov:text-white'}`}
-            >
+          <div className="group relative">
+            <Link href="/fir_tree_art" className={navTriggerClass(artActive)} aria-haspopup="true">
               Искусство
-              <ChevronDown className="w-2.5 h-2.5 md:w-4 md:h-4 opacity-70 group-hov:rotate-180 transition-transform duration-300" />
+              <ChevronDown
+                className="h-4 w-4 opacity-70 transition-transform duration-300 group-hov:rotate-180"
+                aria-hidden
+              />
             </Link>
-            
-            <div className="absolute top-full left-1/2 -translate-x-[65%] sm:-translate-x-1/2 w-[90vw] sm:w-[680px] lg:w-[780px] max-w-[820px] pt-2 opacity-0 invisible group-hov:opacity-100 group-hov:visible transition-all duration-300 pointer-events-none group-hov:pointer-events-auto z-50">
-              <div className="bg-surface/95 backdrop-blur-md border-2 border-black sm:border border-white/15 shadow-2xl p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-left">
-                
-                {/* Column 1: Творчество & Объекты */}
-                <div className="flex flex-col space-y-1">
-                  <span className="text-[11px] font-montserrat font-black uppercase tracking-wider text-primary border-b border-white/10 pb-1.5 mb-1.5">
-                    Творчество & Галерея
-                  </span>
-                  <Link 
-                    href="/fir_tree_art#gallery" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hov:text-primary hov:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Галерея</span>
-                    <span className="text-primary opacity-0 group-hov/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                  <Link 
-                    href="/fir_tree_art#artivism" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hov:text-primary hov:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Артивизм</span>
-                    <span className="text-primary opacity-0 group-hov/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                  <Link 
-                    href="/fir_tree_art#resin-range" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hov:text-primary hov:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Диапазон смолы</span>
-                    <span className="text-primary opacity-0 group-hov/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                  <Link 
-                    href="/fir_tree_art#techniques" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hov:text-primary hov:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Техники & инструменты</span>
-                    <span className="text-primary opacity-0 group-hov/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                  <Link 
-                    href="/fir_tree_art#portraits" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hov:text-primary hov:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Портреты & скетчи</span>
-                    <span className="text-primary opacity-0 group-hov/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                </div>
-
-                {/* Column 2: Экспертиза & Бренд */}
-                <div className="flex flex-col space-y-1">
-                  <span className="text-[11px] font-montserrat font-black uppercase tracking-wider text-primary border-b border-white/10 pb-1.5 mb-1.5">
-                    Экспертиза & Бренд
-                  </span>
-                  <Link 
-                    href="/fir_tree_art#competencies" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hov:text-primary hov:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Компетенции</span>
-                    <span className="text-primary opacity-0 group-hov/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                  <Link 
-                    href="/fir_tree_art#victories" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hov:text-primary hov:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Победы, финалы & Судейство</span>
-                    <span className="text-primary opacity-0 group-hov/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                  <Link 
-                    href="/fir_tree_art#ambassador" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hov:text-primary hov:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Амбассадор & Продукция</span>
-                    <span className="text-primary opacity-0 group-hov/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                </div>
-
-                {/* Column 3: Обучение & Медиа */}
-                <div className="flex flex-col space-y-1">
-                  <span className="text-[11px] font-montserrat font-black uppercase tracking-wider text-primary border-b border-white/10 pb-1.5 mb-1.5">
-                    Обучение & Медиа
-                  </span>
-                  <Link 
-                    href="/fir_tree_art#education" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hov:text-primary hov:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Обучение & Лекции</span>
-                    <span className="text-primary opacity-0 group-hov/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                  <Link 
-                    href="/fir_tree_art#media" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hov:text-primary hov:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Публикации в СМИ</span>
-                    <span className="text-primary opacity-0 group-hov/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                  <Link 
-                    href="/fir_tree_art#testimonials" 
-                    className="px-2 py-1.5 text-xs sm:text-sm text-white/80 hov:text-primary hov:bg-white/5 transition-colors font-inter rounded-sm flex items-center justify-between group/link"
-                  >
-                    <span>Отзывы</span>
-                    <span className="text-primary opacity-0 group-hov/link:opacity-100 transition-opacity">→</span>
-                  </Link>
-                </div>
-
+            <div
+              className={`${DROPDOWN_PANEL} left-1/2 w-[min(780px,calc(100vw-2rem))] max-w-[820px] -translate-x-1/2`}
+            >
+              <div className="grid grid-cols-1 gap-4 border border-white/15 bg-surface/95 p-4 shadow-2xl backdrop-blur-md sm:grid-cols-3 sm:gap-6 sm:p-6">
+                <ArtMenuColumns />
               </div>
             </div>
           </div>
         </nav>
 
-        {/* Right: Contact & Language */}
-        <div className="flex-1 flex items-center justify-end gap-2 md:gap-6 flex-shrink-0">
-          <Link 
+        <div className="flex flex-1 shrink-0 items-center justify-end gap-2 md:gap-6">
+          <Link
             href="/#contact"
-            className="text-[8px] sm:text-[10px] md:text-sm font-bold tracking-widest uppercase text-background bg-primary hov:bg-white transition-colors px-2 py-1 md:px-6 md:py-2.5 rounded-none font-montserrat whitespace-nowrap"
+            className={cn(
+              "rounded-none bg-primary font-montserrat font-bold tracking-widest whitespace-nowrap text-background uppercase transition-[colors,padding,font-size] hov:bg-white",
+              headerCompact
+                ? "px-2.5 py-1 text-[9px] sm:px-4 sm:py-1.5 sm:text-[10px]"
+                : "px-3 py-1.5 text-[10px] sm:px-6 sm:py-2.5 sm:text-sm",
+            )}
           >
             Связаться
           </Link>
 
-          <div className="relative flex items-center gap-1 md:gap-3 text-[9px] sm:text-xs md:text-sm font-semibold font-montserrat text-white/70 border-l border-white/20 pl-2 md:pl-6 shrink-0">
-            <button 
+          <div className="relative hidden shrink-0 items-center gap-3 border-l border-white/20 pl-6 font-montserrat text-sm font-semibold text-white/70 sm:flex">
+            <button
               type="button"
-              onClick={() => setLang("RU")} 
-              className={`transition-colors hov:text-white cursor-pointer ${lang === "RU" ? "text-primary font-bold" : "text-white/60"}`}
+              onClick={() => setLang("RU")}
+              className={`cursor-pointer transition-colors hov:text-white ${lang === "RU" ? "font-bold text-primary" : "text-white/60"}`}
             >
               RU
             </button>
-            <span className="text-white/30">|</span>
-            <button 
+            <span className="text-white/30" aria-hidden>
+              |
+            </span>
+            <button
               type="button"
-              onClick={handleEnClick} 
-              className="transition-colors hov:text-white text-white/60 cursor-pointer flex items-center gap-1"
+              onClick={handleEnClick}
+              className="flex cursor-pointer items-center gap-1 text-white/60 transition-colors hov:text-white"
               title="English version coming soon"
             >
-              <span>EN</span>
+              EN
             </button>
-
-            {/* In-development popup toast */}
             {showEnToast && (
-              <div className="absolute top-full right-0 mt-3 bg-surface border border-primary/50 text-white text-[11px] font-sans font-medium px-3.5 py-2 rounded-lg shadow-2xl z-50 whitespace-nowrap animate-in fade-in slide-in-from-top-1 pointer-events-none">
-                <span className="text-primary mr-1">⏳</span>
-                <span>English version in development (Скоро)</span>
+              <div className="pointer-events-none absolute top-full right-0 z-50 mt-3 rounded-lg border border-primary/50 bg-surface px-3.5 py-2 text-[11px] font-medium whitespace-nowrap text-white shadow-2xl">
+                <span className="mr-1 text-primary">⏳</span>
+                English version in development (Скоро)
               </div>
             )}
           </div>
-        </div>
 
+          <button
+            type="button"
+            className={cn(
+              MOBILE_MENU_TOGGLE,
+              "md:hidden",
+              !headerCompact && "pl-3",
+            )}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav-drawer"
+            aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"}
+            onClick={() => setMobileOpen((open) => !open)}
+          >
+            <NavMenuIcon open={mobileOpen} className="text-current" />
+          </button>
+        </div>
       </div>
+
     </header>
+    {mobileMenu}
+    </>
   );
 }
