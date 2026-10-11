@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Grid } from "lucide-react";
-import { cases, CaseSummary } from "@/lib/data";
+import { getCases, CaseSummary } from "@/lib/data";
+import { useLanguage } from "@/components/language-provider";
 
 interface CaseNavigationProps {
   currentSlug: string;
@@ -10,10 +11,16 @@ interface CaseNavigationProps {
   position?: "top" | "bottom";
 }
 
-// Active visible cases in portfolio order
-const activeCases = cases.filter(c => !c.hidden && c.slug !== "12-resin-masterclass" && c.slug !== "13-local-tv-report");
+const t = {
+  RU: { allCases: "Все кейсы", back: "Назад", forward: "Вперед", navLabel: "Навигация по кейсам", previous: "Предыдущий", next: "Следующий", catalog: "Каталог кейсов" },
+  EN: { allCases: "All Case Studies", back: "Back", forward: "Next", navLabel: "Case study navigation", previous: "Previous", next: "Next", catalog: "Case Study Index" },
+};
 
 export function CaseNavigation({ currentSlug, className = "", position = "bottom" }: CaseNavigationProps) {
+  const { lang } = useLanguage();
+  const tr = t[lang];
+  // Active visible cases in portfolio order
+  const activeCases = getCases(lang).filter(c => !c.hidden && c.slug !== "12-resin-masterclass" && c.slug !== "13-local-tv-report");
   // Normalize slug (handle custom hrefs if any)
   const normalizedSlug = currentSlug === "case" ? "05-nick-potapov-site" : currentSlug;
   const currentIndex = activeCases.findIndex(c => c.slug === normalizedSlug);
@@ -34,7 +41,7 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
           className="inline-flex items-center gap-2 text-white/70 hover:text-primary transition-colors py-1 px-2 -ml-2 rounded"
         >
           <ArrowLeft className="w-4 h-4 text-primary" />
-          <span>Все кейсы</span>
+          <span>{tr.allCases}</span>
         </Link>
 
         {/* Next / Prev quick switcher */}
@@ -47,7 +54,7 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
               className="inline-flex items-center gap-1.5 text-white/60 hover:text-white transition-colors py-1 px-2 rounded hover:bg-white/5"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Назад</span>
+              <span className="hidden sm:inline">{tr.back}</span>
             </Link>
           )}
           <span className="text-white/20">|</span>
@@ -58,7 +65,7 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
               title={nextCase.title}
               className="inline-flex items-center gap-1.5 text-white/60 hover:text-primary transition-colors py-1 px-2 rounded hover:bg-white/5"
             >
-              <span className="hidden sm:inline">Вперед</span>
+              <span className="hidden sm:inline">{tr.forward}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           )}
@@ -69,7 +76,7 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
 
   // Bottom full navigation banner
   return (
-    <nav aria-label="Навигация по кейсам" className={`mt-16 pt-10 border-t border-white/10 ${className}`}>
+    <nav aria-label={tr.navLabel} className={`mt-16 pt-10 border-t border-white/10 ${className}`}>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
         {/* Previous case */}
         {prevCase ? (
@@ -83,7 +90,7 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
             </div>
             <div className="min-w-0">
               <span className="text-[11px] font-bold uppercase tracking-widest text-white/40 block font-montserrat">
-                Предыдущий
+                {tr.previous}
               </span>
               <span className="text-sm font-medium text-white group-hover:text-primary truncate block transition-colors">
                 {prevCase.title}
@@ -100,7 +107,7 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-primary/40 bg-primary/10 hover:bg-primary/20 text-primary font-bold text-xs uppercase tracking-widest font-montserrat transition-all shadow-[0_0_20px_rgba(20,241,217,0.15)]"
           >
             <Grid className="w-4 h-4" />
-            <span>Каталог кейсов</span>
+            <span>{tr.catalog}</span>
           </Link>
         </div>
 
@@ -113,7 +120,7 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
           >
             <div className="min-w-0">
               <span className="text-[11px] font-bold uppercase tracking-widest text-white/40 block font-montserrat">
-                Следующий
+                {tr.next}
               </span>
               <span className="text-sm font-medium text-white group-hover:text-primary truncate block transition-colors">
                 {nextCase.title}

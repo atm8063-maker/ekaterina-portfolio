@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 
 type BrandItem = {
   id: string;
@@ -11,7 +12,7 @@ type BrandItem = {
   image: string;
 };
 
-const brandItems: BrandItem[] = [
+const brandItemsRu: BrandItem[] = [
   {
     id: "sawdust-box",
     title: "Защитный короб для опила изделий",
@@ -42,7 +43,40 @@ const brandItems: BrandItem[] = [
   },
 ];
 
+const brandItemsEn: BrandItem[] = [
+  {
+    id: "sawdust-box",
+    title: "Protective Sawdust Containment Box",
+    badge: "INDUSTRIAL DESIGN",
+    desc: "An ergonomic clear box for clean, safe sanding. I designed the structure from scratch, and it went into serial production.",
+    image: "/brand/sawdust-chamber.jpg",
+  },
+  {
+    id: "toys-box",
+    title: "A Kit for Making Christmas Ornaments",
+    badge: "COLLABORATION",
+    desc: "An exclusive holiday gift box with original silicone molds, resin, pigments, and a step-by-step tutorial.",
+    image: "/brand/toy-box-holiday.webp",
+  },
+  {
+    id: "toy-flatlay",
+    title: "The Full Box Contents and Kit",
+    badge: "KIT CONTENTS",
+    desc: "A set of original silicone molds, epoxy resin, a scale, a torch, mica powders, and pigments.",
+    image: "/brand/toy-box-flatlay.webp",
+  },
+  {
+    id: "toy-collection",
+    title: "The Finished Original Christmas Ornaments",
+    badge: "RESULT",
+    desc: "A collection of holiday resin ornaments made following the kit's tutorial program.",
+    image: "/brand/toy-finished-collection.webp",
+  },
+];
+
 export function ArtBrand() {
+  const { isEn } = useLanguage();
+  const brandItems = isEn ? brandItemsEn : brandItemsRu;
   const [selectedImage, setSelectedImage] = useState<BrandItem | null>(null);
 
   return (
@@ -67,30 +101,46 @@ export function ArtBrand() {
           {/* Левая колонка: Описание и факты */}
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
             <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight">
-              Амбассадор бренда <span className="text-primary">&</span> Продукция
+              {isEn ? <>Brand Ambassador <span className="text-primary">&</span> Products</> : <>Амбассадор бренда <span className="text-primary">&</span> Продукция</>}
             </h2>
 
             <div className="space-y-4 text-white/70 text-base sm:text-lg leading-relaxed font-inter">
-              <p>
-                Была официальным <strong className="text-white font-semibold">амбассадором</strong> одного из ведущих производителей эпоксидной смолы и художественных материалов в России.
-              </p>
-              <p>
-                В рамках партнерства мы выпустили совместную брендированную продукцию: <strong className="text-primary font-semibold">эксклюзивную коробку для создания ёлочных игрушек</strong> из смолы, которая разошлась по всей стране.
-              </p>
-              <p>
-                Также я <strong className="text-primary font-semibold">спроектировала специализированный защитный короб для опила изделий</strong>, защищающий мастера от пыли — производитель пустил мою разработку в серийное производство.
-              </p>
+              {isEn ? (
+                <>
+                  <p>
+                    I was the official <strong className="text-white font-semibold">brand ambassador</strong> for one of Russia&apos;s leading manufacturers of epoxy resin and art materials.
+                  </p>
+                  <p>
+                    As part of the partnership, we released co-branded products: an <strong className="text-primary font-semibold">exclusive resin Christmas ornament kit</strong> that sold across the whole country.
+                  </p>
+                  <p>
+                    I also <strong className="text-primary font-semibold">designed a specialized dust containment box</strong> that protects makers from sanding dust — the manufacturer put my design into serial production.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    Была официальным <strong className="text-white font-semibold">амбассадором</strong> одного из ведущих производителей эпоксидной смолы и художественных материалов в России.
+                  </p>
+                  <p>
+                    В рамках партнерства мы выпустили совместную брендированную продукцию: <strong className="text-primary font-semibold">эксклюзивную коробку для создания ёлочных игрушек</strong> из смолы, которая разошлась по всей стране.
+                  </p>
+                  <p>
+                    Также я <strong className="text-primary font-semibold">спроектировала специализированный защитный короб для опила изделий</strong>, защищающий мастера от пыли — производитель пустил мою разработку в серийное производство.
+                  </p>
+                </>
+              )}
             </div>
 
             {/* Факты */}
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3 pt-2">
               <div className="border border-white/10 bg-surface p-3 sm:p-4 rounded-none transition-colors hover:border-primary/40">
-                <div className="font-montserrat text-xs xs:text-sm sm:text-base lg:text-lg font-black text-primary tracking-tight leading-tight">АМБАССАДОР</div>
-                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Ведущего производителя смолы в РФ</div>
+                <div className="font-montserrat text-xs xs:text-sm sm:text-base lg:text-lg font-black text-primary tracking-tight leading-tight">{isEn ? "AMBASSADOR" : "АМБАССАДОР"}</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">{isEn ? "For a leading resin manufacturer in Russia" : "Ведущего производителя смолы в РФ"}</div>
               </div>
               <div className="border border-white/10 bg-surface p-3 sm:p-4 rounded-none transition-colors hover:border-primary/40">
-                <div className="font-montserrat text-xs xs:text-sm sm:text-base lg:text-lg font-black text-white leading-tight">В СЕРИИ</div>
-                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Авторский промышленный дизайн</div>
+                <div className="font-montserrat text-xs xs:text-sm sm:text-base lg:text-lg font-black text-white leading-tight">{isEn ? "IN PRODUCTION" : "В СЕРИИ"}</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">{isEn ? "Original industrial design" : "Авторский промышленный дизайн"}</div>
               </div>
             </div>
           </div>

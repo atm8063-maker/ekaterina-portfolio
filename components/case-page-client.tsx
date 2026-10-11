@@ -7,15 +7,37 @@ import Image from 'next/image'
 import Header from '@/components/layout/Header'
 import type { CaseDetail } from '@/lib/data'
 import { CaseNavigation } from '@/components/cases/case-navigation'
+import { useLanguage, PageTitle } from '@/components/language-provider'
 import { X, ZoomIn, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
 
 type Props = {
   slug: string
-  caseData: CaseDetail
+  caseDataRu: CaseDetail
+  caseDataEn: CaseDetail
   images: string[]
 }
 
-export function CasePageClient({ slug, caseData, images }: Props) {
+const labels = {
+  RU: {
+    direction: 'Направление', role: 'Роль', period: 'Период', site: 'Сайт',
+    materials: 'Материалы', mediaHeading: 'Фотохроника & Медиа',
+    clickHint: 'Нажмите на фото для полноэкранного просмотра',
+    zoom: 'Увеличить', close: 'Закрыть (Esc)', prev: 'Предыдущее фото (←)', next: 'Следующее фото (→)',
+    photoAlt: 'фото', keysHint: 'Используйте стрелки ← / → на клавиатуре или кнопки по бокам для перелистывания',
+  },
+  EN: {
+    direction: 'Focus', role: 'Role', period: 'Period', site: 'Website',
+    materials: 'Materials', mediaHeading: 'Photo Log & Media',
+    clickHint: 'Click a photo to view it full-screen',
+    zoom: 'Zoom in', close: 'Close (Esc)', prev: 'Previous photo (←)', next: 'Next photo (→)',
+    photoAlt: 'photo', keysHint: 'Use the ← / → arrow keys or the side buttons to browse',
+  },
+} as const;
+
+export function CasePageClient({ slug, caseDataRu, caseDataEn, images }: Props) {
+  const { lang } = useLanguage()
+  const caseData = lang === 'EN' ? caseDataEn : caseDataRu
+  const t = labels[lang]
   const allImages = images;
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
 
@@ -58,6 +80,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
 
   return (
     <>
+      <PageTitle titleRu={`Кейс: ${caseDataRu.title} — Екатерина Разумова`} titleEn={`Case Study: ${caseDataEn.title} — Ekaterina Razumova`} />
       <div className="min-h-screen bg-background text-white overflow-hidden relative font-inter">
         {/* Paper texture overlay */}
         <div className="fixed inset-0 z-0 pointer-events-none">
@@ -93,15 +116,15 @@ export function CasePageClient({ slug, caseData, images }: Props) {
             {/* Meta Grid */}
             <div className={`grid grid-cols-1 ${caseData.meta.link ? 'sm:grid-cols-4' : 'sm:grid-cols-3'} gap-6 sm:gap-8 py-6 border-y border-white/10 mb-12`}>
               <div>
-                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">Направление</h3>
+                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">{t.direction}</h3>
                 <p className="text-sm sm:text-base font-semibold text-white font-inter">{caseData.tag}</p>
               </div>
               <div>
-                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">Роль</h3>
+                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">{t.role}</h3>
                 <p className="text-sm sm:text-base font-semibold text-white font-inter">{caseData.meta.role}</p>
               </div>
               <div>
-                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">Период</h3>
+                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">{t.period}</h3>
                 <p className="text-sm sm:text-base font-semibold text-white font-inter">{caseData.meta.year}</p>
               </div>
               {caseData.meta.link && (
@@ -251,11 +274,11 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                       </span>
                     </div>
                     <h2 className="font-montserrat font-black uppercase text-2xl sm:text-3xl text-white tracking-tight">
-                      Фотохроника & Медиа
+                      {t.mediaHeading}
                     </h2>
                   </div>
                   <p className="text-xs text-white/50 font-inter">
-                    Нажмите на фото для полноэкранного просмотра
+                    {t.clickHint}
                   </p>
                 </div>
 
@@ -268,7 +291,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                     >
                       <Image
                         src={imgSrc}
-                        alt={`${caseData.title} фото #${idx + 1}`}
+                        alt={`${caseData.title} ${t.photoAlt} #${idx + 1}`}
                         width={800}
                         height={600}
                         className="w-full h-auto block group-hover:scale-105 transition-transform duration-500"
@@ -279,7 +302,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                       <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white pointer-events-none">
                         <div className="px-3 py-1.5 rounded-full bg-black/70 border border-primary/50 flex items-center gap-1.5 text-xs font-montserrat uppercase tracking-wider text-primary">
                           <ZoomIn className="w-4 h-4" />
-                          <span>Увеличить</span>
+                          <span>{t.zoom}</span>
                         </div>
                       </div>
                     </div>
@@ -371,7 +394,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
             className="w-full max-w-6xl flex items-center justify-center text-xs text-white/50 font-mono py-2"
             onClick={(e) => e.stopPropagation()}
           >
-            Используйте стрелки ← / → на клавиатуре или кнопки по бокам для перелистывания
+            {t.keysHint}
           </div>
         </div>
       )}

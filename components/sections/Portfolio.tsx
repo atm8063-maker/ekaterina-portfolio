@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { cases } from "@/lib/data";
+import { getCases } from "@/lib/data";
 import { MotionReveal } from "@/components/shared/motion-reveal";
+import { useLanguage } from "@/components/language-provider";
 
 function caseCoverImage(slug: string): string {
   if (slug.includes("01-insigma")) return "/case_01.webp";
@@ -24,12 +25,15 @@ function caseCoverImage(slug: string): string {
   return "/placeholder.webp";
 }
 
-const visibleCases = cases.filter((c) => !c.hidden);
-
 export default function Portfolio() {
+  const { lang, isEn } = useLanguage();
+  const cases = getCases(lang);
+  const visibleCases = cases.filter((c) => !c.hidden);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const activeIndexRef = useRef(0);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
   useEffect(() => {
     visibleCases.forEach((c) => {
@@ -37,7 +41,7 @@ export default function Portfolio() {
       const img = new window.Image();
       img.src = src;
     });
-  }, []);
+  }, [visibleCases]);
 
   const syncActiveIndexFromScroll = useCallback(() => {
     const el = scrollContainerRef.current;
@@ -58,12 +62,28 @@ export default function Portfolio() {
     activeIndexRef.current = best;
   }, []);
 
+  const updateScrollState = useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  }, []);
+
   useEffect(() => {
     const el = scrollContainerRef.current;
     if (!el) return;
-    el.addEventListener("scroll", syncActiveIndexFromScroll, { passive: true });
-    return () => el.removeEventListener("scroll", syncActiveIndexFromScroll);
-  }, [syncActiveIndexFromScroll]);
+    const onScroll = () => {
+      syncActiveIndexFromScroll();
+      updateScrollState();
+    };
+    onScroll();
+    el.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", updateScrollState);
+    };
+  }, [syncActiveIndexFromScroll, updateScrollState]);
 
   const scrollToIndex = (index: number) => {
     const clamped = Math.max(0, Math.min(visibleCases.length - 1, index));
@@ -98,10 +118,11 @@ export default function Portfolio() {
         <div className="mb-6 md:mb-12 flex items-end justify-between">
           <div>
             <MotionReveal as="h2" variant="fade-up" className="text-3xl md:text-5xl font-bold uppercase text-white font-montserrat mb-2">
-              КЕЙСЫ
+              {isEn ? "CASE STUDIES" : "КЕЙСЫ"}
             </MotionReveal>
+            {/* Mobile-only swipe hint */}
             <div className="md:hidden inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-primary uppercase">
-              <span>←</span> Листайте кейсы <span>→</span>
+              <span>←</span> {isEn ? "Swipe cases" : "Листайте кейсы"} <span>→</span>
             </div>
           </div>
 
@@ -123,55 +144,66 @@ export default function Portfolio() {
           </div>
         </div>
 
-        <div
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-12 -mx-6 px-6 gap-6 md:gap-8 scroll-smooth"
-        >
-          {visibleCases.map((c, i) => {
-            const img = caseCoverImage(c.slug);
+        {/* Horizontal scroll container */}
+        <div className="relative">
+          {/* Edge fade masks so a peeking next/prev card fades into the background instead of hard-clipping. Only shown once there's actually a card cut off in that direction — otherwise they darken the fully-visible first/last card for no reason. */}
+          {canScrollLeft && (
+            <div className="hidden md:block absolute top-0 bottom-12 left-0 w-24 lg:w-40 bg-gradient-to-r from-background via-background/90 to-transparent z-10 pointer-events-none" />
+          )}
+          {canScrollRight && (
+            <div className="hidden md:block absolute top-0 bottom-12 right-0 w-24 lg:w-40 bg-gradient-to-l from-background via-background/90 to-transparent z-10 pointer-events-none" />
+          )}
 
-            return (
-              <div
-                key={c.slug}
-                ref={(node) => {
-                  cardRefs.current[i] = node;
-                }}
-                data-case-card
-                className="w-[85vw] md:w-[min(45vw,420px)] lg:w-[min(calc((100vw-7rem)/3),400px)] shrink-0 snap-start group flex flex-col"
-              >
-                <Link
-                  href={c.customHref || "/cases/" + c.slug}
-                  scroll={false}
-                  className="block w-full h-full"
+          <div
+            ref={scrollContainerRef}
+            className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-12 -mx-6 px-6 gap-6 md:gap-8 scroll-smooth"
+          >
+            {visibleCases.map((c, i) => {
+              const img = caseCoverImage(c.slug);
+
+              return (
+                <div
+                  key={c.slug}
+                  ref={(node) => {
+                    cardRefs.current[i] = node;
+                  }}
+                  data-case-card
+                  className="w-[85vw] md:w-[min(45vw,420px)] lg:w-[min(calc((100vw-7rem)/3),400px)] shrink-0 snap-start group flex flex-col"
                 >
-                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-surface border border-white/5 mb-6">
-                    <Image
-                      src={img}
-                      alt={c.title}
-                      fill
-                      sizes="(max-width: 768px) 85vw, (max-width: 1024px) 45vw, 400px"
-                      className="object-contain transition-transform duration-500 group-hov:scale-105 opacity-60 group-hov:opacity-100"
-                    />
-                  </div>
-                  <div className="flex-1 flex flex-col justify-between">
-                    <div>
-                      <p className="text-primary text-xs font-bold uppercase tracking-widest mb-3">{c.tag}</p>
-                      <h3 className="text-xl md:text-2xl font-semibold text-white group-hov:text-primary transition-colors leading-snug mb-4">
-                        {c.title}
-                      </h3>
-                      <p className="text-sm text-white/60 mb-4 line-clamp-2">{c.description}</p>
+                  <Link
+                    href={c.customHref || "/cases/" + c.slug}
+                    scroll={false}
+                    className="block w-full h-full"
+                  >
+                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-surface border border-white/5 mb-6">
+                      <Image
+                        src={img}
+                        alt={c.title}
+                        fill
+                        sizes="(max-width: 768px) 85vw, (max-width: 1024px) 45vw, 400px"
+                        className="object-contain transition-transform duration-500 group-hov:scale-105 opacity-60 group-hov:opacity-100"
+                      />
                     </div>
-                    <span className="flex items-center gap-2 text-sm font-semibold text-white/70 group-hov:text-primary mt-2">
-                      Смотреть кейс
-                      <svg className="w-4 h-4 transition-transform group-hov:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </span>
-                  </div>
-                </Link>
-              </div>
-            );
-          })}
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div>
+                        <p className="text-primary text-xs font-bold uppercase tracking-widest mb-3">{c.tag}</p>
+                        <h3 className="text-xl md:text-2xl font-semibold text-white group-hov:text-primary transition-colors leading-snug mb-4">
+                          {c.title}
+                        </h3>
+                        <p className="text-sm text-white/60 mb-4 line-clamp-2">{c.description}</p>
+                      </div>
+                      <span className="flex items-center gap-2 text-sm font-semibold text-white/70 group-hov:text-primary mt-2">
+                        {isEn ? "View case study" : "Смотреть кейс"}
+                        <svg className="w-4 h-4 transition-transform group-hov:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

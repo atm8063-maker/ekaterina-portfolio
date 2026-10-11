@@ -4,6 +4,7 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { LazyVideo } from '@/components/shared/lazy-video';
 import { Play, X, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
+import { useLanguage } from '@/components/language-provider';
 
 export type MediaItem = {
   type: 'image' | 'video';
@@ -24,7 +25,7 @@ export type Artwork = {
   media: MediaItem[];
 };
 
-const artworksData: Artwork[] = [
+const artworksDataRu: Artwork[] = [
   // 1. Папка 2: Февраль 22-го (теперь объект 01)
   {
     id: 'work-feb',
@@ -61,7 +62,7 @@ const artworksData: Artwork[] = [
       },
       {
         type: 'video',
-        src: '/art-protest/папка 2/video_102@04-08-2026_21-08-46.mp4',
+        src: '/art-protest/папка_2/video_102_04-08-2026_21-08-46.mp4',
         label: 'Живой рельеф',
         aspect: '9 / 16',
       },
@@ -118,7 +119,7 @@ const artworksData: Artwork[] = [
       },
       {
         type: 'video',
-        src: '/art-protest/папка 1/video_137@04-08-2026_22-24-33.mp4',
+        src: '/art-protest/папка_1/video_137_04-08-2026_22-24-33.mp4',
         label: 'Видеодеталь',
         aspect: '9 / 16',
       },
@@ -157,7 +158,7 @@ const artworksData: Artwork[] = [
       },
       {
         type: 'video',
-        src: '/art-protest/папка 3/video_95@04-08-2026_21-08-44.mp4',
+        src: '/art-protest/папка_3/video_95_04-08-2026_21-08-44.mp4',
         label: 'Видеодеталь',
         aspect: '9 / 16',
       },
@@ -363,6 +364,345 @@ const artworksData: Artwork[] = [
   },
 ];
 
+const artworksDataEn: Artwork[] = [
+  // 1. February '22
+  {
+    id: 'work-feb',
+    number: '01',
+    title: "February '22",
+    subtitle: 'Artivism & Protest',
+    concept: 'The piece conveys a state of catastrophe, shock, and forced silence through the visual metaphors of ice, cracks, and constraint.',
+    fullConcept: [
+      {
+        heading: 'The Trap and the Web of Censorship',
+        text: 'Ice, made with epoxy resin. Interlacing white cracks resemble a sticky web or a torn net, binding the space. All of it symbolizes total control, an atmosphere of fear, and the impossibility of breaking through the wall of prohibition to be heard.',
+      },
+      {
+        heading: 'A Voiceless Protest',
+        text: 'At the center of the composition are hands trying to break through the ice. It is a gesture of dissent, inner strength, and an attempt at resistance meeting an insurmountable barrier.',
+      },
+      {
+        heading: 'The Ghost of Freedom, and Its Fading',
+        text: "A blurred, semi-transparent silhouette of an open palm beneath the ice underscores powerlessness, the feeling of one's own position becoming a 'ghost,' and the gradual loss of the ability to act openly.",
+      },
+      {
+        heading: 'A Somber Palette',
+        text: 'The dark shade of water in the crevice between the ice shards, together with the highlights, creates a sense of a cold dead end, where light struggles to break through.',
+      },
+    ],
+    materials: 'Oil, epoxy resin, clay, plaster, markers, chrome, cardboard, pigments, dyes',
+    year: '2022',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка_2/photo_3360_04-08-2026_21-08-46_1.jpg',
+        label: 'Main View',
+        aspect: '874 / 1170',
+      },
+      {
+        type: 'video',
+        src: '/art-protest/папка_2/video_102_04-08-2026_21-08-46.mp4',
+        label: 'Living Relief',
+        aspect: '9 / 16',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_2/photo_3291_04-08-2026_21-08-4231.jpg',
+        label: 'Detail: Texture and Resin',
+        aspect: '1024 / 1280',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_2/photo_3362_04-08-2026_21-08-46.jpg',
+        label: 'Detail: Chrome and Plaster',
+        aspect: '1024 / 1280',
+      },
+    ],
+  },
+
+  // 2. Deep Rest
+  {
+    id: 'work-deep',
+    number: '02',
+    title: 'Deep Rest',
+    subtitle: 'Artivism & Texture',
+    concept: 'An exploration of interaction, the boundaries of support, and emotional freezing: the choice between rescue and sinking into the depths.',
+    fullConcept: [
+      {
+        heading: 'Interaction',
+        text: 'For a very long time this painting sounded in my head as "deep rest," but when I finished it, it became clear that wasn\'t it — and it\'s not really about me, or even about the canvas\'s subject.\nIt\'s about interaction. Like in Marina Abramović\'s experiment (which, it seems, is still ongoing).\nYou can let the other person drown, or you can reach out a hand.\n"Never give up" or "Deep rest" — it all depends on who\'s watching.',
+      },
+      {
+        heading: 'A Phonetic Play on Meaning',
+        text: 'The title balances between healing rest (Deep rest) and a state of deep depression (Depressed), when stillness becomes the only psychological defense.',
+      },
+      {
+        heading: 'Tactile Contrast',
+        text: "The resin's gloss is interrupted by a pattern of falling raindrops, with the outline of a second hand emerging underwater in the depths. The contrast of plaster and resin heightens the discomfort of an image of a person drowning in dark water.",
+      },
+    ],
+    materials: 'Acrylic, clay, plaster, epoxy resin, pigments, silicone, art board',
+    year: '2023',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка_1/photo_2957_31-07-2026_18-19-07.jpg',
+        label: 'Final Piece',
+        aspect: '1280 / 1271',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_1/photo_3018_31-07-2026_18-44-23.jpg',
+        label: 'Sculptural Element',
+        aspect: '576 / 1280',
+      },
+      {
+        type: 'video',
+        src: '/art-protest/папка_1/video_137_04-08-2026_22-24-33.mp4',
+        label: 'Video Detail',
+        aspect: '9 / 16',
+      },
+    ],
+  },
+
+  // 3. The Last Drop
+  {
+    id: 'work-last',
+    number: '03',
+    title: 'The Last Drop',
+    subtitle: 'Monochrome & Shadows',
+    concept: 'The piece uses a minimal number of shades and materials; the idea is very concise: the last drop is a full stop, not a dialogue.',
+    fullConcept: [
+      {
+        heading: 'Chromed Tension',
+        text: 'The mirrored metallic sheen reflects the viewer, making them a participant in a moment of extreme psychological pressure.',
+      },
+      {
+        heading: 'A Frozen Impulse',
+        text: 'The ripples on the water from the last drop stand as a symbol of suppressed emotions and unspoken words finally breaking through.',
+      },
+      {
+        heading: 'Minimalism',
+        text: 'The piece uses a minimal number of shades and materials; the idea is very concise: the last drop is a full stop, not a dialogue.',
+      },
+    ],
+    materials: 'Art board, chrome, epoxy resin, silicone',
+    year: '2020',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка_3/photo_3332_04-08-2026_21-08-45.jpg',
+        label: 'Display',
+        aspect: '1280 / 758',
+      },
+      {
+        type: 'video',
+        src: '/art-protest/папка_3/video_95_04-08-2026_21-08-44.mp4',
+        label: 'Video Detail',
+        aspect: '9 / 16',
+      },
+    ],
+  },
+
+  // 4. Gasoline Rainbow
+  {
+    id: 'work-rainbow',
+    number: '04',
+    title: 'Gasoline Rainbow',
+    subtitle: '"Transformation" Series',
+    concept: 'Beauty in the small and a hidden ecological conflict: the aesthetics of a gasoline film underfoot, and fossilized nature.',
+    fullConcept: [
+      {
+        heading: 'Beauty in the Everyday',
+        text: 'The rainbow sheen of a gasoline film and the taut surface of water on "asphalt" reveal beauty in the small — literally in what\'s underfoot.',
+      },
+      {
+        heading: 'An Autumn Landscape',
+        text: 'Skeletonized leaves, fused into liquid stone and resin, are captured like fossilized artifacts of a fading living nature.',
+      },
+      {
+        heading: 'A Layered Conflict',
+        text: 'The dense textures of liquid stone imitating cracked asphalt collide with flowing fluorescent dyes, visualizing the standoff between civilization and the biosphere.',
+      },
+    ],
+    materials: 'Art board, epoxy resin, dyes and pigments, liquid stone, acrylic, silicone, skeletonized leaves',
+    year: '2021',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка_4/photo_3309_04-08-2026_21-08-42.jpg',
+        label: 'Main View',
+        aspect: '1024 / 1280',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_4/photo_2026-08-30_02-47-39.jpg',
+        label: 'Angle A',
+        aspect: '718 / 960',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_4/photo_2026-08-30_02-47-40.jpg',
+        label: 'Angle B',
+        aspect: '718 / 960',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_4/photo_2026-08-30_02-47-40 (2).jpg',
+        label: 'Relief',
+        aspect: '718 / 960',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_4/photo_2026-08-30_02-47-40 (3).jpg',
+        label: 'Cross-Section',
+        aspect: '718 / 960',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_4/photo_2026-08-30_02-47-40 (5).jpg',
+        label: 'Texture',
+        aspect: '720 / 960',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_4/photo_2026-08-30_02-47-40 (7).jpg',
+        label: 'Macro',
+        aspect: '706 / 960',
+      },
+    ],
+  },
+
+  // 5. Let the Swans Dance
+  {
+    id: 'work-swans',
+    number: '05',
+    title: 'Let the Swans Dance',
+    subtitle: 'Depth & Space',
+    concept: 'A historical allusion to ballet broadcasts on TV during crises: a blackthorn spike pierces paper, turning dance into a painful jab of reality.',
+    fullConcept: [
+      {
+        heading: 'A Thorn Instead of Grace',
+        text: 'A real, thorny blackthorn branch digs into a clean sheet of paper, turning a fairy-tale dance into a painful jab of reality.',
+      },
+      {
+        heading: 'The Emptiness of the Drafting Paper',
+        text: "The monochrome blue background underscores the deafening silence and informational vacuum of an official agenda.",
+      },
+      {
+        heading: 'A Symbol of Changing Eras',
+        text: "A concise artistic gesture, where the fragility of paper stands against the aggressive harshness of thorns.",
+      },
+    ],
+    materials: 'Drafting paper, blackthorn branch',
+    year: '2024',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка_5/photo_2933_31-07-2026_17-46-11.jpg',
+        label: 'Composition',
+        aspect: '1212 / 1280',
+      },
+    ],
+  },
+
+  // 6. And?
+  {
+    id: 'work-and',
+    number: '06',
+    title: 'And?',
+    subtitle: 'Textured Relief',
+    concept: 'A dialogue with confusion and skepticism: a defensive gesture and a provocative question that deflates the pathos.',
+    fullConcept: [
+      {
+        heading: 'Confusion',
+        text: 'Hands spread wide and hands folded in an attempt to shield oneself show the conflict between the urge to vent one\'s own aggression and the urge to suppress it.',
+      },
+      {
+        heading: 'Skepticism as a Defense',
+        text: 'The blunt, provocative question "And?" cuts through the pathos and exposes the existential confusion of the modern person, while stating bewilderment, puzzlement, and disorientation all at once.',
+      },
+      {
+        heading: 'A Textured Break',
+        text: 'Layered brushstrokes create the sense of other people\'s opinions piling up, through which the central question breaks through.',
+      },
+    ],
+    materials: 'Canvas, acrylic, markers',
+    year: '2015',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка_6/photo_3168_04-08-2026_20-56-52.jpg',
+        label: 'Overall View',
+        aspect: '1105 / 1105',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_6/photo_2026-08-27_17-30-22 (8).jpg',
+        label: 'Detail',
+        aspect: '1280 / 1022',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_6/photo_2026-08-27_17-30-23.jpg',
+        label: 'Relief',
+        aspect: '626 / 626',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_6/photo_2026-08-27_17-30-23 (2).jpg',
+        label: 'Texture',
+        aspect: '1078 / 1078',
+      },
+    ],
+  },
+
+  // 7. Red Series
+  {
+    id: 'work-red',
+    number: '07',
+    title: 'Red Series',
+    subtitle: 'Triptych · Mixed Media',
+    concept: 'A triptych of states through a totalizing red: from fury and despair to untamed vitality and physicality.',
+    fullConcept: [
+      {
+        heading: 'Red as a Signal of Danger and Life',
+        text: 'The dominant spectrum triggers primal instincts — from danger to untamed sexual energy.',
+      },
+      {
+        heading: 'A Triptych of States',
+        text: 'Each of the 3 pieces explores a distinct emotion — from despair to fury to lust.',
+      },
+      {
+        heading: 'The Contrast of Flame and Monochrome',
+        text: 'The combination of scarlet pigments with deep black heightens the drama and cinematic quality of the composition.',
+      },
+    ],
+    materials: '1. "Alive!": art board, pigments, titanium dioxide, epoxy resin · 2. "Stuck in the Textures": digital art (hand-drawn, Photoshop) · 3. "Physicality": canvas, acrylic, markers',
+    year: '2020, 2011, 2014',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка_7/photo_3394_04-08-2026_22-17-05.jpg',
+        label: '01. Alive! (resin on art board)',
+        aspect: '1080 / 810',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_7/photo_2026-08-27_17-30-22.jpg',
+        label: '02. Stuck in the Textures (digital art)',
+        aspect: '604 / 402',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка_7/photo_3225_04-08-2026_21-04-40.jpg',
+        label: '03. Physicality (canvas, acrylic, markers)',
+        aspect: '495 / 635',
+      },
+    ],
+  },
+];
+
 // Single Item Frame: Solid 4px black borders, no overlapping icons, opens lightbox on click
 function ProportionalItem({
   item,
@@ -431,6 +771,7 @@ function SteppedCollage({
   onOpenConcept: (artwork: Artwork) => void;
   index: number;
 }) {
+  const { isEn } = useLanguage();
   const m = artwork.media;
   const [isInlineOpen, setIsInlineOpen] = useState(false);
 
@@ -687,7 +1028,7 @@ function SteppedCollage({
           }}
           className="inline-flex items-center gap-2 px-3 py-1 bg-white/90 hover:bg-primary text-black border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md group/btn"
         >
-          <span>КОНЦЕПЦИЯ</span>
+          <span>{isEn ? "CONCEPT" : "КОНЦЕПЦИЯ"}</span>
           <ChevronRight className={`w-3.5 h-3.5 transition-transform stroke-[2.5] ${isInlineOpen ? 'rotate-90' : 'group-hover/btn:translate-x-0.5'}`} />
         </button>
       </div>
@@ -705,13 +1046,13 @@ function SteppedCollage({
                 className="flex items-center gap-1.5 px-2.5 py-1 bg-primary text-black border border-black font-montserrat font-black text-[11px] uppercase tracking-wider cursor-pointer"
               >
                 <ArrowLeft className="w-3.5 h-3.5 stroke-[2.5]" />
-                <span>Назад к стене</span>
+                <span>{isEn ? "Back to the Wall" : "Назад к стене"}</span>
               </button>
               <button
                 onClick={() => setIsInlineOpen(false)}
                 className="text-[10px] font-montserrat font-bold uppercase bg-white text-black px-2 py-0.5 border border-black cursor-pointer"
               >
-                Закрыть ✕
+                {isEn ? "Close ✕" : "Закрыть ✕"}
               </button>
             </div>
             <div className="space-y-2.5 text-left">
@@ -733,7 +1074,7 @@ function SteppedCollage({
               )}
             </div>
             <div className="mt-3 pt-2 border-t border-white/10 text-[10px] font-sans text-white/60">
-              <strong className="text-white">Материалы:</strong> {artwork.materials}
+              <strong className="text-white">{isEn ? "Materials:" : "Материалы:"}</strong> {artwork.materials}
             </div>
           </div>
         )}
@@ -745,6 +1086,7 @@ function SteppedCollage({
 
 // Concluding Manifesto Panel (Balances 4th Wall Segment)
 function ManifestoPanel() {
+  const { isEn } = useLanguage();
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
       <div className="w-[640px] max-w-none h-[360px] sm:h-[390px] scale-[0.52] xs:scale-[0.62] sm:scale-100 origin-center relative flex flex-col justify-between py-6 px-4 sm:px-8 bg-white/95 border-[4px] border-black shadow-xl backdrop-blur-sm z-20">
@@ -759,24 +1101,37 @@ function ManifestoPanel() {
           {/* Top Header */}
           <div className="relative z-20 pb-1 border-b-2 border-black">
             <span className="text-xs font-montserrat font-black uppercase tracking-widest text-black block">
-              Концепция серии
+              {isEn ? "Series Concept" : "Концепция серии"}
             </span>
           </div>
 
           {/* Center Text Body */}
           <div className="relative z-20 my-auto py-3 space-y-2.5">
-            <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
-              «Каждая работа — это прежде всего не красота, а концепция и идея, притом чаще всего болезненная. В этом блоке собраны работы, у которых визуальная составляющая вторична, на первый план выходят образы и метафоры.
-            </p>
-            <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
-              Смола, гипс, глина, пигменты и красители выступают здесь не как декор, а как прямой манифест свободы и желания высказаться через цвет и свет».
-            </p>
+            {isEn ? (
+              <>
+                <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
+                  &quot;Each piece is, first and foremost, not about beauty but about concept and idea — and more often than not, a painful one. This block brings together works where the visual component is secondary; imagery and metaphor take center stage.
+                </p>
+                <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
+                  Resin, plaster, clay, pigments, and dyes appear here not as decoration, but as a direct manifesto of freedom and the desire to speak out through color and light.&quot;
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
+                  «Каждая работа — это прежде всего не красота, а концепция и идея, притом чаще всего болезненная. В этом блоке собраны работы, у которых визуальная составляющая вторична, на первый план выходят образы и метафоры.
+                </p>
+                <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
+                  Смола, гипс, глина, пигменты и красители выступают здесь не как декор, а как прямой манифест свободы и желания высказаться через цвет и свет».
+                </p>
+              </>
+            )}
           </div>
 
           {/* Bottom Footer Metadata */}
           <div className="relative z-20 pt-1.5 border-t-2 border-black flex items-center justify-between text-[10px] sm:text-xs font-montserrat text-black uppercase font-bold tracking-wider">
-            <span>Екатерина · Fir Tree Art</span>
-            <span className="text-black/80 font-sans font-semibold">7 авторских арт-объектов</span>
+            <span>{isEn ? "Ekaterina" : "Екатерина"} · Fir Tree Art</span>
+            <span className="text-black/80 font-sans font-semibold">{isEn ? "7 Original Art Pieces" : "7 авторских арт-объектов"}</span>
           </div>
         </div>
       </div>
@@ -785,6 +1140,8 @@ function ManifestoPanel() {
 }
 
 export function ArtProtest() {
+  const { isEn } = useLanguage();
+  const artworksData = isEn ? artworksDataEn : artworksDataRu;
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [lightboxState, setLightboxState] = useState<{
     item: MediaItem;
@@ -917,7 +1274,7 @@ export function ArtProtest() {
         className={`hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hov:bg-primary hov:border-black shadow-2xl rounded-none transition-opacity duration-300 ease-out ${
           canScrollLeft ? 'opacity-100 pointer-events-auto cursor-pointer' : 'opacity-0 pointer-events-none cursor-default'
         }`}
-        aria-label="Листать влево"
+        aria-label={isEn ? "Scroll left" : "Листать влево"}
       >
         <ChevronLeft className="h-6 w-6" />
       </button>
@@ -933,7 +1290,7 @@ export function ArtProtest() {
         className={`hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hov:bg-primary hov:border-black shadow-2xl rounded-none transition-opacity duration-300 ease-out ${
           canScrollRight ? 'opacity-100 pointer-events-auto cursor-pointer' : 'opacity-0 pointer-events-none cursor-default'
         }`}
-        aria-label="Листать вправо"
+        aria-label={isEn ? "Scroll right" : "Листать вправо"}
       >
         <ChevronRight className="h-6 w-6" />
       </button>
@@ -972,7 +1329,7 @@ export function ArtProtest() {
       {/* Mobile Swipe Hint */}
       <div className="sm:hidden absolute top-4 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/80 backdrop-blur-md border border-primary/40 text-primary text-[11px] font-mono font-bold uppercase tracking-wider shadow-lg">
-          <span>←</span> Свайпайте стену <span>→</span>
+          <span>{isEn ? "Swipe the wall" : "Свайпайте стену"}</span>
         </div>
       </div>
 
@@ -997,7 +1354,7 @@ export function ArtProtest() {
                 className="flex items-center gap-2 px-3 py-1.5 bg-primary text-black hover:bg-white border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
               >
                 <ArrowLeft className="w-4 h-4 stroke-[3]" />
-                <span>Назад к стене</span>
+                <span>{isEn ? "Back to the Wall" : "Назад к стене"}</span>
               </button>
 
               <div className="flex items-center gap-2">
@@ -1010,7 +1367,7 @@ export function ArtProtest() {
                 <button
                   onClick={() => setConceptModalArtwork(null)}
                   className="flex h-8 w-8 items-center justify-center border-2 border-black bg-white text-black hover:bg-primary transition-colors shadow-sm cursor-pointer ml-1"
-                  aria-label="Закрыть"
+                  aria-label={isEn ? "Close" : "Закрыть"}
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -1049,7 +1406,7 @@ export function ArtProtest() {
 
             {/* Footer / Materials */}
             <div className="border-t border-white/15 pt-4 flex flex-col gap-1 text-xs font-montserrat">
-              <span className="text-white/50 uppercase font-bold text-[10px]">МАТЕРИАЛЫ И ТЕХНИКА</span>
+              <span className="text-white/50 uppercase font-bold text-[10px]">{isEn ? "MATERIALS & TECHNIQUE" : "МАТЕРИАЛЫ И ТЕХНИКА"}</span>
               <span className="font-sans font-semibold text-primary">
                 {conceptModalArtwork.materials}
               </span>
@@ -1077,13 +1434,13 @@ export function ArtProtest() {
                 className="flex items-center gap-2 px-3 py-1.5 bg-primary text-black hover:bg-white border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
               >
                 <ArrowLeft className="w-4 h-4 stroke-[3]" />
-                <span>Назад к стене</span>
+                <span>{isEn ? "Back to the Wall" : "Назад к стене"}</span>
               </button>
 
               <button
                 onClick={() => setLightboxState(null)}
                 className="flex h-8 w-8 items-center justify-center border-2 border-white/20 bg-black text-white hover:bg-primary hover:text-black transition-colors cursor-pointer"
-                aria-label="Закрыть"
+                aria-label={isEn ? "Close" : "Закрыть"}
               >
                 <X className="h-4 w-4" />
               </button>
@@ -1122,13 +1479,13 @@ export function ArtProtest() {
                   {lightboxState.artwork.fullConcept && (
                     <button
                       onClick={() => {
-                        const art = lightboxState.artwork;
+                        const artwork = lightboxState.artwork;
                         setLightboxState(null);
-                        setConceptModalArtwork(art);
+                        setConceptModalArtwork(artwork);
                       }}
                       className="text-[10px] font-montserrat font-black uppercase text-black bg-primary px-2 py-0.5 border border-black hover:bg-white transition-colors cursor-pointer"
                     >
-                      ЧИТАТЬ КОНЦЕПЦИЮ
+                      {isEn ? "READ CONCEPT" : "ЧИТАТЬ КОНЦЕПЦИЮ"}
                     </button>
                   )}
                 </div>
@@ -1139,11 +1496,11 @@ export function ArtProtest() {
                   {lightboxState.artwork.concept}
                 </p>
               </div>
-              <div className="text-left sm:text-right shrink-0">
+              <div className="text-left sm:text-right min-w-0 sm:max-w-[320px]">
                 <span className="text-[10px] font-montserrat font-bold uppercase text-white/50 block">
-                  МАТЕРИАЛЫ
+                  {isEn ? "MATERIALS" : "МАТЕРИАЛЫ"}
                 </span>
-                <span className="text-xs font-sans text-white/80 font-medium">
+                <span className="text-xs font-sans text-white/80 font-medium break-words">
                   {lightboxState.artwork.materials}
                 </span>
               </div>

@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { LazyVideo } from "@/components/shared/lazy-video";
 import { MotionReveal } from "@/components/shared/motion-reveal";
+import { useLanguage } from "@/components/language-provider";
 
 export function ArtNoBorders() {
+  const { isEn } = useLanguage();
   return (
     <section className="py-16 lg:py-24 relative overflow-hidden text-white bg-background">
       {/* Clean Dark Paper Background */}
@@ -30,12 +32,13 @@ export function ArtNoBorders() {
             className="lg:col-span-7 flex flex-col justify-center order-1"
           >
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white font-montserrat mb-6 leading-[1.1]">
-              ШИРОКИЙ <br className="hidden sm:inline" />
-              <span className="text-primary">ДИАПАЗОН СМОЛЫ</span>
+              {isEn ? <>A WIDE <br className="hidden sm:inline" /> <span className="text-primary">RANGE OF RESIN</span></> : <>ШИРОКИЙ <br className="hidden sm:inline" /> <span className="text-primary">ДИАПАЗОН СМОЛЫ</span></>}
             </h2>
-            
+
             <p className="text-muted-foreground text-base sm:text-lg lg:text-xl font-medium leading-[1.7] font-inter max-w-[560px]">
-              Эпоксидная смола отлично демонстрирует свою универсальность при создании любых форматов. Я работаю как с малыми формами, так и с крупными: от миниатюрных украшений до мебели. Картины, домашний декор, посуда, арт-объекты, ёлочные игрушки — смола отлично подходит для любой категории.
+              {isEn
+                ? "Epoxy resin shows off its versatility across every format. I work at both small and large scale — from miniature jewelry to furniture. Paintings, home decor, tableware, art objects, Christmas ornaments: resin works beautifully for any category."
+                : "Эпоксидная смола отлично демонстрирует свою универсальность при создании любых форматов. Я работаю как с малыми формами, так и с крупными: от миниатюрных украшений до мебели. Картины, домашний декор, посуда, арт-объекты, ёлочные игрушки — смола отлично подходит для любой категории."}
             </p>
           </MotionReveal>
 

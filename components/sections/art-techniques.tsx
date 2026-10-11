@@ -5,6 +5,7 @@ import { prefetchMedia } from "@/components/shared/media-prefetch";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { ArtTechniquesGallery } from "@/components/sections/art-techniques-gallery";
+import { useLanguage } from "@/components/language-provider";
 
 type MediaItem = {
   src: string;
@@ -215,10 +216,13 @@ const items: MediaItem[] = [
 ];
 
 export function ArtTechniques() {
+  const { isEn } = useLanguage();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const offlineTags = ["Эпоксидная смола", "Акрил", "Алкогольные чернила", "Текстурная паста", "Смешанные техники"];
-  const offlineExtra = ["Гипс", "Глина", "Масло", "Скетчи"];
+  const offlineTags = isEn
+    ? ["Epoxy Resin", "Acrylic", "Alcohol Ink", "Texture Paste", "Mixed Media"]
+    : ["Эпоксидная смола", "Акрил", "Алкогольные чернила", "Текстурная паста", "Смешанные техники"];
+  const offlineExtra = isEn ? ["Plaster", "Clay", "Oil", "Sketching"] : ["Гипс", "Глина", "Масло", "Скетчи"];
   const digitalTools = ["Figma", "Photoshop", "Illustrator", "SketchUp", "Planoplan"];
 
   const openLightbox = (idx: number) => {
@@ -268,10 +272,12 @@ export function ArtTechniques() {
         {/* Header */}
         <div className="max-w-3xl mb-10">
           <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat mt-2">
-            Техники <span className="text-primary">&</span> Инструменты
+            {isEn ? <>Techniques <span className="text-[#14F1D9]">&</span> Tools</> : <>Техники <span className="text-[#14F1D9]">&</span> Инструменты</>}
           </h2>
           <p className="text-white/60 mt-2 font-inter text-sm sm:text-base">
-            Работаю на стыке материального крафта и цифровых технологий — от изящных предметов ручной работы до сложных UI-интерфейсов и 3D-моделей.
+            {isEn
+              ? "I work at the intersection of material craft and digital technology — from delicate handmade objects to complex UI interfaces and 3D models."
+              : "Работаю на стыке материального крафта и цифровых технологий — от изящных предметов ручной работы до сложных UI-интерфейсов и 3D-моделей."}
           </p>
         </div>
 
@@ -282,9 +288,9 @@ export function ArtTechniques() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 -z-10 group-hover:bg-primary/10 transition-colors"></div>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xs uppercase tracking-widest font-bold text-primary font-montserrat">
-                Офлайн · Материалы & Крафт
+                {isEn ? <>Offline · Materials & Craft</> : <>Офлайн · Материалы & Крафт</>}
               </h3>
-              <span className="text-[10px] font-inter text-white/40 uppercase tracking-wider">Физические объекты</span>
+              <span className="text-[10px] font-inter text-white/40 uppercase tracking-wider">{isEn ? "Physical objects" : "Физические объекты"}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {offlineTags.map((t) => (
@@ -310,9 +316,9 @@ export function ArtTechniques() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 -z-10 group-hover:bg-primary/10 transition-colors"></div>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xs uppercase tracking-widest font-bold text-primary font-montserrat">
-                Цифра · Design <span className="text-primary">&</span> Tech
+                {isEn ? "Digital" : "Цифра"}
               </h3>
-              <span className="text-[10px] font-inter text-white/40 uppercase tracking-wider">Интерфейсы & 3D</span>
+              <span className="text-[10px] font-inter text-white/40 uppercase tracking-wider">{isEn ? "Interfaces & 3D" : "Интерфейсы & 3D"}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {digitalTools.map((i) => (
@@ -332,7 +338,7 @@ export function ArtTechniques() {
       {/* Swipe Badge for Desktop & Mobile */}
       <div className="container mx-auto px-6 text-center mb-4 relative z-20">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-primary uppercase shadow-md">
-          <span>←</span> Листайте галерею <span>→</span>
+          <span>←</span> {isEn ? "Swipe through the gallery" : "Листайте галерею"} <span>→</span>
         </div>
       </div>
 
@@ -340,7 +346,7 @@ export function ArtTechniques() {
 
       <div className="container mx-auto px-6 text-center mt-3 relative z-20">
         <p className="text-[11px] font-inter text-white/50 tracking-wider">
-          💡 Свайпайте или перетаскивайте мышкой · Кликните для полного размера
+          {isEn ? "💡 Swipe or drag with your mouse · Click for full size" : "💡 Свайпайте или перетаскивайте мышкой · Кликните для полного размера"}
         </p>
       </div>
 
@@ -360,7 +366,7 @@ export function ArtTechniques() {
             <button
               onClick={() => setLightboxIndex(null)}
               className="absolute -top-4 -right-4 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black text-white hover:bg-primary hover:text-black transition-colors shadow-lg"
-              aria-label="Закрыть"
+              aria-label={isEn ? "Close" : "Закрыть"}
             >
               <X className="h-5 w-5" />
             </button>
@@ -369,14 +375,14 @@ export function ArtTechniques() {
             <button
               onClick={prevLightbox}
               className="absolute left-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black/80 text-white hover:bg-primary hover:text-black transition-colors"
-              aria-label="Предыдущий"
+              aria-label={isEn ? "Previous" : "Предыдущий"}
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={nextLightbox}
               className="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black/80 text-white hover:bg-primary hover:text-black transition-colors"
-              aria-label="Следующий"
+              aria-label={isEn ? "Next" : "Следующий"}
             >
               <ChevronRight className="h-5 w-5" />
             </button>

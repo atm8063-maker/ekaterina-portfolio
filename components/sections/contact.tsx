@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { MotionReveal } from "@/components/shared/motion-reveal";
+import { useLanguage } from "@/components/language-provider";
 
 export default function Contact() {
+  const { isEn } = useLanguage();
   return (
     <section id="contact" className="py-24 scroll-mt-20 relative overflow-hidden bg-background text-center">
       {/* Clean Dark Paper Background */}
@@ -23,7 +25,7 @@ export default function Contact() {
 
       <div className="container mx-auto px-6 max-w-3xl relative z-20">
         <MotionReveal as="h2" variant="fade-up" className="text-4xl md:text-6xl font-bold uppercase text-white tracking-widest mb-12">
-          СВЯЗАТЬСЯ <span className="text-primary block mt-2">СО МНОЙ</span>
+          {isEn ? <>GET IN <span className="text-primary block mt-2">TOUCH</span></> : <>СВЯЗАТЬСЯ <span className="text-primary block mt-2">СО МНОЙ</span></>}
         </MotionReveal>
 
         <MotionReveal variant="fade-up" delay={0.2} className="flex flex-col sm:flex-row justify-center gap-6">
@@ -31,7 +33,7 @@ export default function Contact() {
             href="mailto:razumova.ekaterina@gmail.com" 
             className="btn-press btn-fill px-10 py-5 text-black font-bold uppercase tracking-widest rounded-none"
           >
-            Написать на Email
+            {isEn ? "Email Me" : "Написать на Email"}
           </a>
           <a 
             href="https://t.me/fir_tree_art" 
@@ -45,7 +47,7 @@ export default function Contact() {
       </div>
       
       <div className="mt-24 pt-8 text-center text-text-muted text-sm tracking-widest uppercase">
-        <p>© {new Date().getFullYear()} Екатерина Разумова. Creative Generalist.</p>
+        <p>© {new Date().getFullYear()} {isEn ? "Ekaterina Razumova. Creative Generalist." : "Екатерина Разумова. Creative Generalist."}</p>
       </div>
     </section>
   );

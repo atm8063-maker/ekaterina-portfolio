@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, useEffect, useCallback } from "react";
+import { useLanguage } from "@/components/language-provider";
 
 type SplatterData = {
   id: number;
@@ -25,6 +26,7 @@ const INITIAL_SPLATTERS: SplatterData[] = [
 ];
 
 export default function Hero() {
+  const { isEn } = useLanguage();
   const [splatters, setSplatters] = useState<SplatterData[]>(INITIAL_SPLATTERS);
   const mousePosRef = useRef({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -83,7 +85,7 @@ export default function Hero() {
   }, [isHovering]);
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background">
+    <section id="hero" className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background">
       
       {/* MOBILE VERSION */}
       <div className="md:hidden relative w-full overflow-hidden bg-background h-viewport-full">
@@ -156,7 +158,7 @@ export default function Hero() {
         {/* Text on the shoulder area (bottom zone) */}
         <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-6 right-4 sm:right-6 z-20">
           <h1 className="text-4xl font-bold uppercase tracking-tight mb-2 leading-none text-white font-montserrat drop-shadow-lg">
-            Екатерина<br/>Разумова
+            {isEn ? <>Ekaterina<br/>Razumova</> : <>Екатерина<br/>Разумова</>}
           </h1>
           <p className="text-primary font-bold text-sm mb-4 tracking-widest uppercase font-montserrat drop-shadow-md">
             Creative Generalist
@@ -222,36 +224,70 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Full Height Photo Cutout on Desktop */}
-        <div 
-          className="absolute top-[5rem] bottom-0 left-[10%] lg:left-[15%] w-[45%] xl:w-[40%] z-10 pointer-events-none motion-reveal motion-reveal--fade-up motion-reveal--on-load is-visible"
-          style={{ ["--motion-reveal-duration" as string]: "0.8s" }}
-        >
-          <Image 
-            src="/hero-cutout.webp" 
-            alt="Екатерина Разумова"
-            fill
-            className="object-contain object-[left_bottom] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-            priority
-            fetchPriority="high"
-          />
-        </div>
+        {/* Composition frozen at 1440px (approved ultrawide fix, PR 23.09): beyond that,
+            extra width goes to side margins instead of pulling photo and text apart.
+            Left/right offsets match that fix; photo width is height-driven (fills the
+            frame instead of leaving a gap on short-but-wide windows) with a cap near
+            the fix's 45-48% so it doesn't outgrow the intended visual weight. Type size
+            is a continuous function of the leftover space so it can't collide with the
+            photo at any width in between — see clamp below. */}
+        <div className="absolute inset-0 top-[5rem] mx-auto w-full max-w-[1440px]">
+          {/* Full Height Photo Cutout on Desktop */}
+          <div
+            className="absolute top-0 bottom-0 left-[2%] lg:left-[4%] z-10 pointer-events-none motion-reveal motion-reveal--fade-up motion-reveal--on-load is-visible"
+            style={{
+              width: "min(70%, calc((100svh - 5rem) * 896 / 1200))",
+              ["--motion-reveal-duration" as string]: "0.8s",
+            }}
+          >
+            <Image
+              src="/hero-cutout.webp"
+              alt="Екатерина Разумова"
+              fill
+              className="object-contain object-[left_bottom] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+              priority
+              fetchPriority="high"
+            />
+          </div>
 
-        {/* Typography */}
-        <div className="absolute top-[5rem] bottom-0 left-0 right-[5%] lg:right-[10%] z-20 flex items-center justify-end pointer-events-none translate-x-[4px]">
-          <div className="text-center pointer-events-auto mt-20">
-            <h1 className="text-[4.5rem] lg:text-[6.5rem] xl:text-[8rem] font-black uppercase tracking-tighter mb-4 leading-[0.98] text-white font-montserrat drop-shadow-2xl mix-blend-difference">
-              ЕКАТЕРИНА<br/>РАЗУМОВА
-            </h1>
-            <p className="text-primary font-bold text-xl lg:text-2xl xl:text-3xl mb-6 tracking-widest uppercase font-montserrat drop-shadow-md">
-              Creative Generalist
-            </p>
-            <p className="text-sm lg:text-base xl:text-lg text-white/90 leading-relaxed font-medium font-inter drop-shadow-md">
-              Texts & Design • PR & Media • UX/UI + AI • Mixed Art
-            </p>
+          {/* Typography */}
+          <div className="absolute top-0 bottom-0 left-0 right-[2%] lg:right-[4%] z-20 flex items-center justify-end pointer-events-none -translate-x-[60px] lg:-translate-x-[90px] xl:-translate-x-[110px]">
+            <div
+              className="text-center pointer-events-auto mt-20"
+              /* Блок не может быть шире свободного места справа от лица —
+                 иначе подпись снизу растягивает его и сдвигает заголовок влево. */
+              style={{ maxWidth: "calc(0.94 * min(100vw, 1440px) - 0.74 * min(0.7 * min(100vw, 1440px), 0.7467 * (100svh - 5rem)) - 28px)" }}
+            >
+              <h1
+                className="font-black uppercase tracking-tighter mb-4 leading-[0.98] text-white font-montserrat drop-shadow-2xl mix-blend-difference"
+                /* Ширина заголовка = 6.33 × кегль. Кегль берём такой, чтобы текст
+                   начинался правее лица: лицо занимает левые 74% картинки, сама
+                   картинка тянется по высоте (0.7467 — её пропорция), ширина —
+                   min(46% контейнера, высота) — те же числа, что у фото выше.
+                   0.94/28px — суммарные поля слева (2-4%) и справа (2-4%) от тикета. */
+                style={{
+                  fontSize:
+                    "clamp(2.25rem, calc((0.94 * min(100vw, 1440px) - 0.74 * min(0.7 * min(100vw, 1440px), 0.7467 * (100svh - 5rem)) - 28px) / 6.33), 7.2rem)",
+                }}
+              >
+                {isEn ? <>EKATERINA<br/>RAZUMOVA</> : <>ЕКАТЕРИНА<br/>РАЗУМОВА</>}
+              </h1>
+              <p
+                className="text-primary font-bold mb-6 tracking-widest uppercase font-montserrat drop-shadow-md"
+                style={{ fontSize: "clamp(1rem, 1.85vw, 1.875rem)" }}
+              >
+                Creative Generalist
+              </p>
+              <p
+                className="text-white/90 leading-relaxed font-medium font-inter drop-shadow-md"
+                style={{ fontSize: "clamp(0.875rem, 1.1vw, 1.125rem)" }}
+              >
+                Texts & Design • PR & Media • UX/UI + AI • Mixed Art
+              </p>
+            </div>
           </div>
         </div>
-        
+
         {/* Bottom gradient fade for smooth transition to next section */}
         <div className="absolute bottom-0 left-0 w-full h-32 lg:h-[200px] bg-gradient-to-t from-background to-transparent z-[15] pointer-events-none" />
       </div>

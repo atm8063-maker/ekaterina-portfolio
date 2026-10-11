@@ -7,13 +7,39 @@ import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import {
-  ART_MENU_COLUMNS,
-  CAREER_SECTION_LINKS,
+  getArtMenuColumns,
+  getCareerSectionLinks,
   isArtRoute,
   isCareerRoute,
 } from "@/components/layout/header-nav-data";
 import { useHeaderScrollState } from "@/components/shared/use-header-scroll-reveal";
+import { useLanguage } from "@/components/language-provider";
 import { cn } from "@/lib/utils";
+
+const t = {
+  RU: {
+    skip: "Перейти к содержимому",
+    career: "Карьера",
+    art: "Искусство",
+    contact: "Связаться",
+    home: "На главную",
+    mainNav: "Основная навигация",
+    mobileNav: "Мобильная навигация",
+    closeMenu: "Закрыть меню",
+    openMenu: "Открыть меню",
+  },
+  EN: {
+    skip: "Skip to content",
+    career: "Career",
+    art: "Art",
+    contact: "Contact",
+    home: "Go to homepage",
+    mainNav: "Main navigation",
+    mobileNav: "Mobile navigation",
+    closeMenu: "Close menu",
+    openMenu: "Open menu",
+  },
+};
 
 const DROPDOWN_PANEL =
   "pointer-events-none absolute top-full z-50 pt-2 opacity-0 invisible transition-all duration-300 group-hov:pointer-events-auto group-hov:opacity-100 group-hov:visible focus-within:pointer-events-auto focus-within:opacity-100 focus-within:visible";
@@ -61,10 +87,18 @@ function NavSectionLink({
   );
 }
 
-function ArtMenuColumns({ onNavigate, compact }: { onNavigate?: () => void; compact?: boolean }) {
+function ArtMenuColumns({
+  lang,
+  onNavigate,
+  compact,
+}: {
+  lang: "RU" | "EN";
+  onNavigate?: () => void;
+  compact?: boolean;
+}) {
   return (
     <>
-      {ART_MENU_COLUMNS.map((column) => (
+      {getArtMenuColumns(lang).map((column) => (
         <div key={column.title} className="flex flex-col space-y-1">
           <span className="mb-1.5 border-b border-white/10 pb-1.5 font-montserrat text-[11px] font-black uppercase tracking-wider text-primary">
             {column.title}
@@ -94,10 +128,9 @@ function ArtMenuColumns({ onNavigate, compact }: { onNavigate?: () => void; comp
 
 export default function Header() {
   const pathname = usePathname();
+  const { lang, setLang } = useLanguage();
+  const tr = t[lang];
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [lang, setLang] = useState<"RU" | "EN">("RU");
-  const [showEnToast, setShowEnToast] = useState(false);
-  const enToastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const careerActive = isCareerRoute(pathname);
   const artActive = isArtRoute(pathname);
@@ -124,26 +157,12 @@ export default function Header() {
     };
   }, [mobileOpen]);
 
-  useEffect(
-    () => () => {
-      if (enToastTimer.current) clearTimeout(enToastTimer.current);
-    },
-    [],
-  );
-
-  const handleEnClick = () => {
-    setShowEnToast(true);
-    if (enToastTimer.current) clearTimeout(enToastTimer.current);
-    enToastTimer.current = setTimeout(() => {
-      setShowEnToast(false);
-      enToastTimer.current = null;
-    }, 2500);
-  };
-
   const navTriggerClass = (active: boolean) =>
     `flex items-center gap-1 py-2 font-montserrat text-sm font-bold uppercase tracking-widest whitespace-nowrap transition-colors md:text-sm ${
       active ? "text-primary" : "text-white/70 hov:text-white"
     }`;
+
+  const careerLinks = getCareerSectionLinks(lang);
 
   const mobileMenu =
     mobileOpen && typeof document !== "undefined"
@@ -152,12 +171,12 @@ export default function Header() {
             <button
               type="button"
               className="fixed inset-0 z-40 bg-black/55 md:hidden motion-reduce:transition-none"
-              aria-label="Закрыть меню"
+              aria-label={tr.closeMenu}
               onClick={closeMobile}
             />
             <nav
               className="fixed inset-x-0 bottom-0 top-14 z-40 flex flex-col gap-8 overflow-y-auto overscroll-contain border-t border-white/10 bg-background px-4 py-6 pb-10 md:hidden"
-              aria-label="Мобильная навигация"
+              aria-label={tr.mobileNav}
               id="mobile-nav-drawer"
               role="dialog"
               aria-modal="true"
@@ -168,17 +187,17 @@ export default function Header() {
                   onClick={closeMobile}
                   className={`mb-3 block font-montserrat text-base font-bold tracking-widest uppercase ${careerActive ? "text-primary" : "text-white"}`}
                 >
-                  Карьера
+                  {tr.career}
                 </Link>
                 <div className="flex flex-col overflow-hidden rounded-sm border border-white/10">
-                  {CAREER_SECTION_LINKS.map((link, i) => (
+                  {careerLinks.map((link, i) => (
                     <NavSectionLink
                       key={link.href}
                       href={link.href}
                       label={link.label}
                       onNavigate={closeMobile}
                       className={`px-4 py-3.5 text-base text-white/85 hov:bg-white/5 hov:text-primary font-inter ${
-                        i < CAREER_SECTION_LINKS.length - 1 ? "border-b border-white/5" : ""
+                        i < careerLinks.length - 1 ? "border-b border-white/5" : ""
                       }`}
                     />
                   ))}
@@ -191,10 +210,10 @@ export default function Header() {
                   onClick={closeMobile}
                   className={`mb-3 block font-montserrat text-base font-bold tracking-widest uppercase ${artActive ? "text-primary" : "text-white"}`}
                 >
-                  Искусство
+                  {tr.art}
                 </Link>
                 <div className="flex flex-col gap-6 rounded-sm border border-white/10 bg-background/40 p-4">
-                  <ArtMenuColumns onNavigate={closeMobile} compact />
+                  <ArtMenuColumns lang={lang} onNavigate={closeMobile} compact />
                 </div>
               </section>
 
@@ -203,7 +222,7 @@ export default function Header() {
                 onClick={closeMobile}
                 className="btn-press btn-fill block py-4 text-center font-montserrat text-sm font-bold tracking-widest text-background uppercase"
               >
-                Связаться
+                {tr.contact}
               </Link>
             </nav>
           </>,
@@ -213,6 +232,12 @@ export default function Header() {
 
   return (
     <>
+    <a
+      href="#hero"
+      className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:rounded focus:bg-primary focus:px-4 focus:py-2 focus:font-bold focus:uppercase focus:text-background"
+    >
+      {tr.skip}
+    </a>
     <header
       className={cn(
         "fixed top-0 right-0 left-0 z-50 flex items-center border-b bg-background/95 backdrop-blur-md transition-[min-height,padding,box-shadow] duration-300 ease-out motion-reduce:transition-none",
@@ -224,7 +249,7 @@ export default function Header() {
           <Link
             href="/"
             className="relative ml-2 block shrink-0 hov:opacity-80 transition-opacity md:ml-0"
-            aria-label="На главную"
+            aria-label={tr.home}
           >
             <Image
               src="/logo.webp"
@@ -256,11 +281,11 @@ export default function Header() {
 
         <nav
           className="hidden shrink-0 items-center justify-center gap-6 lg:gap-10 md:flex"
-          aria-label="Основная навигация"
+          aria-label={tr.mainNav}
         >
           <div className="group relative">
             <Link href="/" className={navTriggerClass(careerActive)} aria-haspopup="true">
-              Карьера
+              {tr.career}
               <ChevronDown
                 className="h-4 w-4 opacity-70 transition-transform duration-300 group-hov:rotate-180"
                 aria-hidden
@@ -271,7 +296,7 @@ export default function Header() {
                 role="menu"
                 className="flex flex-col rounded-none border border-white/10 bg-surface py-2 shadow-2xl"
               >
-                {CAREER_SECTION_LINKS.map((link) => (
+                {careerLinks.map((link) => (
                   <NavSectionLink key={link.href} href={link.href} label={link.label} />
                 ))}
               </div>
@@ -280,7 +305,7 @@ export default function Header() {
 
           <div className="group relative">
             <Link href="/fir_tree_art" className={navTriggerClass(artActive)} aria-haspopup="true">
-              Искусство
+              {tr.art}
               <ChevronDown
                 className="h-4 w-4 opacity-70 transition-transform duration-300 group-hov:rotate-180"
                 aria-hidden
@@ -290,7 +315,7 @@ export default function Header() {
               className={`${DROPDOWN_PANEL} left-1/2 w-[min(780px,calc(100vw-2rem))] max-w-[820px] -translate-x-1/2`}
             >
               <div className="grid grid-cols-1 gap-4 border border-white/15 bg-surface/95 p-4 shadow-2xl backdrop-blur-md sm:grid-cols-3 sm:gap-6 sm:p-6">
-                <ArtMenuColumns />
+                <ArtMenuColumns lang={lang} />
               </div>
             </div>
           </div>
@@ -306,7 +331,7 @@ export default function Header() {
                 : "px-3 py-1.5 text-[10px] sm:px-6 sm:py-2.5 sm:text-sm",
             )}
           >
-            Связаться
+            {tr.contact}
           </Link>
 
           <div className="relative hidden shrink-0 items-center gap-3 border-l border-white/20 pl-6 font-montserrat text-sm font-semibold text-white/70 sm:flex">
@@ -322,18 +347,11 @@ export default function Header() {
             </span>
             <button
               type="button"
-              onClick={handleEnClick}
-              className="flex cursor-pointer items-center gap-1 text-white/60 transition-colors hov:text-white"
-              title="English version coming soon"
+              onClick={() => setLang("EN")}
+              className={`cursor-pointer transition-colors hov:text-white ${lang === "EN" ? "font-bold text-primary" : "text-white/60"}`}
             >
               EN
             </button>
-            {showEnToast && (
-              <div className="pointer-events-none absolute top-full right-0 z-50 mt-3 rounded-lg border border-primary/50 bg-surface px-3.5 py-2 text-[11px] font-medium whitespace-nowrap text-white shadow-2xl">
-                <span className="mr-1 text-primary">⏳</span>
-                English version in development (Скоро)
-              </div>
-            )}
           </div>
 
           <button
@@ -345,7 +363,7 @@ export default function Header() {
             )}
             aria-expanded={mobileOpen}
             aria-controls="mobile-nav-drawer"
-            aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"}
+            aria-label={mobileOpen ? tr.closeMenu : tr.openMenu}
             onClick={() => setMobileOpen((open) => !open)}
           >
             <NavMenuIcon open={mobileOpen} className="text-current" />

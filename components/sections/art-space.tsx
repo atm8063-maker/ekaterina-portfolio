@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { useLanguage } from "@/components/language-provider";
 
 export function ArtSpace() {
+  const { isEn } = useLanguage();
   return (
     <section id="art-space" className="relative w-full overflow-hidden bg-white border-b border-background/10 pt-10 scroll-mt-20">
       <div className="relative w-full max-w-[1920px] mx-auto min-h-[580px] lg:min-h-[600px] flex items-center">
@@ -8,8 +10,8 @@ export function ArtSpace() {
         <div className="absolute inset-0 w-full h-full pointer-events-none">
           <div className="absolute right-0 top-[60px] sm:top-0 bottom-0 w-full sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[55%] translate-x-[125px] sm:translate-x-0">
             <Image 
-              src="/art-gallery/photo_2930@31-07-2026_17-46-03.webp" 
-              alt="Искусство в пространстве" 
+              src="/art-gallery/photo_2930@31-07-2026_17-46-03.webp"
+              alt={isEn ? "Art in space" : "Искусство в пространстве"}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 55vw"
               className="object-[30%_center] md:object-right object-cover"
@@ -26,11 +28,13 @@ export function ArtSpace() {
         <div className="relative z-10 w-full px-5 sm:px-12 lg:px-[8%] xl:px-[12%] pt-4 pb-16 sm:py-16 lg:py-0 mt-0 sm:mt-0">
           <div className="max-w-[200px] xs:max-w-[215px] sm:max-w-sm md:max-w-md lg:max-w-lg">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-background font-montserrat mb-8 sm:mb-6 leading-[1.05] tracking-tight relative sm:top-0 whitespace-nowrap">
-              ГАЛЕРЕЯ <span className="text-[#0D9488]">РАБОТ</span>
+              {isEn ? <>GALLERY OF <span className="text-[#0D9488]">WORKS</span></> : <>ГАЛЕРЕЯ <span className="text-[#0D9488]">РАБОТ</span></>}
             </h2>
-            
+
             <p className="text-[#444444] text-xs sm:text-base lg:text-lg font-medium leading-[1.6] sm:leading-relaxed font-inter">
-              Основной материал в моём творчестве — это эпоксидная смола, которая отлично подходит не только для декоративных акцентных работ, но и для создания каустических эффектов, возникающих при преломлении солнечных лучей. Сочетание света, цвета и разнообразных текстур позволяет расширять границы условного &quot;холста&quot; и &quot;выходить за рамки&quot; во всех смыслах.
+              {isEn
+                ? <>My primary material is epoxy resin, which works beautifully not only for decorative accent pieces but also for the caustic light effects created as sunlight refracts through it. The interplay of light, color, and varied textures lets me push past the edges of the conventional &quot;canvas&quot; and &quot;break the frame&quot; in every sense.</>
+                : <>Основной материал в моём творчестве — это эпоксидная смола, которая отлично подходит не только для декоративных акцентных работ, но и для создания каустических эффектов, возникающих при преломлении солнечных лучей. Сочетание света, цвета и разнообразных текстур позволяет расширять границы условного &quot;холста&quot; и &quot;выходить за рамки&quot; во всех смыслах.</>}
             </p>
           </div>
         </div>

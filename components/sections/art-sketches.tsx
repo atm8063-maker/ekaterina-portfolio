@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { LazyVideo } from '@/components/shared/lazy-video';
 import { SILHOUETTE_SPOTS } from '@/lib/mosaic/spots';
+import { useLanguage } from '@/components/language-provider';
 
 export interface ArtSketchesProps {
   className?: string;
@@ -17,11 +18,13 @@ export function ArtSketches({
   defaultBrightness = 1.0,
   showControls = false
 }: ArtSketchesProps) {
+  const { isEn } = useLanguage();
   const [scaleFactor, setScaleFactor] = useState(0.85);
   const [blurAmount, setBlurAmount] = useState(defaultBlur);
   const [brightness, setBrightness] = useState(defaultBrightness);
   const [isPaused, setIsPaused] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [viewportW, setViewportW] = useState(1920);
 
   const targetSilhouetteH = 920;
   const targetSilhouetteW = 558;
@@ -34,6 +37,7 @@ export function ArtSketches({
       const h = window.innerHeight;
       const mob = w < 768;
       setIsMobile(mob);
+      setViewportW(w);
 
       const availableW = w - (mob ? 24 : 64);
       const availableH = h - (mob ? 130 : 64);
@@ -137,11 +141,25 @@ export function ArtSketches({
     { data: track6, dir: 'right', speed: '50s' },
   ];
 
+  // The marquee loops by translating 0% -> -50%, so the repeated strip must be
+  // at least 2x the viewport wide at every point in the cycle, or ultrawide
+  // screens see gaps of raw background between repeats. Repeat count is
+  // computed per-track from the viewport width instead of a fixed multiplier.
+  const TRACK_GAP = 10;
+  const getRepeatCount = (data: TrackItem[]) => {
+    const copyWidth = data.reduce((sum, item) => sum + item.w, 0) + (data.length - 1) * TRACK_GAP;
+    const needed = Math.ceil((viewportW * 2) / copyWidth) + 1;
+    // Must stay even: translateX loops 0% -> -50%, which only lands on an
+    // identical repeat boundary (seamless) when the strip holds an even count.
+    return Math.max(4, needed % 2 === 0 ? needed : needed + 1);
+  };
+
   return (
     <section
       id="sketches-portraits"
       className={`relative w-full h-screen min-h-[680px] overflow-hidden flex flex-col items-center justify-center bg-[#08080A] ${className}`}
     >
+
       {/* ================= BACKGROUND: 6 NARROW DRIFTING LANES ================= */}
       <div
         className={`marquee-pause ${isPaused ? 'marquee-paused' : ''}`}
@@ -229,7 +247,7 @@ export function ArtSketches({
       {/* ================= TITLE: ПОРТРЕТЫ & СКЕТЧИ ================= */}
       <div className="absolute top-4 sm:top-10 left-4 sm:left-12 z-20 pointer-events-none max-w-[240px] sm:max-w-md">
         <h2 className="font-montserrat font-black uppercase text-xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
-          Портреты <span className="text-primary">&</span> <br /> Скетчи
+          {isEn ? <>Portraits <span className="text-primary">&</span> <br /> Sketches</> : <>Портреты <span className="text-primary">&</span> <br /> Скетчи</>}
         </h2>
       </div>
 
@@ -360,7 +378,7 @@ export function ArtSketches({
                     <img
                       src={imageSrc}
                       alt="Artwork"
-                      loading="lazy"
+                      decoding="async"
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                   )}
@@ -392,7 +410,7 @@ export function ArtSketches({
           }}
         >
           <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
-            <span>Блюр:</span>
+            <span>{isEn ? "Blur:" : "Блюр:"}</span>
             <input
               type="range"
               min="0"
@@ -406,7 +424,7 @@ export function ArtSketches({
           </label>
 
           <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
-            <span>Яркость:</span>
+            <span>{isEn ? "Brightness:" : "Яркость:"}</span>
             <input
               type="range"
               min="0.1"
@@ -431,7 +449,7 @@ export function ArtSketches({
               fontWeight: 600
             }}
           >
-            {isPaused ? '▶ Старт' : '⏸ Пауза'}
+            {isPaused ? (isEn ? '▶ Start' : '▶ Старт') : (isEn ? '⏸ Pause' : '⏸ Пауза')}
           </button>
         </div>
       )}

@@ -2,39 +2,52 @@
 
 import React from "react";
 import { buildMarqueeHalf } from "@/lib/marquee-sequence";
+import { useLanguage } from "@/components/language-provider";
 
-const data = {
-  programs: ["Claude Code", "Figma", "SketchUp", "Illustrator", "Antigravity", "Planoplan", "Photoshop"],
-  media: ["Forbes", "Коммерсантъ", "РБК", "Business FM", "Ведомости", "СМИ"],
-  skills: [
-    "Копирайтинг",
-    "Журналистика",
-    "Контент",
-    "SMM",
-    "SEO",
-    "Медиапланирование",
-    "Реклама",
-    "Пресс-конференции",
-    "Пресс-туры",
-    "Event",
-    "Кураторство",
-    "AI-генерация",
-    "UX/UI Дизайн",
-  ],
-  industries: [
-    "Honda",
-    "Honda Civic Cup",
-    "Авто",
-    "Девелопмент",
-    "Элитная недвижимость",
-    "Арх.бюро",
-    "Журфак МГУ",
-    "Contented",
-    "Resin Art",
-    "Амбассадор",
-    "Брендированная продукция",
-  ],
+const dataByLang = {
+  RU: {
+    programs: ["Claude Code", "Figma", "SketchUp", "Illustrator", "Antigravity", "Planoplan", "Photoshop"],
+    media: ["Forbes", "Коммерсантъ", "РБК", "Business FM", "Ведомости", "СМИ"],
+    skills: [
+      "Копирайтинг",
+      "Журналистика",
+      "Контент",
+      "SMM",
+      "SEO",
+      "Медиапланирование",
+      "Реклама",
+      "Пресс-конференции",
+      "Пресс-туры",
+      "Event",
+      "Кураторство",
+      "AI-генерация",
+      "UX/UI Дизайн"
+    ],
+    industries: ["Honda", "Honda Civic Cup", "Авто", "Девелопмент", "Элитная недвижимость", "Арх.бюро", "Журфак МГУ", "Contented", "Resin Art", "Амбассадор", "Брендированная продукция"]
+  },
+  EN: {
+    programs: ["Claude Code", "Figma", "SketchUp", "Illustrator", "Antigravity", "Planoplan", "Photoshop"],
+    media: ["Forbes", "Kommersant", "RBC", "Business FM", "Vedomosti", "Press"],
+    skills: [
+      "Copywriting",
+      "Journalism",
+      "Content",
+      "SMM",
+      "SEO",
+      "Media Planning",
+      "Advertising",
+      "Press Conferences",
+      "Press Tours",
+      "Event",
+      "Mentoring",
+      "AI Generation",
+      "UX/UI Design"
+    ],
+    industries: ["Honda", "Honda Civic Cup", "Auto", "Development", "Luxury Real Estate", "Architecture Studio", "MSU Journalism School", "Contented", "Resin Art", "Ambassador", "Branded Products"]
+  },
 };
+
+type MarqueeData = typeof dataByLang.RU;
 
 function MarqueePills({
   tags,
@@ -66,13 +79,14 @@ export function MarqueeRow({
   speed = "40s",
   className = "",
 }: {
-  type: keyof typeof data;
-  variant?: keyof typeof data | "white-solid" | "cyan-solid" | "white-border" | "cyan-border";
+  type: keyof MarqueeData;
+  variant?: keyof MarqueeData | "white-solid" | "cyan-solid" | "white-border" | "cyan-border";
   direction?: "left" | "right";
   speed?: string;
   className?: string;
 }) {
-  const items = data[type];
+  const { lang } = useLanguage();
+  const items = dataByLang[lang][type];
   const half = buildMarqueeHalf(items);
   const animationClass = direction === "left" ? "animate-marquee-left" : "animate-marquee-right";
 

@@ -1,4 +1,8 @@
+import { useLanguage } from "@/components/language-provider";
+
 export function ArtCollage() {
+  const { isEn } = useLanguage();
+  const alt = isEn ? "Collage of resin artworks" : "Коллаж работ из смолы";
   return (
     <section id="collage" className="relative w-full h-[calc(100vh-80px)] min-h-[500px] max-h-[850px] overflow-hidden bg-white flex border-b border-background/10 scroll-mt-20">
       <div className="marquee-vertical-bg-single-wrap flex-1 relative h-full bg-white">
@@ -11,7 +15,7 @@ export function ArtCollage() {
             ["--marquee-duration" as string]: "50s",
           }}
           role="img"
-          aria-label="Коллаж работ из смолы"
+          aria-label={alt}
         />
       </div>
     </section>
