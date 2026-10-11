@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
+import { LazyVideo } from '@/components/shared/lazy-video';
 import { Play, X, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
 
 export type MediaItem = {
@@ -392,7 +393,7 @@ function ProportionalItem({
     >
       {item.type === 'video' ? (
         <div className="relative w-full h-full bg-black/40">
-          <video
+          <LazyVideo
             src={item.src}
             autoPlay
             loop
@@ -1097,6 +1098,7 @@ export function ArtProtest() {
                   autoPlay
                   muted
                   playsInline
+                  preload="auto"
                   className="max-h-[70vh] w-auto max-w-full object-contain"
                 />
               ) : (

@@ -29,7 +29,7 @@ export default function Contact() {
         <MotionReveal variant="fade-up" delay={0.2} className="flex flex-col sm:flex-row justify-center gap-6">
           <a 
             href="mailto:razumova.ekaterina@gmail.com" 
-            className="px-10 py-5 bg-primary text-black font-bold uppercase tracking-widest rounded-none hov:bg-white transition-colors"
+            className="btn-press btn-fill px-10 py-5 text-black font-bold uppercase tracking-widest rounded-none"
           >
             Написать на Email
           </a>
@@ -37,7 +37,7 @@ export default function Contact() {
             href="https://t.me/fir_tree_art" 
             target="_blank"
             rel="noopener noreferrer"
-            className="px-10 py-5 bg-transparent border border-primary text-primary font-bold uppercase tracking-widest rounded-none hov:bg-primary/10 transition-colors"
+            className="btn-press px-10 py-5 bg-transparent border border-primary text-primary font-bold uppercase tracking-widest rounded-none hov:bg-primary/10 hov:border-primary"
           >
             Telegram @fir_tree_art
           </a>

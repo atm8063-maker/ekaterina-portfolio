@@ -91,7 +91,6 @@ export default function About() {
             alt="Екатерина Разумова"
             fill
             className="object-contain object-top lg:object-right-top drop-shadow-[0_20px_50px_rgba(0,0,0,0.85)]"
-            priority
           />
         </div>
 

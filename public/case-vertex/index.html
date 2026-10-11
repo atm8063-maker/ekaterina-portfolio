@@ -905,7 +905,7 @@
       <!-- Интерактивный просмотрщик -->
       <div class="landing-scroll-frame">
         <div class="landing-scroll-inner">
-          <img src="assets/vertex_landing_full.webp" alt="Полный макет Vertex Homes" />
+          <img src="assets/vertex_landing_full.webp" alt="Полный макет Vertex Homes" loading="lazy" decoding="async" />
         </div>
       </div>
 
@@ -913,7 +913,7 @@
       <div class="sections-grid">
         <div class="section-card">
           <div class="section-card-img">
-            <img src="assets/sec_01_hero.webp" alt="Первый экран" />
+            <img src="assets/sec_01_hero.webp" alt="Первый экран" loading="lazy" decoding="async" />
           </div>
           <div class="section-card-body">
             <div class="section-card-tag">Экран 01</div>
@@ -924,7 +924,7 @@
 
         <div class="section-card">
           <div class="section-card-img">
-            <img src="assets/sec_02_tech.webp" alt="Технология ЛСТК" />
+            <img src="assets/sec_02_tech.webp" alt="Технология ЛСТК" loading="lazy" decoding="async" />
           </div>
           <div class="section-card-body">
             <div class="section-card-tag">Экран 02</div>
@@ -935,7 +935,7 @@
 
         <div class="section-card">
           <div class="section-card-img">
-            <img src="assets/sec_03_vs.webp" alt="Сравнение VS" />
+            <img src="assets/sec_03_vs.webp" alt="Сравнение VS" loading="lazy" decoding="async" />
           </div>
           <div class="section-card-body">
             <div class="section-card-tag">Экран 03</div>
@@ -946,7 +946,7 @@
 
         <div class="section-card">
           <div class="section-card-img">
-            <img src="assets/sec_04_catalog.webp" alt="Пилотный проект" />
+            <img src="assets/sec_04_catalog.webp" alt="Пилотный проект" loading="lazy" decoding="async" />
           </div>
           <div class="section-card-body">
             <div class="section-card-tag">Экран 04</div>
@@ -985,6 +985,23 @@
       setTimeout(notifyParent, 1200);
     });
     window.addEventListener('resize', notifyParent);
+  </script>
+  <script>
+    (function () {
+      if (!("IntersectionObserver" in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var img = entry.target;
+          img.loading = "eager";
+          if (img.decode) img.decode().catch(function () {});
+          io.unobserve(img);
+        });
+      }, { rootMargin: "1600px 400px" });
+      document.querySelectorAll("img[loading='lazy']").forEach(function (img) {
+        io.observe(img);
+      });
+    })();
   </script>
 </body>
 </html>

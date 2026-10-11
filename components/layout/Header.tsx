@@ -201,7 +201,7 @@ export default function Header() {
               <Link
                 href="/#contact"
                 onClick={closeMobile}
-                className="block bg-primary py-4 text-center font-montserrat text-sm font-bold tracking-widest text-background uppercase hov:bg-white"
+                className="btn-press btn-fill block py-4 text-center font-montserrat text-sm font-bold tracking-widest text-background uppercase"
               >
                 Связаться
               </Link>
@@ -300,7 +300,7 @@ export default function Header() {
           <Link
             href="/#contact"
             className={cn(
-              "rounded-none bg-primary font-montserrat font-bold tracking-widest whitespace-nowrap text-background uppercase transition-[colors,padding,font-size] hov:bg-white",
+              "btn-press btn-fill rounded-none font-montserrat font-bold tracking-widest whitespace-nowrap text-background uppercase",
               headerCompact
                 ? "px-2.5 py-1 text-[9px] sm:px-4 sm:py-1.5 sm:text-[10px]"
                 : "px-3 py-1.5 text-[10px] sm:px-6 sm:py-2.5 sm:text-sm",

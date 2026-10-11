@@ -94,7 +94,6 @@ export default function Hero() {
             alt="Crumpled paper texture" 
             fill 
             className="object-cover opacity-60 mix-blend-screen"
-            priority
           />
         </div>
 
@@ -147,6 +146,7 @@ export default function Hero() {
             fill
             className="object-cover object-top"
             priority
+            fetchPriority="high"
           />
         </div>
         
@@ -183,7 +183,6 @@ export default function Hero() {
             alt="Crumpled paper texture" 
             fill 
             className="object-cover opacity-60 mix-blend-screen"
-            priority
           />
         </div>
 
@@ -234,6 +233,7 @@ export default function Hero() {
             fill
             className="object-contain object-[left_bottom] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
             priority
+            fetchPriority="high"
           />
         </div>
 

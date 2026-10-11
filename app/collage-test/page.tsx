@@ -1,4 +1,5 @@
 import React from "react";
+import { LazyVideo } from "@/components/shared/lazy-video";
 
 export default function CollageTestPage() {
   return (
@@ -55,7 +56,7 @@ export default function CollageTestPage() {
               {/* Top Right: Video Block */}
               <div className="h-1/2 border-b-4 border-black relative bg-black flex items-center justify-center overflow-hidden">
                 {/* Fallback to image if video not loaded, or use video directly */}
-                <video 
+                <LazyVideo 
                   className="absolute inset-0 w-full h-full object-cover" 
                   autoPlay 
                   loop 

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { LazyVideo } from '@/components/shared/lazy-video';
 
 export function ArtGalleryHero() {
   return (
@@ -22,12 +23,12 @@ export function ArtGalleryHero() {
 
       {/* Видео (На мобилках снизу, на десктопе слева) */}
       <div className="relative md:absolute md:left-[40px] md:top-0 md:h-full w-full md:w-[60%] flex-grow flex items-center justify-center md:justify-start overflow-hidden">
-         <video 
-           src="/art-aesthetics-loop.mp4" 
-           autoPlay 
-           loop 
-           muted 
-           playsInline 
+         <LazyVideo
+           src="/art-aesthetics-loop.mp4"
+           autoPlay
+           loop
+           muted
+           playsInline
            className="w-full h-auto md:h-full md:w-auto object-contain md:object-left scale-[1.3] md:scale-100 transform origin-center"
          />
       </div>

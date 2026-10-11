@@ -58,6 +58,8 @@ export function ArtContemporary() {
           <img 
             src="/art-protest/photo_3317@04-08-2026_21-08-44.webp" 
             alt="Артивизм" 
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 w-full h-full object-cover object-center" 
           />
           <div className="hidden md:block absolute inset-y-0 left-0 w-[150px] bg-gradient-to-r from-[#f4f4f4] to-transparent pointer-events-none" />

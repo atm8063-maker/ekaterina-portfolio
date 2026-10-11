@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { prefetchMedia } from '@/components/shared/media-prefetch'
 import Link from 'next/link'
 import Image from 'next/image'
 import Header from '@/components/layout/Header'
@@ -17,6 +18,14 @@ type Props = {
 export function CasePageClient({ slug, caseData, images }: Props) {
   const allImages = images;
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
+
+  useEffect(() => {
+    if (activeImageIndex === null || allImages.length === 0) return
+    const count = allImages.length
+    for (const offset of [-1, 0, 1]) {
+      prefetchMedia(allImages[(activeImageIndex + offset + count) % count])
+    }
+  }, [activeImageIndex, allImages])
 
   const handlePrev = useCallback(() => {
     if (activeImageIndex === null) return
@@ -335,13 +344,14 @@ export function CasePageClient({ slug, caseData, images }: Props) {
             )}
 
             <div className="relative w-full h-full max-h-[80vh] flex items-center justify-center">
-              <Image
-                src={allImages[activeImageIndex]}
-                alt={`${caseData.title} fullscreen preview`}
-                fill
-                className="object-contain drop-shadow-[0_0_50px_rgba(0,0,0,0.8)]"
-                unoptimized
-              />
+                      <Image
+                        src={allImages[activeImageIndex]}
+                        alt={`${caseData.title} fullscreen preview`}
+                        fill
+                        priority
+                        className="object-contain drop-shadow-[0_0_50px_rgba(0,0,0,0.8)]"
+                        unoptimized
+                      />
             </div>
 
             {allImages.length > 1 && (

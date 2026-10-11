@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { LazyVideo } from '@/components/shared/lazy-video';
 import { SILHOUETTE_SPOTS } from '@/lib/mosaic/spots';
 
 function MosaicCornerMarks({ cornerColor, size = 8 }: { cornerColor: string; size?: number }) {
@@ -303,7 +304,7 @@ export default function WideMosaicPage() {
                   )}
 
                   {t.type === 'video' && (
-                    <video
+                    <LazyVideo
                       src={`/art-portraits/${encodeURIComponent(t.src!)}`}
                       autoPlay
                       loop
@@ -349,7 +350,7 @@ export default function WideMosaicPage() {
               <div style={{ position: 'absolute', bottom: 0, right: 0, width: '10px', height: '10px', borderBottom: `2.0px solid ${theme.corner}`, borderRight: `2.0px solid ${theme.corner}`, pointerEvents: 'none', zIndex: 3 }} />
 
               {t.isVideo ? (
-                <video
+                <LazyVideo
                   src={`/art-sketches/${encodeURIComponent(t.src)}`}
                   autoPlay
                   loop
@@ -469,7 +470,7 @@ export default function WideMosaicPage() {
                 )}
 
                 {t.type === 'video' && (
-                  <video
+                  <LazyVideo
                     src={`/art-portraits/${encodeURIComponent(t.src!)}`}
                     autoPlay
                     loop
@@ -506,7 +507,7 @@ export default function WideMosaicPage() {
           }}
         >
           <MosaicCornerMarks cornerColor={theme.corner} size={10} />
-          <video
+          <LazyVideo
             src="/art-sketches/video_145@04-08-2026_22-24-35.mp4"
             autoPlay
             loop

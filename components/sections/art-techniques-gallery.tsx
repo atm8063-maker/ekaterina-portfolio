@@ -25,6 +25,7 @@ function TechniqueStripCard({
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [activeSrc, setActiveSrc] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     if (item.type !== "video") return;
@@ -32,22 +33,58 @@ function TechniqueStripCard({
     const video = videoRef.current;
     if (!card || !video) return;
 
-    const observer = new IntersectionObserver(
+    const root = scrollRoot.current;
+    const attachSrc = () => {
+      setActiveSrc(item.src);
+    };
+
+    const loadObserver = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry?.isIntersecting) return;
+        attachSrc();
+        loadObserver.disconnect();
+      },
+      { root: null, rootMargin: "1800px 700px" },
+    );
+
+    const playObserver = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
         if (!entry) return;
         if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
+          attachSrc();
           void video.play().catch(() => {});
         } else {
           video.pause();
         }
       },
-      { root: scrollRoot.current, threshold: [0, 0.35, 0.6] },
+      { root, threshold: [0, 0.35, 0.6] },
     );
 
-    observer.observe(card);
-    return () => observer.disconnect();
-  }, [item.type, scrollRoot]);
+    loadObserver.observe(card);
+    playObserver.observe(card);
+    return () => {
+      loadObserver.disconnect();
+      playObserver.disconnect();
+      video.pause();
+    };
+  }, [item.src, item.type, scrollRoot]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !activeSrc) return;
+    const rootRect = scrollRoot.current?.getBoundingClientRect();
+    const rect = video.getBoundingClientRect();
+    const visible = rootRect
+      ? rect.right > rootRect.left &&
+        rect.left < rootRect.right &&
+        rect.bottom > rootRect.top &&
+        rect.top < rootRect.bottom
+      : rect.bottom > 0 && rect.top < window.innerHeight;
+    if (!visible) return;
+    void video.play().catch(() => {});
+  }, [activeSrc, scrollRoot]);
 
   return (
     <div
@@ -59,11 +96,11 @@ function TechniqueStripCard({
         <div className="relative flex h-[140px] w-auto items-center justify-center bg-black">
           <video
             ref={videoRef}
-            src={item.src}
+            src={activeSrc}
             loop
             muted
             playsInline
-            preload="metadata"
+            preload={activeSrc ? "auto" : "none"}
             className="block h-[140px] w-auto max-w-none object-contain transition-transform duration-300 group-hover:scale-105"
           />
           <div className="pointer-events-none absolute right-1.5 top-1.5 border border-primary/60 bg-black/80 p-1 text-primary">

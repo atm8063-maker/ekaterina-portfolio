@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { LazyVideo } from '@/components/shared/lazy-video';
 import { SILHOUETTE_SPOTS } from '@/lib/mosaic/spots';
 
 export interface ArtSketchesProps {
@@ -189,13 +190,12 @@ export function ArtSketches({
                     }}
                   >
                     {item.isVideo ? (
-                      <video
+                      <LazyVideo
                         src={`/art-sketches/${encodeURIComponent(item.src)}`}
                         autoPlay
                         loop
                         muted
                         playsInline
-                        preload="metadata"
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       />
                     ) : (
@@ -332,6 +332,8 @@ export function ArtSketches({
                     <img
                       src="/Group%2047.webp"
                       alt="Face"
+                      loading="lazy"
+                      decoding="async"
                       style={{
                         position: 'absolute',
                         left: `-${t.x * s}px`,
@@ -344,7 +346,7 @@ export function ArtSketches({
                   )}
 
                   {t.type === 'video' && (
-                    <video
+                    <LazyVideo
                       src={`/art-portraits/${encodeURIComponent(t.src!)}`}
                       autoPlay
                       loop

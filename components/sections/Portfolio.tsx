@@ -150,8 +150,6 @@ export default function Portfolio() {
                       alt={c.title}
                       fill
                       sizes="(max-width: 768px) 85vw, (max-width: 1024px) 45vw, 400px"
-                      priority={i < 4}
-                      loading="eager"
                       className="object-contain transition-transform duration-500 group-hov:scale-105 opacity-60 group-hov:opacity-100"
                     />
                   </div>

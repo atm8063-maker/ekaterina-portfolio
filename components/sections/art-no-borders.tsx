@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import { LazyVideo } from "@/components/shared/lazy-video";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 
 export function ArtNoBorders() {
@@ -48,7 +49,7 @@ export function ArtNoBorders() {
               <div className="absolute -inset-4 bg-gradient-to-tr from-primary/25 via-[#074F98]/20 to-transparent rounded-[32px] blur-2xl z-0 pointer-events-none"></div>
 
               <div className="relative z-10 rounded-2xl overflow-hidden border border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.8)] bg-background">
-                <video 
+                <LazyVideo
                   src="/art-video-1.mp4"
                   autoPlay
                   loop

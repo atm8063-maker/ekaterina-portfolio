@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { LazyVideo } from '@/components/shared/lazy-video';
 import { SILHOUETTE_SPOTS } from '@/lib/mosaic/spots';
 
 export default function WideMosaicExperimentPage() {
@@ -163,7 +164,7 @@ export default function WideMosaicExperimentPage() {
                 }}
               >
                 {item.isVideo ? (
-                  <video
+                  <LazyVideo
                     src={`/art-sketches/${encodeURIComponent(item.src)}`}
                     autoPlay
                     loop
@@ -292,7 +293,7 @@ export default function WideMosaicExperimentPage() {
                 )}
 
                 {t.type === 'video' && (
-                  <video
+                  <LazyVideo
                     src={`/art-portraits/${encodeURIComponent(t.src!)}`}
                     autoPlay
                     loop

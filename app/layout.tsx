@@ -50,6 +50,7 @@ export const metadata: Metadata = {
 
 import { LanguageProvider } from '@/components/language-provider'
 import { HashScrollProvider } from '@/components/shared/use-hash-scroll'
+import { MediaPrefetch } from '@/components/shared/media-prefetch'
 import { ScrollToTopOnNavigate } from '@/components/shared/scroll-to-top-on-navigate'
 
 export default function RootLayout({
@@ -63,10 +64,14 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${montserrat.variable}`}
     >
+      <head>
+        <link rel="preload" href="/logo.webp" as="image" fetchPriority="high" />
+      </head>
       <body className="font-sans antialiased text-foreground bg-background">
         <LanguageProvider>
           <ScrollToTopOnNavigate />
           <HashScrollProvider />
+          <MediaPrefetch />
           {children}
         </LanguageProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}

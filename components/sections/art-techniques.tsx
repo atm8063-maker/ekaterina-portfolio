@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { prefetchMedia } from "@/components/shared/media-prefetch";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { ArtTechniquesGallery } from "@/components/sections/art-techniques-gallery";
@@ -238,6 +239,14 @@ export function ArtTechniques() {
 
   const activeLightboxItem = lightboxIndex !== null ? items[lightboxIndex] : null;
 
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const count = items.length;
+    for (const offset of [-1, 0, 1]) {
+      prefetchMedia(items[(lightboxIndex + offset + count) % count]?.src);
+    }
+  }, [lightboxIndex]);
+
   return (
     <section id="techniques" className="bg-background py-16 sm:py-20 relative overflow-hidden scroll-mt-20">
       {/* Clean Dark Paper Background */}
@@ -378,6 +387,7 @@ export function ArtTechniques() {
                 <video
                   src={activeLightboxItem.src}
                   controls
+                  preload="auto"
                   autoPlay
                   muted
                   playsInline

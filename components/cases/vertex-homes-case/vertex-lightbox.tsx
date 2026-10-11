@@ -38,6 +38,9 @@ export function VertexImageLightbox({ selectedImage, onClose }: VertexImageLight
         >
           <img
             src={selectedImage.src}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
             alt={selectedImage.title}
             className="max-h-[85vh] max-w-full object-contain rounded-lg shadow-2xl border border-white/10"
           />

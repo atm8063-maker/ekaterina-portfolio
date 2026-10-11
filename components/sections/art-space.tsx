@@ -11,9 +11,7 @@ export function ArtSpace() {
               src="/art-gallery/photo_2930@31-07-2026_17-46-03.webp" 
               alt="Искусство в пространстве" 
               fill
-              priority
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 70vw, 55vw"
-              quality={85}
               className="object-[30%_center] md:object-right object-cover"
             />
             

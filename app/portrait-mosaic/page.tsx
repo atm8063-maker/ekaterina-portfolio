@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { LazyVideo } from '@/components/shared/lazy-video';
 import { SILHOUETTE_SPOTS } from '@/lib/mosaic/spots';
 
 export default function PortraitMosaicPage() {
@@ -203,7 +204,7 @@ export default function PortraitMosaicPage() {
                 )}
 
                 {t.type === 'video' && (
-                  <video
+                  <LazyVideo
                     src={`/art-portraits/${encodeURIComponent(t.src!)}`}
                     autoPlay
                     loop

@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
+import { LazyVideo } from '@/components/shared/lazy-video';
 import { Play, X, ChevronLeft, ChevronRight, Users, GraduationCap, Video, Award } from 'lucide-react';
 
 type TeachingCategory = 'all' | 'forum' | 'workshops' | 'online';
@@ -363,7 +364,7 @@ export function ArtTeaching() {
             onClick={() => setLightboxItem(heroVideos[0])}
             className="relative aspect-[9/16] w-full max-h-[520px] rounded-none overflow-hidden bg-surface border border-white/15 hover:border-primary transition-all group cursor-pointer"
           >
-            <video
+            <LazyVideo
               src={heroVideos[0].src}
               autoPlay
               loop
@@ -396,7 +397,7 @@ export function ArtTeaching() {
             onClick={() => setLightboxItem(heroVideos[1])}
             className="relative aspect-[9/16] w-full max-h-[520px] rounded-none overflow-hidden bg-surface border border-white/15 hover:border-primary transition-all group cursor-pointer"
           >
-            <video
+            <LazyVideo
               src={heroVideos[1].src}
               autoPlay
               loop
@@ -527,7 +528,7 @@ export function ArtTeaching() {
           >
             {item.type === 'video' ? (
               <div className="relative w-full h-full bg-black">
-                <video
+                <LazyVideo
                   src={item.src}
                   autoPlay
                   loop
@@ -599,6 +600,7 @@ export function ArtTeaching() {
                   autoPlay
                   muted
                   playsInline
+                  preload="auto"
                   className="max-h-[70vh] w-auto max-w-full object-contain"
                 />
               ) : (

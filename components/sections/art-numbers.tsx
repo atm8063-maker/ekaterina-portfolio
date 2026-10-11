@@ -58,7 +58,7 @@ export function ArtNumbers() {
             <img 
               src="/art-composition.webp" 
               alt="Art numbers composition"
-              loading="eager"
+              loading="lazy"
               decoding="async"
               className="absolute left-[343px] -top-[493px] w-[1273px] max-w-none translate-x-0 h-[1970px] pointer-events-none"
             />
@@ -71,7 +71,7 @@ export function ArtNumbers() {
           <img 
             src="/about-composition.webp" 
             alt="Art numbers composition"
-            loading="eager"
+            loading="lazy"
             decoding="async"
             className="w-full h-auto block"
           />
