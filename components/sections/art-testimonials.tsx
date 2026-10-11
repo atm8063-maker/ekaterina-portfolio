@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Quote } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
 
 type Testimonial = {
   id: string;
@@ -11,7 +12,7 @@ type Testimonial = {
   image?: string;
 };
 
-const items: Testimonial[] = [
+const itemsRu: Testimonial[] = [
   {
     id: "vajs",
     author: "@vajs_craft_store",
@@ -140,6 +141,135 @@ const items: Testimonial[] = [
   },
 ];
 
+const itemsEn: Testimonial[] = [
+  {
+    id: "vajs",
+    author: "@vajs_craft_store",
+    role: "Epoxy resin course student",
+    quote:
+      "I took 2 of your amazing courses (the winter one and the sphere one), and you know what?! One of your courses paid for itself 173 times over — that's how many spheres I sold this year! It's thanks to your incredible idea that I've made the finals for ornaments in the art race two years running. Thank you!!!",
+  },
+  {
+    id: "tatiyanamirny",
+    author: "@tatiyanamirny",
+    role: "Comment on a lesson",
+    quote: "Out of this world!",
+  },
+  {
+    id: "avegast11",
+    author: "@avegast11",
+    role: "Comment on a lesson",
+    quote: "Katya, I came to this course specifically for this coaster))) But I've already seen so much more here!!!",
+  },
+  {
+    id: "epoxy_art_garden",
+    author: "@epoxy_art_garden",
+    role: "Comment on a lesson",
+    quote: "Beautiful effect! Thank you, Katenka!",
+  },
+  {
+    id: "lanamalykh",
+    author: "@lanamalykh",
+    role: "Comment on a lesson",
+    quote: "So coooool 🔥🔥🔥 Thank you, Katya 😍",
+  },
+  {
+    id: "student2",
+    author: "School Student (2nd cohort)",
+    role: "Direct message",
+    quote:
+      "I studied in Maria's second cohort, where you were our favorite mentor at the school! Your work inspired us!! You understand resin so well! You're an artist — don't set your art aside for others, it's your life, your path, your light!",
+  },
+  {
+    id: "delivery",
+    author: "Customer",
+    role: "After delivery",
+    quote: "Everything arrived, nothing broke, they look beautiful, the packaging is gorgeous, thank you!!! 🙏❤️",
+  },
+  {
+    id: "alena",
+    author: "@alenaafrokudri",
+    role: "Custom earrings",
+    quote: "Such beauty they made for me 🥰",
+    image: "/testimonials/alena-earrings.jpg",
+  },
+  {
+    id: "adelii",
+    author: "@adeliimakeup",
+    role: "Cast mold",
+    image: "/testimonials/adelii-leaf-mold.jpg",
+  },
+  {
+    id: "durackaya",
+    author: "@durackaya_hat",
+    role: "Earrings",
+    image: "/testimonials/durackaya-earrings.jpg",
+  },
+  {
+    id: "juliakardash",
+    author: "@julia.kardash.beauty",
+    role: "Handmade palette",
+    image: "/testimonials/juliakardash-palette.jpg",
+  },
+  {
+    id: "anchanov",
+    author: "@ancha_nov",
+    role: "Customer",
+    quote: "An amazing artist, stunning work. Gives me chills! Inspiration in every detail 🤍",
+    image: "/testimonials/anchanov-geode-croissant.jpg",
+  },
+  {
+    id: "pendant",
+    author: "Customer",
+    role: "Custom pendant",
+    quote: "Gorgeous piece ;) A little slice of the sea",
+    image: "/testimonials/pendant-selfie.jpg",
+  },
+  {
+    id: "beautytime",
+    author: "@beautytime.nailroom",
+    role: "Workshop",
+    quote: "Really enjoyed the epoxy resin workshop by @fir_tree_art 🥰",
+    image: "/testimonials/beautytime-snowflakes.jpg",
+  },
+  {
+    id: "mariiialakhmakova",
+    author: "@mariiialakhmakova",
+    role: "Fellow artist",
+    quote: "An artist whose work inspires, catches the eye, and doesn't let go. And what she does with the sea is just incredible 🔥🔥🔥",
+  },
+  {
+    id: "saianare",
+    author: "@saianare",
+    role: "Customer",
+    quote: "Good morning! Makes me want to go to the beach. But marine artist @fir_tree_art can make the sea out of resin. And the sea is always close by. How is this even possible? Magic and beauty 😍",
+  },
+  {
+    id: "innabrusovaveretina",
+    author: "@innabrusovaveretina",
+    role: "Comment on a lesson",
+    quote: "Amazing 🔥",
+  },
+  {
+    id: "pleshakova_art_dm",
+    author: "@pleshakova_art_dm",
+    role: "Comment on a lesson",
+    quote: "Huge thanks for the detailed lesson 😍🙏",
+  },
+  {
+    id: "ahvalya_art",
+    author: "@ahvalya_art",
+    role: "Comment on a lesson",
+    quote: "Thank you for the lesson 🔥🔥🔥",
+  },
+  {
+    id: "kristina_zakharova_art",
+    author: "@kristina_zakharova_art",
+    role: "Comment on a lesson",
+    quote: "Katya, hello! I watched your lesson, everything was so clear and detailed! Thank you!",
+  },
+];
+
 function MiniCard({ item }: { item: Testimonial }) {
   return (
     <article className="flex items-center gap-3 rounded-none border border-white/10 bg-[#1A1A1A] p-3">
@@ -185,6 +315,8 @@ function AutoScrollLane({
 }
 
 export function ArtTestimonials() {
+  const { isEn } = useLanguage();
+  const items = isEn ? itemsEn : itemsRu;
   const lane0 = items.filter((_, i) => i % 3 === 0);
   const lane1 = items.filter((_, i) => i % 3 === 1);
   const lane2 = items.filter((_, i) => i % 3 === 2);
@@ -194,7 +326,7 @@ export function ArtTestimonials() {
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"
@@ -207,7 +339,7 @@ export function ArtTestimonials() {
 
       <div className="container mx-auto px-6 relative z-20">
         <h2 className="mb-12 text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
-          Отзывы
+          {isEn ? "Testimonials" : "Отзывы"}
         </h2>
       </div>
 

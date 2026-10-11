@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { useLanguage } from "@/components/language-provider";
 
 type MediaItem = {
   outlet: string;
@@ -14,7 +15,7 @@ type MediaItem = {
   featured?: boolean;
 };
 
-const items: MediaItem[] = [
+const itemsRu: MediaItem[] = [
   {
     outlet: "Холод",
     headline: "«Я переехала в Черногорию и очень довольна»",
@@ -63,7 +64,58 @@ const items: MediaItem[] = [
   },
 ];
 
+const itemsEn: MediaItem[] = [
+  {
+    outlet: "Kholod",
+    headline: "\"I moved to Montenegro and I'm very happy\"",
+    meta: "National Russian outlet",
+    quote: "People here are kind to immigrants, and life in a small seaside town feels like a cozy sitcom.",
+    image: "/media-press/holod-montenegro.jpg",
+    featured: true,
+  },
+  {
+    outlet: "\"Tambovskaya Zhizn\" No. 116",
+    headline: "\"How to Build Goodwill?\"",
+    meta: "October 21, 2020 · Small Business, p. 5",
+    quote: "Tambov entrepreneurs shared their success stories.",
+    image: "/media-press/tambovskaya-zhizn-cover.jpg",
+  },
+  {
+    outlet: "\"Zhityo\" Gazette No. 43",
+    headline: "\"Magic Happens Right Before My Eyes\"",
+    meta: "October 27, 2020 · p. 15, Society",
+    quote: "Ekaterina Razumova makes stunningly beautiful epoxy resin pieces.",
+    image: "/media-press/zhizn-tambov-article.jpg",
+  },
+  {
+    outlet: "KP.RU",
+    headline: "\"What I got looked more like a smudge than the sea\"",
+    image: "/media-press/kp-ru-portrait.jpg",
+  },
+  {
+    outlet: "\"Noviy Vek\" Tambov",
+    headline: "\"A Tambov Resident Started an Epoxy Resin Business During the Pandemic\"",
+    meta: "November 6, 2020",
+    image: "/media-press/noviy-vek-tambov.jpg",
+    imagePosition: "top",
+  },
+  {
+    outlet: "TV Tambov",
+    headline: "\"Region News\" Segment",
+    meta: "resin artist",
+    image: "/media-press/tv-tambov.jpg",
+    secondaryImage: "/media-press/tv-tambov-backstage.jpg",
+  },
+  {
+    outlet: "RIA Top68.ru",
+    headline: "\"A Tambov Resin Artist Turned Her Hobby into a Business and Became…\"",
+    image: "/media-press/unidentified-regional.jpg",
+  },
+];
+
 export function ArtMedia() {
+  const { isEn } = useLanguage();
+  const items = isEn ? itemsEn : itemsRu;
   const scrollRef = useRef<HTMLDivElement>(null);
   const drag = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
 
@@ -94,7 +146,7 @@ export function ArtMedia() {
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-50 mix-blend-screen"
@@ -108,11 +160,11 @@ export function ArtMedia() {
       <div className="container mx-auto px-6 relative z-20 mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
           <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight max-w-2xl">
-            Публикации в СМИ
+            {isEn ? "Press Coverage" : "Публикации в СМИ"}
           </h2>
         </div>
         <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase shadow-md">
-          <span>←</span> Листайте публикации <span>→</span>
+          <span>←</span> {isEn ? "Swipe through" : "Листайте публикации"} <span>→</span>
         </div>
       </div>
 
@@ -139,7 +191,7 @@ export function ArtMedia() {
               />
               {item.secondaryImage && (
                 <div className="absolute bottom-3 right-3 h-16 w-16 overflow-hidden rounded-none border-2 border-[#111111] shadow-lg sm:h-20 sm:w-20">
-                  <Image src={item.secondaryImage} alt={`${item.outlet}: со съёмки`} fill className="object-cover" />
+                  <Image src={item.secondaryImage} alt={`${item.outlet}: ${isEn ? "behind the scenes" : "со съёмки"}`} fill className="object-cover" />
                 </div>
               )}
             </div>

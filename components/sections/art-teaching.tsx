@@ -3,6 +3,8 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { Play, X, ChevronLeft, ChevronRight, Users, GraduationCap, Video, Award } from 'lucide-react';
+import { useLanguage } from '@/components/language-provider';
+import { LazyVideo } from '@/components/lazy-video';
 
 type TeachingCategory = 'all' | 'forum' | 'workshops' | 'online';
 
@@ -17,7 +19,7 @@ type TeachingMedia = {
 };
 
 // 2 Top Hero Videos (featured at the top of the section)
-const heroVideos: TeachingMedia[] = [
+const heroVideosRu: TeachingMedia[] = [
   {
     type: 'video',
     src: '/art-muza/video_107@04-08-2026_22-24-05.mp4',
@@ -38,8 +40,29 @@ const heroVideos: TeachingMedia[] = [
   },
 ];
 
+const heroVideosEn: TeachingMedia[] = [
+  {
+    type: 'video',
+    src: '/art-muza/video_107@04-08-2026_22-24-05.mp4',
+    category: 'forum',
+    title: '1st All-Russian Resin Artists Forum',
+    subtitle: 'A lecture and live workshop at the Artmuza museum (St. Petersburg)',
+    badge: 'VIDEO • ARTMUZA',
+    location: 'Artmuza Museum · St. Petersburg',
+  },
+  {
+    type: 'video',
+    src: '/lessons/video_49@03-08-2026_23-50-53.mp4',
+    category: 'workshops',
+    title: 'Epoxy Resin Workshops',
+    subtitle: 'In-person workshops and teaching in Montenegro',
+    badge: 'VIDEO • MONTENEGRO',
+    location: 'Montenegro',
+  },
+];
+
 // Single-row Carousel Media (No duplicate top videos, exact titles per user instructions)
-const carouselMedia: TeachingMedia[] = [
+const carouselMediaRu: TeachingMedia[] = [
   // 1-10: Exact ordered sequence from user
   {
     type: 'image',
@@ -61,7 +84,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/студия/photo_3053@31-07-2026_19-04-11.jpg',
+    src: '/lessons/студия/photo_3053_31-07-2026_19-04-11.jpg',
     category: 'workshops',
     title: 'Творческая мастерская',
     subtitle: 'Пространство для практики и творчества',
@@ -106,7 +129,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/студия/photo_3052@31-07-2026_19-04-11.jpg',
+    src: '/lessons/студия/photo_3052_31-07-2026_19-04-11.jpg',
     category: 'workshops',
     title: 'Творческая мастерская',
     subtitle: 'Оснащение и материалы для мастер-классов',
@@ -124,7 +147,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/студия/photo_3160@04-08-2026_20-56-52.jpg',
+    src: '/lessons/студия/photo_3160_04-08-2026_20-56-52.jpg',
     category: 'workshops',
     title: 'Студия в Тамбове',
     subtitle: 'Интерьер арт-пространства и студии',
@@ -234,7 +257,202 @@ const carouselMedia: TeachingMedia[] = [
   },
 ];
 
+const carouselMediaEn: TeachingMedia[] = [
+  {
+    type: 'image',
+    src: '/art-muza/photo_3263@04-08-2026_21-08-40.jpg',
+    category: 'forum',
+    title: 'Lecture at Artmuza',
+    subtitle: 'Speaking to the resin artist community',
+    badge: 'LECTURE',
+    location: 'Artmuza Museum · St. Petersburg',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_1_2026-08-04_22-38-17.jpg',
+    category: 'workshops',
+    title: 'Acrylic Workshop in Montenegro',
+    subtitle: 'Interior painting and mixed media techniques',
+    badge: 'ACRYLIC WORKSHOP',
+    location: 'Montenegro',
+  },
+  {
+    type: 'image',
+    src: '/lessons/студия/photo_3053_31-07-2026_19-04-11.jpg',
+    category: 'workshops',
+    title: 'Creative Studio',
+    subtitle: 'A space for practice and creative work',
+    badge: 'STUDIO',
+    location: 'Studio',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_2026-02-19_01-56-13.jpg',
+    category: 'workshops',
+    title: 'Epoxy Resin Sea Workshop in Turkey',
+    subtitle: 'Shaping ocean waves and depths',
+    badge: 'RESIN SEA',
+    location: 'Turkey',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_2026-02-19_11-20-02 (2).jpg',
+    category: 'workshops',
+    title: 'Workshop in Turkey',
+    subtitle: 'A hands-on epoxy resin workshop',
+    badge: 'TURKEY WORKSHOP',
+    location: 'Turkey',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_2026-02-19_11-20-02 (3).jpg',
+    category: 'workshops',
+    title: 'Traveling Workshops Abroad',
+    subtitle: "Finished pieces and participants' results",
+    badge: 'TRAVELING WORKSHOP',
+    location: 'In-person workshop',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_3262@04-08-2026_21-08-10.jpg',
+    category: 'forum',
+    title: 'Resin Artist Forum Attendees at Artmuza',
+    subtitle: 'A professional community and speakers',
+    badge: 'ATTENDEES',
+    location: 'Artmuza Museum · St. Petersburg',
+  },
+  {
+    type: 'image',
+    src: '/lessons/студия/photo_3052_31-07-2026_19-04-11.jpg',
+    category: 'workshops',
+    title: 'Creative Studio',
+    subtitle: 'Workshop equipment and materials',
+    badge: 'STUDIO',
+    location: 'Studio',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_10_2026-08-04_22-38-17.jpg',
+    category: 'workshops',
+    title: 'Workshop in Montenegro',
+    subtitle: 'Creative practice and working with students',
+    badge: 'WORKSHOP',
+    location: 'Montenegro',
+  },
+  {
+    type: 'image',
+    src: '/lessons/студия/photo_3160_04-08-2026_20-56-52.jpg',
+    category: 'workshops',
+    title: 'Studio in Tambov',
+    subtitle: 'The interior of the art space and studio',
+    badge: 'STUDIO',
+    location: 'Tambov',
+  },
+  {
+    type: 'image',
+    src: '/lessons/photo_3035@31-07-2026_18-44-54.jpg',
+    category: 'workshops',
+    title: 'Art Workshop in Montenegro',
+    subtitle: 'Creating interior art pieces',
+    badge: 'ART WORKSHOP',
+    location: 'Montenegro',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_3254@04-08-2026_21-08-10.jpg',
+    category: 'forum',
+    title: '1st All-Russian Resin Artists Forum',
+    subtitle: "Delivering an original lecture to the community",
+    badge: 'SPEAKER',
+    location: 'Artmuza Museum · St. Petersburg',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_3255@04-08-2026_21-08-10.jpg',
+    category: 'forum',
+    title: 'Workshop: The Finer Points of Working with Resin',
+    subtitle: 'Demonstrating layered pours and pigments',
+    badge: 'WORKSHOP',
+    location: 'Artmuza Museum',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_3256@04-08-2026_21-08-10.jpg',
+    category: 'forum',
+    title: 'Live Technique Demonstration on Stage',
+    subtitle: 'Working live in front of hundreds of attendees',
+    badge: 'DEMONSTRATION',
+    location: 'Artmuza',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_3257@04-08-2026_21-08-10.jpg',
+    category: 'forum',
+    title: 'Creating a Stone Slice',
+    subtitle: 'Layered pours of resin and pigments',
+    badge: 'PROCESS',
+    location: 'Artmuza · St. Petersburg',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_3259@04-08-2026_21-08-10.jpg',
+    category: 'forum',
+    title: 'Practice and the Secrets of Layering',
+    subtitle: 'Breaking down mistakes and curing nuances',
+    badge: 'PRACTICE',
+    location: 'Artmuza Museum',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_3260@04-08-2026_21-08-10.jpg',
+    category: 'forum',
+    title: 'Workshop at the Museum of Contemporary Art',
+    subtitle: 'Talking with attendees and answering questions',
+    badge: 'WORKSHOP',
+    location: 'Artmuza Museum',
+  },
+  {
+    type: 'image',
+    src: '/art-muza/photo_3261@04-08-2026_21-08-10.jpg',
+    category: 'forum',
+    title: 'Speakers at Artmuza',
+    subtitle: 'Attendees and speakers of the 1st All-Russian Forum',
+    badge: 'SPEAKERS',
+    location: 'Artmuza Museum',
+  },
+  {
+    type: 'video',
+    src: '/art-muza/video_108@04-08-2026_22-24-09.mp4',
+    category: 'forum',
+    title: 'Workshop Video at Artmuza',
+    subtitle: 'A live demonstration of an original technique on stage',
+    badge: 'VIDEO • ARTMUZA',
+    location: 'Artmuza Museum · St. Petersburg',
+  },
+  {
+    type: 'image',
+    src: '/lessons/photo_3011@31-07-2026_18-44-16.jpg',
+    category: 'online',
+    title: 'Livestreams and Webinars',
+    subtitle: 'Reaching thousands of viewers with direct feedback',
+    badge: 'LIVESTREAMS',
+    location: 'Thousands of attendees',
+  },
+  {
+    type: 'image',
+    src: '/lessons/photo_3067@31-07-2026_19-44-02.jpg',
+    category: 'online',
+    title: 'Mentoring at an International Online School',
+    subtitle: 'Supporting students and reviewing assignments',
+    badge: 'MENTORING',
+    location: 'Online platform',
+  },
+];
+
 export function ArtTeaching() {
+  const { isEn } = useLanguage();
+  const heroVideos = isEn ? heroVideosEn : heroVideosRu;
+  const carouselMedia = isEn ? carouselMediaEn : carouselMediaRu;
   const [activeTab, setActiveTab] = useState<TeachingCategory>('all');
   const [lightboxItem, setLightboxItem] = useState<TeachingMedia | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -282,7 +500,7 @@ export function ArtTeaching() {
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"
@@ -304,18 +522,30 @@ export function ArtTeaching() {
         <div className="lg:col-span-6 space-y-6">
           <div>
             <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight">
-              Обучение, Лекции <br />
-              <span className="text-[#14F1D9]">&</span> Мастер-классы
+              {isEn ? <>Teaching, Lectures <br /> <span className="text-[#14F1D9]">&</span> Workshops</> : <>Обучение, Лекции <br /> <span className="text-[#14F1D9]">&</span> Мастер-классы</>}
             </h2>
           </div>
 
           <div className="space-y-4 text-white/70 text-base sm:text-lg leading-relaxed font-inter">
-            <p>
-              Выступала с авторской лекцией и проводила живой мастер-класс на 1-м форуме смолянистов в музее современного искусства <strong className="text-white font-semibold">Артмуза</strong> (Санкт-Петербург).
-            </p>
-            <p>
-              Проводила масштабные прямые эфиры по колористике и физике смолы с охватом в <strong className="text-[#14F1D9] font-semibold">несколько тысяч человек</strong>, организовывала студийные и выездные воркшопы в России, Турции и Черногории, а также курировала студентов в международной онлайн-школе.
-            </p>
+            {isEn ? (
+              <>
+                <p>
+                  I delivered an original lecture and led a live workshop at the 1st Resin Artists Forum, held at the <strong className="text-white font-semibold">Artmuza</strong> museum of contemporary art (St. Petersburg).
+                </p>
+                <p>
+                  I've run large-scale livestreams on color theory and resin physics reaching <strong className="text-[#14F1D9] font-semibold">several thousand people</strong>, organized studio and traveling workshops in Russia, Turkey, and Montenegro, and mentored students at an international online school.
+                </p>
+              </>
+            ) : (
+              <>
+                <p>
+                  Выступала с авторской лекцией и проводила живой мастер-класс на 1-м форуме смолянистов в музее современного искусства <strong className="text-white font-semibold">Артмуза</strong> (Санкт-Петербург).
+                </p>
+                <p>
+                  Проводила масштабные прямые эфиры по смоле с охватом в <strong className="text-[#14F1D9] font-semibold">несколько тысяч человек</strong>, организовывала студийные и выездные воркшопы в России, Турции и Черногории, а также курировала студентов в международной онлайн-школе.
+                </p>
+              </>
+            )}
           </div>
 
           {/* Feature Badges */}
@@ -323,33 +553,33 @@ export function ArtTeaching() {
             <div className="p-4 bg-[#1A1A1A] border border-white/10">
               <div className="flex items-center gap-2 text-[#14F1D9] mb-1">
                 <Award className="w-4 h-4" />
-                <span className="text-xs font-montserrat font-bold uppercase">Музей Артмуза (СПб)</span>
+                <span className="text-xs font-montserrat font-bold uppercase">{isEn ? "Artmuza Museum (St. Petersburg)" : "Музей Артмуза (СПб)"}</span>
               </div>
-              <p className="text-xs text-white/60 font-inter">Спикер и ведущая МК на 1-м Всероссийском форуме</p>
+              <p className="text-xs text-white/60 font-inter">{isEn ? "Speaker and workshop lead at the 1st All-Russian Forum" : "Спикер и ведущая МК на 1-м Всероссийском форуме"}</p>
             </div>
 
             <div className="p-4 bg-[#1A1A1A] border border-white/10">
               <div className="flex items-center gap-2 text-[#14F1D9] mb-1">
                 <Users className="w-4 h-4" />
-                <span className="text-xs font-montserrat font-bold uppercase">Офлайн Воркшопы</span>
+                <span className="text-xs font-montserrat font-bold uppercase">{isEn ? "In-Person Workshops" : "Офлайн Воркшопы"}</span>
               </div>
-              <p className="text-xs text-white/60 font-inter">Студии в РФ, выездные классы в Турции и Черногории</p>
+              <p className="text-xs text-white/60 font-inter">{isEn ? "Studios in Russia, traveling classes in Turkey and Montenegro" : "Студии в РФ, выездные классы в Турции и Черногории"}</p>
             </div>
 
             <div className="p-4 bg-[#1A1A1A] border border-white/10">
               <div className="flex items-center gap-2 text-[#14F1D9] mb-1">
                 <Video className="w-4 h-4" />
-                <span className="text-xs font-montserrat font-bold uppercase">Тысячи зрителей</span>
+                <span className="text-xs font-montserrat font-bold uppercase">{isEn ? "Thousands of Viewers" : "Тысячи зрителей"}</span>
               </div>
-              <p className="text-xs text-white/60 font-inter">Прямые трансляции, обучающие вебинары и туториалы</p>
+              <p className="text-xs text-white/60 font-inter">{isEn ? "Livestreams, teaching webinars, and tutorials" : "Прямые трансляции, обучающие вебинары и туториалы"}</p>
             </div>
 
             <div className="p-4 bg-[#1A1A1A] border border-white/10">
               <div className="flex items-center gap-2 text-[#14F1D9] mb-1">
                 <GraduationCap className="w-4 h-4" />
-                <span className="text-xs font-montserrat font-bold uppercase">Онлайн-школа</span>
+                <span className="text-xs font-montserrat font-bold uppercase">{isEn ? "Online School" : "Онлайн-школа"}</span>
               </div>
-              <p className="text-xs text-white/60 font-inter">Кураторство студентов в международной онлайн-школе</p>
+              <p className="text-xs text-white/60 font-inter">{isEn ? "Mentoring students at an international online school" : "Кураторство студентов в международной онлайн-школе"}</p>
             </div>
           </div>
         </div>
@@ -362,7 +592,7 @@ export function ArtTeaching() {
             onClick={() => setLightboxItem(heroVideos[0])}
             className="relative aspect-[9/16] w-full max-h-[520px] rounded-none overflow-hidden bg-[#1A1A1A] border border-white/15 hover:border-[#14F1D9] transition-all group cursor-pointer"
           >
-            <video
+            <LazyVideo
               src={heroVideos[0].src}
               autoPlay
               loop
@@ -374,7 +604,7 @@ export function ArtTeaching() {
             
             <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 bg-black/80 border border-[#14F1D9] text-[#14F1D9] text-[10px] font-inter font-bold uppercase tracking-wider">
               <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
-              Видео • Артмуза
+              {isEn ? "Video • Artmuza" : "Видео • Артмуза"}
             </div>
 
             <div className="absolute bottom-3 left-3 right-3 z-10">
@@ -395,7 +625,7 @@ export function ArtTeaching() {
             onClick={() => setLightboxItem(heroVideos[1])}
             className="relative aspect-[9/16] w-full max-h-[520px] rounded-none overflow-hidden bg-[#1A1A1A] border border-white/15 hover:border-[#14F1D9] transition-all group cursor-pointer"
           >
-            <video
+            <LazyVideo
               src={heroVideos[1].src}
               autoPlay
               loop
@@ -407,7 +637,7 @@ export function ArtTeaching() {
             
             <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 bg-black/80 border border-[#14F1D9] text-[#14F1D9] text-[10px] font-inter font-bold uppercase tracking-wider">
               <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
-              Видео • Черногория
+              {isEn ? "Video • Montenegro" : "Видео • Черногория"}
             </div>
 
             <div className="absolute bottom-3 left-3 right-3 z-10">
@@ -432,14 +662,14 @@ export function ArtTeaching() {
         <div className="flex items-center gap-3 flex-wrap">
           <div>
             <h3 className="text-sm sm:text-base font-montserrat font-bold uppercase tracking-wider text-white">
-              Фотоархив: воркшопы <span className="text-[#14F1D9]">&</span> мастер-классы
+              {isEn ? <>Photo Archive: Workshops <span className="text-[#14F1D9]">&</span> Classes</> : <>Фотоархив: воркшопы <span className="text-[#14F1D9]">&</span> мастер-классы</>}
             </h3>
             <p className="text-xs text-white/50 font-inter mt-0.5">
-              Листай карусель свайпом или стрелками
+              {isEn ? "Swipe or use the arrows to browse the carousel" : "Листай карусель свайпом или стрелками"}
             </p>
           </div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase shadow-md">
-            <span>←</span> Листайте <span>→</span>
+            <span>←</span> {isEn ? "Swipe through" : "Листайте"} <span>→</span>
           </div>
         </div>
 
@@ -454,7 +684,7 @@ export function ArtTeaching() {
                   : 'bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
               }`}
             >
-              Все ({carouselMedia.length})
+              {isEn ? "All" : "Все"} ({carouselMedia.length})
             </button>
             <button
               onClick={() => setActiveTab('forum')}
@@ -464,7 +694,7 @@ export function ArtTeaching() {
                   : 'bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
               }`}
             >
-              Артмуза ({carouselMedia.filter((m) => m.category === 'forum').length})
+              {isEn ? "Artmuza" : "Артмуза"} ({carouselMedia.filter((m) => m.category === 'forum').length})
             </button>
             <button
               onClick={() => setActiveTab('workshops')}
@@ -474,7 +704,7 @@ export function ArtTeaching() {
                   : 'bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
               }`}
             >
-              Офлайн МК ({carouselMedia.filter((m) => m.category === 'workshops').length})
+              {isEn ? "In-Person" : "Офлайн МК"} ({carouselMedia.filter((m) => m.category === 'workshops').length})
             </button>
             <button
               onClick={() => setActiveTab('online')}
@@ -484,7 +714,7 @@ export function ArtTeaching() {
                   : 'bg-[#1A1A1A] text-white/70 border border-white/10 hover:border-white/30 hover:text-white'
               }`}
             >
-              Онлайн ({carouselMedia.filter((m) => m.category === 'online').length})
+              {isEn ? "Online" : "Онлайн"} ({carouselMedia.filter((m) => m.category === 'online').length})
             </button>
           </div>
 
@@ -493,14 +723,14 @@ export function ArtTeaching() {
             <button
               onClick={() => scrollByAmount(-340)}
               className="flex h-8 w-8 items-center justify-center border border-white/15 bg-[#1A1A1A] text-white hover:border-[#14F1D9] hover:text-[#14F1D9] transition-all rounded-none"
-              aria-label="Назад"
+              aria-label={isEn ? "Back" : "Назад"}
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <button
               onClick={() => scrollByAmount(340)}
               className="flex h-8 w-8 items-center justify-center border border-white/15 bg-[#1A1A1A] text-white hover:border-[#14F1D9] hover:text-[#14F1D9] transition-all rounded-none"
-              aria-label="Вперёд"
+              aria-label={isEn ? "Forward" : "Вперёд"}
             >
               <ChevronRight className="h-4 w-4" />
             </button>
@@ -526,7 +756,7 @@ export function ArtTeaching() {
           >
             {item.type === 'video' ? (
               <div className="relative w-full h-full bg-black">
-                <video
+                <LazyVideo
                   src={item.src}
                   autoPlay
                   loop
@@ -584,7 +814,7 @@ export function ArtTeaching() {
             <button
               onClick={() => setLightboxItem(null)}
               className="absolute -top-4 -right-4 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black text-white hover:bg-[#14F1D9] hover:text-black transition-colors shadow-lg"
-              aria-label="Закрыть"
+              aria-label={isEn ? "Close" : "Закрыть"}
             >
               <X className="h-5 w-5" />
             </button>

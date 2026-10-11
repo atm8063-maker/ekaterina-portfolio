@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import fs from 'fs'
 import path from 'path'
-import { siteData, cases, caseDetails } from '@/lib/data'
+import { siteData, cases, getCaseDetails } from '@/lib/data'
 import { CasePageClient } from '@/components/case-page-client'
 import { NickPotapovCase } from '@/components/cases/nick-potapov-case'
 import { VertexHomesCase } from '@/components/cases/vertex-homes-case'
@@ -21,8 +21,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const caseDetail = caseDetails[slug]
-  
+  const caseDetail = getCaseDetails('RU')[slug]
+
   if (caseDetail) {
     return { title: `Кейс: ${caseDetail.title} — ${siteData.name}` }
   }
@@ -61,9 +61,10 @@ export default async function CasePage({
     return <ElectronicsShopCase />
   }
 
-  const caseDetail = caseDetails[slug]
+  const caseDetailRu = getCaseDetails('RU')[slug]
+  const caseDetailEn = getCaseDetails('EN')[slug]
 
-  if (!caseDetail) notFound()
+  if (!caseDetailRu || !caseDetailEn) notFound()
   
   // Find gallery images from public/Кейсы/[slug]
   let images: string[] = []
@@ -81,7 +82,8 @@ export default async function CasePage({
   return (
     <CasePageClient
       slug={slug}
-      caseData={caseDetail}
+      caseDataRu={caseDetailRu}
+      caseDataEn={caseDetailEn}
       images={images}
     />
   )

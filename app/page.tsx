@@ -8,6 +8,7 @@ import About from "@/components/sections/about";
 import Competencies from "@/components/sections/Competencies";
 import Portfolio from "@/components/sections/Portfolio";
 import Contact from "@/components/sections/contact";
+import { PageTitle } from "@/components/language-provider";
 
 export default function Home() {
   useEffect(() => {
@@ -34,43 +35,44 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-background text-foreground overflow-x-clip">
+      <PageTitle titleRu="Екатерина Разумова — Creative Generalist" titleEn="Ekaterina Razumova — Creative Generalist" />
       <Header />
       
       {/* 1. HERO */}
-      <div id="hero" className="scroll-mt-4">
+      <div id="hero" className="scroll-mt-20">
         <Hero />
       </div>
 
       <MarqueeRow type="skills" variant="programs" direction="left" speed="40s" className="py-8 lg:py-14" />
       
       {/* 2. ABOUT */}
-      <div id="about" className="scroll-mt-4">
-        <div id="bio" className="scroll-mt-4" />
+      <div id="about" className="scroll-mt-20">
+        <div id="bio" className="scroll-mt-20" />
         <About />
       </div>
 
       <MarqueeRow type="programs" variant="media" direction="right" speed="45s" />
       
       {/* 3. COMPETENCIES / SKILLS */}
-      <div id="competencies" className="scroll-mt-4">
-        <div id="skills" className="scroll-mt-4" />
-        <div id="approach" className="scroll-mt-4" />
+      <div id="competencies" className="scroll-mt-20">
+        <div id="skills" className="scroll-mt-20" />
+        <div id="approach" className="scroll-mt-20" />
         <Competencies />
       </div>
 
       <MarqueeRow type="media" variant="skills" direction="left" speed="50s" />
       
       {/* 4. PORTFOLIO / CASES */}
-      <div id="cases" className="scroll-mt-4">
-        <div id="portfolio" className="scroll-mt-4" />
+      <div id="cases" className="scroll-mt-20">
+        <div id="portfolio" className="scroll-mt-20" />
         <Portfolio />
       </div>
 
       <MarqueeRow type="industries" variant="industries" direction="right" speed="55s" />
       
       {/* 5. CONTACT */}
-      <div id="contact" className="scroll-mt-4">
-        <div id="contacts" className="scroll-mt-4" />
+      <div id="contact" className="scroll-mt-20">
+        <div id="contacts" className="scroll-mt-20" />
         <Contact />
       </div>
     </main>

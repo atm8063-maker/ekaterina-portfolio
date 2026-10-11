@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useLanguage } from '@/components/language-provider';
+import { LazyVideo } from '@/components/lazy-video';
 
 export interface ArtSketchesProps {
   className?: string;
@@ -15,11 +17,13 @@ export function ArtSketches({
   defaultBrightness = 1.0,
   showControls = false
 }: ArtSketchesProps) {
+  const { isEn } = useLanguage();
   const [scaleFactor, setScaleFactor] = useState(0.85);
   const [blurAmount, setBlurAmount] = useState(defaultBlur);
   const [brightness, setBrightness] = useState(defaultBrightness);
   const [isPaused, setIsPaused] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [viewportW, setViewportW] = useState(1920);
 
   const targetSilhouetteH = 920;
   const targetSilhouetteW = 558;
@@ -32,6 +36,7 @@ export function ArtSketches({
       const h = window.innerHeight;
       const mob = w < 768;
       setIsMobile(mob);
+      setViewportW(w);
 
       const availableW = w - (mob ? 24 : 64);
       const availableH = h - (mob ? 130 : 64);
@@ -51,21 +56,21 @@ export function ArtSketches({
   };
 
   const portraitTiles = [
-    { id: 'A1', x: 0,   y: 0,    w: 190, h: 172, type: 'img', src: 'photo_2026-08-27_17-30-20 (5).jpg' },
-    { id: 'A2', x: 196, y: 0,    w: 144, h: 210, type: 'img', src: 'photo_3329@04-08-2026_21-08-45.jpg' },
-    { id: 'A3', x: 346, y: 0,    w: 180, h: 180, type: 'img', src: 'photo_2026-08-27_17-30-20 (5).jpg' },
-    { id: 'A4', x: 532, y: 0,    w: 150, h: 172, type: 'img', src: 'photo_2026-08-27_17-30-20 (7).jpg' },
-    { id: 'A5', x: 688, y: 0,    w: 158, h: 172, type: 'img', src: 'photo_2026-08-27_17-30-21 (8).jpg' },
+    { id: 'A1', x: 0,   y: 0,    w: 190, h: 172, type: 'img', src: 'photo_2026-08-27_17-30-20 (5).webp' },
+    { id: 'A2', x: 196, y: 0,    w: 144, h: 210, type: 'img', src: 'photo_3329@04-08-2026_21-08-45.webp' },
+    { id: 'A3', x: 346, y: 0,    w: 180, h: 180, type: 'img', src: 'photo_2026-08-27_17-30-20 (5).webp' },
+    { id: 'A4', x: 532, y: 0,    w: 150, h: 172, type: 'img', src: 'photo_2026-08-27_17-30-20 (7).webp' },
+    { id: 'A5', x: 688, y: 0,    w: 158, h: 172, type: 'img', src: 'photo_2026-08-27_17-30-21 (8).webp' },
 
-    { id: 'B1', x: 0,   y: 178,  w: 190, h: 130, type: 'img', src: 'photo_2026-08-27_17-30-19.jpg' },
+    { id: 'B1', x: 0,   y: 178,  w: 190, h: 130, type: 'img', src: 'photo_2026-08-27_17-30-19.webp' },
     { id: 'B2', x: 196, y: 216,  w: 144, h: 182, type: 'video', src: 'video_2026-08-04_22-43-39 (4).mp4' },
     { id: 'B3', x: 346, y: 186,  w: 180, h: 148, type: 'face' },
-    { id: 'B4', x: 532, y: 178,  w: 150, h: 156, type: 'img', src: 'photo_2026-08-27_17-30-19 (2).jpg' },
-    { id: 'B5', x: 688, y: 178,  w: 158, h: 156, type: 'img', src: 'photo_2026-08-27_17-30-19 (3).jpg' },
+    { id: 'B4', x: 532, y: 178,  w: 150, h: 156, type: 'img', src: 'photo_2026-08-27_17-30-19 (2).webp' },
+    { id: 'B5', x: 688, y: 178,  w: 158, h: 156, type: 'img', src: 'photo_2026-08-27_17-30-19 (3).webp' },
 
-    { id: 'C1', x: 0,   y: 314,  w: 110, h: 290, type: 'img', src: 'photo_2026-08-27_17-30-21 (2).jpg' },
-    { id: 'C2', x: 116, y: 314,  w: 74,  h: 156, type: 'img', src: 'photo_3333@04-08-2026_21-08-45.jpg' },
-    { id: 'C3', x: 116, y: 476,  w: 108, h: 128, type: 'img', src: 'photo_2026-08-27_17-30-21 (5).jpg' },
+    { id: 'C1', x: 0,   y: 314,  w: 110, h: 290, type: 'img', src: 'photo_2026-08-27_17-30-21 (2).webp' },
+    { id: 'C2', x: 116, y: 314,  w: 74,  h: 156, type: 'img', src: 'photo_3333@04-08-2026_21-08-45.webp' },
+    { id: 'C3', x: 116, y: 476,  w: 108, h: 128, type: 'img', src: 'photo_2026-08-27_17-30-21 (5).webp' },
 
     {
       id: 'C4',
@@ -73,88 +78,88 @@ export function ArtSketches({
       x: 196, y: 404, w: 178, h: 200,
       clipPath: 'polygon(0% 0%, 80.9% 0%, 80.9% 53.5%, 100% 53.5%, 100% 100%, 19.1% 100%, 19.1% 33%, 0% 33%)',
       type: 'img',
-      src: 'photo_2026-08-30_02-47-41 (5).jpg'
+      src: 'photo_2026-08-30_02-47-41 (5).webp'
     },
 
     { id: 'C5', x: 346, y: 340,  w: 406, h: 164, type: 'face' },
-    { id: 'C6', x: 758, y: 340,  w: 88,  h: 164, type: 'img', src: 'photo_2026-08-27_17-30-21 (4).jpg' },
+    { id: 'C6', x: 758, y: 340,  w: 88,  h: 164, type: 'img', src: 'photo_2026-08-27_17-30-21 (4).webp' },
 
     { id: 'D1', x: 0,   y: 610,  w: 224, h: 232, type: 'video', src: 'video_2026-08-29_18-25-41.mp4' },
-    { id: 'D2', x: 230, y: 610,  w: 144, h: 126, type: 'img', src: 'photo_2026-08-29_17-06-15.jpg' },
+    { id: 'D2', x: 230, y: 610,  w: 144, h: 126, type: 'img', src: 'photo_2026-08-29_17-06-15.webp' },
     { id: 'D3', x: 380, y: 510,  w: 286, h: 224, type: 'face' },
-    { id: 'D4', x: 672, y: 510,  w: 174, h: 224, type: 'img', src: 'photo_2960@31-07-2026_18-19-07.jpg' },
+    { id: 'D4', x: 672, y: 510,  w: 174, h: 224, type: 'img', src: 'photo_2960@31-07-2026_18-19-07.webp' },
 
-    { id: 'E1', x: 230, y: 742,  w: 144, h: 184, type: 'img', src: 'photo_3334@04-08-2026_21-08-45.jpg' },
+    { id: 'E1', x: 230, y: 742,  w: 144, h: 184, type: 'img', src: 'photo_3334@04-08-2026_21-08-45.webp' },
     { id: 'E2', x: 380, y: 740,  w: 152, h: 184, type: 'face' },
-    { id: 'E3', x: 538, y: 740,  w: 144, h: 184, type: 'img', src: 'photo_2026-08-29_20-12-50.jpg' },
+    { id: 'E3', x: 538, y: 740,  w: 144, h: 184, type: 'img', src: 'photo_2026-08-29_20-12-50.webp' },
     { id: 'E4', x: 688, y: 740,  w: 158, h: 250, type: 'video', src: 'video_2026-08-29_20-12-42.mp4' },
 
-    { id: 'G1', x: 0,   y: 848,  w: 224, h: 266, type: 'img', src: 'photo_2026-08-29_20-12-29.jpg' },
+    { id: 'G1', x: 0,   y: 848,  w: 224, h: 266, type: 'img', src: 'photo_2026-08-29_20-12-29.webp' },
     { id: 'F3', x: 230, y: 932,  w: 452, h: 182, type: 'video', src: 'video_48@31-07-2026_19-44-20.mp4' },
-    { id: 'F4', x: 688, y: 996,  w: 158, h: 128, type: 'img', src: 'photo_3331@04-08-2026_21-08-45.jpg' },
+    { id: 'F4', x: 688, y: 996,  w: 158, h: 128, type: 'img', src: 'photo_3331@04-08-2026_21-08-45.webp' },
 
-    { id: 'F1', x: 0,   y: 1120, w: 160, h: 278, type: 'img', src: 'photo_2026-08-27_17-30-20.jpg' },
-    { id: 'F2', x: 166, y: 1120, w: 166, h: 278, type: 'img', src: 'photo_3330@04-08-2026_21-08-45.jpg' },
+    { id: 'F1', x: 0,   y: 1120, w: 160, h: 278, type: 'img', src: 'photo_2026-08-27_17-30-20.webp' },
+    { id: 'F2', x: 166, y: 1120, w: 166, h: 278, type: 'img', src: 'photo_3330@04-08-2026_21-08-45.webp' },
     { id: 'G2', x: 338, y: 1120, w: 194, h: 278, type: 'face', label: 'DECOLLETE' },
-    { id: 'G3', x: 538, y: 1120, w: 144, h: 278, type: 'img', src: 'photo_2026-08-27_17-30-21 (3).jpg' },
-    { id: 'G4', x: 688, y: 1130, w: 158, h: 268, type: 'img', src: 'photo_2026-08-27_17-30-20 (4).jpg' }
+    { id: 'G3', x: 538, y: 1120, w: 144, h: 278, type: 'img', src: 'photo_2026-08-27_17-30-21 (3).webp' },
+    { id: 'G4', x: 688, y: 1130, w: 158, h: 268, type: 'img', src: 'photo_2026-08-27_17-30-20 (4).webp' }
   ];
 
   type TrackItem = { src: string; w: number; isVideo?: boolean };
 
   // 6 Narrow Background Tracks
   const track1: TrackItem[] = [
-    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 115 },
-    { src: 'photo_3217@04-08-2026_21-04-08.jpg', w: 95 },
-    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 195 },
-    { src: 'photo_2026-08-30_02-47-41 (3).jpg', w: 130 },
+    { src: 'photo_3220@04-08-2026_21-04-08.webp', w: 115 },
+    { src: 'photo_3217@04-08-2026_21-04-08.webp', w: 95 },
+    { src: 'photo_2988@31-07-2026_18-20-25.webp', w: 195 },
+    { src: 'photo_2026-08-30_02-47-41 (3).webp', w: 130 },
     { src: 'video_145@04-08-2026_22-24-35.mp4', w: 105, isVideo: true },
-    { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 120 },
+    { src: 'photo_2026-08-27_17-30-20 (2).webp', w: 120 },
   ];
 
   const track2 = [
-    { src: 'photo_2026-08-27_17-30-21 (9).jpg', w: 110 },
-    { src: 'photo_2986@31-07-2026_18-19-24.jpg', w: 95 },
-    { src: 'photo_3218@04-08-2026_21-04-08.jpg', w: 135 },
-    { src: 'photo_2026-08-27_17-30-19 (6).jpg', w: 125 },
-    { src: 'photo_3076@31-07-2026_19-44-02.jpg', w: 135 },
-    { src: 'photo_2026-08-27_19-29-35.jpg', w: 100 },
+    { src: 'photo_2026-08-27_17-30-21 (9).webp', w: 110 },
+    { src: 'photo_2986@31-07-2026_18-19-24.webp', w: 95 },
+    { src: 'photo_3218@04-08-2026_21-04-08.webp', w: 135 },
+    { src: 'photo_2026-08-27_17-30-19 (6).webp', w: 125 },
+    { src: 'photo_3076@31-07-2026_19-44-02.webp', w: 135 },
+    { src: 'photo_2026-08-27_19-29-35.webp', w: 100 },
   ];
 
   const track3 = [
-    { src: 'photo_2026-08-30_02-47-41 (4).jpg', w: 145 },
-    { src: 'photo_2026-08-27_17-30-18 (2).jpg', w: 80 },
-    { src: 'photo_2026-08-27_17-30-19 (4).jpg', w: 130 },
+    { src: 'photo_2026-08-30_02-47-41 (4).webp', w: 145 },
+    { src: 'photo_2026-08-27_17-30-18 (2).webp', w: 80 },
+    { src: 'photo_2026-08-27_17-30-19 (4).webp', w: 130 },
     { src: 'video_145@04-08-2026_22-24-35.mp4', w: 115, isVideo: true },
-    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 185 },
-    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 110 },
+    { src: 'photo_2988@31-07-2026_18-20-25.webp', w: 185 },
+    { src: 'photo_3220@04-08-2026_21-04-08.webp', w: 110 },
   ];
 
   const track4 = [
-    { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 125 },
-    { src: 'photo_3218@04-08-2026_21-04-08.jpg', w: 130 },
-    { src: 'photo_2026-08-30_02-47-41 (3).jpg', w: 135 },
-    { src: 'photo_2986@31-07-2026_18-19-24.jpg', w: 95 },
-    { src: 'photo_3076@31-07-2026_19-44-02.jpg', w: 140 },
-    { src: 'photo_2026-08-27_17-30-21 (9).jpg', w: 115 },
+    { src: 'photo_2026-08-27_17-30-20 (2).webp', w: 125 },
+    { src: 'photo_3218@04-08-2026_21-04-08.webp', w: 130 },
+    { src: 'photo_2026-08-30_02-47-41 (3).webp', w: 135 },
+    { src: 'photo_2986@31-07-2026_18-19-24.webp', w: 95 },
+    { src: 'photo_3076@31-07-2026_19-44-02.webp', w: 140 },
+    { src: 'photo_2026-08-27_17-30-21 (9).webp', w: 115 },
   ];
 
   const track5 = [
-    { src: 'photo_3217@04-08-2026_21-04-08.jpg', w: 95 },
+    { src: 'photo_3217@04-08-2026_21-04-08.webp', w: 95 },
     { src: 'video_145@04-08-2026_22-24-35.mp4', w: 110, isVideo: true },
-    { src: 'photo_2026-08-27_17-30-19 (6).jpg', w: 130 },
-    { src: 'photo_2026-08-30_02-47-41 (4).jpg', w: 145 },
-    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 190 },
-    { src: 'photo_2026-08-27_17-30-18 (2).jpg', w: 85 },
+    { src: 'photo_2026-08-27_17-30-19 (6).webp', w: 130 },
+    { src: 'photo_2026-08-30_02-47-41 (4).webp', w: 145 },
+    { src: 'photo_2988@31-07-2026_18-20-25.webp', w: 190 },
+    { src: 'photo_2026-08-27_17-30-18 (2).webp', w: 85 },
   ];
 
   const track6 = [
-    { src: 'photo_2026-08-27_19-29-35.jpg', w: 105 },
-    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 115 },
-    { src: 'photo_2026-08-27_17-30-19 (4).jpg', w: 135 },
+    { src: 'photo_2026-08-27_19-29-35.webp', w: 105 },
+    { src: 'photo_3220@04-08-2026_21-04-08.webp', w: 115 },
+    { src: 'photo_2026-08-27_17-30-19 (4).webp', w: 135 },
     { src: 'video_145@04-08-2026_22-24-35.mp4', w: 115, isVideo: true },
-    { src: 'photo_3218@04-08-2026_21-04-08.jpg', w: 130 },
-    { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 120 },
+    { src: 'photo_3218@04-08-2026_21-04-08.webp', w: 130 },
+    { src: 'photo_2026-08-27_17-30-20 (2).webp', w: 120 },
   ];
 
   const tracks: { data: TrackItem[]; dir: string; speed: string }[] = [
@@ -165,6 +170,19 @@ export function ArtSketches({
     { data: track5, dir: 'left', speed: '42s' },
     { data: track6, dir: 'right', speed: '50s' },
   ];
+
+  // The marquee loops by translating 0% -> -50%, so the repeated strip must be
+  // at least 2x the viewport wide at every point in the cycle, or ultrawide
+  // screens see gaps of raw background between repeats. Repeat count is
+  // computed per-track from the viewport width instead of a fixed multiplier.
+  const TRACK_GAP = 10;
+  const getRepeatCount = (data: TrackItem[]) => {
+    const copyWidth = data.reduce((sum, item) => sum + item.w, 0) + (data.length - 1) * TRACK_GAP;
+    const needed = Math.ceil((viewportW * 2) / copyWidth) + 1;
+    // Must stay even: translateX loops 0% -> -50%, which only lands on an
+    // identical repeat boundary (seamless) when the strip holds an even count.
+    return Math.max(4, needed % 2 === 0 ? needed : needed + 1);
+  };
 
   return (
     <section
@@ -197,6 +215,12 @@ export function ArtSketches({
         .paused {
           animation-play-state: paused !important;
         }
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track-left,
+          .marquee-track-right {
+            animation-play-state: paused;
+          }
+        }
       `}</style>
 
       {/* ================= BACKGROUND: 6 NARROW DRIFTING LANES ================= */}
@@ -222,7 +246,7 @@ export function ArtSketches({
             className={`${tr.dir === 'left' ? 'marquee-track-left' : 'marquee-track-right'} ${isPaused ? 'paused' : ''}`}
             style={{ '--speed': tr.speed } as React.CSSProperties}
           >
-            {[...tr.data, ...tr.data, ...tr.data].map((item, i) => (
+            {Array.from({ length: getRepeatCount(tr.data) }, () => tr.data).flat().map((item, i) => (
               <div
                 key={`tr-${idx}-${i}`}
                 style={{
@@ -236,7 +260,7 @@ export function ArtSketches({
                 }}
               >
                 {item.isVideo ? (
-                  <video
+                  <LazyVideo
                     src={`/art-sketches/${encodeURIComponent(item.src)}`}
                     autoPlay
                     loop
@@ -248,6 +272,7 @@ export function ArtSketches({
                   <img
                     src={`/art-sketches/${encodeURIComponent(item.src)}`}
                     alt=""
+                    decoding="async"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 )}
@@ -271,7 +296,7 @@ export function ArtSketches({
       {/* ================= TITLE: ПОРТРЕТЫ & СКЕТЧИ ================= */}
       <div className="absolute top-4 sm:top-10 left-4 sm:left-12 z-20 pointer-events-none max-w-[240px] sm:max-w-md">
         <h2 className="font-montserrat font-black uppercase text-xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
-          Портреты <span className="text-[#14F1D9]">&</span> <br /> Скетчи
+          {isEn ? <>Portraits <span className="text-[#14F1D9]">&</span> <br /> Sketches</> : <>Портреты <span className="text-[#14F1D9]">&</span> <br /> Скетчи</>}
         </h2>
       </div>
 
@@ -307,8 +332,8 @@ export function ArtSketches({
               width: '100%',
               height: '100%',
               position: 'relative',
-              WebkitMaskImage: "url('/Group%2047.png')",
-              maskImage: "url('/Group%2047.png')",
+              WebkitMaskImage: "url('/Group%2047.webp')",
+              maskImage: "url('/Group%2047.webp')",
               WebkitMaskSize: '100% 100%',
               maskSize: '100% 100%',
               WebkitMaskRepeat: 'no-repeat',
@@ -364,7 +389,7 @@ export function ArtSketches({
                       <path d={`M ${rw*0.809} ${rh*0.535 - 10} L ${rw*0.809} ${rh*0.535} L ${rw*0.809 + 10} ${rh*0.535}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                       <path d={`M ${rw - 10} ${rh*0.535} L ${rw} ${rh*0.535} L ${rw} ${rh*0.535 + 10}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                       <path d={`M ${rw} ${rh - 10} L ${rw} ${rh} L ${rw - 10} ${rh}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
-                      <path d={`M ${rw*0.191 + 10} ${rh} L ${rw*0.191} ${rh} L ${rw*0.191} - 10`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
+                      <path d={`M ${rw*0.191 + 10} ${rh} L ${rw*0.191} ${rh} L ${rw*0.191} ${rh - 10}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                       <path d={`M ${rw*0.191} ${rh*0.33 + 10} L ${rw*0.191} ${rh*0.33} L ${rw*0.191 - 10} ${rh*0.33}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                       <path d={`M 10 ${rh*0.33} L 0 ${rh*0.33} L 0 ${rh*0.33 - 10}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                     </svg>
@@ -372,7 +397,7 @@ export function ArtSketches({
 
                   {t.type === 'face' && (
                     <img
-                      src="/Group%2047.png"
+                      src="/Group%2047.webp"
                       alt="Face"
                       style={{
                         position: 'absolute',
@@ -386,7 +411,7 @@ export function ArtSketches({
                   )}
 
                   {t.type === 'video' && (
-                    <video
+                    <LazyVideo
                       src={`/art-portraits/${encodeURIComponent(t.src!)}`}
                       autoPlay
                       loop
@@ -400,7 +425,7 @@ export function ArtSketches({
                     <img
                       src={imageSrc}
                       alt="Artwork"
-                      loading="lazy"
+                      decoding="async"
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                   )}
@@ -432,7 +457,7 @@ export function ArtSketches({
           }}
         >
           <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
-            <span>Блюр:</span>
+            <span>{isEn ? "Blur:" : "Блюр:"}</span>
             <input
               type="range"
               min="0"
@@ -446,7 +471,7 @@ export function ArtSketches({
           </label>
 
           <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
-            <span>Яркость:</span>
+            <span>{isEn ? "Brightness:" : "Яркость:"}</span>
             <input
               type="range"
               min="0.1"
@@ -471,7 +496,7 @@ export function ArtSketches({
               fontWeight: 600
             }}
           >
-            {isPaused ? '▶ Старт' : '⏸ Пауза'}
+            {isPaused ? (isEn ? '▶ Start' : '▶ Старт') : (isEn ? '⏸ Pause' : '⏸ Пауза')}
           </button>
         </div>
       )}

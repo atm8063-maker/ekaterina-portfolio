@@ -6,17 +6,47 @@ import Image from 'next/image'
 import Header from '@/components/layout/Header'
 import type { CaseDetail } from '@/lib/data'
 import { CaseNavigation } from '@/components/cases/case-navigation'
+import { useLanguage, PageTitle } from '@/components/language-provider'
 import { X, ZoomIn, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
 
 type Props = {
   slug: string
-  caseData: CaseDetail
+  caseDataRu: CaseDetail
+  caseDataEn: CaseDetail
   images: string[]
 }
 
-export function CasePageClient({ slug, caseData, images }: Props) {
+const labels = {
+  RU: {
+    direction: 'Направление', role: 'Роль', period: 'Период', site: 'Сайт',
+    materials: 'Материалы', mediaHeading: 'Фотохроника & Медиа',
+    clickHint: 'Нажмите на фото для полноэкранного просмотра',
+    zoom: 'Увеличить', close: 'Закрыть (Esc)', prev: 'Предыдущее фото (←)', next: 'Следующее фото (→)',
+    photoAlt: 'фото', keysHint: 'Используйте стрелки ← / → на клавиатуре или кнопки по бокам для перелистывания',
+  },
+  EN: {
+    direction: 'Focus', role: 'Role', period: 'Period', site: 'Website',
+    materials: 'Materials', mediaHeading: 'Photo Log & Media',
+    clickHint: 'Click a photo to view it full-screen',
+    zoom: 'Zoom in', close: 'Close (Esc)', prev: 'Previous photo (←)', next: 'Next photo (→)',
+    photoAlt: 'photo', keysHint: 'Use the ← / → arrow keys or the side buttons to browse',
+  },
+} as const;
+
+export function CasePageClient({ slug, caseDataRu, caseDataEn, images }: Props) {
+  const { lang } = useLanguage()
+  const caseData = lang === 'EN' ? caseDataEn : caseDataRu
+  const t = labels[lang]
   const allImages = images;
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null)
+
+  // Next.js App Router doesn't always reset scroll position when navigating
+  // between two routes of the same dynamic template (/cases/[slug] -> /cases/[slug]),
+  // e.g. via the prev/next case links — the new case can open scrolled to wherever
+  // the previous case's scroll position happened to land. Force it to the top.
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [slug])
 
   const handlePrev = useCallback(() => {
     if (activeImageIndex === null) return
@@ -49,11 +79,12 @@ export function CasePageClient({ slug, caseData, images }: Props) {
 
   return (
     <>
+      <PageTitle titleRu={`Кейс: ${caseDataRu.title} — Екатерина Разумова`} titleEn={`Case Study: ${caseDataEn.title} — Ekaterina Razumova`} />
       <div className="min-h-screen bg-[#111111] text-white overflow-hidden relative font-inter">
         {/* Paper texture overlay */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           <Image 
-            src="/paper-clean-dark.png" 
+            src="/paper-clean-dark.webp" 
             alt="Paper texture" 
             fill 
             className="object-cover opacity-70 mix-blend-screen"
@@ -84,20 +115,20 @@ export function CasePageClient({ slug, caseData, images }: Props) {
             {/* Meta Grid */}
             <div className={`grid grid-cols-1 ${caseData.meta.link ? 'sm:grid-cols-4' : 'sm:grid-cols-3'} gap-6 sm:gap-8 py-6 border-y border-white/10 mb-12`}>
               <div>
-                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">Направление</h3>
+                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">{t.direction}</h3>
                 <p className="text-sm sm:text-base font-semibold text-white font-inter">{caseData.tag}</p>
               </div>
               <div>
-                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">Роль</h3>
+                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">{t.role}</h3>
                 <p className="text-sm sm:text-base font-semibold text-white font-inter">{caseData.meta.role}</p>
               </div>
               <div>
-                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">Период</h3>
+                <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">{t.period}</h3>
                 <p className="text-sm sm:text-base font-semibold text-white font-inter">{caseData.meta.year}</p>
               </div>
               {caseData.meta.link && (
                 <div>
-                  <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">Сайт</h3>
+                  <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">{t.site}</h3>
                   <a href={caseData.meta.link} target="_blank" rel="noopener noreferrer" className="text-sm sm:text-base font-semibold text-[#14F1D9] hover:underline font-inter">
                     {caseData.meta.link.replace(/^https?:\/\//, '')}
                   </a>
@@ -238,15 +269,15 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                     <div className="flex items-center gap-2 mb-1.5">
                       <span className="inline-block w-2 h-2 rounded-full bg-[#14F1D9] animate-pulse" />
                       <span className="text-xs font-mono font-bold tracking-widest text-[#14F1D9] uppercase">
-                        Материалы
+                        {t.materials}
                       </span>
                     </div>
                     <h2 className="font-montserrat font-black uppercase text-2xl sm:text-3xl text-white tracking-tight">
-                      Фотохроника & Медиа
+                      {t.mediaHeading}
                     </h2>
                   </div>
                   <p className="text-xs text-white/50 font-inter">
-                    Нажмите на фото для полноэкранного просмотра
+                    {t.clickHint}
                   </p>
                 </div>
 
@@ -259,7 +290,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                     >
                       <Image
                         src={imgSrc}
-                        alt={`${caseData.title} фото #${idx + 1}`}
+                        alt={`${caseData.title} ${t.photoAlt} #${idx + 1}`}
                         width={800}
                         height={600}
                         className="w-full h-auto block group-hover:scale-105 transition-transform duration-500"
@@ -270,7 +301,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                       <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white pointer-events-none">
                         <div className="px-3 py-1.5 rounded-full bg-black/70 border border-[#14F1D9]/50 flex items-center gap-1.5 text-xs font-montserrat uppercase tracking-wider text-[#14F1D9]">
                           <ZoomIn className="w-4 h-4" />
-                          <span>Увеличить</span>
+                          <span>{t.zoom}</span>
                         </div>
                       </div>
                     </div>
@@ -310,7 +341,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                 type="button"
                 onClick={() => setActiveImageIndex(null)}
                 className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white hover:text-[#14F1D9] transition-all flex items-center gap-1.5 text-xs font-mono"
-                title="Закрыть (Esc)"
+                title={t.close}
               >
                 <X className="w-5 h-5" />
                 <span className="hidden sm:inline">Esc</span>
@@ -328,7 +359,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                 type="button"
                 onClick={handlePrev}
                 className="absolute left-2 sm:left-4 z-20 p-3 rounded-full bg-black/70 border border-white/20 text-white hover:text-[#14F1D9] hover:border-[#14F1D9] transition-all"
-                title="Предыдущее фото (←)"
+                title={t.prev}
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
@@ -349,7 +380,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
                 type="button"
                 onClick={handleNext}
                 className="absolute right-2 sm:right-4 z-20 p-3 rounded-full bg-black/70 border border-white/20 text-white hover:text-[#14F1D9] hover:border-[#14F1D9] transition-all"
-                title="Следующее фото (→)"
+                title={t.next}
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
@@ -361,7 +392,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
             className="w-full max-w-6xl flex items-center justify-center text-xs text-white/50 font-mono py-2"
             onClick={(e) => e.stopPropagation()}
           >
-            Используйте стрелки ← / → на клавиатуре или кнопки по бокам для перелистывания
+            {t.keysHint}
           </div>
         </div>
       )}

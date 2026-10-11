@@ -3,37 +3,68 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
 
-const competencies = [
-  {
-    title: "PR",
-    items: ["Пресс-релизы", "Медиапланирование", "Коммуникация с журналистами", "Создание инфоповодов", "Инициирование публикаций", "Организация мероприятий (пресс-туры, пресс-конференции)"]
-  },
-  {
-    title: "Тексты",
-    items: ["Копирайтинг", "Журналистика", "Пресс-релизы", "Тексты для презентаций", "Посты для соцсетей", "SEO-тексты"]
-  },
-  {
-    title: "SMM",
-    items: ["Контент-планирование", "Визуал", "Монтаж видео для соцсетей", "Таргет"]
-  },
-  {
-    title: "Обучение и консультации",
-    items: ["Онлайн обучение", "Оффлайн обучение", "Администрирование онлайн-школы"]
-  },
-  {
-    title: "UI/UX",
-    items: ["Figma (Mobile & Desktop)", "Google Analytics", "Сборка и поддержка сайтов", "Antigravity и Claude Code (полный цикл от идеи до запуска)"]
-  },
-  {
-    title: "Art",
-    items: ["Эпоксидная смола", "Акрил", "Алкогольные чернила", "Текстурная паста", "Смешанные техники", "Предметы декора", "Картины", "Украшения", "Ёлочные игрушки"]
-  }
-];
+const competenciesByLang = {
+  RU: [
+    {
+      title: "PR",
+      items: ["Пресс-релизы", "Медиапланирование", "Коммуникация с журналистами", "Создание инфоповодов", "Инициирование публикаций", "Организация мероприятий (пресс-туры, пресс-конференции)"]
+    },
+    {
+      title: "Тексты",
+      items: ["Копирайтинг", "Журналистика", "Пресс-релизы", "Тексты для презентаций", "Посты для соцсетей", "SEO-тексты"]
+    },
+    {
+      title: "SMM",
+      items: ["Контент-планирование", "Визуал", "Монтаж видео для соцсетей", "Таргет"]
+    },
+    {
+      title: "Обучение и консультации",
+      items: ["Онлайн обучение", "Оффлайн обучение", "Администрирование онлайн-школы"]
+    },
+    {
+      title: "UI/UX",
+      items: ["Figma (Mobile & Desktop)", "Google Analytics", "Сборка и поддержка сайтов", "Antigravity и Claude Code (полный цикл от идеи до запуска)"]
+    },
+    {
+      title: "Art",
+      items: ["Эпоксидная смола", "Акрил", "Алкогольные чернила", "Текстурная паста", "Смешанные техники", "Предметы декора", "Картины", "Украшения", "Ёлочные игрушки"]
+    }
+  ],
+  EN: [
+    {
+      title: "PR",
+      items: ["Press releases", "Media planning", "Journalist relations", "Creating news hooks", "Initiating publications", "Event organization (press tours, press conferences)"]
+    },
+    {
+      title: "Writing",
+      items: ["Copywriting", "Journalism", "Press releases", "Presentation scripts", "Social media posts", "SEO copy"]
+    },
+    {
+      title: "SMM",
+      items: ["Content planning", "Visuals", "Video editing for social media", "Targeted ads"]
+    },
+    {
+      title: "Teaching & Consulting",
+      items: ["Online teaching", "Offline teaching", "Online school administration"]
+    },
+    {
+      title: "UI/UX",
+      items: ["Figma (Mobile & Desktop)", "Google Analytics", "Building and maintaining websites", "Antigravity and Claude Code (full cycle, idea to launch)"]
+    },
+    {
+      title: "Art",
+      items: ["Epoxy resin", "Acrylic", "Alcohol ink", "Texture paste", "Mixed media", "Decor objects", "Paintings", "Jewelry", "Christmas ornaments"]
+    }
+  ],
+};
 
 import Image from "next/image";
 
 export default function Competencies() {
+  const { lang, isEn } = useLanguage();
+  const competencies = competenciesByLang[lang];
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) => {
@@ -45,7 +76,7 @@ export default function Competencies() {
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"
@@ -65,9 +96,9 @@ export default function Competencies() {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold uppercase text-white mb-4"
           >
-            Могу, Умею, <span className="text-primary">Практикую</span>
+            {isEn ? <>Skills, Craft, <span className="text-primary">Practice</span></> : <>Могу, Умею, <span className="text-primary">Практикую</span></>}
           </motion.h2>
-          <p className="text-text-muted text-lg">Компетенции, позволяющие закрывать проекты под ключ.</p>
+          <p className="text-text-muted text-lg">{isEn ? "Competencies for delivering projects end to end." : "Компетенции, позволяющие закрывать проекты под ключ."}</p>
         </div>
 
         <div className="space-y-4">

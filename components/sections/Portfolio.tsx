@@ -3,12 +3,36 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { cases } from "@/lib/data";
+import { getCases } from "@/lib/data";
+import { useLanguage } from "@/components/language-provider";
 
 export default function Portfolio() {
+  const { lang, isEn } = useLanguage();
+  const cases = getCases(lang);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const updateScrollState = () => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  };
+
+  useEffect(() => {
+    updateScrollState();
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+    return () => {
+      el.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+    };
+  }, []);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
@@ -26,7 +50,7 @@ export default function Portfolio() {
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"
@@ -47,11 +71,11 @@ export default function Portfolio() {
               viewport={{ once: true }}
               className="text-3xl md:text-5xl font-bold uppercase text-white font-montserrat mb-2"
             >
-              КЕЙСЫ
+              {isEn ? "CASE STUDIES" : "КЕЙСЫ"}
             </motion.h2>
             {/* Mobile-only swipe hint */}
             <div className="md:hidden inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase">
-              <span>←</span> Листайте кейсы <span>→</span>
+              <span>←</span> {isEn ? "Swipe cases" : "Листайте кейсы"} <span>→</span>
             </div>
           </div>
 
@@ -75,10 +99,19 @@ export default function Portfolio() {
         </div>
 
         {/* Horizontal scroll container */}
-        <div 
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-12 -mx-6 px-6 gap-6 md:gap-8 scroll-smooth"
-        >
+        <div className="relative">
+          {/* Edge fade masks so a peeking next/prev card fades into the background instead of hard-clipping. Only shown once there's actually a card cut off in that direction — otherwise they darken the fully-visible first/last card for no reason. */}
+          {canScrollLeft && (
+            <div className="hidden md:block absolute top-0 bottom-12 left-0 w-24 lg:w-40 bg-gradient-to-r from-[#111111] via-[#111111]/90 to-transparent z-10 pointer-events-none" />
+          )}
+          {canScrollRight && (
+            <div className="hidden md:block absolute top-0 bottom-12 right-0 w-24 lg:w-40 bg-gradient-to-l from-[#111111] via-[#111111]/90 to-transparent z-10 pointer-events-none" />
+          )}
+
+          <div
+            ref={scrollContainerRef}
+            className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-12 -mx-6 px-6 gap-6 md:gap-8 scroll-smooth"
+          >
           {cases.filter(c => !c.hidden).map((c, i) => {
             let img = "/placeholder.jpg";
             if (c.slug.includes('01-insigma')) img = "/case_01.jpg";
@@ -120,7 +153,7 @@ export default function Portfolio() {
                       <p className="text-sm text-white/60 mb-4 line-clamp-2">{c.description}</p>
                     </div>
                     <span className="flex items-center gap-2 text-sm font-semibold text-white/70 group-hover:text-[#14F1D9] mt-2">
-                      Смотреть кейс 
+                      {isEn ? "View case study" : "Смотреть кейс"}
                       <svg className="w-4 h-4 transition-transform group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
@@ -130,6 +163,7 @@ export default function Portfolio() {
               </motion.div>
             );
           })}
+          </div>
         </div>
       </div>
     </section>

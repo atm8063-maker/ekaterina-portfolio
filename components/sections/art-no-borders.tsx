@@ -2,14 +2,17 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/components/language-provider";
+import { LazyVideo } from "@/components/lazy-video";
 
 export function ArtNoBorders() {
+  const { isEn } = useLanguage();
   return (
     <section className="py-16 lg:py-24 relative overflow-hidden text-white bg-[#111111]">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"
@@ -31,12 +34,13 @@ export function ArtNoBorders() {
             className="lg:col-span-7 flex flex-col justify-center order-1"
           >
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white font-montserrat mb-6 leading-[1.1]">
-              ШИРОКИЙ <br className="hidden sm:inline" />
-              <span className="text-[#14F1D9]">ДИАПАЗОН СМОЛЫ</span>
+              {isEn ? <>A WIDE <br className="hidden sm:inline" /> <span className="text-[#14F1D9]">RANGE OF RESIN</span></> : <>ШИРОКИЙ <br className="hidden sm:inline" /> <span className="text-[#14F1D9]">ДИАПАЗОН СМОЛЫ</span></>}
             </h2>
-            
+
             <p className="text-[#A3A3A3] text-base sm:text-lg lg:text-xl font-medium leading-[1.7] font-inter max-w-[560px]">
-              Эпоксидная смола отлично демонстрирует свою универсальность при создании любых форматов. Я работаю как с малыми формами, так и с крупными: от миниатюрных украшений до мебели. Картины, домашний декор, посуда, арт-объекты, ёлочные игрушки — смола отлично подходит для любой категории.
+              {isEn
+                ? "Epoxy resin shows off its versatility across every format. I work at both small and large scale — from miniature jewelry to furniture. Paintings, home decor, tableware, art objects, Christmas ornaments: resin works beautifully for any category."
+                : "Эпоксидная смола отлично демонстрирует свою универсальность при создании любых форматов. Я работаю как с малыми формами, так и с крупными: от миниатюрных украшений до мебели. Картины, домашний декор, посуда, арт-объекты, ёлочные игрушки — смола отлично подходит для любой категории."}
             </p>
           </motion.div>
 
@@ -51,7 +55,7 @@ export function ArtNoBorders() {
               <div className="absolute -inset-4 bg-gradient-to-tr from-[#14F1D9]/25 via-[#074F98]/20 to-transparent rounded-[32px] blur-2xl z-0 pointer-events-none"></div>
 
               <div className="relative z-10 rounded-2xl overflow-hidden border border-white/20 shadow-[0_25px_60px_rgba(0,0,0,0.8)] bg-[#111111]">
-                <video 
+                <LazyVideo
                   src="/art-video-1.mp4"
                   autoPlay
                   loop

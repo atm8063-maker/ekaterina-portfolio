@@ -3,14 +3,16 @@
 import { motion } from "framer-motion";
 
 import Image from "next/image";
+import { useLanguage } from "@/components/language-provider";
 
 export default function Contact() {
+  const { isEn } = useLanguage();
   return (
-    <section id="contact" className="py-24 scroll-mt-20 relative overflow-hidden bg-[#111111] text-center">
+    <footer id="contact" className="py-24 scroll-mt-20 relative overflow-hidden bg-[#111111] text-center">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"
@@ -29,7 +31,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-4xl md:text-6xl font-bold uppercase text-white tracking-widest mb-12"
         >
-          СВЯЗАТЬСЯ <span className="text-primary block mt-2">СО МНОЙ</span>
+          {isEn ? <>GET IN <span className="text-primary block mt-2">TOUCH</span></> : <>СВЯЗАТЬСЯ <span className="text-primary block mt-2">СО МНОЙ</span></>}
         </motion.h2>
 
         <motion.div 
@@ -43,7 +45,7 @@ export default function Contact() {
             href="mailto:razumova.ekaterina@gmail.com" 
             className="px-10 py-5 bg-primary text-black font-bold uppercase tracking-widest rounded-none hover:bg-white transition-colors"
           >
-            Написать на Email
+            {isEn ? "Email Me" : "Написать на Email"}
           </a>
           <a 
             href="https://t.me/fir_tree_art" 
@@ -57,8 +59,8 @@ export default function Contact() {
       </div>
       
       <div className="mt-24 pt-8 text-center text-text-muted text-sm tracking-widest uppercase">
-        <p>© {new Date().getFullYear()} Екатерина Разумова. Creative Generalist.</p>
+        <p>© {new Date().getFullYear()} {isEn ? "Ekaterina Razumova. Creative Generalist." : "Екатерина Разумова. Creative Generalist."}</p>
       </div>
-    </section>
+    </footer>
   );
 }

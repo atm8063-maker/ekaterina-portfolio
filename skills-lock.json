@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "accessibility-audit": {
+      "source": "rampstackco/claude-skills",
+      "sourceType": "github",
+      "skillPath": "skills/accessibility-audit/SKILL.md",
+      "computedHash": "c88c39d8a2df287c1071dc7fa5fc224bda61d0b6432b4b63d9206a81981773b4"
+    }
+  }
+}

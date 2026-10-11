@@ -6,6 +6,7 @@ import Link from "next/link";
 import Header from "@/components/layout/Header";
 import { CaseNavigation } from "@/components/cases/case-navigation";
 import { Maximize2, Eye, X, ArrowLeft, ArrowRight, Sparkles, ChevronRight } from "lucide-react";
+import { useLanguage, PageTitle } from "@/components/language-provider";
 
 interface VertexMockup {
   title: string;
@@ -14,31 +15,68 @@ interface VertexMockup {
   description: string;
 }
 
-const vertexMockups: VertexMockup[] = [
-  {
-    title: "iPad Air: Презентация каталога инвесторам",
-    type: "Tablet Lifestyle",
-    src: "/Кейсы/14-vertex-homes/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).jpg",
-    description: "Планшетный сценарий взаимодействия с каталогом вилл и доходной аналитикой на экране iPad Air в руках клиента."
+const vertexMockupsByLang: Record<"RU" | "EN", VertexMockup[]> = {
+  RU: [
+    {
+      title: "iPad Air: Презентация каталога инвесторам",
+      type: "Tablet Lifestyle",
+      src: "/Кейсы/14-vertex-homes/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).jpg",
+      description: "Планшетный сценарий взаимодействия с каталогом вилл и доходной аналитикой на экране iPad Air в руках клиента."
+    },
+    {
+      title: "iPhone 12 Pro: Мобильный интерфейс и бронь",
+      type: "Mobile Experience",
+      src: "/Кейсы/14-vertex-homes/iPhone 12 Pro.jpg",
+      description: "Мобильная адаптация интерфейса инвестиционной платформы: фильтры доходности, 3D-планировки и быстрая бронь лотов."
+    }
+  ],
+  EN: [
+    {
+      title: "iPad Air: Investor Catalog Presentation",
+      type: "Tablet Lifestyle",
+      src: "/Кейсы/14-vertex-homes/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).jpg",
+      description: "A tablet interaction scenario for the villa catalog and ROI analytics on an iPad Air held by a client."
+    },
+    {
+      title: "iPhone 12 Pro: Mobile Interface and Booking",
+      type: "Mobile Experience",
+      src: "/Кейсы/14-vertex-homes/iPhone 12 Pro.jpg",
+      description: "Mobile adaptation of the investment platform interface: yield filters, 3D floor plans, and fast lot booking."
+    }
+  ],
+};
+
+const t = {
+  RU: {
+    iframeTitle: "Vertex Homes — Умное строительство для умных инвестиций",
+    eyebrow: "МОКАПЫ УСТРОЙСТВ & ПРЕЗЕНТАЦИЯ",
+    heading: "Интерфейс Vertex Homes на устройствах",
+    lead: "Полноразмерные рендеры и визуализация взаимодействия с платформой на смартфонах, планшетах и широкоформатных экранах.",
+    mockupRender: "Mockup Render",
+    expand: "Развернуть",
   },
-  {
-    title: "iPhone 12 Pro: Мобильный интерфейс и бронь",
-    type: "Mobile Experience",
-    src: "/Кейсы/14-vertex-homes/iPhone 12 Pro.jpg",
-    description: "Мобильная адаптация интерфейса инвестиционной платформы: фильтры доходности, 3D-планировки и быстрая бронь лотов."
+  EN: {
+    iframeTitle: "Vertex Homes — Smart Construction for Smart Investments",
+    eyebrow: "DEVICE MOCKUPS & PRESENTATION",
+    heading: "Vertex Homes Interface Across Devices",
+    lead: "Full-scale renders and interaction visuals for the platform on smartphones, tablets, and wide-format screens.",
+    mockupRender: "Mockup Render",
+    expand: "Expand",
   },
-  {
-    title: "Комплексный презентационный холст Vertex Homes",
-    type: "Master Design Canvas",
-    src: "/Кейсы/14-vertex-homes/mockup.png",
-    description: "Полномасштабный визуальный макет со всеми блоками платформы: Hero, калькулятор ROI, каталог вилл и форма закрытого инвест-пула."
-  }
-];
+};
 
 export function VertexHomesCase() {
+  const { lang } = useLanguage();
+  const vertexMockups = vertexMockupsByLang[lang];
+  const tr = t[lang];
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeHeight, setIframeHeight] = useState<number>(4500);
   const [selectedImage, setSelectedImage] = useState<{ src: string; title: string; subtitle?: string } | null>(null);
+
+  // Navigating here via a case's prev/next link doesn't always land at the top.
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const syncHeight = () => {
     try {
@@ -83,6 +121,7 @@ export function VertexHomesCase() {
 
   return (
     <div className="min-h-screen bg-[#1b2629] text-[#F4F4F4] relative selection:bg-[#796D41] selection:text-white font-rubik">
+      <PageTitle titleRu="Кейс: Vertex Homes — Екатерина Разумова" titleEn="Case Study: Vertex Homes — Ekaterina Razumova" />
       {/* Deep smooth background matching Vertex Homes palette */}
       <div className="relative z-10">
         {/* Header */}
@@ -98,7 +137,7 @@ export function VertexHomesCase() {
           <div className="w-full rounded-2xl overflow-hidden border border-[#796D41]/30 shadow-2xl bg-[#222F33] transition-all duration-300">
             <iframe
               ref={iframeRef}
-              src="/case-vertex/index.html"
+              src={lang === "EN" ? "/case-vertex/index-en.html" : "/case-vertex/index.html"}
               onLoad={() => {
                 syncHeight();
                 setTimeout(syncHeight, 300);
@@ -113,7 +152,7 @@ export function VertexHomesCase() {
                 overflow: "hidden",
               }}
               scrolling="no"
-              title="Vertex Homes — Умное строительство для умных инвестиций"
+              title={tr.iframeTitle}
             />
           </div>
 
@@ -122,17 +161,17 @@ export function VertexHomesCase() {
             <div className="border-b border-[#796D41]/30 pb-4">
               <div className="text-xs font-montserrat font-bold text-[#B8A86C] uppercase tracking-widest mb-1 flex items-center gap-2">
                 <Sparkles className="w-3.5 h-3.5 text-[#B8A86C]" />
-                <span>МОКАПЫ УСТРОЙСТВ & ПРЕЗЕНТАЦИЯ</span>
+                <span>{tr.eyebrow}</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-black font-montserrat uppercase text-white tracking-tight">
-                Интерфейс Vertex Homes на устройствах
+                {tr.heading}
               </h2>
               <p className="text-sm text-white/70 font-sans mt-1 max-w-3xl leading-relaxed">
-                Полноразмерные рендеры и визуализация взаимодействия с платформой на смартфонах, планшетах и широкоформатных экранах.
+                {tr.lead}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
               {vertexMockups.map((m, idx) => (
                 <div
                   key={idx}
@@ -167,9 +206,9 @@ export function VertexHomesCase() {
                       </p>
                     </div>
                     <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] text-white/40 font-montserrat">
-                      <span>Mockup Render</span>
+                      <span>{tr.mockupRender}</span>
                       <span className="text-[#B8A86C] font-medium flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                        Развернуть <ChevronRight className="w-3 h-3" />
+                        {tr.expand} <ChevronRight className="w-3 h-3" />
                       </span>
                     </div>
                   </div>

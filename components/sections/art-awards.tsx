@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 
 type AwardPiece = {
   id: string;
@@ -11,7 +12,7 @@ type AwardPiece = {
   category?: string;
 };
 
-const winners: AwardPiece[] = [
+const winnersRu: AwardPiece[] = [
   {
     id: "wave-kingdom",
     title: "Скульптурная 3D-волна",
@@ -28,7 +29,24 @@ const winners: AwardPiece[] = [
   },
 ];
 
-const otherWorks: AwardPiece[] = [
+const winnersEn: AwardPiece[] = [
+  {
+    id: "wave-kingdom",
+    title: "Sculptural 3D Wave",
+    badge: "1ST PLACE • RESINART KINGDOM",
+    image: "/awards/winner-resinart-kingdom-wave.jpg",
+    category: "International competition",
+  },
+  {
+    id: "bulb-winner",
+    title: "Fern Terrarium Lamp",
+    badge: "\"ART RACE\" WINNER",
+    image: "/awards/winner-art-race-bulb1.jpg",
+    category: "Russia-wide competition",
+  },
+];
+
+const otherWorksRu: AwardPiece[] = [
   {
     id: "turquoise-diptych",
     title: "Диптих «Бирюзовая лагуна»",
@@ -79,7 +97,61 @@ const otherWorks: AwardPiece[] = [
   },
 ];
 
+const otherWorksEn: AwardPiece[] = [
+  {
+    id: "turquoise-diptych",
+    title: "\"Turquoise Lagoon\" Diptych",
+    badge: "ART RACE FINALIST",
+    image: "/awards/turquoise-diptych.jpg",
+  },
+  {
+    id: "whale-globe",
+    title: "Sphere with Whale and Sailboat",
+    badge: "ART RACE FINALIST",
+    image: "/awards/whale-wave-globe.jpg",
+  },
+  {
+    id: "boat-sphere",
+    title: "\"Boat in a Storm\" Sphere",
+    badge: "FINALIST",
+    image: "/awards/boat-sphere-wave.jpg",
+  },
+  {
+    id: "ice-hand",
+    title: "\"February '22\"",
+    badge: "COMPETITION ENTRY",
+    image: "/awards/ice-hand-sculpture.jpg",
+  },
+  {
+    id: "ocean-canvas",
+    title: "\"Ocean Wave\" Panel",
+    badge: "ART RELIEF",
+    image: "/awards/ocean-canvas-wave.jpg",
+  },
+  {
+    id: "crystal-candy",
+    title: "Crystal Candy",
+    badge: "ORIGINAL MOLD",
+    image: "/awards/crystal-candy.jpg",
+  },
+  {
+    id: "jewelry-set",
+    title: "Jewelry Set",
+    badge: "RESIN JEWELRY",
+    image: "/awards/jewelry-sea-set.jpg",
+  },
+  {
+    id: "flower-coasters",
+    title: "Floral Coasters",
+    badge: "ORIGINAL TECHNIQUE",
+    image: "/awards/flower-coasters.jpg",
+  },
+];
+
 export function ArtAwards() {
+  const { isEn } = useLanguage();
+  const winners = isEn ? winnersEn : winnersRu;
+  const otherWorks = isEn ? otherWorksEn : otherWorksRu;
   const [selectedImage, setSelectedImage] = useState<AwardPiece | null>(null);
 
   return (
@@ -87,7 +159,7 @@ export function ArtAwards() {
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"
@@ -104,38 +176,51 @@ export function ArtAwards() {
           {/* Левая колонка: Текст и статистика */}
           <div className="lg:col-span-5 space-y-6">
             <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight">
-              Победы, финалы <span className="text-[#14F1D9]">&</span> Судейство
+              {isEn ? <>Wins, Finals <span className="text-[#14F1D9]">&</span> Judging</> : <>Победы, финалы <span className="text-[#14F1D9]">&</span> Судейство</>}
             </h2>
 
             <div className="space-y-4 text-white/70 text-base sm:text-lg leading-relaxed font-inter">
-              <p>
-                Неоднократно побеждала в российских и международных конкурсах по смоле.
-              </p>
-              <p>
-                <strong className="text-white font-semibold">Более 10 раз</strong> изделия выходили в финал всероссийской «Арт-гонки». Впоследствии была приглашена в качестве <strong className="text-[#14F1D9] font-semibold">члена Жюри «Арт-гонки»</strong> — главного профессионального баттла мастеров-смолянистов.
-              </p>
+              {isEn ? (
+                <>
+                  <p>
+                    I&apos;ve repeatedly won Russian and international resin art competitions.
+                  </p>
+                  <p>
+                    My pieces made the final of the Russia-wide &quot;Art Race&quot; <strong className="text-white font-semibold">more than 10 times</strong>. I was later invited to serve as a <strong className="text-[#14F1D9] font-semibold">member of the &quot;Art Race&quot; jury</strong> — the leading professional battle for resin artists.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    Неоднократно побеждала в российских и международных конкурсах по смоле.
+                  </p>
+                  <p>
+                    <strong className="text-white font-semibold">Более 10 раз</strong> изделия выходили в финал всероссийской «Арт-гонки». Впоследствии была приглашена в качестве <strong className="text-[#14F1D9] font-semibold">члена Жюри «Арт-гонки»</strong> — главного профессионального баттла мастеров-смолянистов.
+                  </p>
+                </>
+              )}
             </div>
 
             {/* Метрики */}
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3 pt-2">
               <div className="border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-[#14F1D9] leading-tight">1 МЕСТО</div>
-                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Международный конкурс Resinart Kingdom</div>
+                <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-[#14F1D9] leading-tight">{isEn ? "1ST PLACE" : "1 МЕСТО"}</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">{isEn ? "Resinart Kingdom international competition" : "Международный конкурс Resinart Kingdom"}</div>
               </div>
 
               <div className="border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-[#14F1D9] leading-tight tracking-tight">ПОБЕДИТЕЛЬ</div>
-                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Всероссийская «Арт-гонка»</div>
+                <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-[#14F1D9] leading-tight tracking-tight">{isEn ? "WINNER" : "ПОБЕДИТЕЛЬ"}</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">{isEn ? "Russia-wide \"Art Race\"" : "Всероссийская «Арт-гонка»"}</div>
               </div>
 
               <div className="border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-white leading-tight">ЖЮРИ</div>
-                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Судейство профессиональных конкурсов</div>
+                <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-white leading-tight">{isEn ? "JURY" : "ЖЮРИ"}</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">{isEn ? "Judging professional competitions" : "Судейство профессиональных конкурсов"}</div>
               </div>
 
               <div className="border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-white leading-tight">10+ ФИНАЛОВ</div>
-                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Регулярные выходы в финал арт-битв</div>
+                <div className="font-montserrat text-sm xs:text-base sm:text-xl lg:text-2xl font-black text-white leading-tight">{isEn ? "10+ FINALS" : "10+ ФИНАЛОВ"}</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">{isEn ? "A regular finalist in art battles" : "Регулярные выходы в финал арт-битв"}</div>
               </div>
             </div>
           </div>
@@ -184,9 +269,9 @@ export function ArtAwards() {
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex items-center justify-between mb-6">
             <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#14F1D9]">
-              Другие финальные работы
+              {isEn ? "Other Finalist Pieces" : "Другие финальные работы"}
             </h4>
-            <span className="text-xs text-white/40 font-inter">Нажмите для увеличения</span>
+            <span className="text-xs text-white/40 font-inter">{isEn ? "Click to enlarge" : "Нажмите для увеличения"}</span>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
@@ -198,7 +283,7 @@ export function ArtAwards() {
               >
                 <Image
                   src={piece.image}
-                  alt={piece.title || "Конкурсная работа"}
+                  alt={piece.title || (isEn ? "Competition entry" : "Конкурсная работа")}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -219,7 +304,7 @@ export function ArtAwards() {
             <div className="relative w-full h-[65vh] sm:h-[75vh] rounded-none overflow-hidden border border-white/20">
               <Image
                 src={selectedImage.image}
-                alt={selectedImage.title || "Конкурсная работа"}
+                alt={selectedImage.title || (isEn ? "Competition entry" : "Конкурсная работа")}
                 fill
                 className="object-contain"
               />
