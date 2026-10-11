@@ -647,13 +647,13 @@ export function DoorsRealEstateCase() {
                       subtitle: selectedScheme.nameRu
                     })}
                     className="relative w-full cursor-zoom-in"
-                    style={{ height: '3500px' }}
+                    style={{ aspectRatio: '444 / 1920' }}
                   >
                     <Image
                       src={selectedScheme.imageSrc}
                       alt={selectedScheme.name}
                       fill
-                      className="object-contain object-top"
+                      className="object-cover object-top"
                       sizes="(max-width: 1200px) 100vw, 1200px"
                     />
                   </div>

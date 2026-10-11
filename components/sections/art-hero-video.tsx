@@ -31,6 +31,10 @@ export function ArtHeroVideo() {
       if (!near || document.hidden || cancelled) return;
       const el = usingLoop ? loop : main;
       if (!usingLoop && el.ended) return;
+      // `muted` as a JSX attribute only sets the default at mount; force the
+      // live DOM property before every imperative play() so it can't end up
+      // audible (see lazy-video.tsx for the same guard).
+      el.muted = true;
       void el.play().catch(() => {});
     };
     const pauseBoth = () => {
@@ -52,6 +56,7 @@ export function ArtHeroVideo() {
         return;
       }
       usingLoop = true;
+      loop.muted = true;
       void loop.play().catch(() => {});
       setLoopOn(true);
     };
@@ -119,7 +124,7 @@ export function ArtHeroVideo() {
         muted
         playsInline
         preload="auto"
-        fetchPriority="high"
+        {...({ fetchPriority: "high" } as React.VideoHTMLAttributes<HTMLVideoElement>)}
         onTransitionEnd={(event) => {
           if (event.propertyName === "opacity" && event.target === mainRef.current && loopOn) {
             setMainSettled(true);

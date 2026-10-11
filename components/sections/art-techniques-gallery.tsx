@@ -54,6 +54,7 @@ function TechniqueStripCard({
         if (!entry) return;
         if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
           attachSrc();
+          video.muted = true;
           void video.play().catch(() => {});
         } else {
           video.pause();
@@ -83,6 +84,7 @@ function TechniqueStripCard({
         rect.top < rootRect.bottom
       : rect.bottom > 0 && rect.top < window.innerHeight;
     if (!visible) return;
+    video.muted = true;
     void video.play().catch(() => {});
   }, [activeSrc, scrollRoot]);
 

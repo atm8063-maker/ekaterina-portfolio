@@ -78,6 +78,24 @@
 }
 
 @layer utilities {
+  /* Full-viewport height for the hero sections. Split across an @supports
+     block on purpose — NOT two plain declarations of the same property in one
+     rule (`height:100vh; height:100dvh;`): the build minifier collapses
+     duplicate properties within a single rule down to just the last one,
+     silently deleting the 100vh fallback. An @supports block is a structurally
+     separate rule, so it survives minification. Some mobile browser forks
+     (e.g. older Mi Browser builds) appear to parse `dvh` but compute a
+     wrong/oversized value rather than reject it outright, which is why a
+     min-height fallback alone isn't enough — this needs an actual override. */
+  .h-viewport-full {
+    height: 100vh;
+  }
+  @supports (height: 100dvh) {
+    .h-viewport-full {
+      height: 100dvh;
+    }
+  }
+
   .font-montserrat {
     font-family: var(--font-montserrat);
   }

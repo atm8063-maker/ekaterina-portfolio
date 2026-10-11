@@ -30,7 +30,10 @@ export function LazyVideo({
     const el = ref.current;
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") {
-      setShouldLoad(true);
+      // Defer off the synchronous effect pass (react-hooks/set-state-in-effect):
+      // this only runs for browsers without IntersectionObserver at all, so the
+      // one microtask of delay is irrelevant in practice.
+      queueMicrotask(() => setShouldLoad(true));
       return;
     }
 
@@ -54,6 +57,12 @@ export function LazyVideo({
     let near = false;
     const tryPlay = () => {
       if (!near || document.hidden || el.ended) return;
+      // The `muted` JSX attribute only sets the element's default state at
+      // mount; it isn't guaranteed to stick on the live DOM property once
+      // React creates the node via the DOM API rather than parsing HTML text.
+      // Force it right before an imperative play() so autoplay can't end up
+      // audible.
+      el.muted = Boolean(muted);
       void el.play().catch(() => {});
     };
     const tryPause = () => {
@@ -87,7 +96,7 @@ export function LazyVideo({
       document.removeEventListener("visibilitychange", onVisibility);
       el.pause();
     };
-  }, [shouldLoad, autoPlay]);
+  }, [shouldLoad, autoPlay, muted]);
 
   return (
     <video

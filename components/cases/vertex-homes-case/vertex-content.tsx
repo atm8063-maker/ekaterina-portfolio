@@ -20,13 +20,10 @@ const vertexMockups: VertexMockup[] = [
     type: "Mobile Experience",
     src: "/Кейсы/14-vertex-homes/iPhone 12 Pro.webp",
     description: "Мобильная адаптация интерфейса инвестиционной платформы: фильтры доходности, 3D-планировки и быстрая бронь лотов."
-  },
-  {
-    title: "Комплексный презентационный холст Vertex Homes",
-    type: "Master Design Canvas",
-    src: "/Кейсы/14-vertex-homes/mockup.webp",
-    description: "Полномасштабный визуальный макет со всеми блоками платформы: Hero, калькулятор ROI, каталог вилл и форма закрытого инвест-пула."
   }
+  // "Master Design Canvas" (mockup.webp) removed: the source file is byte-identical
+  // to the corrupted public/case-vertex/assets/vertex_landing_full.webp (same md5),
+  // there is no good replacement in the repo.
 ];
 
 export type SelectedVertexImage = {
@@ -55,7 +52,7 @@ export function VertexMockupsSection({ onSelectImage }: VertexMockupsSectionProp
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
         {vertexMockups.map((m, idx) => (
           <div
             key={idx}
