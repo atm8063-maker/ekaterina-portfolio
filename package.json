@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "generate:favicons": "node scripts/generate-favicons.mjs"
+    "generate:favicons": "node scripts/generate-favicons.mjs",
+    "images:convert": "node scripts/convert-images.mjs --referenced",
+    "images:convert:write": "node scripts/convert-images.mjs --referenced --write"
   },
   "browserslist": [
     "chrome >= 109",

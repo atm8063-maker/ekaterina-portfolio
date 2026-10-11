@@ -47,7 +47,7 @@
     color: var(--foreground);
     font-family: var(--font-sans);
     /* Paper texture — without fixed attachment (breaks mobile browsers) */
-    background-image: url('/paper-bg-dark.png');
+    background-image: url('/paper-bg-dark.webp');
     background-blend-mode: overlay;
     background-size: 600px auto;
     background-repeat: repeat;
@@ -87,7 +87,7 @@
   /* Art protest: tile wall texture at native height scale (no horizontal stretch) */
   .art-protest-wall-bg {
     background-color: var(--color-background);
-    background-image: url('/seamless_ceiling_v3_11_final1.jpg');
+    background-image: url('/seamless_ceiling_v3_11_final1.webp');
     background-repeat: repeat-x;
     background-size: auto 100%;
     background-position: center center;

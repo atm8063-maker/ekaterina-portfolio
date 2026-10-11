@@ -142,7 +142,7 @@ export const doorsRealEstateData: DoorsRealEstateData = {
         { hex: "#CDD6E3", role: "Ice Tint", label: "Ледяной туман" },
         { hex: "#F5F6F8", role: "Surface Light", label: "Фоновый молочный" }
       ],
-      imageSrc: "/Кейсы/08-mockup-real-estate/figma_exports/01_scheme_original.png",
+      imageSrc: "/Кейсы/08-mockup-real-estate/figma_exports/01_scheme_original.webp",
       keyFeatures: [
         "Максимальный индекс доверия у инвесторов и покупателей первого жилья",
         "Четкий контраст типографики на светлом архитектурном фоне",
@@ -167,7 +167,7 @@ export const doorsRealEstateData: DoorsRealEstateData = {
         { hex: "#E2E8F0", role: "Platinum Border", label: "Платиновая грань" },
         { hex: "#FAFAFA", role: "Paper White", label: "Архитектурная бумага" }
       ],
-      imageSrc: "/Кейсы/08-mockup-real-estate/figma_exports/02_scheme_monochrome.png",
+      imageSrc: "/Кейсы/08-mockup-real-estate/figma_exports/02_scheme_monochrome.webp",
       keyFeatures: [
         "Фокус исключительно на текстурах бетона, дерева и панорамных видах",
         "Брутальный премиальный характер для VIP-клиентов и архитекторов",
@@ -192,7 +192,7 @@ export const doorsRealEstateData: DoorsRealEstateData = {
         { hex: "#FDE68A", role: "Sun Mist", label: "Золотистый отблеск" },
         { hex: "#FFFBEB", role: "Sand Surface", label: "Теплый песчаный" }
       ],
-      imageSrc: "/Кейсы/08-mockup-real-estate/figma_exports/03_scheme_complementary.png",
+      imageSrc: "/Кейсы/08-mockup-real-estate/figma_exports/03_scheme_complementary.webp",
       keyFeatures: [
         "Наивысшая кликабельность интерактивных элементов и кнопок связи (+28% CTR)",
         "Эмоциональный посыл роскоши, тепла и заграничного отдыха",
@@ -217,7 +217,7 @@ export const doorsRealEstateData: DoorsRealEstateData = {
         { hex: "#CAD2C5", role: "Morning Fog", label: "Утренний туман" },
         { hex: "#F4F6F4", role: "Clean Meadow", label: "Лесная поляна" }
       ],
-      imageSrc: "/Кейсы/08-mockup-real-estate/figma_exports/04_scheme_analogous.png",
+      imageSrc: "/Кейсы/08-mockup-real-estate/figma_exports/04_scheme_analogous.webp",
       keyFeatures: [
         "Снижает стресс при выборе загородной локации и оценке транспортной доступности",
         "Идеальная гармония с ландшафтными фотографиями и аэрофотосъемкой участков",
@@ -407,43 +407,43 @@ export const doorsRealEstateData: DoorsRealEstateData = {
     {
       title: "MacBook Pro на каменном постаменте (Editorial Showcase)",
       type: "Desktop Showcase",
-      src: "/Кейсы/08-mockup-real-estate/Free MacBook Pro mockup on stone pedestal (Mockuuups Studio) (1).jpg",
+      src: "/Кейсы/08-mockup-real-estate/Free MacBook Pro mockup on stone pedestal (Mockuuups Studio) (1).webp",
       description: "Презентационный мокап флагманского 1366px портала Doors Real Estate на экране MacBook Pro на фактурном каменном постаменте."
     },
     {
       title: "MacBook Pro Space Gray в рабочем интерьере",
       type: "Workspace Environment",
-      src: "/Кейсы/08-mockup-real-estate/Free Macbook Pro Space Gray mockup on the wooden table (Mockuuups Studio).jpg",
+      src: "/Кейсы/08-mockup-real-estate/Free Macbook Pro Space Gray mockup on the wooden table (Mockuuups Studio).webp",
       description: "Отображение каталога Urban Realty и подбора элитных апартаментов на деревянном столе в премиальном офисе."
     },
     {
       title: "iPad Pro: Презентация лота клиенту брокером",
       type: "Tablet Lifestyle",
-      src: "/Кейсы/08-mockup-real-estate/Free mockup of man pointing on iPad (Mockuuups Studio).jpg",
+      src: "/Кейсы/08-mockup-real-estate/Free mockup of man pointing on iPad (Mockuuups Studio).webp",
       description: "Планшетный сценарий: персональный брокер презентует архитектурный план и видовые оси пентхауса покупателю."
     },
     {
       title: "iPhone 15 Pro: Быстрая бронь & Оплата задатка с карты",
       type: "Mobile Transaction",
-      src: "/Кейсы/08-mockup-real-estate/Free iPhone 15 Pro mockup with credit card in hand (Mockuuups Studio).jpg",
+      src: "/Кейсы/08-mockup-real-estate/Free iPhone 15 Pro mockup with credit card in hand (Mockuuups Studio).webp",
       description: "Мобильный интерфейс в руке пользователя с банковской картой: мгновенное внесение депозита и фиксация цены лота."
     },
     {
       title: "iPhone Showcase на мультицветовом фоне",
       type: "Editorial Mockup",
-      src: "/Кейсы/08-mockup-real-estate/Free iPhone mockup on multicolored background (Mockuuups Studio).jpg",
+      src: "/Кейсы/08-mockup-real-estate/Free iPhone mockup on multicolored background (Mockuuups Studio).webp",
       description: "Презентация мобильной адаптации каталога на ярком геометрическом фоне, подчеркивающем 4-цветную цветовую палитру проекта."
     },
     {
       title: "iPhone 12 Pro 3D Showcase (2716 × 2037 px)",
       type: "Photorealistic 3D Render",
-      src: "/Кейсы/08-mockup-real-estate/figma_exports/05_iphone_mockup.png",
+      src: "/Кейсы/08-mockup-real-estate/figma_exports/05_iphone_mockup.webp",
       description: "Фотореалистичный 3D-рендер двух смартфонов Apple iPhone 12 Pro под углом, демонстрирующий безупречную адаптивность смарт-фильтра, каталога Urban Realty и презентационных карточек."
     },
     {
       title: "Полный десктопный портал 1366 × 5909 px (Исходник)",
       type: "Master Desktop Canvas",
-      src: "/Кейсы/08-mockup-real-estate/figma_exports/01_scheme_original.png",
+      src: "/Кейсы/08-mockup-real-estate/figma_exports/01_scheme_original.webp",
       description: "Полноразмерный непрерывный холст десктопного сайта агентства со всеми ключевыми секциями: Hero, смарт-фильтр, Urban Realty, Country Homes, International, база данных 1700+ лотов и футер конверсий."
     }
   ]

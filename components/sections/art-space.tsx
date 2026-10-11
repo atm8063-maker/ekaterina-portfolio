@@ -8,7 +8,7 @@ export function ArtSpace() {
         <div className="absolute inset-0 w-full h-full pointer-events-none">
           <div className="absolute right-0 top-[60px] sm:top-0 bottom-0 w-full sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[55%] translate-x-[125px] sm:translate-x-0">
             <Image 
-              src="/art-gallery/photo_2930@31-07-2026_17-46-03.jpg" 
+              src="/art-gallery/photo_2930@31-07-2026_17-46-03.webp" 
               alt="Искусство в пространстве" 
               fill
               priority

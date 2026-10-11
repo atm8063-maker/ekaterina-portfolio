@@ -8,20 +8,20 @@ import { cases } from "@/lib/data";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 
 function caseCoverImage(slug: string): string {
-  if (slug.includes("01-insigma")) return "/case_01.jpg";
-  if (slug.includes("02-contact")) return "/case_02.jpg";
-  if (slug.includes("03-pobeda")) return "/case_03.jpg";
-  if (slug.includes("04-kart-motors")) return "/case_04.jpg";
-  if (slug.includes("05-nick")) return "/case_05.jpg";
-  if (slug.includes("06-mafia")) return "/case_06.jpg";
-  if (slug.includes("08-mockup-real")) return "/case_08.jpg";
-  if (slug.includes("09-mockup-elec")) return "/case_09.jpg";
-  if (slug.includes("10-house")) return "/case_10.jpg";
-  if (slug.includes("11-landscape")) return "/case_11.jpg";
-  if (slug.includes("12-resin")) return "/case_12.jpg";
-  if (slug.includes("13-local-tv-report")) return "/case_13.jpg";
-  if (slug.includes("14-vertex")) return "/case_14.jpg";
-  return "/placeholder.jpg";
+  if (slug.includes("01-insigma")) return "/case_01.webp";
+  if (slug.includes("02-contact")) return "/case_02.webp";
+  if (slug.includes("03-pobeda")) return "/case_03.webp";
+  if (slug.includes("04-kart-motors")) return "/case_04.webp";
+  if (slug.includes("05-nick")) return "/case_05.webp";
+  if (slug.includes("06-mafia")) return "/case_06.webp";
+  if (slug.includes("08-mockup-real")) return "/case_08.webp";
+  if (slug.includes("09-mockup-elec")) return "/case_09.webp";
+  if (slug.includes("10-house")) return "/case_10.webp";
+  if (slug.includes("11-landscape")) return "/case_11.webp";
+  if (slug.includes("12-resin")) return "/case_12.webp";
+  if (slug.includes("13-local-tv-report")) return "/case_13.webp";
+  if (slug.includes("14-vertex")) return "/case_14.webp";
+  return "/placeholder.webp";
 }
 
 const visibleCases = cases.filter((c) => !c.hidden);
@@ -84,7 +84,7 @@ export default function Portfolio() {
     <section id="cases" className="py-24 relative overflow-hidden bg-background">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
-          src="/paper-clean-dark.png"
+          src="/paper-clean-dark.webp"
           alt="Paper texture"
           fill
           className="object-cover opacity-70 mix-blend-screen"

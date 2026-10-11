@@ -90,7 +90,7 @@ export default function Hero() {
         {/* Dark Paper Background for Mobile */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/paper-bg-dark.png" 
+            src="/paper-bg-dark.webp" 
             alt="Crumpled paper texture" 
             fill 
             className="object-cover opacity-60 mix-blend-screen"
@@ -114,7 +114,7 @@ export default function Hero() {
             }}
           >
             <img 
-              src="/splatters/splatter_1.png" 
+              src="/splatters/splatter_1.webp" 
               alt="Splatter" 
               className="w-full h-full object-contain pointer-events-none"
               style={{ filter: "sepia(1) saturate(10) hue-rotate(140deg) brightness(1.2) opacity(0.35)" }}
@@ -131,7 +131,7 @@ export default function Hero() {
             }}
           >
             <img 
-              src="/splatters/splatter_1.png" 
+              src="/splatters/splatter_1.webp" 
               alt="Splatter" 
               className="w-full h-full object-contain pointer-events-none"
               style={{ filter: "sepia(1) saturate(10) hue-rotate(140deg) brightness(1.2) opacity(0.3)" }}
@@ -142,7 +142,7 @@ export default function Hero() {
         {/* Full screen photo cutout bounded strictly below the header */}
         <div className="absolute top-[5rem] bottom-0 left-0 right-0 z-10 pointer-events-none">
           <Image 
-            src="/hero-cutout.png" 
+            src="/hero-cutout.webp" 
             alt="Екатерина Разумова"
             fill
             className="object-cover object-top"
@@ -179,7 +179,7 @@ export default function Hero() {
         {/* Dark Paper Background */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/paper-bg-dark.png" 
+            src="/paper-bg-dark.webp" 
             alt="Crumpled paper texture" 
             fill 
             className="object-cover opacity-60 mix-blend-screen"
@@ -214,7 +214,7 @@ export default function Hero() {
               }}
             >
               <img 
-                src="/splatters/splatter_1.png" 
+                src="/splatters/splatter_1.webp" 
                 alt="Splatter" 
                 className="w-full h-full object-contain pointer-events-none"
                 style={{ filter: "sepia(1) saturate(10) hue-rotate(140deg) brightness(1.2) opacity(0.35)" }}
@@ -229,7 +229,7 @@ export default function Hero() {
           style={{ ["--motion-reveal-duration" as string]: "0.8s" }}
         >
           <Image 
-            src="/hero-cutout.png" 
+            src="/hero-cutout.webp" 
             alt="Екатерина Разумова"
             fill
             className="object-contain object-[left_bottom] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"

@@ -16,14 +16,14 @@ const winners: AwardPiece[] = [
     id: "wave-kingdom",
     title: "Скульптурная 3D-волна",
     badge: "1 МЕСТО • RESINART KINGDOM",
-    image: "/awards/winner-resinart-kingdom-wave.jpg",
+    image: "/awards/winner-resinart-kingdom-wave.webp",
     category: "Международный конкурс",
   },
   {
     id: "bulb-winner",
     title: "Лампа-террариум с папоротником",
     badge: "ПОБЕДИТЕЛЬ «АРТ-ГОНКИ»",
-    image: "/awards/winner-art-race-bulb1.jpg",
+    image: "/awards/winner-art-race-bulb1.webp",
     category: "Всероссийский конкурс",
   },
 ];
@@ -33,49 +33,49 @@ const otherWorks: AwardPiece[] = [
     id: "turquoise-diptych",
     title: "Диптих «Бирюзовая лагуна»",
     badge: "ФИНАЛИСТ АРТ-ГОНКИ",
-    image: "/awards/turquoise-diptych.jpg",
+    image: "/awards/turquoise-diptych.webp",
   },
   {
     id: "whale-globe",
     title: "Сфера с китом и парусником",
     badge: "ФИНАЛИСТ АРТ-ГОНКИ",
-    image: "/awards/whale-wave-globe.jpg",
+    image: "/awards/whale-wave-globe.webp",
   },
   {
     id: "boat-sphere",
     title: "Сфера «Лодка в шторме»",
     badge: "ФИНАЛИСТ",
-    image: "/awards/boat-sphere-wave.jpg",
+    image: "/awards/boat-sphere-wave.webp",
   },
   {
     id: "ice-hand",
     title: "«Февраль 22-го»",
     badge: "КОНКУРСНАЯ РАБОТА",
-    image: "/awards/ice-hand-sculpture.jpg",
+    image: "/awards/ice-hand-sculpture.webp",
   },
   {
     id: "ocean-canvas",
     title: "Панно «Океаническая волна»",
     badge: "АРТ-РЕЛЬЕФ",
-    image: "/awards/ocean-canvas-wave.jpg",
+    image: "/awards/ocean-canvas-wave.webp",
   },
   {
     id: "crystal-candy",
     title: "Кристальная конфета",
     badge: "АВТОРСКАЯ ФОРМА",
-    image: "/awards/crystal-candy.jpg",
+    image: "/awards/crystal-candy.webp",
   },
   {
     id: "jewelry-set",
     title: "Ювелирный гарнитур",
     badge: "ЮВЕЛИРНАЯ СМОЛА",
-    image: "/awards/jewelry-sea-set.jpg",
+    image: "/awards/jewelry-sea-set.webp",
   },
   {
     id: "flower-coasters",
     title: "Цветочные подстаканники",
     badge: "АВТОРСКАЯ ТЕХНИКА",
-    image: "/awards/flower-coasters.jpg",
+    image: "/awards/flower-coasters.webp",
   },
 ];
 
@@ -87,7 +87,7 @@ export function ArtAwards() {
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"

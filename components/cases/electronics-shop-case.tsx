@@ -58,7 +58,7 @@ export function ElectronicsShopCase() {
       {/* Background paper texture matching Ekaterina's site */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Image
-          src="/paper-clean-dark.png"
+          src="/paper-clean-dark.webp"
           alt="Paper texture"
           fill
           className="object-cover opacity-70 mix-blend-screen"
@@ -161,7 +161,7 @@ export function ElectronicsShopCase() {
               </div>
               <button
                 onClick={() => setSelectedImage({
-                  src: "/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.jpg",
+                  src: "/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.webp",
                   title: "Editorial Showcase Poster (2400 × 1500 px)",
                   subtitle: "Полноразмерный рендер дизайн-системы, десктопа 1440px и мобильного флоу Shop 4.0"
                 })}
@@ -174,14 +174,14 @@ export function ElectronicsShopCase() {
 
             <div
               onClick={() => setSelectedImage({
-                src: "/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.jpg",
+                src: "/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.webp",
                 title: "Editorial Showcase Poster (2400 × 1500 px)",
                 subtitle: "Полноразмерный рендер дизайн-системы, десктопа 1440px и мобильного флоу Shop 4.0"
               })}
               className="relative aspect-[16/10] w-full bg-black/60 rounded-xl overflow-hidden cursor-pointer group border border-white/10 hover:border-primary/50 transition-all"
             >
               <Image
-                src="/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.jpg"
+                src="/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.webp"
                 alt="Editorial Poster"
                 fill
                 className="object-contain group-hover:scale-101 transition-transform duration-500"

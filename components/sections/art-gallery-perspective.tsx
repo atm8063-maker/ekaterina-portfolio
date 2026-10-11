@@ -69,7 +69,7 @@ export default function ArtGalleryPerspective() {
       className="relative w-full h-screen overflow-hidden bg-black flex items-center justify-center"
       style={{ 
         perspective: "1800px",
-        backgroundImage: "url('/museum-bg.png')",
+        backgroundImage: "url('/museum-bg.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

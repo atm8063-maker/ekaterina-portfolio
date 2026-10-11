@@ -53,7 +53,7 @@ export function CasePageClient({ slug, caseData, images }: Props) {
         {/* Paper texture overlay */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           <Image 
-            src="/paper-clean-dark.png" 
+            src="/paper-clean-dark.webp" 
             alt="Paper texture" 
             fill 
             className="object-cover opacity-70 mix-blend-screen"

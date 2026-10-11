@@ -84,9 +84,20 @@ export default async function CasePage({
     const publicCaseDir = path.join(process.cwd(), 'public', 'Кейсы', slug)
     if (fs.existsSync(publicCaseDir)) {
       const files = fs.readdirSync(publicCaseDir)
-      images = files
-        .filter((f) => f.match(/\.(jpg|jpeg|png|webp|gif)$/i))
-        .filter((f) => !f.includes('mockup.png'))
+      const imageFiles = files.filter(
+        (f) => f.match(/\.(jpg|jpeg|png|webp|gif)$/i) && !f.toLowerCase().includes('mockup.')
+      )
+      const webpStems = new Set(
+        imageFiles
+          .filter((f) => f.toLowerCase().endsWith('.webp'))
+          .map((f) => f.slice(0, -'.webp'.length).toLowerCase())
+      )
+      images = imageFiles
+        .filter((f) => {
+          const ext = path.extname(f).toLowerCase()
+          if (ext !== '.jpg' && ext !== '.jpeg' && ext !== '.png') return true
+          return !webpStems.has(f.slice(0, -ext.length).toLowerCase())
+        })
         .map((f) => `/Кейсы/${slug}/${f}`)
     }
   } catch {

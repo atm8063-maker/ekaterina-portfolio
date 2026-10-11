@@ -47,7 +47,7 @@ export function DoorsRealEstateCase() {
       {/* Background paper texture matching Ekaterina's site */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Image
-          src="/paper-clean-dark.png"
+          src="/paper-clean-dark.webp"
           alt="Paper texture"
           fill
           className="object-cover opacity-70 mix-blend-screen"
@@ -149,7 +149,7 @@ export function DoorsRealEstateCase() {
               </div>
               <button
                 onClick={() => setSelectedImage({
-                  src: "/Кейсы/08-mockup-real-estate/figma_exports/05_iphone_mockup.png",
+                  src: "/Кейсы/08-mockup-real-estate/figma_exports/05_iphone_mockup.webp",
                   title: "Apple iPhone 12 Pro 3D Showcase (2716 × 2037 px)",
                   subtitle: "Фотореалистичный 3D-рендер мобильного интерфейса Doors Real Estate"
                 })}
@@ -163,14 +163,14 @@ export function DoorsRealEstateCase() {
             {/* Interactive Mockup Container */}
             <div 
               onClick={() => setSelectedImage({
-                src: "/Кейсы/08-mockup-real-estate/figma_exports/05_iphone_mockup.png",
+                src: "/Кейсы/08-mockup-real-estate/figma_exports/05_iphone_mockup.webp",
                 title: "Apple iPhone 12 Pro 3D Showcase (2716 × 2037 px)",
                 subtitle: "Фотореалистичный 3D-рендер мобильного интерфейса Doors Real Estate"
               })}
               className="relative w-full aspect-[4/3] max-h-[640px] bg-black/50 rounded-xl overflow-hidden cursor-pointer group border border-white/10 hover:border-primary/50 transition-all flex items-center justify-center p-4"
             >
               <Image
-                src="/Кейсы/08-mockup-real-estate/figma_exports/05_iphone_mockup.png"
+                src="/Кейсы/08-mockup-real-estate/figma_exports/05_iphone_mockup.webp"
                 alt="Doors Real Estate iPhone 12 Pro 3D Showcase"
                 fill
                 className="object-contain p-2 sm:p-6 group-hover:scale-102 transition-transform duration-700"

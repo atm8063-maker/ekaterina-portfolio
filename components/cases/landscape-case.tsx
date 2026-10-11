@@ -69,7 +69,7 @@ export function LandscapeCase() {
       {/* Background paper texture matching Ekaterina's portfolio */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Image
-          src="/paper-clean-dark.png"
+          src="/paper-clean-dark.webp"
           alt="Paper texture"
           fill
           className="object-cover opacity-50 mix-blend-screen"
@@ -278,7 +278,7 @@ export function LandscapeCase() {
                       {/* Картинка генплана */}
                       <div className="relative aspect-[1024/546] w-full bg-white">
                         <Image
-                          src="/Кейсы/11-landscape-project/master_plan_main.jpg"
+                          src="/Кейсы/11-landscape-project/master_plan_main.webp"
                           alt="Генеральный план усадьбы с дендропланом"
                           fill
                           className="object-contain transition-transform duration-500 group-hover:scale-[1.01]"
@@ -301,7 +301,7 @@ export function LandscapeCase() {
 
                       {/* Кнопка фулскрина */}
                       <button
-                        onClick={() => setSelectedImage("/Кейсы/11-landscape-project/master_plan_main.jpg")}
+                        onClick={() => setSelectedImage("/Кейсы/11-landscape-project/master_plan_main.webp")}
                         className="absolute bottom-4 right-4 px-3 py-1.5 rounded-lg bg-black/60 hover:bg-black/90 text-white text-xs border border-white/20 transition-all flex items-center gap-1.5"
                       >
                         <Maximize2 className="w-3.5 h-3.5" />
@@ -340,12 +340,12 @@ export function LandscapeCase() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div 
-                          onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (5).jpg")}
+                          onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (5).webp")}
                           className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-primary/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
                         >
                           <div className="relative aspect-[16/10] overflow-hidden bg-black">
                             <Image
-                              src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (5).jpg"
+                              src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (5).webp"
                               alt="Японский садик и пруд с деревянным мостиком"
                               fill
                               className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -368,12 +368,12 @@ export function LandscapeCase() {
                         </div>
 
                         <div 
-                          onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (4).jpg")}
+                          onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (4).webp")}
                           className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-primary/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
                         >
                           <div className="relative aspect-[16/10] overflow-hidden bg-black">
                             <Image
-                              src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (4).jpg"
+                              src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (4).webp"
                               alt="Шатровая чайная беседка и костровой очаг"
                               fill
                               className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -396,12 +396,12 @@ export function LandscapeCase() {
                         </div>
 
                         <div 
-                          onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (2).jpg")}
+                          onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (2).webp")}
                           className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-primary/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
                         >
                           <div className="relative aspect-[16/10] overflow-hidden bg-black">
                             <Image
-                              src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (2).jpg"
+                              src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-09 (2).webp"
                               alt="Панорама двора и центрального партерного газона"
                               fill
                               className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -424,12 +424,12 @@ export function LandscapeCase() {
                         </div>
 
                         <div 
-                          onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (5).jpg")}
+                          onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (5).webp")}
                           className="group cursor-pointer rounded-2xl overflow-hidden bg-[#161A1B] border border-white/10 hover:border-primary/60 transition-all flex flex-col shadow-lg hover:shadow-[#14F1D9]/10"
                         >
                           <div className="relative aspect-[16/10] overflow-hidden bg-black">
                             <Image
-                              src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (5).jpg"
+                              src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-10 (5).webp"
                               alt="Детский игровой комплекс и подвесное кресло"
                               fill
                               className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -632,12 +632,12 @@ export function LandscapeCase() {
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div 
-                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-05.jpg")}
+                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-05.webp")}
                     className="cursor-pointer rounded-xl overflow-hidden border border-white/10 bg-white group"
                   >
                     <div className="relative aspect-[4/3]">
                       <Image
-                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-05.jpg"
+                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-05.webp"
                         alt="Северная часть дендроплана"
                         fill
                         className="object-contain p-2 group-hover:scale-105 transition-transform"
@@ -649,12 +649,12 @@ export function LandscapeCase() {
                   </div>
 
                   <div 
-                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-06.jpg")}
+                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-06.webp")}
                     className="cursor-pointer rounded-xl overflow-hidden border border-white/10 bg-white group"
                   >
                     <div className="relative aspect-[4/3]">
                       <Image
-                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-06.jpg"
+                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-06.webp"
                         alt="Южная часть дендроплана"
                         fill
                         className="object-contain p-2 group-hover:scale-105 transition-transform"
@@ -863,12 +863,12 @@ export function LandscapeCase() {
                 {/* Иллюстрация дорожек из проекта */}
                 <div className="mt-10 p-6 rounded-2xl bg-[#0E1111] border border-white/10">
                   <div 
-                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-06 (4).jpg")}
+                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-06 (4).webp")}
                     className="cursor-pointer rounded-xl overflow-hidden bg-white group"
                   >
                     <div className="relative aspect-[16/7]">
                       <Image
-                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-06 (4).jpg"
+                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-06 (4).webp"
                         alt="Схема дорожно-тропиночной сети"
                         fill
                         className="object-contain p-2 group-hover:scale-102 transition-transform"
@@ -922,12 +922,12 @@ export function LandscapeCase() {
                 {/* 2 Схемы освещения из проекта */}
                 <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div 
-                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-07 (5).jpg")}
+                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-07 (5).webp")}
                     className="cursor-pointer rounded-2xl overflow-hidden border border-white/10 group bg-[#0E1111]"
                   >
                     <div className="relative aspect-video bg-white">
                       <Image
-                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-07 (5).jpg"
+                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-07 (5).webp"
                         alt="Сводный план наружного освещения (49 точек)"
                         fill
                         className="object-contain p-2 group-hover:scale-105 transition-transform"
@@ -940,12 +940,12 @@ export function LandscapeCase() {
                   </div>
 
                   <div 
-                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-07 (6).jpg")}
+                    onClick={() => setSelectedImage("/Кейсы/11-landscape-project/photo_2026-09-05_13-57-07 (6).webp")}
                     className="cursor-pointer rounded-2xl overflow-hidden border border-white/10 group bg-[#0E1111]"
                   >
                     <div className="relative aspect-video bg-white">
                       <Image
-                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-07 (6).jpg"
+                        src="/Кейсы/11-landscape-project/photo_2026-09-05_13-57-07 (6).webp"
                         alt="План подсветки зоны отдыха и японского сада"
                         fill
                         className="object-contain p-2 group-hover:scale-105 transition-transform"

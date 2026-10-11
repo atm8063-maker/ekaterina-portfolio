@@ -18,6 +18,7 @@ node_modules
 scratch/
 scripts/*
 !scripts/generate-favicons.mjs
+!scripts/convert-images.mjs
 temp.txt
 step*.txt
 step*.json

@@ -9,7 +9,7 @@ type CasePaperBackgroundProps = {
 };
 
 export function CasePaperBackground({
-  src = "/paper-clean-dark.png",
+  src = "/paper-clean-dark.webp",
   className,
   imageClassName = "object-cover opacity-70 mix-blend-screen",
   priority = false,

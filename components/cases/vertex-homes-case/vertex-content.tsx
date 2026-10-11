@@ -12,19 +12,19 @@ const vertexMockups: VertexMockup[] = [
   {
     title: "iPad Air: Презентация каталога инвесторам",
     type: "Tablet Lifestyle",
-    src: "/Кейсы/14-vertex-homes/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).jpg",
+    src: "/Кейсы/14-vertex-homes/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).webp",
     description: "Планшетный сценарий взаимодействия с каталогом вилл и доходной аналитикой на экране iPad Air в руках клиента."
   },
   {
     title: "iPhone 12 Pro: Мобильный интерфейс и бронь",
     type: "Mobile Experience",
-    src: "/Кейсы/14-vertex-homes/iPhone 12 Pro.jpg",
+    src: "/Кейсы/14-vertex-homes/iPhone 12 Pro.webp",
     description: "Мобильная адаптация интерфейса инвестиционной платформы: фильтры доходности, 3D-планировки и быстрая бронь лотов."
   },
   {
     title: "Комплексный презентационный холст Vertex Homes",
     type: "Master Design Canvas",
-    src: "/Кейсы/14-vertex-homes/mockup.png",
+    src: "/Кейсы/14-vertex-homes/mockup.webp",
     description: "Полномасштабный визуальный макет со всеми блоками платформы: Hero, калькулятор ROI, каталог вилл и форма закрытого инвест-пула."
   }
 ];

@@ -406,7 +406,7 @@ export const electronicsShopData: ElectronicsShopData = {
         step: "01",
         title: "Заставка (Splash Screen)",
         category: "Onboarding & Brand",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/02_splash_mobile.png",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/02_splash_mobile.webp",
         uxHighlights: [
           "Минималистичный логотип бренда по центру экрана",
           "Фирменный фон с высокой узнаваемостью",
@@ -419,7 +419,7 @@ export const electronicsShopData: ElectronicsShopData = {
         step: "02",
         title: "Экран загрузки (Loading State)",
         category: "System Feedback",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/03_loading_mobile.png",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/03_loading_mobile.webp",
         uxHighlights: [
           "Плавный индикатор прогресса",
           "Предотвращает ощущение зависания интерфейса",
@@ -432,7 +432,7 @@ export const electronicsShopData: ElectronicsShopData = {
         step: "03",
         title: "Главный экран (Home Screen)",
         category: "Core Discovery",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/01_home_mobile.png",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/01_home_mobile.webp",
         uxHighlights: [
           "Карусель горячих акций с высоким контрастом",
           "Сетка популярных категорий (Смартфоны, Ноутбуки, Аудио)",
@@ -445,7 +445,7 @@ export const electronicsShopData: ElectronicsShopData = {
         step: "04",
         title: "Каталог товаров (Catalog & Filters)",
         category: "Search & Browse",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/04_catalog_mobile.png",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/04_catalog_mobile.webp",
         uxHighlights: [
           "Двухколоночная информативная сетка товаров",
           "Бейджи скидок и наличие на складе",
@@ -458,7 +458,7 @@ export const electronicsShopData: ElectronicsShopData = {
         step: "05",
         title: "Корзина (Smart Shopping Cart)",
         category: "Decision Making",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/05_cart_mobile.png",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/05_cart_mobile.webp",
         uxHighlights: [
           "Прозрачный подсчёт стоимости без скрытых платежей",
           "Интуитивные кнопки изменения количества (+/-)",
@@ -471,7 +471,7 @@ export const electronicsShopData: ElectronicsShopData = {
         step: "06",
         title: "Оформление заказа (Fast Checkout)",
         category: "Conversion Core",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/06_checkout_mobile.png",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/06_checkout_mobile.webp",
         uxHighlights: [
           "Минимум обязательных полей для заполнения",
           "Выбор между курьерской доставкой и самовывозом",
@@ -484,7 +484,7 @@ export const electronicsShopData: ElectronicsShopData = {
         step: "07",
         title: "Выбор оплаты (Payment Gateway)",
         category: "Transaction",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/07_payment_mobile.png",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/07_payment_mobile.webp",
         uxHighlights: [
           "Быстрая оплата СБП по QR-коду / приложению банка",
           "Интеграция сплит-сервисов (Долями / 4 платежа)",
@@ -497,7 +497,7 @@ export const electronicsShopData: ElectronicsShopData = {
         step: "08",
         title: "Экран успеха (Order Confirmation)",
         category: "Post-Purchase Delight",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/08_success_mobile.png",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/08_success_mobile.webp",
         uxHighlights: [
           "Чёткий номер заказа и таймлайн доставки",
           "Кнопка быстрого сохранения чека в PDF",
@@ -510,7 +510,7 @@ export const electronicsShopData: ElectronicsShopData = {
         step: "09",
         title: "Экран ошибки (Error Recovery)",
         category: "Exception Handling",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/09_failure_mobile.png",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/09_failure_mobile.webp",
         uxHighlights: [
           "Понятное человеческое объяснение причины сбоя",
           "Корзина остаётся сохранённой в неизменном виде",
@@ -521,7 +521,7 @@ export const electronicsShopData: ElectronicsShopData = {
     ],
     desktop: {
       title: "Адаптивная десктоп-версия (Desktop 1440px)",
-      src: "/Кейсы/09-mockup-electronics/figma_exports/10_desktop_home.png",
+      src: "/Кейсы/09-mockup-electronics/figma_exports/10_desktop_home.webp",
       description: "Широкоформатный интерфейс для пользователей, выбирающих дорогую технику за рабочим столом. 12-колоночная сетка, расширенное мега-меню каталога и боковые фильтры.",
       highlights: [
         "12-колоночная модульная сетка с контейнером 1200px",
@@ -533,31 +533,31 @@ export const electronicsShopData: ElectronicsShopData = {
     mockups: [
       {
         title: "Рабочее место с монитором Dell (Clean Desk Showcase)",
-        src: "/Кейсы/09-mockup-electronics/Free Clean desk with Dell display mockup (Mockuuups Studio)1.jpg",
+        src: "/Кейсы/09-mockup-electronics/Free Clean desk with Dell display mockup (Mockuuups Studio)1.webp",
         type: "Desktop Workplace",
         description: "Широкоформатный сценарий покупки и сравнения характеристик техники на профессиональном 4K мониторе Dell."
       },
       {
         title: "MacBook Pro 13: Десктопный сценарий выбора",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/12_macbook_mockup.png",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/12_macbook_mockup.webp",
         type: "Laptop Mockup",
         description: "Отображение десктопного каталога на Retina-дисплее MacBook в реальном рабочем окружении."
       },
       {
         title: "Realme 10: Мобильный опыт в руках покупателя",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/13_realme_mockup.png",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/13_realme_mockup.webp",
         type: "Smartphone Mockup",
         description: "Демонстрация мобильного чекаута на современном смартфоне: эргономика досягаемости больших пальцев."
       },
       {
         title: "MacBook Air 13: Презентационный рендер витрины",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/14_macbook_air_mockup.png",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/14_macbook_air_mockup.webp",
         type: "Hero Showcase Mockup",
         description: "Презентационный мокап для обложки кейса на Behance с акцентом на чистоту верстки и воздухе в интерфейсе."
       },
       {
         title: "Behance Editorial Poster (2400 × 1500 px)",
-        src: "/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.jpg",
+        src: "/Кейсы/09-mockup-electronics/figma_exports/behance_master_poster.webp",
         type: "Editorial Poster",
         description: "Полноформатный презентационный плакат со всеми визуальными слоями и экранами проекта."
       }

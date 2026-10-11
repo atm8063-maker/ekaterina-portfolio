@@ -43,7 +43,7 @@ const FLOOR_SKETCHES: Record<1 | 2, {
     floor: 1,
     title: "1 Этаж: Зоны первого этажа",
     subtitle: "Кухня-гостиная, прихожая и коридор, бойлерная, санузел с ванной, камин в простенке и лестничный пролёт",
-    imageSrc: "/Кейсы/10-house-project/sketch_floor_1.jpg",
+    imageSrc: "/Кейсы/10-house-project/sketch_floor_1.webp",
     callouts: [
       {
         id: 1,
@@ -99,7 +99,7 @@ const FLOOR_SKETCHES: Record<1 | 2, {
     floor: 2,
     title: "2 Этаж: Зоны второго этажа",
     subtitle: "Спальня с трапециевидным входом, детская с домиком, кабинет со сплошным столом и санузел с душем",
-    imageSrc: "/Кейсы/10-house-project/sketch_floor_2.jpg",
+    imageSrc: "/Кейсы/10-house-project/sketch_floor_2.webp",
     callouts: [
       {
         id: 1,
@@ -175,7 +175,7 @@ export function HouseCase() {
       {/* Clean Dark Paper Background */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"
@@ -503,7 +503,7 @@ export function HouseCase() {
               {/* STYLES COLLAGE */}
               <div
                 onClick={() => setSelectedImage({
-                  src: "/Кейсы/10-house-project/collage_styles.jpg",
+                  src: "/Кейсы/10-house-project/collage_styles.webp",
                   title: "Стили и интерьерные ориентиры: сканди-минимализм, натуральный дуб, открытое пространство"
                 })}
                 className="bg-[#141414] border border-white/20 hover:border-primary p-4 sm:p-5 cursor-pointer group transition-all shadow-xl flex flex-col justify-between"
@@ -521,7 +521,7 @@ export function HouseCase() {
                 </div>
                 <div className="relative aspect-[3/4] w-full bg-black/60 overflow-hidden">
                   <Image
-                    src="/Кейсы/10-house-project/collage_styles.jpg"
+                    src="/Кейсы/10-house-project/collage_styles.webp"
                     alt="Стили интерьера"
                     fill
                     className="object-cover group-hover:scale-102 transition-transform duration-500"
@@ -532,7 +532,7 @@ export function HouseCase() {
               {/* COLORS COLLAGE */}
               <div
                 onClick={() => setSelectedImage({
-                  src: "/Кейсы/10-house-project/collage_colors.jpg",
+                  src: "/Кейсы/10-house-project/collage_colors.webp",
                   title: "Цветовые предпочтения: бирюза, морская волна, теплый дуб, серый бетон и белый"
                 })}
                 className="bg-[#141414] border border-primary/30 hover:border-primary p-4 sm:p-5 cursor-pointer group transition-all shadow-xl flex flex-col justify-between"
@@ -550,7 +550,7 @@ export function HouseCase() {
                 </div>
                 <div className="relative aspect-[3/4] w-full bg-black/60 overflow-hidden">
                   <Image
-                    src="/Кейсы/10-house-project/collage_colors.jpg"
+                    src="/Кейсы/10-house-project/collage_colors.webp"
                     alt="Цветовые предпочтения"
                     fill
                     className="object-cover group-hover:scale-102 transition-transform duration-500"
@@ -634,32 +634,32 @@ export function HouseCase() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
               {[
                 {
-                  src: "/Кейсы/10-house-project/Рендеры в планоплане/photo_2026-09-08_19-29-46.jpg",
+                  src: "/Кейсы/10-house-project/Рендеры в планоплане/photo_2026-09-08_19-29-46.webp",
                   title: "Гостиная зона с дровяным камином",
                   desc: "Каминный портал в бетоне, ТВ-зона и семейный диван"
                 },
                 {
-                  src: "/Кейсы/10-house-project/Рендеры в планоплане/photo_2026-09-08_19-29-46 (4).jpg",
+                  src: "/Кейсы/10-house-project/Рендеры в планоплане/photo_2026-09-08_19-29-46 (4).webp",
                   title: "Кухня-столовая и панорамные окна",
                   desc: "Обеденная группа у окон и Г-образный гарнитур с фартуком"
                 },
                 {
-                  src: "/Кейсы/10-house-project/Рендеры в планоплане/photo_2026-09-08_19-29-46 (3).jpg",
+                  src: "/Кейсы/10-house-project/Рендеры в планоплане/photo_2026-09-08_19-29-46 (3).webp",
                   title: "Прихожая и холл 1-го этажа",
                   desc: "Входная группа, вид на лестничный марш и зеркальный портал"
                 },
                 {
-                  src: "/Кейсы/10-house-project/Рендеры в планоплане/photo_2026-09-13_00-14-00 (6).jpg",
+                  src: "/Кейсы/10-house-project/Рендеры в планоплане/photo_2026-09-13_00-14-00 (6).webp",
                   title: "Объёмный 3D-разрез: 1 этаж",
                   desc: "Пространственная модель расстановки мебели и перегородок 1 этажа"
                 },
                 {
-                  src: "/Кейсы/10-house-project/Рендеры в планоплане/photo_2026-09-13_00-14-01 (5).jpg",
+                  src: "/Кейсы/10-house-project/Рендеры в планоплане/photo_2026-09-13_00-14-01 (5).webp",
                   title: "Объёмный 3D-разрез: 2 этаж",
                   desc: "Пространственная модель спальни, детской и мастерской 2 этажа"
                 },
                 {
-                  src: "/Кейсы/10-house-project/Рендеры в планоплане/photo_2026-09-13_00-14-01.jpg",
+                  src: "/Кейсы/10-house-project/Рендеры в планоплане/photo_2026-09-13_00-14-01.webp",
                   title: "Вечерний световой сценарий",
                   desc: "Камерное акцентное освещение над обеденным столом и у камина"
                 }
@@ -876,7 +876,7 @@ export function HouseCase() {
                     </h4>
                     <button
                       onClick={() => setSelectedImage({
-                        src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_6.jpg",
+                        src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_6.webp",
                         title: "1 Этаж: План групп освещения и выключателей"
                       })}
                       className="text-xs text-white/60 hover:text-primary flex items-center gap-1 font-sans transition-colors"
@@ -886,13 +886,13 @@ export function HouseCase() {
                   </div>
                   <div
                     onClick={() => setSelectedImage({
-                      src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_6.jpg",
+                      src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_6.webp",
                       title: "1 Этаж: План групп освещения и выключателей"
                     })}
                     className="relative aspect-[4/3] w-full bg-white border border-white/10 overflow-hidden cursor-pointer group hover:border-primary transition-all"
                   >
                     <Image
-                      src="/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_6.jpg"
+                      src="/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_6.webp"
                       alt="1 Этаж: План освещения"
                       fill
                       className="object-contain group-hover:scale-102 transition-transform duration-300"
@@ -908,7 +908,7 @@ export function HouseCase() {
                     </h4>
                     <button
                       onClick={() => setSelectedImage({
-                        src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_7.jpg",
+                        src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_7.webp",
                         title: "1 Этаж: План розеток и высотных отметок"
                       })}
                       className="text-xs text-white/60 hover:text-primary flex items-center gap-1 font-sans transition-colors"
@@ -918,13 +918,13 @@ export function HouseCase() {
                   </div>
                   <div
                     onClick={() => setSelectedImage({
-                      src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_7.jpg",
+                      src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_7.webp",
                       title: "1 Этаж: План розеток и высотных отметок"
                     })}
                     className="relative aspect-[4/3] w-full bg-white border border-white/10 overflow-hidden cursor-pointer group hover:border-primary transition-all"
                   >
                     <Image
-                      src="/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_7.jpg"
+                      src="/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_7.webp"
                       alt="1 Этаж: План розеток"
                       fill
                       className="object-contain group-hover:scale-102 transition-transform duration-300"
@@ -952,7 +952,7 @@ export function HouseCase() {
                     </h4>
                     <button
                       onClick={() => setSelectedImage({
-                        src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_14.jpg",
+                        src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_14.webp",
                         title: "2 Этаж: План групп освещения и выключателей"
                       })}
                       className="text-xs text-white/60 hover:text-primary flex items-center gap-1 font-sans transition-colors"
@@ -962,13 +962,13 @@ export function HouseCase() {
                   </div>
                   <div
                     onClick={() => setSelectedImage({
-                      src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_14.jpg",
+                      src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_14.webp",
                       title: "2 Этаж: План групп освещения и выключателей"
                     })}
                     className="relative aspect-[4/3] w-full bg-white border border-white/10 overflow-hidden cursor-pointer group hover:border-primary transition-all"
                   >
                     <Image
-                      src="/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_14.jpg"
+                      src="/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_14.webp"
                       alt="2 Этаж: План освещения"
                       fill
                       className="object-contain group-hover:scale-102 transition-transform duration-300"
@@ -984,7 +984,7 @@ export function HouseCase() {
                     </h4>
                     <button
                       onClick={() => setSelectedImage({
-                        src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_1.jpg",
+                        src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_1.webp",
                         title: "2 Этаж: План розеток и высотных отметок"
                       })}
                       className="text-xs text-white/60 hover:text-primary flex items-center gap-1 font-sans transition-colors"
@@ -994,13 +994,13 @@ export function HouseCase() {
                   </div>
                   <div
                     onClick={() => setSelectedImage({
-                      src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_1.jpg",
+                      src: "/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_1.webp",
                       title: "2 Этаж: План розеток и высотных отметок"
                     })}
                     className="relative aspect-[4/3] w-full bg-white border border-white/10 overflow-hidden cursor-pointer group hover:border-primary transition-all"
                   >
                     <Image
-                      src="/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_1.jpg"
+                      src="/Кейсы/10-house-project/электрика и освещение/Электрика и освещение_img_1.webp"
                       alt="2 Этаж: План розеток"
                       fill
                       className="object-contain group-hover:scale-102 transition-transform duration-300"
@@ -1054,7 +1054,7 @@ export function HouseCase() {
               {/* Blueprint 1 */}
               <div
                 onClick={() => setSelectedImage({
-                  src: "/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221420.png",
+                  src: "/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221420.webp",
                   title: "Исходный архитектурный план 1-го этажа (от проектировщика)"
                 })}
                 className="bg-[#141414] border border-white/10 hover:border-white/40 p-4 cursor-pointer group transition-all"
@@ -1067,7 +1067,7 @@ export function HouseCase() {
                 </div>
                 <div className="relative aspect-[4/3] w-full bg-white/5 overflow-hidden">
                   <Image
-                    src="/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221420.png"
+                    src="/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221420.webp"
                     alt="План 1-го этажа"
                     fill
                     className="object-contain group-hover:scale-105 transition-transform duration-500"
@@ -1078,7 +1078,7 @@ export function HouseCase() {
               {/* Blueprint 2 */}
               <div
                 onClick={() => setSelectedImage({
-                  src: "/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221455.png",
+                  src: "/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221455.webp",
                   title: "Исходный архитектурный план 2-го этажа (от проектировщика)"
                 })}
                 className="bg-[#141414] border border-white/10 hover:border-white/40 p-4 cursor-pointer group transition-all"
@@ -1091,7 +1091,7 @@ export function HouseCase() {
                 </div>
                 <div className="relative aspect-[4/3] w-full bg-white/5 overflow-hidden">
                   <Image
-                    src="/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221455.png"
+                    src="/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221455.webp"
                     alt="План 2-го этажа"
                     fill
                     className="object-contain group-hover:scale-105 transition-transform duration-500"
@@ -1102,7 +1102,7 @@ export function HouseCase() {
               {/* Blueprint 3 */}
               <div
                 onClick={() => setSelectedImage({
-                  src: "/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221539.png",
+                  src: "/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221539.webp",
                   title: "Архитектурный разрез 1-1 (от проектировщика)"
                 })}
                 className="bg-[#141414] border border-white/10 hover:border-white/40 p-4 cursor-pointer group transition-all"
@@ -1115,7 +1115,7 @@ export function HouseCase() {
                 </div>
                 <div className="relative aspect-[4/3] w-full bg-white/5 overflow-hidden">
                   <Image
-                    src="/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221539.png"
+                    src="/Кейсы/10-house-project/чертежи/Снимок экрана 2026-09-08 221539.webp"
                     alt="Разрез дома"
                     fill
                     className="object-contain group-hover:scale-105 transition-transform duration-500"
@@ -1148,7 +1148,7 @@ export function HouseCase() {
               {/* Left: Construction Collage */}
               <div
                 onClick={() => setSelectedImage({
-                  src: "/Кейсы/10-house-project/collage_construction_vertical.jpg",
+                  src: "/Кейсы/10-house-project/collage_construction_vertical.webp",
                   title: "Хроника стройки"
                 })}
                 className="bg-[#141414] border border-white/20 hover:border-white/50 p-4 sm:p-5 cursor-pointer group transition-all"
@@ -1163,7 +1163,7 @@ export function HouseCase() {
                 </div>
                 <div className="relative aspect-[2/3] w-full bg-black/60 overflow-hidden">
                   <Image
-                    src="/Кейсы/10-house-project/collage_construction_vertical.jpg"
+                    src="/Кейсы/10-house-project/collage_construction_vertical.webp"
                     alt="Коллаж стройки"
                     fill
                     className="object-cover group-hover:scale-102 transition-transform duration-500"
@@ -1174,7 +1174,7 @@ export function HouseCase() {
               {/* Right: Finished House Collage */}
               <div
                 onClick={() => setSelectedImage({
-                  src: "/Кейсы/10-house-project/collage_finished_vertical.jpg",
+                  src: "/Кейсы/10-house-project/collage_finished_vertical.webp",
                   title: "Готовый дом в жизни"
                 })}
                 className="bg-[#141414] border border-primary/30 hover:border-primary p-4 sm:p-5 cursor-pointer group transition-all"
@@ -1189,7 +1189,7 @@ export function HouseCase() {
                 </div>
                 <div className="relative aspect-[2/3] w-full bg-black/60 overflow-hidden">
                   <Image
-                    src="/Кейсы/10-house-project/collage_finished_vertical.jpg"
+                    src="/Кейсы/10-house-project/collage_finished_vertical.webp"
                     alt="Коллаж готового дома"
                     fill
                     className="object-cover group-hover:scale-102 transition-transform duration-500"

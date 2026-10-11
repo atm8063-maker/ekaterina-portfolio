@@ -43,7 +43,7 @@ export default function Competencies() {
     <section id="competencies" className="py-24 scroll-mt-20 relative overflow-hidden bg-background">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"

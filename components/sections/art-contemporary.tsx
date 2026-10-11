@@ -56,7 +56,7 @@ export function ArtContemporary() {
         {/* Правая половина: Фото (ровно 50%) */}
         <div className="w-full md:w-1/2 relative h-[350px] sm:h-[400px] md:h-auto md:min-h-full">
           <img 
-            src="/art-protest/photo_3317@04-08-2026_21-08-44.jpg" 
+            src="/art-protest/photo_3317@04-08-2026_21-08-44.webp" 
             alt="Артивизм" 
             className="absolute inset-0 w-full h-full object-cover object-center" 
           />

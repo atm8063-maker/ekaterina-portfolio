@@ -5,7 +5,7 @@ export function ArtCollage() {
         <div
           className="marquee-vertical-bg-single"
           style={{
-            ["--marquee-image" as string]: "url(/collage-3.jpg)",
+            ["--marquee-image" as string]: "url(/collage-3.webp)",
             ["--marquee-tile-w" as string]: "1121",
             ["--marquee-tile-h" as string]: "1920",
             ["--marquee-duration" as string]: "50s",

@@ -61,46 +61,46 @@ const items: Testimonial[] = [
     author: "@alenaafrokudri",
     role: "Серьги на заказ",
     quote: "Какую красоту для меня сделали 🥰",
-    image: "/testimonials/alena-earrings.jpg",
+    image: "/testimonials/alena-earrings.webp",
   },
   {
     id: "adelii",
     author: "@adeliimakeup",
     role: "Форма для слепка",
-    image: "/testimonials/adelii-leaf-mold.jpg",
+    image: "/testimonials/adelii-leaf-mold.webp",
   },
   {
     id: "durackaya",
     author: "@durackaya_hat",
     role: "Серьги",
-    image: "/testimonials/durackaya-earrings.jpg",
+    image: "/testimonials/durackaya-earrings.webp",
   },
   {
     id: "juliakardash",
     author: "@julia.kardash.beauty",
     role: "Палитра ручной работы",
-    image: "/testimonials/juliakardash-palette.jpg",
+    image: "/testimonials/juliakardash-palette.webp",
   },
   {
     id: "anchanov",
     author: "@ancha_nov",
     role: "Покупательница",
     quote: "Потрясающий мастер, обалденные работы. До мурашек! Вдохновение в каждой детали 🤍",
-    image: "/testimonials/anchanov-geode-croissant.jpg",
+    image: "/testimonials/anchanov-geode-croissant.webp",
   },
   {
     id: "pendant",
     author: "Покупательница",
     role: "Кулон на заказ",
     quote: "Шикарная штука;) Кусочек моря",
-    image: "/testimonials/pendant-selfie.jpg",
+    image: "/testimonials/pendant-selfie.webp",
   },
   {
     id: "beautytime",
     author: "@beautytime.nailroom",
     role: "Мастер-класс",
     quote: "Очень понравился мастер-класс от @fir_tree_art по эпоксидной смоле 🥰",
-    image: "/testimonials/beautytime-snowflakes.jpg",
+    image: "/testimonials/beautytime-snowflakes.webp",
   },
   {
     id: "mariiialakhmakova",
@@ -197,7 +197,7 @@ export function ArtTestimonials() {
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"

@@ -74,57 +74,57 @@ export function ArtSketches({
 
   // 6 Narrow Background Tracks
   const track1: TrackItem[] = [
-    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 115 },
-    { src: 'photo_3217@04-08-2026_21-04-08.jpg', w: 95 },
-    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 195 },
-    { src: 'photo_2026-08-30_02-47-41 (3).jpg', w: 130 },
+    { src: 'photo_3220@04-08-2026_21-04-08.webp', w: 115 },
+    { src: 'photo_3217@04-08-2026_21-04-08.webp', w: 95 },
+    { src: 'photo_2988@31-07-2026_18-20-25.webp', w: 195 },
+    { src: 'photo_2026-08-30_02-47-41 (3).webp', w: 130 },
     { src: 'video_145@04-08-2026_22-24-35.mp4', w: 105, isVideo: true },
-    { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 120 },
+    { src: 'photo_2026-08-27_17-30-20 (2).webp', w: 120 },
   ];
 
   const track2 = [
-    { src: 'photo_2026-08-27_17-30-21 (9).jpg', w: 110 },
-    { src: 'photo_2986@31-07-2026_18-19-24.jpg', w: 95 },
-    { src: 'photo_3218@04-08-2026_21-04-08.jpg', w: 135 },
-    { src: 'photo_2026-08-27_17-30-19 (6).jpg', w: 125 },
-    { src: 'photo_3076@31-07-2026_19-44-02.jpg', w: 135 },
-    { src: 'photo_2026-08-27_19-29-35.jpg', w: 100 },
+    { src: 'photo_2026-08-27_17-30-21 (9).webp', w: 110 },
+    { src: 'photo_2986@31-07-2026_18-19-24.webp', w: 95 },
+    { src: 'photo_3218@04-08-2026_21-04-08.webp', w: 135 },
+    { src: 'photo_2026-08-27_17-30-19 (6).webp', w: 125 },
+    { src: 'photo_3076@31-07-2026_19-44-02.webp', w: 135 },
+    { src: 'photo_2026-08-27_19-29-35.webp', w: 100 },
   ];
 
   const track3 = [
-    { src: 'photo_2026-08-30_02-47-41 (4).jpg', w: 145 },
-    { src: 'photo_2026-08-27_17-30-18 (2).jpg', w: 80 },
-    { src: 'photo_2026-08-27_17-30-19 (4).jpg', w: 130 },
+    { src: 'photo_2026-08-30_02-47-41 (4).webp', w: 145 },
+    { src: 'photo_2026-08-27_17-30-18 (2).webp', w: 80 },
+    { src: 'photo_2026-08-27_17-30-19 (4).webp', w: 130 },
     { src: 'video_145@04-08-2026_22-24-35.mp4', w: 115, isVideo: true },
-    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 185 },
-    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 110 },
+    { src: 'photo_2988@31-07-2026_18-20-25.webp', w: 185 },
+    { src: 'photo_3220@04-08-2026_21-04-08.webp', w: 110 },
   ];
 
   const track4 = [
-    { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 125 },
-    { src: 'photo_3218@04-08-2026_21-04-08.jpg', w: 130 },
-    { src: 'photo_2026-08-30_02-47-41 (3).jpg', w: 135 },
-    { src: 'photo_2986@31-07-2026_18-19-24.jpg', w: 95 },
-    { src: 'photo_3076@31-07-2026_19-44-02.jpg', w: 140 },
-    { src: 'photo_2026-08-27_17-30-21 (9).jpg', w: 115 },
+    { src: 'photo_2026-08-27_17-30-20 (2).webp', w: 125 },
+    { src: 'photo_3218@04-08-2026_21-04-08.webp', w: 130 },
+    { src: 'photo_2026-08-30_02-47-41 (3).webp', w: 135 },
+    { src: 'photo_2986@31-07-2026_18-19-24.webp', w: 95 },
+    { src: 'photo_3076@31-07-2026_19-44-02.webp', w: 140 },
+    { src: 'photo_2026-08-27_17-30-21 (9).webp', w: 115 },
   ];
 
   const track5 = [
-    { src: 'photo_3217@04-08-2026_21-04-08.jpg', w: 95 },
+    { src: 'photo_3217@04-08-2026_21-04-08.webp', w: 95 },
     { src: 'video_145@04-08-2026_22-24-35.mp4', w: 110, isVideo: true },
-    { src: 'photo_2026-08-27_17-30-19 (6).jpg', w: 130 },
-    { src: 'photo_2026-08-30_02-47-41 (4).jpg', w: 145 },
-    { src: 'photo_2988@31-07-2026_18-20-25.jpg', w: 190 },
-    { src: 'photo_2026-08-27_17-30-18 (2).jpg', w: 85 },
+    { src: 'photo_2026-08-27_17-30-19 (6).webp', w: 130 },
+    { src: 'photo_2026-08-30_02-47-41 (4).webp', w: 145 },
+    { src: 'photo_2988@31-07-2026_18-20-25.webp', w: 190 },
+    { src: 'photo_2026-08-27_17-30-18 (2).webp', w: 85 },
   ];
 
   const track6 = [
-    { src: 'photo_2026-08-27_19-29-35.jpg', w: 105 },
-    { src: 'photo_3220@04-08-2026_21-04-08.jpg', w: 115 },
-    { src: 'photo_2026-08-27_17-30-19 (4).jpg', w: 135 },
+    { src: 'photo_2026-08-27_19-29-35.webp', w: 105 },
+    { src: 'photo_3220@04-08-2026_21-04-08.webp', w: 115 },
+    { src: 'photo_2026-08-27_17-30-19 (4).webp', w: 135 },
     { src: 'video_145@04-08-2026_22-24-35.mp4', w: 115, isVideo: true },
-    { src: 'photo_3218@04-08-2026_21-04-08.jpg', w: 130 },
-    { src: 'photo_2026-08-27_17-30-20 (2).jpg', w: 120 },
+    { src: 'photo_3218@04-08-2026_21-04-08.webp', w: 130 },
+    { src: 'photo_2026-08-27_17-30-20 (2).webp', w: 120 },
   ];
 
   const tracks: { data: TrackItem[]; dir: 'left' | 'right'; speed: string }[] = [
@@ -265,8 +265,8 @@ export function ArtSketches({
               width: '100%',
               height: '100%',
               position: 'relative',
-              WebkitMaskImage: "url('/Group%2047.png')",
-              maskImage: "url('/Group%2047.png')",
+              WebkitMaskImage: "url('/Group%2047.webp')",
+              maskImage: "url('/Group%2047.webp')",
               WebkitMaskSize: '100% 100%',
               maskSize: '100% 100%',
               WebkitMaskRepeat: 'no-repeat',
@@ -330,7 +330,7 @@ export function ArtSketches({
 
                   {t.type === 'face' && (
                     <img
-                      src="/Group%2047.png"
+                      src="/Group%2047.webp"
                       alt="Face"
                       style={{
                         position: 'absolute',

@@ -227,7 +227,7 @@ export default function Header() {
             aria-label="На главную"
           >
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt=""
               width={160}
               height={48}
@@ -241,11 +241,11 @@ export default function Header() {
               className="absolute inset-0 bg-primary"
               aria-hidden
               style={{
-                maskImage: "url(/logo.png)",
+                maskImage: "url(/logo.webp)",
                 maskSize: "contain",
                 maskRepeat: "no-repeat",
                 maskPosition: "left center",
-                WebkitMaskImage: "url(/logo.png)",
+                WebkitMaskImage: "url(/logo.webp)",
                 WebkitMaskSize: "contain",
                 WebkitMaskRepeat: "no-repeat",
                 WebkitMaskPosition: "left center",

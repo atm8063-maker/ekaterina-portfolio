@@ -17,7 +17,7 @@ const brandItems: BrandItem[] = [
     title: "Защитный короб для опила изделий",
     badge: "ПРОМЫШЛЕННЫЙ ДИЗАЙН",
     desc: "Эргономичный прозрачный бокс для безопасной и чистой шлифовки. Спроектировала конструкцию с нуля, запущена в серийное производство.",
-    image: "/brand/sawdust-chamber.jpg",
+    image: "/brand/sawdust-chamber.webp",
   },
   {
     id: "toys-box",
@@ -50,7 +50,7 @@ export function ArtBrand() {
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"

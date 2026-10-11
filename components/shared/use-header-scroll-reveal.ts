@@ -13,17 +13,16 @@ export type HeaderScrollState = {
   compact: boolean;
 };
 
-function readIsDesktop(): boolean {
-  if (typeof window === "undefined") return false;
-  return window.matchMedia(DESKTOP_MEDIA).matches;
-}
-
 /**
  * Desktop: full at top, compact on scroll down, full on scroll up.
  * Mobile: always compact (no scroll-driven size change).
+ *
+ * The first render must match the server. Reading matchMedia here made
+ * desktop HTML differ from the server (hydration error on the header).
+ * Start from the 80px desktop bar, then correct in an effect.
  */
 export function useHeaderScrollState(paused: boolean): HeaderScrollState {
-  const [isDesktop, setIsDesktop] = useState(readIsDesktop);
+  const [isDesktop, setIsDesktop] = useState(true);
   const [scrollCompact, setScrollCompact] = useState(false);
   const lastScrollY = useRef(0);
 

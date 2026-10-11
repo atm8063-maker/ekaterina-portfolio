@@ -43,7 +43,7 @@ const carouselMedia: TeachingMedia[] = [
   // 1-10: Exact ordered sequence from user
   {
     type: 'image',
-    src: '/art-muza/photo_3263@04-08-2026_21-08-40.jpg',
+    src: '/art-muza/photo_3263@04-08-2026_21-08-40.webp',
     category: 'forum',
     title: 'Лекция в Артмузе',
     subtitle: 'Выступление перед сообществом смолянистов',
@@ -52,7 +52,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_1_2026-08-04_22-38-17.jpg',
+    src: '/art-muza/photo_1_2026-08-04_22-38-17.webp',
     category: 'workshops',
     title: 'МК по акрилу в Черногории',
     subtitle: 'Интерьерная живопись и смешанные техники',
@@ -61,7 +61,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/студия/photo_3053@31-07-2026_19-04-11.jpg',
+    src: '/lessons/студия/photo_3053@31-07-2026_19-04-11.webp',
     category: 'workshops',
     title: 'Творческая мастерская',
     subtitle: 'Пространство для практики и творчества',
@@ -70,7 +70,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_2026-02-19_01-56-13.jpg',
+    src: '/art-muza/photo_2026-02-19_01-56-13.webp',
     category: 'workshops',
     title: 'МК по созданию моря из эпоксидной смолы в Турции',
     subtitle: 'Формирование морских волн и глубин',
@@ -79,7 +79,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_2026-02-19_11-20-02 (2).jpg',
+    src: '/art-muza/photo_2026-02-19_11-20-02 (2).webp',
     category: 'workshops',
     title: 'МК в Турции',
     subtitle: 'Практический воркшоп по эпоксидной смоле',
@@ -88,7 +88,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_2026-02-19_11-20-02 (3).jpg',
+    src: '/art-muza/photo_2026-02-19_11-20-02 (3).webp',
     category: 'workshops',
     title: 'Выездные воркшопы за рубежом',
     subtitle: 'Готовые картины и результаты участников',
@@ -97,7 +97,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3262@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3262@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Участники форума смолянистов в Артмузе',
     subtitle: 'Профессиональное сообщество и спикеры',
@@ -106,7 +106,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/студия/photo_3052@31-07-2026_19-04-11.jpg',
+    src: '/lessons/студия/photo_3052@31-07-2026_19-04-11.webp',
     category: 'workshops',
     title: 'Творческая мастерская',
     subtitle: 'Оснащение и материалы для мастер-классов',
@@ -115,7 +115,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_10_2026-08-04_22-38-17.jpg',
+    src: '/art-muza/photo_10_2026-08-04_22-38-17.webp',
     category: 'workshops',
     title: 'Воркшоп в Черногории',
     subtitle: 'Творческая практика и работа с учениками',
@@ -124,7 +124,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/студия/photo_3160@04-08-2026_20-56-52.jpg',
+    src: '/lessons/студия/photo_3160@04-08-2026_20-56-52.webp',
     category: 'workshops',
     title: 'Студия в Тамбове',
     subtitle: 'Интерьер арт-пространства и студии',
@@ -133,7 +133,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/photo_3035@31-07-2026_18-44-54.jpg',
+    src: '/lessons/photo_3035@31-07-2026_18-44-54.webp',
     category: 'workshops',
     title: 'Художественный МК в Черногории',
     subtitle: 'Создание интерьерных арт-работ',
@@ -144,7 +144,7 @@ const carouselMedia: TeachingMedia[] = [
   // Additional Artmuza & Online items
   {
     type: 'image',
-    src: '/art-muza/photo_3254@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3254@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: '1-й Всероссийский форум смолянистов',
     subtitle: 'Выступление с авторской лекцией перед сообществом',
@@ -153,7 +153,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3255@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3255@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Мастер-класс: тонкости работы со смолой',
     subtitle: 'Демонстрация послойной заливки и пигментов',
@@ -162,7 +162,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3256@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3256@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Демонстрация техники на сцене',
     subtitle: 'Живая работа на глазах у сотен участников',
@@ -171,7 +171,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3257@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3257@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Процесс создания среза камня',
     subtitle: 'Послойная заливка смолы и пигментов',
@@ -180,7 +180,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3259@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3259@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Практика и секреты многослойности',
     subtitle: 'Разбор ошибок и нюансов полимеризации',
@@ -189,7 +189,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3260@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3260@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Воркшоп в музее современного искусства',
     subtitle: 'Общение с участниками и ответы на вопросы',
@@ -198,7 +198,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3261@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3261@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Спикеры в Артмузе',
     subtitle: 'Участники и спикеры 1-го Всероссийского форума',
@@ -216,7 +216,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/photo_3011@31-07-2026_18-44-16.jpg',
+    src: '/lessons/photo_3011@31-07-2026_18-44-16.webp',
     category: 'online',
     title: 'Прямые эфиры и вебинары',
     subtitle: 'Охваты в тысячи зрителей и прямая обратная связь',
@@ -225,7 +225,7 @@ const carouselMedia: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/photo_3067@31-07-2026_19-44-02.jpg',
+    src: '/lessons/photo_3067@31-07-2026_19-44-02.webp',
     category: 'online',
     title: 'Кураторство в международной онлайн-школе',
     subtitle: 'Поддержка студентов и разбор домашних заданий',
@@ -282,7 +282,7 @@ export function ArtTeaching() {
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"

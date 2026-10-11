@@ -517,7 +517,7 @@ export const caseDetails: Record<string, CaseDetail> = {
         paragraphs: [
           'Полный макет главной страницы. Дизайн проработан с учетом восприятия инвесторов: блоки плавно перетекают друг в друга, удерживая внимание на преимуществах технологии и экономической выгоде.'
         ],
-        fullPageMockup: '/Кейсы/14-vertex-homes/mockup.png'
+        fullPageMockup: '/Кейсы/14-vertex-homes/mockup.webp'
       }
     ]
   }

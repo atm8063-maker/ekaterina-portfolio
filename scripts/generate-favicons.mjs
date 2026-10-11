@@ -4,13 +4,13 @@ import { writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
 const ROOT = process.cwd()
-const LOGO = path.join(ROOT, 'public', 'logo.png')
+const LOGO = path.join(ROOT, 'public', 'logo.webp')
 
 /** Matches `app/globals.css` — `--color-primary: #14F1D9` */
 const PRIMARY = { r: 20, g: 241, b: 217 }
 
 /**
- * Treat logo.png like the header CSS mask: shape from dark pixels / alpha,
+ * Treat logo.webp like the header CSS mask: shape from dark pixels / alpha,
  * fill with primary, fully transparent outside the mark.
  */
 async function primaryLogoPng(targetInner) {

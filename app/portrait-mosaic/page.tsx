@@ -120,8 +120,8 @@ export default function PortraitMosaicPage() {
             width: '454px',
             height: '750px',
             margin: '0 auto',
-            WebkitMaskImage: "url('/Group%2047.png')",
-            maskImage: "url('/Group%2047.png')",
+            WebkitMaskImage: "url('/Group%2047.webp')",
+            maskImage: "url('/Group%2047.webp')",
             WebkitMaskSize: '100% 100%',
             maskSize: '100% 100%',
             WebkitMaskRepeat: 'no-repeat',
@@ -189,7 +189,7 @@ export default function PortraitMosaicPage() {
 
                 {t.type === 'face' && (
                   <img
-                    src="/Group%2047.png"
+                    src="/Group%2047.webp"
                     alt="Face"
                     style={{
                       position: 'absolute',

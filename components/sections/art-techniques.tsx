@@ -14,49 +14,49 @@ type MediaItem = {
 
 const items: MediaItem[] = [
   {
-    src: "/art-techniques/photo_3390@04-08-2026_22-16-46.jpg",
+    src: "/art-techniques/photo_3390@04-08-2026_22-16-46.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3180@04-08-2026_20-56-52.jpg",
+    src: "/art-techniques/photo_3180@04-08-2026_20-56-52.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3138@31-07-2026_19-44-20.jpg",
+    src: "/art-techniques/photo_3138@31-07-2026_19-44-20.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3174@04-08-2026_20-56-52.jpg",
+    src: "/art-techniques/photo_3174@04-08-2026_20-56-52.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3224@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3224@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2026-09-05_13-57-09 (2).jpg",
+    src: "/art-techniques/photo_2026-09-05_13-57-09 (2).webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3222@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3222@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2026-09-08_19-29-45 (6).jpg",
+    src: "/art-techniques/photo_2026-09-08_19-29-45 (6).webp",
     type: "image",
     title: "",
     tag: "",
@@ -68,19 +68,19 @@ const items: MediaItem[] = [
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3227@04-08-2026_21-04-401.jpg",
+    src: "/art-techniques/photo_3227@04-08-2026_21-04-401.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2987@31-07-2026_18-19-52.jpg",
+    src: "/art-techniques/photo_2987@31-07-2026_18-19-52.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2026-09-08_19-29-46 (3).jpg",
+    src: "/art-techniques/photo_2026-09-08_19-29-46 (3).webp",
     type: "image",
     title: "",
     tag: "",
@@ -92,25 +92,25 @@ const items: MediaItem[] = [
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3231@04-08-2026_21-04-401.jpg",
+    src: "/art-techniques/photo_3231@04-08-2026_21-04-401.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2026-08-27_17-30-18.jpg",
+    src: "/art-techniques/photo_2026-08-27_17-30-18.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3221@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3221@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/Poster mockup leaning against a textured wall (Mockuuups Studio).jpg",
+    src: "/art-techniques/Poster mockup leaning against a textured wall (Mockuuups Studio).webp",
     type: "image",
     title: "",
     tag: "",
@@ -122,25 +122,25 @@ const items: MediaItem[] = [
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3220@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3220@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/iPhone 12 Pro.jpg",
+    src: "/art-techniques/iPhone 12 Pro.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2999@31-07-2026_18-44-13.jpg",
+    src: "/art-techniques/photo_2999@31-07-2026_18-44-13.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2026-08-30_02-47-41.jpg",
+    src: "/art-techniques/photo_2026-08-30_02-47-41.webp",
     type: "image",
     title: "",
     tag: "",
@@ -152,19 +152,19 @@ const items: MediaItem[] = [
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3218@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3218@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).jpg",
+    src: "/art-techniques/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2942@31-07-2026_17-46-16.jpg",
+    src: "/art-techniques/photo_2942@31-07-2026_17-46-16.webp",
     type: "image",
     title: "",
     tag: "",
@@ -176,19 +176,19 @@ const items: MediaItem[] = [
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2026-08-27_17-30-19 (6).jpg",
+    src: "/art-techniques/photo_2026-08-27_17-30-19 (6).webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3219@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3219@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/Free Clean desk with Dell display mockup (Mockuuups Studio)1.jpg",
+    src: "/art-techniques/Free Clean desk with Dell display mockup (Mockuuups Studio)1.webp",
     type: "image",
     title: "",
     tag: "",
@@ -200,13 +200,13 @@ const items: MediaItem[] = [
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3217@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3217@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/Free Macbook Pro Space Gray mockup on the wooden table (Mockuuups Studio).jpg",
+    src: "/art-techniques/Free Macbook Pro Space Gray mockup on the wooden table (Mockuuups Studio).webp",
     type: "image",
     title: "",
     tag: "",
@@ -243,7 +243,7 @@ export function ArtTechniques() {
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"

@@ -17,20 +17,20 @@ function pct(x: number, y: number, w: number, h: number) {
 
 // 14 ИДЕАЛЬНЫХ РАМОК ИЗ ФИГМЫ
 const frames = [
-  { id: 1, src: "/art-gallery/photo_2932@31-07-2026_17-46-11.jpg", style: pct(807, 84, 274, 411) },
-  { id: 2, src: "/art-gallery/photo_2931@31-07-2026_17-46-11.jpg", style: pct(641, 142, 96, 162) },
-  { id: 3, src: "/art-gallery/photo_2930@31-07-2026_17-46-03.jpg", style: pct(461, 373, 272, 349) },
-  { id: 4, src: "/art-gallery/photo_2922@31-07-2026_17-46-03.jpg", style: pct(302, 203, 272, 102) },
-  { id: 5, src: "/art-gallery/photo_2026-08-05_00-55-21 (2).jpg", style: pct(163, 373, 225, 246) },
-  { id: 6, src: "/art-gallery/photo_2937@31-07-2026_17-46-11.jpg", style: pct(1153, 145, 273, 351) },
-  { id: 7, src: "/art-gallery/photo_2941@31-07-2026_17-46-16.jpg", style: pct(1120, 568, 306, 181) },
-  { id: 8, src: "/art-gallery/photo_2935@31-07-2026_17-46-11.jpg", style: pct(805, 567, 95, 159) },
-  { id: 9, src: "/art-gallery/photo_2936@31-07-2026_17-46-11.jpg", style: pct(965, 564, 87, 91) },
-  { id: 10, src: "/art-gallery/photo_2943@31-07-2026_17-46-16.jpg", style: pct(1499, 203, 159, 102) },
-  { id: 11, src: "/art-gallery/photo_2967@31-07-2026_18-19-15.jpg", style: pct(1499, 566, 178, 96) },
-  { id: 12, src: "/art-gallery/photo_3048@31-07-2026_19-03-18.jpg", style: pct(1662, 374, 160, 123) },
-  { id: 13, src: "/art-gallery/photo_2944@31-07-2026_17-46-16.jpg", style: pct(1500, 374, 93, 123) },
-  { id: 14, src: "/art-gallery/photo_2982@31-07-2026_18-19-24.jpg", style: pct(1724, 225, 70, 80) },
+  { id: 1, src: "/art-gallery/photo_2932@31-07-2026_17-46-11.webp", style: pct(807, 84, 274, 411) },
+  { id: 2, src: "/art-gallery/photo_2931@31-07-2026_17-46-11.webp", style: pct(641, 142, 96, 162) },
+  { id: 3, src: "/art-gallery/photo_2930@31-07-2026_17-46-03.webp", style: pct(461, 373, 272, 349) },
+  { id: 4, src: "/art-gallery/photo_2922@31-07-2026_17-46-03.webp", style: pct(302, 203, 272, 102) },
+  { id: 5, src: "/art-gallery/photo_2026-08-05_00-55-21 (2).webp", style: pct(163, 373, 225, 246) },
+  { id: 6, src: "/art-gallery/photo_2937@31-07-2026_17-46-11.webp", style: pct(1153, 145, 273, 351) },
+  { id: 7, src: "/art-gallery/photo_2941@31-07-2026_17-46-16.webp", style: pct(1120, 568, 306, 181) },
+  { id: 8, src: "/art-gallery/photo_2935@31-07-2026_17-46-11.webp", style: pct(805, 567, 95, 159) },
+  { id: 9, src: "/art-gallery/photo_2936@31-07-2026_17-46-11.webp", style: pct(965, 564, 87, 91) },
+  { id: 10, src: "/art-gallery/photo_2943@31-07-2026_17-46-16.webp", style: pct(1499, 203, 159, 102) },
+  { id: 11, src: "/art-gallery/photo_2967@31-07-2026_18-19-15.webp", style: pct(1499, 566, 178, 96) },
+  { id: 12, src: "/art-gallery/photo_3048@31-07-2026_19-03-18.webp", style: pct(1662, 374, 160, 123) },
+  { id: 13, src: "/art-gallery/photo_2944@31-07-2026_17-46-16.webp", style: pct(1500, 374, 93, 123) },
+  { id: 14, src: "/art-gallery/photo_2982@31-07-2026_18-19-24.webp", style: pct(1724, 225, 70, 80) },
 ];
 
 export default function ArtGalleryConcrete() {
@@ -38,7 +38,7 @@ export default function ArtGalleryConcrete() {
     <section id="art-gallery" className="relative w-full bg-background overflow-hidden">
       <div className="relative w-full max-w-[1920px] mx-auto shadow-2xl">
         <Image 
-          src="/gallery-wall-mockup.png" 
+          src="/gallery-wall-mockup.webp" 
           alt="Gallery Wall" 
           width={1920}
           height={850}

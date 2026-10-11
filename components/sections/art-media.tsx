@@ -20,7 +20,7 @@ const items: MediaItem[] = [
     headline: "«Я переехала в Черногорию и очень довольна»",
     meta: "Федеральное издание",
     quote: "Здесь по-доброму относятся к иммигрантам, а жизнь в маленьком городке у моря напоминает уютный ситком.",
-    image: "/media-press/holod-montenegro.jpg",
+    image: "/media-press/holod-montenegro.webp",
     featured: true,
   },
   {
@@ -28,38 +28,38 @@ const items: MediaItem[] = [
     headline: "«Как нарастить Goodwill?»",
     meta: "21 октября 2020 · Малый бизнес, стр. 5",
     quote: "Тамбовские предприниматели поделились историями своего успеха.",
-    image: "/media-press/tambovskaya-zhizn-cover.jpg",
+    image: "/media-press/tambovskaya-zhizn-cover.webp",
   },
   {
     outlet: "Газета «Житьё» №43",
     headline: "«На моих глазах происходит волшебство»",
     meta: "27 октября 2020 · стр. 15, Общество",
     quote: "Екатерина Разумова делает удивительной красоты изделия из эпоксидной смолы.",
-    image: "/media-press/zhizn-tambov-article.jpg",
+    image: "/media-press/zhizn-tambov-article.webp",
   },
   {
     outlet: "КП.RU",
     headline: "«У меня получилась больше мазня, чем море»",
-    image: "/media-press/kp-ru-portrait.jpg",
+    image: "/media-press/kp-ru-portrait.webp",
   },
   {
     outlet: "«Новый век» Тамбов",
     headline: "«Жительница Тамбова во время пандемии открыла бизнес по созданию изделий из эпоксидной смолы»",
     meta: "6 ноября 2020",
-    image: "/media-press/noviy-vek-tambov.jpg",
+    image: "/media-press/noviy-vek-tambov.webp",
     imagePosition: "top",
   },
   {
     outlet: "ТВ Тамбов",
     headline: "Репортаж «Область новостей»",
     meta: "художник-смолянист",
-    image: "/media-press/tv-tambov.jpg",
-    secondaryImage: "/media-press/tv-tambov-backstage.jpg",
+    image: "/media-press/tv-tambov.webp",
+    secondaryImage: "/media-press/tv-tambov-backstage.webp",
   },
   {
     outlet: "РИА Top68.ru",
     headline: "«Тамбовская художница-смолянист превратила хобби в бизнес и стала…»",
-    image: "/media-press/unidentified-regional.jpg",
+    image: "/media-press/unidentified-regional.webp",
   },
 ];
 
@@ -94,7 +94,7 @@ export function ArtMedia() {
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-50 mix-blend-screen"

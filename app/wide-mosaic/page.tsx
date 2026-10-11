@@ -72,53 +72,53 @@ export default function WideMosaicPage() {
   const desktopSketchTiles = [
     { id: 'SK_VID', x: 571, y: 263, w: 332, h: 655, isVideo: true, src: 'video_145@04-08-2026_22-24-35.mp4' },
 
-    { id: 'R1_1', x: 911,  y: 263, w: 196, h: 236, src: 'photo_3220@04-08-2026_21-04-08.jpg' },
-    { id: 'R1_2', x: 1115, y: 263, w: 166, h: 236, src: 'photo_3217@04-08-2026_21-04-08.jpg' },
-    { id: 'R1_3', x: 1289, y: 263, w: 382, h: 236, src: 'photo_2988@31-07-2026_18-20-25.jpg' },
-    { id: 'R1_4', x: 1679, y: 263, w: 233, h: 236, src: 'photo_2026-08-30_02-47-41 (3).jpg' },
+    { id: 'R1_1', x: 911,  y: 263, w: 196, h: 236, src: 'photo_3220@04-08-2026_21-04-08.webp' },
+    { id: 'R1_2', x: 1115, y: 263, w: 166, h: 236, src: 'photo_3217@04-08-2026_21-04-08.webp' },
+    { id: 'R1_3', x: 1289, y: 263, w: 382, h: 236, src: 'photo_2988@31-07-2026_18-20-25.webp' },
+    { id: 'R1_4', x: 1679, y: 263, w: 233, h: 236, src: 'photo_2026-08-30_02-47-41 (3).webp' },
 
-    { id: 'R2_1', x: 911,  y: 507, w: 200, h: 247, src: 'photo_2026-08-27_17-30-20 (2).jpg' },
-    { id: 'R2_2', x: 1119, y: 507, w: 188, h: 247, src: 'photo_2026-08-27_17-30-21 (9).jpg' },
-    { id: 'R2_3', x: 1315, y: 507, w: 154, h: 247, src: 'photo_2986@31-07-2026_18-19-24.jpg' },
-    { id: 'R2_4', x: 1477, y: 507, w: 222, h: 247, src: 'photo_3218@04-08-2026_21-04-08.jpg' },
-    { id: 'R2_5', x: 1707, y: 507, w: 205, h: 247, src: 'photo_2026-08-27_17-30-19 (6).jpg' },
+    { id: 'R2_1', x: 911,  y: 507, w: 200, h: 247, src: 'photo_2026-08-27_17-30-20 (2).webp' },
+    { id: 'R2_2', x: 1119, y: 507, w: 188, h: 247, src: 'photo_2026-08-27_17-30-21 (9).webp' },
+    { id: 'R2_3', x: 1315, y: 507, w: 154, h: 247, src: 'photo_2986@31-07-2026_18-19-24.webp' },
+    { id: 'R2_4', x: 1477, y: 507, w: 222, h: 247, src: 'photo_3218@04-08-2026_21-04-08.webp' },
+    { id: 'R2_5', x: 1707, y: 507, w: 205, h: 247, src: 'photo_2026-08-27_17-30-19 (6).webp' },
 
-    { id: 'R3_1', x: 911,  y: 762, w: 221, h: 156, src: 'photo_3076@31-07-2026_19-44-02.jpg' },
-    { id: 'R3_2', x: 1140, y: 762, w: 164, h: 156, src: 'photo_2026-08-27_19-29-35.jpg' },
-    { id: 'R3_3', x: 1312, y: 762, w: 249, h: 156, src: 'photo_2026-08-30_02-47-41 (4).jpg' },
-    { id: 'R3_4', x: 1569, y: 762, w: 121, h: 156, src: 'photo_2026-08-27_17-30-18 (2).jpg' },
-    { id: 'R3_5', x: 1698, y: 762, w: 214, h: 156, src: 'photo_2026-08-27_17-30-19 (4).jpg' },
+    { id: 'R3_1', x: 911,  y: 762, w: 221, h: 156, src: 'photo_3076@31-07-2026_19-44-02.webp' },
+    { id: 'R3_2', x: 1140, y: 762, w: 164, h: 156, src: 'photo_2026-08-27_19-29-35.webp' },
+    { id: 'R3_3', x: 1312, y: 762, w: 249, h: 156, src: 'photo_2026-08-30_02-47-41 (4).webp' },
+    { id: 'R3_4', x: 1569, y: 762, w: 121, h: 156, src: 'photo_2026-08-27_17-30-18 (2).webp' },
+    { id: 'R3_5', x: 1698, y: 762, w: 214, h: 156, src: 'photo_2026-08-27_17-30-19 (4).webp' },
   ];
 
   // Mobile Sections
   const mobileRow1_3 = [
-    { src: 'photo_3220@04-08-2026_21-04-08.jpg', objectPos: 'center center' },
-    { src: 'photo_3217@04-08-2026_21-04-08.jpg', objectPos: 'center -3px' },
-    { src: 'photo_2026-08-30_02-47-41 (3).jpg', objectPos: 'center center' },
+    { src: 'photo_3220@04-08-2026_21-04-08.webp', objectPos: 'center center' },
+    { src: 'photo_3217@04-08-2026_21-04-08.webp', objectPos: 'center -3px' },
+    { src: 'photo_2026-08-30_02-47-41 (3).webp', objectPos: 'center center' },
   ];
 
-  const mobileHeroKids = 'photo_2988@31-07-2026_18-20-25.jpg';
+  const mobileHeroKids = 'photo_2988@31-07-2026_18-20-25.webp';
 
   const mobileRow3_3 = [
-    { src: 'photo_2026-08-27_17-30-20 (2).jpg', objectPos: 'center center' },
-    { src: 'photo_2026-08-27_17-30-21 (9).jpg', objectPos: 'center -4px' },
-    { src: 'photo_2986@31-07-2026_18-19-24.jpg', objectPos: 'center center' },
+    { src: 'photo_2026-08-27_17-30-20 (2).webp', objectPos: 'center center' },
+    { src: 'photo_2026-08-27_17-30-21 (9).webp', objectPos: 'center -4px' },
+    { src: 'photo_2986@31-07-2026_18-19-24.webp', objectPos: 'center center' },
   ];
 
   const mobileRow4_2 = [
-    { src: 'photo_3218@04-08-2026_21-04-08.jpg', objectPos: 'center center' },
-    { src: 'photo_2026-08-27_17-30-19 (6).jpg', objectPos: 'center center' },
+    { src: 'photo_3218@04-08-2026_21-04-08.webp', objectPos: 'center center' },
+    { src: 'photo_2026-08-27_17-30-19 (6).webp', objectPos: 'center center' },
   ];
 
   const mobileRow5_3 = [
-    { src: 'photo_3076@31-07-2026_19-44-02.jpg', objectPos: 'center center' },
-    { src: 'photo_2026-08-27_19-29-35.jpg', objectPos: 'center center' },
-    { src: 'photo_2026-08-27_17-30-18 (2).jpg', objectPos: 'center center' },
+    { src: 'photo_3076@31-07-2026_19-44-02.webp', objectPos: 'center center' },
+    { src: 'photo_2026-08-27_19-29-35.webp', objectPos: 'center center' },
+    { src: 'photo_2026-08-27_17-30-18 (2).webp', objectPos: 'center center' },
   ];
 
   const mobileRow6_2 = [
-    { src: 'photo_2026-08-30_02-47-41 (4).jpg', objectPos: 'center center' },
-    { src: 'photo_2026-08-27_17-30-19 (4).jpg', objectPos: 'center center' },
+    { src: 'photo_2026-08-30_02-47-41 (4).webp', objectPos: 'center center' },
+    { src: 'photo_2026-08-27_17-30-19 (4).webp', objectPos: 'center center' },
   ];
 
   return (
@@ -224,8 +224,8 @@ export default function WideMosaicPage() {
               top: '0px',
               width: `${targetSilhouetteW}px`,
               height: `${targetSilhouetteH}px`,
-              WebkitMaskImage: "url('/Group%2047.png')",
-              maskImage: "url('/Group%2047.png')",
+              WebkitMaskImage: "url('/Group%2047.webp')",
+              maskImage: "url('/Group%2047.webp')",
               WebkitMaskSize: '100% 100%',
               maskSize: '100% 100%',
               WebkitMaskRepeat: 'no-repeat',
@@ -289,7 +289,7 @@ export default function WideMosaicPage() {
 
                   {t.type === 'face' && (
                     <img
-                      src="/Group%2047.png"
+                      src="/Group%2047.webp"
                       alt="Face"
                       style={{
                         position: 'absolute',
@@ -389,8 +389,8 @@ export default function WideMosaicPage() {
             position: 'relative',
             width: `${mobSilhouetteW}px`,
             height: `${mobSilhouetteH}px`,
-            WebkitMaskImage: "url('/Group%2047.png')",
-            maskImage: "url('/Group%2047.png')",
+            WebkitMaskImage: "url('/Group%2047.webp')",
+            maskImage: "url('/Group%2047.webp')",
             WebkitMaskSize: '100% 100%',
             maskSize: '100% 100%',
             WebkitMaskRepeat: 'no-repeat',
@@ -455,7 +455,7 @@ export default function WideMosaicPage() {
 
                 {t.type === 'face' && (
                   <img
-                    src="/Group%2047.png"
+                    src="/Group%2047.webp"
                     alt="Face"
                     style={{
                       position: 'absolute',

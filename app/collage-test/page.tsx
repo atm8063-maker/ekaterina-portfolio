@@ -12,7 +12,7 @@ export default function CollageTestPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/seamless_ceiling_v3_11_final1.jpg" 
+            src="/seamless_ceiling_v3_11_final1.webp" 
             alt="Concrete Wall" 
             className="w-full h-full object-cover opacity-80"
           />
@@ -30,7 +30,7 @@ export default function CollageTestPage() {
               {/* Main Artwork Image */}
               <div className="flex-[3] border-b-4 border-black relative bg-surface overflow-hidden group">
                 <img 
-                  src="/photo_3183@04-08-2026_20-56-52.jpg" 
+                  src="/photo_3183@04-08-2026_20-56-52.webp" 
                   alt="Main Artwork" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -71,7 +71,7 @@ export default function CollageTestPage() {
               {/* Bottom Right: Detail Image */}
               <div className="h-1/2 relative bg-surface group overflow-hidden">
                 <img 
-                  src="/photo_3198@04-08-2026_20-58-15.jpg" 
+                  src="/photo_3198@04-08-2026_20-58-15.webp" 
                   alt="Detail Artwork" 
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
