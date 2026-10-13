@@ -95,3 +95,11 @@
 | `docs/structure.md` | Глобальная архитектура сайта |
 | `docs/decisions.md` | Лог архитектурных решений |
 | `docs/blocks/*.md` | Документация по конкретным блокам |
+| `docs/PROJECT_REVIEW.md` | Обзор проекта для людей (архитектура, маршруты, стек) |
+
+## Cursor (только правила проекта)
+
+- В git: **только** `.cursor/rules/*.mdc` (контекст портфолио, motion/impeccable, review, memory).
+- **Не** копировать целиком `.cursor/` из других репозиториев (B2B/trading/skills с шрифтами и т.д.).
+- Skills (impeccable, animate, …) — из **глобального** каталога Cursor, не из vendor-папки в репо.
+- Локальные заметки агента: `additional-docs/` (gitignore).

@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { LazyVideo } from '@/components/shared/lazy-video';
 
 interface GalleryFrameProps {
   src: string;
@@ -33,9 +34,9 @@ export function GalleryFrame({
           borderRadius: '2px',
         }}
       >
-        <div className="relative w-full h-full bg-[#111] overflow-hidden">
+        <div className="relative w-full h-full bg-background overflow-hidden">
           {type === 'video' ? (
-            <video 
+            <LazyVideo
               src={src}
               autoPlay
               muted

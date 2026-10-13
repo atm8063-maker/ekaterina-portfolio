@@ -77,7 +77,7 @@ export function ContactForm({
       <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
       
       <div>
-        <label htmlFor="name" className="sr-only">Имя</label>
+        <label htmlFor="name" className="sr-only">{namePlaceholder}</label>
         <input 
           type="text" 
           name="name" 
@@ -89,7 +89,7 @@ export function ContactForm({
       </div>
 
       <div>
-        <label htmlFor="contact" className="sr-only">Контакт</label>
+        <label htmlFor="contact" className="sr-only">{contactPlaceholder}</label>
         <input 
           type="text" 
           name="contact" 
@@ -101,7 +101,7 @@ export function ContactForm({
       </div>
 
       <div>
-        <label htmlFor="message" className="sr-only">Сообщение</label>
+        <label htmlFor="message" className="sr-only">{messagePlaceholder}</label>
         <textarea 
           name="message" 
           id="message" 

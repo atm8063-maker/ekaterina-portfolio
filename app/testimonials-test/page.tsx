@@ -64,53 +64,53 @@ const items: Testimonial[] = [
     author: "@alenaafrokudri",
     role: "Серьги на заказ",
     quote: "Какую красоту для меня сделали 🥰",
-    image: "/testimonials-draft/alena-earrings.jpg",
+    image: "/testimonials-draft/alena-earrings.webp",
   },
   {
     id: "adelii",
     author: "@adeliimakeup",
     role: "Форма для слепка",
-    image: "/testimonials-draft/adelii-leaf-mold.jpg",
+    image: "/testimonials-draft/adelii-leaf-mold.webp",
   },
   {
     id: "durackaya",
     author: "@durackaya_hat",
     role: "Серьги",
-    image: "/testimonials-draft/durackaya-earrings.jpg",
+    image: "/testimonials-draft/durackaya-earrings.webp",
   },
   {
     id: "artmeup",
     author: "@artmeup.ru",
     role: "Художница, коллега",
     quote: "Твой уровень харизмы равен уровню Вселенной 🧡 С днём рождения, Катя!",
-    image: "/testimonials-draft/artmeup-birthday.jpg",
+    image: "/testimonials-draft/artmeup-birthday.webp",
   },
   {
     id: "juliakardash",
     author: "@julia.kardash.beauty",
     role: "Палитра ручной работы",
-    image: "/testimonials-draft/juliakardash-palette.jpg",
+    image: "/testimonials-draft/juliakardash-palette.webp",
   },
   {
     id: "anchanov",
     author: "@ancha_nov",
     role: "Покупательница",
     quote: "Потрясающий мастер, обалденные работы. До мурашек! Вдохновение в каждой детали 🤍",
-    image: "/testimonials-draft/anchanov-geode-croissant.jpg",
+    image: "/testimonials-draft/anchanov-geode-croissant.webp",
   },
   {
     id: "pendant",
     author: "Покупательница",
     role: "Кулон на заказ",
     quote: "Шикарная штука;) Кусочек моря",
-    image: "/testimonials-draft/pendant-selfie.jpg",
+    image: "/testimonials-draft/pendant-selfie.webp",
   },
   {
     id: "beautytime",
     author: "@beautytime.nailroom",
     role: "Мастер-класс",
     quote: "Очень понравился мастер-класс от @fir_tree_art по эпоксидной смоле 🥰",
-    image: "/testimonials-draft/beautytime-snowflakes.jpg",
+    image: "/testimonials-draft/beautytime-snowflakes.webp",
   },
   {
     id: "mariiialakhmakova",
@@ -159,7 +159,7 @@ const items: Testimonial[] = [
 function SectionLabel({ n, title, note }: { n: string; title: string; note: string }) {
   return (
     <div className="container mx-auto px-6 pt-20 pb-10">
-      <p className="mb-2 font-mono text-xs font-bold uppercase tracking-widest text-[#14F1D9]">
+      <p className="mb-2 font-mono text-xs font-bold uppercase tracking-widest text-primary">
         Вариант {n}
       </p>
       <h2 className="mb-3 text-3xl font-black uppercase text-white font-montserrat sm:text-5xl">
@@ -177,7 +177,7 @@ function BentoCard({ item }: { item: Testimonial }) {
 
   return (
     <article
-      className={`flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1A1A1A] ${
+      className={`flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface ${
         isBig ? "sm:col-span-2 sm:row-span-2" : ""
       }`}
     >
@@ -190,7 +190,7 @@ function BentoCard({ item }: { item: Testimonial }) {
       <div className="flex flex-1 flex-col gap-3 p-5">
         {item.quote ? (
           <div className="flex flex-1 flex-col justify-center">
-            <Quote className={`mb-2 text-[#14F1D9] ${isBig ? "h-8 w-8" : "h-5 w-5"}`} strokeWidth={2.5} />
+            <Quote className={`mb-2 text-primary ${isBig ? "h-8 w-8" : "h-5 w-5"}`} strokeWidth={2.5} />
             <p className={`leading-relaxed text-white/80 ${isBig ? "text-xl sm:text-2xl" : "text-sm"}`}>
               {item.quote}
             </p>
@@ -223,7 +223,7 @@ function BentoVariant() {
 function ScrollCard({ item }: { item: Testimonial }) {
   return (
     <article
-      className={`group flex shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1A1A1A] ${
+      className={`group flex shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface ${
         item.featured ? "w-[300px] sm:w-[420px]" : "w-[260px] sm:w-[300px]"
       }`}
     >
@@ -296,14 +296,14 @@ function ScrollVariant() {
 
 function MiniCard({ item }: { item: Testimonial }) {
   return (
-    <article className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#1A1A1A] p-3">
+    <article className="flex items-center gap-3 rounded-xl border border-white/10 bg-surface p-3">
       {item.image ? (
         <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-black/40">
           <Image src={item.image} alt={item.author} fill className="object-cover" />
         </div>
       ) : (
         <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-black/30">
-          <Quote className="h-5 w-5 text-[#14F1D9]" strokeWidth={2.5} />
+          <Quote className="h-5 w-5 text-primary" strokeWidth={2.5} />
         </div>
       )}
       <div className="min-w-0 flex-1">
@@ -325,10 +325,13 @@ function AutoScrollLane({
 }) {
   const looped = [...laneItems, ...laneItems];
   return (
-    <div className="group relative h-[560px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_92%,transparent)]">
+    <div className="marquee-pause group relative h-[560px] overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_8%,black_92%,transparent)]">
       <div
-        className="animate-marquee-vertical flex flex-col gap-3 group-hover:[animation-play-state:paused]"
-        style={{ animationDuration: `${duration}s`, animationDirection: direction === "down" ? "reverse" : "normal" }}
+        className="animate-marquee-vertical flex flex-col gap-3"
+        style={{
+          ["--marquee-duration" as string]: `${duration}s`,
+          animationDirection: direction === "down" ? "reverse" : "normal",
+        }}
       >
         {looped.map((item, i) => (
           <MiniCard key={`${item.id}-${i}`} item={item} />
@@ -364,7 +367,7 @@ function FeedVariant() {
 
 export default function TestimonialsTestPage() {
   return (
-    <main className="min-h-screen bg-[#111111] pb-32">
+    <main className="min-h-screen bg-background pb-32">
       <div className="container mx-auto px-6 pt-24">
         <p className="font-mono text-xs uppercase tracking-widest text-white/40">
           Черновик для сравнения — не в навигации. Выбран вариант C, он на проде: /fir_tree_art#testimonials

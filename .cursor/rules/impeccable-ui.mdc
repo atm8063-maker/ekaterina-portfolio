@@ -1,0 +1,17 @@
+---
+description: Impeccable craft when editing portfolio UI (app + components).
+globs: "{app,components}/**/*.{tsx,jsx,css}"
+alwaysApply: false
+---
+
+# Impeccable on UI edits
+
+When this turn edits React UI or CSS under `app/` or `components/`:
+
+1. Load the **impeccable** skill from the Cursor skills catalog (not a vendored copy in this repo).
+2. Before substantive UI work, follow **craft-floor** guidance from that skill.
+3. Motion: pair with **animate** and **apple-design**; match existing Framer Motion usage in sibling sections.
+4. Tokens: `#111111`, accent `#14F1D9`, Montserrat + Inter — see `docs/DESIGN_SYSTEM.md`.
+5. Do not rewrite marketing copy unless the user explicitly requests it.
+
+Skip for pure data/config changes with no visual impact.

@@ -16,7 +16,9 @@ node_modules
 .vercel
 *.tsbuildinfo
 scratch/
-scripts/
+scripts/*
+!scripts/generate-favicons.mjs
+!scripts/convert-images.mjs
 temp.txt
 step*.txt
 step*.json
@@ -25,3 +27,12 @@ swap_hero_bg.js
 repair.py
 video_block.tsx
 .gstack/
+
+# Local agent / review notes (not for the repo)
+additional-docs/
+
+# Cursor: only project rules are tracked (see .cursor/rules/)
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+.agents/skills/

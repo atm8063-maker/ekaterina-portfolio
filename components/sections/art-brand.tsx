@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 
 type BrandItem = {
   id: string;
@@ -11,13 +12,13 @@ type BrandItem = {
   image: string;
 };
 
-const brandItems: BrandItem[] = [
+const brandItemsRu: BrandItem[] = [
   {
     id: "sawdust-box",
     title: "Защитный короб для опила изделий",
     badge: "ПРОМЫШЛЕННЫЙ ДИЗАЙН",
     desc: "Эргономичный прозрачный бокс для безопасной и чистой шлифовки. Спроектировала конструкцию с нуля, запущена в серийное производство.",
-    image: "/brand/sawdust-chamber.jpg",
+    image: "/brand/sawdust-chamber.webp",
   },
   {
     id: "toys-box",
@@ -42,15 +43,48 @@ const brandItems: BrandItem[] = [
   },
 ];
 
+const brandItemsEn: BrandItem[] = [
+  {
+    id: "sawdust-box",
+    title: "Protective Sawdust Containment Box",
+    badge: "INDUSTRIAL DESIGN",
+    desc: "An ergonomic clear box for clean, safe sanding. I designed the structure from scratch, and it went into serial production.",
+    image: "/brand/sawdust-chamber.webp",
+  },
+  {
+    id: "toys-box",
+    title: "A Kit for Making Christmas Ornaments",
+    badge: "COLLABORATION",
+    desc: "An exclusive holiday gift box with original silicone molds, resin, pigments, and a step-by-step tutorial.",
+    image: "/brand/toy-box-holiday.webp",
+  },
+  {
+    id: "toy-flatlay",
+    title: "The Full Box Contents and Kit",
+    badge: "KIT CONTENTS",
+    desc: "A set of original silicone molds, epoxy resin, a scale, a torch, mica powders, and pigments.",
+    image: "/brand/toy-box-flatlay.webp",
+  },
+  {
+    id: "toy-collection",
+    title: "The Finished Original Christmas Ornaments",
+    badge: "RESULT",
+    desc: "A collection of holiday resin ornaments made following the kit's tutorial program.",
+    image: "/brand/toy-finished-collection.webp",
+  },
+];
+
 export function ArtBrand() {
+  const { isEn } = useLanguage();
+  const brandItems = isEn ? brandItemsEn : brandItemsRu;
   const [selectedImage, setSelectedImage] = useState<BrandItem | null>(null);
 
   return (
-    <section id="brand" className="relative bg-[#111111] py-24 scroll-mt-20 overflow-hidden">
+    <section id="brand" className="relative bg-background py-24 scroll-mt-20 overflow-hidden">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"
@@ -58,8 +92,8 @@ export function ArtBrand() {
       </div>
 
       {/* Top & bottom gradient blend fades */}
-      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-background via-background/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-background via-background/60 to-transparent z-[15] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-20">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
@@ -67,30 +101,46 @@ export function ArtBrand() {
           {/* Левая колонка: Описание и факты */}
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-24">
             <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat leading-tight">
-              Амбассадор бренда <span className="text-[#14F1D9]">&</span> Продукция
+              {isEn ? <>Brand Ambassador <span className="text-primary">&</span> Products</> : <>Амбассадор бренда <span className="text-primary">&</span> Продукция</>}
             </h2>
 
             <div className="space-y-4 text-white/70 text-base sm:text-lg leading-relaxed font-inter">
-              <p>
-                Была официальным <strong className="text-white font-semibold">амбассадором</strong> одного из ведущих производителей эпоксидной смолы и художественных материалов в России.
-              </p>
-              <p>
-                В рамках партнерства мы выпустили совместную брендированную продукцию: <strong className="text-[#14F1D9] font-semibold">эксклюзивную коробку для создания ёлочных игрушек</strong> из смолы, которая разошлась по всей стране.
-              </p>
-              <p>
-                Также я <strong className="text-[#14F1D9] font-semibold">спроектировала специализированный защитный короб для опила изделий</strong>, защищающий мастера от пыли — производитель пустил мою разработку в серийное производство.
-              </p>
+              {isEn ? (
+                <>
+                  <p>
+                    I was the official <strong className="text-white font-semibold">brand ambassador</strong> for one of Russia&apos;s leading manufacturers of epoxy resin and art materials.
+                  </p>
+                  <p>
+                    As part of the partnership, we released co-branded products: an <strong className="text-primary font-semibold">exclusive resin Christmas ornament kit</strong> that sold across the whole country.
+                  </p>
+                  <p>
+                    I also <strong className="text-primary font-semibold">designed a specialized dust containment box</strong> that protects makers from sanding dust — the manufacturer put my design into serial production.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    Была официальным <strong className="text-white font-semibold">амбассадором</strong> одного из ведущих производителей эпоксидной смолы и художественных материалов в России.
+                  </p>
+                  <p>
+                    В рамках партнерства мы выпустили совместную брендированную продукцию: <strong className="text-primary font-semibold">эксклюзивную коробку для создания ёлочных игрушек</strong> из смолы, которая разошлась по всей стране.
+                  </p>
+                  <p>
+                    Также я <strong className="text-primary font-semibold">спроектировала специализированный защитный короб для опила изделий</strong>, защищающий мастера от пыли — производитель пустил мою разработку в серийное производство.
+                  </p>
+                </>
+              )}
             </div>
 
             {/* Факты */}
             <div className="grid grid-cols-2 gap-2.5 sm:gap-3 pt-2">
-              <div className="border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-xs xs:text-sm sm:text-base lg:text-lg font-black text-[#14F1D9] tracking-tight leading-tight">АМБАССАДОР</div>
-                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Ведущего производителя смолы в РФ</div>
+              <div className="border border-white/10 bg-surface p-3 sm:p-4 rounded-none transition-colors hover:border-primary/40">
+                <div className="font-montserrat text-xs xs:text-sm sm:text-base lg:text-lg font-black text-primary tracking-tight leading-tight">{isEn ? "AMBASSADOR" : "АМБАССАДОР"}</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">{isEn ? "For a leading resin manufacturer in Russia" : "Ведущего производителя смолы в РФ"}</div>
               </div>
-              <div className="border border-white/10 bg-[#1A1A1A] p-3 sm:p-4 rounded-none transition-colors hover:border-[#14F1D9]/40">
-                <div className="font-montserrat text-xs xs:text-sm sm:text-base lg:text-lg font-black text-white leading-tight">В СЕРИИ</div>
-                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">Авторский промышленный дизайн</div>
+              <div className="border border-white/10 bg-surface p-3 sm:p-4 rounded-none transition-colors hover:border-primary/40">
+                <div className="font-montserrat text-xs xs:text-sm sm:text-base lg:text-lg font-black text-white leading-tight">{isEn ? "IN PRODUCTION" : "В СЕРИИ"}</div>
+                <div className="mt-1 text-[11px] sm:text-xs text-white/60 font-inter">{isEn ? "Original industrial design" : "Авторский промышленный дизайн"}</div>
               </div>
             </div>
           </div>
@@ -100,7 +150,7 @@ export function ArtBrand() {
             {brandItems.map((item) => (
               <article
                 key={item.id}
-                className="group flex flex-col overflow-hidden rounded-none border border-white/15 bg-[#1A1A1A] transition-all hover:border-[#14F1D9]/40"
+                className="group flex flex-col overflow-hidden rounded-none border border-white/15 bg-surface transition-all hover:border-primary/40"
               >
                 {/* Картинка */}
                 <div 
@@ -112,12 +162,11 @@ export function ArtBrand() {
                     alt={item.title}
                     fill
                     unoptimized
-                    loading="eager"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 30vw"
                   />
                   <div className="absolute top-3 left-3">
-                    <span className="inline-block rounded-none bg-[#14F1D9] px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-black shadow">
+                    <span className="inline-block rounded-none bg-primary px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-black shadow">
                       {item.badge}
                     </span>
                   </div>
@@ -157,7 +206,7 @@ export function ArtBrand() {
               />
             </div>
             <div className="mt-3 text-center">
-              <span className="inline-block rounded-none bg-[#14F1D9] px-3 py-1 text-xs font-black uppercase text-black mb-1">
+              <span className="inline-block rounded-none bg-primary px-3 py-1 text-xs font-black uppercase text-black mb-1">
                 {selectedImage.badge}
               </span>
               <h3 className="text-base font-bold text-white font-montserrat">{selectedImage.title}</h3>

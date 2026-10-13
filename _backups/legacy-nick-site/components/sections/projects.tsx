@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { projects, type Project } from '@/lib/data'
-import { Reveal } from '@/components/reveal'
+import { Reveal } from '../reveal'
 import { SectionHeading, SectionLabel } from '@/components/sections/section-heading'
 import { useLanguage } from '@/components/language-provider'
 import { translations } from '@/lib/translations'

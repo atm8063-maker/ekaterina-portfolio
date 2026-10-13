@@ -1,0 +1,28 @@
+---
+description: Before git stage/commit — structured review unless user skips.
+alwaysApply: true
+---
+
+# Pre-stage / pre-commit review (portfolio)
+
+When the user asks to **stage**, **commit**, or wants a **thorough review** of pending work, do not run `git add` / `git commit` until review completes — unless they say **skip review** / **commit anyway**.
+
+## Scope
+
+- Uncommitted only: `git status`, `git diff`, `git diff --cached`.
+- PR/branch reviews: diff against merge base.
+
+## Review dimensions
+
+Cover at least:
+
+- **Correctness** — Next.js client/server boundaries, hooks, links, static params for cases
+- **Security** — secrets in client bundles, form endpoints, unsafe HTML
+- **Portfolio constraints** — accidental copy changes, breaking ✅ blocks per `docs/STATE.md`
+- **Design / UX / a11y** — design system, responsive, motion, reduced motion
+- **Performance / memory** — see `memory-leak-review.mdc` (Framer, listeners, video)
+- **Commit hygiene** — scope, no junk assets, no unrelated refactors
+
+Use Task subagents for large diffs; one merged **Fix plan** (Must / Should / Nice) with paths before staging.
+
+Ask: fix first, commit as-is, or skip review.

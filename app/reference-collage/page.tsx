@@ -37,34 +37,34 @@ export default function ReferenceCollagePage() {
         {/* --- IMAGES (Grayscale to match reference) --- */}
         {/* Col A: Piano */}
         <div className="absolute" style={{ top: '45%', left: '25%', width: '15%', height: '20%' }}>
-          <img src="/photo_3154@04-08-2026_20-56-52.jpg" alt="Piano" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
+          <img src="/photo_3154@04-08-2026_20-56-52.webp" alt="Piano" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
         </div>
         {/* Col A: Escalator */}
         <div className="absolute" style={{ top: '65%', left: '25%', width: '15%', height: '20%' }}>
-          <img src="/photo_3155@04-08-2026_20-56-52.jpg" alt="Escalator" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
+          <img src="/photo_3155@04-08-2026_20-56-52.webp" alt="Escalator" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
         </div>
 
         {/* Col B: Dress */}
         <div className="absolute" style={{ top: '35%', left: '40%', width: '12%', height: '30%' }}>
-          <img src="/photo_3157@04-08-2026_20-56-52.jpg" alt="Dress" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
+          <img src="/photo_3157@04-08-2026_20-56-52.webp" alt="Dress" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
         </div>
         {/* Col B: Walking */}
         <div className="absolute" style={{ top: '70%', left: '40%', width: '12%', height: '20%' }}>
-          <img src="/photo_3158@04-08-2026_20-56-52.jpg" alt="Walking" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
+          <img src="/photo_3158@04-08-2026_20-56-52.webp" alt="Walking" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
         </div>
 
         {/* Col C: Profile */}
         <div className="absolute" style={{ top: '15%', left: '52%', width: '20%', height: '20%' }}>
-          <img src="/photo_3159@04-08-2026_20-56-52.jpg" alt="Profile" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
+          <img src="/photo_3159@04-08-2026_20-56-52.webp" alt="Profile" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
         </div>
         {/* Col C: Airplane */}
         <div className="absolute" style={{ top: '45%', left: '52%', width: '20%', height: '20%' }}>
-          <img src="/photo_3161@04-08-2026_20-56-52.jpg" alt="Airplane" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
+          <img src="/photo_3161@04-08-2026_20-56-52.webp" alt="Airplane" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
         </div>
 
         {/* Col D: Origami */}
         <div className="absolute" style={{ top: '35%', left: '72%', width: '15%', height: '20%' }}>
-          <img src="/photo_3162@04-08-2026_20-56-52.jpg" alt="Origami" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
+          <img src="/photo_3162@04-08-2026_20-56-52.webp" alt="Origami" className="w-full h-full object-cover grayscale opacity-90 hover:opacity-100 transition-opacity" />
         </div>
 
       </div>
