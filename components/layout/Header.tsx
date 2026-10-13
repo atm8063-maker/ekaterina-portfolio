@@ -224,6 +224,26 @@ export default function Header() {
               >
                 {tr.contact}
               </Link>
+
+              <div className="flex items-center justify-center gap-4 font-montserrat text-base font-semibold">
+                <button
+                  type="button"
+                  onClick={() => setLang("RU")}
+                  className={`px-3 py-2 transition-colors ${lang === "RU" ? "font-bold text-primary" : "text-white/60 hov:text-white"}`}
+                >
+                  RU
+                </button>
+                <span className="text-white/30" aria-hidden>
+                  |
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setLang("EN")}
+                  className={`px-3 py-2 transition-colors ${lang === "EN" ? "font-bold text-primary" : "text-white/60 hov:text-white"}`}
+                >
+                  EN
+                </button>
+              </div>
             </nav>
           </>,
           document.body,
