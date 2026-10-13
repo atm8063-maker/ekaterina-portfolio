@@ -62,7 +62,7 @@ const artworksDataRu: Artwork[] = [
       },
       {
         type: 'video',
-        src: '/art-protest/папка_2/video_102_04-08-2026_21-08-46.mp4',
+        src: '/art-protest/папка 2/video_102@04-08-2026_21-08-46.mp4',
         label: 'Живой рельеф',
         aspect: '9 / 16',
       },
@@ -119,7 +119,7 @@ const artworksDataRu: Artwork[] = [
       },
       {
         type: 'video',
-        src: '/art-protest/папка_1/video_137_04-08-2026_22-24-33.mp4',
+        src: '/art-protest/папка 1/video_137@04-08-2026_22-24-33.mp4',
         label: 'Видеодеталь',
         aspect: '9 / 16',
       },
@@ -158,7 +158,7 @@ const artworksDataRu: Artwork[] = [
       },
       {
         type: 'video',
-        src: '/art-protest/папка_3/video_95_04-08-2026_21-08-44.mp4',
+        src: '/art-protest/папка 3/video_95@04-08-2026_21-08-44.mp4',
         label: 'Видеодеталь',
         aspect: '9 / 16',
       },
@@ -395,25 +395,25 @@ const artworksDataEn: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка_2/photo_3360_04-08-2026_21-08-46_1.jpg',
+        src: '/art-protest/папка 2/photo_3360@04-08-2026_21-08-46_1.webp',
         label: 'Main View',
         aspect: '874 / 1170',
       },
       {
         type: 'video',
-        src: '/art-protest/папка_2/video_102_04-08-2026_21-08-46.mp4',
+        src: '/art-protest/папка 2/video_102@04-08-2026_21-08-46.mp4',
         label: 'Living Relief',
         aspect: '9 / 16',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_2/photo_3291_04-08-2026_21-08-4231.jpg',
+        src: '/art-protest/папка 2/photo_3291@04-08-2026_21-08-4231.webp',
         label: 'Detail: Texture and Resin',
         aspect: '1024 / 1280',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_2/photo_3362_04-08-2026_21-08-46.jpg',
+        src: '/art-protest/папка 2/photo_3362@04-08-2026_21-08-46.webp',
         label: 'Detail: Chrome and Plaster',
         aspect: '1024 / 1280',
       },
@@ -446,19 +446,19 @@ const artworksDataEn: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка_1/photo_2957_31-07-2026_18-19-07.jpg',
+        src: '/art-protest/папка 1/photo_2957@31-07-2026_18-19-07.webp',
         label: 'Final Piece',
         aspect: '1280 / 1271',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_1/photo_3018_31-07-2026_18-44-23.jpg',
+        src: '/art-protest/папка 1/photo_3018@31-07-2026_18-44-23.webp',
         label: 'Sculptural Element',
         aspect: '576 / 1280',
       },
       {
         type: 'video',
-        src: '/art-protest/папка_1/video_137_04-08-2026_22-24-33.mp4',
+        src: '/art-protest/папка 1/video_137@04-08-2026_22-24-33.mp4',
         label: 'Video Detail',
         aspect: '9 / 16',
       },
@@ -491,13 +491,13 @@ const artworksDataEn: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка_3/photo_3332_04-08-2026_21-08-45.jpg',
+        src: '/art-protest/папка 3/photo_3332@04-08-2026_21-08-45.webp',
         label: 'Display',
         aspect: '1280 / 758',
       },
       {
         type: 'video',
-        src: '/art-protest/папка_3/video_95_04-08-2026_21-08-44.mp4',
+        src: '/art-protest/папка 3/video_95@04-08-2026_21-08-44.mp4',
         label: 'Video Detail',
         aspect: '9 / 16',
       },
@@ -530,43 +530,43 @@ const artworksDataEn: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка_4/photo_3309_04-08-2026_21-08-42.jpg',
+        src: '/art-protest/папка 4/photo_3309@04-08-2026_21-08-42.webp',
         label: 'Main View',
         aspect: '1024 / 1280',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_4/photo_2026-08-30_02-47-39.jpg',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-39.webp',
         label: 'Angle A',
         aspect: '718 / 960',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_4/photo_2026-08-30_02-47-40.jpg',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40.webp',
         label: 'Angle B',
         aspect: '718 / 960',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_4/photo_2026-08-30_02-47-40 (2).jpg',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (2).webp',
         label: 'Relief',
         aspect: '718 / 960',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_4/photo_2026-08-30_02-47-40 (3).jpg',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (3).webp',
         label: 'Cross-Section',
         aspect: '718 / 960',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_4/photo_2026-08-30_02-47-40 (5).jpg',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (5).webp',
         label: 'Texture',
         aspect: '720 / 960',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_4/photo_2026-08-30_02-47-40 (7).jpg',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (7).webp',
         label: 'Macro',
         aspect: '706 / 960',
       },
@@ -599,7 +599,7 @@ const artworksDataEn: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка_5/photo_2933_31-07-2026_17-46-11.jpg',
+        src: '/art-protest/папка 5/photo_2933@31-07-2026_17-46-11.webp',
         label: 'Composition',
         aspect: '1212 / 1280',
       },
@@ -632,25 +632,25 @@ const artworksDataEn: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка_6/photo_3168_04-08-2026_20-56-52.jpg',
+        src: '/art-protest/папка 6/photo_3168@04-08-2026_20-56-52.webp',
         label: 'Overall View',
         aspect: '1105 / 1105',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_6/photo_2026-08-27_17-30-22 (8).jpg',
+        src: '/art-protest/папка 6/photo_2026-08-27_17-30-22 (8).webp',
         label: 'Detail',
         aspect: '1280 / 1022',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_6/photo_2026-08-27_17-30-23.jpg',
+        src: '/art-protest/папка 6/photo_2026-08-27_17-30-23.webp',
         label: 'Relief',
         aspect: '626 / 626',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_6/photo_2026-08-27_17-30-23 (2).jpg',
+        src: '/art-protest/папка 6/photo_2026-08-27_17-30-23 (2).webp',
         label: 'Texture',
         aspect: '1078 / 1078',
       },
@@ -683,19 +683,19 @@ const artworksDataEn: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка_7/photo_3394_04-08-2026_22-17-05.jpg',
+        src: '/art-protest/папка 7/photo_3394@04-08-2026_22-17-05.webp',
         label: '01. Alive! (resin on art board)',
         aspect: '1080 / 810',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_7/photo_2026-08-27_17-30-22.jpg',
+        src: '/art-protest/папка 7/photo_2026-08-27_17-30-22.webp',
         label: '02. Stuck in the Textures (digital art)',
         aspect: '604 / 402',
       },
       {
         type: 'image',
-        src: '/art-protest/папка_7/photo_3225_04-08-2026_21-04-40.jpg',
+        src: '/art-protest/папка 7/photo_3225@04-08-2026_21-04-40.webp',
         label: '03. Physicality (canvas, acrylic, markers)',
         aspect: '495 / 635',
       },

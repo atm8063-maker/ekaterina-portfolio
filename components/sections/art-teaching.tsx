@@ -260,7 +260,7 @@ const carouselMediaRu: TeachingMedia[] = [
 const carouselMediaEn: TeachingMedia[] = [
   {
     type: 'image',
-    src: '/art-muza/photo_3263@04-08-2026_21-08-40.jpg',
+    src: '/art-muza/photo_3263@04-08-2026_21-08-40.webp',
     category: 'forum',
     title: 'Lecture at Artmuza',
     subtitle: 'Speaking to the resin artist community',
@@ -269,7 +269,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_1_2026-08-04_22-38-17.jpg',
+    src: '/art-muza/photo_1_2026-08-04_22-38-17.webp',
     category: 'workshops',
     title: 'Acrylic Workshop in Montenegro',
     subtitle: 'Interior painting and mixed media techniques',
@@ -278,7 +278,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/студия/photo_3053_31-07-2026_19-04-11.jpg',
+    src: '/lessons/студия/photo_3053@31-07-2026_19-04-11.webp',
     category: 'workshops',
     title: 'Creative Studio',
     subtitle: 'A space for practice and creative work',
@@ -287,7 +287,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_2026-02-19_01-56-13.jpg',
+    src: '/art-muza/photo_2026-02-19_01-56-13.webp',
     category: 'workshops',
     title: 'Epoxy Resin Sea Workshop in Turkey',
     subtitle: 'Shaping ocean waves and depths',
@@ -296,7 +296,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_2026-02-19_11-20-02 (2).jpg',
+    src: '/art-muza/photo_2026-02-19_11-20-02 (2).webp',
     category: 'workshops',
     title: 'Workshop in Turkey',
     subtitle: 'A hands-on epoxy resin workshop',
@@ -305,7 +305,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_2026-02-19_11-20-02 (3).jpg',
+    src: '/art-muza/photo_2026-02-19_11-20-02 (3).webp',
     category: 'workshops',
     title: 'Traveling Workshops Abroad',
     subtitle: "Finished pieces and participants' results",
@@ -314,7 +314,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3262@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3262@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Resin Artist Forum Attendees at Artmuza',
     subtitle: 'A professional community and speakers',
@@ -323,7 +323,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/студия/photo_3052_31-07-2026_19-04-11.jpg',
+    src: '/lessons/студия/photo_3052@31-07-2026_19-04-11.webp',
     category: 'workshops',
     title: 'Creative Studio',
     subtitle: 'Workshop equipment and materials',
@@ -332,7 +332,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_10_2026-08-04_22-38-17.jpg',
+    src: '/art-muza/photo_10_2026-08-04_22-38-17.webp',
     category: 'workshops',
     title: 'Workshop in Montenegro',
     subtitle: 'Creative practice and working with students',
@@ -341,7 +341,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/студия/photo_3160_04-08-2026_20-56-52.jpg',
+    src: '/lessons/студия/photo_3160@04-08-2026_20-56-52.webp',
     category: 'workshops',
     title: 'Studio in Tambov',
     subtitle: 'The interior of the art space and studio',
@@ -350,7 +350,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/photo_3035@31-07-2026_18-44-54.jpg',
+    src: '/lessons/photo_3035@31-07-2026_18-44-54.webp',
     category: 'workshops',
     title: 'Art Workshop in Montenegro',
     subtitle: 'Creating interior art pieces',
@@ -359,7 +359,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3254@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3254@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: '1st All-Russian Resin Artists Forum',
     subtitle: "Delivering an original lecture to the community",
@@ -368,7 +368,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3255@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3255@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Workshop: The Finer Points of Working with Resin',
     subtitle: 'Demonstrating layered pours and pigments',
@@ -377,7 +377,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3256@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3256@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Live Technique Demonstration on Stage',
     subtitle: 'Working live in front of hundreds of attendees',
@@ -386,7 +386,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3257@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3257@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Creating a Stone Slice',
     subtitle: 'Layered pours of resin and pigments',
@@ -395,7 +395,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3259@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3259@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Practice and the Secrets of Layering',
     subtitle: 'Breaking down mistakes and curing nuances',
@@ -404,7 +404,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3260@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3260@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Workshop at the Museum of Contemporary Art',
     subtitle: 'Talking with attendees and answering questions',
@@ -413,7 +413,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/art-muza/photo_3261@04-08-2026_21-08-10.jpg',
+    src: '/art-muza/photo_3261@04-08-2026_21-08-10.webp',
     category: 'forum',
     title: 'Speakers at Artmuza',
     subtitle: 'Attendees and speakers of the 1st All-Russian Forum',
@@ -431,7 +431,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/photo_3011@31-07-2026_18-44-16.jpg',
+    src: '/lessons/photo_3011@31-07-2026_18-44-16.webp',
     category: 'online',
     title: 'Livestreams and Webinars',
     subtitle: 'Reaching thousands of viewers with direct feedback',
@@ -440,7 +440,7 @@ const carouselMediaEn: TeachingMedia[] = [
   },
   {
     type: 'image',
-    src: '/lessons/photo_3067@31-07-2026_19-44-02.jpg',
+    src: '/lessons/photo_3067@31-07-2026_19-44-02.webp',
     category: 'online',
     title: 'Mentoring at an International Online School',
     subtitle: 'Supporting students and reviewing assignments',
@@ -662,7 +662,7 @@ export function ArtTeaching() {
         <div className="flex items-center gap-3 flex-wrap">
           <div>
             <h3 className="text-sm sm:text-base font-montserrat font-bold uppercase tracking-wider text-white">
-              {isEn ? <>Photo Archive: Workshops <span className="text-[#14F1D9]">&</span> Classes</> : <>Фотоархив: воркшопы <span className="text-[#14F1D9]">&</span> мастер-классы</>}
+              {isEn ? <>Photo Archive: Workshops <span className="text-primary">&</span> Classes</> : <>Фотоархив: воркшопы <span className="text-primary">&</span> мастер-классы</>}
             </h3>
             <p className="text-xs text-white/50 font-inter mt-0.5">
               {isEn ? "Swipe or use the arrows to browse the carousel" : "Листай карусель свайпом или стрелками"}

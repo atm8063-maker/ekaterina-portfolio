@@ -159,7 +159,7 @@ const FLOOR_SKETCHES_EN: FloorSketchMap = {
     floor: 1,
     title: "Floor 1: Ground-Floor Zones",
     subtitle: "Kitchen-living room, entryway and hallway, boiler room, bathroom with tub, fireplace in the pier wall, and the stairwell",
-    imageSrc: "/Кейсы/10-house-project/sketch_floor_1.jpg",
+    imageSrc: "/Кейсы/10-house-project/sketch_floor_1.webp",
     callouts: [
       {
         id: 1,
@@ -215,7 +215,7 @@ const FLOOR_SKETCHES_EN: FloorSketchMap = {
     floor: 2,
     title: "Floor 2: Upper-Floor Zones",
     subtitle: "A bedroom with a trapezoidal entry, a kids' room with a playhouse, a study with a continuous desk, and a bathroom with a shower",
-    imageSrc: "/Кейсы/10-house-project/sketch_floor_2.jpg",
+    imageSrc: "/Кейсы/10-house-project/sketch_floor_2.webp",
     callouts: [
       {
         id: 1,

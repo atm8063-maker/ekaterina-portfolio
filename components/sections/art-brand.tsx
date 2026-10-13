@@ -49,7 +49,7 @@ const brandItemsEn: BrandItem[] = [
     title: "Protective Sawdust Containment Box",
     badge: "INDUSTRIAL DESIGN",
     desc: "An ergonomic clear box for clean, safe sanding. I designed the structure from scratch, and it went into serial production.",
-    image: "/brand/sawdust-chamber.jpg",
+    image: "/brand/sawdust-chamber.webp",
   },
   {
     id: "toys-box",
