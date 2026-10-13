@@ -1,4 +1,5 @@
 import type { RefObject } from "react";
+import { useLanguage } from "@/components/language-provider";
 
 type VertexIframeSectionProps = {
   iframeRef: RefObject<HTMLIFrameElement | null>;
@@ -11,11 +12,13 @@ export function VertexIframeSection({
   iframeHeight,
   syncHeight,
 }: VertexIframeSectionProps) {
+  const { lang } = useLanguage();
+  const isEn = lang === "EN";
   return (
     <div className="w-full rounded-2xl overflow-hidden border border-[#796D41]/30 shadow-2xl bg-[#222F33] transition-all duration-300">
       <iframe
         ref={iframeRef}
-        src="/case-vertex/index.html"
+        src={isEn ? "/case-vertex/index-en.html" : "/case-vertex/index.html"}
         onLoad={() => {
           syncHeight();
           setTimeout(syncHeight, 300);
@@ -30,7 +33,7 @@ export function VertexIframeSection({
           overflow: "hidden",
         }}
         scrolling="no"
-        title="Vertex Homes — Умное строительство для умных инвестиций"
+        title={isEn ? "Vertex Homes — Smart Construction for Smart Investments" : "Vertex Homes — Умное строительство для умных инвестиций"}
       />
     </div>
   );

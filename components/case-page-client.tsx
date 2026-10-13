@@ -129,7 +129,7 @@ export function CasePageClient({ slug, caseDataRu, caseDataEn, images }: Props) 
               </div>
               {caseData.meta.link && (
                 <div>
-                  <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">Сайт</h3>
+                  <h3 className="text-xs uppercase font-bold tracking-wider text-white/50 font-montserrat mb-1.5">{t.site}</h3>
                   <a href={caseData.meta.link} target="_blank" rel="noopener noreferrer" className="text-sm sm:text-base font-semibold text-primary hover:underline font-inter">
                     {caseData.meta.link.replace(/^https?:\/\//, '')}
                   </a>
@@ -270,7 +270,7 @@ export function CasePageClient({ slug, caseDataRu, caseDataEn, images }: Props) 
                     <div className="flex items-center gap-2 mb-1.5">
                       <span className="inline-block w-2 h-2 rounded-full bg-primary animate-pulse" />
                       <span className="text-xs font-mono font-bold tracking-widest text-primary uppercase">
-                        Материалы
+                        {t.materials}
                       </span>
                     </div>
                     <h2 className="font-montserrat font-black uppercase text-2xl sm:text-3xl text-white tracking-tight">
@@ -342,7 +342,7 @@ export function CasePageClient({ slug, caseDataRu, caseDataEn, images }: Props) 
                 type="button"
                 onClick={() => setActiveImageIndex(null)}
                 className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white hover:text-primary transition-all flex items-center gap-1.5 text-xs font-mono"
-                title="Закрыть (Esc)"
+                title={t.close}
               >
                 <X className="w-5 h-5" />
                 <span className="hidden sm:inline">Esc</span>
@@ -360,7 +360,7 @@ export function CasePageClient({ slug, caseDataRu, caseDataEn, images }: Props) 
                 type="button"
                 onClick={handlePrev}
                 className="absolute left-2 sm:left-4 z-20 p-3 rounded-full bg-black/70 border border-white/20 text-white hover:text-primary hover:border-primary transition-all"
-                title="Предыдущее фото (←)"
+                title={t.prev}
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
@@ -382,7 +382,7 @@ export function CasePageClient({ slug, caseDataRu, caseDataEn, images }: Props) 
                 type="button"
                 onClick={handleNext}
                 className="absolute right-2 sm:right-4 z-20 p-3 rounded-full bg-black/70 border border-white/20 text-white hover:text-primary hover:border-primary transition-all"
-                title="Следующее фото (→)"
+                title={t.next}
               >
                 <ChevronRight className="w-6 h-6" />
               </button>

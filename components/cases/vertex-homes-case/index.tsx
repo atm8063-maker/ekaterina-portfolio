@@ -6,6 +6,7 @@ import { CaseNavigation } from "@/components/cases/case-navigation";
 import { VertexIframeSection } from "./vertex-hero";
 import { VertexMockupsSection, type SelectedVertexImage } from "./vertex-content";
 import { VertexImageLightbox } from "./vertex-lightbox";
+import { PageTitle } from "@/components/language-provider";
 
 export function VertexHomesCase() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -59,6 +60,7 @@ export function VertexHomesCase() {
 
   return (
     <div className="min-h-screen bg-[#1b2629] text-[#F4F4F4] relative selection:bg-[#796D41] selection:text-white font-rubik">
+      <PageTitle titleRu="Кейс: Vertex Homes — Екатерина Разумова" titleEn="Case Study: Vertex Homes — Ekaterina Razumova" />
       {/* Deep smooth background matching Vertex Homes palette */}
       <div className="relative z-10">
         {/* Header */}

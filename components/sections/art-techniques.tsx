@@ -272,7 +272,7 @@ export function ArtTechniques() {
         {/* Header */}
         <div className="max-w-3xl mb-10">
           <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat mt-2">
-            {isEn ? <>Techniques <span className="text-[#14F1D9]">&</span> Tools</> : <>Техники <span className="text-[#14F1D9]">&</span> Инструменты</>}
+            {isEn ? <>Techniques <span className="text-primary">&</span> Tools</> : <>Техники <span className="text-primary">&</span> Инструменты</>}
           </h2>
           <p className="text-white/60 mt-2 font-inter text-sm sm:text-base">
             {isEn

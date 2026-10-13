@@ -144,7 +144,7 @@ export default function Hero() {
         <div className="absolute top-[5rem] bottom-0 left-0 right-0 z-10 pointer-events-none">
           <Image 
             src="/hero-cutout.webp" 
-            alt="Екатерина Разумова"
+            alt={isEn ? "Ekaterina Razumova" : "Екатерина Разумова"}
             fill
             className="object-cover object-top"
             priority
@@ -242,7 +242,7 @@ export default function Hero() {
           >
             <Image
               src="/hero-cutout.webp"
-              alt="Екатерина Разумова"
+              alt={isEn ? "Ekaterina Razumova" : "Екатерина Разумова"}
               fill
               className="object-contain object-[left_bottom] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
               priority

@@ -474,7 +474,7 @@ export function LandscapeCase() {
                       <div className="relative aspect-[1024/546] w-full bg-white">
                         <Image
                           src="/Кейсы/11-landscape-project/master_plan_main.webp"
-                          alt="Генеральный план усадьбы с дендропланом"
+                          alt={lang === "RU" ? "Генеральный план усадьбы с дендропланом" : "Master plan of the estate with dendrological plan"}
                           fill
                           className="object-contain transition-transform duration-500 group-hover:scale-[1.01]"
                         />

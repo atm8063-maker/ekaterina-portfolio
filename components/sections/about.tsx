@@ -116,7 +116,7 @@ export default function About() {
         <div className="relative w-full h-[380px] sm:h-[480px] lg:h-full max-w-[440px] sm:max-w-[520px] lg:max-w-none">
           <Image 
             src="/about-photo-cutout.webp" 
-            alt="Екатерина Разумова"
+            alt={isEn ? "Ekaterina Razumova" : "Екатерина Разумова"}
             fill
             className="object-contain object-top lg:object-right-top drop-shadow-[0_20px_50px_rgba(0,0,0,0.85)]"
           />
