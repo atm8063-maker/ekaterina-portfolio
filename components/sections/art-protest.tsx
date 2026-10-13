@@ -2,7 +2,9 @@
 
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
+import { LazyVideo } from '@/components/shared/lazy-video';
 import { Play, X, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
+import { useLanguage } from '@/components/language-provider';
 
 export type MediaItem = {
   type: 'image' | 'video';
@@ -23,7 +25,7 @@ export type Artwork = {
   media: MediaItem[];
 };
 
-const artworksData: Artwork[] = [
+const artworksDataRu: Artwork[] = [
   // 1. Папка 2: Февраль 22-го (теперь объект 01)
   {
     id: 'work-feb',
@@ -54,7 +56,7 @@ const artworksData: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка 2/photo_3360@04-08-2026_21-08-46_1.jpg',
+        src: '/art-protest/папка 2/photo_3360@04-08-2026_21-08-46_1.webp',
         label: 'Главный вид',
         aspect: '874 / 1170',
       },
@@ -66,13 +68,13 @@ const artworksData: Artwork[] = [
       },
       {
         type: 'image',
-        src: '/art-protest/папка 2/photo_3291@04-08-2026_21-08-4231.jpg',
+        src: '/art-protest/папка 2/photo_3291@04-08-2026_21-08-4231.webp',
         label: 'Деталь: Текстура и смола',
         aspect: '1024 / 1280',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 2/photo_3362@04-08-2026_21-08-46.jpg',
+        src: '/art-protest/папка 2/photo_3362@04-08-2026_21-08-46.webp',
         label: 'Деталь: Хром и гипс',
         aspect: '1024 / 1280',
       },
@@ -105,13 +107,13 @@ const artworksData: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка 1/photo_2957@31-07-2026_18-19-07.jpg',
+        src: '/art-protest/папка 1/photo_2957@31-07-2026_18-19-07.webp',
         label: 'Финальная работа',
         aspect: '1280 / 1271',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 1/photo_3018@31-07-2026_18-44-23.jpg',
+        src: '/art-protest/папка 1/photo_3018@31-07-2026_18-44-23.webp',
         label: 'Скульптурный элемент',
         aspect: '576 / 1280',
       },
@@ -150,7 +152,7 @@ const artworksData: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка 3/photo_3332@04-08-2026_21-08-45.jpg',
+        src: '/art-protest/папка 3/photo_3332@04-08-2026_21-08-45.webp',
         label: 'Экспозиция',
         aspect: '1280 / 758',
       },
@@ -189,43 +191,43 @@ const artworksData: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка 4/photo_3309@04-08-2026_21-08-42.jpg',
+        src: '/art-protest/папка 4/photo_3309@04-08-2026_21-08-42.webp',
         label: 'Главный вид',
         aspect: '1024 / 1280',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 4/photo_2026-08-30_02-47-39.jpg',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-39.webp',
         label: 'Ракурс A',
         aspect: '718 / 960',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40.jpg',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40.webp',
         label: 'Ракурс B',
         aspect: '718 / 960',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (2).jpg',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (2).webp',
         label: 'Рельеф',
         aspect: '718 / 960',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (3).jpg',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (3).webp',
         label: 'Срез',
         aspect: '718 / 960',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (5).jpg',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (5).webp',
         label: 'Фактура',
         aspect: '720 / 960',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (7).jpg',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (7).webp',
         label: 'Макро',
         aspect: '706 / 960',
       },
@@ -258,7 +260,7 @@ const artworksData: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка 5/photo_2933@31-07-2026_17-46-11.jpg',
+        src: '/art-protest/папка 5/photo_2933@31-07-2026_17-46-11.webp',
         label: 'Композиция',
         aspect: '1212 / 1280',
       },
@@ -291,25 +293,25 @@ const artworksData: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка 6/photo_3168@04-08-2026_20-56-52.jpg',
+        src: '/art-protest/папка 6/photo_3168@04-08-2026_20-56-52.webp',
         label: 'Общий вид',
         aspect: '1105 / 1105',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 6/photo_2026-08-27_17-30-22 (8).jpg',
+        src: '/art-protest/папка 6/photo_2026-08-27_17-30-22 (8).webp',
         label: 'Деталь',
         aspect: '1280 / 1022',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 6/photo_2026-08-27_17-30-23.jpg',
+        src: '/art-protest/папка 6/photo_2026-08-27_17-30-23.webp',
         label: 'Рельеф',
         aspect: '626 / 626',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 6/photo_2026-08-27_17-30-23 (2).jpg',
+        src: '/art-protest/папка 6/photo_2026-08-27_17-30-23 (2).webp',
         label: 'Текстура',
         aspect: '1078 / 1078',
       },
@@ -342,20 +344,359 @@ const artworksData: Artwork[] = [
     media: [
       {
         type: 'image',
-        src: '/art-protest/папка 7/photo_3394@04-08-2026_22-17-05.jpg',
+        src: '/art-protest/папка 7/photo_3394@04-08-2026_22-17-05.webp',
         label: '01. Жыве! (смола на арт-борде)',
         aspect: '1080 / 810',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 7/photo_2026-08-27_17-30-22.jpg',
+        src: '/art-protest/папка 7/photo_2026-08-27_17-30-22.webp',
         label: '02. Застрять в текстурах (цифровая графика)',
         aspect: '604 / 402',
       },
       {
         type: 'image',
-        src: '/art-protest/папка 7/photo_3225@04-08-2026_21-04-40.jpg',
+        src: '/art-protest/папка 7/photo_3225@04-08-2026_21-04-40.webp',
         label: '03. Телесность (холст, акрил, маркеры)',
+        aspect: '495 / 635',
+      },
+    ],
+  },
+];
+
+const artworksDataEn: Artwork[] = [
+  // 1. February '22
+  {
+    id: 'work-feb',
+    number: '01',
+    title: "February '22",
+    subtitle: 'Artivism & Protest',
+    concept: 'The piece conveys a state of catastrophe, shock, and forced silence through the visual metaphors of ice, cracks, and constraint.',
+    fullConcept: [
+      {
+        heading: 'The Trap and the Web of Censorship',
+        text: 'Ice, made with epoxy resin. Interlacing white cracks resemble a sticky web or a torn net, binding the space. All of it symbolizes total control, an atmosphere of fear, and the impossibility of breaking through the wall of prohibition to be heard.',
+      },
+      {
+        heading: 'A Voiceless Protest',
+        text: 'At the center of the composition are hands trying to break through the ice. It is a gesture of dissent, inner strength, and an attempt at resistance meeting an insurmountable barrier.',
+      },
+      {
+        heading: 'The Ghost of Freedom, and Its Fading',
+        text: "A blurred, semi-transparent silhouette of an open palm beneath the ice underscores powerlessness, the feeling of one's own position becoming a 'ghost,' and the gradual loss of the ability to act openly.",
+      },
+      {
+        heading: 'A Somber Palette',
+        text: 'The dark shade of water in the crevice between the ice shards, together with the highlights, creates a sense of a cold dead end, where light struggles to break through.',
+      },
+    ],
+    materials: 'Oil, epoxy resin, clay, plaster, markers, chrome, cardboard, pigments, dyes',
+    year: '2022',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка 2/photo_3360@04-08-2026_21-08-46_1.webp',
+        label: 'Main View',
+        aspect: '874 / 1170',
+      },
+      {
+        type: 'video',
+        src: '/art-protest/папка 2/video_102@04-08-2026_21-08-46.mp4',
+        label: 'Living Relief',
+        aspect: '9 / 16',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 2/photo_3291@04-08-2026_21-08-4231.webp',
+        label: 'Detail: Texture and Resin',
+        aspect: '1024 / 1280',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 2/photo_3362@04-08-2026_21-08-46.webp',
+        label: 'Detail: Chrome and Plaster',
+        aspect: '1024 / 1280',
+      },
+    ],
+  },
+
+  // 2. Deep Rest
+  {
+    id: 'work-deep',
+    number: '02',
+    title: 'Deep Rest',
+    subtitle: 'Artivism & Texture',
+    concept: 'An exploration of interaction, the boundaries of support, and emotional freezing: the choice between rescue and sinking into the depths.',
+    fullConcept: [
+      {
+        heading: 'Interaction',
+        text: 'For a very long time this painting sounded in my head as "deep rest," but when I finished it, it became clear that wasn\'t it — and it\'s not really about me, or even about the canvas\'s subject.\nIt\'s about interaction. Like in Marina Abramović\'s experiment (which, it seems, is still ongoing).\nYou can let the other person drown, or you can reach out a hand.\n"Never give up" or "Deep rest" — it all depends on who\'s watching.',
+      },
+      {
+        heading: 'A Phonetic Play on Meaning',
+        text: 'The title balances between healing rest (Deep rest) and a state of deep depression (Depressed), when stillness becomes the only psychological defense.',
+      },
+      {
+        heading: 'Tactile Contrast',
+        text: "The resin's gloss is interrupted by a pattern of falling raindrops, with the outline of a second hand emerging underwater in the depths. The contrast of plaster and resin heightens the discomfort of an image of a person drowning in dark water.",
+      },
+    ],
+    materials: 'Acrylic, clay, plaster, epoxy resin, pigments, silicone, art board',
+    year: '2023',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка 1/photo_2957@31-07-2026_18-19-07.webp',
+        label: 'Final Piece',
+        aspect: '1280 / 1271',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 1/photo_3018@31-07-2026_18-44-23.webp',
+        label: 'Sculptural Element',
+        aspect: '576 / 1280',
+      },
+      {
+        type: 'video',
+        src: '/art-protest/папка 1/video_137@04-08-2026_22-24-33.mp4',
+        label: 'Video Detail',
+        aspect: '9 / 16',
+      },
+    ],
+  },
+
+  // 3. The Last Drop
+  {
+    id: 'work-last',
+    number: '03',
+    title: 'The Last Drop',
+    subtitle: 'Monochrome & Shadows',
+    concept: 'The piece uses a minimal number of shades and materials; the idea is very concise: the last drop is a full stop, not a dialogue.',
+    fullConcept: [
+      {
+        heading: 'Chromed Tension',
+        text: 'The mirrored metallic sheen reflects the viewer, making them a participant in a moment of extreme psychological pressure.',
+      },
+      {
+        heading: 'A Frozen Impulse',
+        text: 'The ripples on the water from the last drop stand as a symbol of suppressed emotions and unspoken words finally breaking through.',
+      },
+      {
+        heading: 'Minimalism',
+        text: 'The piece uses a minimal number of shades and materials; the idea is very concise: the last drop is a full stop, not a dialogue.',
+      },
+    ],
+    materials: 'Art board, chrome, epoxy resin, silicone',
+    year: '2020',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка 3/photo_3332@04-08-2026_21-08-45.webp',
+        label: 'Display',
+        aspect: '1280 / 758',
+      },
+      {
+        type: 'video',
+        src: '/art-protest/папка 3/video_95@04-08-2026_21-08-44.mp4',
+        label: 'Video Detail',
+        aspect: '9 / 16',
+      },
+    ],
+  },
+
+  // 4. Gasoline Rainbow
+  {
+    id: 'work-rainbow',
+    number: '04',
+    title: 'Gasoline Rainbow',
+    subtitle: '"Transformation" Series',
+    concept: 'Beauty in the small and a hidden ecological conflict: the aesthetics of a gasoline film underfoot, and fossilized nature.',
+    fullConcept: [
+      {
+        heading: 'Beauty in the Everyday',
+        text: 'The rainbow sheen of a gasoline film and the taut surface of water on "asphalt" reveal beauty in the small — literally in what\'s underfoot.',
+      },
+      {
+        heading: 'An Autumn Landscape',
+        text: 'Skeletonized leaves, fused into liquid stone and resin, are captured like fossilized artifacts of a fading living nature.',
+      },
+      {
+        heading: 'A Layered Conflict',
+        text: 'The dense textures of liquid stone imitating cracked asphalt collide with flowing fluorescent dyes, visualizing the standoff between civilization and the biosphere.',
+      },
+    ],
+    materials: 'Art board, epoxy resin, dyes and pigments, liquid stone, acrylic, silicone, skeletonized leaves',
+    year: '2021',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка 4/photo_3309@04-08-2026_21-08-42.webp',
+        label: 'Main View',
+        aspect: '1024 / 1280',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-39.webp',
+        label: 'Angle A',
+        aspect: '718 / 960',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40.webp',
+        label: 'Angle B',
+        aspect: '718 / 960',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (2).webp',
+        label: 'Relief',
+        aspect: '718 / 960',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (3).webp',
+        label: 'Cross-Section',
+        aspect: '718 / 960',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (5).webp',
+        label: 'Texture',
+        aspect: '720 / 960',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 4/photo_2026-08-30_02-47-40 (7).webp',
+        label: 'Macro',
+        aspect: '706 / 960',
+      },
+    ],
+  },
+
+  // 5. Let the Swans Dance
+  {
+    id: 'work-swans',
+    number: '05',
+    title: 'Let the Swans Dance',
+    subtitle: 'Depth & Space',
+    concept: 'A historical allusion to ballet broadcasts on TV during crises: a blackthorn spike pierces paper, turning dance into a painful jab of reality.',
+    fullConcept: [
+      {
+        heading: 'A Thorn Instead of Grace',
+        text: 'A real, thorny blackthorn branch digs into a clean sheet of paper, turning a fairy-tale dance into a painful jab of reality.',
+      },
+      {
+        heading: 'The Emptiness of the Drafting Paper',
+        text: "The monochrome blue background underscores the deafening silence and informational vacuum of an official agenda.",
+      },
+      {
+        heading: 'A Symbol of Changing Eras',
+        text: "A concise artistic gesture, where the fragility of paper stands against the aggressive harshness of thorns.",
+      },
+    ],
+    materials: 'Drafting paper, blackthorn branch',
+    year: '2024',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка 5/photo_2933@31-07-2026_17-46-11.webp',
+        label: 'Composition',
+        aspect: '1212 / 1280',
+      },
+    ],
+  },
+
+  // 6. And?
+  {
+    id: 'work-and',
+    number: '06',
+    title: 'And?',
+    subtitle: 'Textured Relief',
+    concept: 'A dialogue with confusion and skepticism: a defensive gesture and a provocative question that deflates the pathos.',
+    fullConcept: [
+      {
+        heading: 'Confusion',
+        text: 'Hands spread wide and hands folded in an attempt to shield oneself show the conflict between the urge to vent one\'s own aggression and the urge to suppress it.',
+      },
+      {
+        heading: 'Skepticism as a Defense',
+        text: 'The blunt, provocative question "And?" cuts through the pathos and exposes the existential confusion of the modern person, while stating bewilderment, puzzlement, and disorientation all at once.',
+      },
+      {
+        heading: 'A Textured Break',
+        text: 'Layered brushstrokes create the sense of other people\'s opinions piling up, through which the central question breaks through.',
+      },
+    ],
+    materials: 'Canvas, acrylic, markers',
+    year: '2015',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка 6/photo_3168@04-08-2026_20-56-52.webp',
+        label: 'Overall View',
+        aspect: '1105 / 1105',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 6/photo_2026-08-27_17-30-22 (8).webp',
+        label: 'Detail',
+        aspect: '1280 / 1022',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 6/photo_2026-08-27_17-30-23.webp',
+        label: 'Relief',
+        aspect: '626 / 626',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 6/photo_2026-08-27_17-30-23 (2).webp',
+        label: 'Texture',
+        aspect: '1078 / 1078',
+      },
+    ],
+  },
+
+  // 7. Red Series
+  {
+    id: 'work-red',
+    number: '07',
+    title: 'Red Series',
+    subtitle: 'Triptych · Mixed Media',
+    concept: 'A triptych of states through a totalizing red: from fury and despair to untamed vitality and physicality.',
+    fullConcept: [
+      {
+        heading: 'Red as a Signal of Danger and Life',
+        text: 'The dominant spectrum triggers primal instincts — from danger to untamed sexual energy.',
+      },
+      {
+        heading: 'A Triptych of States',
+        text: 'Each of the 3 pieces explores a distinct emotion — from despair to fury to lust.',
+      },
+      {
+        heading: 'The Contrast of Flame and Monochrome',
+        text: 'The combination of scarlet pigments with deep black heightens the drama and cinematic quality of the composition.',
+      },
+    ],
+    materials: '1. "Alive!": art board, pigments, titanium dioxide, epoxy resin · 2. "Stuck in the Textures": digital art (hand-drawn, Photoshop) · 3. "Physicality": canvas, acrylic, markers',
+    year: '2020, 2011, 2014',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/папка 7/photo_3394@04-08-2026_22-17-05.webp',
+        label: '01. Alive! (resin on art board)',
+        aspect: '1080 / 810',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 7/photo_2026-08-27_17-30-22.webp',
+        label: '02. Stuck in the Textures (digital art)',
+        aspect: '604 / 402',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/папка 7/photo_3225@04-08-2026_21-04-40.webp',
+        label: '03. Physicality (canvas, acrylic, markers)',
         aspect: '495 / 635',
       },
     ],
@@ -392,7 +733,7 @@ function ProportionalItem({
     >
       {item.type === 'video' ? (
         <div className="relative w-full h-full bg-black/40">
-          <video
+          <LazyVideo
             src={item.src}
             autoPlay
             loop
@@ -400,8 +741,8 @@ function ProportionalItem({
             playsInline
             className="w-full h-full object-fill block"
           />
-          <div className="absolute top-1.5 right-1.5 p-1 bg-black text-[#14F1D9] border-2 border-black z-10 shadow-sm pointer-events-none">
-            <Play className="w-3.5 h-3.5 fill-[#14F1D9]" />
+          <div className="absolute top-1.5 right-1.5 p-1 bg-black text-primary border-2 border-black z-10 shadow-sm pointer-events-none">
+            <Play className="w-3.5 h-3.5 fill-primary" />
           </div>
         </div>
       ) : (
@@ -430,6 +771,7 @@ function SteppedCollage({
   onOpenConcept: (artwork: Artwork) => void;
   index: number;
 }) {
+  const { isEn } = useLanguage();
   const m = artwork.media;
   const [isInlineOpen, setIsInlineOpen] = useState(false);
 
@@ -450,7 +792,7 @@ function SteppedCollage({
         {/* Title & Metadata directly over concrete */}
         <div className="w-[640px] flex items-center justify-between gap-2 mb-2 z-20 px-1">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
+            <span className="text-xs font-montserrat font-black uppercase text-black bg-primary px-2 py-0.5 border-2 border-black tracking-wider">
               {artwork.number}
             </span>
             <span className="text-xs sm:text-sm font-montserrat font-black uppercase tracking-wider text-black">
@@ -684,9 +1026,9 @@ function SteppedCollage({
             e.stopPropagation();
             handleConceptClick();
           }}
-          className="inline-flex items-center gap-2 px-3 py-1 bg-white/90 hover:bg-[#14F1D9] text-black border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md group/btn"
+          className="inline-flex items-center gap-2 px-3 py-1 bg-white/90 hover:bg-primary text-black border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md group/btn"
         >
-          <span>КОНЦЕПЦИЯ</span>
+          <span>{isEn ? "CONCEPT" : "КОНЦЕПЦИЯ"}</span>
           <ChevronRight className={`w-3.5 h-3.5 transition-transform stroke-[2.5] ${isInlineOpen ? 'rotate-90' : 'group-hover/btn:translate-x-0.5'}`} />
         </button>
       </div>
@@ -696,27 +1038,27 @@ function SteppedCollage({
           <div 
             data-interactive="true"
             onPointerDown={(e) => e.stopPropagation()}
-            className="md:hidden mt-3 w-full max-w-[640px] z-30 bg-[#161616] text-white border-[3px] border-black p-4 shadow-xl"
+            className="md:hidden mt-3 w-full max-w-[640px] z-30 bg-surface text-white border-[3px] border-black p-4 shadow-xl"
           >
             <div className="flex items-center justify-between border-b border-white/15 pb-2 mb-3">
               <button
                 onClick={() => setIsInlineOpen(false)}
-                className="flex items-center gap-1.5 px-2.5 py-1 bg-[#14F1D9] text-black border border-black font-montserrat font-black text-[11px] uppercase tracking-wider cursor-pointer"
+                className="flex items-center gap-1.5 px-2.5 py-1 bg-primary text-black border border-black font-montserrat font-black text-[11px] uppercase tracking-wider cursor-pointer"
               >
                 <ArrowLeft className="w-3.5 h-3.5 stroke-[2.5]" />
-                <span>Назад к стене</span>
+                <span>{isEn ? "Back to the Wall" : "Назад к стене"}</span>
               </button>
               <button
                 onClick={() => setIsInlineOpen(false)}
                 className="text-[10px] font-montserrat font-bold uppercase bg-white text-black px-2 py-0.5 border border-black cursor-pointer"
               >
-                Закрыть ✕
+                {isEn ? "Close ✕" : "Закрыть ✕"}
               </button>
             </div>
             <div className="space-y-2.5 text-left">
               {artwork.fullConcept ? (
                 artwork.fullConcept.map((item, idx) => (
-                  <div key={idx} className="border-l-2 border-[#14F1D9] pl-2.5 space-y-0.5">
+                  <div key={idx} className="border-l-2 border-primary pl-2.5 space-y-0.5">
                     <h4 className="text-[11px] font-montserrat font-black uppercase tracking-wide text-white">
                       {item.heading}
                     </h4>
@@ -732,7 +1074,7 @@ function SteppedCollage({
               )}
             </div>
             <div className="mt-3 pt-2 border-t border-white/10 text-[10px] font-sans text-white/60">
-              <strong className="text-white">Материалы:</strong> {artwork.materials}
+              <strong className="text-white">{isEn ? "Materials:" : "Материалы:"}</strong> {artwork.materials}
             </div>
           </div>
         )}
@@ -744,6 +1086,7 @@ function SteppedCollage({
 
 // Concluding Manifesto Panel (Balances 4th Wall Segment)
 function ManifestoPanel() {
+  const { isEn } = useLanguage();
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center select-none bg-transparent">
       <div className="w-[640px] max-w-none h-[360px] sm:h-[390px] scale-[0.52] xs:scale-[0.62] sm:scale-100 origin-center relative flex flex-col justify-between py-6 px-4 sm:px-8 bg-white/95 border-[4px] border-black shadow-xl backdrop-blur-sm z-20">
@@ -758,24 +1101,37 @@ function ManifestoPanel() {
           {/* Top Header */}
           <div className="relative z-20 pb-1 border-b-2 border-black">
             <span className="text-xs font-montserrat font-black uppercase tracking-widest text-black block">
-              Концепция серии
+              {isEn ? "Series Concept" : "Концепция серии"}
             </span>
           </div>
 
           {/* Center Text Body */}
           <div className="relative z-20 my-auto py-3 space-y-2.5">
-            <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
-              «Каждая работа — это прежде всего не красота, а концепция и идея, притом чаще всего болезненная. В этом блоке собраны работы, у которых визуальная составляющая вторична, на первый план выходят образы и метафоры.
-            </p>
-            <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
-              Смола, гипс, глина, пигменты и красители выступают здесь не как декор, а как прямой манифест свободы и желания высказаться через цвет и свет».
-            </p>
+            {isEn ? (
+              <>
+                <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
+                  &quot;Each piece is, first and foremost, not about beauty but about concept and idea — and more often than not, a painful one. This block brings together works where the visual component is secondary; imagery and metaphor take center stage.
+                </p>
+                <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
+                  Resin, plaster, clay, pigments, and dyes appear here not as decoration, but as a direct manifesto of freedom and the desire to speak out through color and light.&quot;
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
+                  «Каждая работа — это прежде всего не красота, а концепция и идея, притом чаще всего болезненная. В этом блоке собраны работы, у которых визуальная составляющая вторична, на первый план выходят образы и метафоры.
+                </p>
+                <p className="text-[11px] sm:text-[13px] font-sans leading-relaxed text-black font-bold">
+                  Смола, гипс, глина, пигменты и красители выступают здесь не как декор, а как прямой манифест свободы и желания высказаться через цвет и свет».
+                </p>
+              </>
+            )}
           </div>
 
           {/* Bottom Footer Metadata */}
           <div className="relative z-20 pt-1.5 border-t-2 border-black flex items-center justify-between text-[10px] sm:text-xs font-montserrat text-black uppercase font-bold tracking-wider">
-            <span>Екатерина · Fir Tree Art</span>
-            <span className="text-black/80 font-sans font-semibold">7 авторских арт-объектов</span>
+            <span>{isEn ? "Ekaterina" : "Екатерина"} · Fir Tree Art</span>
+            <span className="text-black/80 font-sans font-semibold">{isEn ? "7 Original Art Pieces" : "7 авторских арт-объектов"}</span>
           </div>
         </div>
       </div>
@@ -784,16 +1140,39 @@ function ManifestoPanel() {
 }
 
 export function ArtProtest() {
+  const { isEn } = useLanguage();
+  const artworksData = isEn ? artworksDataEn : artworksDataRu;
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [lightboxState, setLightboxState] = useState<{
     item: MediaItem;
     artwork: Artwork;
   } | null>(null);
   const [conceptModalArtwork, setConceptModalArtwork] = useState<Artwork | null>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  type ProtestSlide =
+    | { kind: 'artwork'; artwork: Artwork; index: number }
+    | { kind: 'manifesto' };
+
+  const slides: ProtestSlide[] = [
+    ...artworksData.map((artwork, index) => ({ kind: 'artwork' as const, artwork, index })),
+    { kind: 'manifesto' },
+  ];
 
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
+
+  const updateScrollEdges = React.useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    const edge = 4;
+    const left = el.scrollLeft;
+    setCanScrollLeft(left > edge);
+    setCanScrollRight(left < maxScroll - edge);
+  }, []);
 
   // Auto-center first artwork on mobile so Artwork 01 is immediately fully visible
   React.useEffect(() => {
@@ -807,6 +1186,7 @@ export function ArtProtest() {
         const spotCenterRelative = spotRect.left - containerRect.left + el.scrollLeft + spotRect.width / 2;
         el.scrollLeft = Math.max(0, spotCenterRelative - el.clientWidth / 2);
       }
+      updateScrollEdges();
     };
 
     const t1 = setTimeout(centerFirstSpot, 50);
@@ -817,20 +1197,35 @@ export function ArtProtest() {
       clearTimeout(t2);
       window.removeEventListener('resize', centerFirstSpot);
     };
-  }, []);
+  }, [updateScrollEdges]);
 
-  // Group 7 artworks + 1 manifesto into 4 wall chunks (2 artworks per wall segment)
-  const chunks: Array<{ left: Artwork; right?: Artwork | 'manifesto' }> = [
-    { left: artworksData[0], right: artworksData[1] },
-    { left: artworksData[2], right: artworksData[3] },
-    { left: artworksData[4], right: artworksData[5] },
-    { left: artworksData[6], right: 'manifesto' },
-  ];
+  React.useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
 
-  const scrollByAmount = (offset: number) => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: offset, behavior: 'smooth' });
-    }
+    updateScrollEdges();
+    el.addEventListener('scroll', updateScrollEdges, { passive: true });
+
+    const ro = new ResizeObserver(() => updateScrollEdges());
+    ro.observe(el);
+
+    return () => {
+      el.removeEventListener('scroll', updateScrollEdges);
+      ro.disconnect();
+    };
+  }, [updateScrollEdges, slides.length]);
+
+  const scrollByPage = (direction: -1 | 1) => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const slide = el.querySelector<HTMLElement>('[data-art-protest-slide]');
+    if (!slide) return;
+    const styles = getComputedStyle(el);
+    const gap =
+      parseFloat(styles.columnGap || '0') ||
+      parseFloat(styles.gap || '0') ||
+      0;
+    el.scrollBy({ left: direction * (slide.offsetWidth + gap), behavior: 'smooth' });
   };
 
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -859,28 +1254,43 @@ export function ArtProtest() {
     const el = scrollContainerRef.current;
     el?.classList.remove('cursor-grabbing');
     el?.classList.add('cursor-grab');
+    updateScrollEdges();
   };
 
   return (
-    <section id="art-protest" className="relative w-full bg-[#111111] overflow-hidden scroll-mt-20 border-b border-white/10 group/section">
-      
+    <section id="art-protest" className="relative w-full bg-background overflow-hidden scroll-mt-20 border-b border-white/10 group/section">
+      {/* Fixed wall: height-fit tile (repeat-x), gallery scrolls above */}
+      <div className="art-protest-wall-bg absolute inset-0 z-0 pointer-events-none" aria-hidden />
+
       {/* Floating Scroll Controls over the Wall */}
       <button
+        type="button"
         data-interactive="true"
         onPointerDown={(e) => e.stopPropagation()}
-        onClick={() => scrollByAmount(-700)}
-        className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
-        aria-label="Листать влево"
+        onClick={() => scrollByPage(-1)}
+        disabled={!canScrollLeft}
+        aria-hidden={!canScrollLeft}
+        tabIndex={canScrollLeft ? 0 : -1}
+        className={`hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hov:bg-primary hov:border-black shadow-2xl rounded-none transition-opacity duration-300 ease-out ${
+          canScrollLeft ? 'opacity-100 pointer-events-auto cursor-pointer' : 'opacity-0 pointer-events-none cursor-default'
+        }`}
+        aria-label={isEn ? "Scroll left" : "Листать влево"}
       >
         <ChevronLeft className="h-6 w-6" />
       </button>
 
       <button
+        type="button"
         data-interactive="true"
         onPointerDown={(e) => e.stopPropagation()}
-        onClick={() => scrollByAmount(700)}
-        className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hover:bg-[#14F1D9] hover:border-black transition-all shadow-2xl rounded-none cursor-pointer"
-        aria-label="Листать вправо"
+        onClick={() => scrollByPage(1)}
+        disabled={!canScrollRight}
+        aria-hidden={!canScrollRight}
+        tabIndex={canScrollRight ? 0 : -1}
+        className={`hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 h-11 w-11 items-center justify-center border-2 border-black bg-white/90 text-black hov:bg-primary hov:border-black shadow-2xl rounded-none transition-opacity duration-300 ease-out ${
+          canScrollRight ? 'opacity-100 pointer-events-auto cursor-pointer' : 'opacity-0 pointer-events-none cursor-default'
+        }`}
+        aria-label={isEn ? "Scroll right" : "Листать вправо"}
       >
         <ChevronRight className="h-6 w-6" />
       </button>
@@ -892,72 +1302,34 @@ export function ArtProtest() {
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}
         onPointerLeave={endDrag}
+        onScroll={updateScrollEdges}
         onDragStart={(e) => e.preventDefault()}
-        className="relative w-full h-[680px] sm:h-[740px] lg:h-[800px] overflow-x-auto overflow-y-hidden flex flex-nowrap cursor-grab select-none snap-x snap-mandatory hide-scrollbar bg-transparent scroll-smooth"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        className="art-protest-scroll relative z-10 w-full h-[680px] sm:h-[740px] lg:h-[800px] overflow-x-auto overflow-y-hidden flex flex-nowrap items-center cursor-grab select-none snap-x snap-mandatory hide-scrollbar bg-transparent scroll-smooth px-0"
       >
-        <style>{`.hide-scrollbar::-webkit-scrollbar { display: none; }`}</style>
-
-        {chunks.map((chunk, index) => (
+        {slides.map((slide, slideIndex) => (
           <div
-            key={index}
-            className="relative h-full shrink-0 flex items-center justify-center bg-transparent"
+            key={slide.kind === 'artwork' ? slide.artwork.id : 'manifesto'}
+            data-art-protest-slide
+            className={`art-protest-slide relative h-[76%] sm:h-[80%] flex items-center justify-center overflow-visible bg-transparent ${slideIndex === 0 ? 'art-spot-first' : ''}`}
           >
-            {/* Seamless Concrete Wall Texture Segment */}
-            <img
-              src="/seamless_ceiling_v3_11_final1.jpg"
-              alt={`wall segment ${index + 1}`}
-              className="h-full w-auto max-w-none block pointer-events-none object-cover"
-            />
-
-            {/* Exactly positioned over the 2 spotlight wall frames with closer gap */}
-            <div className="absolute inset-0 flex items-center bg-transparent">
-              {/* Left padding */}
-              <div className="w-[6%] md:w-[5.5%] h-full shrink-0" />
-
-              {/* Spot 1: Left Collage */}
-              <div className={`relative w-[43%] md:w-[42%] h-[76%] sm:h-[80%] shrink-0 flex items-center justify-center overflow-visible bg-transparent snap-center ${index === 0 ? 'art-spot-first' : ''}`}>
-                <SteppedCollage
-                  artwork={chunk.left}
-                  index={index * 2}
-                  onOpenLightbox={(item, art) => setLightboxState({ item, artwork: art })}
-                  onOpenConcept={(art) => setConceptModalArtwork(art)}
-                />
-              </div>
-
-              {/* Reduced Central Wall Gap */}
-              <div className="w-[5%] md:w-[5%] h-full shrink-0" />
-
-              {/* Spot 2: Right Collage */}
-              <div className="relative w-[43%] md:w-[42%] h-[76%] sm:h-[80%] shrink-0 flex items-center justify-center overflow-visible bg-transparent snap-center">
-                {chunk.right === 'manifesto' ? (
-                  <ManifestoPanel />
-                ) : chunk.right ? (
-                  <SteppedCollage
-                    artwork={chunk.right}
-                    index={index * 2 + 1}
-                    onOpenLightbox={(item, art) => setLightboxState({ item, artwork: art })}
-                    onOpenConcept={(art) => setConceptModalArtwork(art)}
-                  />
-                ) : (
-                  <div className="w-full h-full" />
-                )}
-              </div>
-
-              {/* Right padding */}
-              <div className="w-[6%] md:w-[5.5%] h-full shrink-0" />
-            </div>
+            {slide.kind === 'manifesto' ? (
+              <ManifestoPanel />
+            ) : (
+              <SteppedCollage
+                artwork={slide.artwork}
+                index={slide.index}
+                onOpenLightbox={(item, art) => setLightboxState({ item, artwork: art })}
+                onOpenConcept={(art) => setConceptModalArtwork(art)}
+              />
+            )}
           </div>
         ))}
-
-        {/* Trailing spacer */}
-        <div className="w-12 shrink-0" />
       </div>
 
       {/* Mobile Swipe Hint */}
       <div className="sm:hidden absolute top-4 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/80 backdrop-blur-md border border-[#14F1D9]/40 text-[#14F1D9] text-[11px] font-mono font-bold uppercase tracking-wider shadow-lg">
-          <span>←</span> Свайпайте стену <span>→</span>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-black/80 backdrop-blur-md border border-primary/40 text-primary text-[11px] font-mono font-bold uppercase tracking-wider shadow-lg">
+          <span>{isEn ? "Swipe the wall" : "Свайпайте стену"}</span>
         </div>
       </div>
 
@@ -973,20 +1345,20 @@ export function ArtProtest() {
           {/* Drawer / Sheet */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative z-10 w-full md:w-[460px] md:max-w-[90vw] md:absolute md:top-0 md:right-0 md:bottom-0 md:h-screen max-h-[85vh] md:max-h-none bg-[#161616] text-white border-t-4 md:border-t-0 md:border-l-[4px] border-black p-5 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto"
+            className="relative z-10 w-full md:w-[460px] md:max-w-[90vw] md:absolute md:top-0 md:right-0 md:bottom-0 md:h-screen max-h-[85vh] md:max-h-none bg-surface text-white border-t-4 md:border-t-0 md:border-l-[4px] border-black p-5 sm:p-8 shadow-2xl flex flex-col justify-between overflow-y-auto"
           >
             {/* Top Close Button */}
             <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-4">
               <button
                 onClick={() => setConceptModalArtwork(null)}
-                className="flex items-center gap-2 px-3 py-1.5 bg-[#14F1D9] text-black hover:bg-white border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
+                className="flex items-center gap-2 px-3 py-1.5 bg-primary text-black hover:bg-white border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
               >
                 <ArrowLeft className="w-4 h-4 stroke-[3]" />
-                <span>Назад к стене</span>
+                <span>{isEn ? "Back to the Wall" : "Назад к стене"}</span>
               </button>
 
               <div className="flex items-center gap-2">
-                <span className="text-xs font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border-2 border-black tracking-wider">
+                <span className="text-xs font-montserrat font-black uppercase text-black bg-primary px-2 py-0.5 border-2 border-black tracking-wider">
                   {conceptModalArtwork.number}
                 </span>
                 <span className="text-xs font-montserrat font-bold text-white/60 uppercase tracking-widest hidden sm:inline-block">
@@ -994,8 +1366,8 @@ export function ArtProtest() {
                 </span>
                 <button
                   onClick={() => setConceptModalArtwork(null)}
-                  className="flex h-8 w-8 items-center justify-center border-2 border-black bg-white text-black hover:bg-[#14F1D9] transition-colors shadow-sm cursor-pointer ml-1"
-                  aria-label="Закрыть"
+                  className="flex h-8 w-8 items-center justify-center border-2 border-black bg-white text-black hover:bg-primary transition-colors shadow-sm cursor-pointer ml-1"
+                  aria-label={isEn ? "Close" : "Закрыть"}
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -1016,7 +1388,7 @@ export function ArtProtest() {
             <div className="py-4 sm:py-6 space-y-4 my-auto">
               {conceptModalArtwork.fullConcept ? (
                 conceptModalArtwork.fullConcept.map((item, idx) => (
-                  <div key={idx} className="border-l-2 border-[#14F1D9] pl-3.5 space-y-1">
+                  <div key={idx} className="border-l-2 border-primary pl-3.5 space-y-1">
                     <h4 className="text-xs sm:text-sm font-montserrat font-black uppercase tracking-wide text-white">
                       {item.heading}
                     </h4>
@@ -1034,8 +1406,8 @@ export function ArtProtest() {
 
             {/* Footer / Materials */}
             <div className="border-t border-white/15 pt-4 flex flex-col gap-1 text-xs font-montserrat">
-              <span className="text-white/50 uppercase font-bold text-[10px]">МАТЕРИАЛЫ И ТЕХНИКА</span>
-              <span className="font-sans font-semibold text-[#14F1D9]">
+              <span className="text-white/50 uppercase font-bold text-[10px]">{isEn ? "MATERIALS & TECHNIQUE" : "МАТЕРИАЛЫ И ТЕХНИКА"}</span>
+              <span className="font-sans font-semibold text-primary">
                 {conceptModalArtwork.materials}
               </span>
             </div>
@@ -1053,22 +1425,22 @@ export function ArtProtest() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-h-[95vh] max-w-5xl w-full border-2 border-white/20 bg-[#1A1A1A] p-3 sm:p-6 shadow-2xl rounded-none flex flex-col"
+            className="relative max-h-[95vh] max-w-5xl w-full border-2 border-white/20 bg-surface p-3 sm:p-6 shadow-2xl rounded-none flex flex-col"
           >
             {/* Top Navigation Bar with Back to Wall Button */}
             <div className="flex items-center justify-between pb-3 mb-2 border-b border-white/10">
               <button
                 onClick={() => setLightboxState(null)}
-                className="flex items-center gap-2 px-3 py-1.5 bg-[#14F1D9] text-black hover:bg-white border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
+                className="flex items-center gap-2 px-3 py-1.5 bg-primary text-black hover:bg-white border-2 border-black font-montserrat font-black text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md"
               >
                 <ArrowLeft className="w-4 h-4 stroke-[3]" />
-                <span>Назад к стене</span>
+                <span>{isEn ? "Back to the Wall" : "Назад к стене"}</span>
               </button>
 
               <button
                 onClick={() => setLightboxState(null)}
-                className="flex h-8 w-8 items-center justify-center border-2 border-white/20 bg-black text-white hover:bg-[#14F1D9] hover:text-black transition-colors cursor-pointer"
-                aria-label="Закрыть"
+                className="flex h-8 w-8 items-center justify-center border-2 border-white/20 bg-black text-white hover:bg-primary hover:text-black transition-colors cursor-pointer"
+                aria-label={isEn ? "Close" : "Закрыть"}
               >
                 <X className="h-4 w-4" />
               </button>
@@ -1083,6 +1455,7 @@ export function ArtProtest() {
                   autoPlay
                   muted
                   playsInline
+                  preload="auto"
                   className="max-h-[70vh] w-auto max-w-full object-contain"
                 />
               ) : (
@@ -1100,19 +1473,19 @@ export function ArtProtest() {
             <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-white/10 pt-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-montserrat font-black uppercase tracking-widest text-[#14F1D9]">
+                  <span className="text-xs font-montserrat font-black uppercase tracking-widest text-primary">
                     {lightboxState.artwork.number} · {lightboxState.artwork.title}
                   </span>
                   {lightboxState.artwork.fullConcept && (
                     <button
                       onClick={() => {
-                        const art = lightboxState.artwork;
+                        const artwork = lightboxState.artwork;
                         setLightboxState(null);
-                        setConceptModalArtwork(art);
+                        setConceptModalArtwork(artwork);
                       }}
-                      className="text-[10px] font-montserrat font-black uppercase text-black bg-[#14F1D9] px-2 py-0.5 border border-black hover:bg-white transition-colors cursor-pointer"
+                      className="text-[10px] font-montserrat font-black uppercase text-black bg-primary px-2 py-0.5 border border-black hover:bg-white transition-colors cursor-pointer"
                     >
-                      ЧИТАТЬ КОНЦЕПЦИЮ
+                      {isEn ? "READ CONCEPT" : "ЧИТАТЬ КОНЦЕПЦИЮ"}
                     </button>
                   )}
                 </div>
@@ -1123,11 +1496,11 @@ export function ArtProtest() {
                   {lightboxState.artwork.concept}
                 </p>
               </div>
-              <div className="text-left sm:text-right shrink-0">
+              <div className="text-left sm:text-right min-w-0 sm:max-w-[320px]">
                 <span className="text-[10px] font-montserrat font-bold uppercase text-white/50 block">
-                  МАТЕРИАЛЫ
+                  {isEn ? "MATERIALS" : "МАТЕРИАЛЫ"}
                 </span>
-                <span className="text-xs font-sans text-white/80 font-medium">
+                <span className="text-xs font-sans text-white/80 font-medium break-words">
                   {lightboxState.artwork.materials}
                 </span>
               </div>

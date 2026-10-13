@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nick Potapov — Architecture Without Routine</title>
+
+  <!-- Google Fonts: Space Grotesk, Manrope, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-card: #111111;
+      --bg-card-hover: #161616;
+      --text-main: #ffffff;
+      --text-muted: #a1a1aa;
+      --accent: #00FFA3;
+      --accent-dim: rgba(0, 255, 163, 0.12);
+      --accent-glow: rgba(0, 255, 163, 0.4);
+      --border: rgba(255, 255, 255, 0.12);
+      --border-accent: rgba(0, 255, 163, 0.4);
+      --grid-line: rgba(255, 255, 255, 0.08);
+      --laptop-body: #27272a;
+      --laptop-screen-border: #18181b;
+      --phone-border: #27272a;
+    }
+
+    html.light {
+      --bg: #f8f9fa;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f3f5;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #00A669;
+      --accent-dim: rgba(0, 166, 105, 0.1);
+      --accent-glow: rgba(0, 166, 105, 0.3);
+      --border: rgba(0, 0, 0, 0.12);
+      --border-accent: rgba(0, 166, 105, 0.4);
+      --grid-line: rgba(0, 0, 0, 0.06);
+      --laptop-body: #e4e4e7;
+      --laptop-screen-border: #d4d4d8;
+      --phone-border: #e4e4e7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    *::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+      background: transparent;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: 40px 40px;
+      padding: 30px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .behance-board {
+      width: 100%;
+      max-width: 1400px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    /* Top bar */
+    .top-toolbar {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      background: color-mix(in srgb, var(--bg-card) 85%, transparent);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-accent);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .brand-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cursor {
+      color: var(--accent);
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-main);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #050505;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #ffffff;
+      color: #050505;
+    }
+
+    /* Slide blocks */
+    .slide-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 60px 50px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    .slide-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+
+    .slide-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--text-main);
+    }
+
+    .slide-subtitle {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 920px;
+      margin-bottom: 36px;
+    }
+
+    /* -------------------------------------------------------------
+       SLIDE 1: HERO WITH TRANSPARENT BACKDROP AND LAPTOP MOCKUP
+       ------------------------------------------------------------- */
+    .hero-slide {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 40px 0 20px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid var(--border-accent);
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 24px;
+    }
+
+    .hero-h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero-author {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+      padding: 8px 24px 8px 8px;
+      border-radius: 40px;
+      background: color-mix(in srgb, var(--bg-card) 70%, transparent);
+      border: 1px solid var(--border);
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+    }
+
+    /* =============================================================
+       PHOTOREALISTIC MACBOOK PRO (SPACE BLACK) MOCKUP
+       ============================================================= */
+    .hero-mockup-wrapper {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 35px 80px rgba(0,0,0,0.8), 0 0 50px var(--accent-dim);
+      border: 1px solid var(--border-accent);
+      background: #000;
+      line-height: 0;
+    }
+
+    .hero-mockup-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* -------------------------------------------------------------
+       SLIDE: STYLE ANATOMY AND SIGNATURE ELEMENTS
+       ------------------------------------------------------------- */
+    .anatomy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .anatomy-card {
+      background: color-mix(in srgb, var(--bg) 60%, var(--bg-card));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .anatomy-card:hover {
+      border-color: var(--border-accent);
+    }
+
+    .anatomy-visual {
+      height: 140px;
+      border-radius: 8px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Visual 1: Grid */
+    .grid-visual-demo {
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(to right, var(--accent-dim) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--accent-dim) 1px, transparent 1px);
+      background-size: 25px 25px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .grid-measure-box {
+      border: 1px dashed var(--accent);
+      padding: 4px 8px;
+      background: color-mix(in srgb, var(--bg) 80%, var(--accent-dim));
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* Visual 2: Brackets */
+    .brackets-visual-demo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: 2px;
+    }
+
+    .brackets-visual-demo span {
+      color: var(--accent);
+      font-size: 34px;
+    }
+
+    /* Visual 3: Blinking cursor */
+    .cursor-visual-demo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pulse-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+      animation: pulse-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    .cursor-box {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .blinking-cursor {
+      display: inline-block;
+      color: var(--accent);
+      animation: blink-cursor 1s steps(1) infinite;
+    }
+
+    @keyframes blink-cursor {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    /* Visual 4: Case infographic */
+    .case-illustration-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    /* Shared grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: start;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .anatomy-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .slide-section {
+        padding: 35px 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .anatomy-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .slide-section {
+        padding: 28px 16px;
+      }
+      .spec-card-num {
+        font-size: 28px;
+      }
+    }
+
+    /* Metric cards */
+    .spec-card {
+      background: color-mix(in srgb, var(--bg) 60%, var(--bg-card));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+      height: 100%;
+    }
+
+    .spec-card:hover {
+      border-color: var(--border-accent);
+    }
+
+    .spec-card-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .spec-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .spec-card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Comparison table */
+    .benchmark-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .benchmark-table th, .benchmark-table td {
+      padding: 16px 20px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .benchmark-table th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: color-mix(in srgb, var(--bg) 50%, var(--bg-card));
+    }
+
+    .benchmark-table .highlight-col {
+      background: var(--accent-dim);
+      border-color: var(--border-accent);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Palette */
+    .swatch-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      flex: 1;
+      min-width: 130px;
+      border-radius: 12px;
+      padding: 20px 16px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 120px;
+    }
+
+    .swatch-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .swatch-hex {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      margin-top: 4px;
+      opacity: 0.9;
+    }
+
+    /* Desktop browser frame */
+    .browser-frame {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      background: #000;
+    }
+
+    .browser-header {
+      background: color-mix(in srgb, var(--bg) 80%, var(--bg-card));
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #3f3f46;
+    }
+
+    .browser-dot.red { background: #ef4444; }
+    .browser-dot.yellow { background: #eab308; }
+    .browser-dot.green { background: #22c55e; }
+
+    .browser-address {
+      flex: 1;
+      background: color-mix(in srgb, var(--bg) 95%, var(--bg-card));
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 3px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .browser-body img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* iPhone mockups */
+    .phone-container {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .phone-frame {
+      width: 270px;
+      background: #09090b;
+      border: 7px solid var(--phone-border);
+      border-radius: 38px;
+      padding: 6px;
+      position: relative;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.55), 0 0 20px var(--accent-dim);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 76px;
+      height: 18px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 6px;
+    }
+
+    .phone-camera {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #18181b;
+      border: 1px solid #27272a;
+    }
+
+    .phone-screen {
+      border-radius: 28px;
+      overflow: hidden;
+      width: 100%;
+      background: #000;
+      position: relative;
+    }
+
+    .phone-screen img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .phone-label {
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 12px;
+    }
+
+    .before-after-box {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 8px;
+      background: var(--bg);
+      font-size: 13px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .before-after-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    /* Outro slide */
+    .outro-card {
+      text-align: center;
+      padding: 80px 40px;
+      background: radial-gradient(circle at 50% 50%, var(--accent-dim) 0%, transparent 70%), var(--bg-card);
+      border-color: var(--border-accent);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="behance-board">
+
+    <!-- Top bar -->
+    <div class="top-toolbar">
+      <div class="brand-logo">
+        [ NPC ] <span class="cursor">▮</span>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn" onclick="toggleTheme()" id="themeBtn">🌓 Switch Theme</button>
+        <a href="https://nick-potapov.vercel.app/" target="_blank" class="btn btn-primary">🔗 Open Live Site</a>
+      </div>
+    </div>
+
+    <!-- 01. SLIDE: MAIN SCREEN WITH LAPTOP MOCKUP ON A TRANSPARENT BACKDROP -->
+    <section class="slide-section hero-slide">
+      <div class="hero-badge">[ PRODUCT CASE STUDY · 2026 ]</div>
+      <h1 class="hero-h1">ARCHITECTURE<br>WITHOUT ROUTINE</h1>
+      <p class="slide-subtitle" style="margin: 0 auto 24px;">
+        Designing an engineering-brutalist portfolio site and automation showcase for Nick Potapov — an AI Solutions Architect and business-growth expert.
+      </p>
+
+      <div class="hero-author">
+        <img src="assets/nick.webp" alt="Nick Potapov" class="author-avatar" decoding="async" fetchpriority="high" />
+        <div style="text-align: left;">
+          <div style="font-weight: 700; font-size: 16px;">Nick Potapov (NPC)</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent);">AI Solutions Architect · 9+ Years in Product</div>
+        </div>
+      </div>
+
+      <!-- PHOTOREALISTIC STUDIO MACBOOK PRO SPACE BLACK MOCKUP WITH NICK'S SITE LOADED -->
+      <div class="hero-mockup-wrapper">
+        <img src="assets/macbook_real_hero.webp" alt="Nick Potapov — Product Site on a MacBook Pro Screen" decoding="async" fetchpriority="high" />
+      </div>
+    </section>
+
+    <!-- 02. SLIDE: SIGNATURE DESIGN ELEMENTS (STYLE ANATOMY) -->
+    <section class="slide-section">
+      <span class="slide-tag">// 01 · STYLE ANATOMY AND SIGNATURE ELEMENTS</span>
+      <h2 class="slide-title">Visual Code and Brand DNA</h2>
+      <p class="slide-subtitle">
+        Four foundational elements that the entire visual language and character of Nick Potapov's portfolio is built on.
+      </p>
+
+      <div class="anatomy-grid">
+        <!-- 1. Background grid -->
+        <div class="anatomy-card">
+          <div class="anatomy-visual">
+            <div class="grid-visual-demo">
+              <div class="grid-measure-box">40 × 40 px</div>
+            </div>
+          </div>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 18px; margin-bottom: 8px;">Background Grid</h4>
+          <p class="spec-card-desc">
+            A mathematical 40×40px grid sets the rhythm of an engineer's drafting board and guarantees perfect alignment of every block.
+          </p>
+        </div>
+
+        <!-- 2. Green square brackets -->
+        <div class="anatomy-card">
+          <div class="anatomy-visual">
+            <div class="brackets-visual-demo">
+              <span>[</span> NPC <span>]</span>
+            </div>
+          </div>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 18px; margin-bottom: 8px;">Green Brackets</h4>
+          <p class="spec-card-desc">
+            Square brackets set in JetBrains Mono highlight key entities, the logo, and section tags in the accent mint color.
+          </p>
+        </div>
+
+        <!-- 3. Blinking dot and cursor -->
+        <div class="anatomy-card">
+          <div class="anatomy-visual">
+            <div class="cursor-visual-demo">
+              <div class="pulse-indicator"></div>
+              <div class="cursor-box">STATUS <span class="blinking-cursor">▮</span></div>
+            </div>
+          </div>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 18px; margin-bottom: 8px;">Blinking Cursor</h4>
+          <p class="spec-card-desc">
+            The terminal glyph ▮ and a pulsing green dot signal the status of a live system, ready for new projects.
+          </p>
+        </div>
+
+        <!-- 4. Engineering case illustration -->
+        <div class="anatomy-card">
+          <div class="anatomy-visual">
+            <iframe src="assets/cases_graphics/cases/01-astro-directus.html" class="case-illustration-frame" title="Astro + Directus Case Infographic"></iframe>
+          </div>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 18px; margin-bottom: 8px;">Case Illustration</h4>
+          <p class="spec-card-desc">
+            Interactive vector diagrams clearly show the data-flow scheme between Telegram, the CMS, and the frontend.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03. Metaphor and concept -->
+    <section class="slide-section">
+      <span class="slide-tag">// 02 · BRAND PHILOSOPHY AND METAPHOR</span>
+      <h2 class="slide-title">From Generic NPC — to Main Character</h2>
+      <p class="slide-subtitle">
+        In games, an <b>NPC</b> is a bot with no free will, stuck in an endless routine. In business, founders and teams often turn into the same kind of NPC: spending hours manually transcribing invoices, copy-pasting text, and filling out spreadsheets. Nick replaces that routine with AI agents, giving people back their role as the Main Character of their own company.
+      </p>
+
+      <div class="grid-3">
+        <div class="spec-card">
+          <div class="spec-card-num">9+ yrs</div>
+          <div class="spec-card-title">In Product and Growth</div>
+          <div class="spec-card-desc">Product management, systems architecture, end-to-end analytics, and high-ticket sales.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card-num">€4M+</div>
+          <div class="spec-card-title">In Direct Revenue</div>
+          <div class="spec-card-desc">Revenue generated directly through funnel optimization and pipeline rollouts.</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card-num">8 Countries</div>
+          <div class="spec-card-title">Launched in 5 Months</div>
+          <div class="spec-card-desc">Rapid scaling of operational processes, capturing over 400 strategic assets.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. UX hypotheses -->
+    <section class="slide-section">
+      <span class="slide-tag">// 03 · UX RESEARCH AND HYPOTHESES</span>
+      <h2 class="slide-title">3 Hypotheses That Shaped the Interface</h2>
+      <p class="slide-subtitle">
+        We designed the site not as yet another generic résumé, but as a high-precision tool for filtering and converting target B2B clients.
+      </p>
+
+      <div class="grid-3">
+        <div class="spec-card" style="border-top: 3px solid var(--accent);">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 12px; font-weight: 700;">HYPOTHESIS 01</span>
+          <h3 class="spec-card-title" style="margin-top: 8px;">Trust Through Artifacts</h3>
+          <p class="spec-card-desc">
+            Clients are tired of abstract slogans. Every case study needs to clearly show the real data-flow scheme, the stack, and a working screen.
+          </p>
+          <div class="before-after-box">
+            <div class="before-after-label">Test result:</div>
+            +180% time spent reviewing case studies, 34% conversion into opening detail pages.
+          </div>
+        </div>
+
+        <div class="spec-card" style="border-top: 3px solid var(--accent);">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 12px; font-weight: 700;">HYPOTHESIS 02</span>
+          <h3 class="spec-card-title" style="margin-top: 8px;">An Engineering Filter</h3>
+          <p class="spec-card-desc">
+            Terminal brutalism (monospace type, a 40×40 grid, [ NPC ] brackets) screens out cheap, casual clients and attracts mature B2B ones.
+          </p>
+          <div class="before-after-box">
+            <div class="before-after-label">Test result:</div>
+            100% of inquiries were from target-fit founders and operations directors.
+          </div>
+        </div>
+
+        <div class="spec-card" style="border-top: 3px solid var(--accent);">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 12px; font-weight: 700;">HYPOTHESIS 03</span>
+          <h3 class="spec-card-title" style="margin-top: 8px;">A Direct Telegram Funnel</h3>
+          <p class="spec-card-desc">
+            Over 70% of visitors open the site on a smartphone. Instead of long, tedious web forms — an instant handoff to a qualifying Telegram bot.
+          </p>
+          <div class="before-after-box">
+            <div class="before-after-label">Test result:</div>
+            A 2.4x increase in mobile conversion into starting a substantive conversation!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. Competitive comparison -->
+    <section class="slide-section">
+      <span class="slide-tag">// 04 · MARKET ANALYSIS AND DIFFERENTIATION</span>
+      <h2 class="slide-title">Standing Apart From Competitors</h2>
+      <p class="slide-subtitle">
+        Why Nick's positioning wins over template agencies and scattered freelancers.
+      </p>
+
+      <div style="overflow-x: auto;">
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Criterion</th>
+              <th>Typical AI Agencies</th>
+              <th>Freelance Marketplace Talent</th>
+              <th class="highlight-col">⭐ Nick Potapov (NPC)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Visual style</b></td>
+              <td>The same neon look, purple 3D spheres</td>
+              <td>Dull Notion pages or a PDF résumé</td>
+              <td class="highlight-col">Engineering brutalism, a mathematical 40px grid</td>
+            </tr>
+            <tr>
+              <td><b>Case presentation</b></td>
+              <td>Abstract phrases like "implemented AI end-to-end"</td>
+              <td>A task list with no verified figures</td>
+              <td class="highlight-col">8 working case studies broken down as "Before / After / Result"</td>
+            </tr>
+            <tr>
+              <td><b>Site speed</b></td>
+              <td>Bloated scripts, slow load times</td>
+              <td>Average speed</td>
+              <td class="highlight-col">Loads in under 0.5s, 100/100 on Google PageSpeed</td>
+            </tr>
+            <tr>
+              <td><b>Entry point</b></td>
+              <td>A 7-field form with a call scheduled a week out</td>
+              <td>Chat on the marketplace</td>
+              <td class="highlight-col">An instant Telegram bot with smart task routing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 06. Design system -->
+    <section class="slide-section">
+      <span class="slide-tag">// 05 · DESIGN SYSTEM AND STANDARDS</span>
+      <h2 class="slide-title">Two Disciplined Themes and a Mathematical Grid</h2>
+      <p class="slide-subtitle">
+        The system is built on high contrast, readability, and instant switching between visual themes.
+      </p>
+
+      <div class="grid-2">
+        <!-- Dark theme -->
+        <div>
+          <h3 style="font-family: 'Space Grotesk'; font-size: 20px; margin-bottom: 15px; color: #00FFA3;">Dark Theme (Terminal — Default Mode)</h3>
+          <div class="swatch-group">
+            <div class="swatch" style="background: #050505; color: #fff;">
+              <span class="swatch-name">Page Background</span>
+              <span class="swatch-hex">#050505</span>
+            </div>
+            <div class="swatch" style="background: #111111; color: #fff;">
+              <span class="swatch-name">Card</span>
+              <span class="swatch-hex">#111111</span>
+            </div>
+            <div class="swatch" style="background: #00FFA3; color: #000;">
+              <span class="swatch-name">Electric Mint</span>
+              <span class="swatch-hex">#00FFA3</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Light theme -->
+        <div>
+          <h3 style="font-family: 'Space Grotesk'; font-size: 20px; margin-bottom: 15px; color: #00A669;">Light Theme (Clean Editorial Style)</h3>
+          <div class="swatch-group">
+            <div class="swatch" style="background: #f8f9fa; color: #111; border-color: #ccc;">
+              <span class="swatch-name">Page Background</span>
+              <span class="swatch-hex">#F8F9FA</span>
+            </div>
+            <div class="swatch" style="background: #ffffff; color: #111; border-color: #ccc;">
+              <span class="swatch-name">Card</span>
+              <span class="swatch-hex">#FFFFFF</span>
+            </div>
+            <div class="swatch" style="background: #00A669; color: #fff;">
+              <span class="swatch-name">Deep Mint</span>
+              <span class="swatch-hex">#00A669</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3" style="margin-top: 32px;">
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; font-size: 12px; color: var(--accent);">HEADINGS</span>
+          <div style="font-family: 'Space Grotesk'; font-size: 24px; font-weight: 700; margin-top: 8px;">Space Grotesk Bold</div>
+          <p class="spec-card-desc" style="margin-top: 6px;">A distinctive geometric grotesk for first- and second-level headings.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; font-size: 12px; color: var(--accent);">BODY TEXT</span>
+          <div style="font-family: 'Manrope'; font-size: 24px; font-weight: 600; margin-top: 8px;">Manrope Regular / Bold</div>
+          <p class="spec-card-desc" style="margin-top: 6px;">Maximum comfort for reading long case descriptions, at a 1.6 line height.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; font-size: 12px; color: var(--accent);">CODE & ELEMENTS</span>
+          <div style="font-family: 'JetBrains Mono'; font-size: 22px; font-weight: 700; margin-top: 8px;">JetBrains Mono ▮</div>
+          <p class="spec-card-desc" style="margin-top: 6px;">A monospace typeface for the [ NPC ] brackets, tags, and metrics.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07. Screen showcase: Desktop and smartphones -->
+    <section class="slide-section">
+      <span class="slide-tag">// 06 · SCREEN SHOWCASE: DESKTOP AND SMARTPHONES</span>
+      <h2 class="slide-title">A Clean, Modern Interface</h2>
+      <p class="slide-subtitle">
+        Real screens from Nick Potapov's site, presented in elegant, minimal frames with no unnecessary visual noise.
+      </p>
+
+      <div class="grid-2">
+        <!-- Desktop in browser -->
+        <div>
+          <div style="font-family: 'JetBrains Mono'; font-size: 13px; margin-bottom: 12px; color: var(--accent);">
+            [ Desktop: Dark Theme ]
+          </div>
+          <div class="browser-frame">
+            <div class="browser-header">
+              <div class="browser-dots">
+                <div class="browser-dot red"></div>
+                <div class="browser-dot yellow"></div>
+                <div class="browser-dot green"></div>
+              </div>
+              <div class="browser-address">https://nickpotapov.com</div>
+            </div>
+            <div class="browser-body">
+              <img src="assets/nick_desktop_dark_real.webp" alt="Nick Potapov — Home Screen in Dark Theme" loading="lazy" decoding="async" />
+            </div>
+          </div>
+
+          <div style="font-family: 'JetBrains Mono'; font-size: 13px; margin: 30px 0 12px; color: var(--accent);">
+            [ Desktop: Astro + Directus Case Page ]
+          </div>
+          <div class="browser-frame">
+            <div class="browser-header">
+              <div class="browser-dots">
+                <div class="browser-dot red"></div>
+                <div class="browser-dot yellow"></div>
+                <div class="browser-dot green"></div>
+              </div>
+              <div class="browser-address">https://nickpotapov.com/cases/01-astro-directus</div>
+            </div>
+            <div class="browser-body">
+              <img src="assets/nick_case01_real.webp" alt="Detailed Case Study Page" loading="lazy" decoding="async" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile smartphones (iPhone side-by-side) -->
+        <div>
+          <div style="font-family: 'JetBrains Mono'; font-size: 13px; margin-bottom: 12px; color: var(--accent);">
+            [ Mobile Adaptation: Light and Dark Themes ]
+          </div>
+
+          <div class="phone-container">
+            <!-- iPhone Dark -->
+            <div>
+              <div class="phone-frame">
+                <div class="phone-notch">
+                  <div class="phone-camera"></div>
+                </div>
+                <div class="phone-screen">
+                  <img src="assets/nick_mobile_dark_real.webp" alt="Mobile Screen in Dark Theme" loading="lazy" decoding="async" />
+                </div>
+              </div>
+              <div class="phone-label">Dark Theme</div>
+            </div>
+
+            <!-- iPhone Light -->
+            <div>
+              <div class="phone-frame">
+                <div class="phone-notch">
+                  <div class="phone-camera"></div>
+                </div>
+                <div class="phone-screen">
+                  <img src="assets/nick_mobile_real.webp" alt="Mobile Screen in Light Theme" loading="lazy" decoding="async" />
+                </div>
+              </div>
+              <div class="phone-label">Light Theme</div>
+            </div>
+          </div>
+
+          <div class="spec-card" style="margin-top: 28px; background: color-mix(in srgb, var(--bg) 40%, var(--bg-card));">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+              <span style="color: var(--accent); font-size: 20px;">⚡</span>
+              <h4 style="font-family: 'Space Grotesk'; font-size: 17px; font-weight: 700;">Mobile-First Optimization</h4>
+            </div>
+            <p class="spec-card-desc">
+              Every control, button, and card is sized for thumb reach (touch targets from 48px up). Native horizontal scrolling for case studies gives it the feel of a fast mobile app.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08. 8 case studies -->
+    <section class="slide-section">
+      <span class="slide-tag">// 07 · NICK'S 8 PRODUCTION CASE STUDIES</span>
+      <h2 class="slide-title">A Showcase of Shipped Solutions</h2>
+      <p class="slide-subtitle">
+        Every case study on the site has a direct link, an interactive animation, and a full architecture breakdown.
+      </p>
+
+      <div class="grid-4">
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ PROJECT 01 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Astro + Directus</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">A real-estate site with instant filtering and listing intake straight from Telegram.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ PROJECT 02 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Voice-Powered Bot</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">A realtor's voice notes with photos are auto-parsed into CRM cards via AI.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ PROJECT 03 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Auto-Poster</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">Smart rewriting and distribution of listings across dozens of social platforms in 2 clicks.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ PROJECT 04 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Telegram Admin Panel</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">Managing the entire property database right from a smartphone, no bulky CRM needed.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ PROJECT 05 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Content Pipeline</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">Generating 13 unique formats in 6 languages from a single draft, via a neural network.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ PROJECT 06 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Mafia Game Assistant</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">A digital host's assistant for in-person games, with automatic player ranking tables.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ PROJECT 07 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Digital Menu</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">An interactive restaurant menu as a Telegram Mini App, built on Netlify and Supabase.</p>
+        </div>
+        <div class="spec-card">
+          <span style="font-family: 'JetBrains Mono'; color: var(--accent); font-size: 11px;">[ PROJECT 08 ]</span>
+          <h4 style="font-family: 'Space Grotesk'; font-size: 16px; margin: 6px 0;">Bookkeeping Bot</h4>
+          <p class="spec-card-desc" style="font-size: 12px;">Smart recognition of photographed paper invoices, routing the data into spreadsheets.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09. FINAL SLIDE: RESULTS AND CONTACT (READY TO PORT TO THE SITE) -->
+    <section class="slide-section outro-card">
+      <div class="hero-badge">[ PROJECT RESULT ]</div>
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(30px, 4vw, 48px); font-weight: 700; margin-bottom: 16px;">
+        100/100 PageSpeed · &lt; 0.5s Load Time · 2.4x Conversion Growth
+      </h2>
+      <p style="font-size: 17px; color: var(--text-muted); max-width: 740px; margin: 0 auto 36px;">
+        Engineering brutalism, instant load speed, and a transparent showcase of bot architecture built an uncompromising expert image and set Nick Potapov apart from hundreds of template agencies.
+      </p>
+
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://nick-potapov.vercel.app/" target="_blank" class="btn btn-primary" style="padding: 12px 24px; font-size: 15px;">
+          🔗 Open the Site
+        </a>
+        <a href="https://t.me/npc_welcome_bot" target="_blank" class="btn" style="padding: 12px 24px; font-size: 15px;">
+          💬 Telegram: @npc_welcome_bot
+        </a>
+      </div>
+    </section>
+
+
+
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        document.getElementById('themeBtn').innerText = '☀️ Light Theme';
+      } else {
+        html.classList.remove('light');
+        html.classList.add('dark');
+        document.getElementById('themeBtn').innerText = '🌓 Dark Theme';
+      }
+      setTimeout(notifyHeight, 50);
+    }
+
+    function notifyHeight() {
+      const board = document.querySelector('.behance-board');
+      if (board) {
+        const rect = board.getBoundingClientRect();
+        // Exact height of the board plus top/bottom padding (30 + 40)
+        const h = Math.ceil(rect.height + 70);
+        window.parent.postMessage({ type: 'RESIZE_BEHANCE_CASE', height: h }, '*');
+      }
+    }
+
+    window.addEventListener('load', () => {
+      notifyHeight();
+      setTimeout(notifyHeight, 200);
+      setTimeout(notifyHeight, 800);
+      setTimeout(notifyHeight, 2000);
+    });
+    window.addEventListener('resize', notifyHeight);
+    if (window.ResizeObserver) {
+      const board = document.querySelector('.behance-board');
+      if (board) new ResizeObserver(notifyHeight).observe(board);
+    }
+  </script>
+  <script>
+    (function () {
+      if (!("IntersectionObserver" in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var img = entry.target;
+          img.loading = "eager";
+          if (img.decode) img.decode().catch(function () {});
+          io.unobserve(img);
+        });
+      }, { rootMargin: "1600px 400px" });
+      document.querySelectorAll("img[loading='lazy']").forEach(function (img) {
+        io.observe(img);
+      });
+    })();
+  </script>
+</body>
+</html>

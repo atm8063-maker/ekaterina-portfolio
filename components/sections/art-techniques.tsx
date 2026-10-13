@@ -1,8 +1,11 @@
 'use client';
 
-import { useState, useRef } from "react";
+import { useEffect, useState } from "react";
+import { prefetchMedia } from "@/components/shared/media-prefetch";
 import Image from "next/image";
-import { X, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArtTechniquesGallery } from "@/components/sections/art-techniques-gallery";
+import { useLanguage } from "@/components/language-provider";
 
 type MediaItem = {
   src: string;
@@ -13,49 +16,49 @@ type MediaItem = {
 
 const items: MediaItem[] = [
   {
-    src: "/art-techniques/photo_3390@04-08-2026_22-16-46.jpg",
+    src: "/art-techniques/photo_3390@04-08-2026_22-16-46.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3180@04-08-2026_20-56-52.jpg",
+    src: "/art-techniques/photo_3180@04-08-2026_20-56-52.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3138@31-07-2026_19-44-20.jpg",
+    src: "/art-techniques/photo_3138@31-07-2026_19-44-20.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3174@04-08-2026_20-56-52.jpg",
+    src: "/art-techniques/photo_3174@04-08-2026_20-56-52.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3224@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3224@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2026-09-05_13-57-09 (2).jpg",
+    src: "/art-techniques/photo_2026-09-05_13-57-09 (2).webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3222@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3222@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2026-09-08_19-29-45 (6).jpg",
+    src: "/art-techniques/photo_2026-09-08_19-29-45 (6).webp",
     type: "image",
     title: "",
     tag: "",
@@ -67,19 +70,19 @@ const items: MediaItem[] = [
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3227@04-08-2026_21-04-401.jpg",
+    src: "/art-techniques/photo_3227@04-08-2026_21-04-401.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2987@31-07-2026_18-19-52.jpg",
+    src: "/art-techniques/photo_2987@31-07-2026_18-19-52.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2026-09-08_19-29-46 (3).jpg",
+    src: "/art-techniques/photo_2026-09-08_19-29-46 (3).webp",
     type: "image",
     title: "",
     tag: "",
@@ -91,25 +94,25 @@ const items: MediaItem[] = [
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3231@04-08-2026_21-04-401.jpg",
+    src: "/art-techniques/photo_3231@04-08-2026_21-04-401.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2026-08-27_17-30-18.jpg",
+    src: "/art-techniques/photo_2026-08-27_17-30-18.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3221@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3221@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/Poster mockup leaning against a textured wall (Mockuuups Studio).jpg",
+    src: "/art-techniques/Poster mockup leaning against a textured wall (Mockuuups Studio).webp",
     type: "image",
     title: "",
     tag: "",
@@ -121,25 +124,25 @@ const items: MediaItem[] = [
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3220@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3220@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/iPhone 12 Pro.jpg",
+    src: "/art-techniques/iPhone 12 Pro.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2999@31-07-2026_18-44-13.jpg",
+    src: "/art-techniques/photo_2999@31-07-2026_18-44-13.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2026-08-30_02-47-41.jpg",
+    src: "/art-techniques/photo_2026-08-30_02-47-41.webp",
     type: "image",
     title: "",
     tag: "",
@@ -151,19 +154,19 @@ const items: MediaItem[] = [
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3218@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3218@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).jpg",
+    src: "/art-techniques/Free iPad Air mockup held by user against a bright silver background  (Mockuuups Studio).webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2942@31-07-2026_17-46-16.jpg",
+    src: "/art-techniques/photo_2942@31-07-2026_17-46-16.webp",
     type: "image",
     title: "",
     tag: "",
@@ -175,19 +178,19 @@ const items: MediaItem[] = [
     tag: "",
   },
   {
-    src: "/art-techniques/photo_2026-08-27_17-30-19 (6).jpg",
+    src: "/art-techniques/photo_2026-08-27_17-30-19 (6).webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3219@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3219@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/Free Clean desk with Dell display mockup (Mockuuups Studio)1.jpg",
+    src: "/art-techniques/Free Clean desk with Dell display mockup (Mockuuups Studio)1.webp",
     type: "image",
     title: "",
     tag: "",
@@ -199,13 +202,13 @@ const items: MediaItem[] = [
     tag: "",
   },
   {
-    src: "/art-techniques/photo_3217@04-08-2026_21-04-08.jpg",
+    src: "/art-techniques/photo_3217@04-08-2026_21-04-08.webp",
     type: "image",
     title: "",
     tag: "",
   },
   {
-    src: "/art-techniques/Free Macbook Pro Space Gray mockup on the wooden table (Mockuuups Studio).jpg",
+    src: "/art-techniques/Free Macbook Pro Space Gray mockup on the wooden table (Mockuuups Studio).webp",
     type: "image",
     title: "",
     tag: "",
@@ -213,34 +216,13 @@ const items: MediaItem[] = [
 ];
 
 export function ArtTechniques() {
+  const { isEn } = useLanguage();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const drag = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
 
-  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    drag.current = { isDown: true, startX: e.clientX, scrollLeft: el.scrollLeft };
-    el.setPointerCapture(e.pointerId);
-    el.classList.add("cursor-grabbing");
-    el.classList.remove("cursor-grab");
-  };
-
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = scrollRef.current;
-    if (!el || !drag.current.isDown) return;
-    el.scrollLeft = drag.current.scrollLeft - (e.clientX - drag.current.startX);
-  };
-
-  const endDrag = () => {
-    drag.current.isDown = false;
-    const el = scrollRef.current;
-    el?.classList.remove("cursor-grabbing");
-    el?.classList.add("cursor-grab");
-  };
-
-  const offlineTags = ["Эпоксидная смола", "Акрил", "Алкогольные чернила", "Текстурная паста", "Смешанные техники"];
-  const offlineExtra = ["Гипс", "Глина", "Масло", "Скетчи"];
+  const offlineTags = isEn
+    ? ["Epoxy Resin", "Acrylic", "Alcohol Ink", "Texture Paste", "Mixed Media"]
+    : ["Эпоксидная смола", "Акрил", "Алкогольные чернила", "Текстурная паста", "Смешанные техники"];
+  const offlineExtra = isEn ? ["Plaster", "Clay", "Oil", "Sketching"] : ["Гипс", "Глина", "Масло", "Скетчи"];
   const digitalTools = ["Figma", "Photoshop", "Illustrator", "SketchUp", "Planoplan"];
 
   const openLightbox = (idx: number) => {
@@ -261,12 +243,20 @@ export function ArtTechniques() {
 
   const activeLightboxItem = lightboxIndex !== null ? items[lightboxIndex] : null;
 
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const count = items.length;
+    for (const offset of [-1, 0, 1]) {
+      prefetchMedia(items[(lightboxIndex + offset + count) % count]?.src);
+    }
+  }, [lightboxIndex]);
+
   return (
-    <section id="techniques" className="bg-[#111111] py-16 sm:py-20 relative overflow-hidden scroll-mt-20">
+    <section id="techniques" className="bg-background py-16 sm:py-20 relative overflow-hidden scroll-mt-20">
       {/* Clean Dark Paper Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image 
-          src="/paper-clean-dark.png" 
+          src="/paper-clean-dark.webp" 
           alt="Paper texture" 
           fill 
           className="object-cover opacity-70 mix-blend-screen"
@@ -274,37 +264,39 @@ export function ArtTechniques() {
       </div>
 
       {/* Top & bottom gradient blend fades */}
-      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-[#111111] via-[#111111]/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-b from-background via-background/60 to-transparent z-[15] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-24 lg:h-36 bg-gradient-to-t from-background via-background/60 to-transparent z-[15] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-20">
         
         {/* Header */}
         <div className="max-w-3xl mb-10">
           <h2 className="text-3xl sm:text-5xl font-black uppercase text-white font-montserrat mt-2">
-            Техники <span className="text-[#14F1D9]">&</span> Инструменты
+            {isEn ? <>Techniques <span className="text-primary">&</span> Tools</> : <>Техники <span className="text-primary">&</span> Инструменты</>}
           </h2>
           <p className="text-white/60 mt-2 font-inter text-sm sm:text-base">
-            Работаю на стыке материального крафта и цифровых технологий — от изящных предметов ручной работы до сложных UI-интерфейсов и 3D-моделей.
+            {isEn
+              ? "I work at the intersection of material craft and digital technology — from delicate handmade objects to complex UI interfaces and 3D models."
+              : "Работаю на стыке материального крафта и цифровых технологий — от изящных предметов ручной работы до сложных UI-интерфейсов и 3D-моделей."}
           </p>
         </div>
 
         {/* Top Cards: Offline vs Digital */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           
-          <div className="p-6 sm:p-8 rounded-none bg-[#1A1A1A] border border-white/10 relative overflow-hidden group hover:border-white/30 transition-all">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#14F1D9]/5 -z-10 group-hover:bg-[#14F1D9]/10 transition-colors"></div>
+          <div className="p-6 sm:p-8 rounded-none bg-surface border border-white/10 relative overflow-hidden group hover:border-white/30 transition-all">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 -z-10 group-hover:bg-primary/10 transition-colors"></div>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xs uppercase tracking-widest font-bold text-[#14F1D9] font-montserrat">
-                Офлайн · Материалы & Крафт
+              <h3 className="text-xs uppercase tracking-widest font-bold text-primary font-montserrat">
+                {isEn ? <>Offline · Materials & Craft</> : <>Офлайн · Материалы & Крафт</>}
               </h3>
-              <span className="text-[10px] font-inter text-white/40 uppercase tracking-wider">Физические объекты</span>
+              <span className="text-[10px] font-inter text-white/40 uppercase tracking-wider">{isEn ? "Physical objects" : "Физические объекты"}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {offlineTags.map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1.5 rounded-none border border-white/20 text-white text-xs uppercase tracking-wider font-semibold font-inter hover:border-[#14F1D9] hover:text-[#14F1D9] transition-colors cursor-default bg-black/20"
+                  className="px-3 py-1.5 rounded-none border border-white/20 text-white text-xs uppercase tracking-wider font-semibold font-inter hover:border-primary hover:text-primary transition-colors cursor-default bg-black/20"
                 >
                   {t}
                 </span>
@@ -312,7 +304,7 @@ export function ArtTechniques() {
               {offlineExtra.map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1.5 rounded-none border border-white/10 text-white/50 text-xs uppercase tracking-wider font-semibold font-inter hover:border-[#14F1D9] hover:text-[#14F1D9] transition-colors cursor-default bg-black/10"
+                  className="px-3 py-1.5 rounded-none border border-white/10 text-white/50 text-xs uppercase tracking-wider font-semibold font-inter hover:border-primary hover:text-primary transition-colors cursor-default bg-black/10"
                 >
                   {t}
                 </span>
@@ -320,19 +312,19 @@ export function ArtTechniques() {
             </div>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-none bg-[#1A1A1A] border border-white/10 relative overflow-hidden group hover:border-white/30 transition-all">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#14F1D9]/5 -z-10 group-hover:bg-[#14F1D9]/10 transition-colors"></div>
+          <div className="p-6 sm:p-8 rounded-none bg-surface border border-white/10 relative overflow-hidden group hover:border-white/30 transition-all">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 -z-10 group-hover:bg-primary/10 transition-colors"></div>
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xs uppercase tracking-widest font-bold text-[#14F1D9] font-montserrat">
-                Цифра · Design <span className="text-[#14F1D9]">&</span> Tech
+              <h3 className="text-xs uppercase tracking-widest font-bold text-primary font-montserrat">
+                {isEn ? "Digital" : "Цифра"}
               </h3>
-              <span className="text-[10px] font-inter text-white/40 uppercase tracking-wider">Интерфейсы & 3D</span>
+              <span className="text-[10px] font-inter text-white/40 uppercase tracking-wider">{isEn ? "Interfaces & 3D" : "Интерфейсы & 3D"}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {digitalTools.map((i) => (
                 <span
                   key={i}
-                  className="px-3 py-1.5 rounded-none bg-[#14F1D9]/10 border border-[#14F1D9]/30 text-[#14F1D9] text-xs uppercase tracking-wider font-semibold font-inter hover:bg-[#14F1D9]/20 transition-colors cursor-default"
+                  className="px-3 py-1.5 rounded-none bg-primary/10 border border-primary/30 text-primary text-xs uppercase tracking-wider font-semibold font-inter hover:bg-primary/20 transition-colors cursor-default"
                 >
                   {i}
                 </span>
@@ -345,59 +337,16 @@ export function ArtTechniques() {
 
       {/* Swipe Badge for Desktop & Mobile */}
       <div className="container mx-auto px-6 text-center mb-4 relative z-20">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-[#14F1D9] uppercase shadow-md">
-          <span>←</span> Листайте галерею <span>→</span>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 border border-white/15 rounded-full text-[11px] font-mono font-bold tracking-wider text-primary uppercase shadow-md">
+          <span>←</span> {isEn ? "Swipe through the gallery" : "Листайте галерею"} <span>→</span>
         </div>
       </div>
 
-      {/* Zero-Crop Stream: Uniform Height (140px), Natural Width, Swipeable */}
-      <div 
-        ref={scrollRef}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={endDrag}
-        onPointerLeave={endDrag}
-        onDragStart={(e) => e.preventDefault()}
-        className="w-full relative overflow-x-auto overflow-y-hidden cursor-grab select-none hide-scrollbar py-2 z-20"
-      >
-        <div className="flex gap-3 px-6 w-max">
-          {items.map((item, idx) => (
-            <div
-              key={idx}
-              onClick={() => openLightbox(idx)}
-              className="group relative shrink-0 h-[140px] w-auto bg-[#16161A] border border-white/15 hover:border-[#14F1D9] transition-all cursor-pointer overflow-hidden rounded-none shadow-md flex items-center justify-center"
-            >
-              {item.type === "video" ? (
-                <div className="relative h-[140px] w-auto bg-black flex items-center justify-center">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <video
-                    src={item.src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="h-[140px] w-auto max-w-none block object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute top-1.5 right-1.5 p-1 bg-black/80 border border-[#14F1D9]/60 text-[#14F1D9] pointer-events-none">
-                    <Play className="w-2.5 h-2.5 fill-[#14F1D9]" />
-                  </div>
-                </div>
-              ) : (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  className="h-[140px] w-auto max-w-none block object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
+      <ArtTechniquesGallery items={items} onOpenLightbox={openLightbox} />
 
       <div className="container mx-auto px-6 text-center mt-3 relative z-20">
         <p className="text-[11px] font-inter text-white/50 tracking-wider">
-          💡 Свайпайте или перетаскивайте мышкой · Кликните для полного размера
+          {isEn ? "💡 Swipe or drag with your mouse · Click for full size" : "💡 Свайпайте или перетаскивайте мышкой · Кликните для полного размера"}
         </p>
       </div>
 
@@ -411,13 +360,13 @@ export function ArtTechniques() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-h-[92vh] max-w-5xl w-full border border-white/20 bg-[#1A1A1A] p-4 sm:p-6 shadow-2xl rounded-none flex flex-col"
+            className="relative max-h-[92vh] max-w-5xl w-full border border-white/20 bg-surface p-4 sm:p-6 shadow-2xl rounded-none flex flex-col"
           >
             {/* Close button */}
             <button
               onClick={() => setLightboxIndex(null)}
-              className="absolute -top-4 -right-4 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black text-white hover:bg-[#14F1D9] hover:text-black transition-colors shadow-lg"
-              aria-label="Закрыть"
+              className="absolute -top-4 -right-4 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black text-white hover:bg-primary hover:text-black transition-colors shadow-lg"
+              aria-label={isEn ? "Close" : "Закрыть"}
             >
               <X className="h-5 w-5" />
             </button>
@@ -425,15 +374,15 @@ export function ArtTechniques() {
             {/* Prev/Next arrows */}
             <button
               onClick={prevLightbox}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black/80 text-white hover:bg-[#14F1D9] hover:text-black transition-colors"
-              aria-label="Предыдущий"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black/80 text-white hover:bg-primary hover:text-black transition-colors"
+              aria-label={isEn ? "Previous" : "Предыдущий"}
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={nextLightbox}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black/80 text-white hover:bg-[#14F1D9] hover:text-black transition-colors"
-              aria-label="Следующий"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center border border-white/20 bg-black/80 text-white hover:bg-primary hover:text-black transition-colors"
+              aria-label={isEn ? "Next" : "Следующий"}
             >
               <ChevronRight className="h-5 w-5" />
             </button>
@@ -444,6 +393,7 @@ export function ArtTechniques() {
                 <video
                   src={activeLightboxItem.src}
                   controls
+                  preload="auto"
                   autoPlay
                   muted
                   playsInline

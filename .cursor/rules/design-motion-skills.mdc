@@ -1,0 +1,22 @@
+---
+description: Load design, motion, and UI craft skills for this React portfolio (no copied monorepo docs).
+alwaysApply: true
+---
+
+# Design + motion (portfolio)
+
+This repo is a **marketing portfolio**, not an iGaming/B2B monorepo. Do **not** apply rules or skills meant for binary-options, trading terminals, or game math.
+
+When the task touches UI, layout, animation, or polish, use **Cursor user/skills catalog** skills (do not duplicate skill trees into this repo):
+
+| Need | Skill (by name) |
+|------|------------------|
+| Craft, polish, anti-slop | **impeccable** |
+| Build motion | **animate** |
+| Name / critique motion | **animation-vocabulary**, **review-animations**, **improve-animations** |
+| Physical UI feel | **apple-design**, **emil-design-eng** |
+| Motion audit (read-only) | **find-animation-opportunities** |
+
+**This codebase:** reuse `docs/DESIGN_SYSTEM.md`, `app/globals.css`, and existing section patterns under `components/sections/`. Prefer **Framer Motion** patterns already in neighbors.
+
+**Accessibility:** use **wcag-audit-patterns** or **accessibility-compliance-accessibility-audit** when reviewing forms, contrast, or keyboard flow.

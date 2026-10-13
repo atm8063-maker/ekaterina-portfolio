@@ -16,7 +16,7 @@ export default function ArtConcretePage() {
       <div
         className="fixed inset-0 z-0 pointer-events-none"
         style={{
-          backgroundImage: "url('/concrete-wall.png')",
+          backgroundImage: "url('/concrete-wall.webp')",
           backgroundSize: "600px",
           backgroundRepeat: "repeat",
           filter: "brightness(0.5) contrast(1.2)",

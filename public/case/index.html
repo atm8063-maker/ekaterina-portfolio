@@ -50,6 +50,15 @@
       margin: 0;
       padding: 0;
       transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    *::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+      background: transparent;
     }
 
     body {
@@ -264,7 +273,7 @@
        ------------------------------------------------------------- */
     .anatomy-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 24px;
     }
 
@@ -387,29 +396,29 @@
     /* Сетки общие */
     .grid-2 {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 40px;
       align-items: start;
     }
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 24px;
     }
 
     .grid-4 {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 20px;
     }
 
     @media (max-width: 1024px) {
       .anatomy-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       }
       .grid-2, .grid-3, .grid-4 {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
       .slide-section {
         padding: 35px 24px;
@@ -418,7 +427,7 @@
 
     @media (max-width: 640px) {
       .anatomy-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
       .slide-section {
         padding: 28px 16px;
@@ -693,7 +702,7 @@
       </p>
       
       <div class="hero-author">
-        <img src="assets/nick.jpg" alt="Ник Потапов" class="author-avatar" />
+        <img src="assets/nick.webp" alt="Ник Потапов" class="author-avatar" decoding="async" fetchpriority="high" />
         <div style="text-align: left;">
           <div style="font-weight: 700; font-size: 16px;">Ник Потапов (NPC)</div>
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent);">AI Solutions Architect · 9+ лет в продукте</div>
@@ -702,7 +711,7 @@
 
       <!-- ФОТОРЕАЛИСТИЧНЫЙ СТУДИЙНЫЙ МОКАП MACBOOK PRO SPACE BLACK С САЙТОМ НИКА ИЗ ЗАГРУЗОК -->
       <div class="hero-mockup-wrapper">
-        <img src="assets/macbook_real_hero.jpg" alt="Ник Потапов — Продуктовый сайт на экране MacBook Pro" />
+        <img src="assets/macbook_real_hero.webp" alt="Ник Потапов — Продуктовый сайт на экране MacBook Pro" decoding="async" fetchpriority="high" />
       </div>
     </section>
 
@@ -981,7 +990,7 @@
               <div class="browser-address">https://nickpotapov.com</div>
             </div>
             <div class="browser-body">
-              <img src="assets/nick_desktop_dark_real.png" alt="Ник Потапов — Главный экран в тёмной теме" />
+              <img src="assets/nick_desktop_dark_real.webp" alt="Ник Потапов — Главный экран в тёмной теме" loading="lazy" decoding="async" />
             </div>
           </div>
 
@@ -998,7 +1007,7 @@
               <div class="browser-address">https://nickpotapov.com/cases/01-astro-directus</div>
             </div>
             <div class="browser-body">
-              <img src="assets/nick_case01_real.png" alt="Детальная страница кейса" />
+              <img src="assets/nick_case01_real.webp" alt="Детальная страница кейса" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -1017,7 +1026,7 @@
                   <div class="phone-camera"></div>
                 </div>
                 <div class="phone-screen">
-                  <img src="assets/nick_mobile_dark_real.png" alt="Мобильный экран в тёмной теме" />
+                  <img src="assets/nick_mobile_dark_real.webp" alt="Мобильный экран в тёмной теме" loading="lazy" decoding="async" />
                 </div>
               </div>
               <div class="phone-label">Тёмная тема</div>
@@ -1030,7 +1039,7 @@
                   <div class="phone-camera"></div>
                 </div>
                 <div class="phone-screen">
-                  <img src="assets/nick_mobile_real.png" alt="Мобильный экран в светлой теме" />
+                  <img src="assets/nick_mobile_real.webp" alt="Мобильный экран в светлой теме" loading="lazy" decoding="async" />
                 </div>
               </div>
               <div class="phone-label">Светлая тема</div>
@@ -1162,6 +1171,23 @@
       const board = document.querySelector('.behance-board');
       if (board) new ResizeObserver(notifyHeight).observe(board);
     }
+  </script>
+  <script>
+    (function () {
+      if (!("IntersectionObserver" in window)) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var img = entry.target;
+          img.loading = "eager";
+          if (img.decode) img.decode().catch(function () {});
+          io.unobserve(img);
+        });
+      }, { rootMargin: "1600px 400px" });
+      document.querySelectorAll("img[loading='lazy']").forEach(function (img) {
+        io.observe(img);
+      });
+    })();
   </script>
 </body>
 </html>

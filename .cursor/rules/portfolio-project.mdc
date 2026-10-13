@@ -1,0 +1,21 @@
+---
+description: Ekaterina Razumova portfolio — repo identity and non-negotiables.
+alwaysApply: true
+---
+
+# Portfolio Ekaterina
+
+**Product:** Next.js portfolio for Екатерина Разумова — `/` (career) and `/fir_tree_art` (art). Cases: `/cases/[slug]`, `/case`.
+
+**Authoritative workflow:** `.agents/AGENTS.md`, `docs/STATE.md`, `docs/DESIGN_SYSTEM.md`, `docs/BACKLOG.md`.
+
+**Stack:** Next.js App Router, React, Tailwind v4, **Framer Motion** (not GSAP on this site).
+
+**Hard rules (from AGENTS.md):**
+
+- Do not change on-site copy unless the user gives an explicit replacement.
+- Do not edit blocks marked ✅ in `docs/STATE.md` without explicit ask.
+- Do not import code from other repos.
+- Header height ~80px is coupled to layout — do not change casually.
+
+**Human overview:** `docs/PROJECT_REVIEW.md`

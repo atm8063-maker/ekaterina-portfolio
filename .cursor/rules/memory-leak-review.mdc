@@ -1,0 +1,17 @@
+---
+description: Timers, listeners, and observers must clean up in React sections.
+alwaysApply: true
+---
+
+# Memory & cleanup (portfolio / React)
+
+When writing or reviewing `useEffect`, scroll handlers, video, or motion:
+
+- Clear every `setTimeout` / `setInterval` in effect cleanup.
+- Remove every `addEventListener` in cleanup; handle `hashchange` like in `app/page.tsx`.
+- `IntersectionObserver` / `ResizeObserver` → `disconnect()` on unmount.
+- Cancel `requestAnimationFrame` when used.
+- Video: pause and drop refs on unmount where components mount many clips (art gallery).
+- Framer Motion: avoid leaving global document listeners outside React lifecycle.
+
+Do not add Pixi/canvas game patterns — not used on this site.

@@ -1,6 +1,29 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { LazyVideo } from '@/components/shared/lazy-video';
+import { SILHOUETTE_SPOTS } from '@/lib/mosaic/spots';
+
+function MosaicCornerMarks({ cornerColor, size = 8 }: { cornerColor: string; size?: number }) {
+  const border = `1.8px solid ${cornerColor}`;
+  const markStyle = (position: React.CSSProperties): React.CSSProperties => ({
+    position: 'absolute',
+    width: `${size}px`,
+    height: `${size}px`,
+    pointerEvents: 'none',
+    zIndex: 3,
+    ...position,
+  });
+
+  return (
+    <>
+      <div style={{ ...markStyle({ top: 0, left: 0 }), borderTop: border, borderLeft: border }} />
+      <div style={{ ...markStyle({ top: 0, right: 0 }), borderTop: border, borderRight: border }} />
+      <div style={{ ...markStyle({ bottom: 0, left: 0 }), borderBottom: border, borderLeft: border }} />
+      <div style={{ ...markStyle({ bottom: 0, right: 0 }), borderBottom: border, borderRight: border }} />
+    </>
+  );
+}
 
 export default function WideMosaicPage() {
   const [scaleFactor, setScaleFactor] = useState(1);
@@ -44,117 +67,60 @@ export default function WideMosaicPage() {
   const mobS = mobSilhouetteH / 1398;
   const mobG = 1.6;
 
-  const portraitTiles = [
-    { id: 'A1', x: 0,   y: 0,    w: 190, h: 172, type: 'img', src: 'photo_2026-08-27_17-30-20 (5).jpg' },
-    { id: 'A2', x: 196, y: 0,    w: 144, h: 210, type: 'img', src: 'photo_3329@04-08-2026_21-08-45.jpg' },
-    { id: 'A3', x: 346, y: 0,    w: 180, h: 180, type: 'img', src: 'photo_2026-08-27_17-30-20 (5).jpg' },
-    { id: 'A4', x: 532, y: 0,    w: 150, h: 172, type: 'img', src: 'photo_2026-08-27_17-30-20 (7).jpg' },
-    { id: 'A5', x: 688, y: 0,    w: 158, h: 172, type: 'img', src: 'photo_2026-08-27_17-30-21 (8).jpg' },
-
-    { id: 'B1', x: 0,   y: 178,  w: 190, h: 130, type: 'img', src: 'photo_2026-08-27_17-30-19.jpg' },
-    { id: 'B2', x: 196, y: 216,  w: 144, h: 182, type: 'video', src: 'video_2026-08-04_22-43-39 (4).mp4' },
-    { id: 'B3', x: 346, y: 186,  w: 180, h: 148, type: 'face' },
-    { id: 'B4', x: 532, y: 178,  w: 150, h: 156, type: 'img', src: 'photo_2026-08-27_17-30-19 (2).jpg' },
-    { id: 'B5', x: 688, y: 178,  w: 158, h: 156, type: 'img', src: 'photo_2026-08-27_17-30-19 (3).jpg' },
-
-    { id: 'C1', x: 0,   y: 314,  w: 110, h: 290, type: 'img', src: 'photo_2026-08-27_17-30-21 (2).jpg' },
-    { id: 'C2', x: 116, y: 314,  w: 74,  h: 156, type: 'img', src: 'photo_3333@04-08-2026_21-08-45.jpg' },
-    { id: 'C3', x: 116, y: 476,  w: 108, h: 128, type: 'img', src: 'photo_2026-08-27_17-30-21 (5).jpg' },
-
-    {
-      id: 'C4',
-      isPolygon: true,
-      x: 196, y: 404, w: 178, h: 200,
-      clipPath: 'polygon(0% 0%, 80.9% 0%, 80.9% 53.5%, 100% 53.5%, 100% 100%, 19.1% 100%, 19.1% 33%, 0% 33%)',
-      type: 'img',
-      src: 'photo_2026-08-30_02-47-41 (5).jpg'
-    },
-
-    { id: 'C5', x: 346, y: 340,  w: 406, h: 164, type: 'face' },
-    { id: 'C6', x: 758, y: 340,  w: 88,  h: 164, type: 'img', src: 'photo_2026-08-27_17-30-21 (4).jpg' },
-
-    { id: 'D1', x: 0,   y: 610,  w: 224, h: 232, type: 'video', src: 'video_2026-08-29_18-25-41.mp4' },
-    { id: 'D2', x: 230, y: 610,  w: 144, h: 126, type: 'img', src: 'photo_2026-08-29_17-06-15.jpg' },
-    { id: 'D3', x: 380, y: 510,  w: 286, h: 224, type: 'face' },
-    { id: 'D4', x: 672, y: 510,  w: 174, h: 224, type: 'img', src: 'photo_2960@31-07-2026_18-19-07.jpg' },
-
-    { id: 'E1', x: 230, y: 742,  w: 144, h: 184, type: 'img', src: 'photo_3334@04-08-2026_21-08-45.jpg' },
-    { id: 'E2', x: 380, y: 740,  w: 152, h: 184, type: 'face' },
-    { id: 'E3', x: 538, y: 740,  w: 144, h: 184, type: 'img', src: 'photo_2026-08-29_20-12-50.jpg' },
-    { id: 'E4', x: 688, y: 740,  w: 158, h: 250, type: 'video', src: 'video_2026-08-29_20-12-42.mp4' },
-
-    { id: 'G1', x: 0,   y: 848,  w: 224, h: 266, type: 'img', src: 'photo_2026-08-29_20-12-29.jpg' },
-    { id: 'F3', x: 230, y: 932,  w: 452, h: 182, type: 'video', src: 'video_48@31-07-2026_19-44-20.mp4' },
-    { id: 'F4', x: 688, y: 996,  w: 158, h: 128, type: 'img', src: 'photo_3331@04-08-2026_21-08-45.jpg' },
-
-    { id: 'F1', x: 0,   y: 1120, w: 160, h: 278, type: 'img', src: 'photo_2026-08-27_17-30-20.jpg' },
-    { id: 'F2', x: 166, y: 1120, w: 166, h: 278, type: 'img', src: 'photo_3330@04-08-2026_21-08-45.jpg' },
-    { id: 'G2', x: 338, y: 1120, w: 194, h: 278, type: 'face', label: 'DECOLLETE' },
-    { id: 'G3', x: 538, y: 1120, w: 144, h: 278, type: 'img', src: 'photo_2026-08-27_17-30-21 (3).jpg' },
-    { id: 'G4', x: 688, y: 1130, w: 158, h: 268, type: 'img', src: 'photo_2026-08-27_17-30-20 (4).jpg' }
-  ];
+  const portraitTiles = SILHOUETTE_SPOTS;
 
   // Desktop Sketches Grid
   const desktopSketchTiles = [
     { id: 'SK_VID', x: 571, y: 263, w: 332, h: 655, isVideo: true, src: 'video_145@04-08-2026_22-24-35.mp4' },
 
-    { id: 'R1_1', x: 911,  y: 263, w: 196, h: 236, src: 'photo_3220@04-08-2026_21-04-08.jpg' },
-    { id: 'R1_2', x: 1115, y: 263, w: 166, h: 236, src: 'photo_3217@04-08-2026_21-04-08.jpg' },
-    { id: 'R1_3', x: 1289, y: 263, w: 382, h: 236, src: 'photo_2988@31-07-2026_18-20-25.jpg' },
-    { id: 'R1_4', x: 1679, y: 263, w: 233, h: 236, src: 'photo_2026-08-30_02-47-41 (3).jpg' },
+    { id: 'R1_1', x: 911,  y: 263, w: 196, h: 236, src: 'photo_3220@04-08-2026_21-04-08.webp' },
+    { id: 'R1_2', x: 1115, y: 263, w: 166, h: 236, src: 'photo_3217@04-08-2026_21-04-08.webp' },
+    { id: 'R1_3', x: 1289, y: 263, w: 382, h: 236, src: 'photo_2988@31-07-2026_18-20-25.webp' },
+    { id: 'R1_4', x: 1679, y: 263, w: 233, h: 236, src: 'photo_2026-08-30_02-47-41 (3).webp' },
 
-    { id: 'R2_1', x: 911,  y: 507, w: 200, h: 247, src: 'photo_2026-08-27_17-30-20 (2).jpg' },
-    { id: 'R2_2', x: 1119, y: 507, w: 188, h: 247, src: 'photo_2026-08-27_17-30-21 (9).jpg' },
-    { id: 'R2_3', x: 1315, y: 507, w: 154, h: 247, src: 'photo_2986@31-07-2026_18-19-24.jpg' },
-    { id: 'R2_4', x: 1477, y: 507, w: 222, h: 247, src: 'photo_3218@04-08-2026_21-04-08.jpg' },
-    { id: 'R2_5', x: 1707, y: 507, w: 205, h: 247, src: 'photo_2026-08-27_17-30-19 (6).jpg' },
+    { id: 'R2_1', x: 911,  y: 507, w: 200, h: 247, src: 'photo_2026-08-27_17-30-20 (2).webp' },
+    { id: 'R2_2', x: 1119, y: 507, w: 188, h: 247, src: 'photo_2026-08-27_17-30-21 (9).webp' },
+    { id: 'R2_3', x: 1315, y: 507, w: 154, h: 247, src: 'photo_2986@31-07-2026_18-19-24.webp' },
+    { id: 'R2_4', x: 1477, y: 507, w: 222, h: 247, src: 'photo_3218@04-08-2026_21-04-08.webp' },
+    { id: 'R2_5', x: 1707, y: 507, w: 205, h: 247, src: 'photo_2026-08-27_17-30-19 (6).webp' },
 
-    { id: 'R3_1', x: 911,  y: 762, w: 221, h: 156, src: 'photo_3076@31-07-2026_19-44-02.jpg' },
-    { id: 'R3_2', x: 1140, y: 762, w: 164, h: 156, src: 'photo_2026-08-27_19-29-35.jpg' },
-    { id: 'R3_3', x: 1312, y: 762, w: 249, h: 156, src: 'photo_2026-08-30_02-47-41 (4).jpg' },
-    { id: 'R3_4', x: 1569, y: 762, w: 121, h: 156, src: 'photo_2026-08-27_17-30-18 (2).jpg' },
-    { id: 'R3_5', x: 1698, y: 762, w: 214, h: 156, src: 'photo_2026-08-27_17-30-19 (4).jpg' },
+    { id: 'R3_1', x: 911,  y: 762, w: 221, h: 156, src: 'photo_3076@31-07-2026_19-44-02.webp' },
+    { id: 'R3_2', x: 1140, y: 762, w: 164, h: 156, src: 'photo_2026-08-27_19-29-35.webp' },
+    { id: 'R3_3', x: 1312, y: 762, w: 249, h: 156, src: 'photo_2026-08-30_02-47-41 (4).webp' },
+    { id: 'R3_4', x: 1569, y: 762, w: 121, h: 156, src: 'photo_2026-08-27_17-30-18 (2).webp' },
+    { id: 'R3_5', x: 1698, y: 762, w: 214, h: 156, src: 'photo_2026-08-27_17-30-19 (4).webp' },
   ];
 
   // Mobile Sections
   const mobileRow1_3 = [
-    { src: 'photo_3220@04-08-2026_21-04-08.jpg', objectPos: 'center center' },
-    { src: 'photo_3217@04-08-2026_21-04-08.jpg', objectPos: 'center -3px' },
-    { src: 'photo_2026-08-30_02-47-41 (3).jpg', objectPos: 'center center' },
+    { src: 'photo_3220@04-08-2026_21-04-08.webp', objectPos: 'center center' },
+    { src: 'photo_3217@04-08-2026_21-04-08.webp', objectPos: 'center -3px' },
+    { src: 'photo_2026-08-30_02-47-41 (3).webp', objectPos: 'center center' },
   ];
 
-  const mobileHeroKids = 'photo_2988@31-07-2026_18-20-25.jpg';
+  const mobileHeroKids = 'photo_2988@31-07-2026_18-20-25.webp';
 
   const mobileRow3_3 = [
-    { src: 'photo_2026-08-27_17-30-20 (2).jpg', objectPos: 'center center' },
-    { src: 'photo_2026-08-27_17-30-21 (9).jpg', objectPos: 'center -4px' },
-    { src: 'photo_2986@31-07-2026_18-19-24.jpg', objectPos: 'center center' },
+    { src: 'photo_2026-08-27_17-30-20 (2).webp', objectPos: 'center center' },
+    { src: 'photo_2026-08-27_17-30-21 (9).webp', objectPos: 'center -4px' },
+    { src: 'photo_2986@31-07-2026_18-19-24.webp', objectPos: 'center center' },
   ];
 
   const mobileRow4_2 = [
-    { src: 'photo_3218@04-08-2026_21-04-08.jpg', objectPos: 'center center' },
-    { src: 'photo_2026-08-27_17-30-19 (6).jpg', objectPos: 'center center' },
+    { src: 'photo_3218@04-08-2026_21-04-08.webp', objectPos: 'center center' },
+    { src: 'photo_2026-08-27_17-30-19 (6).webp', objectPos: 'center center' },
   ];
 
   const mobileRow5_3 = [
-    { src: 'photo_3076@31-07-2026_19-44-02.jpg', objectPos: 'center center' },
-    { src: 'photo_2026-08-27_19-29-35.jpg', objectPos: 'center center' },
-    { src: 'photo_2026-08-27_17-30-18 (2).jpg', objectPos: 'center center' },
+    { src: 'photo_3076@31-07-2026_19-44-02.webp', objectPos: 'center center' },
+    { src: 'photo_2026-08-27_19-29-35.webp', objectPos: 'center center' },
+    { src: 'photo_2026-08-27_17-30-18 (2).webp', objectPos: 'center center' },
   ];
 
   const mobileRow6_2 = [
-    { src: 'photo_2026-08-30_02-47-41 (4).jpg', objectPos: 'center center' },
-    { src: 'photo_2026-08-27_17-30-19 (4).jpg', objectPos: 'center center' },
+    { src: 'photo_2026-08-30_02-47-41 (4).webp', objectPos: 'center center' },
+    { src: 'photo_2026-08-27_17-30-19 (4).webp', objectPos: 'center center' },
   ];
-
-  const CornerMarks = ({ size = 8 }: { size?: number }) => (
-    <>
-      <div style={{ position: 'absolute', top: 0, left: 0, width: `${size}px`, height: `${size}px`, borderTop: `1.8px solid ${theme.corner}`, borderLeft: `1.8px solid ${theme.corner}`, pointerEvents: 'none', zIndex: 3 }} />
-      <div style={{ position: 'absolute', top: 0, right: 0, width: `${size}px`, height: `${size}px`, borderTop: `1.8px solid ${theme.corner}`, borderRight: `1.8px solid ${theme.corner}`, pointerEvents: 'none', zIndex: 3 }} />
-      <div style={{ position: 'absolute', bottom: 0, left: 0, width: `${size}px`, height: `${size}px`, borderBottom: `1.8px solid ${theme.corner}`, borderLeft: `1.8px solid ${theme.corner}`, pointerEvents: 'none', zIndex: 3 }} />
-      <div style={{ position: 'absolute', bottom: 0, right: 0, width: `${size}px`, height: `${size}px`, borderBottom: `1.8px solid ${theme.corner}`, borderRight: `1.8px solid ${theme.corner}`, pointerEvents: 'none', zIndex: 3 }} />
-    </>
-  );
 
   return (
     <div
@@ -259,8 +225,8 @@ export default function WideMosaicPage() {
               top: '0px',
               width: `${targetSilhouetteW}px`,
               height: `${targetSilhouetteH}px`,
-              WebkitMaskImage: "url('/Group%2047.png')",
-              maskImage: "url('/Group%2047.png')",
+              WebkitMaskImage: "url('/Group%2047.webp')",
+              maskImage: "url('/Group%2047.webp')",
               WebkitMaskSize: '100% 100%',
               maskSize: '100% 100%',
               WebkitMaskRepeat: 'no-repeat',
@@ -316,7 +282,7 @@ export default function WideMosaicPage() {
                       <path d={`M ${rw*0.809} ${rh*0.535 - 10} L ${rw*0.809} ${rh*0.535} L ${rw*0.809 + 10} ${rh*0.535}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                       <path d={`M ${rw - 10} ${rh*0.535} L ${rw} ${rh*0.535} L ${rw} ${rh*0.535 + 10}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                       <path d={`M ${rw} ${rh - 10} L ${rw} ${rh} L ${rw - 10} ${rh}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
-                      <path d={`M ${rw*0.191 + 10} ${rh} L ${rw*0.191} ${rh} L ${rw*0.191} - 10`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
+                      <path d={`M ${rw*0.191 + 10} ${rh} L ${rw*0.191} ${rh} L ${rw*0.191} ${rh - 10}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                       <path d={`M ${rw*0.191} ${rh*0.33 + 10} L ${rw*0.191} ${rh*0.33} L ${rw*0.191 - 10} ${rh*0.33}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                       <path d={`M 10 ${rh*0.33} L 0 ${rh*0.33} L 0 ${rh*0.33 - 10}`} fill="none" stroke={theme.corner} strokeWidth="2.2" />
                     </svg>
@@ -324,7 +290,7 @@ export default function WideMosaicPage() {
 
                   {t.type === 'face' && (
                     <img
-                      src="/Group%2047.png"
+                      src="/Group%2047.webp"
                       alt="Face"
                       style={{
                         position: 'absolute',
@@ -338,7 +304,7 @@ export default function WideMosaicPage() {
                   )}
 
                   {t.type === 'video' && (
-                    <video
+                    <LazyVideo
                       src={`/art-portraits/${encodeURIComponent(t.src!)}`}
                       autoPlay
                       loop
@@ -384,7 +350,7 @@ export default function WideMosaicPage() {
               <div style={{ position: 'absolute', bottom: 0, right: 0, width: '10px', height: '10px', borderBottom: `2.0px solid ${theme.corner}`, borderRight: `2.0px solid ${theme.corner}`, pointerEvents: 'none', zIndex: 3 }} />
 
               {t.isVideo ? (
-                <video
+                <LazyVideo
                   src={`/art-sketches/${encodeURIComponent(t.src)}`}
                   autoPlay
                   loop
@@ -424,8 +390,8 @@ export default function WideMosaicPage() {
             position: 'relative',
             width: `${mobSilhouetteW}px`,
             height: `${mobSilhouetteH}px`,
-            WebkitMaskImage: "url('/Group%2047.png')",
-            maskImage: "url('/Group%2047.png')",
+            WebkitMaskImage: "url('/Group%2047.webp')",
+            maskImage: "url('/Group%2047.webp')",
             WebkitMaskSize: '100% 100%',
             maskSize: '100% 100%',
             WebkitMaskRepeat: 'no-repeat',
@@ -490,7 +456,7 @@ export default function WideMosaicPage() {
 
                 {t.type === 'face' && (
                   <img
-                    src="/Group%2047.png"
+                    src="/Group%2047.webp"
                     alt="Face"
                     style={{
                       position: 'absolute',
@@ -504,7 +470,7 @@ export default function WideMosaicPage() {
                 )}
 
                 {t.type === 'video' && (
-                  <video
+                  <LazyVideo
                     src={`/art-portraits/${encodeURIComponent(t.src!)}`}
                     autoPlay
                     loop
@@ -540,8 +506,8 @@ export default function WideMosaicPage() {
             margin: '-4px auto 0'
           }}
         >
-          <CornerMarks size={10} />
-          <video
+          <MosaicCornerMarks cornerColor={theme.corner} size={10} />
+          <LazyVideo
             src="/art-sketches/video_145@04-08-2026_22-24-35.mp4"
             autoPlay
             loop
@@ -565,7 +531,7 @@ export default function WideMosaicPage() {
                 boxSizing: 'border-box'
               }}
             >
-              <CornerMarks size={8} />
+              <MosaicCornerMarks cornerColor={theme.corner} size={8} />
               <img
                 src={`/art-sketches/${encodeURIComponent(item.src)}`}
                 alt="Sketch"
@@ -593,7 +559,7 @@ export default function WideMosaicPage() {
             boxSizing: 'border-box'
           }}
         >
-          <CornerMarks size={10} />
+          <MosaicCornerMarks cornerColor={theme.corner} size={10} />
           <img
             src={`/art-sketches/${encodeURIComponent(mobileHeroKids)}`}
             alt="Sketch"
@@ -616,7 +582,7 @@ export default function WideMosaicPage() {
                 boxSizing: 'border-box'
               }}
             >
-              <CornerMarks size={8} />
+              <MosaicCornerMarks cornerColor={theme.corner} size={8} />
               <img
                 src={`/art-sketches/${encodeURIComponent(item.src)}`}
                 alt="Sketch"
@@ -646,7 +612,7 @@ export default function WideMosaicPage() {
                 boxSizing: 'border-box'
               }}
             >
-              <CornerMarks size={8} />
+              <MosaicCornerMarks cornerColor={theme.corner} size={8} />
               <img
                 src={`/art-sketches/${encodeURIComponent(item.src)}`}
                 alt="Sketch"
@@ -676,7 +642,7 @@ export default function WideMosaicPage() {
                 boxSizing: 'border-box'
               }}
             >
-              <CornerMarks size={8} />
+              <MosaicCornerMarks cornerColor={theme.corner} size={8} />
               <img
                 src={`/art-sketches/${encodeURIComponent(item.src)}`}
                 alt="Sketch"
@@ -706,7 +672,7 @@ export default function WideMosaicPage() {
                 boxSizing: 'border-box'
               }}
             >
-              <CornerMarks size={8} />
+              <MosaicCornerMarks cornerColor={theme.corner} size={8} />
               <img
                 src={`/art-sketches/${encodeURIComponent(item.src)}`}
                 alt="Sketch"

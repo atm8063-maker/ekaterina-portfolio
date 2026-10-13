@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { ThemeToggle } from '@/components/theme-toggle'
+import { ThemeToggle } from './theme-toggle'
 import { useLanguage } from '@/components/language-provider'
 import { translations } from '@/lib/translations'
 

@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Grid } from "lucide-react";
-import { cases, CaseSummary } from "@/lib/data";
+import { getCases, CaseSummary } from "@/lib/data";
+import { useLanguage } from "@/components/language-provider";
 
 interface CaseNavigationProps {
   currentSlug: string;
@@ -10,10 +11,16 @@ interface CaseNavigationProps {
   position?: "top" | "bottom";
 }
 
-// Active visible cases in portfolio order
-const activeCases = cases.filter(c => !c.hidden && c.slug !== "12-resin-masterclass" && c.slug !== "13-local-tv-report");
+const t = {
+  RU: { allCases: "Все кейсы", back: "Назад", forward: "Вперед", navLabel: "Навигация по кейсам", previous: "Предыдущий", next: "Следующий", catalog: "Каталог кейсов" },
+  EN: { allCases: "All Case Studies", back: "Back", forward: "Next", navLabel: "Case study navigation", previous: "Previous", next: "Next", catalog: "Case Study Index" },
+};
 
 export function CaseNavigation({ currentSlug, className = "", position = "bottom" }: CaseNavigationProps) {
+  const { lang } = useLanguage();
+  const tr = t[lang];
+  // Active visible cases in portfolio order
+  const activeCases = getCases(lang).filter(c => !c.hidden && c.slug !== "12-resin-masterclass" && c.slug !== "13-local-tv-report");
   // Normalize slug (handle custom hrefs if any)
   const normalizedSlug = currentSlug === "case" ? "05-nick-potapov-site" : currentSlug;
   const currentIndex = activeCases.findIndex(c => c.slug === normalizedSlug);
@@ -31,10 +38,10 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
         {/* Back to portfolio */}
         <Link
           href="/#cases"
-          className="inline-flex items-center gap-2 text-white/70 hover:text-[#14F1D9] transition-colors py-1 px-2 -ml-2 rounded"
+          className="inline-flex items-center gap-2 text-white/70 hover:text-primary transition-colors py-1 px-2 -ml-2 rounded"
         >
-          <ArrowLeft className="w-4 h-4 text-[#14F1D9]" />
-          <span>Все кейсы</span>
+          <ArrowLeft className="w-4 h-4 text-primary" />
+          <span>{tr.allCases}</span>
         </Link>
 
         {/* Next / Prev quick switcher */}
@@ -42,21 +49,23 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
           {prevCase && (
             <Link
               href={getHref(prevCase)}
+              scroll={false}
               title={prevCase.title}
               className="inline-flex items-center gap-1.5 text-white/60 hover:text-white transition-colors py-1 px-2 rounded hover:bg-white/5"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Назад</span>
+              <span className="hidden sm:inline">{tr.back}</span>
             </Link>
           )}
           <span className="text-white/20">|</span>
           {nextCase && (
             <Link
               href={getHref(nextCase)}
+              scroll={false}
               title={nextCase.title}
-              className="inline-flex items-center gap-1.5 text-white/60 hover:text-[#14F1D9] transition-colors py-1 px-2 rounded hover:bg-white/5"
+              className="inline-flex items-center gap-1.5 text-white/60 hover:text-primary transition-colors py-1 px-2 rounded hover:bg-white/5"
             >
-              <span className="hidden sm:inline">Вперед</span>
+              <span className="hidden sm:inline">{tr.forward}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           )}
@@ -67,22 +76,23 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
 
   // Bottom full navigation banner
   return (
-    <nav aria-label="Навигация по кейсам" className={`mt-16 pt-10 border-t border-white/10 ${className}`}>
+    <nav aria-label={tr.navLabel} className={`mt-16 pt-10 border-t border-white/10 ${className}`}>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
         {/* Previous case */}
         {prevCase ? (
           <Link
             href={getHref(prevCase)}
-            className="group flex items-center gap-3 p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-[#14F1D9]/40 transition-all text-left"
+            scroll={false}
+            className="group flex items-center gap-3 p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-primary/40 transition-all text-left"
           >
-            <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-white/70 group-hover:text-[#14F1D9] group-hover:border-[#14F1D9]/50 transition-colors">
+            <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-white/70 group-hover:text-primary group-hover:border-primary/50 transition-colors">
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
             </div>
             <div className="min-w-0">
               <span className="text-[11px] font-bold uppercase tracking-widest text-white/40 block font-montserrat">
-                Предыдущий
+                {tr.previous}
               </span>
-              <span className="text-sm font-medium text-white group-hover:text-[#14F1D9] truncate block transition-colors">
+              <span className="text-sm font-medium text-white group-hover:text-primary truncate block transition-colors">
                 {prevCase.title}
               </span>
             </div>
@@ -93,10 +103,11 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
         <div className="flex justify-center order-first sm:order-none">
           <Link
             href="/#cases"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-[#14F1D9]/40 bg-[#14F1D9]/10 hover:bg-[#14F1D9]/20 text-[#14F1D9] font-bold text-xs uppercase tracking-widest font-montserrat transition-all shadow-[0_0_20px_rgba(20,241,217,0.15)]"
+            scroll={false}
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-primary/40 bg-primary/10 hover:bg-primary/20 text-primary font-bold text-xs uppercase tracking-widest font-montserrat transition-all shadow-[0_0_20px_rgba(20,241,217,0.15)]"
           >
             <Grid className="w-4 h-4" />
-            <span>Каталог кейсов</span>
+            <span>{tr.catalog}</span>
           </Link>
         </div>
 
@@ -104,17 +115,18 @@ export function CaseNavigation({ currentSlug, className = "", position = "bottom
         {nextCase ? (
           <Link
             href={getHref(nextCase)}
-            className="group flex items-center justify-end gap-3 p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-[#14F1D9]/40 transition-all text-right"
+            scroll={false}
+            className="group flex items-center justify-end gap-3 p-4 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-primary/40 transition-all text-right"
           >
             <div className="min-w-0">
               <span className="text-[11px] font-bold uppercase tracking-widest text-white/40 block font-montserrat">
-                Следующий
+                {tr.next}
               </span>
-              <span className="text-sm font-medium text-white group-hover:text-[#14F1D9] truncate block transition-colors">
+              <span className="text-sm font-medium text-white group-hover:text-primary truncate block transition-colors">
                 {nextCase.title}
               </span>
             </div>
-            <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-white/70 group-hover:text-[#14F1D9] group-hover:border-[#14F1D9]/50 transition-colors">
+            <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-white/70 group-hover:text-primary group-hover:border-primary/50 transition-colors">
               <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
             </div>
           </Link>

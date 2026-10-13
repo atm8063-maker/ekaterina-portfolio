@@ -1,18 +1,19 @@
 import React from "react";
+import { LazyVideo } from "@/components/shared/lazy-video";
 
 export default function CollageTestPage() {
   return (
-    <main className="min-h-screen bg-[#111111] overflow-hidden">
+    <main className="min-h-screen bg-background overflow-hidden">
       {/* 
         Container replicating the 100vh-80px space from ArtProtest section 
         with the concrete wall background. 
       */}
-      <section className="relative w-full h-[calc(100vh-80px)] mt-[80px] bg-[#111111]">
+      <section className="relative w-full h-[calc(100vh-80px)] mt-[80px] bg-background">
         
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/seamless_ceiling_v3_11_final1.jpg" 
+            src="/seamless_ceiling_v3_11_final1.webp" 
             alt="Concrete Wall" 
             className="w-full h-full object-cover opacity-80"
           />
@@ -28,9 +29,9 @@ export default function CollageTestPage() {
             <div className="flex-[2] border-r-4 border-black flex flex-col">
               
               {/* Main Artwork Image */}
-              <div className="flex-[3] border-b-4 border-black relative bg-[#1A1A1A] overflow-hidden group">
+              <div className="flex-[3] border-b-4 border-black relative bg-surface overflow-hidden group">
                 <img 
-                  src="/photo_3183@04-08-2026_20-56-52.jpg" 
+                  src="/photo_3183@04-08-2026_20-56-52.webp" 
                   alt="Main Artwork" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -55,7 +56,7 @@ export default function CollageTestPage() {
               {/* Top Right: Video Block */}
               <div className="h-1/2 border-b-4 border-black relative bg-black flex items-center justify-center overflow-hidden">
                 {/* Fallback to image if video not loaded, or use video directly */}
-                <video 
+                <LazyVideo 
                   className="absolute inset-0 w-full h-full object-cover" 
                   autoPlay 
                   loop 
@@ -69,9 +70,9 @@ export default function CollageTestPage() {
               </div>
               
               {/* Bottom Right: Detail Image */}
-              <div className="h-1/2 relative bg-[#1A1A1A] group overflow-hidden">
+              <div className="h-1/2 relative bg-surface group overflow-hidden">
                 <img 
-                  src="/photo_3198@04-08-2026_20-58-15.jpg" 
+                  src="/photo_3198@04-08-2026_20-58-15.webp" 
                   alt="Detail Artwork" 
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />

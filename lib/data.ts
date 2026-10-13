@@ -1,13 +1,33 @@
-export const siteData = {
-  name: 'Екатерина Разумова',
-  role: 'PR-директор',
-  subtitle: 'PR & Communications',
-  description:
-    'PR-сопровождение брендов, медиа-стратегии, вывод новых продуктов на рынок, работа с федеральными СМИ и личный бренд.',
-  telegram: {
-    dm: '@ekaterina_razumova', // TODO: update with actual handle
+export type Lang = 'RU' | 'EN'
+
+export const siteDataByLang = {
+  RU: {
+    name: 'Екатерина Разумова',
+    role: 'PR-директор',
+    subtitle: 'PR & Communications',
+    description:
+      'PR-сопровождение брендов, медиа-стратегии, вывод новых продуктов на рынок, работа с федеральными СМИ и личный бренд.',
+    telegram: {
+      dm: '@ekaterina_razumova',
+    },
+    linkedin: 'https://www.linkedin.com/',
   },
-  linkedin: 'https://www.linkedin.com/', // TODO: update with actual handle
+  EN: {
+    name: 'Ekaterina Razumova',
+    role: 'PR Director',
+    subtitle: 'PR & Communications',
+    description:
+      'PR support for brands, media strategy, new product launches, work with national media, and personal branding.',
+    telegram: {
+      dm: '@ekaterina_razumova',
+    },
+    linkedin: 'https://www.linkedin.com/',
+  },
+} as const
+
+export const siteData = siteDataByLang.RU
+export function getSiteData(lang: Lang) {
+  return siteDataByLang[lang]
 }
 
 export type Metric = {
@@ -54,7 +74,7 @@ export type CaseDetail = {
   sections?: CaseSection[]
 }
 
-export const cases: CaseSummary[] = [
+const casesRu: CaseSummary[] = [
   { slug: '05-nick-potapov-site', tag: 'UX/UI · Контент', title: 'Сайт Nick Potapov', description: 'Информационная архитектура и 8 кейсов на двух языках', metrics: [], customHref: '/case' },
   { slug: '01-insigma', tag: 'Девелопмент · PR', title: 'ГК Insigma', description: 'PR-сопровождение трёх девелоперских проектов премиум-класса', metrics: [] },
   { slug: '02-contact-real-estate', tag: 'PR & SMM', title: 'Contact Real Estate', description: 'Несколько сотен публикаций за 2,5 года — системная PR-работа', metrics: [] },
@@ -71,7 +91,30 @@ export const cases: CaseSummary[] = [
   { slug: '14-vertex-homes', tag: 'UX/UI & Web', title: 'Vertex Homes', description: 'UX/UI дизайн для проектов из ЛСТК', metrics: [] }
 ]
 
-export const caseDetails: Record<string, CaseDetail> = {
+const casesEn: CaseSummary[] = [
+  { slug: '05-nick-potapov-site', tag: 'UX/UI · Content', title: 'Nick Potapov Website', description: 'Information architecture and 8 case studies in two languages', metrics: [], customHref: '/case' },
+  { slug: '01-insigma', tag: 'Development · PR', title: 'Insigma Group', description: 'PR support for three premium development projects', metrics: [] },
+  { slug: '02-contact-real-estate', tag: 'PR & SMM', title: 'Contact Real Estate', description: 'Several hundred publications in 2.5 years — systematic PR work', metrics: [] },
+  { slug: '03-pobeda-dizayna', tag: 'PR & Marketing', title: 'Pobeda Dizayna', description: 'PR strategy built from scratch — features in trade glossies and business media', metrics: [] },
+  { slug: '04-kart-motors-honda-civic-cup', tag: 'Sports PR', title: 'Honda KART Motors & Honda Civic Cup', description: 'Ad campaigns for a Honda dealership and press office for the Honda Civic Cup', metrics: [] },
+  { slug: '06-mafia-assistant', tag: 'Product · UX', title: 'Mafia Digital Assistant', description: 'A Telegram game engine for running offline Mafia games (Python, UX)', metrics: [] },
+  { slug: '07-resin-art-school', tag: 'Education · SMM', title: 'Resin Art School', description: 'Student mentoring, live streams, and social media management for an online school', metrics: [], hidden: true },
+  { slug: '08-mockup-real-estate', tag: 'UX/UI & Real Estate', title: 'Doors Real Estate: Premium Agency', description: 'UX research, 4 color schemes by market segment, and a smart filter for 1366px screens', metrics: [{ value: '+24.8%', label: 'Inquiries' }, { value: '4 schemes', label: 'Color systems' }] },
+  { slug: '09-mockup-electronics', tag: 'UX/UI & E-Commerce', title: 'Shop 4.0: Electronics Store', description: 'UX research, conversion analytics, mobile checkout flow, and a design system', metrics: [{ value: '+18.4%', label: 'CR' }, { value: '48 s', label: 'Checkout' }] },
+  { slug: '10-house-project', tag: 'Interior · Architecture', title: 'Country House Interior', description: 'Full cycle: floor plans, 3D axonometry, electrical layout, and 100% real-life execution', metrics: [{ value: '140 m²', label: 'Area' }, { value: '100%', label: 'Built' }] },
+  { slug: '11-landscape-project', tag: 'Design', title: 'Landscape Design', description: 'A landscape design project for my own property', metrics: [] },
+  { slug: '12-resin-masterclass', tag: 'Art & PR', title: 'Resin Art', description: 'A masterclass at a resin artists’ forum, 2021', metrics: [], customHref: '/fir_tree_art' },
+  { slug: '13-local-tv-report', tag: 'PR & Media', title: 'Interview', description: 'A feature on local TV, 2020', metrics: [], customHref: '/fir_tree_art#interviews' },
+  { slug: '14-vertex-homes', tag: 'UX/UI & Web', title: 'Vertex Homes', description: 'UX/UI design for a light-gauge steel frame construction company', metrics: [] }
+]
+
+export const casesByLang: Record<Lang, CaseSummary[]> = { RU: casesRu, EN: casesEn }
+export function getCases(lang: Lang) {
+  return casesByLang[lang]
+}
+export const cases = casesRu
+
+const caseDetailsRu: Record<string, CaseDetail> = {
   '01-insigma': {
     slug: '01-insigma',
     tag: 'Девелопмент · PR',
@@ -517,18 +560,483 @@ export const caseDetails: Record<string, CaseDetail> = {
         paragraphs: [
           'Полный макет главной страницы. Дизайн проработан с учетом восприятия инвесторов: блоки плавно перетекают друг в друга, удерживая внимание на преимуществах технологии и экономической выгоде.'
         ],
-        fullPageMockup: '/Кейсы/14-vertex-homes/mockup.png'
+        fullPageMockup: '/Кейсы/14-vertex-homes/mockup.webp'
       }
     ]
   }
 }
 
-export const navLinks = [
-  { href: '#about', label: 'Обо мне' },
-  { href: '#cases', label: 'Кейсы' },
-  { href: '#contact', label: 'Контакты' },
-]
+const caseDetailsEn: Record<string, CaseDetail> = {
+  '01-insigma': {
+    slug: '01-insigma',
+    tag: 'Development · PR',
+    title: 'Insigma Group',
+    lead: 'As PR Director at Insigma Group, I handled PR support for premium development projects. Key work: launching the Ordynka club-house collection, running a large-scale press tour of the completed RedSide quarter, and contributing to the concept for the NV\'9 residential complex.',
+    meta: {
+      client: 'Insigma Group',
+      role: 'PR Director',
+      year: '2016–2019'
+    },
+    keyMetrics: [
+      { value: 'Ordynka', label: 'market launch' },
+      { value: 'RedSide', label: 'large-scale press tour' },
+      { value: 'NV\'9', label: 'concept development' }
+    ],
+    sections: [
+      {
+        id: 'ordynka',
+        heading: 'Market launch: the Ordynka club-house collection',
+        paragraphs: [
+          'A club complex at the heart of Zamoskvorechye, built on the site of a former merchant estate. A unique concept: restored pre-revolutionary facades combined with contemporary buildings.',
+          'Successfully launched the project on the market and kicked off the PR campaign, organized a large-scale press conference, and initiated over a hundred publications.'
+        ]
+      },
+      {
+        id: 'redside',
+        heading: 'Press tour: the RedSide quarter',
+        paragraphs: [
+          'A quarter of 8 monolithic-brick buildings in the Presnensky district. Construction was completed successfully and the complex was handed over in 2017. To promote the finished property, a large-scale press tour was organized for journalists from leading outlets.'
+        ]
+      },
+      {
+        id: 'nv9',
+        heading: 'Concept development: the NV\'9 residential complex',
+        paragraphs: [
+          'Contributed to the initial marketing strategy and concept for a new premium residential complex, laying the groundwork for its successful positioning.'
+        ]
+      },
+      {
+        id: 'actions',
+        heading: 'What I did at the company',
+        steps: [
+          'Developed PR strategies and carried them through.',
+          'Launched a new project on the market with full PR support.',
+          'Contributed to marketing strategy, POSM materials, brochures, and presentations.',
+          'Organized press tours and PR support for events (press releases, initiating publications).',
+          'Arranged for speakers to take part in real-estate industry conferences and events.',
+          'Regularly worked on project websites and content.',
+          'Contributed to SMM strategy.'
+        ]
+      },
+      {
+        id: 'media',
+        heading: 'Media presence',
+        paragraphs: [
+          'Coverage appeared in leading real-estate outlets and national Russian media (RBC-Real Estate, Vedomosti, Forbes, Kommersant, RIA Real Estate, and others), as well as on foreign architecture and construction portals.'
+        ]
+      }
+    ]
+  },
+  '02-contact-real-estate': {
+    slug: '02-contact-real-estate',
+    tag: 'PR & SMM',
+    title: 'Contact Real Estate',
+    lead: 'Developed and executed a PR strategy for a luxury real-estate agency. Built long-term relationships with journalists, regularly initiated publications, and ran the agency’s social media channels end to end.',
+    meta: {
+      client: 'Contact Real Estate',
+      role: 'PR Director',
+      year: '2014–2016'
+    },
+    keyMetrics: [
+      { value: '300+', label: 'media placements in 2.5 years' },
+      { value: '₽0', label: 'paid-placement budget' },
+      { value: 'Top 5', label: 'luxury real-estate agencies' }
+    ],
+    sections: [
+      {
+        id: 'strategy',
+        heading: 'Strategy and goals',
+        paragraphs: [
+          'The main goal was to strengthen Contact Real Estate’s position in Moscow’s highly competitive luxury real-estate market. This required building systematic relationships with leading business and trade media to establish the agency’s expertise.'
+        ]
+      },
+      {
+        id: 'actions',
+        heading: 'What I did',
+        steps: [
+          'Developed a PR strategy and carried it through.',
+          'Press releases, expert commentary, articles, and quotes generated several hundred placements in leading real-estate and national media, including RBC, Vedomosti, Kommersant, Lenta, RIA Novosti, B-fm, Kommersant FM, Interfax, Moscow24 and RBC-TV, among many others.',
+          'SMM: monthly content for the Contact Real Estate Facebook group, plus building the shared Top Brokers Alliance group. Regular targeted advertising for listings.',
+          'Monthly client newsletters — at least a hundred sent over the engagement.',
+          'Organized events around reporting periods, with full PR support (press releases, initiating coverage).',
+          'Arranged for speakers to take part in real-estate industry conferences and events.',
+          'Regularly worked on the website and landing pages — fixed and expanded several hundred pieces of copy as part of an SEO campaign.'
+        ]
+      },
+      {
+        id: 'results',
+        heading: 'Result',
+        paragraphs: [
+          'Brand recognition within the professional community grew significantly, helping the agency consistently hold a Top 5 position.'
+        ],
+        callout: 'Systematic PR made the brand recognizable and credible without a bloated marketing budget for paid press placements.'
+      }
+    ]
+  },
+  '03-pobeda-dizayna': {
+    slug: '03-pobeda-dizayna',
+    tag: 'PR & Marketing',
+    title: 'Pobeda Dizayna',
+    lead: 'Built a communications strategy, positioning, and media campaign for an architecture studio from scratch. Social media promotion and work with leading business and trade media.',
+    meta: {
+      client: 'Pobeda Dizayna',
+      role: 'PR Director',
+      year: '2013'
+    },
+    keyMetrics: [
+      { value: 'From zero', label: 'PR strategy' },
+      { value: 'AD, Interni', label: 'glossy placements' },
+      { value: 'Content', label: 'website copywriting' }
+    ],
+    sections: [
+      {
+        id: 'strategy',
+        heading: 'Strategy and SMM',
+        paragraphs: [
+          'Built a PR strategy from scratch and rolled out concrete initiatives that meaningfully improved the company’s standing, while also driving an active ad campaign across media and online.',
+          'Secured regular online mentions of the studio while running SMM for Pobeda Dizayna across social media and the blogosphere.'
+        ]
+      },
+      {
+        id: 'actions',
+        heading: 'What I did',
+        steps: [
+          'Developed and ran an ad campaign across media and online.',
+          'Regularly monitored internal company information (projects, events) to spot news hooks and prepare materials for media and online.',
+          'Prepared news and materials for media and online publication.',
+          'Initiated placements in leading architecture and design outlets.',
+          'Positioned company staff as experts in industry review, analysis, and feature articles.',
+          'Arranged for company representatives to take part in trade shows, competitions, conferences, and seminars.',
+          'Oversaw media monitoring and media planning.',
+          'Built a media map and a pool of loyal journalists.',
+          'Scheduled a calendar of trade events.',
+          'Conducted marketing research.',
+          'Ran SMM and managed the corporate social media presence (Facebook, LiveJournal).',
+          'Contributed to creative concept development.',
+          'Oversaw website content and coordinated with vendors (SEO, paid search, optimization, etc.).'
+        ]
+      },
+      {
+        id: 'media',
+        heading: 'Media presence',
+        paragraphs: [
+          'Coverage was prepared for leading architecture and design outlets (AD, Interni, Idei Vashego Doma, Krasivye Kvartiry, RBC.Real Estate, and others).'
+        ]
+      }
+    ]
+  },
+  '04-kart-motors-honda-civic-cup': {
+    slug: '04-kart-motors-honda-civic-cup',
+    tag: 'Sports PR & Advertising',
+    title: 'KART Motors & Honda Civic Cup',
+    lead: 'At KART Motors, I combined two roles: ad campaigns for the official Honda dealership and PR support for the Honda Civic Cup one-make racing series. I traveled to race rounds across Russia — setting up press areas, hosting TV crews, writing articles for car magazines, and initiating coverage in trade media.',
+    meta: {
+      client: 'KART Motors (Honda)',
+      role: 'Advertising + Press Officer',
+      year: '2008–2009'
+    },
+    keyMetrics: [
+      { value: '6–8', label: 'rounds per season (Russia and Finland)' },
+      { value: '7TV, M1', label: 'TV crews and segments' },
+      { value: '"Motor"', label: 'and leading car magazines' }
+    ],
+    sections: [
+      {
+        id: 'dealer-campaigns',
+        heading: 'Honda dealership ad campaigns',
+        steps: [
+          'Planned and placed full-funnel Honda ad campaigns: out-of-home, digital, radio, ATL formats;',
+          'Launched seasonal promotions and incentive offers across the full Honda lineup;',
+          'Coordinated the full production cycle of ad and POSM materials with print and design studios;',
+          'Worked directly with the official Honda Motor RUS representative office.'
+        ]
+      },
+      {
+        id: 'civic-cup-press',
+        heading: 'Honda Civic Cup press office (RTCC)',
+        paragraphs: [
+          'Honda Civic Cup was Honda’s official one-make racing series in Russia, run as part of the Russian Touring Car Championship (RTCC). The series was organized by Racing Art / KART Motors, the group’s motorsport division.'
+        ],
+        callout: 'The Honda Civic Cup became one of the most spectacular, tightly-contested series in Russian RTCC touring car racing, drawing full stands and broad TV coverage.',
+        steps: [
+          'Ran the press area at race tracks, coordinating and accrediting journalists;',
+          'Invited, hosted, and fully supported TV crews (7TV, M1, Rambler);',
+          'Wrote original articles and race reviews for trade car magazines;',
+          'Initiated regular coverage in trade media (including "Motor" magazine);',
+          'Turned around press releases, quick comments, and driver quotes after every race.'
+        ]
+      }
+    ]
+  },
+  '05-nick-potapov-site': {
+    slug: '05-nick-potapov-site',
+    tag: 'UX/UI · Content',
+    title: 'Nick Potapov Website',
+    lead: 'Information architecture (IA), UX design, and bilingual content for the personal portfolio site of an AI architect. Wrote copy for 8 case studies.',
+    meta: {
+      client: 'Nick Potapov',
+      role: 'Content / UX',
+      year: '2023',
+      link: 'https://nickpotapov.com/'
+    },
+    keyMetrics: [
+      { value: '8', label: 'IT case studies packaged' },
+      { value: '2', label: 'languages: RU and EN' },
+      { value: 'UX/UI', label: 'thought-through structure' }
+    ],
+    sections: [
+      {
+        id: 'theme-terminal',
+        heading: 'Design concept and style',
+        paragraphs: [
+          'The main goal was to reflect the AI architect’s professional niche while keeping the site easy to read. The visual style is built around a terminal (hacker) aesthetic — monospace elements, console commands, an accent green on black.',
+          'Built full Light and Dark themes. Dark evokes an IDE and code, setting the right mood for developers; Light emphasizes clarity and readability for HR and business readers.'
+        ]
+      },
+      {
+        id: 'typography-layout',
+        heading: 'Typography and layout',
+        steps: [
+          'Fonts: sans-serif grotesques paired with monospace type for headings, code blocks, and meta tags to reinforce the IT feel.',
+          'Layout: a strict modular grid, mobile-first responsive design, and a card system for case studies that makes information easy to scan.',
+          'Copy: concise, structured IT content. Complex technical detail is packaged into clear talking points that foreground business metrics and outcomes. Fully localized into two languages (RU/EN).'
+        ]
+      },
+      {
+        id: 'visual-fx',
+        heading: 'Visual effects and illustration',
+        paragraphs: [
+          'Added micro-animations for engagement: a typewriter effect, smooth fade-ins on scroll, and hover effects on cards.',
+          'Instead of generic stock photos, chose and styled abstract 3D illustrations and mockups that emphasize innovation and technical polish without cluttering the interface.'
+        ]
+      }
+    ]
+  },
+  '06-mafia-assistant': {
+    slug: '06-mafia-assistant',
+    tag: 'Product · UX',
+    title: 'Mafia Digital Assistant',
+    lead: 'Replacing a notepad and pen with a smart Telegram assistant. Built a full game engine that helps a host run offline Mafia games for 16+ players with complex custom roles, tracks phase logic, and automatically updates the club’s rankings in Google Sheets.',
+    meta: {
+      client: 'Personal project',
+      role: 'Fullstack (Python) / UX',
+      year: '2026'
+    },
+    keyMetrics: [
+      { value: '3,000+', label: 'lines of Python' },
+      { value: '10+', label: 'roles with complex logic' },
+      { value: '0', label: 'logic errors at the table' }
+    ],
+    sections: [
+      {
+        id: 'context',
+        heading: 'Context and the problem',
+        paragraphs: [
+          'When 10–16 people play Mafia, with roles beyond the mafiosi like the Don, Seductress, Sheriff, Doctor, and Maniac, hosting turns into a stress test. You have to remember every night action, keep the wake-up order straight, and track whose action got blocked.',
+          'We used to automate this with Google Apps Script, but it couldn’t handle the complex logic and ran slowly. So I built a full game engine from scratch — 3,000+ lines of code, running through Telegram.'
+        ]
+      },
+      {
+        id: 'logic-ux',
+        heading: 'UX and logic',
+        steps: [
+          'Validator (error-proofing): if the host tries an illegal move — say, acting for a dead player — the bot raises an alert and blocks the action.',
+          'Protocol (hosting UX): the host just taps inline buttons in Telegram, and the bot resolves action conflicts (kill/block/heal) itself while keeping a detailed log.',
+          'Big data (integrations): all stats flow straight into clean Google Sheets dashboards. The club sees player win rates, role survival frequency, and a transparent leaderboard.'
+        ]
+      }
+    ]
+  },
+  '07-resin-art-school': {
+    slug: '07-resin-art-school',
+    tag: 'Education · SMM',
+    title: 'Resin Art School',
+    lead: 'Full support for an online creative school: from social media management to student mentoring. Ran live teaching sessions and handled student communication.',
+    meta: {
+      client: 'Online school',
+      role: 'Mentor / SMM',
+      year: '2020–2021'
+    },
+    keyMetrics: [
+      { value: 'SMM', label: 'reach growth' },
+      { value: 'Live', label: 'regular streams' },
+      { value: '500+', label: 'students supported' }
+    ]
+  },
+  '08-mockup-real-estate': {
+    slug: '08-mockup-real-estate',
+    tag: 'UX/UI & Real Estate',
+    title: 'Doors Real Estate: Premium Agency',
+    lead: 'UX research, 4 color schemes by market segment, a smart above-the-fold filter, and a responsive mobile experience.',
+    meta: {
+      client: 'Doors Real Estate Agency',
+      role: 'Lead UX/UI & Product Designer',
+      year: '2023–2024'
+    },
+    keyMetrics: [
+      { value: '+24.8%', label: 'Viewing requests' },
+      { value: '38 s', label: 'Time to find a listing' },
+      { value: '4 schemes', label: 'Color systems' },
+      { value: '86/100', label: 'SUS Score' }
+    ]
+  },
+  '09-mockup-electronics': {
+    slug: '09-mockup-electronics',
+    tag: 'UI/UX & Web',
+    title: 'Electronics Store',
+    lead: 'Built the visual concept and UX flow for an electronics e-commerce store.',
+    meta: {
+      client: 'Personal project',
+      role: 'UI/UX Designer',
+      year: '2023'
+    },
+    keyMetrics: [
+      { value: 'eCommerce', label: 'User journey' },
+      { value: 'Mobile First', label: 'Responsive design' }
+    ]
+  },
+  '10-house-project': {
+    slug: '10-house-project',
+    tag: 'Interior & Architecture',
+    title: 'Country House Interior',
+    lead: 'Scandinavian eco-minimalism: floor plans, 3D axonometry, electrical layouts, and 100% real-life execution.',
+    meta: {
+      client: 'Personal country house',
+      role: 'Project author, architect-designer',
+      year: '2021 — 2023'
+    },
+    keyMetrics: [
+      { value: '140 m²', label: 'Across 2 floors' },
+      { value: '100%', label: 'Built and supervised' },
+      { value: '5 zones', label: 'Functional cores' }
+    ]
+  },
+  '11-landscape-project': {
+    slug: '11-landscape-project',
+    tag: 'Design',
+    title: 'Landscape Design',
+    lead: 'Designed a landscape project for a country property: zoning, plant selection, and execution.',
+    meta: {
+      client: 'Personal project',
+      role: 'Project author',
+      year: '2022'
+    },
+    keyMetrics: [
+      { value: 'Zoning', label: 'Spatial planning' },
+      { value: 'Planting plan', label: 'Plant selection' }
+    ]
+  },
+  '12-resin-masterclass': {
+    slug: '12-resin-masterclass',
+    tag: 'Art & PR',
+    title: 'Resin Art',
+    customHref: '/fir_tree_art#resin-range',
+    lead: 'Organized and led a resin art masterclass at a trade forum.',
+    meta: {
+      client: 'Resin artists’ forum',
+      role: 'Speaker / Instructor',
+      year: '2021'
+    },
+    keyMetrics: [
+      { value: 'Public Speaking', label: 'Speaking to an audience' },
+      { value: 'Resin Art', label: 'Technique demonstration' }
+    ]
+  },
+  '13-local-tv-report': {
+    slug: '13-local-tv-report',
+    tag: 'PR & Media',
+    title: 'Interview',
+    customHref: '/fir_tree_art#interviews',
+    lead: 'Took part in a local TV news feature. Organized the process and prepared for the interview.',
+    meta: {
+      client: 'Local TV',
+      role: 'Organizer / Featured guest',
+      year: '2020'
+    },
+    keyMetrics: [
+      { value: 'TV', label: 'Public coverage' },
+      { value: 'Media Relations', label: 'Worked with the film crew' }
+    ]
+  },
+  '14-vertex-homes': {
+    slug: '14-vertex-homes',
+    tag: 'UX/UI & Web',
+    title: 'Vertex Homes',
+    lead: 'UX/UI design for the landing page of a construction company specializing in light-gauge steel frame (LGSF) building. Focused on investment appeal.',
+    meta: {
+      client: 'Vertex Homes',
+      role: 'UX/UI Designer',
+      year: '2023',
+      link: 'https://www.figma.com/design/5K61aDGctS46qE2ZajQweN/Vertex-Homes?node-id=0-1&p=f&t=ajOQPNrEWiQVIzsV-0'
+    },
+    keyMetrics: [
+      { value: '3–4', label: 'month build cycle' },
+      { value: '90+', label: 'years of durability' },
+      { value: '50–70%', label: 'energy efficiency' }
+    ],
+    sections: [
+      {
+        id: 'colors-fonts',
+        heading: 'Style and concept',
+        paragraphs: [
+          'The visual concept combines rigor, reliability, and technical polish. We moved away from the classic "wooden" and busy construction-site look toward a dark, restrained palette (Deep Emerald) that reads as premium development and dependable investment.'
+        ],
+        colorPalette: [
+          { hex: '#796D41', name: 'Gold Accent' },
+          { hex: '#545743', name: 'Olive Green' },
+          { hex: '#222F33', name: 'Deep Emerald' },
+          { hex: '#26353A', name: 'Dark Slate' },
+          { hex: '#F4F4F4', name: 'Light Grey' },
+          { hex: '#FFFFFF', name: 'White' }
+        ],
+        paragraphs2: [
+          'The type pairing is deliberately contrasting: a bold, confident serif, Merriweather, for headings (signaling reliability) and a clean, readable Rubik for interface elements (signaling technical polish).'
+        ],
+        typography: [
+          { name: 'Merriweather', weights: ['Black (900)'], example: 'Aa' },
+          { name: 'Rubik', weights: ['Regular (400)', 'Medium (500)', 'Bold (700)'], example: 'Aa' }
+        ]
+      },
+      {
+        id: 'layout-grid',
+        heading: 'Grid and rhythm',
+        steps: [
+          'Modular structure: a strict grid with generous, "breathing" spacing that makes large amounts of text easy to absorb.',
+          'Card system: infographic blocks (LGSF facts and figures) packaged into cards for quick scanning by investors.',
+          'Comparison (VS): a clear split-screen contrasting traditional construction with LGSF technology (a fast 3–4 month cycle, up to 30% savings on the foundation).'
+        ]
+      },
+      {
+        id: 'landing-page',
+        heading: 'Landing page design',
+        paragraphs: [
+          'The full homepage layout. Designed with investor perception in mind: sections flow smoothly into one another, keeping attention on the technology’s advantages and the economics.'
+        ],
+        fullPageMockup: '/Кейсы/14-vertex-homes/mockup.webp'
+      }
+    ]
+  }
+}
+
+export const caseDetailsByLang: Record<Lang, Record<string, CaseDetail>> = { RU: caseDetailsRu, EN: caseDetailsEn }
+export function getCaseDetails(lang: Lang) {
+  return caseDetailsByLang[lang]
+}
+export const caseDetails = caseDetailsRu
+
+export const navLinksByLang: Record<Lang, { href: string; label: string }[]> = {
+  RU: [
+    { href: '#about', label: 'Обо мне' },
+    { href: '#cases', label: 'Кейсы' },
+    { href: '#contact', label: 'Контакты' },
+  ],
+  EN: [
+    { href: '#about', label: 'About' },
+    { href: '#cases', label: 'Case Studies' },
+    { href: '#contact', label: 'Contact' },
+  ],
+}
+export const navLinks = navLinksByLang.RU
 
 export type Project = CaseSummary;
 export const projects = cases;
-
