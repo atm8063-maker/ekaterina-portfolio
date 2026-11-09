@@ -1,4 +1,4 @@
-export type NavLink = { href: string; label: string };
+export type NavLink = { href: string; label: string; external?: boolean };
 export type ArtNavColumn = { title: string; links: NavLink[] };
 export type Lang = "RU" | "EN";
 
@@ -7,11 +7,21 @@ const CAREER_SECTION_LINKS_BY_LANG: Record<Lang, NavLink[]> = {
     { href: "/#about", label: "Обо мне" },
     { href: "/#competencies", label: "Компетенции" },
     { href: "/#cases", label: "Кейсы" },
+    {
+      href: "/documents/CREATIVE_GENERALIST_RESUME_EKATERINA_RAZUMOVA.pdf",
+      label: "Скачать резюме (PDF)",
+      external: true,
+    },
   ],
   EN: [
     { href: "/#about", label: "About" },
     { href: "/#competencies", label: "Competencies" },
     { href: "/#cases", label: "Case Studies" },
+    {
+      href: "/documents/CREATIVE_GENERALIST_RESUME_EKATERINA_RAZUMOVA_EN.pdf",
+      label: "Download Resume (PDF)",
+      external: true,
+    },
   ],
 };
 
@@ -33,6 +43,11 @@ const ART_MENU_COLUMNS_BY_LANG: Record<Lang, ArtNavColumn[]> = {
         { href: "/fir_tree_art#competencies", label: "Компетенции" },
         { href: "/fir_tree_art#victories", label: "Победы, финалы & Судейство" },
         { href: "/fir_tree_art#ambassador", label: "Амбассадор & Продукция" },
+        {
+          href: "/documents/ARTIST_CV_EKATERINA_RAZUMOVA.pdf",
+          label: "Скачать Artist CV (PDF)",
+          external: true,
+        },
       ],
     },
     {
@@ -61,6 +76,11 @@ const ART_MENU_COLUMNS_BY_LANG: Record<Lang, ArtNavColumn[]> = {
         { href: "/fir_tree_art#competencies", label: "Competencies" },
         { href: "/fir_tree_art#victories", label: "Wins, Finals & Judging" },
         { href: "/fir_tree_art#ambassador", label: "Brand Ambassador & Products" },
+        {
+          href: "/documents/ARTIST_CV_EKATERINA_RAZUMOVA_EN.pdf",
+          label: "Download Artist CV (PDF)",
+          external: true,
+        },
       ],
     },
     {

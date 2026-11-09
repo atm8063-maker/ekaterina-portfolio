@@ -30,7 +30,7 @@ export default function Contact() {
 
         <MotionReveal variant="fade-up" delay={0.2} className="flex flex-col sm:flex-row justify-center gap-6">
           <a 
-            href="mailto:razumova.ekaterina@gmail.com" 
+            href="mailto:erazumovaart@gmail.com" 
             className="btn-press btn-fill px-10 py-5 text-black font-bold uppercase tracking-widest rounded-none"
           >
             {isEn ? "Email Me" : "Написать на Email"}

@@ -251,11 +251,39 @@
 
 ---
 
+## Резюме, Artist CV, SEO и Контакты (09.11.2026)
+
+### RESUME-001: Свёрстаны и сгенерированы PDF Резюме и Artist CV (RU/EN) по дизайн-системе
+- **Статус:** ✅ DONE (09.11.2026)
+- **Приоритет:** P1
+- **Файлы:** `public/documents/CREATIVE_GENERALIST_RESUME_EKATERINA_RAZUMOVA.pdf`, `public/documents/CREATIVE_GENERALIST_RESUME_EKATERINA_RAZUMOVA_EN.pdf`, `public/documents/ARTIST_CV_EKATERINA_RAZUMOVA.pdf`, `public/documents/ARTIST_CV_EKATERINA_RAZUMOVA_EN.pdf`
+- **Описание:** Спроектированы и отрендерены 4 печатных PDF-документа (Резюме Creative Generalist RU/EN и Artist CV RU/EN) в фирменной эстетике сайта (`Montserrat` + `Inter`, графитовый `#111111` и бирюзовый `#14F1D9` на светлом печатном листе A4 с просторными полями, с учётом всех авторских правок Екатерины). Указана корректная почта `erazumovaart@gmail.com`.
+
+### RESUME-002: Интеграция кнопок скачивания Резюме и Artist CV (RU/EN) на сайт
+- **Статус:** ✅ DONE (09.11.2026)
+- **Приоритет:** P1
+- **Файлы:** `components/sections/about.tsx`, `components/layout/header-nav-data.ts`, `components/layout/Header.tsx`, `components/sections/art-contacts.tsx`
+- **Описание:** Кнопка «ПОДРОБНЕЕ ОБО МНЕ» в блоке `About` (десктоп и мобилка) переименована в «СКАЧАТЬ РЕЗЮМЕ» (`RU`) / «DOWNLOAD RESUME» (`EN`) и подключена к соответствующим PDF в `public/documents/`. В выпадающее и мобильное меню шапки (`Header` / `header-nav-data.ts`) добавлены прямые ссылки на скачивание Резюме (в «Карьере») и Artist CV (в «Искусстве»). В блоке `ArtContacts` на странице `/fir_tree_art` добавлена кнопка «Скачать Artist CV (PDF)».
+
+### SEO-001: Актуализация домена erazumova.com, Sitemap, OpenGraph и Schema.org
+- **Статус:** ✅ DONE (09.11.2026)
+- **Приоритет:** P1
+- **Файлы:** `lib/site-config.ts`, `app/sitemap.ts`, `app/layout.tsx`
+- **Описание:** Домен в `SITE_URL` изменён с плейсхолдера `ekaterinarazumova.com` на боевой `https://erazumova.com`. В `app/sitemap.ts` добавлены все открытые страницы кейсов. В `app/layout.tsx` добавлены `openGraph`, `twitter` и микроразметка `Schema.org` (`Person`).
+
+### CLEANUP-001: Исправление контактного Email на erazumovaart@gmail.com
+- **Статус:** ✅ DONE (09.11.2026)
+- **Приоритет:** P1
+- **Файлы:** `components/sections/contact.tsx`, `lib/data.ts`
+- **Описание:** В `components/sections/contact.tsx` чужой адрес `razumova.ekaterina@gmail.com` заменён на реальный `erazumovaart@gmail.com`. В `lib/data.ts` актуализирован Telegram `@fir_tree_art`.
+
+---
+
 ## Счётчик
 
 | Статус | Количество |
 |--------|-----------|
-| ✅ DONE | 18 |
+| ✅ DONE | 22 |
 | 🔵 IN PROGRESS | 0 |
 | 🟡 TODO | 1 |
 | ⬜ BACKLOG | 3 |

@@ -26,11 +26,27 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'Екатерина Разумова — Creative Generalist',
   description:
     'Специалист полного цикла. Texts & Design • PR & Media • Mixed Art • UX/UI + AI. От идеи до реализации.',
   alternates: {
     canonical: SITE_URL,
+  },
+  openGraph: {
+    title: 'Екатерина Разумова — Creative Generalist',
+    description:
+      'Специалист полного цикла. Texts & Design • PR & Media • Mixed Art • UX/UI + AI. От идеи до реализации.',
+    url: SITE_URL,
+    siteName: 'Екатерина Разумова',
+    locale: 'ru_RU',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Екатерина Разумова — Creative Generalist',
+    description:
+      'Специалист полного цикла. Texts & Design • PR & Media • Mixed Art • UX/UI + AI. От идеи до реализации.',
   },
   manifest: '/site.webmanifest',
   icons: {
@@ -53,6 +69,20 @@ import { HashScrollProvider } from '@/components/shared/use-hash-scroll'
 import { MediaPrefetch } from '@/components/shared/media-prefetch'
 import { ScrollToTopOnNavigate } from '@/components/shared/scroll-to-top-on-navigate'
 
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Екатерина Разумова',
+  alternateName: 'Ekaterina Razumova',
+  url: SITE_URL,
+  jobTitle: 'Creative Generalist & Contemporary Artist',
+  email: 'mailto:erazumovaart@gmail.com',
+  sameAs: [
+    'https://t.me/fir_tree_art',
+    'https://instagram.com/fir_tree_art',
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -68,6 +98,10 @@ export default function RootLayout({
         <link rel="preload" href="/logo.webp" as="image" fetchPriority="high" />
       </head>
       <body className="font-sans antialiased text-foreground bg-background">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <LanguageProvider>
           <ScrollToTopOnNavigate />
           <HashScrollProvider />

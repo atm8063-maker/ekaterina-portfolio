@@ -72,14 +72,29 @@ function NavMenuIcon({ open, className }: { open: boolean; className?: string })
 function NavSectionLink({
   href,
   label,
+  external,
   onNavigate,
   className = "px-4 py-2 text-sm text-white/70 hov:text-primary hov:bg-white/5 transition-colors font-inter",
 }: {
   href: string;
   label: string;
+  external?: boolean;
   onNavigate?: () => void;
   className?: string;
 }) {
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(className, "font-semibold text-primary border-t border-white/10 mt-1 pt-2.5")}
+        onClick={onNavigate}
+      >
+        {label} ↗
+      </a>
+    );
+  }
   return (
     <Link href={href} className={className} onClick={onNavigate}>
       {label}
@@ -103,23 +118,39 @@ function ArtMenuColumns({
           <span className="mb-1.5 border-b border-white/10 pb-1.5 font-montserrat text-[11px] font-black uppercase tracking-wider text-primary">
             {column.title}
           </span>
-          {column.links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={onNavigate}
-              className={`flex items-center justify-between rounded-sm px-2 py-1.5 font-inter text-white/80 transition-colors hov:bg-white/5 hov:text-primary ${
-                compact ? "text-sm" : "text-xs sm:text-sm"
-              } group/link`}
-            >
-              <span>{link.label}</span>
-              {!compact && (
-                <span className="text-primary opacity-0 transition-opacity group-hov/link:opacity-100">
-                  →
-                </span>
-              )}
-            </Link>
-          ))}
+          {column.links.map((link) =>
+            link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onNavigate}
+                className={`mt-1 flex items-center justify-between rounded-sm border-t border-white/10 px-2 pt-2 pb-1.5 font-inter font-semibold text-primary transition-colors hov:bg-white/5 hov:text-white ${
+                  compact ? "text-sm" : "text-xs sm:text-sm"
+                } group/link`}
+              >
+                <span>{link.label}</span>
+                <span>↗</span>
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={onNavigate}
+                className={`flex items-center justify-between rounded-sm px-2 py-1.5 font-inter text-white/80 transition-colors hov:bg-white/5 hov:text-primary ${
+                  compact ? "text-sm" : "text-xs sm:text-sm"
+                } group/link`}
+              >
+                <span>{link.label}</span>
+                {!compact && (
+                  <span className="text-primary opacity-0 transition-opacity group-hov/link:opacity-100">
+                    →
+                  </span>
+                )}
+              </Link>
+            ),
+          )}
         </div>
       ))}
     </>
@@ -195,6 +226,7 @@ export default function Header() {
                       key={link.href}
                       href={link.href}
                       label={link.label}
+                      external={link.external}
                       onNavigate={closeMobile}
                       className={`px-4 py-3.5 text-base text-white/85 hov:bg-white/5 hov:text-primary font-inter ${
                         i < careerLinks.length - 1 ? "border-b border-white/5" : ""
@@ -317,7 +349,12 @@ export default function Header() {
                 className="flex flex-col rounded-none border border-white/10 bg-surface py-2 shadow-2xl"
               >
                 {careerLinks.map((link) => (
-                  <NavSectionLink key={link.href} href={link.href} label={link.label} />
+                  <NavSectionLink
+                    key={link.href}
+                    href={link.href}
+                    label={link.label}
+                    external={link.external}
+                  />
                 ))}
               </div>
             </div>
