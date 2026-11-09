@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getCases } from "@/lib/data";
 import { MotionReveal } from "@/components/shared/motion-reveal";
@@ -32,8 +32,6 @@ export default function Portfolio() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const activeIndexRef = useRef(0);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
 
   useEffect(() => {
     visibleCases.forEach((c) => {
@@ -62,28 +60,12 @@ export default function Portfolio() {
     activeIndexRef.current = best;
   }, []);
 
-  const updateScrollState = useCallback(() => {
-    const el = scrollContainerRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 4);
-    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
-  }, []);
-
   useEffect(() => {
     const el = scrollContainerRef.current;
     if (!el) return;
-    const onScroll = () => {
-      syncActiveIndexFromScroll();
-      updateScrollState();
-    };
-    onScroll();
-    el.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", updateScrollState);
-    return () => {
-      el.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", updateScrollState);
-    };
-  }, [syncActiveIndexFromScroll, updateScrollState]);
+    el.addEventListener("scroll", syncActiveIndexFromScroll, { passive: true });
+    return () => el.removeEventListener("scroll", syncActiveIndexFromScroll);
+  }, [syncActiveIndexFromScroll]);
 
   const scrollToIndex = (index: number) => {
     const clamped = Math.max(0, Math.min(visibleCases.length - 1, index));
@@ -101,7 +83,7 @@ export default function Portfolio() {
   };
 
   return (
-    <section id="cases" className="py-24 relative overflow-hidden bg-background">
+    <section id="cases" className="py-24 scroll-mt-20 relative overflow-hidden bg-background">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
           src="/paper-clean-dark.webp"
@@ -145,19 +127,10 @@ export default function Portfolio() {
         </div>
 
         {/* Horizontal scroll container */}
-        <div className="relative">
-          {/* Edge fade masks so a peeking next/prev card fades into the background instead of hard-clipping. Only shown once there's actually a card cut off in that direction — otherwise they darken the fully-visible first/last card for no reason. */}
-          {canScrollLeft && (
-            <div className="hidden md:block absolute top-0 bottom-12 left-0 w-24 lg:w-40 bg-gradient-to-r from-background via-background/90 to-transparent z-10 pointer-events-none" />
-          )}
-          {canScrollRight && (
-            <div className="hidden md:block absolute top-0 bottom-12 right-0 w-24 lg:w-40 bg-gradient-to-l from-background via-background/90 to-transparent z-10 pointer-events-none" />
-          )}
-
-          <div
-            ref={scrollContainerRef}
-            className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-12 -mx-6 px-6 gap-6 md:gap-8 scroll-smooth"
-          >
+        <div
+          ref={scrollContainerRef}
+          className="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-12 -mx-6 px-6 scroll-pl-6 gap-6 md:gap-8 scroll-smooth"
+        >
             {visibleCases.map((c, i) => {
               const img = caseCoverImage(c.slug);
 
@@ -203,7 +176,6 @@ export default function Portfolio() {
                 </div>
               );
             })}
-          </div>
         </div>
       </div>
     </section>
