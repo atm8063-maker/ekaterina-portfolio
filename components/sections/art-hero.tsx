@@ -6,6 +6,9 @@ import { useLanguage } from "@/components/language-provider";
 
 export function ArtHero() {
   const { isEn } = useLanguage();
+  const artistCvHref = isEn
+    ? "/documents/ARTIST_CV_EKATERINA_RAZUMOVA_EN.pdf"
+    : "/documents/ARTIST_CV_EKATERINA_RAZUMOVA.pdf";
   return (
     <section id="hero" className="relative h-[100svh] w-full bg-background overflow-hidden flex items-center justify-center font-sans scroll-mt-20">
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -52,13 +55,21 @@ export function ArtHero() {
           onLoad
           variant="fade-up"
           delay={0.8}
-          className="flex flex-col sm:flex-row gap-4 sm:gap-6"
+          className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-6"
         >
           <a href="#space" className="btn-press group relative px-8 py-4 bg-white text-black font-medium tracking-wider overflow-hidden hov:shadow-[0_10px_24px_rgba(0,0,0,0.28)] text-sm sm:text-base uppercase">
             <span className="relative z-10">{isEn ? "View Gallery" : "Смотреть галерею"}</span>
           </a>
           <a href="#numbers" className="btn-press px-8 py-4 text-white font-medium tracking-wider border border-white/10 bg-white/5 backdrop-blur-md hov:bg-white/15 hov:border-white/30 text-sm sm:text-base uppercase">
             {isEn ? "Learn More" : "Узнать больше"}
+          </a>
+          <a
+            href={artistCvHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-press px-8 py-4 text-primary font-medium tracking-wider border border-primary/40 bg-primary/10 backdrop-blur-md hov:bg-primary/20 hov:border-primary text-sm sm:text-base uppercase"
+          >
+            {isEn ? "Download CV" : "Скачать CV"}
           </a>
         </MotionReveal>
       </div>
