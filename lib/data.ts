@@ -8,7 +8,7 @@ export const siteDataByLang = {
     description:
       'PR-сопровождение брендов, медиа-стратегии, вывод новых продуктов на рынок, работа с федеральными СМИ и личный бренд.',
     telegram: {
-      dm: '@ekaterina_razumova',
+      dm: '@fir_tree_art',
     },
     linkedin: 'https://www.linkedin.com/',
   },
@@ -19,7 +19,7 @@ export const siteDataByLang = {
     description:
       'PR support for brands, media strategy, new product launches, work with national media, and personal branding.',
     telegram: {
-      dm: '@ekaterina_razumova',
+      dm: '@fir_tree_art',
     },
     linkedin: 'https://www.linkedin.com/',
   },

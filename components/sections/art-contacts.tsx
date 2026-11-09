@@ -3,6 +3,9 @@ import { useLanguage } from "@/components/language-provider";
 
 export function ArtContacts() {
   const { isEn } = useLanguage();
+  const artistCvHref = isEn
+    ? "/documents/ARTIST_CV_EKATERINA_RAZUMOVA_EN.pdf"
+    : "/documents/ARTIST_CV_EKATERINA_RAZUMOVA.pdf";
   return (
     <section id="contacts" className="py-24 relative bg-background overflow-hidden text-center scroll-mt-20">
       {/* Clean Dark Paper Background */}
@@ -24,14 +27,24 @@ export function ArtContacts() {
         <h2 className="text-4xl sm:text-6xl font-black uppercase text-white font-montserrat mb-8">
           INSTAGRAM: <span className="text-primary">@FIR_TREE_ART</span>
         </h2>
-        <a
-          href="https://instagram.com/fir_tree_art"
-          target="_blank"
-          rel="noreferrer"
-          className="btn-press btn-fill inline-block px-10 py-5 text-background font-black uppercase tracking-widest rounded-none"
-        >
-          {isEn ? "Go to Instagram ↗" : "Перейти в Instagram ↗"}
-        </a>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+          <a
+            href="https://instagram.com/fir_tree_art"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-press btn-fill inline-block px-10 py-5 text-background font-black uppercase tracking-widest rounded-none"
+          >
+            {isEn ? "Go to Instagram ↗" : "Перейти в Instagram ↗"}
+          </a>
+          <a
+            href={artistCvHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-press inline-block px-10 py-5 bg-transparent border border-primary text-primary font-black uppercase tracking-widest rounded-none hov:bg-primary/10 hov:border-primary"
+          >
+            {isEn ? "Download Artist CV (PDF) ↗" : "Скачать Artist CV (PDF) ↗"}
+          </a>
+        </div>
       </div>
     </section>
   );

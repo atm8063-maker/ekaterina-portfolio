@@ -1,23 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 import { useLanguage } from "@/components/language-provider";
 
 export default function About() {
   const { isEn } = useLanguage();
-  const [isUnderDev, setIsUnderDev] = useState(false);
-  const moreAboutMeLabel = isEn ? "More About Me" : "ПОДРОБНЕЕ ОБО МНЕ";
-  const comingSoonLabel = isEn ? "Coming Soon" : "В разработке (Скоро)";
-  const comingSoonToast = isEn ? "This section is coming soon!" : "Раздел в разработке, скоро появится!";
-
-  const handleAboutClick = () => {
-    setIsUnderDev(true);
-    setTimeout(() => {
-      setIsUnderDev(false);
-    }, 3000);
-  };
+  const resumeHref = isEn
+    ? "/documents/CREATIVE_GENERALIST_RESUME_EKATERINA_RAZUMOVA_EN.pdf"
+    : "/documents/CREATIVE_GENERALIST_RESUME_EKATERINA_RAZUMOVA.pdf";
+  const resumeLabel = isEn ? "DOWNLOAD RESUME" : "СКАЧАТЬ РЕЗЮМЕ";
 
   return (
     <section id="about" className="relative overflow-hidden bg-background text-white flex flex-col lg:flex-row items-center justify-between min-h-[100svh] lg:h-[100svh] py-12 lg:py-0 px-6 sm:px-12 lg:px-16 xl:px-24">
@@ -87,22 +79,14 @@ export default function About() {
           
           {/* Button (Desktop only here) */}
           <div className="hidden lg:block pt-2 relative">
-            <button 
-              type="button"
-              onClick={handleAboutClick}
+            <a
+              href={resumeHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-bold text-xs sm:text-sm md:text-base px-7 py-3.5 tracking-widest uppercase transition-all shadow-lg hov:shadow-xl hov:-translate-y-0.5 font-montserrat whitespace-nowrap cursor-pointer bg-primary hov:bg-white text-background"
             >
-              {isUnderDev ? comingSoonLabel : moreAboutMeLabel}
-            </button>
-            {isUnderDev && (
-              <div
-                role="status"
-                className="absolute -top-10 left-0 bg-surface text-primary border border-primary/40 text-xs px-3 py-1.5 rounded-lg shadow-xl font-montserrat font-semibold flex items-center gap-1.5 z-30 pointer-events-none whitespace-nowrap motion-reveal motion-reveal--fade-up motion-reveal--on-load is-visible"
-              >
-                <span>⏳</span>
-                <span>{comingSoonToast}</span>
-              </div>
-            )}
+              {resumeLabel}
+            </a>
           </div>
         </div>
       </MotionReveal>
@@ -124,21 +108,14 @@ export default function About() {
 
         {/* Button (Mobile only: directly below photo) */}
         <div className="lg:hidden pt-4 pb-4 w-full flex flex-col items-center relative">
-          <button 
-            type="button"
-            onClick={handleAboutClick}
+          <a
+            href={resumeHref}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 font-bold text-sm px-8 py-4 tracking-widest uppercase transition-all shadow-lg hov:shadow-xl font-montserrat text-center w-full max-w-[320px] cursor-pointer bg-primary hov:bg-white text-background"
           >
-            {isUnderDev ? comingSoonLabel : moreAboutMeLabel}
-          </button>
-          {isUnderDev && (
-            <div
-              role="status"
-              className="mt-2 text-xs text-primary bg-surface px-3 py-1.5 rounded-lg border border-primary/40 text-center font-montserrat shadow-lg pointer-events-none motion-reveal motion-reveal--fade-up motion-reveal--on-load is-visible"
-            >
-              ⏳ {comingSoonToast}
-            </div>
-          )}
+            {resumeLabel}
+          </a>
         </div>
       </MotionReveal>
     </section>
