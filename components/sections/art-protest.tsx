@@ -26,10 +26,71 @@ export type Artwork = {
 };
 
 const artworksDataRu: Artwork[] = [
-  // 1. Папка 2: Февраль 22-го (теперь объект 01)
+  // 1. Новая работа: Нырять / Dive (объект 01)
+  {
+    id: 'work-dive',
+    number: '01',
+    title: 'Нырять',
+    subtitle: 'Морская серия · Рельеф & Свет',
+    concept: 'Пойманная в объёме доля секунды на границе воздуха и воды — метафора влюблённости, когда «ныряешь с головой», а яркость красок и застывшие брызги передают выплеск эмоций.',
+    fullConcept: [
+      {
+        heading: 'Погружение как влюблённость',
+        text: 'Ощущение влюблённости похоже на момент погружения в воду — когда перехватывает дыхание, наступает невесомость и появляется смелость отпустить контроль, нырнув с головой.',
+      },
+      {
+        heading: 'Яркость ощущений — яркость красок',
+        text: 'Насыщенные бирюзовые и изумрудные оттенки смолы работают как живая оптическая линза, передавая остроту, глубину и сияние момента, когда мир вокруг становится предельно ярким.',
+      },
+      {
+        heading: 'Брызги как эмоции',
+        text: 'Застывшие в объёме прозрачные всплески и кружево морской пены вокруг исчезающих пальцев — это сами эмоции, вырвавшиеся наружу на границе двух стихий.',
+      },
+      {
+        heading: 'Игра света и тени',
+        text: 'На естественном свету прозрачные слои смолы и скульптурный рельеф на круглой основе (Ø 30 см) оживают и отбрасывают мягкую тень, выходя за границы холста.',
+      },
+    ],
+    materials: 'Холст (Ø 30 см), эпоксидная смола, акрил, гипс, глина, маркеры',
+    year: '2026',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/dive/dive-top-crop.webp',
+        label: 'Общий вид',
+        aspect: '1125 / 1400',
+      },
+      {
+        type: 'video',
+        src: '/art-protest/dive/dive-video.mp4',
+        label: 'Живой рельеф',
+        aspect: '9 / 16',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/dive/dive-detail-water.webp',
+        label: 'Текстура волны и пены',
+        aspect: '675 / 1200',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/dive/dive-detail-splash.webp',
+        label: 'Деталь: Брызги и рельеф',
+        aspect: '675 / 1200',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/dive/dive-detail-04.webp',
+        label: 'Деталь: Глубина воды',
+        aspect: '675 / 1200',
+      },
+    ],
+  },
+
+  // 2. Папка 2: Февраль 22-го (объект 02)
   {
     id: 'work-feb',
-    number: '01',
+    number: '02',
     title: 'Февраль 22-го',
     subtitle: 'Артивизм & Протест',
     concept: 'Работа передаёт состояние катастрофы, шока и вынужденного молчания через визуальные метафоры льда, трещин и скованности.',
@@ -84,7 +145,7 @@ const artworksDataRu: Artwork[] = [
   // 2. Папка 1: Deep rest (теперь объект 02)
   {
     id: 'work-deep',
-    number: '02',
+    number: '03',
     title: 'Deep rest',
     subtitle: 'Артивизм & Текстура',
     concept: 'Исследование взаимодействия, границ поддержки и эмоционального замирания: выбор между спасением и уходом на глубину.',
@@ -129,7 +190,7 @@ const artworksDataRu: Artwork[] = [
   // 3. Папка 3: Последняя капля (оригинальное фото 1280x758 из папки)
   {
     id: 'work-last',
-    number: '03',
+    number: '04',
     title: 'Последняя капля',
     subtitle: 'Монохром & Тени',
     concept: 'В работе использовано минимальное количество оттенков и материалов, идея очень лаконична: последняя капля — это точка, а не диалог.',
@@ -168,7 +229,7 @@ const artworksDataRu: Artwork[] = [
   // 4. Папка 4: Бензиновая радуга
   {
     id: 'work-rainbow',
-    number: '04',
+    number: '05',
     title: 'Бензиновая радуга',
     subtitle: 'Серия «Трансформация»',
     concept: 'Красота в малом и скрытый экологический конфликт: эстетика бензиновой плёнки под ногами и окаменелая природа.',
@@ -237,7 +298,7 @@ const artworksDataRu: Artwork[] = [
   // 5. Папка 5: Пусть танцуют лебеди (только 1 фото, без руки)
   {
     id: 'work-swans',
-    number: '05',
+    number: '06',
     title: 'Пусть танцуют лебеди',
     subtitle: 'Глубина & Пространство',
     concept: 'Историческая аллюзия на балет по ТВ во время кризисов: терновый шип пробивает бумагу, превращая танец в болезненный укол реальности.',
@@ -270,7 +331,7 @@ const artworksDataRu: Artwork[] = [
   // 6. Папка 6: И?
   {
     id: 'work-and',
-    number: '06',
+    number: '07',
     title: 'И?',
     subtitle: 'Текстурный рельеф',
     concept: 'Диалог с растерянностью и скепсисом: жест защиты и провокационный вопрос, сбивающий пафос.',
@@ -321,7 +382,7 @@ const artworksDataRu: Artwork[] = [
   // 7. Папка 7: Красная серия
   {
     id: 'work-red',
-    number: '07',
+    number: '08',
     title: 'Красная серия',
     subtitle: 'Триптих · Смешанные медиа',
     concept: 'Триптих состояний через тотальный красный цвет: от ярости и отчаяния до неукротимой витальности и телесности.',
@@ -365,10 +426,71 @@ const artworksDataRu: Artwork[] = [
 ];
 
 const artworksDataEn: Artwork[] = [
-  // 1. February '22
+  // 1. Dive
+  {
+    id: 'work-dive',
+    number: '01',
+    title: 'Dive',
+    subtitle: 'Marine Series · Relief & Light',
+    concept: 'A split second frozen on the threshold between air and water — a metaphor for falling in love, where vivid turquoise hues reflect heightened sensation and sculpted splashes embody raw emotion.',
+    fullConcept: [
+      {
+        heading: 'Immersion as Falling in Love',
+        text: 'The breathless, weightless sensation of falling in love mirrors the split second of diving headfirst into the sea — finding the quiet courage to let go of control.',
+      },
+      {
+        heading: 'Brightness of Sensation, Brightness of Color',
+        text: 'Vivid turquoise and emerald layers of epoxy resin act as a living optical lens, capturing the intensity, depth, and radiance of a moment when everything feels overwhelmingly alive.',
+      },
+      {
+        heading: 'Splashes as Emotions',
+        text: 'Frozen transparent splashes and delicate sea foam erupting around the submerging toes embody raw emotions bursting to the surface between two elements.',
+      },
+      {
+        heading: 'Light & Living Shadow',
+        text: 'Under natural light, the translucent resin layers and sculptural relief on a round canvas (Ø 30 cm) cast organic, wave-like shadows beyond the frame.',
+      },
+    ],
+    materials: 'Round canvas (Ø 30 cm), epoxy resin, acrylic, plaster, clay, markers',
+    year: '2026',
+    media: [
+      {
+        type: 'image',
+        src: '/art-protest/dive/dive-top-crop.webp',
+        label: 'Main View',
+        aspect: '1125 / 1400',
+      },
+      {
+        type: 'video',
+        src: '/art-protest/dive/dive-video.mp4',
+        label: 'Living Relief',
+        aspect: '9 / 16',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/dive/dive-detail-water.webp',
+        label: 'Wave & Foam Texture',
+        aspect: '675 / 1200',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/dive/dive-detail-splash.webp',
+        label: 'Detail: Splashes & Relief',
+        aspect: '675 / 1200',
+      },
+      {
+        type: 'image',
+        src: '/art-protest/dive/dive-detail-04.webp',
+        label: 'Detail: Water Depth',
+        aspect: '675 / 1200',
+      },
+    ],
+  },
+
+  // 2. February '22
   {
     id: 'work-feb',
-    number: '01',
+    number: '02',
     title: "February '22",
     subtitle: 'Artivism & Protest',
     concept: 'The piece conveys a state of catastrophe, shock, and forced silence through the visual metaphors of ice, cracks, and constraint.',
@@ -423,7 +545,7 @@ const artworksDataEn: Artwork[] = [
   // 2. Deep Rest
   {
     id: 'work-deep',
-    number: '02',
+    number: '03',
     title: 'Deep Rest',
     subtitle: 'Artivism & Texture',
     concept: 'An exploration of interaction, the boundaries of support, and emotional freezing: the choice between rescue and sinking into the depths.',
@@ -468,7 +590,7 @@ const artworksDataEn: Artwork[] = [
   // 3. The Last Drop
   {
     id: 'work-last',
-    number: '03',
+    number: '04',
     title: 'The Last Drop',
     subtitle: 'Monochrome & Shadows',
     concept: 'The piece uses a minimal number of shades and materials; the idea is very concise: the last drop is a full stop, not a dialogue.',
@@ -507,7 +629,7 @@ const artworksDataEn: Artwork[] = [
   // 4. Gasoline Rainbow
   {
     id: 'work-rainbow',
-    number: '04',
+    number: '05',
     title: 'Gasoline Rainbow',
     subtitle: '"Transformation" Series',
     concept: 'Beauty in the small and a hidden ecological conflict: the aesthetics of a gasoline film underfoot, and fossilized nature.',
@@ -576,7 +698,7 @@ const artworksDataEn: Artwork[] = [
   // 5. Let the Swans Dance
   {
     id: 'work-swans',
-    number: '05',
+    number: '06',
     title: 'Let the Swans Dance',
     subtitle: 'Depth & Space',
     concept: 'A historical allusion to ballet broadcasts on TV during crises: a blackthorn spike pierces paper, turning dance into a painful jab of reality.',
@@ -609,7 +731,7 @@ const artworksDataEn: Artwork[] = [
   // 6. And?
   {
     id: 'work-and',
-    number: '06',
+    number: '07',
     title: 'And?',
     subtitle: 'Textured Relief',
     concept: 'A dialogue with confusion and skepticism: a defensive gesture and a provocative question that deflates the pathos.',
@@ -660,7 +782,7 @@ const artworksDataEn: Artwork[] = [
   // 7. Red Series
   {
     id: 'work-red',
-    number: '07',
+    number: '08',
     title: 'Red Series',
     subtitle: 'Triptych · Mixed Media',
     concept: 'A triptych of states through a totalizing red: from fury and despair to untamed vitality and physicality.',
@@ -810,6 +932,44 @@ function SteppedCollage({
         {/* Dynamic Asymmetrical Collage Body */}
         <div className="relative w-[640px] h-[360px] sm:h-[390px]">
         
+        {/* ========================================================= */}
+        {/* CASE 0: Нырять / Dive (Top Crop + 03 & 04 | 05 Hero | Vid) */}
+        {/* ========================================================= */}
+        {artwork.id === 'work-dive' && (
+          <div className="relative w-full h-full">
+            {/* Bold 4px Lines (top-0 so no crossing above title) */}
+            <div className="absolute top-[166px] -left-8 right-[236px] h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute top-[75%] -left-6 -right-6 h-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[194px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
+            <div className="absolute left-[404px] top-0 -bottom-6 w-[4px] bg-black pointer-events-none z-10" />
+
+            {/* Left Top: cropped overall view (aspect 1125/1400, height 162px -> width 130px) */}
+            <div className="absolute left-[26px] top-0 z-20">
+              <ProportionalItem item={m[0]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '162px' }} />
+            </div>
+
+            {/* Left Bottom 1: Dive_03 splash (aspect 675/1200, height 150px -> width 84px) */}
+            <div className="absolute left-[4px] top-[174px] z-20">
+              <ProportionalItem item={m[3]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '150px' }} />
+            </div>
+
+            {/* Left Bottom 2: Dive_04 water (aspect 675/1200, height 150px -> width 84px) */}
+            <div className="absolute left-[98px] top-[174px] z-20">
+              <ProportionalItem item={m[4]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '150px' }} />
+            </div>
+
+            {/* Center Main Hero: Dive_05 wave texture (aspect 675/1200, height 324px -> width 182px) */}
+            <div className="absolute left-[210px] top-0 z-20">
+              <ProportionalItem item={m[2]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '324px' }} />
+            </div>
+
+            {/* Right Full Height Video: dive-video (aspect 9/16, height 324px -> width 182px) */}
+            <div className="absolute left-[420px] top-0 z-20">
+              <ProportionalItem item={m[1]} artwork={artwork} onOpenLightbox={onOpenLightbox} style={{ height: '324px' }} />
+            </div>
+          </div>
+        )}
+
         {/* ========================================================= */}
         {/* CASE 1: Февраль 22-го (2 Left, 1 Hero, 1 Full Video)      */}
         {/* ========================================================= */}
@@ -1131,7 +1291,7 @@ function ManifestoPanel() {
           {/* Bottom Footer Metadata */}
           <div className="relative z-20 pt-1.5 border-t-2 border-black flex items-center justify-between text-[10px] sm:text-xs font-montserrat text-black uppercase font-bold tracking-wider">
             <span>{isEn ? "Ekaterina" : "Екатерина"} · Fir Tree Art</span>
-            <span className="text-black/80 font-sans font-semibold">{isEn ? "7 Original Art Pieces" : "7 авторских арт-объектов"}</span>
+            <span className="text-black/80 font-sans font-semibold">{isEn ? "8 Original Art Pieces" : "8 авторских арт-объектов"}</span>
           </div>
         </div>
       </div>
